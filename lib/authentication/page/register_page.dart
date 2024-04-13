@@ -28,29 +28,29 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 80,),
               Column(
                 children: [
-                  myTextField(labelText: "Masukkan Username...",),
-                  myTextField(labelText: "Masukkan Email...",),
-                  myTextField(labelText: "Masukkan Password...", isObscured: true,),
+                  const myTextField(labelText: "Masukkan Username...",),
+                  const myTextField(labelText: "Masukkan Email...",),
+                  const myTextField(labelText: "Masukkan Password...", isObscured: true,),
                 ].withSpaceBetween(height: 10),
               ),
-              SizedBox(height: 40,),
+              const SizedBox(height: 40,),
               myButton(
                 onClick: () {
                   // Ketika tombol Register ditekan, navigasi ke halaman LoginPage
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
                   );
                 },
                 text: "Register",
-                backgroundColor: Color(0xFFFF3D3D),
-                foregroundColor: Color(0xFFFFFFFF),
+                backgroundColor: const Color(0xFFFF3D3D),
+                foregroundColor: const Color(0xFFFFFFFF),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20,),
               Column(
                 children: [
-                  Text("Register dengan",style: TextStyle(
+                  const Text("Register dengan",style: TextStyle(
                       fontSize: 11,
                       color: Color(0xFF30475E),
                       fontWeight: FontWeight.w500,
@@ -61,7 +61,7 @@ class RegisterPage extends StatelessWidget {
                     height: 40,
                     width: 40,
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Sudah Punya Akun?",style: TextStyle(
@@ -80,13 +80,13 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ].withSpaceBetween(height: 20),
               ),
-              SizedBox(height: 20,),
-              Text("Dengan register ke RUS Consign, kamu menyetujui",style: TextStyle(
+              const SizedBox(height: 20,),
+              const Text("Dengan register ke RUS Consign, kamu menyetujui",style: TextStyle(
                   fontSize: 12,
                   color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none
-              ), ),Text("Ketentuan dan Kebijakan Privasi kami.",style: TextStyle(
+              ), ),const Text("Ketentuan dan Kebijakan Privasi kami.",style: TextStyle(
                   fontSize: 12,
                   color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
