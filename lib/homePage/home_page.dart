@@ -4,14 +4,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/homePage/controllers/dots_indicator_controller.dart';
+import 'package:rusconsign/homePage/widgets/filter_button.dart';
+
+import 'controllers/dots_indicator_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(DotsIndicatorController());
+    final indicator = Get.find<DotsIndicatorController>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -131,8 +133,7 @@ class HomePage extends StatelessWidget {
                   autoPlayInterval: const Duration(seconds: 3),
                   enlargeCenterPage: true,
                   onPageChanged: (index, reason) {
-                    Get.find<DotsIndicatorController>()
-                        .updateCurrentIndex(index);
+                    indicator.updateCurrentIndex(index);
                   },
                 ),
               ),
@@ -147,15 +148,16 @@ class HomePage extends StatelessWidget {
                             vertical: 8.0, horizontal: 4.0),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: (Get.find<DotsIndicatorController>()
-                                      .currentIndex ==
-                                  index)
+                          color: (indicator.currentIndex == index)
                               ? const Color(0xFFFF3D3D)
                               : const Color(0xFFF5F5F5),
                         ),
                       ),
                     ),
                   )),
+              const SizedBox(
+                height: 12,
+              ),
               const Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -168,10 +170,37 @@ class HomePage extends StatelessWidget {
                         children: [
                           Text(
                             'Halaman Produk dan Jasa',
-                            style: TextStyle(),
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color(0xFF222831),
+                                fontWeight: FontWeight.w700),
+                          ),
+                          SizedBox(height: 8),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              FilterButton(
+                                text: 'Semua',
+                                icon: FeatherIcons.alignJustify,
+                                index: 0,
+                              ),
+                              Spacer(),
+                              FilterButton(
+                                text: 'Jasa',
+                                icon: FeatherIcons.users,
+                                index: 1,
+                              ),
+                              Spacer(),
+                              FilterButton(
+                                text: 'Produk',
+                                icon: FeatherIcons.box,
+                                index: 2,
+                              )
+                            ],
                           ),
                         ],
-                      )),
+                      )
+                      ),
                 ],
               )
             ],
