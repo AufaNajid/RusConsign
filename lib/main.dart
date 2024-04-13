@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/HomePage/home_page.dart';
+import 'package:rusconsign/splash/splash.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Poppins'
       ),
-      home: const HomePage(),
+      home: SplashScreen(),
     );
   }
 }
