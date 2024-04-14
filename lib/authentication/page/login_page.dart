@@ -34,7 +34,6 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 40,),
               myButton(
                 onClick: () {
-                  // Ketika tombol Register ditekan, navigasi ke halaman LoginPage
                   Get.toNamed("/homepage");
                 },
                 text: "Login",
