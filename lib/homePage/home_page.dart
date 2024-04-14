@@ -4,17 +4,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/homePage/home_page_controller.dart';
 import 'package:rusconsign/homePage/widgets/filter_button.dart';
 import 'package:rusconsign/homePage/widgets/product_card.dart';
 
-import 'controllers/dots_indicator_controller.dart';
-
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final indicator = Get.put(HomePageController());
+  HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final indicator = Get.find<DotsIndicatorController>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -134,7 +133,7 @@ class HomePage extends StatelessWidget {
                   autoPlayInterval: const Duration(seconds: 3),
                   enlargeCenterPage: true,
                   onPageChanged: (index, reason) {
-                    indicator.updateCurrentIndex(index);
+                    indicator.updateCurrentIndexIndicator(index);
                   },
                 ),
               ),

@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 40,),
               myButton(
                 onClick: () {
-                  Get.toNamed("/homepage");
+                  Get.offNamed("/menu");
                 },
                 text: "Login",
                 backgroundColor: const Color(0xFFFF3D3D),
