@@ -1,8 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:get/get.dart';
 import 'package:rusconsign/extension.dart';
 
 class DetailPage extends StatelessWidget {
@@ -31,7 +28,7 @@ class DetailPage extends StatelessWidget {
                       size: 24,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 50,
                   ),
                   const Text(
@@ -51,7 +48,7 @@ class DetailPage extends StatelessWidget {
               width: 410,
             ),
             Padding(
-                padding: EdgeInsets.only(left: 15, right: 15),
+                padding: const EdgeInsets.only(left: 15, right: 15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,13 +59,13 @@ class DetailPage extends StatelessWidget {
                         Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(5),
+                              padding: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
-                                  color: Color(0xFFFF3D3D),
+                                  color: const Color(0xFFFF3D3D),
                                   borderRadius: BorderRadius.circular(5)),
                               height: 27,
                               width: 80,
-                              child: Text(
+                              child: const Text(
                                 'Produk',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -79,13 +76,13 @@ class DetailPage extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFFFFFF),
+                              padding: const EdgeInsets.all(5),
+                              decoration: const BoxDecoration(
+                                color: Color(0x0fffffff),
                               ),
                               height: 27,
                               width: 80,
-                              child: Text(
+                              child: const Text(
                                 '20 Terjual',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
@@ -144,7 +141,7 @@ class DetailPage extends StatelessWidget {
                                 size: 24,
                               ),
                             ),
-                            Text(
+                            const Text(
                               '4.0',
                               textAlign: TextAlign.center,
                               style: TextStyle(
@@ -157,12 +154,12 @@ class DetailPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFF222831), // Atur warna garis
                       thickness: 1, // Atur ketebalan garis
                       height: 0, // Atur tinggi garis
                     ),
-                    Container(
+                    SizedBox(
                       height: 40,
                       width: double.infinity,
                       child: SingleChildScrollView(
@@ -193,14 +190,14 @@ class DetailPage extends StatelessWidget {
                                 Row(
                                   children: [
                                     Container(
-                                      padding: EdgeInsets.all(5),
+                                      padding: const EdgeInsets.all(5),
                                       decoration: BoxDecoration(
-                                          color: Color(0xFF30475E),
+                                          color: const Color(0xFF30475E),
                                           borderRadius:
                                               BorderRadius.circular(5)),
                                       height: 21,
                                       width: 70,
-                                      child: Text(
+                                      child: const Text(
                                         'Chat Penjual',
                                         style: TextStyle(
                                           fontSize: 8,
@@ -210,14 +207,14 @@ class DetailPage extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                      padding: EdgeInsets.all(5),
+                                      padding: const EdgeInsets.all(5),
                                       decoration: BoxDecoration(
-                                          color: Color(0xFF30475E),
+                                          color: const Color(0xFF30475E),
                                           borderRadius:
                                               BorderRadius.circular(5)),
                                       height: 21,
                                       width: 70,
-                                      child: Text(
+                                      child: const Text(
                                         'Lihat Toko',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -235,14 +232,14 @@ class DetailPage extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    Container(
+                                    const SizedBox(
                                       height: 12,
                                       width: 90,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          const Text(
+                                          Text(
                                             "Jumlah Produk",
                                             style: TextStyle(
                                               fontSize: 8,
@@ -250,7 +247,7 @@ class DetailPage extends StatelessWidget {
                                               color: Color(0xFF30475E),
                                             ),
                                           ),
-                                          const Text(
+                                          Text(
                                             "2",
                                             style: TextStyle(
                                               fontSize: 8,
@@ -261,14 +258,14 @@ class DetailPage extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    Container(
+                                    const SizedBox(
                                       height: 12,
                                       width: 90,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          const Text(
+                                          Text(
                                             "Jumlah Jasa",
                                             style: TextStyle(
                                               fontSize: 8,
@@ -276,7 +273,7 @@ class DetailPage extends StatelessWidget {
                                               color: Color(0xFF30475E),
                                             ),
                                           ),
-                                          const Text(
+                                          Text(
                                             "2",
                                             style: TextStyle(
                                               fontSize: 8,
@@ -291,14 +288,14 @@ class DetailPage extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    Container(
+                                    const SizedBox(
                                       height: 12,
                                       width: 90,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          const Text(
+                                          Text(
                                             "Penilaian",
                                             style: TextStyle(
                                               fontSize: 8,
@@ -306,7 +303,7 @@ class DetailPage extends StatelessWidget {
                                               color: Color(0xFF30475E),
                                             ),
                                           ),
-                                          const Text(
+                                          Text(
                                             "4.5",
                                             style: TextStyle(
                                               fontSize: 8,
@@ -317,14 +314,14 @@ class DetailPage extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                    Container(
+                                    const SizedBox(
                                       height: 12,
                                       width: 90,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          const Text(
+                                          Text(
                                             "Pengikut",
                                             style: TextStyle(
                                               fontSize: 8,
@@ -332,7 +329,7 @@ class DetailPage extends StatelessWidget {
                                               color: Color(0xFF30475E),
                                             ),
                                           ),
-                                          const Text(
+                                          Text(
                                             "278",
                                             style: TextStyle(
                                               fontSize: 8,
@@ -351,18 +348,18 @@ class DetailPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       color: Color(0xFF222831), // Atur warna garis
                       thickness: 1, // Atur ketebalan garis
                       height: 0, // Atur tinggi garis
                     ),
-                    Container(
+                    SizedBox(
                       height: 40,
                       width: double.infinity,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             "Penilaian Produk",
                             style: TextStyle(
                               fontSize: 13,
@@ -373,7 +370,7 @@ class DetailPage extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(
+                              const Text(
                                 "2 Ulasan",
                                 style: TextStyle(
                                   fontSize: 13,
@@ -416,15 +413,15 @@ class DetailPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           left: 10, right: 10, bottom: 15, top: 15),
                       height: 151,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                          color: Color(0xFFF5F5F5),
+                          color: const Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(10),
                           border:
-                              Border.all(color: Color(0xFF222831), width: 1.5)),
+                              Border.all(color: const Color(0xFF222831), width: 1.5)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -441,7 +438,7 @@ class DetailPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 "Muhammad Alfarezi",
                                 style: TextStyle(
                                   fontSize: 13,
@@ -478,7 +475,7 @@ class DetailPage extends StatelessWidget {
                                   ),
                                 ].withSpaceBetween(width: 3),
                               ),
-                              Text(
+                              const Text(
                                 "2024-03-08 09:31",
                                 style: TextStyle(
                                   fontSize: 8,
@@ -486,7 +483,7 @@ class DetailPage extends StatelessWidget {
                                   color: Color(0xFF30475E),
                                 ),
                               ),
-                              Text(
+                              const Text(
                                 "Barangnya bagus, penjualnya juga ramah sekali.\nTapi ada bagian gantungan\nkunci yang rusak, mungkin bisa diperbaiki lagi bagi penjualnya...",
                                 style: TextStyle(
                                   fontSize: 8,
@@ -505,7 +502,7 @@ class DetailPage extends StatelessWidget {
                                         color: Color(0xFF30475E),
                                         size: 20,
                                       ),
-                                      Text(
+                                      const Text(
                                         "200",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -523,7 +520,7 @@ class DetailPage extends StatelessWidget {
                                         color: Color(0xFF30475E),
                                         size: 20,
                                       ),
-                                      Text(
+                                      const Text(
                                         "200",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(

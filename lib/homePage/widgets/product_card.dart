@@ -17,6 +17,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: const Color(0xFFF5F5F5),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
