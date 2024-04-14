@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controllers/filter_button_controller.dart';
+import '../home_page_controller.dart';
 
 class FilterButton extends StatelessWidget {
   final String text;
@@ -16,7 +16,7 @@ class FilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final FilterButtonController filterButtonController = Get.find();
+    final HomePageController filterButtonController = Get.find();
 
     return Obx(() => ElevatedButton.icon(
           style: ButtonStyle(
@@ -31,7 +31,7 @@ class FilterButton extends StatelessWidget {
               ),
             ),
             fixedSize: MaterialStateProperty.all<Size>(
-              const Size(120, 40),
+              const Size(116, 40),
             ),
           ),
           icon: Icon(
@@ -51,7 +51,7 @@ class FilterButton extends StatelessWidget {
           ),
           onPressed: () {
             if (filterButtonController.selectedIndex != index) {
-              filterButtonController.setSelectedIndex(index);
+              filterButtonController.setSelectedFilter(index);
             }
           },
         ));
