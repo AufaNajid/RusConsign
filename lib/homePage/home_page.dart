@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/homePage/widgets/filter_button.dart';
+import 'package:rusconsign/homePage/widgets/product_card.dart';
 
 import 'controllers/dots_indicator_controller.dart';
 
@@ -24,7 +25,7 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -46,7 +47,7 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,53 +157,68 @@ class HomePage extends StatelessWidget {
                     ),
                   )),
               const SizedBox(
-                height: 12,
+                height: 4,
               ),
-              const Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                      padding: EdgeInsets.only(left: 20, right: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Halaman Produk dan Jasa',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Color(0xFF222831),
-                                fontWeight: FontWeight.w700),
-                          ),
-                          SizedBox(height: 8),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              FilterButton(
-                                text: 'Semua',
-                                icon: FeatherIcons.alignJustify,
-                                index: 0,
-                              ),
-                              Spacer(),
-                              FilterButton(
-                                text: 'Jasa',
-                                icon: FeatherIcons.users,
-                                index: 1,
-                              ),
-                              Spacer(),
-                              FilterButton(
-                                text: 'Produk',
-                                icon: FeatherIcons.box,
-                                index: 2,
-                              )
-                            ],
-                          ),
-                        ],
-                      )
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Halaman Produk dan Jasa',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color(0xFF222831),
+                        fontWeight: FontWeight.w700,
                       ),
-                ],
-              )
+                    ),
+                    const SizedBox(height: 8),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        FilterButton(
+                          text: 'Semua',
+                          icon: FeatherIcons.alignJustify,
+                          index: 0,
+                        ),
+                        Spacer(),
+                        FilterButton(
+                          text: 'Jasa',
+                          icon: FeatherIcons.users,
+                          index: 1,
+                        ),
+                        Spacer(),
+                        FilterButton(
+                          text: 'Produk',
+                          icon: FeatherIcons.box,
+                          index: 2,
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: 10,
+                      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 8,
+                        childAspectRatio: 0.8
+                      ),
+                      itemBuilder: (BuildContext context, int index) {
+                        return ProductCard(
+                            imagePath: 'https://via.placeholder.com/165x110',
+                            title: 'Productdamndmajdnjandujamudamjudiadiaidaidmiawmdiawmddnawudnuadn',
+                            price: 12000,
+                            rating: (index % 5) + 1,
+                          );
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),

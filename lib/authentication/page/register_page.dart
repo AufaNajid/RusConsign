@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
 
-import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -36,11 +36,7 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 40,),
               myButton(
                 onClick: () {
-                  // Ketika tombol Register ditekan, navigasi ke halaman LoginPage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                  );
+                  Get.toNamed("/login");
                 },
                 text: "Register",
                 backgroundColor: const Color(0xFFFF3D3D),
