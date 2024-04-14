@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/HomePage/home_page.dart';
+import 'package:rusconsign/detailPage/detail_page.dart';
 import 'package:rusconsign/splash/splash.dart';
 import 'authentication/page/login_page.dart';
 import 'authentication/page/register_page.dart';
@@ -19,14 +19,15 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Poppins'),
-      initialRoute: "/login",
+      initialRoute: "/detailpage",
       getPages: [
-        GetPage(name: "/login", page: () => const LoginPage()),
-        GetPage(name: "/register", page: () => const RegisterPage()),
-        GetPage(
-            name: "/homepage",
-            page: () => const HomePage(),
-            binding: HomePageBinding()),
+        GetPage(name: "/detailpage", page: () => const DetailPage()),
+        // GetPage(name: "/login", page: () => const LoginPage()),
+        // GetPage(name: "/register", page: () => const RegisterPage()),
+        // GetPage(
+        //     name: "/homepage",
+        //     page: () => const HomePage(),
+        //     binding: HomePageBinding()),
       ],
     );
   }
