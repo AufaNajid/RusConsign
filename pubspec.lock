@@ -115,7 +115,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< Updated upstream
   get:
     dependency: "direct main"
     description:
@@ -148,8 +147,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.1"
-=======
->>>>>>> Stashed changes
   leak_tracker:
     dependency: transitive
     description:
@@ -238,8 +235,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.8.0"
-=======
->>>>>>> Stashed changes
   sky_engine:
     dependency: transitive
     description: flutter
@@ -310,7 +305,6 @@ packages:
     source: hosted
     version: "2.1.4"
   vm_service:
-<<<<<<< Updated upstream
     dependency: transitive
     description:
       name: vm_service
@@ -326,15 +320,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
-=======
-    dependency: transitive
-    description:
-      name: vm_service
-      sha256: b3d56ff4341b8f182b96aceb2fa20e3dcb336b9f867bc0eafc0de10f1048e957
-      url: "https://pub.dev"
-    source: hosted
-    version: "13.0.0"
->>>>>>> Stashed changes
 sdks:
   dart: ">=3.3.0 <4.0.0"
   flutter: ">=3.16.0"
