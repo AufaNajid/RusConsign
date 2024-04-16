@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/authentication/controllers/googleController.dart';
 
-import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  final GoogleController _googleController = GoogleController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,77 +25,107 @@ class RegisterPage extends StatelessWidget {
                 height: 95,
                 width: 68,
               ),
-              const SizedBox(height: 80,),
+              const SizedBox(height: 80),
               Column(
                 children: [
-                  myTextField(labelText: "Masukkan Username...",),
-                  myTextField(labelText: "Masukkan Email...",),
-                  myTextField(labelText: "Masukkan Password...", isObscured: true,),
+                  myTextField(labelText: "Masukkan Username..."),
+                  myTextField(labelText: "Masukkan Email..."),
+                  myTextField(labelText: "Masukkan Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
-              SizedBox(height: 40,),
+              SizedBox(height: 40),
               myButton(
                 onClick: () {
-                  // Ketika tombol Register ditekan, navigasi ke halaman LoginPage
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
+                  // Handle register button pressed
+                  _register(context);
                 },
                 text: "Register",
                 backgroundColor: Color(0xFFFF3D3D),
                 foregroundColor: Color(0xFFFFFFFF),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 20,),
-              Column(
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  // Handle Google sign-in button pressed
+                  _googleController.signInWithGoogle(context);
+                },
+                child: Column(
+                  children: [
+                    Text("Register dengan", style: TextStyle(
+                        fontSize: 11,
+                        color: Color(0xFF30475E),
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.none
+                    )),
+                    const SizedBox(height: 10),
+                    Image.asset(
+                      'assets/images/google_logo.png',
+                      height: 40,
+                      width: 40,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Register dengan",style: TextStyle(
+                  Text(
+                    "Sudah Punya Akun?",
+                    style: TextStyle(
                       fontSize: 11,
                       color: Color(0xFF30475E),
                       fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.none
-                  ), ),
-                  const Image(
-                    image: AssetImage('assets/images/google_logo.png'),
-                    height: 40,
-                    width: 40,
+                      decoration: TextDecoration.none,
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Sudah Punya Akun?",style: TextStyle(
-                          fontSize: 11,
-                          color: Color(0xFF30475E),
-                          fontWeight: FontWeight.w500,
-                          decoration: TextDecoration.none
-                      ), ),
-                      Text("Login",style: TextStyle(
-                          fontSize: 11,
-                          color: Color(0xFF30475E),
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.none
-                      ), ),
-                    ],
+                  GestureDetector(
+                    onTap: () {
+                      // Navigate to login page
+                      Navigator.pushReplacementNamed(context, '/login');
+                    },
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Color(0xFF30475E),
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
                   ),
                 ].withSpaceBetween(height: 20),
               ),
-              SizedBox(height: 20,),
-              Text("Dengan register ke RUS Consign, kamu menyetujui",style: TextStyle(
+              const SizedBox(height: 20),
+              Text(
+                "Dengan register ke RUS Consign, kamu menyetujui",
+                style: TextStyle(
                   fontSize: 12,
                   color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none
-              ), ),Text("Ketentuan dan Kebijakan Privasi kami.",style: TextStyle(
+                  decoration: TextDecoration.none,
+                ),
+              ),
+              Text(
+                "Ketentuan dan Kebijakan Privasi kami.",
+                style: TextStyle(
                   fontSize: 12,
                   color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none
-              ), ),
+                  decoration: TextDecoration.none,
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _register(BuildContext context) {
+    // Perform registration logic here
+    // Example:
+    Navigator.pushReplacementNamed(context, '/login'); // Navigate to login page
   }
 }

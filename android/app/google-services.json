@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "423000787290",
+    "project_id": "rusconsignlogin",
+    "storage_bucket": "rusconsignlogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423000787290:android:40f6e2291de1a3c3bf4b63",
+        "android_client_info": {
+          "package_name": "com.example.rusconsign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "423000787290-2ap693bs16up40ostp6mnh9kf0ga9v8b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu4czXIavHZYxdBfNhIeyVTIrY6_kkKLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "423000787290-2ap693bs16up40ostp6mnh9kf0ga9v8b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
