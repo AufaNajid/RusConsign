@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:rusconsign/detailPage/detail_page.dart';
+import 'package:rusconsign/detailPage/detail_page_binding.dart';
 import 'package:rusconsign/menu.dart';
 
 import '../authentication/page/login_page.dart';
@@ -16,4 +18,8 @@ List<GetPage> routes = [
       name: "/homepage",
       page: () => HomePage(),
       binding: HomePageBinding()),
+  GetPage(
+      name: "/detailpage",
+      page: () => DetailPage(),
+      binding: DetailPageBinding()),
 ];
