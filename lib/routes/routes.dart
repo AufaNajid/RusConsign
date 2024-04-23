@@ -11,8 +11,8 @@ import '../splash/splash.dart';
 
 List<GetPage> routes = [
   GetPage(name: "/splash", page: () => const SplashScreen()),
-  GetPage(name: "/login", page: () => const LoginPage()),
-  GetPage(name: "/register", page: () => const RegisterPage()),
+  GetPage(name: "/login", page: () =>  LoginPage()),
+  GetPage(name: "/register", page: () =>  RegisterPage()),
   GetPage(name: "/menu", page: () => const Menu()),
   GetPage(
       name: "/homepage",
