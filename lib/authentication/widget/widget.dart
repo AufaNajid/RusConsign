@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+
 
 class MyButton extends StatelessWidget {
   const MyButton({
@@ -14,7 +16,7 @@ class MyButton extends StatelessWidget {
     required this.onClick,
     this.label = "",
     this.labelWidth,
-  }) : super(key: key); // tambahkan super(key: key)
+  }) : super(key: key);
 
   final IconData? prefixIcon;
   final IconData? suffixIcon;
@@ -36,7 +38,7 @@ class MyButton extends StatelessWidget {
           width: labelWidth,
           child: Text(
             label,
-            style: TextStyle(color: Color(0xFF30475E)),
+            style: const TextStyle(color: Color(0xFF30475E)),
           ),
         ),
         Expanded(
@@ -75,7 +77,6 @@ class MyButton extends StatelessWidget {
   }
 }
 
-
 class MyTextField extends StatefulWidget {
   const MyTextField({
     Key? key,
@@ -88,7 +89,7 @@ class MyTextField extends StatefulWidget {
     this.hintColor = const Color(0xffF2CE18),
     this.labelText = "",
     this.inputFormatter,
-  }) : super(key: key); // tambahkan super(key: key)
+  }) : super(key: key);
 
   final bool isObscured;
   final TextEditingController? controller;
@@ -113,7 +114,7 @@ class MyTextFieldState extends State<MyTextField> {
       inputFormatters: widget.inputFormatter,
       keyboardType: widget.keyboardType,
       autofocus: false,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 11,
         color: Color(0xFF30475E),
         fontWeight: FontWeight.w500,
@@ -123,15 +124,15 @@ class MyTextFieldState extends State<MyTextField> {
       obscureText: widget.isObscured ? isChecked : widget.isObscured,
       decoration: InputDecoration(
         labelText: widget.labelText,
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
           fontSize: 11,
           color: Color(0xFF30475E),
           fontWeight: FontWeight.w500,
           decoration: TextDecoration.none,
         ),
-        fillColor: Color(0xFFF5F5F5),
+        fillColor: const Color(0xFFF5F5F5),
         filled: true,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: Colors.yellow,
           fontWeight: FontWeight.normal,
           fontSize: 14,
@@ -139,12 +140,10 @@ class MyTextFieldState extends State<MyTextField> {
         suffixIcon: widget.isObscured
             ? IconButton(
           icon: Icon(
-            // Based on isChecked state choose the icon
-            isChecked ? Icons.visibility : Icons.visibility_off,
-            color: Color(0xFF30475E),
+            isChecked ? FeatherIcons.eye : FeatherIcons.eyeOff,
+            color: const Color(0xFF30475E),
           ),
           onPressed: () {
-            // Update the state i.e. toggle the isChecked variable
             setState(() {
               isChecked = !isChecked;
             });
@@ -155,10 +154,10 @@ class MyTextFieldState extends State<MyTextField> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(5),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xFFFFFFFF)),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xFFFFFFFF)),
         ),
       ),

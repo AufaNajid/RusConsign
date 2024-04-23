@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; // Ensure this import is correct based on your needs
+import 'package:get/get.dart';
 import 'package:rusconsign/authentication/controllers/googleController.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
+
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -29,15 +30,14 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               Column(
-                children: const [
+                children: [
                   MyTextField(labelText: "Masukkan Email..."),
                   MyTextField(labelText: "Masukkan Password...", isObscured: true),
-                ],
+                ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
               MyButton(
                 onClick: () {
-                  // Handle login button pressed
                   _login(context);
                 },
                 text: "Login",
@@ -48,7 +48,6 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  // Handle Google sign-in button pressed
                   _googleController.signInWithGoogle(context);
                 },
                 child: Column(
@@ -86,7 +85,6 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      // Navigate to register page
                       Navigator.pushReplacementNamed(context, '/register');
                     },
                     child: const Text(

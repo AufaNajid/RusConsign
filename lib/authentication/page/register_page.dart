@@ -27,11 +27,11 @@ class RegisterPage extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               Column(
-                children: const [
+                children: [
                   MyTextField(labelText: "Masukkan Username..."),
                   MyTextField(labelText: "Masukkan Email..."),
                   MyTextField(labelText: "Masukkan Password...", isObscured: true),
-                ],
+                ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
               MyButton(
@@ -81,8 +81,8 @@ class RegisterPage extends StatelessWidget {
                       decoration: TextDecoration.none,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
+                  TextButton(
+                    onPressed: () {
                       Navigator.pushReplacementNamed(context, '/login');
                     },
                     child: Text(
@@ -97,6 +97,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ],
               ),
+
               const SizedBox(height: 20),
               const Text(
                 "Dengan register ke RUS Consign, kamu menyetujui",

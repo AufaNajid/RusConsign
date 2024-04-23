@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/HomePage/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:rusconsign/authentication/page/login_page.dart';
+import 'package:rusconsign/authentication/page/register_page.dart';
 import 'firebase_options.dart';
+import 'package:rusconsign/routes/routes.dart';
 
-import 'authentication/page/register_page.dart';
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
-
-  await Firebase.initializeApp (
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins'
-      ),
-      home:  LoginPage(),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
+        initialRoute: "/splash",
+        getPages: routes
     );
   }
 }
