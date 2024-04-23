@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:rusconsign/HomePage/home_page.dart';
+import 'package:get/get.dart'; // Ensure this import is correct based on your needs
 import 'package:rusconsign/authentication/controllers/googleController.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
+
   final GoogleController _googleController = GoogleController();
 
   @override
@@ -28,20 +29,20 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               Column(
-                children: [
-                  myTextField(labelText: "Masukkan Email..."),
-                  myTextField(labelText: "Masukkan Password...", isObscured: true),
-                ].withSpaceBetween(height: 10),
+                children: const [
+                  MyTextField(labelText: "Masukkan Email..."),
+                  MyTextField(labelText: "Masukkan Password...", isObscured: true),
+                ],
               ),
-              SizedBox(height: 40),
-              myButton(
+              const SizedBox(height: 40),
+              MyButton(
                 onClick: () {
                   // Handle login button pressed
                   _login(context);
                 },
                 text: "Login",
-                backgroundColor: Color(0xFFFF3D3D),
-                foregroundColor: Color(0xFFFFFFFF),
+                backgroundColor: const Color(0xFFFF3D3D),
+                foregroundColor: const Color(0xFFFFFFFF),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
@@ -56,7 +57,7 @@ class LoginPage extends StatelessWidget {
                       "Login dengan",
                       style: TextStyle(
                         fontSize: 11,
-                        color: Color(0xFF30475E),
+                        color: const Color(0xFF30475E),
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.none,
                       ),
@@ -78,7 +79,7 @@ class LoginPage extends StatelessWidget {
                     "Belum Punya Akun?",
                     style: TextStyle(
                       fontSize: 11,
-                      color: Color(0xFF30475E),
+                      color: const Color(0xFF30475E),
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.none,
                     ),
@@ -88,33 +89,33 @@ class LoginPage extends StatelessWidget {
                       // Navigate to register page
                       Navigator.pushReplacementNamed(context, '/register');
                     },
-                    child: Text(
+                    child: const Text(
                       "Register",
                       style: TextStyle(
                         fontSize: 11,
-                        color: Color(0xFF30475E),
+                        color: const Color(0xFF30475E),
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.none,
                       ),
                     ),
                   ),
-                ].withSpaceBetween(height: 20),
+                ],
               ),
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 "Dengan login ke RUS Consign, kamu menyetujui",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF30475E),
+                  color: const Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
               ),
-              Text(
+              const Text(
                 "Ketentuan dan Kebijakan Privasi kami.",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF30475E),
+                  color: const Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rusconsign/authentication/controllers/googleController.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
-import 'package:rusconsign/authentication/controllers/googleController.dart';
-
 
 class RegisterPage extends StatelessWidget {
   final GoogleController _googleController = GoogleController();
@@ -27,37 +27,38 @@ class RegisterPage extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               Column(
-                children: [
-                  myTextField(labelText: "Masukkan Username..."),
-                  myTextField(labelText: "Masukkan Email..."),
-                  myTextField(labelText: "Masukkan Password...", isObscured: true),
-                ].withSpaceBetween(height: 10),
+                children: const [
+                  MyTextField(labelText: "Masukkan Username..."),
+                  MyTextField(labelText: "Masukkan Email..."),
+                  MyTextField(labelText: "Masukkan Password...", isObscured: true),
+                ],
               ),
-              SizedBox(height: 40),
-              myButton(
+              const SizedBox(height: 40),
+              MyButton(
                 onClick: () {
-                  // Handle register button pressed
-                  _register(context);
+                  Get.toNamed("/login");
                 },
                 text: "Register",
-                backgroundColor: Color(0xFFFF3D3D),
-                foregroundColor: Color(0xFFFFFFFF),
+                backgroundColor: const Color(0xFFFF3D3D),
+                foregroundColor: const Color(0xFFFFFFFF),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  // Handle Google sign-in button pressed
                   _googleController.signInWithGoogle(context);
                 },
                 child: Column(
                   children: [
-                    Text("Register dengan", style: TextStyle(
+                    Text(
+                      "Register dengan",
+                      style: TextStyle(
                         fontSize: 11,
-                        color: Color(0xFF30475E),
+                        color: const Color(0xFF30475E),
                         fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none
-                    )),
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
                     const SizedBox(height: 10),
                     Image.asset(
                       'assets/images/google_logo.png',
@@ -75,43 +76,42 @@ class RegisterPage extends StatelessWidget {
                     "Sudah Punya Akun?",
                     style: TextStyle(
                       fontSize: 11,
-                      color: Color(0xFF30475E),
+                      color: const Color(0xFF30475E),
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.none,
                     ),
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigate to login page
                       Navigator.pushReplacementNamed(context, '/login');
                     },
                     child: Text(
                       "Login",
                       style: TextStyle(
                         fontSize: 11,
-                        color: Color(0xFF30475E),
+                        color: const Color(0xFF30475E),
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.none,
                       ),
                     ),
                   ),
-                ].withSpaceBetween(height: 20),
+                ],
               ),
               const SizedBox(height: 20),
-              Text(
+              const Text(
                 "Dengan register ke RUS Consign, kamu menyetujui",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF30475E),
+                  color: const Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
               ),
-              Text(
+              const Text(
                 "Ketentuan dan Kebijakan Privasi kami.",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF30475E),
+                  color: const Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
@@ -121,11 +121,5 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _register(BuildContext context) {
-    // Perform registration logic here
-    // Example:
-    Navigator.pushReplacementNamed(context, '/login'); // Navigate to login page
   }
 }

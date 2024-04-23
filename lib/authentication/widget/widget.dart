@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class myButton extends StatelessWidget {
-  const myButton({
-    super.key,
+class MyButton extends StatelessWidget {
+  const MyButton({
+    Key? key,
     this.prefixIcon,
     this.suffixIcon,
     this.text = "",
@@ -14,7 +14,8 @@ class myButton extends StatelessWidget {
     required this.onClick,
     this.label = "",
     this.labelWidth,
-  });
+  }) : super(key: key); // tambahkan super(key: key)
+
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final String text;
@@ -44,21 +45,24 @@ class myButton extends StatelessWidget {
             child: TextButton(
               onPressed: onClick,
               style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  backgroundColor: backgroundColor,
-                  foregroundColor: foregroundColor),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                backgroundColor: backgroundColor,
+                foregroundColor: foregroundColor,
+              ),
               child: Row(
                 children: [
                   Icon(prefixIcon),
                   const SizedBox(width: 10),
                   Expanded(
-                      child: Text(
-                    text,
-                    textAlign: textAlign,
-                    style: const TextStyle(fontSize: 14),
-                  )),
+                    child: Text(
+                      text,
+                      textAlign: textAlign,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   Icon(suffixIcon),
                 ],
@@ -71,9 +75,10 @@ class myButton extends StatelessWidget {
   }
 }
 
-class myTextField extends StatefulWidget {
-  const myTextField({
-    super.key,
+
+class MyTextField extends StatefulWidget {
+  const MyTextField({
+    Key? key,
     this.isObscured = false,
     this.controller,
     this.validator,
@@ -83,7 +88,8 @@ class myTextField extends StatefulWidget {
     this.hintColor = const Color(0xffF2CE18),
     this.labelText = "",
     this.inputFormatter,
-  });
+  }) : super(key: key); // tambahkan super(key: key)
+
   final bool isObscured;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
@@ -95,11 +101,12 @@ class myTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatter;
 
   @override
-  myTextFieldState createState() => myTextFieldState();
+  MyTextFieldState createState() => MyTextFieldState();
 }
 
-class myTextFieldState extends State<myTextField> {
+class MyTextFieldState extends State<MyTextField> {
   bool isChecked = true;
+
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -107,37 +114,42 @@ class myTextFieldState extends State<myTextField> {
       keyboardType: widget.keyboardType,
       autofocus: false,
       style: TextStyle(
-          fontSize: 11,
-          color: Color(0xFF30475E),
-          fontWeight: FontWeight.w500,
-          decoration: TextDecoration.none),
+        fontSize: 11,
+        color: Color(0xFF30475E),
+        fontWeight: FontWeight.w500,
+        decoration: TextDecoration.none,
+      ),
       controller: widget.controller,
       obscureText: widget.isObscured ? isChecked : widget.isObscured,
       decoration: InputDecoration(
         labelText: widget.labelText,
         labelStyle: TextStyle(
-            fontSize: 11,
-            color: Color(0xFF30475E),
-            fontWeight: FontWeight.w500,
-            decoration: TextDecoration.none),
+          fontSize: 11,
+          color: Color(0xFF30475E),
+          fontWeight: FontWeight.w500,
+          decoration: TextDecoration.none,
+        ),
         fillColor: Color(0xFFF5F5F5),
         filled: true,
         hintStyle: TextStyle(
-            color: Colors.yellow, fontWeight: FontWeight.normal, fontSize: 14),
+          color: Colors.yellow,
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+        ),
         suffixIcon: widget.isObscured
             ? IconButton(
-                icon: Icon(
-                  // Based on passwordVisible state choose the icon
-                  isChecked ? Icons.visibility : Icons.visibility_off,
-                  color: Color(0xFF30475E),
-                ),
-                onPressed: () {
-                  // Update the state i.e. toogle the state of passwordVisible variable
-                  setState(() {
-                    isChecked = !isChecked;
-                  });
-                },
-              )
+          icon: Icon(
+            // Based on isChecked state choose the icon
+            isChecked ? Icons.visibility : Icons.visibility_off,
+            color: Color(0xFF30475E),
+          ),
+          onPressed: () {
+            // Update the state i.e. toggle the isChecked variable
+            setState(() {
+              isChecked = !isChecked;
+            });
+          },
+        )
             : null,
         contentPadding: const EdgeInsets.all(10),
         border: OutlineInputBorder(
