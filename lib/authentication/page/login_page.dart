@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/controllers/googleController.dart';
@@ -38,7 +39,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 40),
               MyButton(
                 onClick: () {
-                  _login(context);
+                  Get.toNamed("/menu");
                 },
                 text: "Login",
                 backgroundColor: const Color(0xFFFF3D3D),
@@ -46,29 +47,29 @@ class LoginPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              GestureDetector(
-                onTap: () {
-                  _googleController.signInWithGoogle(context);
-                },
-                child: Column(
-                  children: [
-                    Text(
-                      "Login dengan",
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: const Color(0xFF30475E),
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none,
-                      ),
+              Column(
+                children: [
+                  Text(
+                    "Login dengan",
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: const Color(0xFF30475E),
+                      fontWeight: FontWeight.w500,
+                      decoration: TextDecoration.none,
                     ),
-                    const SizedBox(height: 10),
-                    Image.asset(
+                  ),
+                  const SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      _googleController.signInWithGoogle(context);
+                    },
+                    child: Image.asset(
                       'assets/images/google_logo.png',
                       height: 40,
                       width: 40,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(height: 20),
               Row(
@@ -85,7 +86,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/register');
+                      Get.toNamed("/register");
                     },
                     child: const Text(
                       "Register",
