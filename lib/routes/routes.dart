@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/authentication/page/forgotpassword_page.dart';
 import 'package:rusconsign/detailPage/detail_page.dart';
 import 'package:rusconsign/detailPage/detail_page_binding.dart';
+import 'package:rusconsign/diskonPage/diskon_page.dart';
 import 'package:rusconsign/menu.dart';
 import '../authentication/page/login_page.dart';
 import '../authentication/page/register_page.dart';
@@ -23,4 +24,5 @@ List<GetPage> routes = [
       name: "/detailpage",
       page: () => DetailPage(),
       binding: DetailPageBinding()),
+  GetPage(name: "/diskonpage", page: () => const DiskonPage()),
 ];
