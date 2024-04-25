@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:rusconsign/authentication/page/login_page.dart';
-import 'package:rusconsign/authentication/page/register_page.dart';
 import 'firebase_options.dart';
 import 'package:rusconsign/routes/routes.dart';
 

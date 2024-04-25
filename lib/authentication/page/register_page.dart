@@ -83,7 +83,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/login');
+                      Get.toNamed("/login");
                     },
                     child: Text(
                       "Login",
