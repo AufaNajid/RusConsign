@@ -5,7 +5,6 @@ import 'package:rusconsign/authentication/controllers/googleController.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
 
-
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
@@ -31,9 +30,20 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   MyTextField(labelText: "Masukkan Email..."),
-                  MyTextField(labelText: "Masukkan Password...", isObscured: true),
+                  MyTextField(
+                      labelText: "Masukkan Password...", isObscured: true),
+                  TextButton(
+                    onPressed: (){
+                      Get.toNamed("/forgotpasswordpage");
+                    },
+                    child: Text(
+                      "Lupa Password?",
+                      style: TextStyle(fontSize: 11, color: Color(0xFF30475E), fontWeight: FontWeight.w500),
+                    ),
+                  )
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
@@ -124,10 +134,5 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _login(BuildContext context) {
-    // Perform login logic here
-    Navigator.pushReplacementNamed(context, '/home'); // Navigate to home page
   }
 }
