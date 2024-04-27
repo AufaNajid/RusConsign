@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(milliseconds: 1650), () {
-      Get.offNamed("/login");
+      Get.offNamed("/profilepage");
     });
   }
 
