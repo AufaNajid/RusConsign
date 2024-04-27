@@ -118,11 +118,16 @@ class HomePage extends StatelessWidget {
                   'assets/images/item_carousel_1.png',
                   'assets/images/item_carousel_2.png',
                 ].map((item) {
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(12),
-                    child: Image.asset(
-                      item,
-                      fit: BoxFit.cover,
+                  return GestureDetector(
+                    onTap: (){
+                      Get.toNamed("/diskonpage");
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Image.asset(
+                        item,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   );
                 }).toList(),

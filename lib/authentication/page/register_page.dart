@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/controllers/google_controller.dart';
@@ -61,14 +62,19 @@ class RegisterPage extends StatelessWidget {
                         decoration: TextDecoration.none,
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Image.asset(
+                  ),
+                  const SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      _googleController.signInWithGoogle(context);
+                    },
+                    child: Image.asset(
                       'assets/images/google_logo.png',
                       height: 40,
                       width: 40,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(height: 20),
               Row(
@@ -85,7 +91,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/login');
+                      Get.toNamed("/login");
                     },
                     child: const Text(
                       "Login",
@@ -99,7 +105,6 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 20),
               const Text(
                 "Dengan register ke RUS Consign, kamu menyetujui",

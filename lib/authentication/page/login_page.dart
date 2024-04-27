@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
-
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -29,15 +29,29 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const MyTextField(labelText: "Masukkan Email..."),
-                  const MyTextField(labelText: "Masukkan Password...", isObscured: true),
+                  MyTextField(labelText: "Masukkan Email..."),
+                  MyTextField(
+                      labelText: "Masukkan Password...", isObscured: true),
+                  TextButton(
+                    onPressed: () {
+                      Get.toNamed("/forgotpasswordpage");
+                    },
+                    child: Text(
+                      "Lupa Password?",
+                      style: TextStyle(
+                          fontSize: 11,
+                          color: Color(0xFF30475E),
+                          fontWeight: FontWeight.w500),
+                    ),
+                  )
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
               MyButton(
                 onClick: () {
-                  _login(context);
+                  Get.toNamed("/menu");
                 },
                 text: "Login",
                 backgroundColor: const Color(0xFFFF3D3D),
@@ -60,14 +74,19 @@ class LoginPage extends StatelessWidget {
                         decoration: TextDecoration.none,
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Image.asset(
+                  ),
+                  const SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      _googleController.signInWithGoogle(context);
+                    },
+                    child: Image.asset(
                       'assets/images/google_logo.png',
                       height: 40,
                       width: 40,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               const SizedBox(height: 20),
               Row(
@@ -84,7 +103,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/register');
+                      Get.toNamed("/register");
                     },
                     child: const Text(
                       "Register",
@@ -123,7 +142,6 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
   void _login(BuildContext context) {
     Navigator.pushReplacementNamed(context, '/home');
   }
