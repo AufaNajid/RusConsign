@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/extension.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
-
   final GoogleController _googleController = GoogleController();
+
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,29 +29,16 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  MyTextField(labelText: "Masukkan Email..."),
-                  MyTextField(
-                      labelText: "Masukkan Password...", isObscured: true),
-                  TextButton(
-                    onPressed: () {
-                      Get.toNamed("/forgotpasswordpage");
-                    },
-                    child: Text(
-                      "Lupa Password?",
-                      style: TextStyle(
-                          fontSize: 11,
-                          color: Color(0xFF30475E),
-                          fontWeight: FontWeight.w500),
-                    ),
-                  )
+                  const MyTextField(labelText: "Masukkan Username..."),
+                  const MyTextField(labelText: "Masukkan Email..."),
+                  const MyTextField(labelText: "Masukkan Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
               MyButton(
                 onClick: () {
-                  Get.toNamed("/menu");
+                  Get.toNamed("/login");
                 },
                 text: "Login",
                 backgroundColor: const Color(0xFFFF3D3D),
@@ -74,26 +61,21 @@ class LoginPage extends StatelessWidget {
                         decoration: TextDecoration.none,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    onTap: () {
-                      _googleController.signInWithGoogle(context);
-                    },
-                    child: Image.asset(
+                    const SizedBox(height: 10),
+                    Image.asset(
                       'assets/images/google_logo.png',
                       height: 40,
                       width: 40,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Belum Punya Akun?",
+                    "Sudah Punya Akun?",
                     style: TextStyle(
                       fontSize: 11,
                       color: Color(0xFF30475E),
@@ -103,10 +85,10 @@ class LoginPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Get.toNamed("/register");
+                      Get.toNamed("/login");
                     },
                     child: const Text(
-                      "Register",
+                      "Login",
                       style: TextStyle(
                         fontSize: 11,
                         color: Color(0xFF30475E),
@@ -119,7 +101,7 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const Text(
-                "Dengan login ke RUS Consign, kamu menyetujui",
+                "Dengan Login ke RUS Consign, kamu menyetujui",
                 style: TextStyle(
                   fontSize: 12,
                   color: Color(0xFF30475E),
@@ -141,8 +123,5 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
-  }
-  void _login(BuildContext context) {
-    Navigator.pushReplacementNamed(context, '/home');
   }
 }

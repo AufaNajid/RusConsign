@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/page/forgotpassword_page.dart';
 import 'package:rusconsign/detailPage/detail_page.dart';
@@ -28,7 +27,6 @@ List<GetPage> routes = [
       binding: DetailPageBinding()),
   
   GetPage(name: "/profilepage", 
-  page: () => ProfilePage())
-=======
+  page: () => ProfilePage()),
   GetPage(name: "/diskonpage", page: () => const DiskonPage()),
 ];

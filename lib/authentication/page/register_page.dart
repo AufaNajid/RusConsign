@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/extension.dart';
 
 class RegisterPage extends StatelessWidget {
   final GoogleController _googleController = GoogleController();
 
-  RegisterPage({super.key});
+  RegisterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,19 +61,19 @@ class RegisterPage extends StatelessWidget {
                         decoration: TextDecoration.none,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    onTap: () {
-                      _googleController.signInWithGoogle(context);
-                    },
-                    child: Image.asset(
-                      'assets/images/google_logo.png',
-                      height: 40,
-                      width: 40,
+                    const SizedBox(height: 10),
+                    GestureDetector(
+                      onTap: () {
+                        _googleController.signInWithGoogle(context);
+                      },
+                      child: Image.asset(
+                        'assets/images/google_logo.png',
+                        height: 40,
+                        width: 40,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
               Row(

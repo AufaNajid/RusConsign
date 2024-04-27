@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/profilePage/profile_page_controller.dart';
 
@@ -10,7 +8,7 @@ class CustomInfoWidget extends StatelessWidget {
   final String infoNumber;
 
 
-    CustomInfoWidget({
+    const CustomInfoWidget({
     required this.icon,
     required this.info,
     required this.infoNumber,
@@ -27,7 +25,7 @@ class CustomInfoWidget extends StatelessWidget {
           alignment: Alignment.center,
           width: 55,
           height: 55,
-          decoration: ShapeDecoration(
+          decoration: const ShapeDecoration(
             color: Color(0xFFF5F5F5),
             shape: OvalBorder(),
           ),
@@ -35,7 +33,7 @@ class CustomInfoWidget extends StatelessWidget {
         ),
         Text(info,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: Color(0xFF30475E),
         fontSize: 11,
         fontFamily: 'Poppins',
@@ -46,7 +44,7 @@ class CustomInfoWidget extends StatelessWidget {
     Text(
     infoNumber,
     textAlign: TextAlign.center,
-    style: TextStyle(
+    style: const TextStyle(
         color: Color(0xFFFF3C3C),
         fontSize: 11,
         fontFamily: 'Poppins',

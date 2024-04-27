@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/extension.dart';
 
 import '../widget/widget.dart';
 
@@ -34,14 +33,14 @@ class ForgotPasswordPage extends StatelessWidget {
                     "Reset Password",
                     style: TextStyle(
                       fontSize: 12,
-                      color: const Color(0xFF30475E),
+                      color: Color(0xFF30475E),
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.none,
                     ),
                   ),
-                  MyTextField(labelText: "Masukkan Email..."),
-                  MyTextField(labelText: "Masukkan Password Baru  ...", isObscured: true),
-                  MyTextField(labelText: "Konfirmasi Password...", isObscured: true),
+                  const MyTextField(labelText: "Masukkan Email..."),
+                  const MyTextField(labelText: "Masukkan Password Baru  ...", isObscured: true),
+                  const MyTextField(labelText: "Konfirmasi Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
@@ -59,7 +58,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   Get.toNamed("/login");
                 },
                 text: "Kembali",
-                backgroundColor: const Color(0xFFFFFFF),
+                backgroundColor: const Color(0x0fffffff),
                 foregroundColor: const Color(0xFF30475E),
                 textAlign: TextAlign.center,
               ),
@@ -68,7 +67,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 "Dengan register ke RUS Consign, kamu menyetujui",
                 style: TextStyle(
                   fontSize: 12,
-                  color: const Color(0xFF30475E),
+                  color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
@@ -77,7 +76,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 "Ketentuan dan Kebijakan Privasi kami.",
                 style: TextStyle(
                   fontSize: 12,
-                  color: const Color(0xFF30475E),
+                  color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
-  AppBarProfile({
+  const AppBarProfile({
     required this.title,
     Key? key,
   }) : super(key: key);
@@ -13,7 +13,7 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
@@ -23,5 +23,5 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

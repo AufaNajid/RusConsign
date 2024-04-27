@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/detailPage/widgets/komponen.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'detail_page_controller.dart';
 
 class DetailPage extends StatelessWidget {
