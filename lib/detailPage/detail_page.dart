@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:rusconsign/detailPage/widgets/komponen.dart';
 import 'package:rusconsign/extension.dart';
 import 'detail_page_controller.dart';
@@ -12,7 +11,12 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Detail Produk", onBackPressed: (){Get.back();},),
+      appBar: CustomAppBar(
+        title: "Detail Produk",
+        onBackPressed: () {
+          Get.back();
+        },
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -35,13 +39,13 @@ class DetailPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
+                        const Row(
                           children: [
-                            cardQuantity(
+                            CardQuantity(
                                 title: "produk",
                                 fillColor: Color(0xFFFF3D3D),
                                 textColor: Color(0xFFFFFFFF)),
-                            cardQuantity(
+                            CardQuantity(
                                 title: "20 Terjual",
                                 fillColor: Color(0xFFFFFFFF),
                                 textColor: Color(0xFF30475E))
@@ -56,7 +60,7 @@ class DetailPage extends StatelessWidget {
                                     ? FeatherIcons.heart
                                     : Icons.favorite,
                                 color: indicator.isLiked.value
-                                    ? Color(0xFF30475E)
+                                    ? const Color(0xFF30475E)
                                     : Colors.red,
                                 size: 24,
                               )),
@@ -65,7 +69,7 @@ class DetailPage extends StatelessWidget {
                     ),
                     customTextWidget(
                       'Lorem ipsum dolor sit amet',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF222831),
@@ -73,7 +77,7 @@ class DetailPage extends StatelessWidget {
                     ),
                     customTextWidget(
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
                         color: Color(0xFF30475E),
@@ -84,7 +88,7 @@ class DetailPage extends StatelessWidget {
                       children: [
                         customTextWidget(
                           'Rp 15.000',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Color(0xFFFF3D3D),
@@ -146,11 +150,11 @@ class DetailPage extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    btnSeller(
+                                    BtnSeller(
                                       title: "Chat Penjual",
                                       ontap: () {},
                                     ),
-                                    btnSeller(
+                                    BtnSeller(
                                       title: "Lihat Toko",
                                       ontap: () {},
                                     ),
@@ -162,17 +166,17 @@ class DetailPage extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    sellerInfo(
+                                    const SellerInfo(
                                         title: "Jumlah Produk", jumlah: "2"),
-                                    sellerInfo(
+                                    const SellerInfo(
                                         title: "Jumlah Jasa", jumlah: "3"),
                                   ].withSpaceBetween(width: 7),
                                 ),
                                 Row(
                                   children: [
-                                    sellerInfo(
+                                    const SellerInfo(
                                         title: "Penilaian", jumlah: "4.5"),
-                                    sellerInfo(
+                                    const SellerInfo(
                                         title: "Pengikut", jumlah: "444"),
                                   ].withSpaceBetween(width: 7),
                                 )
@@ -250,7 +254,7 @@ class DetailPage extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return commentSection(
+                        return const CommentSection(
                             imagePath:
                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5NotY59b9Il4DR4FAUdE6cDxIvYQTHdi2CLPuMmv_Q&s",
                             name: "lorem ipsum",
@@ -272,7 +276,7 @@ class DetailPage extends StatelessWidget {
               color: Colors.black.withOpacity(0.1),
               spreadRadius: 2,
               blurRadius: 6,
-              offset: Offset(0, -3), // changes position of shadow
+              offset: const Offset(0, -3), // changes position of shadow
             ),
           ],
         ),
@@ -280,11 +284,11 @@ class DetailPage extends StatelessWidget {
           items: [
             BottomNavigationBarItem(
               icon: Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    color: Color(0xFFF5F5F5),
+                    color: const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(5)),
-                child: Icon(
+                child: const Icon(
                   FeatherIcons.shoppingCart,
                   size: 24,
                   color: Color(0xFF222831),
@@ -299,11 +303,11 @@ class DetailPage extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                      color: Color(0xFF30475E),
+                      color: const Color(0xFF30475E),
                       borderRadius: BorderRadius.circular(5)),
-                  child: Text(
+                  child: const Text(
                     'Beli Sekarang',
                     style: TextStyle(
                       color: Colors.white, // Warna teks
@@ -321,7 +325,7 @@ class DetailPage extends StatelessWidget {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Color(0xFFFFFFFFF),
+          backgroundColor: Colors.white,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
         ),

@@ -1,12 +1,11 @@
-// ignore_for_file: camel_case_types
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
-class myButton extends StatelessWidget {
-  const myButton({
-    super.key,
+
+class MyButton extends StatelessWidget {
+  const MyButton({
+    Key? key,
     this.prefixIcon,
     this.suffixIcon,
     this.text = "",
@@ -17,7 +16,8 @@ class myButton extends StatelessWidget {
     required this.onClick,
     this.label = "",
     this.labelWidth,
-  });
+  }) : super(key: key);
+
   final IconData? prefixIcon;
   final IconData? suffixIcon;
   final String text;
@@ -47,21 +47,24 @@ class myButton extends StatelessWidget {
             child: TextButton(
               onPressed: onClick,
               style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  backgroundColor: backgroundColor,
-                  foregroundColor: foregroundColor),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                backgroundColor: backgroundColor,
+                foregroundColor: foregroundColor,
+              ),
               child: Row(
                 children: [
                   Icon(prefixIcon),
                   const SizedBox(width: 10),
                   Expanded(
-                      child: Text(
-                    text,
-                    textAlign: textAlign,
-                    style: const TextStyle(fontSize: 14),
-                  )),
+                    child: Text(
+                      text,
+                      textAlign: textAlign,
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  ),
                   const SizedBox(width: 10),
                   Icon(suffixIcon),
                 ],
@@ -74,9 +77,9 @@ class myButton extends StatelessWidget {
   }
 }
 
-class myTextField extends StatefulWidget {
-  const myTextField({
-    super.key,
+class MyTextField extends StatefulWidget {
+  const MyTextField({
+    Key? key,
     this.isObscured = false,
     this.controller,
     this.validator,
@@ -86,7 +89,8 @@ class myTextField extends StatefulWidget {
     this.hintColor = const Color(0xffF2CE18),
     this.labelText = "",
     this.inputFormatter,
-  });
+  }) : super(key: key);
+
   final bool isObscured;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
@@ -98,11 +102,12 @@ class myTextField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatter;
 
   @override
-  myTextFieldState createState() => myTextFieldState();
+  MyTextFieldState createState() => MyTextFieldState();
 }
 
-class myTextFieldState extends State<myTextField> {
+class MyTextFieldState extends State<MyTextField> {
   bool isChecked = true;
+
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -110,35 +115,40 @@ class myTextFieldState extends State<myTextField> {
       keyboardType: widget.keyboardType,
       autofocus: false,
       style: const TextStyle(
-          fontSize: 11,
-          color: Color(0xFF30475E),
-          fontWeight: FontWeight.w500,
-          decoration: TextDecoration.none),
+        fontSize: 11,
+        color: Color(0xFF30475E),
+        fontWeight: FontWeight.w500,
+        decoration: TextDecoration.none,
+      ),
       controller: widget.controller,
       obscureText: widget.isObscured ? isChecked : widget.isObscured,
       decoration: InputDecoration(
         labelText: widget.labelText,
         labelStyle: const TextStyle(
-            fontSize: 11,
-            color: Color(0xFF30475E),
-            fontWeight: FontWeight.w500,
-            decoration: TextDecoration.none),
+          fontSize: 11,
+          color: Color(0xFF30475E),
+          fontWeight: FontWeight.w500,
+          decoration: TextDecoration.none,
+        ),
         fillColor: const Color(0xFFF5F5F5),
         filled: true,
         hintStyle: const TextStyle(
-            color: Colors.yellow, fontWeight: FontWeight.normal, fontSize: 14),
+          color: Colors.yellow,
+          fontWeight: FontWeight.normal,
+          fontSize: 14,
+        ),
         suffixIcon: widget.isObscured
             ? IconButton(
-                icon: Icon(
-                  isChecked ? FeatherIcons.eye : FeatherIcons.eyeOff,
-                  color: const Color(0xFF30475E),
-                ),
-                onPressed: () {
-                  setState(() {
-                    isChecked = !isChecked;
-                  });
-                },
-              )
+          icon: Icon(
+            isChecked ? FeatherIcons.eye : FeatherIcons.eyeOff,
+            color: const Color(0xFF30475E),
+          ),
+          onPressed: () {
+            setState(() {
+              isChecked = !isChecked;
+            });
+          },
+        )
             : null,
         contentPadding: const EdgeInsets.all(10),
         border: OutlineInputBorder(

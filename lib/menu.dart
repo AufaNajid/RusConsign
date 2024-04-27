@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:rusconsign/favoritePage/favorite_page.dart';
+import 'package:rusconsign/diskonPage/diskon_page.dart';
 import 'package:rusconsign/homePage/home_page.dart';
 
 class Menu extends StatelessWidget {
@@ -14,7 +16,7 @@ class Menu extends StatelessWidget {
     List<Widget> buildScreens() {
       return [
         HomePage(),
-        HomePage(),
+        const FavoritePage(),
         HomePage(),
         HomePage(),
       ];
@@ -52,6 +54,7 @@ class Menu extends StatelessWidget {
       items: navbarItem(),
       confineInSafeArea: true,
       backgroundColor: Colors.white,
+      navBarHeight: 70,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
       hideNavigationBarWhenKeyboardShows: true,
