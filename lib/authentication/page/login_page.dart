@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:rusconsign/authentication/controllers/googleController.dart';
+import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
 
@@ -60,15 +59,20 @@ class LoginPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              Column(
-                children: [
-                  Text(
-                    "Login dengan",
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: const Color(0xFF30475E),
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.none,
+              GestureDetector(
+                onTap: () {
+                  _googleController.signInWithGoogle(context);
+                },
+                child: Column(
+                  children: [
+                    const Text(
+                      "Login dengan",
+                      style: TextStyle(
+                        fontSize: 11,
+                        color: Color(0xFF30475E),
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.none,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -88,11 +92,11 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Belum Punya Akun?",
                     style: TextStyle(
                       fontSize: 11,
-                      color: const Color(0xFF30475E),
+                      color: Color(0xFF30475E),
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.none,
                     ),
@@ -105,7 +109,7 @@ class LoginPage extends StatelessWidget {
                       "Register",
                       style: TextStyle(
                         fontSize: 11,
-                        color: const Color(0xFF30475E),
+                        color: Color(0xFF30475E),
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.none,
                       ),
@@ -118,7 +122,7 @@ class LoginPage extends StatelessWidget {
                 "Dengan login ke RUS Consign, kamu menyetujui",
                 style: TextStyle(
                   fontSize: 12,
-                  color: const Color(0xFF30475E),
+                  color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
@@ -127,7 +131,7 @@ class LoginPage extends StatelessWidget {
                 "Ketentuan dan Kebijakan Privasi kami.",
                 style: TextStyle(
                   fontSize: 12,
-                  color: const Color(0xFF30475E),
+                  color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
@@ -137,5 +141,8 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+  void _login(BuildContext context) {
+    Navigator.pushReplacementNamed(context, '/home');
   }
 }

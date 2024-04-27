@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DetailPageController extends GetxController {
-  var isLiked = false.obs;
+  var isLiked = true.obs;
   var thumbsUpClicked = false.obs;
   var thumbsDownClicked = false.obs;
 
