@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/authentication/controllers/googleController.dart';
+import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/extension.dart';
 
 class RegisterPage extends StatelessWidget {
   final GoogleController _googleController = GoogleController();
+
+  RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,9 @@ class RegisterPage extends StatelessWidget {
               const SizedBox(height: 80),
               Column(
                 children: [
-                  MyTextField(labelText: "Masukkan Username..."),
-                  MyTextField(labelText: "Masukkan Email..."),
-                  MyTextField(labelText: "Masukkan Password...", isObscured: true),
+                  const MyTextField(labelText: "Masukkan Username..."),
+                  const MyTextField(labelText: "Masukkan Email..."),
+                  const MyTextField(labelText: "Masukkan Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
@@ -50,11 +52,11 @@ class RegisterPage extends StatelessWidget {
                 },
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                       "Register dengan",
                       style: TextStyle(
                         fontSize: 11,
-                        color: const Color(0xFF30475E),
+                        color: Color(0xFF30475E),
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.none,
                       ),
@@ -72,11 +74,11 @@ class RegisterPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Sudah Punya Akun?",
                     style: TextStyle(
                       fontSize: 11,
-                      color: const Color(0xFF30475E),
+                      color: Color(0xFF30475E),
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.none,
                     ),
@@ -85,11 +87,11 @@ class RegisterPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/login');
                     },
-                    child: Text(
+                    child: const Text(
                       "Login",
                       style: TextStyle(
                         fontSize: 11,
-                        color: const Color(0xFF30475E),
+                        color: Color(0xFF30475E),
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.none,
                       ),
@@ -103,7 +105,7 @@ class RegisterPage extends StatelessWidget {
                 "Dengan register ke RUS Consign, kamu menyetujui",
                 style: TextStyle(
                   fontSize: 12,
-                  color: const Color(0xFF30475E),
+                  color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
@@ -112,7 +114,7 @@ class RegisterPage extends StatelessWidget {
                 "Ketentuan dan Kebijakan Privasi kami.",
                 style: TextStyle(
                   fontSize: 12,
-                  color: const Color(0xFF30475E),
+                  color: Color(0xFF30475E),
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
