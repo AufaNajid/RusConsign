@@ -31,7 +31,8 @@ class RegisterPage extends StatelessWidget {
                 children: [
                   MyTextField(labelText: "Masukkan Username..."),
                   MyTextField(labelText: "Masukkan Email..."),
-                  MyTextField(labelText: "Masukkan Password...", isObscured: true),
+                  MyTextField(
+                      labelText: "Masukkan Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
@@ -98,7 +99,6 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ],
               ),
-
               const SizedBox(height: 20),
               const Text(
                 "Dengan register ke RUS Consign, kamu menyetujui",

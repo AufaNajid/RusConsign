@@ -36,12 +36,15 @@ class LoginPage extends StatelessWidget {
                   MyTextField(
                       labelText: "Masukkan Password...", isObscured: true),
                   TextButton(
-                    onPressed: (){
+                    onPressed: () {
                       Get.toNamed("/forgotpasswordpage");
                     },
                     child: Text(
                       "Lupa Password?",
-                      style: TextStyle(fontSize: 11, color: Color(0xFF30475E), fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          fontSize: 11,
+                          color: Color(0xFF30475E),
+                          fontWeight: FontWeight.w500),
                     ),
                   )
                 ].withSpaceBetween(height: 10),
