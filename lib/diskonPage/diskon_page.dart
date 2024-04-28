@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:rusconsign/detailPage/widgets/komponen.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/diskonPage/widgets/komponen.dart';
-import 'package:rusconsign/extension.dart';
 
 class DiskonPage extends StatelessWidget {
   const DiskonPage({Key? key}) : super(key: key);
@@ -22,14 +19,14 @@ class DiskonPage extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
           child: ListView.builder(
             shrinkWrap: true,
               physics:  const NeverScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int index) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10.0),
-                child: productDiscount(
+                child: ProductDiscount(
                   title: "Lorem ipsum dolor sit amet",
                   imagepath: 'https://via.placeholder.com/165x110' ,
                   titleprofile: "lorem ipsum",

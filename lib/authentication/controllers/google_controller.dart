@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,28 +18,23 @@ class GoogleController {
         final User? user = userCredential.user;
 
         if (user != null) {
-          // Successfully signed in with Google
           print(user.displayName);
-          // Navigate to the next screen or perform other actions
-          Navigator.pushReplacementNamed(context, '/home'); // Example navigation
+          Navigator.pushReplacementNamed(context, '/home');
         } else {
-          // Handle sign-in failure
-          // Show error message or perform additional actions
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Failed to sign in with Google')),
+            const SnackBar(content: Text('Failed to sign in with Google')),
           );
         }
       } else {
-        // Handle sign-in cancellation
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Google sign-in canceled')),
+          const SnackBar(content: Text('Google sign-in canceled')),
         );
       }
     } catch (e) {
       // Handle sign-in errors
       print('Google sign-in error: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error signing in with Google')),
+        const SnackBar(content: Text('Error signing in with Google')),
       );
     }
   }

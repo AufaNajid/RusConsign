@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/extension.dart';
 
 
-class productDiscount extends StatelessWidget {
+class ProductDiscount extends StatelessWidget {
   final String title;
   final String imagepath;
   final String imagepathprofile;
@@ -11,15 +11,15 @@ class productDiscount extends StatelessWidget {
   final String harga;
   final String diskonprice;
   final double diskon;
-  const productDiscount({Key? key, required this.title, required this.imagepath, required this.titleprofile, required this.rating, required this.harga, required this.diskonprice, required this.imagepathprofile, required this.diskon}) : super(key: key);
+  const ProductDiscount({Key? key, required this.title, required this.imagepath, required this.titleprofile, required this.rating, required this.harga, required this.diskonprice, required this.imagepathprofile, required this.diskon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Color(0xFFF5F5F5),
+          color: const Color(0xFFF5F5F5),
           borderRadius: BorderRadius.circular(5)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +40,7 @@ class productDiscount extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 11, fontWeight: FontWeight.bold)),
                 Row(
                   children: [
@@ -54,7 +54,7 @@ class productDiscount extends StatelessWidget {
                     ),
                      Text(
                       titleprofile,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
                         color: Color(0xFF30475E),
@@ -64,10 +64,10 @@ class productDiscount extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Icon(Icons.star, size: 20, color: Color(0xFFFFDD55),),
+                    const Icon(Icons.star, size: 20, color: Color(0xFFFFDD55),),
                     Text(
                       "$rating",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF30475E),
@@ -78,8 +78,8 @@ class productDiscount extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "$harga",
-                      style: TextStyle(
+                      harga,
+                      style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
                         color: Color(0xFF30475E),
@@ -87,17 +87,17 @@ class productDiscount extends StatelessWidget {
                     ),
                     Text(
                       "Rp $diskonprice",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFFFF3D3D),
                       ),
                     ),
                     Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Color(0xFFFFCFCF)),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: const Color(0xFFFFCFCF)),
                       child:                           Text(
                       "$diskon%",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFFFF3D3D),

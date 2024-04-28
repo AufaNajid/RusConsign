@@ -1,15 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/extension.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final VoidCallback? onBackPressed;
 
-  CustomAppBar({
+  const CustomAppBar({
     required this.title,
     this.onBackPressed,
     Key? key,
@@ -19,13 +17,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(FeatherIcons.chevronLeft),
         onPressed: onBackPressed,
         iconSize: 24,
       ),
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
@@ -35,15 +33,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 
-class cardQuantity extends StatelessWidget {
+class CardQuantity extends StatelessWidget {
   final String title;
   final Color fillColor;
   final Color textColor;
-  const cardQuantity({Key? key, required this.title, required this.fillColor, required this.textColor}) : super(key: key);
+  const CardQuantity({Key? key, required this.title, required this.fillColor, required this.textColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +65,10 @@ class cardQuantity extends StatelessWidget {
   }
 }
 
-class btnSeller extends StatelessWidget {
+class BtnSeller extends StatelessWidget {
   final String title;
   final VoidCallback ontap;
-  const btnSeller({Key? key, required this.title, required this.ontap}) : super(key: key);
+  const BtnSeller({Key? key, required this.title, required this.ontap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +85,7 @@ class btnSeller extends StatelessWidget {
         width: 70,
         child: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 8,
             fontWeight: FontWeight.bold,
             color: Color(0xFFFFFFFF),
@@ -98,10 +96,10 @@ class btnSeller extends StatelessWidget {
   }
 }
 
-class sellerInfo extends StatelessWidget {
+class SellerInfo extends StatelessWidget {
   final String title;
   final String jumlah;
-  const sellerInfo({Key? key, required this.title, required this.jumlah}) : super(key: key);
+  const SellerInfo({Key? key, required this.title, required this.jumlah}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +112,7 @@ class sellerInfo extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w500,
               color: Color(0xFF30475E),
@@ -122,7 +120,7 @@ class sellerInfo extends StatelessWidget {
           ),
           Text(
             jumlah,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w500,
               color: Color(0xFFFF3D3D),
@@ -140,12 +138,12 @@ List<Map<String, dynamic>> metodeData = [
   {"nama": "Indomaret", "photo": "indomaret-topup.png"},
 ];
 
-class commentSection extends StatelessWidget {
+class CommentSection extends StatelessWidget {
   final String imagePath;
   final String name;
   final String date;
   final String desc;
-  const commentSection({Key? key, required this.imagePath, required this.name, required this.date, required this.desc}) : super(key: key);
+  const CommentSection({Key? key, required this.imagePath, required this.name, required this.date, required this.desc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +177,7 @@ class commentSection extends StatelessWidget {
                   children: [
                      Text(
                       name,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF30475E),
@@ -216,7 +214,7 @@ class commentSection extends StatelessWidget {
                     ),
                      Text(
                       date,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 8,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF30475E),
@@ -224,7 +222,7 @@ class commentSection extends StatelessWidget {
                     ),
                      Text(
                        desc,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 8,
                         fontWeight: FontWeight.w300,
                         color: Color(0xFF30475E),
