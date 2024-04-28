@@ -1,4 +1,4 @@
-// ignore_for_file: unrelated_type_equality_checks
+// ignore_for_file: unrelated_type_equality_checks, must_be_immutable
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:rusconsign/homePage/home_page_controller.dart';
 import 'package:rusconsign/homePage/widgets/filter_button.dart';
 import 'package:rusconsign/homePage/widgets/product_card.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 class HomePage extends StatelessWidget {
   final indicator = Get.put(HomePageController());
@@ -52,13 +54,9 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       'Halo Username',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF222831),
-                      ),
+                      style: AppTextStyle().header(AppColors.titleLine),
                     ),
                     const SizedBox(height: 16),
                     Row(

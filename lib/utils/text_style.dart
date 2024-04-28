@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppTextStyle {
-  TextStyle title(Color color) {
+  title(Color color) {
     return TextStyle(
         color: color,
         fontSize: 18,
@@ -11,7 +11,7 @@ class AppTextStyle {
         height: 0);
   }
 
-  TextStyle header(Color color) {
+  header(Color color) {
     return TextStyle(
         color: color,
         fontSize: 16,
@@ -20,7 +20,7 @@ class AppTextStyle {
         height: 0);
   }
 
-  TextStyle subHeader(Color color) {
+  subHeader(Color color) {
     return TextStyle(
         color: color,
         fontSize: 13,
@@ -29,7 +29,7 @@ class AppTextStyle {
         height: 0);
   }
 
-  TextStyle description(Color color) {
+  description(Color color) {
     return TextStyle(
         color: color,
         fontSize: 11,
@@ -38,7 +38,7 @@ class AppTextStyle {
         height: 0);
   }
 
-  TextStyle textInfo(Color color) {
+  textInfo(Color color) {
     return TextStyle(
         color: color,
         fontSize: 8,
@@ -47,7 +47,7 @@ class AppTextStyle {
         height: 0);
   }
 
-  TextStyle descriptionBold(Color color) {
+  descriptionBold(Color color) {
     return TextStyle(
         color: color,
         fontSize: 11,
@@ -56,7 +56,7 @@ class AppTextStyle {
         height: 0);
   }
 
-  TextStyle textInfoBold(Color color) {
+  textInfoBold(Color color) {
     return TextStyle(
         color: color,
         fontSize: 8,
