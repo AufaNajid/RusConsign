@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                       onPressed: () {},
                       icon: const Icon(
                         FeatherIcons.messageCircle,
-                        color: Color(0xFF222831),
+                        color: AppColors.borderIcon,
                         size: 24,
                       ),
                     ),
@@ -69,17 +69,16 @@ class HomePage extends StatelessWidget {
                                 borderSide: BorderSide.none,
                               ),
                               filled: true,
-                              fillColor: const Color(0xFFF5F5F5),
+                              fillColor: AppColors.cardIconFill,
                               focusColor: const Color(0xFFF5F5F5),
                               hintText: 'Cari jasa atau produk...',
-                              hintStyle: const TextStyle(
-                                color: Color(0xFF30475E),
-                              ),
+                              hintStyle: AppTextStyle()
+                                  .description(AppColors.description),
                             ),
                             textAlign: TextAlign.left,
                             style: const TextStyle(
                               fontSize: 11,
-                              color: Color(0xFF30475E),
+                              color: AppColors.description,
                               fontWeight: FontWeight.w500,
                               decoration: TextDecoration.none,
                             ),
@@ -91,7 +90,7 @@ class HomePage extends StatelessWidget {
                           height: 56,
                           child: Ink(
                             decoration: ShapeDecoration(
-                              color: const Color(0xFFF5F5F5),
+                              color: AppColors.cardIconFill,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6),
                               ),
@@ -100,7 +99,7 @@ class HomePage extends StatelessWidget {
                               onPressed: () {},
                               icon: const Icon(
                                 FeatherIcons.search,
-                                color: Color(0xFF222831),
+                                color: AppColors.borderIcon,
                               ),
                             ),
                           ),
@@ -117,7 +116,7 @@ class HomePage extends StatelessWidget {
                   'assets/images/item_carousel_2.png',
                 ].map((item) {
                   return GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.toNamed("/diskonpage");
                     },
                     child: ClipRRect(
@@ -152,8 +151,8 @@ class HomePage extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: (indicator.currentIndex == index)
-                              ? const Color(0xFFFF3D3D)
-                              : const Color(0xFFF5F5F5),
+                              ? AppColors.activeIcon
+                              : AppColors.activeIconType,
                         ),
                       ),
                     ),
@@ -167,13 +166,9 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'Halaman Produk dan Jasa',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF222831),
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: AppTextStyle().subHeader(AppColors.titleLine),
                     ),
                     const SizedBox(height: 8),
                     const Row(
@@ -203,19 +198,20 @@ class HomePage extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: 10,
-                      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8,
-                        childAspectRatio: 0.8
-                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                              childAspectRatio: 0.8),
                       itemBuilder: (BuildContext context, int index) {
                         return ProductCard(
-                            imagePath: 'https://via.placeholder.com/165x110',
-                            title: 'Productdamndmajdnjandujamudamjudiadiaidaidmiawmdiawmddnawudnuadn',
-                            price: 12000,
-                            rating: (index % 5) + 1,
-                          );
+                          imagePath: 'https://via.placeholder.com/165x110',
+                          title:
+                              'Productdamndmajdnjandujamudamjudiadiaidaidmiawmdiawmddnawudnuadn',
+                          price: 12000,
+                          rating: (index % 5) + 1,
+                        );
                       },
                     ),
                   ],
