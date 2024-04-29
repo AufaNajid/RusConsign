@@ -87,8 +87,8 @@ class HomePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 12),
                         SizedBox(
-                          width: 50,
-                          height: 50,
+                          width: 60,
+                          height: 60,
                           child: Ink(
                             decoration: ShapeDecoration(
                               color: AppColors.cardIconFill,

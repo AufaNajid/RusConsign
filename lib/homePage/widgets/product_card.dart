@@ -35,7 +35,7 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: AppResponsive().screenHeight(context) * 0.125,
+                  height: AppResponsive().screenWidth(context) * 0.25,
                   width: AppResponsive().screenWidth(context),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12.0),
