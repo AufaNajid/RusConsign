@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/homePage/home_page_controller.dart';
 import 'package:rusconsign/homePage/widgets/filter_button.dart';
 import 'package:rusconsign/homePage/widgets/product_card.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
@@ -70,7 +71,7 @@ class HomePage extends StatelessWidget {
                               ),
                               filled: true,
                               fillColor: AppColors.cardIconFill,
-                              focusColor: const Color(0xFFF5F5F5),
+                              focusColor: AppColors.cardIconFill,
                               hintText: 'Cari jasa atau produk...',
                               hintStyle: AppTextStyle()
                                   .description(AppColors.description),
@@ -86,8 +87,8 @@ class HomePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 12),
                         SizedBox(
-                          width: 56,
-                          height: 56,
+                          width: 50,
+                          height: 50,
                           child: Ink(
                             decoration: ShapeDecoration(
                               color: AppColors.cardIconFill,
@@ -129,7 +130,7 @@ class HomePage extends StatelessWidget {
                   );
                 }).toList(),
                 options: CarouselOptions(
-                  height: 160,
+                  height: AppResponsive().screenHeight(context) * 0.18,
                   enlargeFactor: 0.25,
                   autoPlay: true,
                   autoPlayInterval: const Duration(seconds: 3),
@@ -172,7 +173,6 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         FilterButton(
                           text: 'Semua',
@@ -208,7 +208,7 @@ class HomePage extends StatelessWidget {
                         return ProductCard(
                           imagePath: 'https://via.placeholder.com/165x110',
                           title:
-                              'Productdamndmajdnjandujamudamjudiadiaidaidmiawmdiawmddnawudnuadn',
+                              'Product uadnadiadiadiwd awujdniandiandadjnwa iadniandandaikd aikujdnaidnad',
                           price: 12000,
                           rating: (index % 5) + 1,
                         );
