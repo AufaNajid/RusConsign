@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import '../home_page_controller.dart';
 
@@ -23,8 +24,8 @@ class FilterButton extends StatelessWidget {
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
               return filterButtonController.selectedIndex == index
-                  ? const Color(0xFFFF3D3D)
-                  : const Color(0xFFF5F5F5);
+                  ? AppColors.button1
+                  : AppColors.cardIconFill;
             }),
             shape: MaterialStateProperty.all<OutlinedBorder>(
               RoundedRectangleBorder(
@@ -32,7 +33,8 @@ class FilterButton extends StatelessWidget {
               ),
             ),
             fixedSize: MaterialStateProperty.all<Size>(
-              const Size(116, 40),
+              Size(AppResponsive().screenWidth(context) * 0.290,
+                  AppResponsive().screenHeight(context) * 0.04),
             ),
           ),
           icon: Icon(
