@@ -34,7 +34,7 @@ class FilterButton extends StatelessWidget {
             ),
             fixedSize: MaterialStateProperty.all<Size>(
               Size(AppResponsive().screenWidth(context) * 0.290,
-                  AppResponsive().screenHeight(context) * 0.04),
+                  AppResponsive().screenWidth(context) * 0.04),
             ),
           ),
           icon: Icon(

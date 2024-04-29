@@ -4,6 +4,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:rusconsign/favoritePage/favorite_page.dart';
 import 'package:rusconsign/homePage/home_page.dart';
 import 'package:rusconsign/profilePage/profile_page.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 
 class Menu extends StatelessWidget {
@@ -55,7 +56,7 @@ class Menu extends StatelessWidget {
       items: navbarItem(),
       confineInSafeArea: true,
       backgroundColor: AppColors.background,
-      navBarHeight: 70,
+      navBarHeight: AppResponsive().screenHeight(context) * 0.065,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
       hideNavigationBarWhenKeyboardShows: true,

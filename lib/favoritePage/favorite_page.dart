@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rusconsign/favoritePage/widgets/favorite_card.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 class FavoritePage extends StatelessWidget {
   const FavoritePage({super.key});
@@ -9,25 +12,32 @@ class FavoritePage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
-        title: const Text(
+        surfaceTintColor: Colors.white,
+        title: Text(
           "Favorit",
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w700
-          ),
+          style: AppTextStyle().title(AppColors.titleLine),
         ),
       ),
       backgroundColor: Colors.white,
-      body: const SafeArea(
-          child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [],
-                  )))),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (BuildContext context, int index) {
+              return FavoriteCard(
+                imagePath: 'https://via.placeholder.com/50x50',
+                title:
+                    'Product uadnadiadiadiwd awujdniandiandadjnwa iadniandandaikd aikujdnaidnad',
+                price: 12000,
+                rating: (index % 5) + 1,
+                profileImagePath: 'https://via.placeholder.com/20x20',
+                profileUsername: 'Username Toko',
+              );
+            },
+          ),
+        ),
+      ),
     );
   }
 }
