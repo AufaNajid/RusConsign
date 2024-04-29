@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/utils/colors.dart';
 import '../home_page_controller.dart';
 
 class FilterButton extends StatelessWidget {
@@ -37,15 +38,15 @@ class FilterButton extends StatelessWidget {
           icon: Icon(
             icon,
             color: filterButtonController.selectedIndex == index
-                ? const Color(0xFFF5F5F5)
-                : const Color(0xFF30475E),
+                ? AppColors.activeIconType
+                : AppColors.nonActiveIcon,
           ),
           label: Text(
             text,
             style: TextStyle(
               color: filterButtonController.selectedIndex == index
-                  ? const Color(0xFFF5F5F5)
-                  : const Color(0xFF30475E),
+                  ? AppColors.textButton1
+                  : AppColors.description,
               fontSize: 12,
             ),
           ),
