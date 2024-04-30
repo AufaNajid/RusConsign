@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class CustomAccountUsername extends StatelessWidget {
   final String username;
 
-  CustomAccountUsername({
+  const CustomAccountUsername({
     required this.username,
     Key? key,
   }) : super(key: key);
@@ -13,7 +13,7 @@ class CustomAccountUsername extends StatelessWidget {
     return Text(
       username,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: Color(0xFF222831),
         fontSize: 18,
         fontFamily: 'Poppins',
@@ -26,7 +26,7 @@ class CustomAccountUsername extends StatelessWidget {
 
 class CustomDescription extends StatelessWidget {
   final String description;
-  CustomDescription({
+  const CustomDescription({
     required this.description,
     Key? key,
   }) : super(key: key);
@@ -36,7 +36,7 @@ class CustomDescription extends StatelessWidget {
     return Text(
       description,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: Color(0xFF30475E),
         fontSize: 11,
         fontFamily: 'Poppins',
@@ -50,7 +50,7 @@ class CustomDescription extends StatelessWidget {
 class CustomInfoBold extends StatelessWidget {
   final String info;
   
-  CustomInfoBold({
+  const CustomInfoBold({
     required this.info,
     Key? key,
   }) : super(key: key);
@@ -60,7 +60,7 @@ class CustomInfoBold extends StatelessWidget {
     return Text(
       info,
       textAlign: TextAlign.center,
-      style: TextStyle(
+      style: const TextStyle(
         color: Color(0xFF30475E),
         fontSize: 11,
         fontFamily: 'Poppins',
@@ -74,7 +74,7 @@ class CustomInfoBold extends StatelessWidget {
 class CustomInfoText extends StatelessWidget {
   final String info;
   
-  CustomInfoText({
+  const CustomInfoText({
     required this.info,
     Key? key,
   }) : super(key: key);
@@ -88,7 +88,7 @@ class CustomInfoText extends StatelessWidget {
     maxLines: 5,
     overflow: TextOverflow.ellipsis,
     textAlign: TextAlign.center,
-    style: TextStyle(
+    style: const TextStyle(
       color: Color(0xFF30475E),
       fontSize: 11,
       fontFamily: 'Poppins',
