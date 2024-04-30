@@ -1,19 +1,19 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/profilePage/widgets/customwidget.dart';
 
 class SectionController extends GetxController {
-  final currentIndex = 0.obs;
-  final _selectedIndex = 0.obs;
 
-  int get selectedIndex => _selectedIndex.value;
-
-  void updateCurrentIndexIndicator(int index) {
-    currentIndex.value = index;
-  }
+  var selectedIndex = 0.obs;
+  Widget selectedSection = const SectionPribadi();
 
   void setSelectedFilter(int index) {
-    _selectedIndex.value = index;
-    update();
-    _selectedIndex.refresh();
-    print(index);
+    selectedIndex.value = index;
+  }
+
+  void setSelectedSection(Widget section) {
+    selectedSection = section;
   }
 }
+
+
