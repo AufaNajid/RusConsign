@@ -183,7 +183,7 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
           child: TabBar(
             controller: _tabController,
             labelColor: AppColors.activeIcon,
-            indicator: ,
+            indicator: BoxDecoration(),
             unselectedLabelColor: AppColors.nonActiveIcon,
             tabs: [
              Tab(child: Icon(FeatherIcons.activity)
