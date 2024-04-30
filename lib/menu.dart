@@ -3,6 +3,9 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:rusconsign/favoritePage/favorite_page.dart';
 import 'package:rusconsign/homePage/home_page.dart';
+import 'package:rusconsign/profilePage/profile_page.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
+import 'package:rusconsign/utils/colors.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -17,7 +20,7 @@ class Menu extends StatelessWidget {
         HomePage(),
         const FavoritePage(),
         HomePage(),
-        HomePage(),
+        ProfilePage(),
       ];
     }
 
@@ -25,23 +28,23 @@ class Menu extends StatelessWidget {
       return [
         PersistentBottomNavBarItem(
           icon: const Icon(FeatherIcons.home),
-          inactiveColorPrimary: const Color(0xFF30475E),
-          activeColorPrimary: const Color(0xFFFF3D3D),
+          inactiveColorPrimary: AppColors.nonActiveIcon,
+          activeColorPrimary: AppColors.activeIcon,
         ),
         PersistentBottomNavBarItem(
           icon: const Icon(FeatherIcons.heart),
-          inactiveColorPrimary: const Color(0xFF30475E),
-          activeColorPrimary: const Color(0xFFFF3D3D),
+          inactiveColorPrimary: AppColors.nonActiveIcon,
+          activeColorPrimary: AppColors.activeIcon,
         ),
         PersistentBottomNavBarItem(
           icon: const Icon(FeatherIcons.shoppingCart),
-          inactiveColorPrimary: const Color(0xFF30475E),
-          activeColorPrimary: const Color(0xFFFF3D3D),
+          inactiveColorPrimary: AppColors.nonActiveIcon,
+          activeColorPrimary: AppColors.activeIcon,
         ),
         PersistentBottomNavBarItem(
           icon: const Icon(FeatherIcons.user),
-          inactiveColorPrimary: const Color(0xFF30475E),
-          activeColorPrimary: const Color(0xFFFF3D3D),
+          inactiveColorPrimary: AppColors.nonActiveIcon,
+          activeColorPrimary: AppColors.activeIcon,
         ),
       ];
     }
@@ -52,8 +55,8 @@ class Menu extends StatelessWidget {
       screens: buildScreens(),
       items: navbarItem(),
       confineInSafeArea: true,
-      backgroundColor: Colors.white,
-      navBarHeight: 70,
+      backgroundColor: AppColors.background,
+      navBarHeight: AppResponsive().screenHeight(context) * 0.065,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
       hideNavigationBarWhenKeyboardShows: true,

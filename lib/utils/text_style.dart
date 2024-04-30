@@ -23,7 +23,7 @@ class AppTextStyle {
   subHeader(Color color) {
     return TextStyle(
         color: color,
-        fontSize: 13,
+        fontSize: 14,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w500,
         height: 0);
@@ -32,7 +32,7 @@ class AppTextStyle {
   description(Color color) {
     return TextStyle(
         color: color,
-        fontSize: 11,
+        fontSize: 12,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w400,
         height: 0);
@@ -41,7 +41,7 @@ class AppTextStyle {
   textInfo(Color color) {
     return TextStyle(
         color: color,
-        fontSize: 8,
+        fontSize: 10,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w400,
         height: 0);
@@ -50,7 +50,7 @@ class AppTextStyle {
   descriptionBold(Color color) {
     return TextStyle(
         color: color,
-        fontSize: 11,
+        fontSize: 12,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w600,
         height: 0);
@@ -59,7 +59,7 @@ class AppTextStyle {
   textInfoBold(Color color) {
     return TextStyle(
         color: color,
-        fontSize: 8,
+        fontSize: 10,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w600,
         height: 0);
