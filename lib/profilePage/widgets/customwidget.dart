@@ -61,7 +61,7 @@ class CustomInfoWidget extends StatelessWidget {
 class SectionButton extends StatelessWidget {
   final String text;
   final IconData icon;
-  final int index; 
+  final int index;
 
   const SectionButton({
     Key? key,
@@ -103,15 +103,16 @@ class SectionButton extends StatelessWidget {
             ),
           ),
           onPressed: () {
-        if (sectionButtonController.selectedIndex != index) {
-          sectionButtonController.setSelectedFilter(index);
-          if (index == 0) {
-            sectionButtonController.setSelectedSection(const SectionPribadi());
-          } else if (index == 1) {
-            sectionButtonController.setSelectedSection(const Placeholder());
-          }
-        }
-      },
+            if (sectionButtonController.selectedIndex != index) {
+              sectionButtonController.setSelectedFilter(index);
+              if (index == 0) {
+                sectionButtonController
+                    .setSelectedSection(const SectionPribadi());
+              } else if (index == 1) {
+                sectionButtonController.setSelectedSection(const Placeholder());
+              }
+            }
+          },
         ));
   }
 }
@@ -162,11 +163,26 @@ class TabList extends StatefulWidget {
 
 class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late Color _borderColor1;
+  late Color _borderColor2;
 
   @override
   void initState() {
-    _tabController = TabController(length: 2, vsync: this);
     super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+    _borderColor1 = AppColors.activeIcon;
+    _borderColor2 = AppColors.nonActiveIcon;
+    _tabController.addListener(() {
+      setState(() {
+        if (_tabController.index == 0) {
+          _borderColor1 = AppColors.activeIcon;
+          _borderColor2 = AppColors.nonActiveIcon;
+        } else {
+          _borderColor1 = AppColors.nonActiveIcon;
+          _borderColor2 = AppColors.activeIcon;
+        }
+      });
+    });
   }
 
   @override
@@ -176,36 +192,77 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+Widget build(BuildContext context) {
+  return Container(
+    width: double.infinity,
+    child: Column(
       children: [
-        Container(
-          child: TabBar(
-            controller: _tabController,
-            labelColor: AppColors.activeIcon,
-            indicator: BoxDecoration(),
-            unselectedLabelColor: AppColors.nonActiveIcon,
-            tabs: [
-             Tab(child: Icon(FeatherIcons.activity)
+        TabBar(
+          controller: _tabController,
+          labelColor: AppColors.activeIcon,
+          unselectedLabelColor: AppColors.nonActiveIcon,
+          indicator: BoxDecoration(color: AppColors.bintang),
+          dividerColor: AppColors.background,
+          tabs: [
+            Tab(
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: _borderColor1,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(3),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Icon(FeatherIcons.activity), Text("data")],
+                ),
+              ),
+            ),
+            Tab(
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    // Warna border saat tidak dipilih
+                    color: _borderColor2,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(3),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Icon(FeatherIcons.airplay), Text("data2")],
+                ),
+              ),
+            ),
+          ],
         ),
-        Tab(child:Text("2") )
-            ]
-        )
-        ,
-        )
-        ,
+
         Container(
           width: double.maxFinite,
           height: 300,
           child: TabBarView(
             controller: _tabController,
             children: [
-              Text("halo"),
-              Text("hai"),
+              Container(
+                
+                color: AppColors.cardIconFill,
+                child: Column(
+                  children: [
+                    SettingWidget(icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
+                    SettingWidget(icon: FeatherIcons.messageCircle, text: "Chat"),
+                    SettingWidget(icon: FeatherIcons.bell, text: "Notifikasi"),
+                    SettingWidget(icon: FeatherIcons.settings, text: "Pengaturan")
+                  ],
+                ),
+              ),
+              Text("data")
             ],
           ),
         ),
       ],
-        );
-  }
-}
+    ),
+  );
+}}
