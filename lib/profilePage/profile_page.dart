@@ -65,9 +65,9 @@ class ProfilePage extends StatelessWidget {
             Row(
               children: [
                 SectionButton(
-                    text: "aowkaokw", icon: FeatherIcons.activity, index: 0),
+                    text: "Pribadi",   icon: FeatherIcons.user, index: 0),
                 SectionButton(
-                    text: "aowkaokw", icon: FeatherIcons.activity, index: 1)
+                    text: "Penjualan", icon: FeatherIcons.shoppingBag, index: 1)
               ],
             ),
           ],

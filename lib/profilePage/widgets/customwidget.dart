@@ -77,40 +77,53 @@ class SectionButton extends StatelessWidget {
 
     return Obx(() => OutlinedButton.icon(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-              return sectionButtonController.selectedIndex == index
-                  ? const Color(0xFFFF3D3D)
-                  : const Color(0xFFF5F5F5);
-            }),
+            side: MaterialStateProperty.all(BorderSide(
+              color: sectionButtonController.selectedIndex == index
+              ? const Color(0xFFFF3C3C)
+              : const Color(0xFFECECEC),
+            )),
             shape: MaterialStateProperty.all<OutlinedBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(6),
               ),
             ),
-            fixedSize: MaterialStateProperty.all<Size>(
-              const Size(116, 40),
-            ),
           ),
           icon: Icon(
             icon,
             color: sectionButtonController.selectedIndex == index
-                ? const Color(0xFFF5F5F5)
+                ? const Color(0xFFFF3C3C)
                 : const Color(0xFF30475E),
           ),
           label: Text(
             text,
             style: TextStyle(
               color: sectionButtonController.selectedIndex == index
-                  ? const Color(0xFFF5F5F5)
+                  ? const Color(0xFFFF3C3C)
                   : const Color(0xFF30475E),
-              fontSize: 12,
+              fontSize: 13,
             ),
           ),
           onPressed: () {
             if (sectionButtonController.selectedIndex != index) {
               sectionButtonController.setSelectedFilter(index);
             }
+            if (index == 0) {
+              
+            }
+            else if (index == 1){
+
+            }
           },
         ));
+  }
+}
+
+class SectionPribadi extends StatelessWidget {
+  const SectionPribadi({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+    );
   }
 }

@@ -14,5 +14,6 @@ class SectionController extends GetxController {
     _selectedIndex.value = index;
     update();
     _selectedIndex.refresh();
+    print(index);
   }
 }
