@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/profilePage/profile_page_controller.dart';
@@ -13,7 +14,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarProfile(title: "Profil"),
+      appBar: AppBarProfile(title: "Profil"),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -24,7 +25,7 @@ class ProfilePage extends StatelessWidget {
               child: Container(
                 width: 90,
                 height: 90,
-                decoration: const ShapeDecoration(
+                decoration: ShapeDecoration(
                   image: DecorationImage(
                     image: NetworkImage("https://via.placeholder.com/165x110"),
                     fit: BoxFit.fill,
@@ -33,9 +34,9 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            const CustomAccountUsername(username: "Raihan Pace"),
-            const CustomDescription(description: "raihanmaulana084@gmail.com"),
-            const Row(
+            CustomAccountUsername(username: "Raihan Pace"),
+            CustomDescription(description: "raihanmaulana084@gmail.com"),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -58,17 +59,10 @@ class ProfilePage extends StatelessWidget {
                     infoNumber: "4.5")
               ],
             ),
-            const CustomInfoText(
+            CustomInfoText(
                 info:
                     "Halo.. Selamat datang di profil saya. Kalian bisa melihat produk atau jasa yang saya berikan disini. Saya sendiiri juga termasuk siswa SMK RUS, jadi kalau mau ngobrol sama saya bisa ketemuan di sekolah"),
-            const Row(
-              children: [
-                SectionButton(
-                    text: "aowkaokw", icon: FeatherIcons.activity, index: 0),
-                SectionButton(
-                    text: "aowkaokw", icon: FeatherIcons.activity, index: 1)
-              ],
-            ),
+            TabList()
           ],
         ),
       ),
