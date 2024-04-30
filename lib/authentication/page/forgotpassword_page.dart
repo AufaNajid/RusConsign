@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 
 import '../widget/widget.dart';
@@ -15,7 +16,7 @@ class ForgotPasswordPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         width: double.infinity,
         height: double.infinity,
-        color: Colors.white,
+        color: AppColors.background,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -33,7 +34,7 @@ class ForgotPasswordPage extends StatelessWidget {
                     "Reset Password",
                     style: TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF30475E),
+                      color: AppColors.description,
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.none,
                     ),
@@ -49,8 +50,8 @@ class ForgotPasswordPage extends StatelessWidget {
                   Get.toNamed("/login");
                 },
                 text: "Login",
-                backgroundColor: const Color(0xFFFF3D3D),
-                foregroundColor: const Color(0xFFFFFFFF),
+                backgroundColor: AppColors.hargaStat,
+                foregroundColor: AppColors.background,
                 textAlign: TextAlign.center,
               ),
               MyButton(
@@ -58,8 +59,8 @@ class ForgotPasswordPage extends StatelessWidget {
                   Get.toNamed("/login");
                 },
                 text: "Kembali",
-                backgroundColor: const Color(0x0fffffff),
-                foregroundColor: const Color(0xFF30475E),
+                backgroundColor: AppColors.background,
+                foregroundColor: AppColors.description,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
@@ -67,7 +68,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 "Dengan register ke RUS Consign, kamu menyetujui",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF30475E),
+                  color: AppColors.description,
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
@@ -76,7 +77,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 "Ketentuan dan Kebijakan Privasi kami.",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF30475E),
+                  color: AppColors.description,
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),

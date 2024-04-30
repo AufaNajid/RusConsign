@@ -4,6 +4,8 @@ import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/utils/extension.dart';
 
+import '../../utils/colors.dart';
+
 class RegisterPage extends StatelessWidget {
   final GoogleController _googleController = GoogleController();
 
@@ -41,8 +43,8 @@ class RegisterPage extends StatelessWidget {
                   Get.toNamed("/login");
                 },
                 text: "Register",
-                backgroundColor: const Color(0xFFFF3D3D),
-                foregroundColor: const Color(0xFFFFFFFF),
+                backgroundColor: AppColors.hargaStat,
+                foregroundColor: AppColors.background,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
@@ -56,7 +58,7 @@ class RegisterPage extends StatelessWidget {
                       "Register dengan",
                       style: TextStyle(
                         fontSize: 11,
-                        color: Color(0xFF30475E),
+                        color: AppColors.description,
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.none,
                       ),
@@ -83,7 +85,7 @@ class RegisterPage extends StatelessWidget {
                     "Sudah Punya Akun?",
                     style: TextStyle(
                       fontSize: 11,
-                      color: Color(0xFF30475E),
+                      color: AppColors.description,
                       fontWeight: FontWeight.w500,
                       decoration: TextDecoration.none,
                     ),
@@ -96,7 +98,7 @@ class RegisterPage extends StatelessWidget {
                       "Login",
                       style: TextStyle(
                         fontSize: 11,
-                        color: Color(0xFF30475E),
+                        color: AppColors.description,
                         fontWeight: FontWeight.bold,
                         decoration: TextDecoration.none,
                       ),
@@ -109,7 +111,7 @@ class RegisterPage extends StatelessWidget {
                 "Dengan register ke RUS Consign, kamu menyetujui",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF30475E),
+                  color: AppColors.description,
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),
@@ -118,7 +120,7 @@ class RegisterPage extends StatelessWidget {
                 "Ketentuan dan Kebijakan Privasi kami.",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF30475E),
+                  color: AppColors.description,
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.none,
                 ),

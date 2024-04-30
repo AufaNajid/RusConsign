@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 
 
@@ -16,6 +17,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: AppColors.background,
+      surfaceTintColor: Colors.white,
+      elevation: null,
       leading: IconButton(
         icon: const Icon(FeatherIcons.chevronLeft),
         onPressed: onBackPressed,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 
 
@@ -19,7 +20,7 @@ class ProductDiscount extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       width: double.infinity,
       decoration: BoxDecoration(
-          color: const Color(0xFFF5F5F5),
+          color: AppColors.cardIconFill,
           borderRadius: BorderRadius.circular(5)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,20 +58,20 @@ class ProductDiscount extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF30475E),
+                        color: AppColors.description,
                       ),
                     ),
                   ].withSpaceBetween(width: 5),
                 ),
                 Row(
                   children: [
-                    const Icon(Icons.star, size: 20, color: Color(0xFFFFDD55),),
+                    const Icon(Icons.star, size: 20, color: AppColors.bintang,),
                     Text(
                       "$rating",
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF30475E),
+                        color: AppColors.description,
                       ),
                     ),
                   ],
@@ -82,7 +83,7 @@ class ProductDiscount extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF30475E),
+                        color: AppColors.description,
                       ),
                     ),
                     Text(
@@ -90,7 +91,7 @@ class ProductDiscount extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFFFF3D3D),
+                        color: AppColors.hargaStat,
                       ),
                     ),
                     Container(
@@ -100,7 +101,7 @@ class ProductDiscount extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFFFF3D3D),
+                          color: AppColors.hargaStat,
                         ),
                       ),
                     )

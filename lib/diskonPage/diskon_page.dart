@@ -3,6 +3,8 @@ import 'package:rusconsign/detailPage/widgets/komponen.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/diskonPage/widgets/komponen.dart';
 
+import '../utils/colors.dart';
+
 class DiskonPage extends StatelessWidget {
   const DiskonPage({Key? key}) : super(key: key);
 
@@ -15,7 +17,7 @@ class DiskonPage extends StatelessWidget {
           Get.back();
         },
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
