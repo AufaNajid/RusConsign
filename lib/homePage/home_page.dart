@@ -196,12 +196,10 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 4),
                     Obx(() {
                       if (indicator.selectedIndex == 1) {
-                        // Menampilkan GridView untuk Jasa
                         return GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount:
-                              10, // Ganti dengan jumlah item sesuai kebutuhan
+                          itemCount: 10,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -222,8 +220,7 @@ class HomePage extends StatelessWidget {
                         return GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount:
-                              10, // Ganti dengan jumlah item sesuai kebutuhan
+                          itemCount: 10,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -244,8 +241,7 @@ class HomePage extends StatelessWidget {
                         return GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount:
-                              10, // Ganti dengan jumlah item sesuai kebutuhan
+                          itemCount: 10,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -256,7 +252,8 @@ class HomePage extends StatelessWidget {
                           itemBuilder: (BuildContext context, int index) {
                             return ProductCard(
                               imagePath: 'https://via.placeholder.com/165x110',
-                              title: 'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
+                              title:
+                                  'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
                               price: 12000,
                               rating: (index % 5) + 1,
                             );
