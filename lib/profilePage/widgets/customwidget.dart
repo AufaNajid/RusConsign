@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/profilePage/profile_page_controller.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
@@ -198,43 +199,40 @@ Widget build(BuildContext context) {
     child: Column(
       children: [
         TabBar(
+          labelPadding: EdgeInsets.zero,
           controller: _tabController,
           labelColor: AppColors.activeIcon,
           unselectedLabelColor: AppColors.nonActiveIcon,
           indicator: BoxDecoration(color: AppColors.bintang),
           dividerColor: AppColors.background,
           tabs: [
-            Tab(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: _borderColor1,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(3),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: _borderColor1,
+                  width: 2,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Icon(FeatherIcons.activity), Text("data")],
-                ),
+                borderRadius: BorderRadius.circular(3),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Icon(FeatherIcons.activity), Text("data")],
               ),
             ),
-            Tab(
-              child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    // Warna border saat tidak dipilih
-                    color: _borderColor2,
-                    width: 2,
-                  ),
-                  borderRadius: BorderRadius.circular(3),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  // Warna border saat tidak dipilih
+                  color: _borderColor2,
+                  width: 2,
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Icon(FeatherIcons.airplay), Text("data2")],
-                ),
+                borderRadius: BorderRadius.circular(3),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Icon(FeatherIcons.airplay), Text("data2")],
               ),
             ),
           ],
@@ -247,7 +245,6 @@ Widget build(BuildContext context) {
             controller: _tabController,
             children: [
               Container(
-                
                 color: AppColors.cardIconFill,
                 child: Column(
                   children: [
