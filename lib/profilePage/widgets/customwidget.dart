@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/profilePage/profile_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -144,15 +147,27 @@ class SettingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon),
-        Text(
-          text,
-          style: AppTextStyle().description(AppColors.description),
+    return Container(
+      height: AppResponsive().screenHeight(context)*0.05,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(backgroundColor: AppColors.cardIconFill,elevation: 0,shape: BeveledRectangleBorder()),
+        onPressed: () {
+          
+        },
+        child: Row(
+          children: [
+            Icon(icon, color: AppColors.description),
+            Padding(padding: EdgeInsets.only(left: AppResponsive().screenWidth(context)*0.05)),
+            Expanded(
+              child: Text(
+                text,
+                style: AppTextStyle().description(AppColors.description),
+              ),
+            ),
+            const Icon(FeatherIcons.chevronRight, color: AppColors.description,)
+          ],
         ),
-        const Icon(FeatherIcons.chevronRight)
-      ],
+      ),
     );
   }
 }
@@ -172,14 +187,14 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
     _borderColor1 = AppColors.activeIcon;
-    _borderColor2 = AppColors.nonActiveIcon;
+    _borderColor2 = AppColors.nonActiveBar;
     _tabController.addListener(() {
       setState(() {
         if (_tabController.index == 0) {
           _borderColor1 = AppColors.activeIcon;
-          _borderColor2 = AppColors.nonActiveIcon;
+          _borderColor2 = AppColors.nonActiveBar;
         } else {
-          _borderColor1 = AppColors.nonActiveIcon;
+          _borderColor1 = AppColors.nonActiveBar;
           _borderColor2 = AppColors.activeIcon;
         }
       });
@@ -203,7 +218,7 @@ Widget build(BuildContext context) {
           controller: _tabController,
           labelColor: AppColors.activeIcon,
           unselectedLabelColor: AppColors.nonActiveIcon,
-          indicator: BoxDecoration(color: AppColors.bintang),
+          indicator: BoxDecoration(),
           dividerColor: AppColors.background,
           tabs: [
             Container(
@@ -217,7 +232,7 @@ Widget build(BuildContext context) {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Icon(FeatherIcons.activity), Text("data")],
+                children: [Icon(FeatherIcons.user),SizedBox(width: AppResponsive().screenWidth(context)*0.01), Text("Pribadi")],
               ),
             ),
             Container(
@@ -232,20 +247,22 @@ Widget build(BuildContext context) {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Icon(FeatherIcons.airplay), Text("data2")],
+                children: [Icon(FeatherIcons.shoppingBag,),SizedBox(width: AppResponsive().screenWidth(context)*0.01), Text("Penjualan")],
               ),
             ),
           ],
         ),
 
         Container(
+          padding: EdgeInsets.only(top: AppResponsive().screenHeight(context)*0.01),
           width: double.maxFinite,
-          height: 300,
+          height: double.maxFinite,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
           child: TabBarView(
             controller: _tabController,
             children: [
               Container(
-                color: AppColors.cardIconFill,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: AppColors.cardIconFill),
                 child: Column(
                   children: [
                     SettingWidget(icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
@@ -255,7 +272,19 @@ Widget build(BuildContext context) {
                   ],
                 ),
               ),
-              Text("data")
+              Container(
+                decoration: BoxDecoration(color: Colors.green),
+                child: Column(
+                  children: [
+                    SvgPicture.asset("assets/images/orang_mencet_hp.svg"),
+                    Text("Anda perlu registrasi untuk melakukan penjualan di Aplikasi ini", style: AppTextStyle().description(AppColors.description),),
+                    ElevatedButton(onPressed: () {
+                      
+                    }, child: Text("Registrasi Penjualan Sekarang", style: AppTextStyle().description(AppColors.background),),
+                    style: ElevatedButton.styleFrom(backgroundColor: AppColors.activeIcon, shape: BeveledRectangleBorder()),)
+                  ],
+                ),
+              )
             ],
           ),
         ),
