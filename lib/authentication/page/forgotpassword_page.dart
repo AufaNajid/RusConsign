@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 import '../widget/widget.dart';
 
@@ -16,7 +17,7 @@ class ForgotPasswordPage extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         width: double.infinity,
         height: double.infinity,
-        color: Colors.white,
+        color: AppColors.background,
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -30,18 +31,14 @@ class ForgotPasswordPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Reset Password",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: const Color(0xFF30475E),
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
-                  MyTextField(labelText: "Masukkan Email..."),
-                  MyTextField(labelText: "Masukkan Password Baru  ...", isObscured: true),
-                  MyTextField(labelText: "Konfirmasi Password...", isObscured: true),
+                  Text("Reset Password",
+                      style: AppTextStyle().subHeader(AppColors.titleLine)),
+                  const MyTextField(labelText: "Masukkan Email..."),
+                  const MyTextField(
+                      labelText: "Masukkan Password Baru  ...",
+                      isObscured: true),
+                  const MyTextField(
+                      labelText: "Konfirmasi Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
@@ -50,8 +47,8 @@ class ForgotPasswordPage extends StatelessWidget {
                   Get.toNamed("/login");
                 },
                 text: "Login",
-                backgroundColor: const Color(0xFFFF3D3D),
-                foregroundColor: const Color(0xFFFFFFFF),
+                backgroundColor: AppColors.hargaStat,
+                foregroundColor: AppColors.background,
                 textAlign: TextAlign.center,
               ),
               MyButton(
@@ -59,29 +56,15 @@ class ForgotPasswordPage extends StatelessWidget {
                   Get.toNamed("/login");
                 },
                 text: "Kembali",
-                backgroundColor: const Color(0xFFFFFFF),
-                foregroundColor: const Color(0xFF30475E),
+                backgroundColor: AppColors.background,
+                foregroundColor: AppColors.description,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              const Text(
-                "Dengan register ke RUS Consign, kamu menyetujui",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: const Color(0xFF30475E),
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              const Text(
-                "Ketentuan dan Kebijakan Privasi kami.",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: const Color(0xFF30475E),
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
+              Text("Dengan register ke RUS Consign, kamu menyetujui",
+                  style: AppTextStyle().description(AppColors.description)),
+              Text("Ketentuan dan Kebijakan Privasi kami.",
+                  style: AppTextStyle().description(AppColors.description)),
             ],
           ),
         ),

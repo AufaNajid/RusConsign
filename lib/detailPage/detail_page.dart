@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:rusconsign/detailPage/widgets/komponen.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/text_style.dart';
+import '../utils/app_responsive.dart';
 import 'detail_page_controller.dart';
 
 class DetailPage extends StatelessWidget {
@@ -12,8 +14,13 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Detail Produk", onBackPressed: (){Get.back();},),
-      backgroundColor: Colors.white,
+      appBar: CustomAppBar(
+        title: "Detail Produk",
+        onBackPressed: () {
+          Get.back();
+        },
+      ),
+      backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -23,7 +30,7 @@ class DetailPage extends StatelessWidget {
             Image.network(
               "https://via.placeholder.com/165x110",
               fit: BoxFit.cover,
-              height: 325,
+              height: AppResponsive().screenHeight(context) * 0.420,
               width: double.infinity,
             ),
             Padding(
@@ -35,16 +42,16 @@ class DetailPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
+                        const Row(
                           children: [
-                            cardQuantity(
+                            CardQuantity(
                                 title: "produk",
-                                fillColor: Color(0xFFFF3D3D),
-                                textColor: Color(0xFFFFFFFF)),
-                            cardQuantity(
+                                fillColor: AppColors.hargaStat,
+                                textColor: AppColors.background),
+                            CardQuantity(
                                 title: "20 Terjual",
-                                fillColor: Color(0xFFFFFFFF),
-                                textColor: Color(0xFF30475E))
+                                fillColor: AppColors.background,
+                                textColor: AppColors.description)
                           ],
                         ),
                         IconButton(
@@ -56,39 +63,27 @@ class DetailPage extends StatelessWidget {
                                     ? FeatherIcons.heart
                                     : Icons.favorite,
                                 color: indicator.isLiked.value
-                                    ? Color(0xFF30475E)
+                                    ? AppColors.description
                                     : Colors.red,
                                 size: 24,
                               )),
                         ),
                       ],
                     ),
-                    customTextWidget(
-                      'Lorem ipsum dolor sit amet',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF222831),
-                      ),
+                    Text(
+                      "Lorem Ipsum Dolor sit amet",
+                      style: AppTextStyle().title(AppColors.titleLine),
                     ),
-                    customTextWidget(
+                    Text(
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-                      style: TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFF30475E),
-                      ),
+                      style: AppTextStyle().description(AppColors.description),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        customTextWidget(
-                          'Rp 15.000',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFFF3D3D),
-                          ),
+                        Text(
+                          "Rp 15.000",
+                          style: AppTextStyle().title(AppColors.hargaStat),
                         ),
                         Row(
                           children: [
@@ -96,30 +91,27 @@ class DetailPage extends StatelessWidget {
                               onPressed: () {},
                               icon: const Icon(
                                 FeatherIcons.star,
-                                color: Color(0xFF30475E),
-                                size: 24,
+                                color: AppColors.description,
+                                size: 20,
                               ),
                             ),
-                            const Text(
+                            Text(
                               '4.0',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF30475E),
-                              ),
+                              style: AppTextStyle()
+                                  .textInfoBold(AppColors.description),
                             ),
                           ],
                         ),
                       ],
                     ),
                     const Divider(
-                      color: Color(0xFF222831), // Atur warna garis
+                      color: AppColors.titleLine, // Atur warna garis
                       thickness: 1, // Atur ketebalan garis
                       height: 0, // Atur tinggi garis
                     ),
                     SizedBox(
-                      height: 40,
+                      height: AppResponsive().screenHeight(context) * 0.050,
                       width: double.infinity,
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -128,29 +120,26 @@ class DetailPage extends StatelessWidget {
                             ClipOval(
                               child: Image.network(
                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5NotY59b9Il4DR4FAUdE6cDxIvYQTHdi2CLPuMmv_Q&s",
-                                width: 40,
-                                height: 40,
+                                width: AppResponsive().screenWidth(context) *
+                                    0.110,
+                                height: AppResponsive().screenHeight(context) *
+                                    0.060,
                                 fit: BoxFit.cover,
                               ),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  "Bagas Prasetya",
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF30475E),
-                                  ),
-                                ),
+                                Text("Bagas Prasetya",
+                                    style: AppTextStyle()
+                                        .textInfo(AppColors.titleLine)),
                                 Row(
                                   children: [
-                                    btnSeller(
+                                    BtnSeller(
                                       title: "Chat Penjual",
                                       ontap: () {},
                                     ),
-                                    btnSeller(
+                                    BtnSeller(
                                       title: "Lihat Toko",
                                       ontap: () {},
                                     ),
@@ -162,17 +151,17 @@ class DetailPage extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    sellerInfo(
+                                    const SellerInfo(
                                         title: "Jumlah Produk", jumlah: "2"),
-                                    sellerInfo(
+                                    const SellerInfo(
                                         title: "Jumlah Jasa", jumlah: "3"),
                                   ].withSpaceBetween(width: 7),
                                 ),
                                 Row(
                                   children: [
-                                    sellerInfo(
+                                    const SellerInfo(
                                         title: "Penilaian", jumlah: "4.5"),
-                                    sellerInfo(
+                                    const SellerInfo(
                                         title: "Pengikut", jumlah: "444"),
                                   ].withSpaceBetween(width: 7),
                                 )
@@ -183,60 +172,50 @@ class DetailPage extends StatelessWidget {
                       ),
                     ),
                     const Divider(
-                      color: Color(0xFF222831), // Atur warna garis
+                      color: AppColors.titleLine, // Atur warna garis
                       thickness: 1, // Atur ketebalan garis
                       height: 0, // Atur tinggi garis
                     ),
                     SizedBox(
-                      height: 40,
+                      height: AppResponsive().screenHeight(context) * 0.050,
                       width: double.infinity,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "Penilaian Produk",
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xFF30475E),
-                            ),
-                          ),
+                          Text("Penilaian Produk",
+                              style:
+                                  AppTextStyle().header(AppColors.description)),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              const Text(
-                                "2 Ulasan",
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w300,
-                                  color: Color(0xFF30475E),
-                                ),
-                              ),
+                              Text("2 Ulasan",
+                                  style: AppTextStyle()
+                                      .description(AppColors.description)),
                               Row(
                                 children: [
                                   const Icon(
                                     FeatherIcons.star,
-                                    color: Color(0xFF30475E),
+                                    color: AppColors.description,
                                     size: 15,
                                   ),
                                   const Icon(
                                     FeatherIcons.star,
-                                    color: Color(0xFF30475E),
+                                    color: AppColors.description,
                                     size: 15,
                                   ),
                                   const Icon(
                                     FeatherIcons.star,
-                                    color: Color(0xFF30475E),
+                                    color: AppColors.description,
                                     size: 15,
                                   ),
                                   const Icon(
                                     FeatherIcons.star,
-                                    color: Color(0xFF30475E),
+                                    color: AppColors.description,
                                     size: 15,
                                   ),
                                   const Icon(
                                     FeatherIcons.star,
-                                    color: Color(0xFF30475E),
+                                    color: AppColors.description,
                                     size: 15,
                                   ),
                                 ].withSpaceBetween(width: 3),
@@ -250,7 +229,7 @@ class DetailPage extends StatelessWidget {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
-                        return commentSection(
+                        return const CommentSection(
                             imagePath:
                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5NotY59b9Il4DR4FAUdE6cDxIvYQTHdi2CLPuMmv_Q&s",
                             name: "lorem ipsum",
@@ -272,7 +251,7 @@ class DetailPage extends StatelessWidget {
               color: Colors.black.withOpacity(0.1),
               spreadRadius: 2,
               blurRadius: 6,
-              offset: Offset(0, -3), // changes position of shadow
+              offset: const Offset(0, -3), // changes position of shadow
             ),
           ],
         ),
@@ -280,14 +259,14 @@ class DetailPage extends StatelessWidget {
           items: [
             BottomNavigationBarItem(
               icon: Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    color: Color(0xFFF5F5F5),
+                    color: const Color(0xFFF5F5F5),
                     borderRadius: BorderRadius.circular(5)),
-                child: Icon(
+                child: const Icon(
                   FeatherIcons.shoppingCart,
                   size: 24,
-                  color: Color(0xFF222831),
+                  color: AppColors.titleLine,
                 ),
               ),
               label: '',
@@ -299,14 +278,14 @@ class DetailPage extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                      color: Color(0xFF30475E),
+                      color: AppColors.description,
                       borderRadius: BorderRadius.circular(5)),
-                  child: Text(
+                  child: const Text(
                     'Beli Sekarang',
                     style: TextStyle(
-                      color: Colors.white, // Warna teks
+                      color: AppColors.background, // Warna teks
                       fontWeight: FontWeight.bold, // Ketebalan teks
                     ),
                   ),
@@ -321,7 +300,7 @@ class DetailPage extends StatelessWidget {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Color(0xFFFFFFFFF),
+          backgroundColor: Colors.white,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,
         ),
@@ -337,7 +316,7 @@ Widget customTextWidget(
 }) {
   return Text(
     text,
-    style: style, // Style teks yang bisa disesuaikan
-    textAlign: textAlign, // Penyelarasan teks yang bisa disesuaikan
+    style: style,
+    textAlign: textAlign,
   );
 }

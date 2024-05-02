@@ -1,14 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/authentication/controllers/googleController.dart';
+import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
+
+import '../../utils/text_style.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
-
   final GoogleController _googleController = GoogleController();
+
+  LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,105 +32,63 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  MyTextField(labelText: "Masukkan Email..."),
-                  MyTextField(
+                  const MyTextField(labelText: "Masukkan Username..."),
+                  const MyTextField(labelText: "Masukkan Email..."),
+                  const MyTextField(
                       labelText: "Masukkan Password...", isObscured: true),
-                  TextButton(
-                    onPressed: (){
-                      Get.toNamed("/forgotpasswordpage");
-                    },
-                    child: Text(
-                      "Lupa Password?",
-                      style: TextStyle(fontSize: 11, color: Color(0xFF30475E), fontWeight: FontWeight.w500),
-                    ),
-                  )
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
               MyButton(
                 onClick: () {
-                  Get.toNamed("/menu");
+                  Get.toNamed("/register");
                 },
                 text: "Login",
-                backgroundColor: const Color(0xFFFF3D3D),
-                foregroundColor: const Color(0xFFFFFFFF),
+                backgroundColor: AppColors.hargaStat,
+                foregroundColor: AppColors.background,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              Column(
-                children: [
-                  Text(
-                    "Login dengan",
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: const Color(0xFF30475E),
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  GestureDetector(
-                    onTap: () {
-                      _googleController.signInWithGoogle(context);
-                    },
-                    child: Image.asset(
+              GestureDetector(
+                onTap: () {
+                  _googleController.signInWithGoogle(context);
+                },
+                child: Column(
+                  children: [
+                    Text("Login dengan",
+                        style:
+                            AppTextStyle().description(AppColors.description)),
+                    const SizedBox(height: 10),
+                    Image.asset(
                       'assets/images/google_logo.png',
                       height: 40,
                       width: 40,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "Belum Punya Akun?",
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: const Color(0xFF30475E),
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
+                  Text("Belum Punya Akun?",
+                      style: AppTextStyle().description(AppColors.description)),
                   TextButton(
                     onPressed: () {
                       Get.toNamed("/register");
                     },
-                    child: const Text(
-                      "Register",
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: const Color(0xFF30475E),
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
+                    child: Text("Register",
+                        style: AppTextStyle()
+                            .descriptionBold(AppColors.description)),
                   ),
                 ],
               ),
               const SizedBox(height: 20),
-              const Text(
-                "Dengan login ke RUS Consign, kamu menyetujui",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: const Color(0xFF30475E),
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              const Text(
-                "Ketentuan dan Kebijakan Privasi kami.",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: const Color(0xFF30475E),
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
+              Text("Dengan Login ke RUS Consign, kamu menyetujui",
+                  style: AppTextStyle().description(AppColors.description)),
+              Text("Ketentuan dan Kebijakan Privasi kami.",
+                  style: AppTextStyle().description(AppColors.description)),
             ],
           ),
         ),

@@ -1,15 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:rusconsign/extension.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final VoidCallback? onBackPressed;
 
-  CustomAppBar({
+  const CustomAppBar({
     required this.title,
     this.onBackPressed,
     Key? key,
@@ -18,14 +19,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: AppColors.background,
+      surfaceTintColor: Colors.white,
+      elevation: null,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(FeatherIcons.chevronLeft),
         onPressed: onBackPressed,
         iconSize: 24,
       ),
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
@@ -35,15 +39,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 
-class cardQuantity extends StatelessWidget {
+class CardQuantity extends StatelessWidget {
   final String title;
   final Color fillColor;
   final Color textColor;
-  const cardQuantity({Key? key, required this.title, required this.fillColor, required this.textColor}) : super(key: key);
+  const CardQuantity({Key? key, required this.title, required this.fillColor, required this.textColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +56,8 @@ class cardQuantity extends StatelessWidget {
       decoration: BoxDecoration(
           color: fillColor,
           borderRadius: BorderRadius.circular(5)),
-      height: 27,
-      width: 80,
+      height: AppResponsive().screenHeight(context) * 0.033,
+      width: AppResponsive().screenWidth(context) * 0.22,
       child:  Text(
         title,
         textAlign: TextAlign.center,
@@ -67,10 +71,10 @@ class cardQuantity extends StatelessWidget {
   }
 }
 
-class btnSeller extends StatelessWidget {
+class BtnSeller extends StatelessWidget {
   final String title;
   final VoidCallback ontap;
-  const btnSeller({Key? key, required this.title, required this.ontap}) : super(key: key);
+  const BtnSeller({Key? key, required this.title, required this.ontap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -83,11 +87,11 @@ class btnSeller extends StatelessWidget {
             color: const Color(0xFF30475E),
             borderRadius:
             BorderRadius.circular(5)),
-        height: 21,
-        width: 70,
+        height: AppResponsive().screenHeight(context) * 0.026,
+        width: AppResponsive().screenWidth(context) * 0.20,
         child: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 8,
             fontWeight: FontWeight.bold,
             color: Color(0xFFFFFFFF),
@@ -98,23 +102,23 @@ class btnSeller extends StatelessWidget {
   }
 }
 
-class sellerInfo extends StatelessWidget {
+class SellerInfo extends StatelessWidget {
   final String title;
   final String jumlah;
-  const sellerInfo({Key? key, required this.title, required this.jumlah}) : super(key: key);
+  const SellerInfo({Key? key, required this.title, required this.jumlah}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 12,
-      width: 90,
+      height: AppResponsive().screenHeight(context) * 0.0160,
+      width: AppResponsive().screenWidth(context) * 0.25,
       child: Row(
         mainAxisAlignment:
         MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w500,
               color: Color(0xFF30475E),
@@ -122,7 +126,7 @@ class sellerInfo extends StatelessWidget {
           ),
           Text(
             jumlah,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 8,
               fontWeight: FontWeight.w500,
               color: Color(0xFFFF3D3D),
@@ -140,12 +144,12 @@ List<Map<String, dynamic>> metodeData = [
   {"nama": "Indomaret", "photo": "indomaret-topup.png"},
 ];
 
-class commentSection extends StatelessWidget {
+class CommentSection extends StatelessWidget {
   final String imagePath;
   final String name;
   final String date;
   final String desc;
-  const commentSection({Key? key, required this.imagePath, required this.name, required this.date, required this.desc}) : super(key: key);
+  const CommentSection({Key? key, required this.imagePath, required this.name, required this.date, required this.desc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -167,10 +171,10 @@ class commentSection extends StatelessWidget {
             children: [
               ClipOval(
                 child: Image.network(
-                  imagePath, // Ganti dengan path gambar Anda
+                  imagePath,
                   width:
-                  40, // Sesuaikan dengan ukuran yang Anda inginkan
-                  height: 40,
+                  AppResponsive().screenWidth(context) * 0.115,
+                  height: AppResponsive().screenHeight(context) * 0.060,
                 ),
               ),
               Expanded(
@@ -179,11 +183,7 @@ class commentSection extends StatelessWidget {
                   children: [
                      Text(
                       name,
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF30475E),
-                      ),
+                      style: AppTextStyle().subHeader(AppColors.description)
                     ),
                     Row(
                       children: [
@@ -216,19 +216,15 @@ class commentSection extends StatelessWidget {
                     ),
                      Text(
                       date,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 8,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF30475E),
+                        color: AppColors.description,
                       ),
                     ),
                      Text(
                        desc,
-                      style: TextStyle(
-                        fontSize: 8,
-                        fontWeight: FontWeight.w300,
-                        color: Color(0xFF30475E),
-                      ),
+                      style: AppTextStyle().textInfo(AppColors.description)
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,

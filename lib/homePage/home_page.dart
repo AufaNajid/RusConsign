@@ -1,4 +1,4 @@
-// ignore_for_file: unrelated_type_equality_checks
+// ignore_for_file: unrelated_type_equality_checks, must_be_immutable
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +7,9 @@ import 'package:get/get.dart';
 import 'package:rusconsign/homePage/home_page_controller.dart';
 import 'package:rusconsign/homePage/widgets/filter_button.dart';
 import 'package:rusconsign/homePage/widgets/product_card.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 class HomePage extends StatelessWidget {
   final indicator = Get.put(HomePageController());
@@ -15,7 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -37,7 +40,7 @@ class HomePage extends StatelessWidget {
                       onPressed: () {},
                       icon: const Icon(
                         FeatherIcons.messageCircle,
-                        color: Color(0xFF222831),
+                        color: AppColors.borderIcon,
                         size: 24,
                       ),
                     ),
@@ -52,13 +55,9 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
+                    Text(
                       'Halo Username',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF222831),
-                      ),
+                      style: AppTextStyle().header(AppColors.titleLine),
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -71,17 +70,16 @@ class HomePage extends StatelessWidget {
                                 borderSide: BorderSide.none,
                               ),
                               filled: true,
-                              fillColor: const Color(0xFFF5F5F5),
-                              focusColor: const Color(0xFFF5F5F5),
+                              fillColor: AppColors.cardIconFill,
+                              focusColor: AppColors.cardIconFill,
                               hintText: 'Cari jasa atau produk...',
-                              hintStyle: const TextStyle(
-                                color: Color(0xFF30475E),
-                              ),
+                              hintStyle: AppTextStyle()
+                                  .description(AppColors.description),
                             ),
                             textAlign: TextAlign.left,
                             style: const TextStyle(
                               fontSize: 11,
-                              color: Color(0xFF30475E),
+                              color: AppColors.description,
                               fontWeight: FontWeight.w500,
                               decoration: TextDecoration.none,
                             ),
@@ -89,11 +87,11 @@ class HomePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 12),
                         SizedBox(
-                          width: 56,
-                          height: 56,
+                          width: 60,
+                          height: 60,
                           child: Ink(
                             decoration: ShapeDecoration(
-                              color: const Color(0xFFF5F5F5),
+                              color: AppColors.cardIconFill,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(6),
                               ),
@@ -102,7 +100,7 @@ class HomePage extends StatelessWidget {
                               onPressed: () {},
                               icon: const Icon(
                                 FeatherIcons.search,
-                                color: Color(0xFF222831),
+                                color: AppColors.borderIcon,
                               ),
                             ),
                           ),
@@ -119,7 +117,7 @@ class HomePage extends StatelessWidget {
                   'assets/images/item_carousel_2.png',
                 ].map((item) {
                   return GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Get.toNamed("/diskonpage");
                     },
                     child: ClipRRect(
@@ -132,7 +130,7 @@ class HomePage extends StatelessWidget {
                   );
                 }).toList(),
                 options: CarouselOptions(
-                  height: 160,
+                  height: AppResponsive().screenHeight(context) * 0.18,
                   enlargeFactor: 0.25,
                   autoPlay: true,
                   autoPlayInterval: const Duration(seconds: 3),
@@ -154,8 +152,8 @@ class HomePage extends StatelessWidget {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: (indicator.currentIndex == index)
-                              ? const Color(0xFFFF3D3D)
-                              : const Color(0xFFF5F5F5),
+                              ? AppColors.activeIcon
+                              : AppColors.activeIconType,
                         ),
                       ),
                     ),
@@ -169,17 +167,12 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'Halaman Produk dan Jasa',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Color(0xFF222831),
-                        fontWeight: FontWeight.w700,
-                      ),
+                      style: AppTextStyle().subHeader(AppColors.titleLine),
                     ),
                     const SizedBox(height: 8),
                     const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         FilterButton(
                           text: 'Semua',
@@ -201,25 +194,73 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 4),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 10,
-                      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8,
-                        childAspectRatio: 0.8
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return ProductCard(
-                            imagePath: 'https://via.placeholder.com/165x110',
-                            title: 'Productdamndmajdnjandujamudamjudiadiaidaidmiawmdiawmddnawudnuadn',
-                            price: 12000,
-                            rating: (index % 5) + 1,
-                          );
-                      },
-                    ),
+                    Obx(() {
+                      if (indicator.selectedIndex == 1) {
+                        return GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 10,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 8,
+                            childAspectRatio: 0.8,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return ProductCard(
+                              imagePath: 'https://via.placeholder.com/165x110',
+                              title: 'Judul Jasa $index',
+                              price: 12000,
+                              rating: (index % 5) + 1,
+                            );
+                          },
+                        );
+                      } else if (indicator.selectedIndex == 2) {
+                        return GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 10,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 8,
+                            childAspectRatio: 0.8,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return ProductCard(
+                              imagePath: 'https://via.placeholder.com/165x110',
+                              title: 'Judul Produk $index',
+                              price: 12000,
+                              rating: (index % 5) + 1,
+                            );
+                          },
+                        );
+                      } else {
+                        return GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 10,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 8,
+                            childAspectRatio: 0.8,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return ProductCard(
+                              imagePath: 'https://via.placeholder.com/165x110',
+                              title:
+                                  'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
+                              price: 12000,
+                              rating: (index % 5) + 1,
+                            );
+                          },
+                        );
+                      }
+                    }),
                   ],
                 ),
               ),
