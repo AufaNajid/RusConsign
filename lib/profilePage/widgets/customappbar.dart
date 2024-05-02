@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -13,13 +15,11 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         title,
-        style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
+        style: AppTextStyle().title(AppColors.titleLine)
         ),
-      ),
-      centerTitle: true,
-    );
+        centerTitle: true,
+      );
+
   }
 
   @override

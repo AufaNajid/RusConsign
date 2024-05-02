@@ -20,7 +20,7 @@ class Menu extends StatelessWidget {
         HomePage(),
         const FavoritePage(),
         HomePage(),
-        ProfilePage(),
+        const ProfilePage(),
       ];
     }
 
