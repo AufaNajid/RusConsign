@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:rusconsign/detailPage/widgets/komponen.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/text_style.dart';
+import '../utils/app_responsive.dart';
 import 'detail_page_controller.dart';
 
 class DetailPage extends StatelessWidget {
@@ -28,7 +30,7 @@ class DetailPage extends StatelessWidget {
             Image.network(
               "https://via.placeholder.com/165x110",
               fit: BoxFit.cover,
-              height: 325,
+              height: AppResponsive().screenHeight(context) * 0.420,
               width: double.infinity,
             ),
             Padding(
@@ -61,39 +63,27 @@ class DetailPage extends StatelessWidget {
                                     ? FeatherIcons.heart
                                     : Icons.favorite,
                                 color: indicator.isLiked.value
-                                    ?  AppColors.description
+                                    ? AppColors.description
                                     : Colors.red,
                                 size: 24,
                               )),
                         ),
                       ],
                     ),
-                    customTextWidget(
-                      'Lorem ipsum dolor sit amet',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.titleLine,
-                      ),
+                    Text(
+                      "Lorem Ipsum Dolor sit amet",
+                      style: AppTextStyle().title(AppColors.titleLine),
                     ),
-                    customTextWidget(
+                    Text(
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.description,
-                      ),
+                      style: AppTextStyle().description(AppColors.description),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        customTextWidget(
-                          'Rp 15.000',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.hargaStat,
-                          ),
+                        Text(
+                          "Rp 15.000",
+                          style: AppTextStyle().title(AppColors.hargaStat),
                         ),
                         Row(
                           children: [
@@ -102,17 +92,14 @@ class DetailPage extends StatelessWidget {
                               icon: const Icon(
                                 FeatherIcons.star,
                                 color: AppColors.description,
-                                size: 24,
+                                size: 20,
                               ),
                             ),
-                            const Text(
+                            Text(
                               '4.0',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.description,
-                              ),
+                              style: AppTextStyle()
+                                  .textInfoBold(AppColors.description),
                             ),
                           ],
                         ),
@@ -124,7 +111,7 @@ class DetailPage extends StatelessWidget {
                       height: 0, // Atur tinggi garis
                     ),
                     SizedBox(
-                      height: 40,
+                      height: AppResponsive().screenHeight(context) * 0.050,
                       width: double.infinity,
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -133,22 +120,19 @@ class DetailPage extends StatelessWidget {
                             ClipOval(
                               child: Image.network(
                                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5NotY59b9Il4DR4FAUdE6cDxIvYQTHdi2CLPuMmv_Q&s",
-                                width: 40,
-                                height: 40,
+                                width: AppResponsive().screenWidth(context) *
+                                    0.110,
+                                height: AppResponsive().screenHeight(context) *
+                                    0.060,
                                 fit: BoxFit.cover,
                               ),
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  "Bagas Prasetya",
-                                  style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.titleLine,
-                                  ),
-                                ),
+                                Text("Bagas Prasetya",
+                                    style: AppTextStyle()
+                                        .textInfo(AppColors.titleLine)),
                                 Row(
                                   children: [
                                     BtnSeller(
@@ -193,30 +177,20 @@ class DetailPage extends StatelessWidget {
                       height: 0, // Atur tinggi garis
                     ),
                     SizedBox(
-                      height: 40,
+                      height: AppResponsive().screenHeight(context) * 0.050,
                       width: double.infinity,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Text(
-                            "Penilaian Produk",
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.description,
-                            ),
-                          ),
+                          Text("Penilaian Produk",
+                              style:
+                                  AppTextStyle().header(AppColors.description)),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              const Text(
-                                "2 Ulasan",
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w300,
-                                  color: AppColors.description,
-                                ),
-                              ),
+                              Text("2 Ulasan",
+                                  style: AppTextStyle()
+                                      .description(AppColors.description)),
                               Row(
                                 children: [
                                   const Icon(

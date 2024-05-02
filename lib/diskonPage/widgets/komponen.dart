@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
-
+import 'package:rusconsign/utils/text_style.dart';
 
 class ProductDiscount extends StatelessWidget {
   final String title;
@@ -12,7 +13,17 @@ class ProductDiscount extends StatelessWidget {
   final String harga;
   final String diskonprice;
   final double diskon;
-  const ProductDiscount({Key? key, required this.title, required this.imagepath, required this.titleprofile, required this.rating, required this.harga, required this.diskonprice, required this.imagepathprofile, required this.diskon}) : super(key: key);
+  const ProductDiscount(
+      {Key? key,
+      required this.title,
+      required this.imagepath,
+      required this.titleprofile,
+      required this.rating,
+      required this.harga,
+      required this.diskonprice,
+      required this.imagepathprofile,
+      required this.diskon})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +37,8 @@ class ProductDiscount extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 110,
-            width: 100,
+            height: AppResponsive().screenHeight(context) * 0.125,
+            width: AppResponsive().screenWidth(context) * 0.25,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
               child: Image.network(
@@ -41,8 +52,7 @@ class ProductDiscount extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(title,
-                    style: const TextStyle(
-                        fontSize: 11, fontWeight: FontWeight.bold)),
+                    style: AppTextStyle().textInfoBold(AppColors.titleLine)),
                 Row(
                   children: [
                     ClipOval(
@@ -53,57 +63,36 @@ class ProductDiscount extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                     Text(
-                      titleprofile,
-                      style: const TextStyle(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.description,
-                      ),
-                    ),
+                    Text(titleprofile,
+                        style: AppTextStyle().textInfo(AppColors.description)),
                   ].withSpaceBetween(width: 5),
                 ),
                 Row(
                   children: [
-                    const Icon(Icons.star, size: 20, color: AppColors.bintang,),
-                    Text(
-                      "$rating",
-                      style: const TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.description,
-                      ),
+                    const Icon(
+                      Icons.star,
+                      size: 20,
+                      color: AppColors.bintang,
                     ),
+                    Text("$rating",
+                        style:
+                            AppTextStyle().textInfoBold(AppColors.description)),
                   ],
                 ),
                 Row(
                   children: [
-                    Text(
-                      harga,
-                      style: const TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.description,
-                      ),
-                    ),
-                    Text(
-                      "Rp $diskonprice",
-                      style: const TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.hargaStat,
-                      ),
-                    ),
+                    Text(harga,
+                        style: AppTextStyle().textInfo(AppColors.description)),
+                    Text("Rp $diskonprice",
+                        style:
+                            AppTextStyle().textInfoBold(AppColors.hargaStat)),
                     Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: const Color(0xFFFFCFCF)),
-                      child:                           Text(
-                      "$diskon%",
-                        style: const TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.hargaStat,
-                        ),
-                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: const Color(0xFFFFCFCF)),
+                      child: Text("$diskon%",
+                          style:
+                              AppTextStyle().textInfoBold(AppColors.hargaStat)),
                     )
                   ].withSpaceBetween(width: 5),
                 )

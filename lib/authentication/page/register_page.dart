@@ -5,6 +5,7 @@ import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/utils/extension.dart';
 
 import '../../utils/colors.dart';
+import '../../utils/text_style.dart';
 
 class RegisterPage extends StatelessWidget {
   final GoogleController _googleController = GoogleController();
@@ -34,7 +35,8 @@ class RegisterPage extends StatelessWidget {
                 children: [
                   const MyTextField(labelText: "Masukkan Username..."),
                   const MyTextField(labelText: "Masukkan Email..."),
-                  const MyTextField(labelText: "Masukkan Password...", isObscured: true),
+                  const MyTextField(
+                      labelText: "Masukkan Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
@@ -54,15 +56,9 @@ class RegisterPage extends StatelessWidget {
                 },
                 child: Column(
                   children: [
-                    const Text(
-                      "Register dengan",
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: AppColors.description,
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
+                    Text("Register dengan",
+                        style:
+                            AppTextStyle().description(AppColors.description)),
                     const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () {
@@ -81,50 +77,23 @@ class RegisterPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Sudah Punya Akun?",
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: AppColors.description,
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
+                  Text("Sudah Punya Akun?",
+                      style: AppTextStyle().description(AppColors.description)),
                   TextButton(
                     onPressed: () {
                       Get.toNamed("/login");
                     },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: AppColors.description,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
+                    child: Text("Login",
+                        style: AppTextStyle()
+                            .descriptionBold(AppColors.description)),
                   ),
                 ],
               ),
               const SizedBox(height: 20),
-              const Text(
-                "Dengan register ke RUS Consign, kamu menyetujui",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              const Text(
-                "Ketentuan dan Kebijakan Privasi kami.",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
+              Text("Dengan register ke RUS Consign, kamu menyetujui",
+                  style: AppTextStyle().description(AppColors.description)),
+              Text("Ketentuan dan Kebijakan Privasi kami.",
+                  style: AppTextStyle().description(AppColors.description)),
             ],
           ),
         ),

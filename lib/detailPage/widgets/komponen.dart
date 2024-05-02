@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -54,8 +56,8 @@ class CardQuantity extends StatelessWidget {
       decoration: BoxDecoration(
           color: fillColor,
           borderRadius: BorderRadius.circular(5)),
-      height: 27,
-      width: 80,
+      height: AppResponsive().screenHeight(context) * 0.033,
+      width: AppResponsive().screenWidth(context) * 0.22,
       child:  Text(
         title,
         textAlign: TextAlign.center,
@@ -85,8 +87,8 @@ class BtnSeller extends StatelessWidget {
             color: const Color(0xFF30475E),
             borderRadius:
             BorderRadius.circular(5)),
-        height: 21,
-        width: 70,
+        height: AppResponsive().screenHeight(context) * 0.026,
+        width: AppResponsive().screenWidth(context) * 0.20,
         child: Text(
           title,
           style: const TextStyle(
@@ -108,8 +110,8 @@ class SellerInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 12,
-      width: 90,
+      height: AppResponsive().screenHeight(context) * 0.0160,
+      width: AppResponsive().screenWidth(context) * 0.25,
       child: Row(
         mainAxisAlignment:
         MainAxisAlignment.spaceBetween,
@@ -169,10 +171,10 @@ class CommentSection extends StatelessWidget {
             children: [
               ClipOval(
                 child: Image.network(
-                  imagePath, // Ganti dengan path gambar Anda
+                  imagePath,
                   width:
-                  40, // Sesuaikan dengan ukuran yang Anda inginkan
-                  height: 40,
+                  AppResponsive().screenWidth(context) * 0.115,
+                  height: AppResponsive().screenHeight(context) * 0.060,
                 ),
               ),
               Expanded(
@@ -181,11 +183,7 @@ class CommentSection extends StatelessWidget {
                   children: [
                      Text(
                       name,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF30475E),
-                      ),
+                      style: AppTextStyle().subHeader(AppColors.description)
                     ),
                     Row(
                       children: [
@@ -221,16 +219,12 @@ class CommentSection extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 8,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF30475E),
+                        color: AppColors.description,
                       ),
                     ),
                      Text(
                        desc,
-                      style: const TextStyle(
-                        fontSize: 8,
-                        fontWeight: FontWeight.w300,
-                        color: Color(0xFF30475E),
-                      ),
+                      style: AppTextStyle().textInfo(AppColors.description)
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,

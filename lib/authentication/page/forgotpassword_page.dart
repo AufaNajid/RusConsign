@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 import '../widget/widget.dart';
 
@@ -30,18 +31,14 @@ class ForgotPasswordPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Reset Password",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: AppColors.description,
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
+                  Text("Reset Password",
+                      style: AppTextStyle().subHeader(AppColors.titleLine)),
                   const MyTextField(labelText: "Masukkan Email..."),
-                  const MyTextField(labelText: "Masukkan Password Baru  ...", isObscured: true),
-                  const MyTextField(labelText: "Konfirmasi Password...", isObscured: true),
+                  const MyTextField(
+                      labelText: "Masukkan Password Baru  ...",
+                      isObscured: true),
+                  const MyTextField(
+                      labelText: "Konfirmasi Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
@@ -64,24 +61,10 @@ class ForgotPasswordPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              const Text(
-                "Dengan register ke RUS Consign, kamu menyetujui",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              const Text(
-                "Ketentuan dan Kebijakan Privasi kami.",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
+              Text("Dengan register ke RUS Consign, kamu menyetujui",
+                  style: AppTextStyle().description(AppColors.description)),
+              Text("Ketentuan dan Kebijakan Privasi kami.",
+                  style: AppTextStyle().description(AppColors.description)),
             ],
           ),
         ),

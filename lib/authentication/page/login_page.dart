@@ -5,6 +5,8 @@ import 'package:rusconsign/authentication/widget/widget.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 
+import '../../utils/text_style.dart';
+
 class LoginPage extends StatelessWidget {
   final GoogleController _googleController = GoogleController();
 
@@ -33,13 +35,14 @@ class LoginPage extends StatelessWidget {
                 children: [
                   const MyTextField(labelText: "Masukkan Username..."),
                   const MyTextField(labelText: "Masukkan Email..."),
-                  const MyTextField(labelText: "Masukkan Password...", isObscured: true),
+                  const MyTextField(
+                      labelText: "Masukkan Password...", isObscured: true),
                 ].withSpaceBetween(height: 10),
               ),
               const SizedBox(height: 40),
               MyButton(
                 onClick: () {
-                  Get.toNamed("/login");
+                  Get.toNamed("/register");
                 },
                 text: "Login",
                 backgroundColor: AppColors.hargaStat,
@@ -53,15 +56,9 @@ class LoginPage extends StatelessWidget {
                 },
                 child: Column(
                   children: [
-                    const Text(
-                      "Login dengan",
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: AppColors.description,
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
+                    Text("Login dengan",
+                        style:
+                            AppTextStyle().description(AppColors.description)),
                     const SizedBox(height: 10),
                     Image.asset(
                       'assets/images/google_logo.png',
@@ -75,50 +72,23 @@ class LoginPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Sudah Punya Akun?",
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: AppColors.description,
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
+                  Text("Belum Punya Akun?",
+                      style: AppTextStyle().description(AppColors.description)),
                   TextButton(
                     onPressed: () {
-                      Get.toNamed("/login");
+                      Get.toNamed("/register");
                     },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: AppColors.description,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.none,
-                      ),
-                    ),
+                    child: Text("Register",
+                        style: AppTextStyle()
+                            .descriptionBold(AppColors.description)),
                   ),
                 ],
               ),
               const SizedBox(height: 20),
-              const Text(
-                "Dengan Login ke RUS Consign, kamu menyetujui",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              const Text(
-                "Ketentuan dan Kebijakan Privasi kami.",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
-                ),
-              ),
+              Text("Dengan Login ke RUS Consign, kamu menyetujui",
+                  style: AppTextStyle().description(AppColors.description)),
+              Text("Ketentuan dan Kebijakan Privasi kami.",
+                  style: AppTextStyle().description(AppColors.description)),
             ],
           ),
         ),
