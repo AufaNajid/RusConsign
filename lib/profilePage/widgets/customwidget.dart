@@ -213,36 +213,36 @@ class PribadiSection extends StatelessWidget {
       child: Column(
                     children: [
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: AppColors.cardIconFill,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(20.0),
                             topRight: Radius.circular(20.0),
                           ),
                         ),
-                        child:SettingWidget(icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
+                        child:const SettingWidget(icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
                       ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: AppColors.cardIconFill
                         ),
-                        child: SettingWidget(icon: FeatherIcons.messageCircle, text: "Chat")
+                        child: const SettingWidget(icon: FeatherIcons.messageCircle, text: "Chat")
                         ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: AppColors.cardIconFill
                         ),
-                        child: SettingWidget(icon: FeatherIcons.bell, text: "Notifikasi")
+                        child: const SettingWidget(icon: FeatherIcons.bell, text: "Notifikasi")
                         ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(20),
                             bottomRight: Radius.circular(20)
                           ),
                           color: AppColors.cardIconFill
                         ),
-                        child: SettingWidget(icon: FeatherIcons.settings, text: "Pengaturan")
+                        child: const SettingWidget(icon: FeatherIcons.settings, text: "Pengaturan")
                         )
                     ],
                   ),
