@@ -197,7 +197,8 @@ class PenjualanSection extends StatelessWidget {
                   SizedBox(height: AppResponsive().screenHeight(context)*0.02,),
                   ElevatedButton(onPressed: () {
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: AppColors.activeIcon, shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(2))), child: Text("Registrasi Penjualan Sekarang", style: AppTextStyle().description(AppColors.background),),),
+                  style: ElevatedButton.styleFrom(backgroundColor: AppColors.activeIcon, shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(2))), child: Text("Registrasi Penjualan Sekarang", style: AppTextStyle().description(AppColors.background),),
+                  ),
                 ],
               );
   }
@@ -207,13 +208,44 @@ class PribadiSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-                  children: [
-                    SettingWidget(icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
-                    SettingWidget(icon: FeatherIcons.messageCircle, text: "Chat"),
-                    SettingWidget(icon: FeatherIcons.bell, text: "Notifikasi"),
-                    SettingWidget(icon: FeatherIcons.settings, text: "Pengaturan")
-                  ],
-                );
+    return Padding(
+      padding: const EdgeInsets.only(right: 20,left: 20),
+      child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.cardIconFill,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0),
+                          ),
+                        ),
+                        child:SettingWidget(icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.cardIconFill
+                        ),
+                        child: SettingWidget(icon: FeatherIcons.messageCircle, text: "Chat")
+                        ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: AppColors.cardIconFill
+                        ),
+                        child: SettingWidget(icon: FeatherIcons.bell, text: "Notifikasi")
+                        ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20)
+                          ),
+                          color: AppColors.cardIconFill
+                        ),
+                        child: SettingWidget(icon: FeatherIcons.settings, text: "Pengaturan")
+                        )
+                    ],
+                  ),
+    );
   }
 }
