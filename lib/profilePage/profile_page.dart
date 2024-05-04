@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: const AppBarProfile(title: "Profil"),
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(  
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Align(
@@ -31,13 +31,15 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-                 SizedBox(
-              height: AppResponsive().screenHeight(context)*0.02,
-            ),
-            Text("Raihan Pace", style: AppTextStyle().title(AppColors.titleLine)),
-            Text("raihanmaulana084@gmail.com", style: AppTextStyle().description(AppColors.description)),
             SizedBox(
-              height: AppResponsive().screenHeight(context)*0.02,
+              height: AppResponsive().screenHeight(context) * 0.02,
+            ),
+            Text("Raihan Pace",
+                style: AppTextStyle().title(AppColors.titleLine)),
+            Text("raihanmaulana084@gmail.com",
+                style: AppTextStyle().description(AppColors.description)),
+            SizedBox(
+              height: AppResponsive().screenHeight(context) * 0.02,
             ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -65,8 +67,8 @@ class ProfilePage extends StatelessWidget {
                 ),
               ],
             ),
-                 SizedBox(
-              height: AppResponsive().screenHeight(context)*0.01,
+            SizedBox(
+              height: AppResponsive().screenHeight(context) * 0.01,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
