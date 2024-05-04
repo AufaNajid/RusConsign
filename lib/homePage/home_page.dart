@@ -37,7 +37,9 @@ class HomePage extends StatelessWidget {
                     ),
                     const Spacer(),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed("chatlist");
+                      },
                       icon: const Icon(
                         FeatherIcons.messageCircle,
                         color: AppColors.borderIcon,
