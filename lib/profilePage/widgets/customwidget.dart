@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -45,11 +46,13 @@ class CustomInfoWidget extends StatelessWidget {
 class SettingWidget extends StatelessWidget {
   final IconData icon;
   final String text;
+  final String topage;
 
   const SettingWidget({
     Key? key,
     required this.icon,
     required this.text,
+    required this.topage
   }) : super(key: key);
 
   @override
@@ -61,7 +64,9 @@ class SettingWidget extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             shape: const BeveledRectangleBorder()),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(topage);
+        },
         child: Row(
           children: [
             Icon(icon, color: AppColors.description),
@@ -218,7 +223,9 @@ class PenjualanSection extends StatelessWidget {
           height: AppResponsive().screenHeight(context) * 0.02,
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed("/registerseller");
+          },
           style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.activeIcon,
               shape: BeveledRectangleBorder(
@@ -251,16 +258,16 @@ class PribadiSection extends StatelessWidget {
               ),
             ),
             child: const SettingWidget(
-                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
+                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa",topage: "/detailpage",),
           ),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.messageCircle, text: "Chat")),
+                  icon: FeatherIcons.messageCircle, text: "Chat",topage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.bell, text: "Notifikasi")),
+                  icon: FeatherIcons.bell, text: "Notifikasi",topage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -268,7 +275,7 @@ class PribadiSection extends StatelessWidget {
                       bottomRight: Radius.circular(20)),
                   color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.settings, text: "Pengaturan"))
+                  icon: FeatherIcons.settings, text: "Pengaturan",topage: "/detailpage"))
         ],
       ),
     );
