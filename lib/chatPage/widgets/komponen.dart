@@ -8,13 +8,18 @@ import 'package:rusconsign/utils/text_style.dart';
 import '../../utils/colors.dart';
 import '../../utils/app_responsive.dart';
 
-
 class chatUI extends StatelessWidget {
   final String imagepath;
   final String nama;
   final String chat;
   final String waktu;
-  const chatUI({Key? key, required this.imagepath, required this.nama, required this.chat, required this.waktu}) : super(key: key);
+  const chatUI(
+      {Key? key,
+      required this.imagepath,
+      required this.nama,
+      required this.chat,
+      required this.waktu})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +35,8 @@ class chatUI extends StatelessWidget {
             ClipOval(
               child: Image.network(
                 imagepath,
-                width: AppResponsive().screenWidth(context) *
-                    0.110,
-                height: AppResponsive().screenHeight(context) *
-                    0.060,
+                width: AppResponsive().screenWidth(context) * 0.110,
+                height: AppResponsive().screenHeight(context) * 0.060,
                 fit: BoxFit.cover,
               ),
             ),
@@ -41,14 +44,23 @@ class chatUI extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(nama, style: AppTextStyle().header(AppColors.titleLine),),
-                  Text(chat,style: AppTextStyle().chat(AppColors.description),)
+                  Text(
+                    nama,
+                    style: AppTextStyle().header(AppColors.titleLine),
+                  ),
+                  Text(
+                    chat,
+                    style: AppTextStyle().chat(AppColors.description),
+                  )
                 ],
               ),
             ),
             Column(
               children: [
-                Text(waktu, style: AppTextStyle().subHeader(AppColors.description),),
+                Text(
+                  waktu,
+                  style: AppTextStyle().subHeader(AppColors.description),
+                ),
                 ClipOval(
                   child: Container(
                     height: 13,
@@ -65,7 +77,6 @@ class chatUI extends StatelessWidget {
   }
 }
 
-
 class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String imagepath;
@@ -74,7 +85,8 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBarChat({
     required this.title,
     this.onBackPressed,
-    Key? key, required this.imagepath,
+    Key? key,
+    required this.imagepath,
   }) : super(key: key);
 
   @override
@@ -98,10 +110,7 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Text(
-            title,
-            style: AppTextStyle().header(AppColors.titleLine)
-          ),
+          Text(title, style: AppTextStyle().header(AppColors.titleLine)),
         ].withSpaceBetween(width: 5),
       ),
     );
@@ -114,18 +123,27 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
 class MessageUi extends StatelessWidget {
   final String message;
   final String time;
-  const MessageUi({Key? key, required this.message, required this.time}) : super(key: key);
+  const MessageUi({Key? key, required this.message, required this.time})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(color: AppColors.cardIconFill, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(
+          color: AppColors.cardIconFill,
+          borderRadius: BorderRadius.circular(10)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(message, style: AppTextStyle().description(AppColors.description),),
-          Text(time, style: AppTextStyle().textInfo(AppColors.description),)
+          Text(
+            message,
+            style: AppTextStyle().description(AppColors.description),
+          ),
+          Text(
+            time,
+            style: AppTextStyle().textInfo(AppColors.description),
+          )
         ],
       ),
     );
