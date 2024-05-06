@@ -64,27 +64,22 @@ class HomePage extends StatelessWidget {
                       children: [
                         Expanded(
                           child: TextField(
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(6),
-                                borderSide: BorderSide.none,
+                            cursorColor: AppColors.hargaStat,
+                            style: AppTextStyle().descriptionBold(AppColors.description),
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                filled: true,
+                                fillColor: AppColors.cardIconFill,
+                                hintText: 'Cari jasa atau produk...',
+                                hintStyle: AppTextStyle()
+                                    .description(AppColors.description),
                               ),
-                              filled: true,
-                              fillColor: AppColors.cardIconFill,
-                              focusColor: AppColors.cardIconFill,
-                              hintText: 'Cari jasa atau produk...',
-                              hintStyle: AppTextStyle()
-                                  .description(AppColors.description),
-                            ),
-                            textAlign: TextAlign.left,
-                            style: const TextStyle(
-                              fontSize: 11,
-                              color: AppColors.description,
-                              fontWeight: FontWeight.w500,
-                              decoration: TextDecoration.none,
-                            ),
-                          ),
+                              textAlign: TextAlign.left,),
                         ),
                         const SizedBox(width: 12),
                         SizedBox(
