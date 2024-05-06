@@ -68,10 +68,10 @@ class ProfilePage extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: AppResponsive().screenHeight(context) * 0.01,
+              height: AppResponsive().screenHeight(context) * 0.02,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal:30),
               child: Text(
                 "Halo.. Selamat datang di profil saya. Kalian bisa melihat produk atau jasa yang saya berikan disini. Saya sendiiri juga termasuk siswa SMK RUS, jadi kalau mau ngobrol sama saya bisa ketemuan di sekolah",
                 style: AppTextStyle().description(AppColors.description),
@@ -80,7 +80,7 @@ class ProfilePage extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: AppResponsive().screenHeight(context)*0.05),
             const TabList(),
           ],
         ),
