@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/notificationPage/widgets/notification_card.dart';
@@ -16,7 +15,7 @@ class NotificationPage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              Get.off;
+              Get.back();
             },
             icon: const Icon(
               FeatherIcons.chevronLeft,
