@@ -5,6 +5,7 @@ import 'package:rusconsign/detailPage/detail_page_binding.dart';
 import 'package:rusconsign/favoritePage/favorite_page.dart';
 import 'package:rusconsign/diskonPage/diskon_page.dart';
 import 'package:rusconsign/menu.dart';
+import 'package:rusconsign/notificationPage/notifcation_page.dart';
 import 'package:rusconsign/profilePage/profile_page.dart';
 import 'package:rusconsign/registerSeller/register_seller.dart';
 import '../authentication/page/login_page.dart';
@@ -20,15 +21,18 @@ List<GetPage> routes = [
   GetPage(name: "/menu", page: () => const Menu()),
   GetPage(name: "/favoritepage", page: () => const FavoritePage()),
   GetPage(name: "/forgotpasswordpage", page: () => const ForgotPasswordPage()),
+  GetPage(name: "/profilepage", page: () => const ProfilePage()),
+  GetPage(name: "/diskonpage", page: () => const DiskonPage()),
+  GetPage(name: "/notificationpage", page: () => const NotificationPage()),
   GetPage(
       name: "/homepage", page: () => HomePage(), binding: HomePageBinding()),
   GetPage(
       name: "/detailpage",
       page: () => DetailPage(),
       binding: DetailPageBinding()),
-  
   GetPage(name: "/profilepage", 
   page: () => const ProfilePage()),
   GetPage(name: "/diskonpage", page: () => const DiskonPage()),
   GetPage(name: "/registerseller", page: () => const RegisterSeller(),)
+
 ];

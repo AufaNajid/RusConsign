@@ -46,13 +46,11 @@ class CustomInfoWidget extends StatelessWidget {
 class SettingWidget extends StatelessWidget {
   final IconData icon;
   final String text;
-  final String topage;
 
   const SettingWidget({
     Key? key,
     required this.icon,
     required this.text,
-    required this.topage
   }) : super(key: key);
 
   @override
@@ -64,9 +62,7 @@ class SettingWidget extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             shape: const BeveledRectangleBorder()),
-        onPressed: () {
-          Get.toNamed(topage);
-        },
+        onPressed: () {},
         child: Row(
           children: [
             Icon(icon, color: AppColors.description),
@@ -258,16 +254,16 @@ class PribadiSection extends StatelessWidget {
               ),
             ),
             child: const SettingWidget(
-                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa",topage: "/detailpage",),
+                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
           ),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.messageCircle, text: "Chat",topage: "/detailpage")),
+                  icon: FeatherIcons.messageCircle, text: "Chat")),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.bell, text: "Notifikasi",topage: "/detailpage")),
+                  icon: FeatherIcons.bell, text: "Notifikasi")),
           Container(
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -275,7 +271,7 @@ class PribadiSection extends StatelessWidget {
                       bottomRight: Radius.circular(20)),
                   color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.settings, text: "Pengaturan",topage: "/detailpage"))
+                  icon: FeatherIcons.settings, text: "Pengaturan"))
         ],
       ),
     );
