@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../utils/app_responsive.dart';
 import '../../utils/colors.dart';
@@ -41,7 +39,7 @@ class ProfileSetting extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: AppResponsive().screenWidth(context) * 0.070,
-                      width: AppResponsive().screenWidth(context) * 0.230,
+                      width: AppResponsive().screenWidth(context) * 0.250,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
@@ -62,7 +60,7 @@ class ProfileSetting extends StatelessWidget {
                     const SizedBox(width: 10),
                     SizedBox(
                       height: AppResponsive().screenWidth(context) * 0.070,
-                      width: AppResponsive().screenWidth(context) * 0.230,
+                      width: AppResponsive().screenWidth(context) * 0.250,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
@@ -98,22 +96,18 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
+                style: AppTextStyle().textInfo(AppColors.description),
+                cursorColor: AppColors.hargaStat,
+                textAlign: TextAlign.left,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
                   fillColor: AppColors.cardIconFill,
-                  focusColor: AppColors.cardIconFill,
-                ),
-                textAlign: TextAlign.left,
-                style: const TextStyle(
-                  fontSize: 11,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
                 ),
               ),
             )
@@ -131,23 +125,19 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
+                style: AppTextStyle().textInfo(AppColors.description),
+                cursorColor: AppColors.hargaStat,
+                textAlign: TextAlign.left,
+                maxLines: 6,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 10 ,horizontal: 10),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
                   fillColor: AppColors.cardIconFill,
-                  focusColor: AppColors.cardIconFill,
-                ),
-                maxLines: 6,
-                textAlign: TextAlign.left,
-                style: const TextStyle(
-                  fontSize: 11,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
                 ),
               ),
             )
@@ -165,22 +155,18 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
+                style: AppTextStyle().textInfo(AppColors.description),
+                cursorColor: AppColors.hargaStat,
+                textAlign: TextAlign.left,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(6),
                     borderSide: BorderSide.none,
                   ),
                   filled: true,
                   fillColor: AppColors.cardIconFill,
-                  focusColor: AppColors.cardIconFill,
-                ),
-                textAlign: TextAlign.left,
-                style: const TextStyle(
-                  fontSize: 11,
-                  color: AppColors.description,
-                  fontWeight: FontWeight.w500,
-                  decoration: TextDecoration.none,
                 ),
               ),
             )
