@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -45,11 +46,13 @@ class CustomInfoWidget extends StatelessWidget {
 class SettingWidget extends StatelessWidget {
   final IconData icon;
   final String text;
+  final String toPage;
 
   const SettingWidget({
     Key? key,
     required this.icon,
     required this.text,
+    required this.toPage,
   }) : super(key: key);
 
   @override
@@ -57,11 +60,10 @@ class SettingWidget extends StatelessWidget {
     return SizedBox(
       height: AppResponsive().screenHeight(context) * 0.05,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            shape: const BeveledRectangleBorder()),
-        onPressed: () {},
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,elevation: 0,shape: const BeveledRectangleBorder()),
+        onPressed: () {
+          Get.toNamed(toPage);
+        },
         child: Row(
           children: [
             Icon(icon, color: AppColors.description),
@@ -241,36 +243,41 @@ class PribadiSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 20, left: 20),
       child: Column(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              color: AppColors.cardIconFill,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                topRight: Radius.circular(20.0),
-              ),
-            ),
-            child: const SettingWidget(
-                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
-          ),
-          Container(
-              decoration: const BoxDecoration(color: AppColors.cardIconFill),
-              child: const SettingWidget(
-                  icon: FeatherIcons.messageCircle, text: "Chat")),
-          Container(
-              decoration: const BoxDecoration(color: AppColors.cardIconFill),
-              child: const SettingWidget(
-                  icon: FeatherIcons.bell, text: "Notifikasi")),
-          Container(
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20)),
-                  color: AppColors.cardIconFill),
-              child: const SettingWidget(
-                  icon: FeatherIcons.settings, text: "Pengaturan"))
-        ],
-      ),
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: AppColors.cardIconFill,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0),
+                          ),
+                        ),
+                        child:const SettingWidget(icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa", toPage: "/detailpage",),
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: AppColors.cardIconFill
+                        ),
+                        child: const SettingWidget(icon: FeatherIcons.messageCircle, text: "Chat", toPage: "/detailpage")
+                        ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: AppColors.cardIconFill
+                        ),
+                        child: const SettingWidget(icon: FeatherIcons.bell, text: "Notifikasi", toPage: "/detailpage")
+                        ),
+                      Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20)
+                          ),
+                          color: AppColors.cardIconFill
+                        ),
+                        child: const SettingWidget(icon: FeatherIcons.settings, text: "Pengaturan", toPage: "/detailpage")
+                        )
+                    ],
+                  ),
     );
   }
 }
