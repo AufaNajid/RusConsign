@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
-        initialRoute: "/notificationpage",
+        initialRoute: "/menu",
         getPages: routes
     );
   }

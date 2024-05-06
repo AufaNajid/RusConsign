@@ -60,7 +60,10 @@ class SettingWidget extends StatelessWidget {
     return SizedBox(
       height: AppResponsive().screenHeight(context) * 0.05,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: Colors.transparent,elevation: 0,shape: const BeveledRectangleBorder()),
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            shape: const BeveledRectangleBorder()),
         onPressed: () {
           Get.toNamed(toPage);
         },
@@ -243,41 +246,45 @@ class PribadiSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 20, left: 20),
       child: Column(
-                    children: [
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: AppColors.cardIconFill,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20.0),
-                            topRight: Radius.circular(20.0),
-                          ),
-                        ),
-                        child:const SettingWidget(icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa", toPage: "/detailpage",),
-                      ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: AppColors.cardIconFill
-                        ),
-                        child: const SettingWidget(icon: FeatherIcons.messageCircle, text: "Chat", toPage: "/detailpage")
-                        ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: AppColors.cardIconFill
-                        ),
-                        child: const SettingWidget(icon: FeatherIcons.bell, text: "Notifikasi", toPage: "/detailpage")
-                        ),
-                      Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20)
-                          ),
-                          color: AppColors.cardIconFill
-                        ),
-                        child: const SettingWidget(icon: FeatherIcons.settings, text: "Pengaturan", toPage: "/detailpage")
-                        )
-                    ],
-                  ),
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              color: AppColors.cardIconFill,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0),
+              ),
+            ),
+            child: const SettingWidget(
+              icon: FeatherIcons.archive,
+              text: "Pembelian Produk/Jasa",
+              toPage: "/detailpage",
+            ),
+          ),
+          Container(
+              decoration: const BoxDecoration(color: AppColors.cardIconFill),
+              child: const SettingWidget(
+                  icon: FeatherIcons.messageCircle,
+                  text: "Chat",
+                  toPage: "/detailpage")),
+          Container(
+              decoration: const BoxDecoration(color: AppColors.cardIconFill),
+              child: const SettingWidget(
+                  icon: FeatherIcons.bell,
+                  text: "Notifikasi",
+                  toPage: "/notificationpage")),
+          Container(
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20)),
+                  color: AppColors.cardIconFill),
+              child: const SettingWidget(
+                  icon: FeatherIcons.settings,
+                  text: "Pengaturan",
+                  toPage: "/detailpage"))
+        ],
+      ),
     );
   }
 }
