@@ -65,6 +65,7 @@ class HomePage extends StatelessWidget {
                         Expanded(
                           child: TextField(
                             decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(6),
                                 borderSide: BorderSide.none,
@@ -87,8 +88,8 @@ class HomePage extends StatelessWidget {
                         ),
                         const SizedBox(width: 12),
                         SizedBox(
-                          width: 60,
-                          height: 60,
+                          width: 50,
+                          height: 50,
                           child: Ink(
                             decoration: ShapeDecoration(
                               color: AppColors.cardIconFill,

@@ -271,7 +271,9 @@ class PribadiSection extends StatelessWidget {
                       bottomRight: Radius.circular(20)),
                   color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.settings, text: "Pengaturan"))
+                  icon: FeatherIcons.settings,
+                  text: "Pengaturan",
+                  toPage: "/settingpage"))
         ],
       ),
     );
