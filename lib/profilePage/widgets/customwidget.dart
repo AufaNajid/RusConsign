@@ -282,7 +282,7 @@ class PribadiSection extends StatelessWidget {
               child: const SettingWidget(
                   icon: FeatherIcons.settings,
                   text: "Pengaturan",
-                  toPage: "/detailpage"))
+                  toPage: "/settingpage"))
         ],
       ),
     );
