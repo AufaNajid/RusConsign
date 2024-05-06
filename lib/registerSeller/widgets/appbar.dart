@@ -19,10 +19,10 @@ class AppBarRegisterSeller extends StatelessWidget implements PreferredSizeWidge
       surfaceTintColor: AppColors.background,
       elevation: null,
       leading: IconButton(
+        color: AppColors.bintang,
         icon: const Icon(FeatherIcons.chevronLeft),
         onPressed: onBackPressed,
         iconSize: 24,
-        color: AppColors.borderIcon,
       ),
       title: Text(
         title,

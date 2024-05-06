@@ -46,11 +46,13 @@ class CustomInfoWidget extends StatelessWidget {
 class SettingWidget extends StatelessWidget {
   final IconData icon;
   final String text;
+  final String toPage;
 
   const SettingWidget({
     Key? key,
     required this.icon,
     required this.text,
+    required this.toPage,
   }) : super(key: key);
 
   @override
@@ -62,7 +64,9 @@ class SettingWidget extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             shape: const BeveledRectangleBorder()),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed(toPage);
+        },
         child: Row(
           children: [
             Icon(icon, color: AppColors.description),
@@ -254,16 +258,16 @@ class PribadiSection extends StatelessWidget {
               ),
             ),
             child: const SettingWidget(
-                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa"),
+                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa", toPage: "/detailpage",),
           ),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.messageCircle, text: "Chat")),
+                  icon: FeatherIcons.messageCircle, text: "Chat" , toPage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.bell, text: "Notifikasi")),
+                  icon: FeatherIcons.bell, text: "Notifikasi" , toPage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
