@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
+import 'package:rusconsign/settingPage/setting_controller.dart';
 
 import '../../utils/app_responsive.dart';
 import '../../utils/colors.dart';
@@ -9,6 +12,7 @@ class ProfileSetting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SettingController settingController = Get.find();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -153,25 +157,42 @@ class ProfileSetting extends StatelessWidget {
                   style: AppTextStyle().textInfoBold(AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
-            Expanded(
-              child: TextField(
-                style: AppTextStyle().textInfo(AppColors.description),
-                cursorColor: AppColors.hargaStat,
-                textAlign: TextAlign.left,
-                decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(6),
-                    borderSide: BorderSide.none,
+            Obx(
+              () => Expanded(
+                child: TextFormField(
+                  style: AppTextStyle().textInfo(AppColors.description),
+                  cursorColor: AppColors.hargaStat,
+                  textAlign: TextAlign.left,
+                  obscureText: settingController.isShow.value,
+                  decoration: InputDecoration(
+                    suffixIcon: GestureDetector(
+                      onTap: () {
+                        settingController.showPassword();
+                      },
+                      child: Icon(
+                        settingController.isShow.value
+                            ? FeatherIcons.eye
+                            : FeatherIcons.eyeOff,
+                        color: settingController.isShow.value
+                            ? AppColors.activeIcon
+                            : AppColors.nonActiveIcon,
+                      ),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                      borderSide: BorderSide.none,
+                    ),
+                    filled: true,
+                    fillColor: AppColors.cardIconFill,
                   ),
-                  filled: true,
-                  fillColor: AppColors.cardIconFill,
                 ),
               ),
             )
           ],
         ),
+        const SizedBox(height: 20),
       ],
     );
   }

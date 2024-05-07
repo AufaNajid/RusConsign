@@ -29,10 +29,10 @@ class NotificationSetting extends StatelessWidget {
                 const Spacer(),
                 IconButton(
                   onPressed: () {
-                    settingController.toggleSwitch();
+                    settingController.toggleNotificationSwitch();
                   },
                   icon: Icon(
-                    settingController.isSwitched.value
+                    settingController.isNotificationSwitched.value
                         ? FeatherIcons.toggleRight
                         : FeatherIcons.toggleLeft,
                     size: 30,
@@ -40,6 +40,7 @@ class NotificationSetting extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 15)
           ],
         ));
   }
