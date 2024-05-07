@@ -1,4 +1,6 @@
-import 'package:flutter/cupertino.dart';
+// ignore: duplicate_ignore
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -8,7 +10,6 @@ import 'package:rusconsign/chatPage/widgets/komponen.dart';
 import 'package:rusconsign/utils/extension.dart';
 import '../utils/app_responsive.dart';
 import '../utils/colors.dart';
-import '../utils/text_style.dart';
 
 class ChatPage extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatter;
@@ -75,7 +76,7 @@ class ChatPage extends StatelessWidget {
       bottomSheet: Container(
           width: double.infinity,
           height: AppResponsive().screenHeight(context) * 0.090,
-          padding: EdgeInsets.only(bottom: 10, top: 10, left: 5, right: 5),
+          padding: const EdgeInsets.only(bottom: 10, top: 10, left: 5, right: 5),
           decoration: BoxDecoration(
             color: AppColors.background,
             boxShadow: [
@@ -91,12 +92,12 @@ class ChatPage extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   FeatherIcons.plus,
                   size: 30,
                 ),
               ),
-              Expanded(
+              const Expanded(
                   child: MyTextField(
                 isObscured: false,
                 labelText: "Masukkan Pesan...",
@@ -104,10 +105,10 @@ class ChatPage extends StatelessWidget {
               ClipOval(
                 child: Container(
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(color: AppColors.button1),
+                  decoration: const BoxDecoration(color: AppColors.button1),
                   child: IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.send,
                       color: AppColors.activeIconType,
                     ),

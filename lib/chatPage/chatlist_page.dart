@@ -23,7 +23,7 @@ class ChatListPage extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
-            return Padding(
+            return const Padding(
               padding:
                   EdgeInsets.only(bottom: 10.0, left: 7.0, right: 7.0, top: 10),
               child: chatUI(
@@ -37,7 +37,7 @@ class ChatListPage extends StatelessWidget {
           },
           itemCount: 12,
           separatorBuilder: (BuildContext context, int index) {
-            return Divider(
+            return const Divider(
               color: AppColors.cardIconFill,
             );
           },

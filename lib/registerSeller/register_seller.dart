@@ -1,6 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rusconsign/registerSeller/widgets/appbar.dart';
 import 'package:rusconsign/registerSeller/widgets/customtextfield.dart';
@@ -35,7 +34,7 @@ class RegisterSeller extends StatelessWidget {
                 ],
               )
   ),
-      appBar: AppBarRegisterSeller(title: "Registrasi Penjualan"),
+      appBar: const AppBarRegisterSeller(title: "Registrasi Penjualan"),
       backgroundColor: AppColors.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -54,7 +53,7 @@ class RegisterSeller extends StatelessWidget {
                   SizedBox(
                     height: AppResponsive().screenHeight(context)*0.02,
                   ),
-                  TextFieldRegisterSeller(
+                  const TextFieldRegisterSeller(
                 hintText: "Masukkan nama lengkap anda...",
               ),
               SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
@@ -71,7 +70,7 @@ class RegisterSeller extends StatelessWidget {
                   SizedBox(
                     height: AppResponsive().screenHeight(context)*0.02,
                   ),
-                  TextFieldRegisterSellerNumber(
+                  const TextFieldRegisterSellerNumber(
                 hintText: "Masukkan NIS anda...",
               ),
               SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
@@ -88,7 +87,7 @@ class RegisterSeller extends StatelessWidget {
                   SizedBox(
                     height: AppResponsive().screenHeight(context)*0.02,
                   ),
-                  TextFieldRegisterSellerNumber(
+                  const TextFieldRegisterSellerNumber(
                 hintText: "Masukkan nomor dompet digital anda...",
               ),
               SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
@@ -101,13 +100,13 @@ class RegisterSeller extends StatelessWidget {
               ),
               DottedBorder(
                 borderType: BorderType.RRect,
-                radius: Radius.circular(10),
+                radius: const Radius.circular(10),
                 strokeCap: StrokeCap.butt,
                 strokeWidth: 4,
                 color: AppColors.cardIconFill,
-                dashPattern: [20, 8],
+                dashPattern: const [20, 8],
                 child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                  borderRadius: const BorderRadius.all(Radius.circular(12)),
                   child: SizedBox(
                     width: AppResponsive().screenWidth(context) * 0.4,
                     height: AppResponsive().screenHeight(context) * 0.3,

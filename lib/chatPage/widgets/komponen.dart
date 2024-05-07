@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -27,7 +27,7 @@ class chatUI extends StatelessWidget {
       onTap: () {
         Get.toNamed("chatpage");
       },
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +65,7 @@ class chatUI extends StatelessWidget {
                   child: Container(
                     height: 13,
                     width: 13,
-                    decoration: BoxDecoration(color: AppColors.activeIcon),
+                    decoration: const BoxDecoration(color: AppColors.activeIcon),
                   ),
                 )
               ].withSpaceBetween(height: 5),
@@ -129,7 +129,7 @@ class MessageUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: AppColors.cardIconFill,
           borderRadius: BorderRadius.circular(10)),

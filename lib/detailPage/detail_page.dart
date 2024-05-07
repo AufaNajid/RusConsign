@@ -245,7 +245,7 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.only(left: 40, right: 40, top: 15, bottom: 15),
+        padding: const EdgeInsets.only(left: 40, right: 40, top: 15, bottom: 15),
         height: AppResponsive().screenHeight(context) * 0.090,
         width: double.infinity,
         decoration: BoxDecoration(
