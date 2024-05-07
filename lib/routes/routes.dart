@@ -10,6 +10,8 @@ import 'package:rusconsign/menu.dart';
 import 'package:rusconsign/notificationPage/notifcation_page.dart';
 import 'package:rusconsign/profilePage/profile_page.dart';
 import 'package:rusconsign/registerSeller/register_seller.dart';
+import 'package:rusconsign/registerSeller/register_seller_done.dart';
+import 'package:rusconsign/registerSeller/register_seller_waiting.dart';
 import 'package:rusconsign/settingPage/setting_page.dart';
 import 'package:rusconsign/settingPage/setting_page_binding.dart';
 import '../authentication/page/login_page.dart';
@@ -40,5 +42,7 @@ List<GetPage> routes = [
       name: "/settingpage",
       page: () => SettingPage(),
       binding: SettingPageBinding()),
-  GetPage(name: "/registerseller", page: () => const RegisterSeller())
+  GetPage(name: "/registerseller", page: () => const RegisterSeller()),
+  GetPage(name: "/waitingadmin", page: () =>const RegisterSellerWaiting()),
+  GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone(),)
 ];

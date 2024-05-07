@@ -1,6 +1,7 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/registerSeller/widgets/appbar.dart';
 import 'package:rusconsign/registerSeller/widgets/customtextfield.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -14,26 +15,27 @@ class RegisterSeller extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
-        surfaceTintColor: Colors.transparent,
-    color: Colors.transparent,
-    child: Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.button2,
-                          shape: BeveledRectangleBorder(
-                              borderRadius: BorderRadius.circular(2))),
-                      child: Text(
-                        "Registrasi",
-                        style: AppTextStyle().description(AppColors.background),
-                      ),
-                    ),
+          surfaceTintColor: Colors.transparent,
+          color: Colors.transparent,
+          child: Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed("/waitingadmin");
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.button2,
+                      shape: BeveledRectangleBorder(
+                          borderRadius: BorderRadius.circular(2))),
+                  child: Text(
+                    "Registrasi",
+                    style: AppTextStyle().description(AppColors.background),
                   ),
-                ],
-              )
-  ),
+                ),
+              ),
+            ],
+          )),
       appBar: const AppBarRegisterSeller(title: "Registrasi Penjualan"),
       backgroundColor: AppColors.background,
       body: Padding(
@@ -51,12 +53,14 @@ class RegisterSeller extends StatelessWidget {
                     style: AppTextStyle().subHeader(AppColors.titleLine),
                   ),
                   SizedBox(
-                    height: AppResponsive().screenHeight(context)*0.02,
+                    height: AppResponsive().screenHeight(context) * 0.02,
                   ),
                   const TextFieldRegisterSeller(
-                hintText: "Masukkan nama lengkap anda...",
-              ),
-              SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
+                    hintText: "Masukkan nama lengkap anda...",
+                  ),
+                  SizedBox(
+                    height: AppResponsive().screenHeight(context) * 0.03,
+                  )
                 ],
               ),
               Column(
@@ -68,12 +72,14 @@ class RegisterSeller extends StatelessWidget {
                     style: AppTextStyle().subHeader(AppColors.titleLine),
                   ),
                   SizedBox(
-                    height: AppResponsive().screenHeight(context)*0.02,
+                    height: AppResponsive().screenHeight(context) * 0.02,
                   ),
                   const TextFieldRegisterSellerNumber(
-                hintText: "Masukkan NIS anda...",
-              ),
-              SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
+                    hintText: "Masukkan NIS anda...",
+                  ),
+                  SizedBox(
+                    height: AppResponsive().screenHeight(context) * 0.03,
+                  )
                 ],
               ),
               Column(
@@ -85,18 +91,22 @@ class RegisterSeller extends StatelessWidget {
                     style: AppTextStyle().subHeader(AppColors.titleLine),
                   ),
                   SizedBox(
-                    height: AppResponsive().screenHeight(context)*0.02,
+                    height: AppResponsive().screenHeight(context) * 0.02,
                   ),
                   const TextFieldRegisterSellerNumber(
-                hintText: "Masukkan nomor dompet digital anda...",
-              ),
-              SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
+                    hintText: "Masukkan nomor dompet digital anda...",
+                  ),
+                  SizedBox(
+                    height: AppResponsive().screenHeight(context) * 0.03,
+                  )
                 ],
               ),
-              Text("Foto ID Card SMK RUS",
-              style: AppTextStyle().subHeader(AppColors.titleLine),),
+              Text(
+                "Foto ID Card SMK RUS",
+                style: AppTextStyle().subHeader(AppColors.titleLine),
+              ),
               SizedBox(
-                height: AppResponsive().screenHeight(context)*0.02,
+                height: AppResponsive().screenHeight(context) * 0.02,
               ),
               DottedBorder(
                 borderType: BorderType.RRect,
@@ -117,7 +127,7 @@ class RegisterSeller extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: AppResponsive().screenHeight(context)*0.02,
+                height: AppResponsive().screenHeight(context) * 0.02,
               ),
               ElevatedButton(
                 onPressed: () {},
@@ -130,8 +140,6 @@ class RegisterSeller extends StatelessWidget {
                   style: AppTextStyle().description(AppColors.background),
                 ),
               ),
-              
-              
             ],
           ),
         ),
