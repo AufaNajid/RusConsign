@@ -223,7 +223,9 @@ class PenjualanSection extends StatelessWidget {
           height: AppResponsive().screenHeight(context) * 0.02,
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.toNamed("/registerseller");
+          },
           style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.activeIcon,
               shape: BeveledRectangleBorder(
@@ -256,23 +258,16 @@ class PribadiSection extends StatelessWidget {
               ),
             ),
             child: const SettingWidget(
-              icon: FeatherIcons.archive,
-              text: "Pembelian Produk/Jasa",
-              toPage: "/detailpage",
-            ),
+                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa", toPage: "/detailpage",),
           ),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.messageCircle,
-                  text: "Chat",
-                  toPage: "/detailpage")),
+                  icon: FeatherIcons.messageCircle, text: "Chat" , toPage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.bell,
-                  text: "Notifikasi",
-                  toPage: "/notificationpage")),
+                  icon: FeatherIcons.bell, text: "Notifikasi" , toPage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -282,7 +277,7 @@ class PribadiSection extends StatelessWidget {
               child: const SettingWidget(
                   icon: FeatherIcons.settings,
                   text: "Pengaturan",
-                  toPage: "/detailpage"))
+                  toPage: "/settingpage"))
         ],
       ),
     );

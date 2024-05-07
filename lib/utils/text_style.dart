@@ -8,7 +8,7 @@ class AppTextStyle {
         fontSize: 18,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w700,
-        height: 0);
+        decoration: TextDecoration.none);
   }
 
   header(Color color) {
@@ -17,7 +17,7 @@ class AppTextStyle {
         fontSize: 16,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w600,
-        height: 0);
+        decoration: TextDecoration.none);
   }
 
   subHeader(Color color) {
@@ -26,7 +26,7 @@ class AppTextStyle {
         fontSize: 14,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w500,
-        height: 0);
+        decoration: TextDecoration.none);
   }
 
   description(Color color) {
@@ -35,7 +35,7 @@ class AppTextStyle {
         fontSize: 12,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w400,
-        height: 0);
+        decoration: TextDecoration.none);
   }
 
   textInfo(Color color) {
@@ -44,7 +44,7 @@ class AppTextStyle {
         fontSize: 10,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w400,
-        height: 0);
+        decoration: TextDecoration.none);
   }
 
   descriptionBold(Color color) {
@@ -53,7 +53,7 @@ class AppTextStyle {
         fontSize: 12,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w600,
-        height: 0);
+        decoration: TextDecoration.none);
   }
 
   textInfoBold(Color color) {
@@ -62,7 +62,7 @@ class AppTextStyle {
         fontSize: 10,
         fontFamily: "Poppins",
         fontWeight: FontWeight.w600,
-        height: 0);
+        decoration: TextDecoration.none);
   }
 
   chat(Color color) {

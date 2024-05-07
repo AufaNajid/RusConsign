@@ -33,7 +33,8 @@ class ChatPage extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 13.0).copyWith(right: 130.0),
+              padding: const EdgeInsets.symmetric(horizontal: 13.0)
+                  .copyWith(right: 130.0),
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -51,7 +52,9 @@ class ChatPage extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 13.0, vertical: 10).copyWith(bottom: 80).copyWith(left: 130.0),
+                  const EdgeInsets.symmetric(horizontal: 13.0, vertical: 10)
+                      .copyWith(bottom: 80)
+                      .copyWith(left: 130.0),
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -100,11 +103,11 @@ class ChatPage extends StatelessWidget {
                 labelText: "Masukkan Pesan...",
               )),
               GestureDetector(
-                onTap: (){},
+                onTap: () {},
                 child: ClipOval(
                   child: Container(
-                    height: 46,
-                    width: 46,
+                    height: AppResponsive().screenHeight(context) * 0.25,
+                    width: AppResponsive().screenWidth(context) * 0.15,
                     decoration: const BoxDecoration(color: AppColors.button1),
                     child: const Icon(
                       Icons.send,
