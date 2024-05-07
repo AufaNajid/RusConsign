@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/page/forgotpassword_page.dart';
-import 'package:rusconsign/chatPage/chat-cust-seller_page.dart';
+import 'package:rusconsign/chatPage/chat_cust_seller_page.dart';
 import 'package:rusconsign/chatPage/chatlist_page.dart';
 import 'package:rusconsign/detailPage/detail_page.dart';
 import 'package:rusconsign/detailPage/detail_page_binding.dart';

@@ -1,6 +1,3 @@
-// ignore: duplicate_ignore
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -36,13 +33,14 @@ class ChatPage extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 13.0, right: 130.0),
+              padding: const EdgeInsets.symmetric(horizontal: 13.0)
+                  .copyWith(right: 130.0),
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
+                    padding: const EdgeInsets.symmetric(vertical: 6.0),
                     child: MessageUi(
                         message:
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo ",
@@ -54,13 +52,15 @@ class ChatPage extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.only(left: 130.0, right: 10, bottom: 90),
+                  const EdgeInsets.symmetric(horizontal: 13.0, vertical: 10)
+                      .copyWith(bottom: 80)
+                      .copyWith(left: 130.0),
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 8.0),
+                    padding: const EdgeInsets.only(bottom: 10.0),
                     child: MessageUi(
                         message:
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo ",
@@ -76,7 +76,7 @@ class ChatPage extends StatelessWidget {
       bottomSheet: Container(
           width: double.infinity,
           height: AppResponsive().screenHeight(context) * 0.090,
-          padding: const EdgeInsets.only(bottom: 10, top: 10, left: 5, right: 5),
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
           decoration: BoxDecoration(
             color: AppColors.background,
             boxShadow: [
@@ -102,14 +102,16 @@ class ChatPage extends StatelessWidget {
                 isObscured: false,
                 labelText: "Masukkan Pesan...",
               )),
-              ClipOval(
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(color: AppColors.button1),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
+              GestureDetector(
+                onTap: () {},
+                child: ClipOval(
+                  child: Container(
+                    height: AppResponsive().screenHeight(context) * 0.25,
+                    width: AppResponsive().screenWidth(context) * 0.15,
+                    decoration: const BoxDecoration(color: AppColors.button1),
+                    child: const Icon(
                       Icons.send,
+                      size: 25,
                       color: AppColors.activeIconType,
                     ),
                   ),
