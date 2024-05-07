@@ -5,8 +5,8 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
-import '../../utils/colors.dart';
-import '../../utils/app_responsive.dart';
+import '../../../utils/colors.dart';
+import '../../../utils/app_responsive.dart';
 
 class chatUI extends StatelessWidget {
   final String imagepath;

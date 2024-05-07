@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:rusconsign/utils/colors.dart';
 
-import '../../utils/app_responsive.dart';
-import '../../utils/text_style.dart';
+import '../../../utils/app_responsive.dart';
+import '../../../utils/text_style.dart';
 
 class DividerProfile extends StatelessWidget {
   const DividerProfile({super.key});

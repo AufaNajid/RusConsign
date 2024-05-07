@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/settingPage/widgets/account_setting.dart';
-import 'package:rusconsign/settingPage/widgets/divider.dart';
-import 'package:rusconsign/settingPage/widgets/notification_setting.dart';
-import 'package:rusconsign/settingPage/widgets/preference_setting.dart';
-import 'package:rusconsign/settingPage/widgets/profile_setting.dart';
+import 'package:rusconsign/Page/settingPage/widgets/account_setting.dart';
+import 'package:rusconsign/Page/settingPage/widgets/divider.dart';
+import 'package:rusconsign/Page/settingPage/widgets/notification_setting.dart';
+import 'package:rusconsign/Page/settingPage/widgets/preference_setting.dart';
+import 'package:rusconsign/Page/settingPage/widgets/profile_setting.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-import '../utils/app_responsive.dart';
+import '../../utils/app_responsive.dart';
 import 'setting_controller.dart';
 
 class SettingPage extends StatelessWidget {
