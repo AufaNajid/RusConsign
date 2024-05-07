@@ -129,7 +129,7 @@ class MessageUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
           color: AppColors.cardIconFill,
           borderRadius: BorderRadius.circular(10)),
