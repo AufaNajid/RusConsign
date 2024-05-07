@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rusconsign/favoritePage/widgets/favorite_card.dart';
+import 'package:rusconsign/page/favoritePage/widgets/favorite_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 

@@ -5,8 +5,8 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
-import '../../utils/colors.dart';
-import '../../utils/app_responsive.dart';
+import '../../../utils/colors.dart';
+import '../../../utils/app_responsive.dart';
 
 class chatUI extends StatelessWidget {
   final String imagepath;
@@ -129,7 +129,7 @@ class MessageUi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
           color: AppColors.cardIconFill,
           borderRadius: BorderRadius.circular(10)),

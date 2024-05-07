@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/chatPage/widgets/komponen.dart';
+import 'package:rusconsign/page/chatPage/widgets/komponen.dart';
 import '../detailPage/widgets/komponen.dart';
-import '../utils/colors.dart';
+import '../../utils/colors.dart';
 
 class ChatListPage extends StatelessWidget {
   const ChatListPage({Key? key}) : super(key: key);

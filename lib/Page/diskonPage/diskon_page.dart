@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rusconsign/detailPage/widgets/komponen.dart';
+import 'package:rusconsign/page/detailPage/widgets/komponen.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/diskonPage/widgets/komponen.dart';
+import 'package:rusconsign/page/diskonPage/widgets/komponen.dart';
 
-import '../utils/colors.dart';
+import '../../utils/colors.dart';
 
 class DiskonPage extends StatelessWidget {
   const DiskonPage({Key? key}) : super(key: key);
