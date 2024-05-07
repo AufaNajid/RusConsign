@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:rusconsign/profilePage/widgets/customappbar.dart';
-import 'package:rusconsign/profilePage/widgets/customwidget.dart';
+import 'package:rusconsign/Page/profilePage/widgets/customappbar.dart';
+import 'package:rusconsign/Page/profilePage/widgets/customwidget.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
