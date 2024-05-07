@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 
 class AppBarRegisterSeller extends StatelessWidget implements PreferredSizeWidget {
@@ -16,12 +17,13 @@ class AppBarRegisterSeller extends StatelessWidget implements PreferredSizeWidge
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.background,
-      surfaceTintColor: AppColors.background,
+      surfaceTintColor: Colors.white,
       elevation: null,
       leading: IconButton(
-        color: AppColors.bintang,
         icon: const Icon(FeatherIcons.chevronLeft),
-        onPressed: onBackPressed,
+        onPressed: () {
+          Get.back();
+        },
         iconSize: 24,
       ),
       title: Text(
@@ -34,7 +36,8 @@ class AppBarRegisterSeller extends StatelessWidget implements PreferredSizeWidge
       centerTitle: true,
     );
   }
-  
+
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  
 }
