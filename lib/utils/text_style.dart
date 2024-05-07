@@ -64,4 +64,14 @@ class AppTextStyle {
         fontWeight: FontWeight.w600,
         decoration: TextDecoration.none);
   }
+
+  chat(Color color) {
+    return TextStyle(
+        color: color,
+        overflow: TextOverflow.ellipsis,
+        fontSize: 12,
+        fontFamily: "Poppins",
+        fontWeight: FontWeight.w400,
+        height: 0);
+  }
 }
