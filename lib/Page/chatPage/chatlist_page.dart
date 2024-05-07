@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/chatPage/widgets/komponen.dart';
+import 'package:rusconsign/page/chatPage/widgets/komponen.dart';
 import '../detailPage/widgets/komponen.dart';
 import '../../utils/colors.dart';
 

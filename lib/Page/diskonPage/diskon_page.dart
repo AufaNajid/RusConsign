@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rusconsign/Page/detailPage/widgets/komponen.dart';
+import 'package:rusconsign/page/detailPage/widgets/komponen.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/diskonPage/widgets/komponen.dart';
+import 'package:rusconsign/page/diskonPage/widgets/komponen.dart';
 
 import '../../utils/colors.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/settingPage/setting_controller.dart';
+import 'package:rusconsign/page/settingPage/setting_controller.dart';
 
 import '../../../utils/app_responsive.dart';
 import '../../../utils/colors.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/widget/widget.dart';
-import 'package:rusconsign/Page/chatPage/widgets/komponen.dart';
+import 'package:rusconsign/page/chatPage/widgets/komponen.dart';
 import 'package:rusconsign/utils/extension.dart';
 import '../../utils/app_responsive.dart';
 import '../../utils/colors.dart';
