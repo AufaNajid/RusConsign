@@ -245,7 +245,11 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
+        padding: EdgeInsets.only(left: 40, right: 40, top: 15, bottom: 15),
+        height: AppResponsive().screenHeight(context) * 0.090,
+        width: double.infinity,
         decoration: BoxDecoration(
+          color: AppColors.background,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
@@ -255,68 +259,42 @@ class DetailPage extends StatelessWidget {
             ),
           ],
         ),
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(
-              icon: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: () {},
+              child: Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    color: const Color(0xFFF5F5F5),
-                    borderRadius: BorderRadius.circular(5)),
+                  color: const Color(0xFFF5F5F5),
+                  borderRadius: BorderRadius.circular(5),
+                ),
                 child: const Icon(
                   FeatherIcons.shoppingCart,
                   size: 24,
                   color: AppColors.titleLine,
                 ),
               ),
-              label: '',
             ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Padding(
-                padding: const EdgeInsets.only(right: 30.0),
-                child: Container(
-                  width: double.infinity,
-                  alignment: Alignment.center,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      color: AppColors.description,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: const Text(
-                    'Beli Sekarang',
-                    style: TextStyle(
-                      color: AppColors.background, // Warna teks
-                      fontWeight: FontWeight.bold, // Ketebalan teks
-                    ),
-                  ),
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.symmetric(horizontal: 55,vertical: 10),
+                decoration: BoxDecoration(
+                  color: AppColors.description,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Text(
+                  'Beli Sekarang',
+                  style: AppTextStyle().subHeader(AppColors.textButton2)
                 ),
               ),
             ),
           ],
-          onTap: (int index) {
-            if (index == 0) {
-            } else if (index == 1) {}
-          },
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.white,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.grey,
-        ),
+        )
       ),
     );
   }
-}
-
-Widget customTextWidget(
-  String text, {
-  TextStyle? style,
-  TextAlign? textAlign,
-}) {
-  return Text(
-    text,
-    style: style,
-    textAlign: textAlign,
-  );
 }
