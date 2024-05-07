@@ -36,4 +36,5 @@ List<GetPage> routes = [
       name: "/settingpage",
       page: () => SettingPage(),
       binding: SettingPageBinding()),
+  GetPage(name: "/registerseller", page: () => const RegisterSeller())
 ];

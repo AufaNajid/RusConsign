@@ -3,7 +3,12 @@ import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class TextFieldRegisterSeller extends StatelessWidget {
-  const TextFieldRegisterSeller({super.key});
+   final String hintText;
+   
+   const TextFieldRegisterSeller ({
+    Key? key,
+    required this.hintText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,7 @@ class TextFieldRegisterSeller extends StatelessWidget {
         filled: true,
         fillColor: AppColors.cardIconFill,
         focusColor: AppColors.cardIconFill,
-        hintText: "Masukkan nama",
+        hintText: hintText,
         hintStyle: AppTextStyle().description(AppColors.description)),
         textAlign: TextAlign.left,
         style: AppTextStyle().description(AppColors.description),
