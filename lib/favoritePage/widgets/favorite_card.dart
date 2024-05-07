@@ -31,7 +31,7 @@ class FavoriteCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12)
       ),
-      child: InkWell(
+      child: GestureDetector(
         onTap: () {
           Get.toNamed("/detailpage");
         },

@@ -45,7 +45,7 @@ class ChatPage extends StatelessWidget {
                     child: MessageUi(
                         message:
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo ",
-                        time: "00.00"),
+                        time: DateTime.now()),
                   );
                 },
                 itemCount: 5,
@@ -63,7 +63,7 @@ class ChatPage extends StatelessWidget {
                     child: MessageUi(
                         message:
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo ",
-                        time: "00.00"),
+                        time: DateTime.now()),
                   );
                 },
                 itemCount: 5,
@@ -103,8 +103,8 @@ class ChatPage extends StatelessWidget {
               )),
               ClipOval(
                 child: Container(
+                  alignment: Alignment.center,
                   decoration: BoxDecoration(color: AppColors.button1),
-                  padding: EdgeInsets.all(3),
                   child: IconButton(
                     onPressed: () {},
                     icon: Icon(

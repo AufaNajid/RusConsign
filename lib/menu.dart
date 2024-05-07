@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:rusconsign/authentication/page/forgotpassword_page.dart';
-import 'package:rusconsign/chatPage/chatlist_page.dart';
 import 'package:rusconsign/favoritePage/favorite_page.dart';
 import 'package:rusconsign/homePage/home_page.dart';
 import 'package:rusconsign/profilePage/profile_page.dart';
@@ -21,7 +19,7 @@ class Menu extends StatelessWidget {
       return [
         HomePage(),
         const FavoritePage(),
-        ForgotPasswordPage(),
+        HomePage(),
         const ProfilePage(),
       ];
     }

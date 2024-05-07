@@ -122,7 +122,7 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
 
 class MessageUi extends StatelessWidget {
   final String message;
-  final String time;
+  final DateTime time;
   const MessageUi({Key? key, required this.message, required this.time})
       : super(key: key);
 
@@ -141,7 +141,7 @@ class MessageUi extends StatelessWidget {
             style: AppTextStyle().description(AppColors.description),
           ),
           Text(
-            time,
+              time.toString().substring(0, 16),
             style: AppTextStyle().textInfo(AppColors.description),
           )
         ],
