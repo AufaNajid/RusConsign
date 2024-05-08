@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
-import '../Page/notificationPage/notifcation_page.dart';
+import '../page/notificationPage/notifcation_page.dart';
 import '../authentication/page/forgotpassword_page.dart';
+import 'package:rusconsign/page/registerSeller/register_seller_done.dart';
+import 'package:rusconsign/page/registerSeller/register_seller_waiting.dart';
 import '../authentication/page/login_page.dart';
 import '../authentication/page/register_page.dart';
 import '../menu.dart';
@@ -45,4 +47,7 @@ List<GetPage> routes = [
       name: "/settingpage",
       page: () => SettingPage(),
       binding: SettingPageBinding()),
+  GetPage(name: "/registerseller", page: () => const RegisterSeller()),
+  GetPage(name: "/waitingadmin", page: () =>const RegisterSellerWaiting()),
+  GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone(),)
 ];
