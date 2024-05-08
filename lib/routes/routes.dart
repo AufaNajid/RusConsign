@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/checkoutPage/checkout_page.dart';
 import '../page/notificationPage/notifcation_page.dart';
 import '../authentication/page/forgotpassword_page.dart';
 import 'package:rusconsign/page/registerSeller/register_seller_done.dart';
