@@ -274,7 +274,7 @@ class PribadiSection extends StatelessWidget {
               child: const SettingWidget(
                   icon: FeatherIcons.bell,
                   text: "Notifikasi",
-                  toPage: "/detailpage")),
+                  toPage: "/notificationpage")),
           Container(
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
