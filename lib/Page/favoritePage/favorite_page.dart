@@ -30,8 +30,9 @@ class FavoritePage extends StatelessWidget {
                   'Product uadnadiadiadiwd awujdniandiandadjnwa iadniandandaikd aikujdnaidnad',
               price: 12000,
               rating: (index % 5) + 1,
-              profileImagePath: 'https://via.placeholder.com/20x20',
+              profileImagePath: 'https://via.placeholder.com/30x30',
               profileUsername: 'Username Toko',
+              onDelete: () {},
             );
           },
         ),
