@@ -5,7 +5,7 @@ import 'package:rusconsign/utils/colors.dart';
 
 import '../../../utils/text_style.dart';
 
-class NotPaidCard extends StatelessWidget {
+class OnProcessCard extends StatelessWidget {
   final String imagePath;
   final String title;
   final String profileImagePath;
@@ -14,9 +14,9 @@ class NotPaidCard extends StatelessWidget {
   final int totalProductPrice;
   final String paymentMethod;
   final String meetingLocation;
-  final VoidCallback onCancelProduct;
+  final VoidCallback onChatSeller;
 
-  const NotPaidCard({
+  const OnProcessCard({
     Key? key,
     required this.imagePath,
     required this.title,
@@ -26,7 +26,7 @@ class NotPaidCard extends StatelessWidget {
     required this.totalProductPrice,
     required this.paymentMethod,
     required this.meetingLocation,
-    required this.onCancelProduct,
+    required this.onChatSeller,
   }) : super(key: key);
 
   @override
@@ -84,12 +84,10 @@ class NotPaidCard extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                SizedBox(
-                                  child: Text(
-                                    title,
-                                    style: AppTextStyle()
-                                        .descriptionBold(AppColors.titleLine),
-                                  ),
+                                Text(
+                                  title,
+                                  style: AppTextStyle()
+                                      .descriptionBold(AppColors.titleLine),
                                 ),
                                 const SizedBox(height: 5),
                                 Row(
@@ -207,7 +205,7 @@ class NotPaidCard extends StatelessWidget {
                   height: AppResponsive().screenWidth(context) * 0.080,
                   child: ElevatedButton(
                     onPressed: () {
-                      onCancelProduct;
+                      onChatSeller;
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -216,7 +214,7 @@ class NotPaidCard extends StatelessWidget {
                       backgroundColor:
                           MaterialStateProperty.all<Color>(AppColors.button2),
                     ),
-                    child: Text("Batalkan Pesanan",
+                    child: Text("Chat Dengan Penjual",
                         style: AppTextStyle().header(AppColors.textButton2)),
                   ),
                 ),

@@ -19,8 +19,12 @@ class FilterOrderButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final OrderPageController filterOrderController = Get.find();
-    return Obx(() => ElevatedButton.icon(
+    return Obx(
+      () => SizedBox(
+        width: AppResponsive().screenWidth(context) * 0.29,
+        child: ElevatedButton.icon(
           style: ButtonStyle(
+            elevation: MaterialStateProperty.all(0),
             backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
               return filterOrderController.selectedIndex == index
                   ? AppColors.button1
@@ -30,10 +34,6 @@ class FilterOrderButton extends StatelessWidget {
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(6),
               ),
-            ),
-            fixedSize: MaterialStateProperty.all<Size>(
-              Size(AppResponsive().screenWidth(context) * 0.295,
-                  AppResponsive().screenWidth(context) * 0.04),
             ),
           ),
           icon: Icon(
@@ -57,6 +57,8 @@ class FilterOrderButton extends StatelessWidget {
               filterOrderController.setSelectedFilter(index);
             }
           },
-        ));
+        ),
+      ),
+    );
   }
 }
