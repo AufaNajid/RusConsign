@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:rusconsign/page/registerSeller/widgets/appbar.dart';
 import 'package:rusconsign/page/registerSeller/widgets/customtextfield.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -12,28 +16,59 @@ class RegisterSeller extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return RegisterSellerForm();
+  }
+}
+
+class RegisterSellerForm extends StatefulWidget {
+  const RegisterSellerForm({Key? key}) : super(key: key);
+
+  @override
+  _RegisterSellerFormState createState() => _RegisterSellerFormState();
+}
+
+class _RegisterSellerFormState extends State<RegisterSellerForm> {
+  File? _pickedImage;
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _pickedImage = File(pickedFile.path);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
         surfaceTintColor: Colors.transparent,
-    color: Colors.transparent,
-    child: Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors.button2,
-                          shape: BeveledRectangleBorder(
-                              borderRadius: BorderRadius.circular(2))),
-                      child: Text(
-                        "Registrasi",
-                        style: AppTextStyle().description(AppColors.background),
-                      ),
-                    ),
+        color: Colors.transparent,
+        child: Row(
+          children: [
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  Get.toNamed("/waitingadmin");
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.button2,
+                  shape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
                   ),
-                ],
-              )
-  ),
+                ),
+                child: Text(
+                  "Registrasi",
+                  style: AppTextStyle().description(AppColors.background),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: const AppBarRegisterSeller(title: "Registrasi Penjualan"),
       backgroundColor: AppColors.background,
       body: Padding(
@@ -51,12 +86,14 @@ class RegisterSeller extends StatelessWidget {
                     style: AppTextStyle().subHeader(AppColors.titleLine),
                   ),
                   SizedBox(
-                    height: AppResponsive().screenHeight(context)*0.02,
+                    height: AppResponsive().screenHeight(context) * 0.02,
                   ),
                   const TextFieldRegisterSeller(
-                hintText: "Masukkan nama lengkap anda...",
-              ),
-              SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
+                    hintText: "Masukkan nama lengkap anda...",
+                  ),
+                  SizedBox(
+                    height: AppResponsive().screenHeight(context) * 0.03,
+                  ),
                 ],
               ),
               Column(
@@ -68,12 +105,14 @@ class RegisterSeller extends StatelessWidget {
                     style: AppTextStyle().subHeader(AppColors.titleLine),
                   ),
                   SizedBox(
-                    height: AppResponsive().screenHeight(context)*0.02,
+                    height: AppResponsive().screenHeight(context) * 0.02,
                   ),
                   const TextFieldRegisterSellerNumber(
-                hintText: "Masukkan NIS anda...",
-              ),
-              SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
+                    hintText: "Masukkan NIS anda...",
+                  ),
+                  SizedBox(
+                    height: AppResponsive().screenHeight(context) * 0.03,
+                  ),
                 ],
               ),
               Column(
@@ -85,18 +124,22 @@ class RegisterSeller extends StatelessWidget {
                     style: AppTextStyle().subHeader(AppColors.titleLine),
                   ),
                   SizedBox(
-                    height: AppResponsive().screenHeight(context)*0.02,
+                    height: AppResponsive().screenHeight(context) * 0.02,
                   ),
                   const TextFieldRegisterSellerNumber(
-                hintText: "Masukkan nomor dompet digital anda...",
-              ),
-              SizedBox(height: AppResponsive().screenHeight(context)*0.03,)
+                    hintText: "Masukkan nomor dompet digital anda...",
+                  ),
+                  SizedBox(
+                    height: AppResponsive().screenHeight(context) * 0.03,
+                  ),
                 ],
               ),
-              Text("Foto ID Card SMK RUS",
-              style: AppTextStyle().subHeader(AppColors.titleLine),),
+              Text(
+                "Foto ID Card SMK RUS",
+                style: AppTextStyle().subHeader(AppColors.titleLine),
+              ),
               SizedBox(
-                height: AppResponsive().screenHeight(context)*0.02,
+                height: AppResponsive().screenHeight(context) * 0.02,
               ),
               DottedBorder(
                 borderType: BorderType.RRect,
@@ -110,28 +153,38 @@ class RegisterSeller extends StatelessWidget {
                   child: SizedBox(
                     width: AppResponsive().screenWidth(context) * 0.4,
                     height: AppResponsive().screenHeight(context) * 0.3,
-                    child: Center(
-                        child: SvgPicture.asset(
-                            "assets/images/clarity_picture-line.svg")),
+                    child: _pickedImage != null
+                        ? Image.file(
+                            _pickedImage!,
+                            fit: BoxFit.cover,
+                          )
+                        : Center(
+                            child: SvgPicture.asset(
+                              "assets/images/clarity_picture-line.svg",
+                            ),
+                          ),
                   ),
                 ),
               ),
               SizedBox(
-                height: AppResponsive().screenHeight(context)*0.02,
+                height: AppResponsive().screenHeight(context) * 0.02,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: _pickImage,
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.activeIcon,
-                    shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.circular(2))),
-                child: Text(
-                  "Pilih foto",
-                  style: AppTextStyle().description(AppColors.background),
+                  backgroundColor: AppColors.activeIcon,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: Text(
+                    "Pilih Foto",
+                    style: AppTextStyle().description(AppColors.background),
+                  ),
                 ),
               ),
-              
-              
             ],
           ),
         ),
