@@ -21,11 +21,12 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0,
       color: AppColors.cardIconFill,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        child: InkWell(
+        child: GestureDetector(
           onTap: () {
             Get.toNamed("/detailpage");
           },
