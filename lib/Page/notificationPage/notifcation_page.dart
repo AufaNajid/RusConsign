@@ -28,7 +28,7 @@ class NotificationPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColors.background,
         surfaceTintColor: AppColors.background,
-        actions: <Widget>[
+        actions: [
           IconButton(
               onPressed: () {},
               icon: const Icon(
