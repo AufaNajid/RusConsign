@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'dart:io';
 
 import 'package:dotted_border/dotted_border.dart';
@@ -16,7 +18,7 @@ class RegisterSeller extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RegisterSellerForm();
+    return const RegisterSellerForm();
   }
 }
 
