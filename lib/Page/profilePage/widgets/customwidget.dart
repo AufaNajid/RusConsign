@@ -258,16 +258,23 @@ class PribadiSection extends StatelessWidget {
               ),
             ),
             child: const SettingWidget(
-                icon: FeatherIcons.archive, text: "Pembelian Produk/Jasa", toPage: "/detailpage",),
+              icon: FeatherIcons.archive,
+              text: "Pembelian Produk/Jasa",
+              toPage: "/orderpage",
+            ),
           ),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.messageCircle, text: "Chat" , toPage: "/detailpage")),
+                  icon: FeatherIcons.messageCircle,
+                  text: "Chat",
+                  toPage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
               child: const SettingWidget(
-                  icon: FeatherIcons.bell, text: "Notifikasi" , toPage: "/detailpage")),
+                  icon: FeatherIcons.bell,
+                  text: "Notifikasi",
+                  toPage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
