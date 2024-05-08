@@ -42,7 +42,6 @@ class DropDownLang extends StatelessWidget {
                     style: AppTextStyle().textInfoBold(AppColors.description),
                   ),
                 ),
-                // Tambahkan pilihan bahasa lainnya di sini sesuai kebutuhan
               ],
             ),
           ],

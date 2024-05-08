@@ -35,10 +35,19 @@ List<GetPage> routes = [
   GetPage(name: "/diskonpage", page: () => const DiskonPage()),
   GetPage(name: "/notificationpage", page: () => const NotificationPage()),
   GetPage(name: "/registerseller", page: () => const RegisterSeller()),
+  GetPage(name: "/registerseller", page: () => const RegisterSeller()),
+  GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
+  GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone()),
   GetPage(
-      name: "/homepage", page: () => HomePage(), binding: HomePageBinding()),
+    name: "/homepage",
+    page: () => HomePage(),
+    binding: HomePageBinding(),
+  ),
   GetPage(
-      name: "/orderpage", page: () => OrderPage(), binding: OrderPageBinding()),
+    name: "/orderpage",
+    page: () => OrderPage(),
+    binding: OrderPageBinding(),
+  ),
   GetPage(
       name: "/detailpage",
       page: () => DetailPage(),
@@ -47,7 +56,4 @@ List<GetPage> routes = [
       name: "/settingpage",
       page: () => SettingPage(),
       binding: SettingPageBinding()),
-  GetPage(name: "/registerseller", page: () => const RegisterSeller()),
-  GetPage(name: "/waitingadmin", page: () =>const RegisterSellerWaiting()),
-  GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone(),)
 ];
