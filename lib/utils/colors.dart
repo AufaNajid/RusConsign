@@ -17,6 +17,7 @@ class AppColors {
   static const Color cardIconFill = Color(0xFFF5F5F5);
   static const Color produkDipilih = Color(0xFFFFCFCF);
   static const Color cardProdukDipilih = Color(0xFFFFDFDF);
-  static const Color nonActiveBar = Color(0xFFEDEDED);
+  static const Color cardProdukTidakDipilih = Color(0xFFE1E1E1);
+  static const Color nonActiveBar = Color(0xFFE1E1E1);
   static const Color component = Color(0xFF9747FF);
 }
