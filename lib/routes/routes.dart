@@ -39,6 +39,7 @@ List<GetPage> routes = [
   GetPage(name: "/registerseller", page: () => const RegisterSeller()),
   GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
   GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone()),
+  GetPage(name: "/checkoutpage", page: () => const ChekcoutPage()),
   GetPage(
     name: "/homepage",
     page: () => HomePage(),
