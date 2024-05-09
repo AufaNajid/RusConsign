@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                               ),
                               filled: true,
                               fillColor: AppColors.cardIconFill,
-                              hintText: 'Cari jasa atau produk...',
+                              hintText: 'cari'.tr,
                               hintStyle: AppTextStyle()
                                   .description(AppColors.description),
                             ),
@@ -168,7 +168,7 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Halaman Produk dan Jasa',
+                      'halamanP&J'.tr,
                       style: AppTextStyle().subHeader(AppColors.titleLine),
                     ),
                     const SizedBox(height: 8),
