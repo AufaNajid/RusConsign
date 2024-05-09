@@ -30,7 +30,7 @@ class SettingPage extends StatelessWidget {
             icon: const Icon(FeatherIcons.chevronLeft,
                 color: AppColors.borderIcon)),
         title: Text(
-          "Pengaturan",
+          'pengaturan'.tr,
           style: AppTextStyle().title(AppColors.titleLine),
         ),
         centerTitle: true,
@@ -43,19 +43,19 @@ class SettingPage extends StatelessWidget {
             children: [
               const DividerProfile(),
               const ProfileSetting(),
-              const DividerComponent(
-                  icon: FeatherIcons.bell, text: "Notifikasi"),
+              DividerComponent(
+                  icon: FeatherIcons.bell, text: 'notifikasi'.tr),
               NotificationSetting(
                 iSwitched: settingController.isNotificationSwitched.value,
                 toggleSwitch: settingController.toggleNotificationSwitch,
               ),
-              const DividerComponent(
-                  icon: FeatherIcons.aperture, text: "Preferensi"),
+              DividerComponent(
+                  icon: FeatherIcons.aperture, text: 'preferensi'.tr),
               PreferenceSetting(
                   isSwitched: settingController.isDarkModeSwitched.value,
                   toggleSwitch: settingController.toggleDarkModeSwitch),
-              const DividerComponent(
-                  icon: FeatherIcons.link, text: "Link Akun"),
+              DividerComponent(
+                  icon: FeatherIcons.link, text: 'linkAkun'.tr),
               const AccountSetting(),
               SizedBox(
                 width: AppResponsive().screenWidth(context),
@@ -71,7 +71,7 @@ class SettingPage extends StatelessWidget {
                     backgroundColor:
                         MaterialStateProperty.all<Color>(AppColors.button1),
                   ),
-                  label: Text("Keluar",
+                  label: Text('keluar'.tr,
                       style: AppTextStyle().header(AppColors.textButton1)),
                 ),
               ),

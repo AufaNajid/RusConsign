@@ -23,7 +23,7 @@ class NotificationSetting extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Tampilkan Notifikasi",
+                  'tampilkanNotifikasi'.tr,
                   style: AppTextStyle().description(AppColors.description),
                 ),
                 const Spacer(),

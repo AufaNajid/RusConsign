@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class AppTranslation extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
-        'id': {
+        'Indonesia': {
           'bahasa': 'Bahasa',
           'indonesia': 'Indonesia',
           'inggris': 'Inggris',
@@ -40,7 +40,7 @@ class AppTranslation extends Translations {
           'subtotalProduk': 'Subtotal Produk',
           'biayaAdmin': 'Biaya Administrasi',
           'buatPesanan': 'Buat Pesanan',
-          'halo': 'Halo, ',
+          'halo': 'Halo ',
           'cari': 'Cari jasa atau produk...',
           'halamanP&J': 'Halaman Produk dan Jasa',
           'jasa': 'Jasa',
@@ -158,7 +158,7 @@ class AppTranslation extends Translations {
           'pesananDibatalkan': 'Pesanan Dibatalkan',
           'tanpaBiaya': '(Tanpa Biaya)',
         },
-        'en': {
+        'English': {
           'bahasa': 'Language',
           'indonesia': 'Indonesian',
           'inggris': 'English',
@@ -195,7 +195,7 @@ class AppTranslation extends Translations {
           'subtotalProduk': 'Product Subtotal',
           'biayaAdmin': 'Administration Fee',
           'buatPesanan': 'Create Order',
-          'halo': 'Hello, ',
+          'halo': 'Hello ',
           'cari': 'Search for services or products...',
           'halamanP&J': 'Products and Services Page',
           'jasa': 'Service',

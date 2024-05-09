@@ -157,7 +157,7 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
                     const Icon(FeatherIcons.user),
                     SizedBox(
                         width: AppResponsive().screenWidth(context) * 0.01),
-                    const Text("Pribadi")
+                    Text('pribadi'.tr)
                   ],
                 ),
               ),
@@ -182,7 +182,7 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
                     ),
                     SizedBox(
                         width: AppResponsive().screenWidth(context) * 0.01),
-                    const Text("Penjualan")
+                    Text('penjualan'.tr)
                   ],
                 ),
               ),
@@ -216,7 +216,7 @@ class PenjualanSection extends StatelessWidget {
             height: AppResponsive().screenHeight(context) * 0.25,
             child: SvgPicture.asset("assets/images/orang_mencet_hp.svg")),
         Text(
-          "Anda perlu registrasi untuk melakukan penjualan di Aplikasi ini",
+          'descResgisterPenjual'.tr,
           style: AppTextStyle().description(AppColors.description),
         ),
         SizedBox(
@@ -231,7 +231,7 @@ class PenjualanSection extends StatelessWidget {
               shape: BeveledRectangleBorder(
                   borderRadius: BorderRadius.circular(2))),
           child: Text(
-            "Registrasi Penjualan Sekarang",
+            'registerPenjualSekarang'.tr,
             style: AppTextStyle().description(AppColors.background),
           ),
         ),
@@ -257,23 +257,23 @@ class PribadiSection extends StatelessWidget {
                 topRight: Radius.circular(20.0),
               ),
             ),
-            child: const SettingWidget(
+            child: SettingWidget(
               icon: FeatherIcons.archive,
-              text: "Pembelian Produk/Jasa",
+              text: 'pembelianPJ'.tr,
               toPage: "/orderpage",
             ),
           ),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
-              child: const SettingWidget(
+              child: SettingWidget(
                   icon: FeatherIcons.messageCircle,
-                  text: "Chat",
+                  text: 'chat'.tr,
                   toPage: "/detailpage")),
           Container(
               decoration: const BoxDecoration(color: AppColors.cardIconFill),
-              child: const SettingWidget(
+              child: SettingWidget(
                   icon: FeatherIcons.bell,
-                  text: "Notifikasi",
+                  text: 'notifikasi'.tr,
                   toPage: "/notificationpage")),
           Container(
               decoration: const BoxDecoration(
@@ -281,9 +281,9 @@ class PribadiSection extends StatelessWidget {
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20)),
                   color: AppColors.cardIconFill),
-              child: const SettingWidget(
+              child: SettingWidget(
                   icon: FeatherIcons.settings,
-                  text: "Pengaturan",
+                  text: 'pengaturan'.tr,
                   toPage: "/settingpage"))
         ],
       ),
