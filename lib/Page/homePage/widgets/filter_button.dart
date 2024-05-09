@@ -22,6 +22,7 @@ class FilterButton extends StatelessWidget {
 
     return Obx(() => ElevatedButton.icon(
           style: ButtonStyle(
+            elevation: const MaterialStatePropertyAll(0),
             backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
               return filterButtonController.selectedIndex == index
                   ? AppColors.button1
