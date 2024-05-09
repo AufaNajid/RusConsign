@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/page/favoritePage/widgets/favorite_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -14,7 +15,7 @@ class FavoritePage extends StatelessWidget {
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
         title: Text(
-          "Favorit",
+          'favorit'.tr,
           style: AppTextStyle().title(AppColors.titleLine),
         ),
       ),

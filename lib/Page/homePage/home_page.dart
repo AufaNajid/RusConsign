@@ -57,9 +57,17 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'Halo Username',
-                      style: AppTextStyle().header(AppColors.titleLine),
+                    Row(
+                      children: [
+                        Text(
+                          'halo'.tr,
+                          style: AppTextStyle().header(AppColors.titleLine),
+                        ),
+                        Text(
+                          'Username',
+                          style: AppTextStyle().header(AppColors.titleLine),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -172,22 +180,22 @@ class HomePage extends StatelessWidget {
                       style: AppTextStyle().subHeader(AppColors.titleLine),
                     ),
                     const SizedBox(height: 8),
-                    const Row(
+                    Row(
                       children: [
                         FilterButton(
-                          text: 'Semua',
+                          text: 'semua'.tr,
                           icon: FeatherIcons.alignJustify,
                           index: 0,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         FilterButton(
-                          text: 'Jasa',
+                          text: 'jasa'.tr,
                           icon: FeatherIcons.users,
                           index: 1,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         FilterButton(
-                          text: 'Produk',
+                          text: 'produk'.tr,
                           icon: FeatherIcons.box,
                           index: 2,
                         )
