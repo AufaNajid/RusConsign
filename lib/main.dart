@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
         translations: AppTranslation(),
-        locale: const Locale('id'),
+        locale: const Locale('Indonesia'),
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
         initialRoute: "/menu",
