@@ -247,7 +247,7 @@ class AppTranslation extends Translations {
           'edit': 'Edit',
           'editLokasi': 'Edit Meeting Location',
           'lokasiBawaan': 'Default Meeting Location',
-          'rekomendasiLokasi': 'Rekomendasi Lokasi Pertemuan',
+          'rekomendasiLokasi': 'Meeting Location Recommendation',
           'editData': 'Edit Data',
           'ubahData': 'Change Data',
           'inputNamaPJ': 'Enter the product/service name...',
