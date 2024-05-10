@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/checkoutPage/checkout_page.dart';
+import 'package:rusconsign/page/locationPage/location_page.dart';
+import 'package:rusconsign/page/checkoutPage/checkout_page.dart';
 import '../page/notificationPage/notifcation_page.dart';
 import '../authentication/page/forgotpassword_page.dart';
 import 'package:rusconsign/page/registerSeller/register_seller_done.dart';
@@ -39,6 +40,7 @@ List<GetPage> routes = [
   GetPage(name: "/registerseller", page: () => const RegisterSeller()),
   GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
   GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone()),
+  GetPage(name: "/locationpage", page: () => const LocationPage()),
   GetPage(name: "/checkoutpage", page: () => const ChekcoutPage()),
   GetPage(
     name: "/homepage",
