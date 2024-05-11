@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/userProfilePage/user_profile_binding.dart';
 import 'package:rusconsign/Page/userProfilePage/user_profile_page.dart';
+import 'package:rusconsign/page/locationPage/location_page.dart';
+import 'package:rusconsign/page/checkoutPage/checkout_page.dart';
 import '../page/notificationPage/notifcation_page.dart';
 import '../authentication/page/forgotpassword_page.dart';
 import 'package:rusconsign/page/registerSeller/register_seller_done.dart';
@@ -37,6 +39,11 @@ List<GetPage> routes = [
   GetPage(name: "/diskonpage", page: () => const DiskonPage()),
   GetPage(name: "/notificationpage", page: () => const NotificationPage()),
   GetPage(name: "/registerseller", page: () => const RegisterSeller()),
+  GetPage(name: "/registerseller", page: () => const RegisterSeller()),
+  GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
+  GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone()),
+  GetPage(name: "/locationpage", page: () => const LocationPage()),
+  GetPage(name: "/checkoutpage", page: () => const ChekcoutPage()),
   GetPage(
       name: "/userprofilepage",
       page: () => UserProfilePage(),
@@ -44,7 +51,10 @@ List<GetPage> routes = [
   GetPage(
       name: "/homepage", page: () => HomePage(), binding: HomePageBinding()),
   GetPage(
-      name: "/orderpage", page: () => OrderPage(), binding: OrderPageBinding()),
+    name: "/orderpage",
+    page: () => OrderPage(),
+    binding: OrderPageBinding(),
+  ),
   GetPage(
       name: "/detailpage",
       page: () => DetailPage(),
@@ -53,7 +63,4 @@ List<GetPage> routes = [
       name: "/settingpage",
       page: () => SettingPage(),
       binding: SettingPageBinding()),
-  GetPage(name: "/registerseller", page: () => const RegisterSeller()),
-  GetPage(name: "/waitingadmin", page: () =>const RegisterSellerWaiting()),
-  GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone(),)
 ];

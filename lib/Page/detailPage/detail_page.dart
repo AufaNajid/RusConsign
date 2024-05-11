@@ -60,11 +60,11 @@ class DetailPage extends StatelessWidget {
                           },
                           icon: Obx(() => Icon(
                                 indicator.isLiked.value
-                                    ? FeatherIcons.heart
-                                    : Icons.favorite,
+                                    ? Icons.favorite
+                                    : FeatherIcons.heart,
                                 color: indicator.isLiked.value
-                                    ? AppColors.description
-                                    : Colors.red,
+                                    ? Colors.red
+                                    : AppColors.description,
                                 size: 24,
                               )),
                         ),
@@ -280,7 +280,9 @@ class DetailPage extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed("/checkoutpage");
+              },
               child: Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(horizontal: 55,vertical: 10),

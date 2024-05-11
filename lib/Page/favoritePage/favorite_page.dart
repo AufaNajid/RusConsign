@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/page/favoritePage/widgets/favorite_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -14,7 +15,7 @@ class FavoritePage extends StatelessWidget {
         backgroundColor: Colors.white,
         surfaceTintColor: Colors.white,
         title: Text(
-          "Favorit",
+          'favorit'.tr,
           style: AppTextStyle().title(AppColors.titleLine),
         ),
       ),
@@ -30,7 +31,7 @@ class FavoritePage extends StatelessWidget {
                   'Product uadnadiadiadiwd awujdniandiandadjnwa iadniandandaikd aikujdnaidnad',
               price: 12000,
               rating: (index % 5) + 1,
-              profileImagePath: 'https://via.placeholder.com/20x20',
+              profileImagePath: 'https://via.placeholder.com/30x30',
               profileUsername: 'Username Toko',
             );
           },

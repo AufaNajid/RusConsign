@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 
 import '../../../utils/app_responsive.dart';
@@ -19,7 +20,7 @@ class DividerProfile extends StatelessWidget {
               color: AppColors.nonActiveIcon,
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.04),
-            Text("Profil",
+            Text('profil'.tr,
                 style: AppTextStyle().subHeader(AppColors.description)),
             const Spacer(),
             SizedBox(
@@ -35,7 +36,7 @@ class DividerProfile extends StatelessWidget {
                     fixedSize: MaterialStateProperty.all<Size>(Size(
                         AppResponsive().screenWidth(context) * 0.25,
                         AppResponsive().screenWidth(context) * 0.070))),
-                child: Text("Simpan",
+                child: Text('simpan'.tr,
                     style: AppTextStyle().textInfoBold(AppColors.textButton1)),
               ),
             ),

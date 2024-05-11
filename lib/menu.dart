@@ -67,11 +67,6 @@ class Menu extends StatelessWidget {
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
       ),
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
-      ),
       navBarStyle: NavBarStyle.style6,
     );
   }
