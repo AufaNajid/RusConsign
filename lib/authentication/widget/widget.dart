@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 
 
 class MyButton extends StatelessWidget {
@@ -38,7 +40,7 @@ class MyButton extends StatelessWidget {
           width: labelWidth,
           child: Text(
             label,
-            style: const TextStyle(color: Color(0xFF30475E)),
+            style: const TextStyle(color: AppColors.description),
           ),
         ),
         Expanded(
@@ -55,19 +57,16 @@ class MyButton extends StatelessWidget {
                 foregroundColor: foregroundColor,
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(prefixIcon),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      text,
-                      textAlign: textAlign,
-                      style: const TextStyle(fontSize: 14),
-                    ),
+                  Text(
+                    text,
+                    textAlign: textAlign,
+                    style: const TextStyle(fontSize: 14),
                   ),
-                  const SizedBox(width: 10),
                   Icon(suffixIcon),
-                ],
+                ].withSpaceBetween(width: 8),
               ),
             ),
           ),

@@ -141,7 +141,9 @@ class DetailPage extends StatelessWidget {
                                     ),
                                     BtnSeller(
                                       title: "Lihat Toko",
-                                      ontap: () {},
+                                      ontap: () {
+                                        Get.toNamed("userprofilepage");
+                                      },
                                     ),
                                   ].withSpaceBetween(width: 7),
                                 ),

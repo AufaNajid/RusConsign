@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/userProfilePage/user_profile_binding.dart';
+import 'package:rusconsign/Page/userProfilePage/user_profile_page.dart';
 import '../page/notificationPage/notifcation_page.dart';
 import '../authentication/page/forgotpassword_page.dart';
 import 'package:rusconsign/page/registerSeller/register_seller_done.dart';
@@ -35,6 +37,10 @@ List<GetPage> routes = [
   GetPage(name: "/diskonpage", page: () => const DiskonPage()),
   GetPage(name: "/notificationpage", page: () => const NotificationPage()),
   GetPage(name: "/registerseller", page: () => const RegisterSeller()),
+  GetPage(
+      name: "/userprofilepage",
+      page: () => UserProfilePage(),
+      binding: UserProfileBinding()),
   GetPage(
       name: "/homepage", page: () => HomePage(), binding: HomePageBinding()),
   GetPage(
