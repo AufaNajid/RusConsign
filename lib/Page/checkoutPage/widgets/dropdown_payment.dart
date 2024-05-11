@@ -1,37 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
+import 'package:rusconsign/utils/colors.dart';
 
-class DropdownPayment extends StatefulWidget {
-  @override
-  _DropdownPaymentState createState() => _DropdownPaymentState();
-}
-
-class _DropdownPaymentState extends State<DropdownPayment> {
-  late String valueChoose; // Menggunakan late untuk menunjukkan bahwa nilai ini akan diinisialisasi segera
-  final List<String> paymentList = [
-    "Gopay", "Dana", "OVO", "QRIS", "COD (Cash On Delivery)"
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-    valueChoose = paymentList.first; // Menginisialisasi valueChoose dengan nilai pertama dalam paymentList
-  }
+class DropdownPayment extends StatelessWidget {
+  const DropdownPayment({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      value: valueChoose,
-      onChanged: (newValue) {
-        setState(() {
-          valueChoose = newValue.toString(); // Mengonversi nilai nullable menjadi string
-        });
-      },
-      items: paymentList.map((valueItem) {
-        return DropdownMenuItem(
-          value: valueItem,
-          child: Text(valueItem),
-        );
-      }).toList(),
+    return Row(
+      children: [
+        Container(
+          width: AppResponsive().screenWidth(context)*0.9,
+          height: AppResponsive().screenHeight(context)*0.1,
+          color: AppColors.cardIconFill,
+        ),
+      ],
     );
   }
 }
