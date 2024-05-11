@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:rusconsign/Page/userProfilePage/user_profile_page.dart';
 import 'package:rusconsign/page/favoritePage/favorite_page.dart';
 import 'package:rusconsign/page/homePage/home_page.dart';
 import 'package:rusconsign/page/profilePage/profile_page.dart';

@@ -26,6 +26,7 @@ class FavoritePage extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return FavoriteCard(
+              onDelete: (){},
               imagePath: 'https://via.placeholder.com/50x50',
               title:
                   'Product uadnadiadiadiwd awujdniandiandadjnwa iadniandandaikd aikujdnaidnad',
@@ -33,7 +34,6 @@ class FavoritePage extends StatelessWidget {
               rating: (index % 5) + 1,
               profileImagePath: 'https://via.placeholder.com/30x30',
               profileUsername: 'Username Toko',
-              onDelete: () {},
             );
           },
         ),
