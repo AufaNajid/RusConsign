@@ -31,14 +31,29 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 80),
                 Column(
                   children: [
-                    TextFieldInput(hintText: 'masukkanUsername'.tr),
-                    const SizedBox(height: 12),
                     TextFieldInput(hintText: 'masukkanEmail'.tr),
                     const SizedBox(height: 12),
                     TextFieldPassword(hintText: 'masukkanPassword'.tr),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.toNamed('/forgotpasswordpage');
+                          },
+                          child: Text(
+                            textAlign: TextAlign.left,
+                            'lupaPassword'.tr,
+                            style: AppTextStyle()
+                                .description(AppColors.description),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
                 SizedBox(
                   width: AppResponsive().screenWidth(context),
                   height: AppResponsive().screenWidth(context) * 0.1,
@@ -57,13 +72,13 @@ class LoginPage extends StatelessWidget {
                         style: AppTextStyle().header(AppColors.textButton1)),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Column(
                   children: [
                     Text('loginDengan'.tr,
                         style:
                             AppTextStyle().description(AppColors.description)),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
                         googleController.signInWithGoogle(context);
