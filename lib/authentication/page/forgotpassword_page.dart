@@ -53,7 +53,7 @@ class ForgotPasswordPage extends StatelessWidget {
               ),
               MyButton(
                 onClick: () {
-                  Get.toNamed("/login");
+                  Get.back();
                 },
                 text: "Kembali",
                 backgroundColor: AppColors.background,
