@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:rusconsign/Page/qrisPage/widgets/appbar.dart';
 import 'package:rusconsign/Page/qrisPage/widgets/payment_countdown.dart';
 import 'package:rusconsign/Page/qrisPage/widgets/qr_code.dart';
@@ -12,13 +11,13 @@ class QrisPaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarQrisPayment(title: "Pembayaran QRIS"),
+      appBar: const AppBarQrisPayment(title: "Pembayaran QRIS"),
       backgroundColor: AppColors.background,
       body: Column(
         children: [
-          PaymentCountdown(),
+          const PaymentCountdown(),
           SizedBox(height: AppResponsive().screenHeight(context)*0.20,),
-          QrCode()
+          const QrCode()
         ],
       ),
     );

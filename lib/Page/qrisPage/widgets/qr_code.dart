@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -39,7 +36,7 @@ class QrCode extends StatelessWidget {
                       width: AppResponsive().screenWidth(context) * 0.2,
                       child: SvgPicture.asset("assets/images/qris.svg"),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
@@ -67,18 +64,18 @@ class QrCode extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Container(
               width: AppResponsive().screenWidth(context) * 0.8,
               height: AppResponsive().screenHeight(context) * 0.35,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: AppColors.activeIcon,
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       image: AssetImage("assets/images/qr_code_png.png"),
                       fit: BoxFit.cover)),
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             SizedBox(
               height: AppResponsive().screenHeight(context) * 0.05,
               child: ElevatedButton(
@@ -97,7 +94,7 @@ class QrCode extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(FeatherIcons.download, color: AppColors.textButton1),
+                    const Icon(FeatherIcons.download, color: AppColors.textButton1),
                     Padding(
                       padding: EdgeInsets.only(
                         left: AppResponsive().screenWidth(context) * 0.02,
