@@ -81,3 +81,50 @@ class TextFieldPassword extends StatelessWidget {
     );
   }
 }
+
+class TextFieldConfirmPassword extends StatelessWidget {
+  final String hintText;
+
+  const TextFieldConfirmPassword({
+    super.key,
+    required this.hintText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final AuthController authController = Get.find();
+    return Obx(
+      () => TextField(
+        style: AppTextStyle().descriptionBold(AppColors.description),
+        cursorColor: AppColors.hargaStat,
+        textAlign: TextAlign.left,
+        obscureText: !authController.isShowConfirmPassword.value,
+        decoration: InputDecoration(
+          suffixIcon: GestureDetector(
+            onTap: () {
+              authController.showConfirmPassword();
+            },
+            child: Icon(
+              authController.isShowConfirmPassword.value
+                  ? FeatherIcons.eye
+                  : FeatherIcons.eyeOff,
+              color: authController.isShowConfirmPassword.value
+                  ? AppColors.activeIcon
+                  : AppColors.nonActiveIcon,
+            ),
+          ),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(6),
+            borderSide: BorderSide.none,
+          ),
+          filled: true,
+          fillColor: AppColors.cardIconFill,
+          hintText: hintText,
+          hintStyle: AppTextStyle().description(AppColors.description),
+        ),
+      ),
+    );
+  }
+}
