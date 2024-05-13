@@ -24,7 +24,7 @@ class ChekcoutPage extends StatelessWidget {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  Get.toNamed("");
+                  Get.toNamed("/qrispayment");
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.button2,
