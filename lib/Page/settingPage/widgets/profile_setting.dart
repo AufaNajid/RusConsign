@@ -155,7 +155,7 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Obx(
               () => Expanded(
-                child: TextFormField(
+                child: TextField(
                   style: AppTextStyle().textInfo(AppColors.description),
                   cursorColor: AppColors.hargaStat,
                   textAlign: TextAlign.left,
