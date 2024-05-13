@@ -5,7 +5,7 @@ import 'package:rusconsign/authentication/auth_binding.dart';
 import 'package:rusconsign/page/locationPage/location_page.dart';
 import 'package:rusconsign/page/checkoutPage/checkout_page.dart';
 import '../page/notificationPage/notifcation_page.dart';
-import '../authentication/page/forgotpassword_page.dart';
+import '../authentication/page/forgot_password_page.dart';
 import 'package:rusconsign/page/registerSeller/register_seller_done.dart';
 import 'package:rusconsign/page/registerSeller/register_seller_waiting.dart';
 import '../authentication/page/login_page.dart';
@@ -31,7 +31,6 @@ List<GetPage> routes = [
   GetPage(name: "/splash", page: () => const SplashScreen()),
   GetPage(name: "/menu", page: () => const Menu()),
   GetPage(name: "/favoritepage", page: () => const FavoritePage()),
-  GetPage(name: "/forgotpasswordpage", page: () => const ForgotPasswordPage()),
   GetPage(name: "/chatlist", page: () => const ChatListPage()),
   GetPage(name: "/chatpage", page: () => const ChatPage()),
   GetPage(name: "/profilepage", page: () => const ProfilePage()),
@@ -51,6 +50,11 @@ List<GetPage> routes = [
   GetPage(
     name: "/register",
     page: () => RegisterPage(),
+    binding: AuthBinding(),
+  ),
+  GetPage(
+    name: "/forgotpasswordpage",
+    page: () => const ForgotPasswordPage(),
     binding: AuthBinding(),
   ),
   GetPage(
