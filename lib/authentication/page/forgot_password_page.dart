@@ -69,7 +69,7 @@ class ForgotPasswordPage extends StatelessWidget {
                         Get.offNamed('/login');
                       },
                       child: Text(
-                        'kembali',
+                        'kembali'.tr,
                         style:
                             AppTextStyle().descriptionBold(AppColors.description),
                       ),
