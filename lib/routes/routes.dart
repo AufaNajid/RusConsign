@@ -29,7 +29,6 @@ import '../page/splash/splash.dart';
 
 List<GetPage> routes = [
   GetPage(name: "/splash", page: () => const SplashScreen()),
-  GetPage(name: "/register", page: () => RegisterPage()),
   GetPage(name: "/menu", page: () => const Menu()),
   GetPage(name: "/favoritepage", page: () => const FavoritePage()),
   GetPage(name: "/forgotpasswordpage", page: () => const ForgotPasswordPage()),
@@ -47,6 +46,11 @@ List<GetPage> routes = [
   GetPage(
     name: "/login",
     page: () => LoginPage(),
+    binding: AuthBinding(),
+  ),
+  GetPage(
+    name: "/register",
+    page: () => RegisterPage(),
     binding: AuthBinding(),
   ),
   GetPage(
