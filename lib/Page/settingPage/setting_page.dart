@@ -63,7 +63,9 @@ class SettingPage extends StatelessWidget {
                 child: ElevatedButton.icon(
                   icon: const Icon(FeatherIcons.logOut,
                       color: AppColors.textButton2),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAllNamed('/login');
+                  },
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(

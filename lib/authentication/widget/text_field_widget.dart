@@ -51,7 +51,7 @@ class TextFieldPassword extends StatelessWidget {
         style: AppTextStyle().descriptionBold(AppColors.description),
         cursorColor: AppColors.hargaStat,
         textAlign: TextAlign.left,
-        obscureText: authController.isShow.value,
+        obscureText: !authController.isShow.value,
         decoration: InputDecoration(
           suffixIcon: GestureDetector(
             onTap: () {
@@ -59,11 +59,11 @@ class TextFieldPassword extends StatelessWidget {
             },
             child: Icon(
               authController.isShow.value
-                  ? FeatherIcons.eyeOff
-                  : FeatherIcons.eye,
+                  ? FeatherIcons.eye
+                  : FeatherIcons.eyeOff,
               color: authController.isShow.value
-                  ? AppColors.nonActiveIcon
-                  : AppColors.activeIcon,
+                  ? AppColors.activeIcon
+                  : AppColors.nonActiveIcon,
             ),
           ),
           contentPadding:
