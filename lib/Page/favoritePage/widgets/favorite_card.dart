@@ -104,10 +104,20 @@ class FavoriteCard extends StatelessWidget {
                           const SizedBox(height: 5),
                           Row(
                             children: [
-                              const Icon(
-                                Icons.star,
-                                color: AppColors.bintang,
-                                size: 20,
+                              const Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.star,
+                                    color: AppColors.bintang,
+                                    size: 18,
+                                  ),
+                                  Icon(
+                                    Icons.star_border_rounded,
+                                    color: AppColors.borderIcon,
+                                    size: 20,
+                                  ),
+                                ],
                               ),
                               const SizedBox(width: 6),
                               Text(
@@ -136,21 +146,16 @@ class FavoriteCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            onDelete;
-                          },
-                          icon: const Icon(
-                            FeatherIcons.trash2,
-                            color: AppColors.button1,
-                            size: 24,
-                          ),
-                        ),
-                      ],
+                    const SizedBox(width: 5),
+                    GestureDetector(
+                      onTap: () {
+                        onDelete;
+                      },
+                      child: const Icon(
+                        FeatherIcons.trash2,
+                        color: AppColors.button1,
+                        size: 24,
+                      ),
                     ),
                   ],
                 ),

@@ -26,7 +26,7 @@ class FavoritePage extends StatelessWidget {
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
             return FavoriteCard(
-              onDelete: (){},
+              onDelete: () {},
               imagePath: 'https://via.placeholder.com/50x50',
               title:
                   'Product uadnadiadiadiwd awujdniandiandadjnwa iadniandandaikd aikujdnaidnad',
