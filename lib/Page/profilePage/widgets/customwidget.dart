@@ -70,7 +70,7 @@ class SettingWidget extends StatelessWidget {
         child: Row(
           children: [
             Icon(icon, color: AppColors.description),
-            Padding(
+            const Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 10
                 )),
