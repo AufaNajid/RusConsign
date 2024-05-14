@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/registerSeller/register_seller_binding.dart';
 import 'package:rusconsign/Page/registerSeller/register_seller_done.dart';
 import 'package:rusconsign/Page/registerSeller/register_seller_waiting.dart';
 import 'package:rusconsign/authentication/page/forgotpassword_page.dart';
@@ -34,7 +35,9 @@ List<GetPage> routes = [
   GetPage(name: "/diskonpage", page: () => const DiskonPage()),
   GetPage(name: "/notificationpage", page: () => const NotificationPage()),
   GetPage(
-      name: "/homepage", page: () => HomePage(), binding: HomePageBinding()),
+      name: "/homepage", 
+      page: () => HomePage(), 
+      binding: HomePageBinding()),
   GetPage(
       name: "/detailpage",
       page: () => DetailPage(),
@@ -43,7 +46,10 @@ List<GetPage> routes = [
       name: "/settingpage",
       page: () => SettingPage(),
       binding: SettingPageBinding()),
-  GetPage(name: "/registerseller", page: () => const RegisterSeller()),
+  GetPage(
+    name: "/registerseller", 
+    page: () => const RegisterSeller(), 
+    binding:RegisterSellerBinding() ),
   GetPage(name: "/waitingadmin", page: () =>const RegisterSellerWaiting()),
   GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone(),)
 ];
