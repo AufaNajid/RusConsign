@@ -21,7 +21,7 @@ class ProfileSetting extends StatelessWidget {
           children: [
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
-              child: Text("Foto Profil",
+              child: Text('fotoProfil'.tr,
                   style: AppTextStyle().textInfoBold(AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
@@ -43,20 +43,18 @@ class ProfileSetting extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: AppResponsive().screenWidth(context) * 0.070,
-                      width: AppResponsive().screenWidth(context) * 0.250,
+                      width: 125,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4))),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.button2),
-                            fixedSize: MaterialStateProperty.all<Size>(Size(
-                                AppResponsive().screenWidth(context) * 0.24,
-                                AppResponsive().screenWidth(context) * 0.070))),
-                        child: Text("Lihat Foto",
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4))),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.button2),
+                        ),
+                        child: Text('lihatFoto'.tr,
                             style: AppTextStyle()
                                 .textInfoBold(AppColors.textButton2)),
                       ),
@@ -64,20 +62,18 @@ class ProfileSetting extends StatelessWidget {
                     const SizedBox(width: 10),
                     SizedBox(
                       height: AppResponsive().screenWidth(context) * 0.070,
-                      width: AppResponsive().screenWidth(context) * 0.250,
+                      width: 125,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4))),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                AppColors.button2),
-                            fixedSize: MaterialStateProperty.all<Size>(Size(
-                                AppResponsive().screenWidth(context) * 0.24,
-                                AppResponsive().screenWidth(context) * 0.070))),
-                        child: Text("Ganti Foto",
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4))),
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              AppColors.button2),
+                        ),
+                        child: Text('gantiFoto'.tr,
                             style: AppTextStyle()
                                 .textInfoBold(AppColors.textButton2)),
                       ),
@@ -94,7 +90,7 @@ class ProfileSetting extends StatelessWidget {
           children: [
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
-              child: Text("Nama",
+              child: Text('nama'.tr,
                   style: AppTextStyle().textInfoBold(AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
@@ -123,7 +119,7 @@ class ProfileSetting extends StatelessWidget {
           children: [
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
-              child: Text("Deskripsi",
+              child: Text('deskripsi'.tr,
                   style: AppTextStyle().textInfoBold(AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
@@ -153,13 +149,13 @@ class ProfileSetting extends StatelessWidget {
           children: [
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
-              child: Text("Ganti Password",
+              child: Text('gantiPW'.tr,
                   style: AppTextStyle().textInfoBold(AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Obx(
               () => Expanded(
-                child: TextFormField(
+                child: TextField(
                   style: AppTextStyle().textInfo(AppColors.description),
                   cursorColor: AppColors.hargaStat,
                   textAlign: TextAlign.left,

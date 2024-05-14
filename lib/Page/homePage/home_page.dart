@@ -57,9 +57,17 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'Halo Username',
-                      style: AppTextStyle().header(AppColors.titleLine),
+                    Row(
+                      children: [
+                        Text(
+                          'halo'.tr,
+                          style: AppTextStyle().header(AppColors.titleLine),
+                        ),
+                        Text(
+                          'Username',
+                          style: AppTextStyle().header(AppColors.titleLine),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -67,21 +75,23 @@ class HomePage extends StatelessWidget {
                         Expanded(
                           child: TextField(
                             cursorColor: AppColors.hargaStat,
-                            style: AppTextStyle().descriptionBold(AppColors.description),
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 10),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(6),
-                                  borderSide: BorderSide.none,
-                                ),
-                                filled: true,
-                                fillColor: AppColors.cardIconFill,
-                                hintText: 'Cari jasa atau produk...',
-                                hintStyle: AppTextStyle()
-                                    .description(AppColors.description),
+                            style: AppTextStyle()
+                                .descriptionBold(AppColors.description),
+                            decoration: InputDecoration(
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(6),
+                                borderSide: BorderSide.none,
                               ),
-                              textAlign: TextAlign.left,),
+                              filled: true,
+                              fillColor: AppColors.cardIconFill,
+                              hintText: 'cari'.tr,
+                              hintStyle: AppTextStyle()
+                                  .description(AppColors.description),
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
                         ),
                         const SizedBox(width: 12),
                         SizedBox(
@@ -166,99 +176,104 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Halaman Produk dan Jasa',
+                      'halamanP&J'.tr,
                       style: AppTextStyle().subHeader(AppColors.titleLine),
                     ),
                     const SizedBox(height: 8),
-                    const Row(
+                    Row(
                       children: [
                         FilterButton(
-                          text: 'Semua',
+                          text: 'semua'.tr,
                           icon: FeatherIcons.alignJustify,
                           index: 0,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         FilterButton(
-                          text: 'Jasa',
+                          text: 'jasa'.tr,
                           icon: FeatherIcons.users,
                           index: 1,
                         ),
-                        Spacer(),
+                        const Spacer(),
                         FilterButton(
-                          text: 'Produk',
+                          text: 'produk'.tr,
                           icon: FeatherIcons.box,
                           index: 2,
                         )
                       ],
                     ),
                     const SizedBox(height: 4),
-                    Obx(() {
-                      if (indicator.selectedIndex == 1) {
-                        return GridView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 10,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 8,
-                            childAspectRatio: 0.8,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return ProductCard(
-                              imagePath: 'https://via.placeholder.com/165x110',
-                              title: 'Judul Jasa $index',
-                              price: 12000,
-                              rating: (index % 5) + 1,
-                            );
-                          },
-                        );
-                      } else if (indicator.selectedIndex == 2) {
-                        return GridView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 10,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 8,
-                            childAspectRatio: 0.8,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return ProductCard(
-                              imagePath: 'https://via.placeholder.com/165x110',
-                              title: 'Judul Produk $index',
-                              price: 12000,
-                              rating: (index % 5) + 1,
-                            );
-                          },
-                        );
-                      } else {
-                        return GridView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 10,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 8,
-                            mainAxisSpacing: 8,
-                            childAspectRatio: 0.8,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return ProductCard(
-                              imagePath: 'https://via.placeholder.com/165x110',
-                              title:
-                                  'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
-                              price: 12000,
-                              rating: (index % 5) + 1,
-                            );
-                          },
-                        );
-                      }
-                    }),
+                    Obx(
+                      () {
+                        if (indicator.selectedIndex == 1) {
+                          return GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 10,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                              childAspectRatio: 0.8,
+                            ),
+                            itemBuilder: (BuildContext context, int index) {
+                              return ProductCard(
+                                imagePath:
+                                    'https://via.placeholder.com/165x110',
+                                title: 'Judul Jasa $index',
+                                price: 12000,
+                                rating: (index % 5) + 1,
+                              );
+                            },
+                          );
+                        } else if (indicator.selectedIndex == 2) {
+                          return GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 10,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                              childAspectRatio: 0.8,
+                            ),
+                            itemBuilder: (BuildContext context, int index) {
+                              return ProductCard(
+                                imagePath:
+                                    'https://via.placeholder.com/165x110',
+                                title: 'Judul Produk $index',
+                                price: 12000,
+                                rating: (index % 5) + 1,
+                              );
+                            },
+                          );
+                        } else {
+                          return GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 10,
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 8,
+                              mainAxisSpacing: 8,
+                              childAspectRatio: 0.8,
+                            ),
+                            itemBuilder: (BuildContext context, int index) {
+                              return ProductCard(
+                                imagePath:
+                                    'https://via.placeholder.com/165x110',
+                                title:
+                                    'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
+                                price: 12000,
+                                rating: (index % 5) + 1,
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),

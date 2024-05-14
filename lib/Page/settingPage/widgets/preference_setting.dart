@@ -22,7 +22,7 @@ class PreferenceSetting extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Mode Gelap",
+                  'modeGelap'.tr,
                   style: AppTextStyle().description(AppColors.description),
                 ),
                 const Spacer(),
@@ -42,7 +42,7 @@ class PreferenceSetting extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      "Bahasa",
+                      'bahasa'.tr,
                       style: AppTextStyle().description(AppColors.description),
                     ),
                   ],

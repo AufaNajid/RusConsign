@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/page/profilePage/widgets/customappbar.dart';
 import 'package:rusconsign/page/profilePage/widgets/customwidget.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -12,7 +13,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarProfile(title: "Profil"),
+      appBar: AppBarProfile(title: 'profil'.tr),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
@@ -41,28 +42,28 @@ class ProfilePage extends StatelessWidget {
             SizedBox(
               height: AppResponsive().screenHeight(context) * 0.02,
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomInfoWidget(
                   icon: FeatherIcons.userCheck,
-                  info: "Pengikut",
+                  info: 'pengikut'.tr,
                   infoNumber: "182",
                 ),
                 CustomInfoWidget(
                   icon: FeatherIcons.users,
-                  info: "Jumlah Jasa",
+                  info: 'jumlahJasa'.tr,
                   infoNumber: "2",
                 ),
                 CustomInfoWidget(
                   icon: FeatherIcons.box,
-                  info: "Jumlah Produk",
+                  info: 'jumlahProduk'.tr,
                   infoNumber: "3",
                 ),
                 CustomInfoWidget(
                   icon: FeatherIcons.star,
-                  info: "Penilaian",
+                  info: 'penilaian'.tr,
                   infoNumber: "4.5",
                 ),
               ],
@@ -88,3 +89,4 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
+
