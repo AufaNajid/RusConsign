@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rusconsign/page/detailPage/widgets/komponen.dart';
-import 'package:get/get.dart';
 import 'package:rusconsign/page/diskonPage/widgets/komponen.dart';
 
 import '../../utils/colors.dart';
@@ -11,12 +9,6 @@ class DiskonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Produk Diskon",
-        onBackPressed: () {
-          Get.back();
-        },
-      ),
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,

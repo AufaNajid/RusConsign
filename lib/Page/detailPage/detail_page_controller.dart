@@ -7,6 +7,7 @@ class DetailPageController extends GetxController {
 
   void toggleFavorite() {
     isFavorite.value = !isFavorite.value;
+    update();
   }
 
   void toggleThumbsUp() {
@@ -14,6 +15,7 @@ class DetailPageController extends GetxController {
     if (thumbsUpClicked.value) {
       thumbsDownClicked.value = false;
     }
+    update();
   }
 
   void toggleThumbsDown() {
@@ -21,5 +23,6 @@ class DetailPageController extends GetxController {
     if (thumbsDownClicked.value) {
       thumbsUpClicked.value = false;
     }
+    update();
   }
 }
