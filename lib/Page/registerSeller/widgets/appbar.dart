@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 class AppBarRegisterSeller extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -20,18 +21,14 @@ class AppBarRegisterSeller extends StatelessWidget implements PreferredSizeWidge
       surfaceTintColor: Colors.white,
       elevation: null,
       leading: IconButton(
-        icon: const Icon(FeatherIcons.chevronLeft),
+        icon: const Icon(FeatherIcons.chevronLeft, color: AppColors.borderIcon,),
         onPressed: () {
           Get.back();
         },
-        iconSize: 24,
       ),
       title: Text(
         title,
-        style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
+        style: AppTextStyle().title(AppColors.titleLine)
       ),
       centerTitle: true,
     );
