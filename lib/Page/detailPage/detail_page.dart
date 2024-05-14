@@ -9,16 +9,28 @@ import '../../utils/app_responsive.dart';
 import 'detail_page_controller.dart';
 
 class DetailPage extends StatelessWidget {
-  final indicator = Get.put(DetailPageController());
+  final contoller = Get.put(DetailPageController());
   DetailPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Detail Produk",
-        onBackPressed: () {
-          Get.back();
-        },
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        surfaceTintColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            FeatherIcons.chevronLeft,
+            color: AppColors.borderIcon,
+          ),
+        ),
+        title: Text(
+          'detailProduk'.tr,
+          style: AppTextStyle().title(AppColors.titleLine),
+        ),
+        centerTitle: true,
       ),
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
@@ -30,153 +42,318 @@ class DetailPage extends StatelessWidget {
             Image.network(
               "https://via.placeholder.com/165x110",
               fit: BoxFit.cover,
-              height: AppResponsive().screenHeight(context) * 0.420,
+              height: AppResponsive().screenHeight(context) * 0.35,
               width: double.infinity,
             ),
             Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Row(
+                        Row(
                           children: [
-                            CardQuantity(
-                                title: "produk",
-                                fillColor: AppColors.hargaStat,
-                                textColor: AppColors.background),
-                            CardQuantity(
-                                title: "20 Terjual",
-                                fillColor: AppColors.background,
-                                textColor: AppColors.description)
+                            SizedBox(
+                              width: AppResponsive().screenWidth(context) * 0.2,
+                              height: 30,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: Material(
+                                  color: AppColors.button1,
+                                  child: Center(
+                                    child: Text(
+                                      'produk'.tr,
+                                      style: AppTextStyle().descriptionBold(
+                                          AppColors.textButton1),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              '20 ${'terjual'.tr}',
+                              style: AppTextStyle()
+                                  .descriptionBold(AppColors.description),
+                            )
                           ],
                         ),
-                        IconButton(
-                          onPressed: () {
-                            indicator.toggleLike();
-                          },
-                          icon: Obx(() => Icon(
-                                indicator.isLiked.value
-                                    ? Icons.favorite
-                                    : FeatherIcons.heart,
-                                color: indicator.isLiked.value
-                                    ? Colors.red
-                                    : AppColors.description,
-                                size: 24,
-                              )),
+                        SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(6),
+                            child: Material(
+                              color: AppColors.cardIconFill,
+                              child: Obx(
+                                () => GestureDetector(
+                                  onTap: () {
+                                    contoller.toggleFavorite();
+                                  },
+                                  child: Icon(
+                                    contoller.isFavorite.value
+                                        ? Icons.favorite_rounded
+                                        : Icons.favorite_border_rounded,
+                                    color: contoller.isFavorite.value
+                                        ? AppColors.button1
+                                        : AppColors.description,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                    Text(
-                      "Lorem Ipsum Dolor sit amet",
-                      style: AppTextStyle().title(AppColors.titleLine),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Lorem Ipsum Dolor sit amet",
+                          style: AppTextStyle().title(AppColors.titleLine),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
+                          style:
+                              AppTextStyle().description(AppColors.description),
+                        ),
+                      ],
                     ),
-                    Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
-                      style: AppTextStyle().description(AppColors.description),
-                    ),
+                    const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Rp 15.000",
+                          'Rp ' '15000',
                           style: AppTextStyle().title(AppColors.hargaStat),
                         ),
+                        const Spacer(),
                         Row(
                           children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                FeatherIcons.star,
-                                color: AppColors.description,
-                                size: 20,
-                              ),
+                            const Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: AppColors.bintang,
+                                  size: 22,
+                                ),
+                                Icon(
+                                  Icons.star_border_rounded,
+                                  color: AppColors.borderIcon,
+                                  size: 24,
+                                ),
+                              ],
                             ),
+                            const SizedBox(width: 6),
                             Text(
                               '4.0',
-                              textAlign: TextAlign.center,
                               style: AppTextStyle()
-                                  .textInfoBold(AppColors.description),
+                                  .subHeader(AppColors.description),
                             ),
                           ],
                         ),
                       ],
                     ),
                     const Divider(
-                      color: AppColors.titleLine, // Atur warna garis
-                      thickness: 1, // Atur ketebalan garis
-                      height: 0, // Atur tinggi garis
+                      color: AppColors.titleLine,
+                      thickness: 1,
                     ),
-                    SizedBox(
-                      height: AppResponsive().screenHeight(context) * 0.050,
-                      width: double.infinity,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            ClipOval(
-                              child: Image.network(
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5NotY59b9Il4DR4FAUdE6cDxIvYQTHdi2CLPuMmv_Q&s",
-                                width: AppResponsive().screenWidth(context) *
-                                    0.110,
-                                height: AppResponsive().screenHeight(context) *
-                                    0.060,
-                                fit: BoxFit.cover,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 40,
+                          height: 40,
+                          child: Column(
+                            children: [
+                              ClipOval(
+                                child: Image.network(
+                                  'https://via.placeholder.com/40x40',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Bagas Prasetyo',
+                              style: AppTextStyle()
+                                  .description(AppColors.titleLine),
                             ),
-                            Column(
+                            const SizedBox(height: 4),
+                            Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Text("Bagas Prasetya",
-                                    style: AppTextStyle()
-                                        .textInfo(AppColors.titleLine)),
-                                Row(
-                                  children: [
-                                    BtnSeller(
-                                      title: "Chat Penjual",
-                                      ontap: () {},
+                                SizedBox(
+                                  width: 80,
+                                  height: 30,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                      padding: const MaterialStatePropertyAll(
+                                          EdgeInsets.zero),
+                                      elevation:
+                                          const MaterialStatePropertyAll(0),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                        ),
+                                      ),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              AppColors.button2),
                                     ),
-                                    BtnSeller(
-                                      title: "Lihat Toko",
-                                      ontap: () {
-                                        Get.toNamed("userprofilepage");
-                                      },
+                                    child: Text(
+                                      'chatPenjual'.tr,
+                                      style: AppTextStyle()
+                                          .textInfoBold(AppColors.textButton2),
                                     ),
-                                  ].withSpaceBetween(width: 7),
+                                  ),
+                                ),
+                                const SizedBox(width: 4),
+                                SizedBox(
+                                  width: 80,
+                                  height: 30,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                      padding: const MaterialStatePropertyAll(
+                                          EdgeInsets.zero),
+                                      elevation:
+                                          const MaterialStatePropertyAll(0),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                        ),
+                                      ),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              AppColors.button2),
+                                    ),
+                                    child: Text(
+                                      'lihatToko'.tr,
+                                      style: AppTextStyle()
+                                          .textInfoBold(AppColors.textButton2),
+                                    ),
+                                  ),
                                 ),
                               ],
-                            ),
-                            Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    const SellerInfo(
-                                        title: "Jumlah Produk", jumlah: "2"),
-                                    const SellerInfo(
-                                        title: "Jumlah Jasa", jumlah: "3"),
-                                  ].withSpaceBetween(width: 7),
-                                ),
-                                Row(
-                                  children: [
-                                    const SellerInfo(
-                                        title: "Penilaian", jumlah: "4.5"),
-                                    const SellerInfo(
-                                        title: "Pengikut", jumlah: "444"),
-                                  ].withSpaceBetween(width: 7),
-                                )
-                              ].withSpaceBetween(height: 12),
                             )
-                          ].withSpaceBetween(width: 10),
+                          ],
                         ),
-                      ),
+                        const SizedBox(width: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 90,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'jumlahProduk'.tr,
+                                    style: AppTextStyle()
+                                        .textInfo(AppColors.titleLine),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    '2',
+                                    style: AppTextStyle()
+                                        .textInfoBold(AppColors.hargaStat),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            SizedBox(
+                              width: 90,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'penilaian'.tr,
+                                    style: AppTextStyle()
+                                        .textInfo(AppColors.titleLine),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    '4.5',
+                                    style: AppTextStyle()
+                                        .textInfoBold(AppColors.hargaStat),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const Spacer(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: 90,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'jumlahJasa'.tr,
+                                    style: AppTextStyle()
+                                        .textInfo(AppColors.titleLine),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    '5',
+                                    style: AppTextStyle()
+                                        .textInfoBold(AppColors.hargaStat),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            SizedBox(
+                              width: 90,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'pengikut'.tr,
+                                    style: AppTextStyle()
+                                        .textInfo(AppColors.titleLine),
+                                  ),
+                                  const Spacer(),
+                                  Text(
+                                    '287',
+                                    style: AppTextStyle()
+                                        .textInfoBold(AppColors.hargaStat),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     const Divider(
-                      color: AppColors.titleLine, // Atur warna garis
-                      thickness: 1, // Atur ketebalan garis
-                      height: 0, // Atur tinggi garis
+                      color: AppColors.titleLine,
+                      thickness: 1,
                     ),
                     SizedBox(
                       height: AppResponsive().screenHeight(context) * 0.050,
@@ -247,7 +424,8 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.only(left: 40, right: 40, top: 15, bottom: 15),
+        padding:
+            const EdgeInsets.only(left: 40, right: 40, top: 15, bottom: 15),
         height: AppResponsive().screenHeight(context) * 0.090,
         width: double.infinity,
         decoration: BoxDecoration(
@@ -285,19 +463,18 @@ class DetailPage extends StatelessWidget {
               },
               child: Container(
                 alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(horizontal: 55,vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
                 decoration: BoxDecoration(
                   color: AppColors.description,
                   borderRadius: BorderRadius.circular(5),
                 ),
-                child: Text(
-                  'Beli Sekarang',
-                  style: AppTextStyle().subHeader(AppColors.textButton2)
-                ),
+                child: Text('Beli Sekarang',
+                    style: AppTextStyle().subHeader(AppColors.textButton2)),
               ),
             ),
           ],
-        )
+        ),
       ),
     );
   }

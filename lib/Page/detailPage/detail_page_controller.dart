@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 
 class DetailPageController extends GetxController {
-  var isLiked = false.obs;
+  var isFavorite = false.obs;
   var thumbsUpClicked = false.obs;
   var thumbsDownClicked = false.obs;
 
-  void toggleLike() {
-    isLiked.value = !isLiked.value;
+  void toggleFavorite() {
+    isFavorite.value = !isFavorite.value;
   }
 
   void toggleThumbsUp() {
