@@ -148,24 +148,26 @@ class HomePage extends StatelessWidget {
                   },
                 ),
               ),
-              Obx(() => Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      2,
-                      (index) => Container(
-                        width: 8,
-                        height: 8,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 8.0, horizontal: 4.0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: (indicator.currentIndex == index)
-                              ? AppColors.activeIcon
-                              : AppColors.activeIconType,
-                        ),
+              Obx(
+                () => Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    2,
+                    (index) => Container(
+                      width: 8,
+                      height: 8,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8.0, horizontal: 4.0),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: (indicator.currentIndex == index)
+                            ? AppColors.activeIcon
+                            : AppColors.activeIconType,
                       ),
                     ),
-                  )),
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 4,
               ),

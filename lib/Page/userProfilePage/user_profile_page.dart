@@ -6,7 +6,6 @@ import 'package:rusconsign/Page/userProfilePage/widgets/component.dart';
 import 'package:rusconsign/utils/extension.dart';
 import '../../utils/colors.dart';
 import '../../utils/text_style.dart';
-import '../detailPage/widgets/komponen.dart';
 import '../homePage/widgets/product_card.dart';
 
 class UserProfilePage extends StatelessWidget {
@@ -16,13 +15,25 @@ class UserProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: "Profil Pengguna",
-        onBackPressed: () {
-          Get.back();
-        },
-      ),
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: AppColors.background,
+        surfaceTintColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            FeatherIcons.chevronLeft,
+            color: AppColors.borderIcon,
+          ),
+        ),
+        title: Text(
+          'profilPengguna'.tr,
+          style: AppTextStyle().title(AppColors.titleLine),
+        ),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
@@ -131,7 +142,9 @@ class UserProfilePage extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 10,),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     children: [
                       Expanded(

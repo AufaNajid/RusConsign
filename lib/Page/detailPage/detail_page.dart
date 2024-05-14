@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/page/detailPage/widgets/komponen.dart';
+import 'package:rusconsign/Page/detailPage/widgets/comment_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import '../../utils/app_responsive.dart';
@@ -408,24 +408,34 @@ class DetailPage extends StatelessWidget {
                       )
                     ],
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
                   ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return const CommentSection(
-                          imagePath:
-                              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5NotY59b9Il4DR4FAUdE6cDxIvYQTHdi2CLPuMmv_Q&s",
-                          name: "lorem ipsum",
-                          date: "date",
-                          desc:
-                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.");
-                    },
                     itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return CommentCard(
+                        imagePath: 'https://via.placeholder.com/40x40',
+                        username: 'Muhammad Alfarezi',
+                        rating: 4.0,
+                        date: DateTime.now(),
+                        desc:
+                            'mndinadinaidn uwbndbwdnuiwd iwndiwdnw iwdbwd iwdnujwjdb iwdbuiwnduiw ijjdaosfmeai kakwmdiawdjaw dnadaw da wdiknawidaw diandiawdi awdawdada diamnd adnad adawndjawd diandi andjawd',
+                        like: 142,
+                        disLike: 12,
+                        onliked: () {
+                          contoller.toggleThumbsUp();
+                        },
+                        ondisliked: () {
+                          contoller.toggleThumbsDown();
+                        },
+                      );
+                    },
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 10),
           ],
         ),
       ),
