@@ -27,10 +27,10 @@ class CustomInfoWidget extends StatelessWidget {
           width: 55,
           height: 55,
           decoration: const ShapeDecoration(
-            color: Color(0xFFF5F5F5),
+            color: AppColors.cardIconFill,
             shape: OvalBorder(),
           ),
-          child: Icon(icon),
+          child: Icon(icon, color: AppColors.borderIcon,),
         ),
         Text(info,
             textAlign: TextAlign.center,
@@ -71,8 +71,9 @@ class SettingWidget extends StatelessWidget {
           children: [
             Icon(icon, color: AppColors.description),
             Padding(
-                padding: EdgeInsets.only(
-                    left: AppResponsive().screenWidth(context) * 0.05)),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10
+                )),
             Expanded(
               child: Text(
                 text,
@@ -194,7 +195,7 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
               top: AppResponsive().screenHeight(context) * 0.01),
           width: double.maxFinite,
           height: AppResponsive().screenHeight(context) * 0.50,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
           child: TabBarView(
             controller: _tabController,
             children: const [PribadiSection(), PenjualanSection()],
@@ -246,15 +247,15 @@ class PribadiSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 20, left: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
           Container(
             decoration: const BoxDecoration(
               color: AppColors.cardIconFill,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                topRight: Radius.circular(20.0),
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
               ),
             ),
             child: SettingWidget(
@@ -278,8 +279,8 @@ class PribadiSection extends StatelessWidget {
           Container(
               decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20)),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10)),
                   color: AppColors.cardIconFill),
               child: SettingWidget(
                   icon: FeatherIcons.settings,
@@ -290,3 +291,4 @@ class PribadiSection extends StatelessWidget {
     );
   }
 }
+
