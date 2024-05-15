@@ -48,6 +48,7 @@ dependencies:
   image_picker:
   get_storage: ^2.1.1
   flutter_rating_bar: ^4.0.1
+  bootstrap_icons: ^1.11.3
   
 
 

@@ -1,3 +1,4 @@
+import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -9,7 +10,7 @@ import '../../utils/app_responsive.dart';
 import 'detail_page_controller.dart';
 
 class DetailPage extends StatelessWidget {
-  final contoller = Get.put(DetailPageController());
+  final controller = Get.put(DetailPageController());
   DetailPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -93,15 +94,16 @@ class DetailPage extends StatelessWidget {
                             child: Obx(
                               () => GestureDetector(
                                 onTap: () {
-                                  contoller.toggleFavorite();
+                                  controller.toggleFavorite();
                                 },
                                 child: Icon(
-                                  contoller.isFavorite.value
-                                      ? Icons.favorite_rounded
-                                      : Icons.favorite_border_rounded,
-                                  color: contoller.isFavorite.value
-                                      ? AppColors.button1
-                                      : AppColors.description,
+                                  controller.isFavorite.value
+                                      ? BootstrapIcons.heart_fill
+                                      : BootstrapIcons.heart,
+                                  color: controller.isFavorite.value
+                                      ? AppColors.hargaStat
+                                      : AppColors.borderIcon,
+                                      size: 20,
                                 ),
                               ),
                             ),
@@ -212,14 +214,13 @@ class DetailPage extends StatelessWidget {
                                         EdgeInsets.zero),
                                     elevation:
                                         const MaterialStatePropertyAll(0),
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
+                                    shape: MaterialStatePropertyAll(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
                                     ),
                                     backgroundColor:
-                                        MaterialStateProperty.all<Color>(
+                                        const MaterialStatePropertyAll(
                                             AppColors.button2),
                                   ),
                                   child: Text(
@@ -234,20 +235,21 @@ class DetailPage extends StatelessWidget {
                                 width: 80,
                                 height: 30,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.toNamed('/userprofilepage');
+                                  },
                                   style: ButtonStyle(
                                     padding: const MaterialStatePropertyAll(
                                         EdgeInsets.zero),
                                     elevation:
                                         const MaterialStatePropertyAll(0),
-                                    shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
+                                    shape: MaterialStatePropertyAll(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(4),
                                       ),
                                     ),
                                     backgroundColor:
-                                        MaterialStateProperty.all<Color>(
+                                        const MaterialStatePropertyAll(
                                             AppColors.button2),
                                   ),
                                   child: Text(
@@ -424,10 +426,10 @@ class DetailPage extends StatelessWidget {
                         like: 142,
                         disLike: 12,
                         onliked: () {
-                          contoller.toggleThumbsUp();
+                          controller.toggleThumbsUp();
                         },
                         ondisliked: () {
-                          contoller.toggleThumbsDown();
+                          controller.toggleThumbsDown();
                         },
                       );
                     },
@@ -439,57 +441,66 @@ class DetailPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        padding:
-            const EdgeInsets.only(left: 40, right: 40, top: 15, bottom: 15),
-        height: AppResponsive().screenHeight(context) * 0.090,
+      bottomNavigationBar: SizedBox(
         width: double.infinity,
-        decoration: BoxDecoration(
-          color: AppColors.background,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              spreadRadius: 2,
-              blurRadius: 6,
-              offset: const Offset(0, -3), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF5F5F5),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: const Icon(
-                  FeatherIcons.shoppingCart,
-                  size: 24,
-                  color: AppColors.titleLine,
+        height: AppResponsive().screenHeight(context) * 0.08,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 50,
+                height: 50,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(6),
+                  child: Material(
+                    color: AppColors.cardIconFill,
+                    child: Obx(
+                      () => GestureDetector(
+                        onTap: () {
+                          controller.toggleAddcart();
+                        },
+                        child: Icon(
+                          controller.isAddCart.value
+                              ? BootstrapIcons.cart_check_fill
+                              : BootstrapIcons.cart,
+                          color: controller.isAddCart.value
+                              ? AppColors.hargaStat
+                              : AppColors.borderIcon,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                Get.toNamed("/checkoutpage");
-              },
-              child: Container(
-                alignment: Alignment.center,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
-                decoration: BoxDecoration(
-                  color: AppColors.description,
-                  borderRadius: BorderRadius.circular(5),
+              const Spacer(),
+              SizedBox(
+                width: AppResponsive().screenWidth(context) * 0.7,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.toNamed('/checkoutpage');
+                  },
+                  style: ButtonStyle(
+                    padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                    elevation: const MaterialStatePropertyAll(0),
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    backgroundColor:
+                        const MaterialStatePropertyAll(AppColors.button2),
+                  ),
+                  child: Text(
+                    'beliSekarang'.tr,
+                    style: AppTextStyle().subHeader(AppColors.textButton2),
+                  ),
                 ),
-                child: Text('Beli Sekarang',
-                    style: AppTextStyle().subHeader(AppColors.textButton2)),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
