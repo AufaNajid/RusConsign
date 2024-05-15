@@ -30,26 +30,29 @@ class NotificationPage extends StatelessWidget {
         surfaceTintColor: AppColors.background,
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                FeatherIcons.trash2,
-                color: AppColors.button1,
-              ))
+            onPressed: () {},
+            icon: const Icon(
+              FeatherIcons.trash2,
+              color: AppColors.button1,
+            ),
+          ),
         ],
       ),
       body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return NotificationCard(
-                  imagePath: 'https://via.placeholder.com/50x50',
-                  title: 'bnudnuswhudawd fgdfdfdfdf',
-                  desc:
-                      'mndinadinaidnikakwmdiawdjaw dnadaw da wdiknawidaw diandiawdiawdawdada diamndadnad adawndjawd diandiandjawd',
-                  date: DateTime.now());
-            },
-          )),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return NotificationCard(
+              imagePath: 'https://via.placeholder.com/50x50',
+              title: 'bnudnuswhudawd fgdfdfdfdf',
+              desc:
+                  'mndinadinaidnikakwmdiawdjaw dnadaw da wdiknawidaw diandiawdiawdawdada diamndadnad adawndjawd diandiandjawd',
+              date: DateTime.now(),
+            );
+          },
+        ),
+      ),
     );
   }
 }

@@ -27,14 +27,16 @@ class PreferenceSetting extends StatelessWidget {
                 ),
                 const Spacer(),
                 IconButton(
-                    onPressed: () {
-                      settingController.toggleDarkModeSwitch();
-                    },
-                    icon: Icon(
-                        settingController.isDarkModeSwitched.value
-                            ? FeatherIcons.toggleRight
-                            : FeatherIcons.toggleLeft,
-                        size: 30))
+                  onPressed: () {
+                    settingController.toggleDarkModeSwitch();
+                  },
+                  icon: Icon(
+                    settingController.isDarkModeSwitched.value
+                        ? FeatherIcons.toggleRight
+                        : FeatherIcons.toggleLeft,
+                    size: 30,
+                  ),
+                ),
               ],
             ),
             Row(
@@ -51,7 +53,6 @@ class PreferenceSetting extends StatelessWidget {
                 const DropDownLang(),
               ],
             ),
-            const SizedBox(height: 15)
           ],
         ));
   }

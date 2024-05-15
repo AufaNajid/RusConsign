@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class NotificationCard extends StatelessWidget {
@@ -32,7 +33,7 @@ class NotificationCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: AppResponsive().screenWidth(context) * 0.2,
@@ -45,7 +46,6 @@ class NotificationCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,20 +54,18 @@ class NotificationCard extends StatelessWidget {
                       title,
                       style: AppTextStyle().header(AppColors.titleLine),
                     ),
-                    const SizedBox(height: 5),
                     Text(
                       date.toString().substring(0, 16),
                       style: AppTextStyle().textInfoBold(AppColors.hargaStat),
                     ),
-                    const SizedBox(height: 5),
                     Text(
                       desc,
                       style: AppTextStyle().textInfo(AppColors.description),
                     ),
-                  ],
+                  ].withSpaceBetween(height: 8),
                 ),
               ),
-            ],
+            ].withSpaceBetween(width: 8),
           ),
         ),
       ),
