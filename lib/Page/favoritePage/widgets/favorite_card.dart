@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class FavoriteCard extends StatelessWidget {
@@ -52,7 +53,6 @@ class FavoriteCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
               Expanded(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,6 @@ class FavoriteCard extends StatelessWidget {
                             style: AppTextStyle()
                                 .descriptionBold(AppColors.titleLine),
                           ),
-                          const SizedBox(height: 5),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -83,7 +82,6 @@ class FavoriteCard extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              const SizedBox(width: 5),
                               Expanded(
                                 flex: 3,
                                 child: Column(
@@ -99,9 +97,8 @@ class FavoriteCard extends StatelessWidget {
                                 ),
                               ),
                               const Spacer(),
-                            ],
+                            ].withSpaceBetween(width: 8),
                           ),
-                          const SizedBox(height: 5),
                           Row(
                             children: [
                               const Stack(
@@ -119,15 +116,13 @@ class FavoriteCard extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(width: 6),
                               Text(
                                 '$rating',
                                 style: AppTextStyle()
                                     .textInfoBold(AppColors.description),
                               ),
-                            ],
+                            ].withSpaceBetween(width: 6),
                           ),
-                          const SizedBox(height: 5),
                           Row(
                             children: [
                               Text(
@@ -135,18 +130,16 @@ class FavoriteCard extends StatelessWidget {
                                 style: AppTextStyle()
                                     .textInfo(AppColors.description),
                               ),
-                              const SizedBox(width: 2),
                               Text(
                                 'Rp $price',
                                 style: AppTextStyle()
                                     .textInfoBold(AppColors.hargaStat),
                               ),
-                            ],
+                            ].withSpaceBetween(width: 4),
                           ),
-                        ],
+                        ].withSpaceBetween(height: 8),
                       ),
                     ),
-                    const SizedBox(width: 5),
                     GestureDetector(
                       onTap: () {
                         onDelete;
@@ -160,7 +153,7 @@ class FavoriteCard extends StatelessWidget {
                   ],
                 ),
               ),
-            ],
+            ].withSpaceBetween(width: 12),
           ),
         ),
       ),
