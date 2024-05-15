@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:typed_data';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
