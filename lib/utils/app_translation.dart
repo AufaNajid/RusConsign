@@ -157,6 +157,8 @@ class AppTranslation extends Translations {
           'batalkanPesanan': 'Batalkan Pesanan',
           'pesananDibatalkan': 'Pesanan Dibatalkan',
           'tanpaBiaya': '(Tanpa Biaya)',
+          'metodePembayaran' : 'Metode Pembayaran',
+          'beriPenilaian' : 'Beri Penilaian',
         },
         'English': {
           'bahasa': 'Language',
@@ -312,6 +314,8 @@ class AppTranslation extends Translations {
           'batalkanPesanan': 'Cancel Order',
           'pesananDibatalkan': 'Canceled Order',
           'tanpaBiaya': '(No Fees)',
+          'metodePembayaran' : 'Payment Method',
+          'beriPenilaian' : 'Give Rating',
         }
       };
 }

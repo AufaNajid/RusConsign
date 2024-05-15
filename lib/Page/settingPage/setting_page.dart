@@ -7,6 +7,7 @@ import 'package:rusconsign/page/settingPage/widgets/notification_setting.dart';
 import 'package:rusconsign/page/settingPage/widgets/preference_setting.dart';
 import 'package:rusconsign/page/settingPage/widgets/profile_setting.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 import '../../utils/app_responsive.dart';
@@ -41,22 +42,41 @@ class SettingPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const DividerProfile(),
-              const ProfileSetting(),
-              DividerComponent(
-                  icon: FeatherIcons.bell, text: 'notifikasi'.tr),
-              NotificationSetting(
-                iSwitched: settingController.isNotificationSwitched.value,
-                toggleSwitch: settingController.toggleNotificationSwitch,
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  DividerProfile(),
+                  ProfileSetting(),
+                  
+                ],
               ),
-              DividerComponent(
-                  icon: FeatherIcons.aperture, text: 'preferensi'.tr),
-              PreferenceSetting(
-                  isSwitched: settingController.isDarkModeSwitched.value,
-                  toggleSwitch: settingController.toggleDarkModeSwitch),
-              DividerComponent(
-                  icon: FeatherIcons.link, text: 'linkAkun'.tr),
-              const AccountSetting(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  DividerComponent(icon: FeatherIcons.bell, text: 'notifikasi'.tr),
+                  NotificationSetting(
+                    iSwitched: settingController.isNotificationSwitched.value,
+                    toggleSwitch: settingController.toggleNotificationSwitch,
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  DividerComponent(
+                      icon: FeatherIcons.aperture, text: 'preferensi'.tr),
+                  PreferenceSetting(
+                      isSwitched: settingController.isDarkModeSwitched.value,
+                      toggleSwitch: settingController.toggleDarkModeSwitch),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  DividerComponent(icon: FeatherIcons.link, text: 'linkAkun'.tr),
+                  const AccountSetting(),
+                ],
+              ),
               SizedBox(
                 width: AppResponsive().screenWidth(context),
                 height: AppResponsive().screenWidth(context) * 0.1,
@@ -67,17 +87,23 @@ class SettingPage extends StatelessWidget {
                     Get.offAllNamed('/login');
                   },
                   style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4))),
+                    elevation: const MaterialStatePropertyAll(0),
+                    padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(AppColors.button1),
+                        const MaterialStatePropertyAll(AppColors.button1),
                   ),
-                  label: Text('keluar'.tr,
-                      style: AppTextStyle().header(AppColors.textButton1)),
+                  label: Text(
+                    'keluar'.tr,
+                    style: AppTextStyle().header(AppColors.textButton1),
+                  ),
                 ),
               ),
-            ],
+            ].withSpaceBetween(height: 20),
           ),
         ),
       ),

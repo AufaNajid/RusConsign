@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/page/orderPage/order_page_controller.dart';
-import 'package:rusconsign/utils/app_responsive.dart';
-import 'package:rusconsign/utils/colors.dart';
+import '../../../utils/app_responsive.dart';
+import '../../../utils/colors.dart';
+import '../user_profile_controller.dart';
 
-class FilterOrderButton extends StatelessWidget {
+class FilterButton extends StatelessWidget {
   final String text;
   final IconData icon;
   final int index;
 
-  const FilterOrderButton({
+  const FilterButton({
     Key? key,
     required this.text,
     required this.icon,
@@ -18,16 +18,14 @@ class FilterOrderButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final OrderPageController filterOrderController = Get.find();
-    return Obx(
-      () => SizedBox(
-        width: AppResponsive().screenWidth(context) * 0.29,
-        child: ElevatedButton.icon(
+    final UserProfilePageController filterButtonController = Get.find();
+
+    return Obx(() => ElevatedButton.icon(
           style: ButtonStyle(
-            elevation: MaterialStateProperty.all(0),
+            elevation: const MaterialStatePropertyAll(0),
             padding: const MaterialStatePropertyAll(EdgeInsets.zero),
             backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-              return filterOrderController.selectedIndex == index
+              return filterButtonController.selectedIndex == index
                   ? AppColors.button1
                   : AppColors.cardIconFill;
             }),
@@ -36,30 +34,31 @@ class FilterOrderButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6),
               ),
             ),
+            fixedSize: MaterialStatePropertyAll(
+              Size(AppResponsive().screenWidth(context) * 0.290,
+                  AppResponsive().screenWidth(context) * 0.04),
+            ),
           ),
           icon: Icon(
             icon,
-            color: filterOrderController.selectedIndex == index
+            color: filterButtonController.selectedIndex == index
                 ? AppColors.activeIconType
                 : AppColors.nonActiveIcon,
-            size: 16,
           ),
           label: Text(
             text,
             style: TextStyle(
-              color: filterOrderController.selectedIndex == index
+              color: filterButtonController.selectedIndex == index
                   ? AppColors.textButton1
                   : AppColors.description,
-              fontSize: 10,
+              fontSize: 12,
             ),
           ),
           onPressed: () {
-            if (filterOrderController.selectedIndex != index) {
-              filterOrderController.setSelectedFilter(index);
+            if (filterButtonController.selectedIndex != index) {
+              filterButtonController.setSelectedFilter(index);
             }
           },
-        ),
-      ),
-    );
+        ));
   }
 }
