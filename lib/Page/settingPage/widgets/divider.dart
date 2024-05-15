@@ -28,14 +28,22 @@ class DividerProfile extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4))),
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(AppColors.button1),
-                    fixedSize: MaterialStateProperty.all<Size>(Size(
-                        AppResponsive().screenWidth(context) * 0.25,
-                        AppResponsive().screenWidth(context) * 0.070))),
+                  elevation: const MaterialStatePropertyAll(0),
+                  padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                  shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                  backgroundColor:
+                      const MaterialStatePropertyAll(AppColors.button1),
+                  fixedSize: MaterialStatePropertyAll(
+                    Size(
+                      AppResponsive().screenWidth(context) * 0.24,
+                      AppResponsive().screenWidth(context) * 0.070,
+                    ),
+                  ),
+                ),
                 child: Text('simpan'.tr,
                     style: AppTextStyle().textInfoBold(AppColors.textButton1)),
               ),
@@ -43,7 +51,6 @@ class DividerProfile extends StatelessWidget {
           ],
         ),
         const Divider(thickness: 1, color: AppColors.titleLine),
-        const SizedBox(height: 4)
       ],
     );
   }
@@ -69,7 +76,6 @@ class DividerComponent extends StatelessWidget {
           ],
         ),
         const Divider(thickness: 1, color: AppColors.titleLine),
-        const SizedBox(height: 4)
       ],
     );
   }
