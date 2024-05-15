@@ -13,12 +13,15 @@ class QrisPaymentPage extends StatelessWidget {
     return Scaffold(
       appBar: const AppBarQrisPayment(title: "Pembayaran QRIS"),
       backgroundColor: AppColors.background,
-      body: Column(
-        children: [
-          const PaymentCountdown(),
-          SizedBox(height: AppResponsive().screenHeight(context)*0.20,),
-          const QrCode()
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            const PaymentCountdown(),
+            SizedBox(height: AppResponsive().screenHeight(context)*0.20,),
+             QrCode()
+          ],
+        ),
       ),
     );
   }
