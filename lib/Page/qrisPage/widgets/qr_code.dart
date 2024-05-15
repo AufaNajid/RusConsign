@@ -1,30 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:rusconsign/Page/qrisPage/qris_payment_controller.dart';
+import 'package:screenshot/screenshot.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class QrCode extends StatelessWidget {
-  const QrCode({super.key});
+  QrCode({super.key});
+
+  final QrCodeController _qrCodeController = QrCodeController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: AppColors.cardIconFill),
+        borderRadius: BorderRadius.circular(5),
+        color: AppColors.cardIconFill,
+      ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40,
-        vertical: 10
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
         child: Column(
           children: [
             Container(
               height: 100,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: AppColors.cardProdukTidakDipilih),
+                borderRadius: BorderRadius.circular(5),
+                color: AppColors.cardProdukTidakDipilih,
+              ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
@@ -51,12 +56,12 @@ class QrCode extends StatelessWidget {
                           ),
                           Text(
                             "ShopeePay, OVO, DANA, Gopay, LinkAja, dan Transfer bank via QRIS",
-                            style:
-                                AppTextStyle().description(AppColors.description),
+                            style: AppTextStyle()
+                                .description(AppColors.description),
                             textAlign: TextAlign.start,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
-                          )
+                          ),
                         ],
                       ),
                     )
@@ -64,18 +69,27 @@ class QrCode extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             Container(
               width: AppResponsive().screenWidth(context) * 0.8,
               height: AppResponsive().screenHeight(context) * 0.35,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: AppColors.activeIcon,
-                  image: const DecorationImage(
-                      image: AssetImage("assets/images/qr_code_png.png"),
-                      fit: BoxFit.cover)),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Screenshot(
+                controller: _qrCodeController.screenshotController,
+                child: QrImageView(
+                  data: "aaa",
+                  version: QrVersions.auto,
+                  backgroundColor: Colors.white,
+                ),
+              ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             SizedBox(
               height: AppResponsive().screenHeight(context) * 0.05,
               child: ElevatedButton(
@@ -83,18 +97,18 @@ class QrCode extends StatelessWidget {
                   backgroundColor: AppColors.button1,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        5), // Sesuaikan dengan keinginan Anda
+                    borderRadius: BorderRadius.circular(5),
                   ),
                 ),
-                onPressed: () {
-                  // Aksi ketika tombol ditekan
+                onPressed: () async {
+                  await _qrCodeController.captureAndSaveImage();
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(FeatherIcons.download, color: AppColors.textButton1),
+                    const Icon(FeatherIcons.download,
+                        color: AppColors.textButton1),
                     Padding(
                       padding: EdgeInsets.only(
                         left: AppResponsive().screenWidth(context) * 0.02,
@@ -107,7 +121,7 @@ class QrCode extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
