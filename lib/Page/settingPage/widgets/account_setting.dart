@@ -31,7 +31,6 @@ class AccountSetting extends StatelessWidget {
               )
             ],
           ),
-          const SizedBox(height: 30)
         ],
       ),
     );

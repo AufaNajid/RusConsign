@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/page/settingPage/setting_controller.dart';
+import 'package:rusconsign/utils/extension.dart';
 
 import '../../../utils/app_responsive.dart';
 import '../../../utils/colors.dart';
@@ -38,53 +39,62 @@ class ProfileSetting extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15),
                 Row(
                   children: [
                     SizedBox(
                       height: AppResponsive().screenWidth(context) * 0.070,
-                      width: 125,
+                      width: 95,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4))),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.button2),
+                          elevation: const MaterialStatePropertyAll(0),
+                          padding:
+                              const MaterialStatePropertyAll(EdgeInsets.zero),
+                          shape: MaterialStatePropertyAll(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          ),
+                          backgroundColor:
+                              const MaterialStatePropertyAll(AppColors.button2),
                         ),
-                        child: Text('lihatFoto'.tr,
-                            style: AppTextStyle()
-                                .textInfoBold(AppColors.textButton2)),
+                        child: Text(
+                          'lihatFoto'.tr,
+                          style: AppTextStyle()
+                              .textInfoBold(AppColors.textButton2),
+                        ),
                       ),
                     ),
-                    const SizedBox(width: 10),
                     SizedBox(
                       height: AppResponsive().screenWidth(context) * 0.070,
-                      width: 125,
+                      width: 95,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4))),
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.button2),
+                          elevation: const MaterialStatePropertyAll(0),
+                          padding:
+                              const MaterialStatePropertyAll(EdgeInsets.zero),
+                          shape: MaterialStatePropertyAll(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          ),
+                          backgroundColor:
+                              const MaterialStatePropertyAll(AppColors.button2),
                         ),
-                        child: Text('gantiFoto'.tr,
-                            style: AppTextStyle()
-                                .textInfoBold(AppColors.textButton2)),
+                        child: Text(
+                          'gantiFoto'.tr,
+                          style: AppTextStyle()
+                              .textInfoBold(AppColors.textButton2),
+                        ),
                       ),
                     ),
-                  ],
+                  ].withSpaceBetween(width: 10),
                 )
-              ],
+              ].withSpaceBetween(height: 15),
             )
           ],
         ),
-        const SizedBox(height: 10),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -113,7 +123,6 @@ class ProfileSetting extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(height: 10),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -143,7 +152,6 @@ class ProfileSetting extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(height: 10),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -159,7 +167,7 @@ class ProfileSetting extends StatelessWidget {
                   style: AppTextStyle().textInfo(AppColors.description),
                   cursorColor: AppColors.hargaStat,
                   textAlign: TextAlign.left,
-                  obscureText: settingController.isShow.value,
+                  obscureText: !settingController.isShow.value,
                   decoration: InputDecoration(
                     suffixIcon: GestureDetector(
                       onTap: () {
@@ -188,8 +196,7 @@ class ProfileSetting extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(height: 20),
-      ],
+      ].withSpaceBetween(height: 10),
     );
   }
 }

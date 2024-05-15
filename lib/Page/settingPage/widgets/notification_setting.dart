@@ -17,31 +17,32 @@ class NotificationSetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingController settingController = Get.find();
-    return Obx(() => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'tampilkanNotifikasi'.tr,
-                  style: AppTextStyle().description(AppColors.description),
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text(
+                'tampilkanNotifikasi'.tr,
+                style: AppTextStyle().description(AppColors.description),
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: () {
+                  settingController.toggleNotificationSwitch();
+                },
+                icon: Icon(
+                  settingController.isNotificationSwitched.value
+                      ? FeatherIcons.toggleRight
+                      : FeatherIcons.toggleLeft,
+                  size: 30,
                 ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {
-                    settingController.toggleNotificationSwitch();
-                  },
-                  icon: Icon(
-                    settingController.isNotificationSwitched.value
-                        ? FeatherIcons.toggleRight
-                        : FeatherIcons.toggleLeft,
-                    size: 30,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 15)
-          ],
-        ));
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
