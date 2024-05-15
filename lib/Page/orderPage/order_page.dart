@@ -29,7 +29,7 @@ class OrderPage extends StatelessWidget {
           ),
         ),
         title: Text(
-          "Pesanan Saya",
+          'pesananSaya'.tr,
           style: AppTextStyle().title(AppColors.titleLine),
         ),
         centerTitle: true,
@@ -46,24 +46,24 @@ class OrderPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Row(
               children: [
                 FilterOrderButton(
-                  text: 'Belum Bayar',
+                  text: 'belumBayar'.tr,
                   icon: FeatherIcons.creditCard,
                   index: 0,
                 ),
-                Spacer(),
+                const Spacer(),
                 FilterOrderButton(
-                  text: 'Proses',
+                  text: 'proses'.tr,
                   icon: FeatherIcons.clock,
                   index: 1,
                 ),
-                Spacer(),
+                const Spacer(),
                 FilterOrderButton(
-                  text: 'Selesai',
+                  text: 'selesai'.tr,
                   icon: FeatherIcons.check,
                   index: 2,
                 )
@@ -91,7 +91,7 @@ class OrderPage extends StatelessWidget {
                                 imagePath:
                                     'https://via.placeholder.com/100x150',
                                 title:
-                                    'Jasa Photo individual,potrait photo(Lingkungan RUS)',
+                                    'Jasa Photo individual,potrait photo (Lingkungan RUS)',
                                 profileImagePath:
                                     'https://via.placeholder.com/30x30',
                                 profileUsername: 'mndinadinadjn',
@@ -113,11 +113,11 @@ class OrderPage extends StatelessWidget {
                                 imagePath:
                                     'https://via.placeholder.com/100x150',
                                 title:
-                                    'Gantungan Kunci (Key Chain) Boneka Unik',
+                                    'Gantungan Kunci (Key Chain) Bodadad had adjneka Unik',
                                 profileImagePath:
                                     'https://via.placeholder.com/30x30',
                                 profileUsername: 'efijwfisi iaduhhdhdia mfef',
-                                rating: .0,
+                                rating: 4.5,
                                 totalProductPrice: 155000,
                                 paymentMethod: "Dana",
                                 meetingLocation: "Gazebo dekat sekolah",
@@ -139,7 +139,7 @@ class OrderPage extends StatelessWidget {
                                 profileImagePath:
                                     'https://via.placeholder.com/30x30',
                                 profileUsername: 'edadisi iaduadybad ad daidna',
-                                rating: .0,
+                                rating: 4.0,
                                 totalProductPrice: 155000,
                                 paymentMethod: "Gopay",
                                 meetingLocation: "Depan Studio RUS",
