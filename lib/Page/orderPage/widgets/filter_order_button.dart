@@ -25,12 +25,13 @@ class FilterOrderButton extends StatelessWidget {
         child: ElevatedButton.icon(
           style: ButtonStyle(
             elevation: MaterialStateProperty.all(0),
+            padding: const MaterialStatePropertyAll(EdgeInsets.zero),
             backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
               return filterOrderController.selectedIndex == index
                   ? AppColors.button1
                   : AppColors.cardIconFill;
             }),
-            shape: MaterialStateProperty.all<OutlinedBorder>(
+            shape: MaterialStatePropertyAll(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(6),
               ),
@@ -46,11 +47,11 @@ class FilterOrderButton extends StatelessWidget {
           label: Text(
             text,
             style: TextStyle(
-                color: filterOrderController.selectedIndex == index
-                    ? AppColors.textButton1
-                    : AppColors.description,
-                fontSize: 8,
-                fontWeight: FontWeight.w600),
+              color: filterOrderController.selectedIndex == index
+                  ? AppColors.textButton1
+                  : AppColors.description,
+              fontSize: 10,
+            ),
           ),
           onPressed: () {
             if (filterOrderController.selectedIndex != index) {

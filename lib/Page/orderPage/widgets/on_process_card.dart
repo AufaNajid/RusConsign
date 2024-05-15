@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 
 import '../../../utils/text_style.dart';
 
@@ -79,17 +80,16 @@ class OnProcessCard extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 8),
                           Expanded(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   title,
                                   style: AppTextStyle()
                                       .descriptionBold(AppColors.titleLine),
                                 ),
-                                const SizedBox(height: 5),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -104,121 +104,129 @@ class OnProcessCard extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    const SizedBox(width: 5),
                                     Expanded(
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             profileUsername,
-                                            style: AppTextStyle()
-                                                .textInfo(AppColors.description),
+                                            style: AppTextStyle().textInfo(
+                                                AppColors.description),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ],
+                                  ].withSpaceBetween(width: 6),
                                 ),
-                                const SizedBox(height: 5),
                                 Row(
                                   children: [
-                                    const Icon(
-                                      Icons.star,
-                                      color: AppColors.bintang,
-                                      size: 20,
+                                    const Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.star,
+                                          color: AppColors.bintang,
+                                          size: 18,
+                                        ),
+                                        Icon(
+                                          Icons.star_border_rounded,
+                                          color: AppColors.borderIcon,
+                                          size: 20,
+                                        ),
+                                      ],
                                     ),
-                                    const SizedBox(width: 6),
                                     Text(
                                       '$rating',
                                       style: AppTextStyle()
                                           .textInfoBold(AppColors.description),
                                     ),
-                                  ],
+                                  ].withSpaceBetween(width: 6),
                                 ),
-                                const SizedBox(height: 5),
                                 Row(
                                   children: [
                                     Text(
-                                      'Total: ',
+                                      '${'total'.tr} :',
                                       style: AppTextStyle()
                                           .textInfo(AppColors.description),
                                     ),
-                                    const SizedBox(width: 2),
                                     Text(
                                       'Rp $totalProductPrice',
                                       style: AppTextStyle()
                                           .textInfoBold(AppColors.hargaStat),
                                     ),
-                                  ],
+                                  ].withSpaceBetween(width: 4),
                                 ),
-                                const SizedBox(height: 5),
                                 Row(
                                   children: [
                                     Text(
-                                      'Metode Pembayaran: ',
+                                      '${'metodePembayaran'.tr} :',
                                       style: AppTextStyle()
                                           .textInfo(AppColors.description),
                                     ),
-                                    const SizedBox(width: 2),
                                     Text(
                                       paymentMethod,
                                       style: AppTextStyle()
                                           .textInfoBold(AppColors.hargaStat),
                                     ),
-                                  ],
+                                  ].withSpaceBetween(width: 4),
                                 ),
-                                const SizedBox(height: 5),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Lokasi Pertemuan: ',
+                                      '${'lokasiPertemuan'.tr} :',
                                       style: AppTextStyle()
                                           .textInfo(AppColors.description),
                                     ),
-                                    const SizedBox(width: 2),
                                     Expanded(
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             meetingLocation,
-                                            style: AppTextStyle()
-                                                .textInfoBold(AppColors.hargaStat),
+                                            style: AppTextStyle().textInfoBold(
+                                                AppColors.hargaStat),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ],
+                                  ].withSpaceBetween(width: 4),
                                 ),
-                              ],
+                              ].withSpaceBetween(height: 6),
                             ),
                           ),
-                        ],
+                        ].withSpaceBetween(width: 8),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
                 SizedBox(
-                  width: AppResponsive().screenWidth(context),
+                  width: double.infinity,
                   height: AppResponsive().screenWidth(context) * 0.080,
                   child: ElevatedButton(
                     onPressed: () {
                       onChatSeller;
                     },
                     style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4))),
+                      elevation: const MaterialStatePropertyAll(0),
+                      padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(AppColors.button2),
+                          const MaterialStatePropertyAll(AppColors.button2),
                     ),
-                    child: Text("Chat Dengan Penjual",
-                        style: AppTextStyle().header(AppColors.textButton2)),
+                    child: Text(
+                      'chatPenjual'.tr,
+                      style: AppTextStyle().header(AppColors.textButton2),
+                    ),
                   ),
                 ),
-              ],
+              ].withSpaceBetween(height: 10),
             ),
           ),
         ),
