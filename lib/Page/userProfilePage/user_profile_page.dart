@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/userProfilePage/user_profile_controller.dart';
-import 'package:rusconsign/Page/userProfilePage/widgets/component.dart';
-import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/Page/userProfilePage/widgets/button_icon_widget.dart';
+import 'package:rusconsign/Page/userProfilePage/widgets/filter_button.dart';
+import 'package:rusconsign/Page/userProfilePage/widgets/profile_info_card.dart';
 import '../../utils/colors.dart';
 import '../../utils/text_style.dart';
 import '../homePage/widgets/product_card.dart';
 
 class UserProfilePage extends StatelessWidget {
-  final indicat = Get.put(UserProfilePageController());
+  final controller = Get.put(UserProfilePageController());
   UserProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.background,
-        surfaceTintColor: Colors.white,
+        surfaceTintColor: AppColors.background,
         leading: IconButton(
           onPressed: () {
             Get.back();
@@ -37,106 +38,100 @@ class UserProfilePage extends StatelessWidget {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  width: 90,
-                  height: 90,
-                  decoration: const ShapeDecoration(
-                    image: DecorationImage(
-                      image:
-                          NetworkImage("https://via.placeholder.com/165x110"),
-                      fit: BoxFit.fill,
-                    ),
-                    shape: CircleBorder(),
+              SizedBox(
+                width: 90,
+                height: 90,
+                child: ClipOval(
+                  child: Image.network(
+                    'https://via.placeholder.com/90x90',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              Text("Raihan Pace",
-                  style: AppTextStyle().title(AppColors.titleLine)),
-              Text("raihanmaulana084@gmail.com",
-                  style: AppTextStyle().description(AppColors.description)),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              const SizedBox(height: 5),
+              Text(
+                'Raihan Maulana',
+                style: AppTextStyle().title(AppColors.titleLine),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                'raihanmaulana084@gmail.com',
+                style: AppTextStyle().description(AppColors.description),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CustomInfo(
+                  ProfileInfoCard(
                     icon: FeatherIcons.userCheck,
-                    info: "Pengikut",
-                    infoNumber: "182",
+                    title: 'pengikut'.tr,
+                    data: '287',
                   ),
-                  CustomInfo(
+                  ProfileInfoCard(
                     icon: FeatherIcons.users,
-                    info: "Jumlah Jasa",
-                    infoNumber: "2",
+                    title: 'jumlahJasa'.tr,
+                    data: '287',
                   ),
-                  CustomInfo(
+                  ProfileInfoCard(
                     icon: FeatherIcons.box,
-                    info: "Jumlah Produk",
-                    infoNumber: "3",
+                    title: 'jumlahProduk'.tr,
+                    data: '287',
                   ),
-                  CustomInfo(
+                  ProfileInfoCard(
                     icon: FeatherIcons.star,
-                    info: "Penilaian",
-                    infoNumber: "4.5",
+                    title: 'penilaian'.tr,
+                    data: '287',
                   ),
                 ],
               ),
-              Text(
-                "Halo semuanya, aku Raihan Pace. Disini kamu bisa membeli barang atau jasa yang saya berikan disini. kalau mau ketemu jangan sungkan, aku ada di sekitaran lingkungan SMK RUS kok.",
-                style: AppTextStyle().textInfo(AppColors.description),
-                maxLines: 5,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  textAlign: TextAlign.center,
+                  'afenuihidhiad andiad idanduand oawkdne vknma coijcjcinadin acnincanc inanic iadiand adiandoandiandiand adianndiandianidad iadniandinadina diandiandianda diandiandia',
+                  style: AppTextStyle().textInfo(AppColors.description),
+                ),
               ),
-              Column(
-                children: [
-                  MyButtonProfile(
-                    onClick: () {},
-                    text: "Chat Penjual",
-                    prefixIcon: FeatherIcons.messageCircle,
-                    backgroundColor: AppColors.hargaStat,
-                    foregroundColor: AppColors.background,
-                    textAlign: TextAlign.center,
-                  ),
-                  MyButtonProfile(
-                    onClick: () {},
-                    text: "Ikuti",
-                    prefixIcon: FeatherIcons.userPlus,
-                    backgroundColor: AppColors.hargaStat,
-                    foregroundColor: AppColors.background,
-                    textAlign: TextAlign.center,
-                  ),
-                ].withSpaceBetween(height: 10),
+              const SizedBox(height: 20),
+              ButtonIconWidget(
+                icon: FeatherIcons.messageCircle,
+                title: 'chatPenjual'.tr,
               ),
+              const SizedBox(height: 10),
+              ButtonIconWidget(
+                icon: FeatherIcons.userPlus,
+                title: 'ikuti'.tr,
+              ),
+              const SizedBox(height: 20),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Halaman Produk dan Jasa',
+                    'halamanP&J'.tr,
                     style: AppTextStyle().subHeader(AppColors.titleLine),
                   ),
                   const SizedBox(height: 8),
-                  const Row(
+                  Row(
                     children: [
                       FilterButton(
-                        text: 'Semua',
+                        text: 'semua'.tr,
                         icon: FeatherIcons.alignJustify,
                         index: 0,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       FilterButton(
-                        text: 'Jasa',
+                        text: 'jasa'.tr,
                         icon: FeatherIcons.users,
                         index: 1,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       FilterButton(
-                        text: 'Produk',
+                        text: 'produk'.tr,
                         icon: FeatherIcons.box,
                         index: 2,
                       )
@@ -161,7 +156,7 @@ class UserProfilePage extends StatelessWidget {
                             ),
                             filled: true,
                             fillColor: AppColors.cardIconFill,
-                            hintText: 'Cari jasa atau produk...',
+                            hintText: 'cari'.tr,
                             hintStyle: AppTextStyle()
                                 .description(AppColors.description),
                           ),
@@ -193,7 +188,7 @@ class UserProfilePage extends StatelessWidget {
                   const SizedBox(height: 4),
                   Obx(
                     () {
-                      if (indicat.selectedIndex == 1) {
+                      if (controller.selectedIndex == 1) {
                         return GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -214,7 +209,7 @@ class UserProfilePage extends StatelessWidget {
                             );
                           },
                         );
-                      } else if (indicat.selectedIndex == 2) {
+                      } else if (controller.selectedIndex == 2) {
                         return GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -260,9 +255,10 @@ class UserProfilePage extends StatelessWidget {
                       }
                     },
                   ),
+                  const SizedBox(height: 5),
                 ],
               ),
-            ].withSpaceBetween(height: 15),
+            ],
           ),
         ),
       ),
