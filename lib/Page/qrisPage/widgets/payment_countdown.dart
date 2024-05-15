@@ -23,7 +23,10 @@ class PaymentCountdown extends StatelessWidget {
           Text("Selesaikan pembayaran sebelum waktu habis agar pesanan kamu tidak kadaluarsa",
           style: AppTextStyle().description(AppColors.description),
           textAlign: TextAlign.center,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
           ),
+          
         ],
       ),
     );
