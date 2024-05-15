@@ -23,17 +23,18 @@ class FilterButton extends StatelessWidget {
     return Obx(() => ElevatedButton.icon(
           style: ButtonStyle(
             elevation: const MaterialStatePropertyAll(0),
+            padding: const MaterialStatePropertyAll(EdgeInsets.zero),
             backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
               return filterButtonController.selectedIndex == index
                   ? AppColors.button1
                   : AppColors.cardIconFill;
             }),
-            shape: MaterialStateProperty.all<OutlinedBorder>(
+            shape: MaterialStatePropertyAll(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(6),
               ),
             ),
-            fixedSize: MaterialStateProperty.all<Size>(
+            fixedSize: MaterialStatePropertyAll(
               Size(AppResponsive().screenWidth(context) * 0.290,
                   AppResponsive().screenWidth(context) * 0.04),
             ),

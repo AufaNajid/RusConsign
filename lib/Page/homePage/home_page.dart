@@ -1,5 +1,3 @@
-// ignore_for_file: unrelated_type_equality_checks, must_be_immutable
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -9,10 +7,11 @@ import 'package:rusconsign/page/homePage/widgets/filter_button.dart';
 import 'package:rusconsign/page/homePage/widgets/product_card.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class HomePage extends StatelessWidget {
-  final indicator = Get.put(HomePageController());
+  final controller = Get.put(HomePageController());
   HomePage({Key? key}) : super(key: key);
 
   @override
@@ -27,7 +26,8 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -36,11 +36,11 @@ class HomePage extends StatelessWidget {
                       height: 28,
                     ),
                     const Spacer(),
-                    IconButton(
-                      onPressed: () {
-                        Get.toNamed("chatlist");
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed('/chatlist');
                       },
-                      icon: const Icon(
+                      child: const Icon(
                         FeatherIcons.messageCircle,
                         color: AppColors.borderIcon,
                         size: 24,
@@ -49,7 +49,6 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 12),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -69,10 +68,11 @@ class HomePage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 16),
                     Row(
                       children: [
-                        Expanded(
+                        SizedBox(
+                          width: AppResponsive().screenWidth(context) * 0.770,
+                          height: 50,
                           child: TextField(
                             cursorColor: AppColors.hargaStat,
                             style: AppTextStyle()
@@ -93,83 +93,81 @@ class HomePage extends StatelessWidget {
                             textAlign: TextAlign.left,
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const Spacer(),
                         SizedBox(
                           width: 50,
                           height: 50,
-                          child: Ink(
-                            decoration: ShapeDecoration(
-                              color: AppColors.cardIconFill,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6),
-                              ),
-                            ),
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                FeatherIcons.search,
-                                color: AppColors.borderIcon,
-                              ),
-                            ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(6),
+                            child: Material(
+                                color: AppColors.cardIconFill,
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: const Icon(
+                                    FeatherIcons.search,
+                                    color: AppColors.borderIcon,
+                                  ),
+                                )),
                           ),
                         ),
                       ],
                     ),
-                  ],
+                  ].withSpaceBetween(height: 16),
                 ),
               ),
-              const SizedBox(height: 12),
-              CarouselSlider(
-                items: [
-                  'assets/images/item_carousel_1.png',
-                  'assets/images/item_carousel_2.png',
-                ].map((item) {
-                  return GestureDetector(
-                    onTap: () {
-                      Get.toNamed("/diskonpage");
-                    },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        item,
-                        fit: BoxFit.cover,
-                      ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CarouselSlider(
+                    items: [
+                      'assets/images/item_carousel_1.png',
+                      'assets/images/item_carousel_2.png',
+                    ].map((item) {
+                      return GestureDetector(
+                        onTap: () {
+                          Get.toNamed("/diskonpage");
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.asset(
+                            item,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                    options: CarouselOptions(
+                      height: AppResponsive().screenHeight(context) * 0.18,
+                      enlargeFactor: 0.25,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 3),
+                      enlargeCenterPage: true,
+                      onPageChanged: (index, reason) {
+                        controller.updateCurrentIndexIndicator(index);
+                      },
                     ),
-                  );
-                }).toList(),
-                options: CarouselOptions(
-                  height: AppResponsive().screenHeight(context) * 0.18,
-                  enlargeFactor: 0.25,
-                  autoPlay: true,
-                  autoPlayInterval: const Duration(seconds: 3),
-                  enlargeCenterPage: true,
-                  onPageChanged: (index, reason) {
-                    indicator.updateCurrentIndexIndicator(index);
-                  },
-                ),
-              ),
-              Obx(
-                () => Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    2,
-                    (index) => Container(
-                      width: 8,
-                      height: 8,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 4.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: (indicator.currentIndex == index)
-                            ? AppColors.activeIcon
-                            : AppColors.activeIconType,
+                  ),
+                  Obx(
+                    () => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        2,
+                        (index) => Container(
+                          width: 8,
+                          height: 8,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 8.0, horizontal: 4.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: (controller.currentIndex.value == index)
+                                ? AppColors.activeIcon
+                                : AppColors.activeIconType,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 4,
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
@@ -177,109 +175,119 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'halamanP&J'.tr,
-                      style: AppTextStyle().subHeader(AppColors.titleLine),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        FilterButton(
-                          text: 'semua'.tr,
-                          icon: FeatherIcons.alignJustify,
-                          index: 0,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'halamanP&J'.tr,
+                              style: AppTextStyle().subHeader(AppColors.titleLine),
+                            ),
+                            Row(
+                              children: [
+                                FilterButton(
+                                  text: 'semua'.tr,
+                                  icon: FeatherIcons.alignJustify,
+                                  index: 0,
+                                ),
+                                const Spacer(),
+                                FilterButton(
+                                  text: 'jasa'.tr,
+                                  icon: FeatherIcons.users,
+                                  index: 1,
+                                ),
+                                const Spacer(),
+                                FilterButton(
+                                  text: 'produk'.tr,
+                                  icon: FeatherIcons.box,
+                                  index: 2,
+                                )
+                              ],
+                            ),
+                          ].withSpaceBetween(height: 10),
                         ),
-                        const Spacer(),
-                        FilterButton(
-                          text: 'jasa'.tr,
-                          icon: FeatherIcons.users,
-                          index: 1,
+                        Obx(
+                          () {
+                            if (controller.selectedIndex == 1) {
+                              return GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: 10,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 8,
+                                  mainAxisSpacing: 8,
+                                  childAspectRatio: 0.8,
+                                ),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return ProductCard(
+                                    imagePath:
+                                        'https://via.placeholder.com/165x110',
+                                    title: 'Judul Jasa $index',
+                                    price: 12000,
+                                    rating: (index % 5) + 1,
+                                  );
+                                },
+                              );
+                            } else if (controller.selectedIndex == 2) {
+                              return GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: 10,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 8,
+                                  mainAxisSpacing: 8,
+                                  childAspectRatio: 0.8,
+                                ),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return ProductCard(
+                                    imagePath:
+                                        'https://via.placeholder.com/165x110',
+                                    title: 'Judul Produk $index',
+                                    price: 12000,
+                                    rating: (index % 5) + 1,
+                                  );
+                                },
+                              );
+                            } else {
+                              return GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: 10,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 8,
+                                  mainAxisSpacing: 8,
+                                  childAspectRatio: 0.8,
+                                ),
+                                itemBuilder: (BuildContext context, int index) {
+                                  return ProductCard(
+                                    imagePath:
+                                        'https://via.placeholder.com/165x110',
+                                    title:
+                                        'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
+                                    price: 12000,
+                                    rating: (index % 5) + 1,
+                                  );
+                                },
+                              );
+                            }
+                          },
                         ),
-                        const Spacer(),
-                        FilterButton(
-                          text: 'produk'.tr,
-                          icon: FeatherIcons.box,
-                          index: 2,
-                        )
-                      ],
+                      ].withSpaceBetween(height: 10),
                     ),
-                    const SizedBox(height: 4),
-                    Obx(
-                      () {
-                        if (indicator.selectedIndex == 1) {
-                          return GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 0.8,
-                            ),
-                            itemBuilder: (BuildContext context, int index) {
-                              return ProductCard(
-                                imagePath:
-                                    'https://via.placeholder.com/165x110',
-                                title: 'Judul Jasa $index',
-                                price: 12000,
-                                rating: (index % 5) + 1,
-                              );
-                            },
-                          );
-                        } else if (indicator.selectedIndex == 2) {
-                          return GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 0.8,
-                            ),
-                            itemBuilder: (BuildContext context, int index) {
-                              return ProductCard(
-                                imagePath:
-                                    'https://via.placeholder.com/165x110',
-                                title: 'Judul Produk $index',
-                                price: 12000,
-                                rating: (index % 5) + 1,
-                              );
-                            },
-                          );
-                        } else {
-                          return GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 0.8,
-                            ),
-                            itemBuilder: (BuildContext context, int index) {
-                              return ProductCard(
-                                imagePath:
-                                    'https://via.placeholder.com/165x110',
-                                title:
-                                    'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
-                                price: 12000,
-                                rating: (index % 5) + 1,
-                              );
-                            },
-                          );
-                        }
-                      },
-                    ),
-                  ],
+                  ].withSpaceBetween(height: 10),
                 ),
               ),
-            ],
+            ].withSpaceBetween(height: 10),
           ),
         ),
       ),
