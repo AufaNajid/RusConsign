@@ -50,7 +50,6 @@ class chatUI extends StatelessWidget {
                   ),
                   Text(
                     chat,
-                    style: AppTextStyle().chat(AppColors.description),
                   )
                 ],
               ),

@@ -4,6 +4,7 @@ class DetailPageController extends GetxController {
   var isFavorite = false.obs;
   var thumbsUpClicked = false.obs;
   var thumbsDownClicked = false.obs;
+  var isAddCart = false.obs;
 
   void toggleFavorite() {
     isFavorite.value = !isFavorite.value;
@@ -12,17 +13,16 @@ class DetailPageController extends GetxController {
 
   void toggleThumbsUp() {
     thumbsUpClicked.value = !thumbsUpClicked.value;
-    if (thumbsUpClicked.value) {
-      thumbsDownClicked.value = false;
-    }
     update();
   }
 
   void toggleThumbsDown() {
     thumbsDownClicked.value = !thumbsDownClicked.value;
-    if (thumbsDownClicked.value) {
-      thumbsUpClicked.value = false;
-    }
+    update();
+  }
+
+  void toggleAddcart() {
+    isAddCart.value = !isAddCart.value;
     update();
   }
 }
