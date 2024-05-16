@@ -8,6 +8,8 @@ import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
+
+
 class QrCode extends StatelessWidget {
   QrCode({super.key});
 
@@ -21,11 +23,11 @@ class QrCode extends StatelessWidget {
         color: AppColors.cardIconFill,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
         child: Column(
           children: [
             Container(
-              height: 100,
+              height: 80,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5),
                 color: AppColors.cardProdukTidakDipilih,
