@@ -71,4 +71,14 @@ class AppTextStyle {
       decoration: TextDecoration.none,
     );
   }
+
+    countdownText(Color color) {
+    return TextStyle(
+      color: color,
+      fontSize: 30,
+      fontFamily: "Poppins",
+      fontWeight: FontWeight.w600,
+      decoration: TextDecoration.none,
+    );
+  }
 }

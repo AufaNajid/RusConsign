@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/qrisPage/qris_payment_binding.dart';
 import 'package:rusconsign/Page/registerSeller/register_seller_binding.dart';
 import 'package:rusconsign/Page/qrisPage/qris_payment_page.dart';
 import 'package:rusconsign/Page/userProfilePage/user_profile_binding.dart';
@@ -44,7 +45,10 @@ List<GetPage> routes = [
   GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone()),
   GetPage(name: "/locationpage", page: () => const LocationPage()),
   GetPage(name: "/checkoutpage", page: () => const ChekcoutPage()),
-  GetPage(name: "/qrispayment", page: () => const QrisPaymentPage()),
+  GetPage(
+    name: "/qrispayment", 
+    page: () => const QrisPaymentPage(),
+    binding: QrPaymentBinding() ),
   GetPage(
     name: "/login",
     page: () => LoginPage(),
