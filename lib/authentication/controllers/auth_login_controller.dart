@@ -1,15 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart'as http;
 
-class AuthController extends GetxController {
-  RxBool isShow = false.obs;
-  RxBool isShowConfirmPassword = false.obs;
-  final TextEditingController usernameTextEditingController =
-  TextEditingController();
+class AuthLoginController extends GetxController{
+  late final SharedPreferences prefs;
   final TextEditingController emailTextEditingController =
   TextEditingController();
   final TextEditingController passwordTextEditingController =
@@ -17,29 +13,33 @@ class AuthController extends GetxController {
   RxBool isObsecure = true.obs;
   RxBool isObsecureFalse = false.obs;
   RxBool isLoading = false.obs;
-  RxBool successfulRegister = true.obs;
+  RxBool successfulLogin = true.obs;
   RxString message = "".obs;
 
-  void showPassword() {
-    isShow.value = !isShow.value;
-    update();
+
+  @override
+  void onInit() {
+    super.onInit();
+    loadData();
   }
 
-  void showConfirmPassword() {
-    isShowConfirmPassword.value = !isShowConfirmPassword.value;
-    update();
+  loadData() async {
+    prefs = await SharedPreferences.getInstance();
+    // Check if token exists, if yes, navigate to home
+    if (prefs.containsKey("token")) {
+      // Get.off(HomePage());
+    }
   }
 
-  signin(String username, String email, String password) async {
+  login(String username, String password) async {
     isLoading.value = true;
     final response = await http.post(
-      Uri.parse("https://rusconsign.com/api/register"),
+      Uri.parse("https://rusconsign.com/api/login"),
       headers: <String, String>{
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: <String, String>{
         'username': username,
-        'email': email,
         'password': password,
       },
     );
@@ -47,18 +47,24 @@ class AuthController extends GetxController {
       Map<String, dynamic> jsonResponse = json.decode(response.body);
       bool status = jsonResponse['status'];
       String message = jsonResponse['message'];
+      String? token = jsonResponse['token'];
       if (status) {
-        successfulRegister.value = true;
-        isLoading.value = false;
+        await prefs.setString("token", token!);
+        await prefs.setString("username", username);
         this.message.value = message;
-        return;
+        successfulLogin.value = true;
+        isLoading.value = false;
+        print("INI UDAH MASUK KE LOGIN HEHEHE");
+        Get.offNamed("/menu");
       } else {
-        successfulRegister.value = false;
-        isLoading.value = false;
         this.message.value = message;
+        successfulLogin.value = false;
+        isLoading.value = false;
+        print("INI SALAH KAMU NI GIMANA");
       }
     } else {
-      successfulRegister.value = false;
+      print("ERROR BANG");
+      successfulLogin.value = false;
       print("status code : ${response.statusCode.toString()}");
     }
   }
