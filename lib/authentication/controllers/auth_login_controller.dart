@@ -54,18 +54,14 @@ class AuthLoginController extends GetxController{
         this.message.value = message;
         successfulLogin.value = true;
         isLoading.value = false;
-        print("INI UDAH MASUK KE LOGIN HEHEHE");
         Get.offNamed("/menu");
       } else {
         this.message.value = message;
         successfulLogin.value = false;
         isLoading.value = false;
-        print("INI SALAH KAMU NI GIMANA");
       }
     } else {
-      print("ERROR BANG");
       successfulLogin.value = false;
-      print("status code : ${response.statusCode.toString()}");
     }
   }
 }

@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/userProfilePage/user_profile_controller.dart';
+import 'package:rusconsign/Page/userProfilePage/widgets/button_follow.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/button_icon_widget.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/filter_button.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/profile_info_card.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
+import 'package:rusconsign/utils/extension.dart';
 import '../../utils/colors.dart';
 import '../../utils/text_style.dart';
 import '../homePage/widgets/product_card.dart';
@@ -41,108 +44,122 @@ class UserProfilePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: [
-              SizedBox(
-                width: 90,
-                height: 90,
-                child: ClipOval(
-                  child: Image.network(
-                    'https://via.placeholder.com/90x90',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                'Raihan Maulana',
-                style: AppTextStyle().title(AppColors.titleLine),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                'raihanmaulana084@gmail.com',
-                style: AppTextStyle().description(AppColors.description),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ProfileInfoCard(
-                    icon: FeatherIcons.userCheck,
-                    title: 'pengikut'.tr,
-                    data: '287',
-                  ),
-                  ProfileInfoCard(
-                    icon: FeatherIcons.users,
-                    title: 'jumlahJasa'.tr,
-                    data: '287',
-                  ),
-                  ProfileInfoCard(
-                    icon: FeatherIcons.box,
-                    title: 'jumlahProduk'.tr,
-                    data: '287',
-                  ),
-                  ProfileInfoCard(
-                    icon: FeatherIcons.star,
-                    title: 'penilaian'.tr,
-                    data: '287',
-                  ),
-                ],
-              ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Text(
-                  textAlign: TextAlign.center,
-                  'afenuihidhiad andiad idanduand oawkdne vknma coijcjcinadin acnincanc inanic iadiand adiandoandiandiand adianndiandianidad iadniandinadina diandiandianda diandiandia',
-                  style: AppTextStyle().textInfo(AppColors.description),
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 90,
+                          height: 90,
+                          child: ClipOval(
+                            child: Image.network(
+                              'https://via.placeholder.com/90x90',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          'Raihan Maulana',
+                          style: AppTextStyle().title(AppColors.titleLine),
+                        ),
+                        Text(
+                          'raihanmaulana084@gmail.com',
+                          style:
+                              AppTextStyle().description(AppColors.description),
+                        ),
+                      ].withSpaceBetween(height: 10),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ProfileInfoCard(
+                          icon: FeatherIcons.userCheck,
+                          title: 'pengikut'.tr,
+                          data: '138',
+                        ),
+                        ProfileInfoCard(
+                          icon: FeatherIcons.users,
+                          title: 'jumlahJasa'.tr,
+                          data: '2',
+                        ),
+                        ProfileInfoCard(
+                          icon: FeatherIcons.box,
+                          title: 'jumlahProduk'.tr,
+                          data: '5',
+                        ),
+                        ProfileInfoCard(
+                          icon: FeatherIcons.star,
+                          title: 'penilaian'.tr,
+                          data: '4.5'.toString(),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        'afenuihidhiad andiad idanduand oawkdne vknma coijcjcinadin acnincanc inanic iadiand adiandoandiandiand adianndiandianidad iadniandinadina diandiandianda diandiandia',
+                        style: AppTextStyle().textInfo(AppColors.description),
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        ButtonIconWidget(
+                          icon: FeatherIcons.messageCircle,
+                          title: 'chatPenjual'.tr,
+                        ),
+                        const ButtonFollow(),
+                      ].withSpaceBetween(height: 10),
+                    ),
+                  ].withSpaceBetween(height: 15),
                 ),
               ),
-              const SizedBox(height: 20),
-              ButtonIconWidget(
-                icon: FeatherIcons.messageCircle,
-                title: 'chatPenjual'.tr,
-              ),
-              const SizedBox(height: 10),
-              ButtonIconWidget(
-                icon: FeatherIcons.userPlus,
-                title: 'ikuti'.tr,
-              ),
-              const SizedBox(height: 20),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'halamanP&J'.tr,
-                    style: AppTextStyle().subHeader(AppColors.titleLine),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'halamanP&J'.tr,
+                        style: AppTextStyle().subHeader(AppColors.titleLine),
+                      ),
+                      Row(
+                        children: [
+                          FilterButton(
+                            text: 'semua'.tr,
+                            icon: FeatherIcons.alignJustify,
+                            index: 0,
+                          ),
+                          const Spacer(),
+                          FilterButton(
+                            text: 'jasa'.tr,
+                            icon: FeatherIcons.users,
+                            index: 1,
+                          ),
+                          const Spacer(),
+                          FilterButton(
+                            text: 'produk'.tr,
+                            icon: FeatherIcons.box,
+                            index: 2,
+                          )
+                        ],
+                      ),
+                    ].withSpaceBetween(height: 10),
                   ),
-                  const SizedBox(height: 8),
                   Row(
                     children: [
-                      FilterButton(
-                        text: 'semua'.tr,
-                        icon: FeatherIcons.alignJustify,
-                        index: 0,
-                      ),
-                      const Spacer(),
-                      FilterButton(
-                        text: 'jasa'.tr,
-                        icon: FeatherIcons.users,
-                        index: 1,
-                      ),
-                      const Spacer(),
-                      FilterButton(
-                        text: 'produk'.tr,
-                        icon: FeatherIcons.box,
-                        index: 2,
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
+                      SizedBox(
+                        width: AppResponsive().screenWidth(context) * 0.770,
+                        height: 50,
                         child: TextField(
                           cursorColor: AppColors.hargaStat,
                           style: AppTextStyle()
@@ -163,29 +180,25 @@ class UserProfilePage extends StatelessWidget {
                           textAlign: TextAlign.left,
                         ),
                       ),
-                      const SizedBox(width: 12),
+                      const Spacer(),
                       SizedBox(
                         width: 50,
                         height: 50,
-                        child: Ink(
-                          decoration: ShapeDecoration(
-                            color: AppColors.cardIconFill,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              FeatherIcons.search,
-                              color: AppColors.borderIcon,
-                            ),
-                          ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(6),
+                          child: Material(
+                              color: AppColors.cardIconFill,
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: const Icon(
+                                  FeatherIcons.search,
+                                  color: AppColors.borderIcon,
+                                ),
+                              )),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 4),
                   Obx(
                     () {
                       if (controller.selectedIndex == 1) {
@@ -255,8 +268,7 @@ class UserProfilePage extends StatelessWidget {
                       }
                     },
                   ),
-                  const SizedBox(height: 5),
-                ],
+                ].withSpaceBetween(height: 8),
               ),
             ],
           ),
