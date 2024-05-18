@@ -5,6 +5,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/detailPage/widgets/comment_card.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import '../../utils/app_responsive.dart';
 import 'detail_page_controller.dart';
@@ -46,7 +47,6 @@ class DetailPage extends StatelessWidget {
               height: AppResponsive().screenHeight(context) * 0.35,
               width: double.infinity,
             ),
-            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(
@@ -76,14 +76,14 @@ class DetailPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 10),
                           Text(
                             '20 ${'terjual'.tr}',
                             style: AppTextStyle()
                                 .descriptionBold(AppColors.description),
                           )
-                        ],
+                        ].withSpaceBetween(width: 10),
                       ),
+                      const Spacer(),
                       SizedBox(
                         width: 40,
                         height: 40,
@@ -98,12 +98,12 @@ class DetailPage extends StatelessWidget {
                                 },
                                 child: Icon(
                                   controller.isFavorite.value
-                                      ? BootstrapIcons.heart_fill
-                                      : BootstrapIcons.heart,
+                                      ? Icons.favorite_rounded
+                                      : Icons.favorite_border_rounded,
                                   color: controller.isFavorite.value
                                       ? AppColors.hargaStat
                                       : AppColors.borderIcon,
-                                      size: 20,
+                                      size: 24,
                                 ),
                               ),
                             ),
@@ -112,7 +112,6 @@ class DetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -121,15 +120,13 @@ class DetailPage extends StatelessWidget {
                         "Lorem Ipsum Dolor sit amet",
                         style: AppTextStyle().title(AppColors.titleLine),
                       ),
-                      const SizedBox(height: 10),
                       Text(
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.",
                         style:
                             AppTextStyle().description(AppColors.description),
                       ),
-                    ],
+                    ].withSpaceBetween(height: 10),
                   ),
-                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -155,212 +152,213 @@ class DetailPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(width: 6),
                           Text(
                             '4.0',
                             style:
                                 AppTextStyle().subHeader(AppColors.description),
                           ),
-                        ],
+                        ].withSpaceBetween(width: 5),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
-                  const Divider(
-                    color: AppColors.titleLine,
-                    thickness: 1,
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: Column(
-                          children: [
-                            ClipOval(
-                              child: Image.network(
-                                'https://via.placeholder.com/40x40',
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ],
-                        ),
+                      const Divider(
+                        color: AppColors.titleLine,
+                        thickness: 1,
                       ),
-                      const SizedBox(width: 10),
-                      Column(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            'Bagas Prasetyo',
-                            style:
-                                AppTextStyle().description(AppColors.titleLine),
+                          SizedBox(
+                            width: 40,
+                            height: 40,
+                            child: Column(
+                              children: [
+                                ClipOval(
+                                  child: Image.network(
+                                    'https://via.placeholder.com/40x40',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          const SizedBox(height: 4),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                width: 80,
-                                height: 30,
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  style: ButtonStyle(
-                                    padding: const MaterialStatePropertyAll(
-                                        EdgeInsets.zero),
-                                    elevation:
-                                        const MaterialStatePropertyAll(0),
-                                    shape: MaterialStatePropertyAll(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(4),
+                              Text(
+                                'Bagas Prasetyo',
+                                style:
+                                    AppTextStyle().description(AppColors.titleLine),
+                              ),
+                              const SizedBox(height: 4),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width: 80,
+                                    height: 30,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ButtonStyle(
+                                        padding: const MaterialStatePropertyAll(
+                                            EdgeInsets.zero),
+                                        elevation:
+                                            const MaterialStatePropertyAll(0),
+                                        shape: MaterialStatePropertyAll(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        backgroundColor:
+                                            const MaterialStatePropertyAll(
+                                                AppColors.button2),
+                                      ),
+                                      child: Text(
+                                        'chatPenjual'.tr,
+                                        style: AppTextStyle()
+                                            .textInfoBold(AppColors.textButton2),
                                       ),
                                     ),
-                                    backgroundColor:
-                                        const MaterialStatePropertyAll(
-                                            AppColors.button2),
                                   ),
-                                  child: Text(
-                                    'chatPenjual'.tr,
-                                    style: AppTextStyle()
-                                        .textInfoBold(AppColors.textButton2),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 4),
-                              SizedBox(
-                                width: 80,
-                                height: 30,
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Get.toNamed('/userprofilepage');
-                                  },
-                                  style: ButtonStyle(
-                                    padding: const MaterialStatePropertyAll(
-                                        EdgeInsets.zero),
-                                    elevation:
-                                        const MaterialStatePropertyAll(0),
-                                    shape: MaterialStatePropertyAll(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(4),
+                                  SizedBox(
+                                    width: 80,
+                                    height: 30,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Get.toNamed('/userprofilepage');
+                                      },
+                                      style: ButtonStyle(
+                                        padding: const MaterialStatePropertyAll(
+                                            EdgeInsets.zero),
+                                        elevation:
+                                            const MaterialStatePropertyAll(0),
+                                        shape: MaterialStatePropertyAll(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        backgroundColor:
+                                            const MaterialStatePropertyAll(
+                                                AppColors.button2),
+                                      ),
+                                      child: Text(
+                                        'lihatToko'.tr,
+                                        style: AppTextStyle()
+                                            .textInfoBold(AppColors.textButton2),
                                       ),
                                     ),
-                                    backgroundColor:
-                                        const MaterialStatePropertyAll(
-                                            AppColors.button2),
                                   ),
-                                  child: Text(
-                                    'lihatToko'.tr,
-                                    style: AppTextStyle()
-                                        .textInfoBold(AppColors.textButton2),
-                                  ),
-                                ),
-                              ),
+                                ].withSpaceBetween(width: 5),
+                              )
                             ],
-                          )
-                        ],
+                          ),
+                          Expanded(
+                            child: Row(
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 90,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'jumlahProduk'.tr,
+                                            style: AppTextStyle()
+                                                .textInfo(AppColors.titleLine),
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            '2',
+                                            style: AppTextStyle()
+                                                .textInfoBold(AppColors.hargaStat),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 90,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'penilaian'.tr,
+                                            style: AppTextStyle()
+                                                .textInfo(AppColors.titleLine),
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            '4.5',
+                                            style: AppTextStyle()
+                                                .textInfoBold(AppColors.hargaStat),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ].withSpaceBetween(height: 20),
+                                ),
+                                const Spacer(),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: 90,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'jumlahJasa'.tr,
+                                            style: AppTextStyle()
+                                                .textInfo(AppColors.titleLine),
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            '5',
+                                            style: AppTextStyle()
+                                                .textInfoBold(AppColors.hargaStat),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 90,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'pengikut'.tr,
+                                            style: AppTextStyle()
+                                                .textInfo(AppColors.titleLine),
+                                          ),
+                                          const Spacer(),
+                                          Text(
+                                            '287',
+                                            style: AppTextStyle()
+                                                .textInfoBold(AppColors.hargaStat),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ].withSpaceBetween(height: 20),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ].withSpaceBetween(width: 8),
                       ),
-                      const SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 90,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'jumlahProduk'.tr,
-                                  style: AppTextStyle()
-                                      .textInfo(AppColors.titleLine),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  '2',
-                                  style: AppTextStyle()
-                                      .textInfoBold(AppColors.hargaStat),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          SizedBox(
-                            width: 90,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'penilaian'.tr,
-                                  style: AppTextStyle()
-                                      .textInfo(AppColors.titleLine),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  '4.5',
-                                  style: AppTextStyle()
-                                      .textInfoBold(AppColors.hargaStat),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                      const Divider(
+                        color: AppColors.titleLine,
+                        thickness: 1,
                       ),
-                      const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: 90,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'jumlahJasa'.tr,
-                                  style: AppTextStyle()
-                                      .textInfo(AppColors.titleLine),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  '5',
-                                  style: AppTextStyle()
-                                      .textInfoBold(AppColors.hargaStat),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                          SizedBox(
-                            width: 90,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'pengikut'.tr,
-                                  style: AppTextStyle()
-                                      .textInfo(AppColors.titleLine),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  '287',
-                                  style: AppTextStyle()
-                                      .textInfoBold(AppColors.hargaStat),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                    ].withSpaceBetween(height: 10),
                   ),
-                  const SizedBox(height: 10),
-                  const Divider(
-                    color: AppColors.titleLine,
-                    thickness: 1,
-                  ),
-                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -406,11 +404,10 @@ class DetailPage extends StatelessWidget {
                             ),
                             onRatingUpdate: (rating) {},
                           ),
-                        ],
+                        ].withSpaceBetween(height: 5),
                       )
                     ],
                   ),
-                  const SizedBox(height: 10),
                   ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -434,11 +431,10 @@ class DetailPage extends StatelessWidget {
                       );
                     },
                   ),
-                ],
+                ].withSpaceBetween(height: 15),
               ),
             ),
-            const SizedBox(height: 10),
-          ],
+          ].withSpaceBetween(height: 15),
         ),
       ),
       bottomNavigationBar: SizedBox(
