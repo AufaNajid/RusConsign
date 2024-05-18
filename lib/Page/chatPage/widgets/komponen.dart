@@ -1,80 +1,8 @@
-// ignore_for_file: camel_case_types
-
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:get/get.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import '../../../utils/colors.dart';
-import '../../../utils/app_responsive.dart';
-
-class chatUI extends StatelessWidget {
-  final String imagepath;
-  final String nama;
-  final String chat;
-  final String waktu;
-  const chatUI(
-      {Key? key,
-      required this.imagepath,
-      required this.nama,
-      required this.chat,
-      required this.waktu})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Get.toNamed("chatpage");
-      },
-      child: SizedBox(
-        width: double.infinity,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipOval(
-              child: Image.network(
-                imagepath,
-                width: AppResponsive().screenWidth(context) * 0.110,
-                height: AppResponsive().screenHeight(context) * 0.060,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    nama,
-                    style: AppTextStyle().header(AppColors.titleLine),
-                  ),
-                  Text(
-                    chat,
-                  )
-                ],
-              ),
-            ),
-            Column(
-              children: [
-                Text(
-                  waktu,
-                  style: AppTextStyle().subHeader(AppColors.description),
-                ),
-                ClipOval(
-                  child: Container(
-                    height: 13,
-                    width: 13,
-                    decoration: const BoxDecoration(color: AppColors.activeIcon),
-                  ),
-                )
-              ].withSpaceBetween(height: 5),
-            )
-          ].withSpaceBetween(width: 5),
-        ),
-      ),
-    );
-  }
-}
 
 class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
   final String title;
