@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -23,8 +24,12 @@ class ButtonIconWidget extends StatelessWidget {
           icon,
           color: AppColors.activeIconType,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Get.toNamed('/chatpage');
+        },
         style: ButtonStyle(
+          elevation: const MaterialStatePropertyAll(0),
+          padding: const MaterialStatePropertyAll(EdgeInsets.zero),
           shape: MaterialStatePropertyAll(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4),

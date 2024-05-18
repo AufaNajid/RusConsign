@@ -45,10 +45,11 @@ List<GetPage> routes = [
   GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone()),
   GetPage(name: "/locationpage", page: () => const LocationPage()),
   GetPage(name: "/checkoutpage", page: () => const ChekcoutPage()),
+    GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
   GetPage(
-    name: "/qrispayment", 
-    page: () => const QrisPaymentPage(),
-    binding: QrPaymentBinding() ),
+      name: "/qrispayment",
+      page: () => const QrisPaymentPage(),
+      binding: QrPaymentBinding()),
   GetPage(
     name: "/login",
     page: () => LoginPage(),
@@ -74,10 +75,8 @@ List<GetPage> routes = [
     binding: HomePageBinding(),
   ),
   GetPage(
-    name: "/orderpage", 
-     
-    page: () => OrderPage(), 
-     
+    name: "/orderpage",
+    page: () => OrderPage(),
     binding: OrderPageBinding(),
   ),
   GetPage(
@@ -89,9 +88,11 @@ List<GetPage> routes = [
       page: () => SettingPage(),
       binding: SettingPageBinding()),
   GetPage(
-    name: "/registerseller", 
-    page: () => const RegisterSeller(), 
-    binding:RegisterSellerBinding() ),
-  GetPage(name: "/waitingadmin", page: () =>const RegisterSellerWaiting()),
-  GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone(),)
+      name: "/registerseller",
+      page: () => const RegisterSeller(),
+      binding: RegisterSellerBinding()),
+  GetPage(
+    name: "/registersellerdone",
+    page: () => const RegisterSellerDone(),
+  )
 ];
