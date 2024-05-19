@@ -83,7 +83,7 @@ class ChekcoutPage extends StatelessWidget {
                 style: AppTextStyle().header(AppColors.titleLine),
                 textAlign: TextAlign.start,
               ),
-              const DropdownPayment(),
+               DropdownPayment(),
               const SizedBox(
                 height: 10,
               ),
