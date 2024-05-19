@@ -14,10 +14,10 @@ class ChekcoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         elevation: 20,
         shadowColor: Colors.black,
-        surfaceTintColor:AppColors.background ,
+        surfaceTintColor: AppColors.background,
         color: AppColors.background,
         child: Row(
           children: [
@@ -53,7 +53,9 @@ class ChekcoutPage extends StatelessWidget {
                 "Pembelian",
                 style: AppTextStyle().header(AppColors.titleLine),
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               const ItemChekcout(
                 rating: "5.0",
                 price: "15.000",
@@ -69,7 +71,9 @@ class ChekcoutPage extends StatelessWidget {
                 style: AppTextStyle().header(AppColors.titleLine),
                 textAlign: TextAlign.start,
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               const LocationChekout(
                 locationHeader: "SMK Raden Umar Said Kudus",
                 locationDetail:
@@ -83,7 +87,7 @@ class ChekcoutPage extends StatelessWidget {
                 style: AppTextStyle().header(AppColors.titleLine),
                 textAlign: TextAlign.start,
               ),
-               DropdownPayment(),
+              const DropdownPayment(),
               const SizedBox(
                 height: 10,
               ),
@@ -92,8 +96,13 @@ class ChekcoutPage extends StatelessWidget {
                 style: AppTextStyle().header(AppColors.titleLine),
                 textAlign: TextAlign.start,
               ),
-              const SizedBox(height: 10,),
-              const PaymentDetail(subPrice: "15000", adminPrice: "1000", totalPrice: "totalPrice")
+              const SizedBox(
+                height: 10,
+              ),
+              const PaymentDetail(
+                  subPrice: "15000",
+                  adminPrice: "1000",
+                  totalPrice: "totalPrice")
             ],
           ),
         ),
