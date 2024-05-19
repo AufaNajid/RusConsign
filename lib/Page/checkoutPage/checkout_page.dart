@@ -53,15 +53,15 @@ class ChekcoutPage extends StatelessWidget {
                 "Pembelian",
                 style: AppTextStyle().header(AppColors.titleLine),
               ),
-              const SizedBox(
-                height: 10,
-              ),
               const ItemChekcout(
-                rating: "5.0",
-                price: "15.000",
-                jumlahBarang: "1",
-                subTotal: "15.000",
-                profileImagePath: "https://via.placeholder.com/165x110",
+                imagePath : 'https://via.placeholder.com/100x100',
+                title: 'dadadwndandadjad',
+                profileImagePath: 'https://via.placeholder.com/40x40',
+                profileName: 'bagas Prasetyo',
+                rating: 5.0,
+                price: 1500,
+                quantity: 2,
+                subTotal: 15000,
               ),
               const SizedBox(
                 height: 10,

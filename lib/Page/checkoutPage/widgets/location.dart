@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class LocationChekout extends StatelessWidget {
@@ -15,19 +17,18 @@ class LocationChekout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 40,
           width: 40,
           child: ClipOval(
-              child: Container(
+              child: Material(
             color: AppColors.cardIconFill,
-            child: const Icon(
+            child: Icon(
               FeatherIcons.mapPin,
               color: AppColors.nonActiveIcon,
             ),
           )),
         ),
-        const SizedBox(width: 10,),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,13 +43,18 @@ class LocationChekout extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               )
-            ],
+            ].withSpaceBetween(height: 5),
           ),
         ),
-        IconButton(onPressed: () {
-          
-        }, icon: const Icon(FeatherIcons.edit, color: AppColors.nonActiveIcon,))
-      ],
+        IconButton(
+            onPressed: () {
+              Get.toNamed("/locationpage");
+            },
+            icon: const Icon(
+              FeatherIcons.edit,
+              color: AppColors.nonActiveIcon,
+            ))
+      ].withSpaceBetween(width: 10),
     );
   }
 }
