@@ -12,7 +12,6 @@ class ItemChekcout extends StatelessWidget {
   final double rating;
   final int price;
   final int quantity;
-  final int subTotal;
 
   const ItemChekcout({
     Key? key,
@@ -23,11 +22,11 @@ class ItemChekcout extends StatelessWidget {
     required this.rating,
     required this.price,
     required this.quantity,
-    required this.subTotal,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    int subtotalValue = price * quantity;
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -195,7 +194,7 @@ class ItemChekcout extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Center(
-                              child: Text('1',
+                              child: Text(quantity.toString(),
                                   style: AppTextStyle()
                                       .textInfoBold(AppColors.description)),
                             ),
@@ -203,7 +202,7 @@ class ItemChekcout extends StatelessWidget {
                         ),
                         const Spacer(),
                         Text(
-                          'Rp$subTotal',
+                          'Rp $subtotalValue'.toString(),
                           style: AppTextStyle().header(AppColors.hargaStat),
                         ),
                       ],

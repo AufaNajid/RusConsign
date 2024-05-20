@@ -14,12 +14,12 @@ class DropdownPayment extends StatelessWidget {
       iconColor: AppColors.nonActiveIcon,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(5),
+          Radius.circular(8),
         ),
       ),
       collapsedShape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
-          Radius.circular(5),
+          Radius.circular(8),
         ),
       ),
       title: Text(
