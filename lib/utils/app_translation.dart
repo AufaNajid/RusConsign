@@ -34,7 +34,7 @@ class AppTranslation extends Translations {
           'jumlah': 'Jumlah',
           'semua': 'Semua',
           'lokasiPertemuan': 'Lokasi Pertemuan',
-          'pembelian': 'Purchase',
+          'pembelian': 'Pembelian',
           'pembayaran': 'Pembayaran',
           'rincianPembayaran': 'Rincian Pembayaran',
           'subtotalProduk': 'Subtotal Produk',
