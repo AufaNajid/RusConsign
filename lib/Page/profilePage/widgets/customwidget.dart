@@ -153,6 +153,7 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
           padding: EdgeInsets.only(
               top: AppResponsive().screenHeight(context) * 0.0150),
           width: double.maxFinite,
+          height: AppResponsive().screenHeight(context) * 0.50,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
           child: TabBarView(
             controller: _tabController,
