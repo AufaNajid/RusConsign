@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/page/profilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/page/profilePage/widgets/customappbar.dart';
 import 'package:rusconsign/page/profilePage/widgets/customwidget.dart';
-import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -13,80 +14,79 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarProfile(title: 'profil'.tr),
       backgroundColor: Colors.white,
+      appBar: AppBarProfile(title: 'profil'.tr),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                width: 90,
-                height: 90,
-                decoration: const ShapeDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage("https://via.placeholder.com/165x110"),
-                    fit: BoxFit.fill,
-                  ),
-                  shape: CircleBorder(),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: AppResponsive().screenHeight(context) * 0.02,
-            ),
-            Text("Raihan Pace",
-                style: AppTextStyle().title(AppColors.titleLine)),
-            Text("raihanmaulana084@gmail.com",
-                style: AppTextStyle().description(AppColors.description)),
-            SizedBox(
-              height: AppResponsive().screenHeight(context) * 0.02,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CustomInfoWidget(
-                  icon: FeatherIcons.userCheck,
-                  info: 'pengikut'.tr,
-                  infoNumber: "182",
+                SizedBox(
+                  width: 90,
+                  height: 90,
+                  child: ClipOval(
+                    child: Image.network(
+                      'https://via.placeholder.com/90x90',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-                CustomInfoWidget(
-                  icon: FeatherIcons.users,
-                  info: 'jumlahJasa'.tr,
-                  infoNumber: "2",
-                ),
-                CustomInfoWidget(
-                  icon: FeatherIcons.box,
-                  info: 'jumlahProduk'.tr,
-                  infoNumber: "3",
-                ),
-                CustomInfoWidget(
-                  icon: FeatherIcons.star,
-                  info: 'penilaian'.tr,
-                  infoNumber: "4.5",
-                ),
-              ],
+                Text("Raihan Pace",
+                    style: AppTextStyle().title(AppColors.titleLine)),
+                Text("raihanmaulana084@gmail.com",
+                    style: AppTextStyle().description(AppColors.description)),
+              ].withSpaceBetween(height: 5),
             ),
-            SizedBox(
-              height: AppResponsive().screenHeight(context) * 0.02,
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ProfileInfoCard(
+                        icon: FeatherIcons.userCheck,
+                        title: 'pengikut'.tr,
+                        data: "182",
+                      ),
+                      ProfileInfoCard(
+                        icon: FeatherIcons.users,
+                        title: 'jumlahJasa'.tr,
+                        data: "2",
+                      ),
+                      ProfileInfoCard(
+                        icon: FeatherIcons.box,
+                        title: 'jumlahProduk'.tr,
+                        data: "3",
+                      ),
+                      ProfileInfoCard(
+                        icon: FeatherIcons.star,
+                        title: 'penilaian'.tr,
+                        data: "4.5",
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: Text(
+                    "Halo.. Selamat datang di profil saya. Kalian bisa melihat produk atau jasa yang saya berikan disini. Saya sendiiri juga termasuk siswa SMK RUS, jadi kalau mau ngobrol sama saya bisa ketemuan di sekolah",
+                    style: AppTextStyle().textInfo(AppColors.description),
+                    maxLines: 5,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ].withSpaceBetween(height: 10),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal:30),
-              child: Text(
-                "Halo.. Selamat datang di profil saya. Kalian bisa melihat produk atau jasa yang saya berikan disini. Saya sendiiri juga termasuk siswa SMK RUS, jadi kalau mau ngobrol sama saya bisa ketemuan di sekolah",
-                style: AppTextStyle().textInfo(AppColors.description),
-                maxLines: 5,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            SizedBox(height: AppResponsive().screenHeight(context)*0.02),
             const TabList(),
-          ],
+          ].withSpaceBetween(height: 20),
         ),
       ),
     );
   }
 }
-

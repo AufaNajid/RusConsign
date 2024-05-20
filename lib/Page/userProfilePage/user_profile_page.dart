@@ -102,9 +102,11 @@ class UserProfilePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        textAlign: TextAlign.center,
                         'afenuihidhiad andiad idanduand oawkdne vknma coijcjcinadin acnincanc inanic iadiand adiandoandiandiand adianndiandianidad iadniandinadina diandiandianda diandiandia',
                         style: AppTextStyle().textInfo(AppColors.description),
+                        textAlign: TextAlign.center,
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     Column(
