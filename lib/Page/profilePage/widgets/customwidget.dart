@@ -6,43 +6,6 @@ import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-class CustomInfoWidget extends StatelessWidget {
-  final IconData icon;
-  final String info;
-  final String infoNumber;
-
-  const CustomInfoWidget({
-    required this.icon,
-    required this.info,
-    required this.infoNumber,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          alignment: Alignment.center,
-          width: 55,
-          height: 55,
-          decoration: const ShapeDecoration(
-            color: AppColors.cardIconFill,
-            shape: OvalBorder(),
-          ),
-          child: Icon(icon, color: AppColors.borderIcon,),
-        ),
-        Text(info,
-            textAlign: TextAlign.center,
-            style: AppTextStyle().textInfoBold(AppColors.description)),
-        Text(infoNumber,
-            textAlign: TextAlign.center,
-            style: AppTextStyle().descriptionBold(AppColors.hargaStat))
-      ],
-    );
-  }
-}
-
 class SettingWidget extends StatelessWidget {
   final IconData icon;
   final String text;
@@ -70,10 +33,7 @@ class SettingWidget extends StatelessWidget {
         child: Row(
           children: [
             Icon(icon, color: AppColors.description),
-            const Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 10
-                )),
+            const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
             Expanded(
               child: Text(
                 text,
@@ -167,7 +127,6 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
               width: double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(
-                  // Warna border saat tidak dipilih
                   color: _borderColor2,
                   width: 2,
                 ),
@@ -192,9 +151,8 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
         ),
         Container(
           padding: EdgeInsets.only(
-              top: AppResponsive().screenHeight(context) * 0.01),
+              top: AppResponsive().screenHeight(context) * 0.0150),
           width: double.maxFinite,
-          height: AppResponsive().screenHeight(context) * 0.50,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
           child: TabBarView(
             controller: _tabController,
@@ -265,30 +223,36 @@ class PribadiSection extends StatelessWidget {
             ),
           ),
           Container(
-              decoration: const BoxDecoration(color: AppColors.cardIconFill),
-              child: SettingWidget(
-                  icon: FeatherIcons.messageCircle,
-                  text: 'chat'.tr,
-                  toPage: "/detailpage")),
+            decoration: const BoxDecoration(color: AppColors.cardIconFill),
+            child: SettingWidget(
+              icon: FeatherIcons.messageCircle,
+              text: 'chat'.tr,
+              toPage: "/detailpage",
+            ),
+          ),
           Container(
-              decoration: const BoxDecoration(color: AppColors.cardIconFill),
-              child: SettingWidget(
-                  icon: FeatherIcons.bell,
-                  text: 'notifikasi'.tr,
-                  toPage: "/notificationpage")),
+            decoration: const BoxDecoration(color: AppColors.cardIconFill),
+            child: SettingWidget(
+              icon: FeatherIcons.bell,
+              text: 'notifikasi'.tr,
+              toPage: "/notificationpage",
+            ),
+          ),
           Container(
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10)),
-                  color: AppColors.cardIconFill),
-              child: SettingWidget(
-                  icon: FeatherIcons.settings,
-                  text: 'pengaturan'.tr,
-                  toPage: "/settingpage"))
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
+                color: AppColors.cardIconFill),
+            child: SettingWidget(
+              icon: FeatherIcons.settings,
+              text: 'pengaturan'.tr,
+              toPage: "/settingpage",
+            ),
+          )
         ],
       ),
     );
   }
 }
-
