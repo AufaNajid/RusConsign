@@ -15,7 +15,7 @@ class DividerProfile extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Icon(
+            Icon(
               FeatherIcons.user,
               color: AppColors.nonActiveIcon,
             ),
@@ -50,7 +50,10 @@ class DividerProfile extends StatelessWidget {
             ),
           ],
         ),
-        const Divider(thickness: 1, color: AppColors.titleLine),
+        Divider(
+          thickness: 1,
+          color: AppColors.titleLine,
+        ),
       ],
     );
   }
@@ -75,7 +78,10 @@ class DividerComponent extends StatelessWidget {
             Text(text, style: AppTextStyle().subHeader(AppColors.description)),
           ],
         ),
-        const Divider(thickness: 1, color: AppColors.titleLine),
+        Divider(
+          thickness: 1,
+          color: AppColors.titleLine,
+        ),
       ],
     );
   }

@@ -18,7 +18,7 @@ class LocationPage extends StatelessWidget {
             onPressed: () {
               Get.back();
             },
-            icon: const Icon(
+            icon: Icon(
               FeatherIcons.chevronLeft,
               color: AppColors.borderIcon,
             )),
@@ -43,7 +43,7 @@ class LocationPage extends StatelessWidget {
             const SizedBox(height: 10),
             Row(
               children: [
-                const SizedBox(
+                SizedBox(
                   width: 40,
                   height: 40,
                   child: ClipOval(
@@ -83,7 +83,7 @@ class LocationPage extends StatelessWidget {
                   ),
                   style: ButtonStyle(
                     backgroundColor:
-                        const MaterialStatePropertyAll(AppColors.cardIconFill),
+                        MaterialStatePropertyAll(AppColors.cardIconFill),
                     side: const MaterialStatePropertyAll(
                       BorderSide(
                           color: AppColors.button1,

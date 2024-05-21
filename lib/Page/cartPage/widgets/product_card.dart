@@ -69,10 +69,10 @@ class ProductCardCart extends StatelessWidget {
                     ].withSpaceBetween(width: 5)),
                     Row(
                       children: [
-                        const Stack(
+                        Stack(
                           alignment: Alignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.star,
                               color: AppColors.bintang,
                               size: 18,
