@@ -12,34 +12,32 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: 
-          Text(
-            'Keranjang'.tr,
-            style: AppTextStyle().title(AppColors.titleLine),
+      backgroundColor: AppColors.background,
+      title: Text(
+        'Keranjang'.tr,
+        style: AppTextStyle().title(AppColors.titleLine),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            FeatherIcons.trash2,
+            color: AppColors.activeIcon,
           ),
-          actions: [
-             IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              FeatherIcons.trash2,
-              color: AppColors.activeIcon,
-            ),
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-          ),
-          IconButton(
-            onPressed: () {
-              Get.toNamed("/chatlist");
-            },
-            icon: Icon(FeatherIcons.messageCircle,
-                color: AppColors.borderIcon),
-            highlightColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            hoverColor: Colors.transparent,
-          ),
-          ]
-         
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+        ),
+        IconButton(
+          onPressed: () {
+            Get.toNamed("/chatlist");
+          },
+          icon: Icon(FeatherIcons.messageCircle, color: AppColors.borderIcon),
+          highlightColor: Colors.transparent,
+          splashColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+        ),
+      ],
     );
   }
 
