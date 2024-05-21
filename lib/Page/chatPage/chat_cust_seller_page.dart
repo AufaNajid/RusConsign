@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/authentication/widget/widget.dart';
-import 'package:rusconsign/page/chatPage/widgets/komponen.dart';
+import 'package:rusconsign/Page/chatPage/widgets/custom_app_bar.dart';
+import 'package:rusconsign/Page/chatPage/widgets/textfield_chat.dart';
 import 'package:rusconsign/utils/extension.dart';
+import '../../authentication/widget/message_item.dart';
 import '../../utils/app_responsive.dart';
 import '../../utils/colors.dart';
 
@@ -22,8 +23,7 @@ class ChatPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: CustomAppBarChat(
         title: "Username User",
-        imagepath:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5NotY59b9Il4DR4FAUdE6cDxIvYQTHdi2CLPuMmv_Q&s",
+        imagepath: "https://via.placeholder.com/50x50",
         onBackPressed: () {
           Get.back();
         },
@@ -98,10 +98,7 @@ class ChatPage extends StatelessWidget {
                 ),
               ),
               const Expanded(
-                  child: MyTextField(
-                isObscured: false,
-                labelText: "Masukkan Pesan...",
-              )),
+                  child: TextFieldInputChat(hintText: "Masukkan Pesan")),
               GestureDetector(
                 onTap: () {},
                 child: ClipOval(

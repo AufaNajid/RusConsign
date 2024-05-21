@@ -32,8 +32,8 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
           ClipOval(
             child: Image.network(
               imagepath,
-              width: 30,
-              height: 30,
+              width: 40,
+              height: 40,
               fit: BoxFit.cover,
             ),
           ),
@@ -47,32 +47,4 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
-class MessageUi extends StatelessWidget {
-  final String message;
-  final DateTime time;
-  const MessageUi({Key? key, required this.message, required this.time})
-      : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
-          color: AppColors.cardIconFill,
-          borderRadius: BorderRadius.circular(10)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Text(
-            message,
-            style: AppTextStyle().description(AppColors.description),
-          ),
-          Text(
-              time.toString().substring(0, 16),
-            style: AppTextStyle().textInfo(AppColors.description),
-          )
-        ],
-      ),
-    );
-  }
-}
