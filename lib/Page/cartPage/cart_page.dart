@@ -12,17 +12,22 @@ class CartPage extends StatelessWidget {
       appBar: const AppBarCart(),
       backgroundColor: AppColors.background,
       body: const SingleChildScrollView(
-          child: Column(
-        children: [
-          ProductCardCart(
-            profileImagePath: "https://via.placeholder.com/100x100",
-            sellerUsername: "Ujang Kampas Rem",
-            rating: 5.0,
-            price: 15000,
-            imagePath: 'https://via.placeholder.com/100x100',
-          ),
-        ],
-      )),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+                    children: [
+            ProductCardCart(
+              profileImagePath: "https://via.placeholder.com/100x100",
+              sellerUsername: "Ujang Kampas Rem",
+              rating: 5.0,
+              price: 15000,
+              imagePath: 'https://via.placeholder.com/100x100',
+              quantity: 2,
+              subtotalValue: 15000,
+            ),
+                    ],
+                  ),
+          )),
     );
   }
 }
