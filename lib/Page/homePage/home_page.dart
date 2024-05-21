@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                     Row(
                       children: [
                         SizedBox(
-                          width: AppResponsive().screenWidth(context) * 0.770,
+                          width: AppResponsive().screenWidth(context) * 0.75,
                           height: 50,
                           child: TextField(
                             cursorColor: AppColors.hargaStat,

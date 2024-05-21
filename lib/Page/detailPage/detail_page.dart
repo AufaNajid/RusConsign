@@ -201,7 +201,6 @@ class DetailPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    width: 80,
                                     height: 30,
                                     child: ElevatedButton(
                                       onPressed: () {},
@@ -227,7 +226,6 @@ class DetailPage extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 80,
                                     height: 30,
                                     child: ElevatedButton(
                                       onPressed: () {
@@ -260,12 +258,13 @@ class DetailPage extends StatelessWidget {
                           ),
                           Expanded(
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width: 90,
+                                      width: 75,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
@@ -284,7 +283,7 @@ class DetailPage extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 90,
+                                      width: 75,
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.start,
                                         children: [
@@ -304,7 +303,6 @@ class DetailPage extends StatelessWidget {
                                     ),
                                   ].withSpaceBetween(height: 20),
                                 ),
-                                const Spacer(),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
