@@ -111,7 +111,7 @@ class CartPage extends StatelessWidget {
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: AppResponsive().screenWidth(context) * 0.50,
+                  width: AppResponsive().screenWidth(context) * 0.45,
                   height: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {},
