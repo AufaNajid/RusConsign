@@ -39,7 +39,7 @@ class CommentCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 6),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
-            side: const BorderSide(
+            side: BorderSide(
               color: AppColors.titleLine,
               width: 1,
               style: BorderStyle.solid,
@@ -85,10 +85,10 @@ class CommentCard extends StatelessWidget {
                       direction: Axis.horizontal,
                       allowHalfRating: true,
                       itemCount: 5,
-                      itemBuilder: (context, _) => const Stack(
+                      itemBuilder: (context, _) => Stack(
                         alignment: Alignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.star,
                             color: AppColors.bintang,
                             size: 18,

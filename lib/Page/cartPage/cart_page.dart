@@ -8,10 +8,10 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: AppBarCart(),
+    return Scaffold(
+      appBar: const AppBarCart(),
       backgroundColor: AppColors.background,
-      body: SingleChildScrollView(
+      body: const SingleChildScrollView(
           child: Column(
         children: [
           ProductCardCart(
