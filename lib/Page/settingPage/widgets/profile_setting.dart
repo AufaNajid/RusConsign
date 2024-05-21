@@ -56,7 +56,7 @@ class ProfileSetting extends StatelessWidget {
                             ),
                           ),
                           backgroundColor:
-                              const MaterialStatePropertyAll(AppColors.button2),
+                              MaterialStatePropertyAll(AppColors.button2),
                         ),
                         child: Text(
                           'lihatFoto'.tr,
@@ -80,7 +80,7 @@ class ProfileSetting extends StatelessWidget {
                             ),
                           ),
                           backgroundColor:
-                              const MaterialStatePropertyAll(AppColors.button2),
+                              MaterialStatePropertyAll(AppColors.button2),
                         ),
                         child: Text(
                           'gantiFoto'.tr,

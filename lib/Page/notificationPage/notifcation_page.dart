@@ -17,7 +17,7 @@ class NotificationPage extends StatelessWidget {
             onPressed: () {
               Get.back();
             },
-            icon: const Icon(
+            icon: Icon(
               FeatherIcons.chevronLeft,
               color: AppColors.borderIcon,
             )),

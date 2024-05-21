@@ -17,7 +17,7 @@ class LocationChekout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const SizedBox(
+        SizedBox(
           height: 40,
           width: 40,
           child: ClipOval(
@@ -50,7 +50,7 @@ class LocationChekout extends StatelessWidget {
             onPressed: () {
               Get.toNamed("/locationpage");
             },
-            icon: const Icon(
+            icon: Icon(
               FeatherIcons.edit,
               color: AppColors.nonActiveIcon,
             ))

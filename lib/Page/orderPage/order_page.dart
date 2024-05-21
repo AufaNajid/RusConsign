@@ -23,7 +23,7 @@ class OrderPage extends StatelessWidget {
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(
+          icon: Icon(
             FeatherIcons.chevronLeft,
             color: AppColors.borderIcon,
           ),
@@ -38,7 +38,7 @@ class OrderPage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: const Icon(
+              icon: Icon(
                 FeatherIcons.messageCircle,
                 color: AppColors.borderIcon,
               ))

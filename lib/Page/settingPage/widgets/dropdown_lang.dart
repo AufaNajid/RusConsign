@@ -23,7 +23,9 @@ class DropDownLang extends StatelessWidget {
               elevation: 0,
               icon: Icon(settingController.isOpenMenu.value
                   ? FeatherIcons.chevronUp
-                  : FeatherIcons.chevronDown),
+                  : FeatherIcons.chevronDown,
+                  color: AppColors.borderIcon,
+                  ),
               onSelected: (String? newValue) {
                 settingController.changeLanguage(newValue!);
               },
