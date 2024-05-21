@@ -41,7 +41,7 @@ class MyButton extends StatelessWidget {
           width: labelWidth,
           child: Text(
             label,
-            style: const TextStyle(color: AppColors.description),
+            style: TextStyle(color: AppColors.description),
           ),
         ),
         Expanded(

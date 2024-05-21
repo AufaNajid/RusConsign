@@ -121,10 +121,10 @@ class FinishCard extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    const Stack(
+                                    Stack(
                                       alignment: Alignment.center,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.star,
                                           color: AppColors.bintang,
                                           size: 18,
@@ -218,7 +218,7 @@ class FinishCard extends StatelessWidget {
                         ),
                       ),
                       backgroundColor:
-                          const MaterialStatePropertyAll(AppColors.button2),
+                          MaterialStatePropertyAll(AppColors.button2),
                     ),
                     child: Text('beriPenilaian'.tr,
                         style: AppTextStyle().header(AppColors.textButton2)),

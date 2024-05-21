@@ -32,7 +32,7 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
             onPressed: () {
               Get.toNamed("/chatlist");
             },
-            icon: const Icon(FeatherIcons.messageCircle,
+            icon: Icon(FeatherIcons.messageCircle,
                 color: AppColors.borderIcon),
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,

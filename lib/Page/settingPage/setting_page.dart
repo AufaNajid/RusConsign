@@ -25,11 +25,14 @@ class SettingPage extends StatelessWidget {
         backgroundColor: AppColors.background,
         surfaceTintColor: AppColors.background,
         leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(FeatherIcons.chevronLeft,
-                color: AppColors.borderIcon)),
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(
+            FeatherIcons.chevronLeft,
+            color: AppColors.borderIcon,
+          ),
+        ),
         title: Text(
           'pengaturan'.tr,
           style: AppTextStyle().title(AppColors.titleLine),
@@ -47,13 +50,13 @@ class SettingPage extends StatelessWidget {
                 children: [
                   DividerProfile(),
                   ProfileSetting(),
-                  
                 ],
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  DividerComponent(icon: FeatherIcons.bell, text: 'notifikasi'.tr),
+                  DividerComponent(
+                      icon: FeatherIcons.bell, text: 'notifikasi'.tr),
                   NotificationSetting(
                     iSwitched: settingController.isNotificationSwitched.value,
                     toggleSwitch: settingController.toggleNotificationSwitch,
@@ -73,7 +76,8 @@ class SettingPage extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  DividerComponent(icon: FeatherIcons.link, text: 'linkAkun'.tr),
+                  DividerComponent(
+                      icon: FeatherIcons.link, text: 'linkAkun'.tr),
                   const AccountSetting(),
                 ],
               ),
@@ -81,8 +85,10 @@ class SettingPage extends StatelessWidget {
                 width: AppResponsive().screenWidth(context),
                 height: AppResponsive().screenWidth(context) * 0.1,
                 child: ElevatedButton.icon(
-                  icon: const Icon(FeatherIcons.logOut,
-                      color: AppColors.textButton2),
+                  icon: const Icon(
+                    FeatherIcons.logOut,
+                    color: AppColors.activeIconType,
+                  ),
                   onPressed: () {
                     Get.offAllNamed('/login');
                   },

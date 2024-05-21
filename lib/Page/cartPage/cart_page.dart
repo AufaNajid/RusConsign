@@ -8,21 +8,26 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: AppBarCart(),
+    return Scaffold(
+      appBar: const AppBarCart(),
       backgroundColor: AppColors.background,
-      body: SingleChildScrollView(
-          child: Column(
-        children: [
-          ProductCardCart(
-            profileImagePath: "https://via.placeholder.com/100x100",
-            sellerUsername: "Ujang Kampas Rem",
-            rating: 5.0,
-            price: 15000,
-            imagePath: 'https://via.placeholder.com/100x100',
-          ),
-        ],
-      )),
+      body: const SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+                    children: [
+            ProductCardCart(
+              profileImagePath: "https://via.placeholder.com/100x100",
+              sellerUsername: "Ujang Kampas Rem",
+              rating: 5.0,
+              price: 15000,
+              imagePath: 'https://via.placeholder.com/100x100',
+              quantity: 2,
+              subtotalValue: 15000,
+            ),
+                    ],
+                  ),
+          )),
     );
   }
 }
