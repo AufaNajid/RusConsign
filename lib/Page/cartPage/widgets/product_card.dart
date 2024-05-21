@@ -32,104 +32,104 @@ class ProductCardCart extends StatelessWidget {
       width: double.infinity,
       child: Card(
         elevation: 0,
-        margin: EdgeInsets.zero,
+        margin: const EdgeInsets.symmetric(vertical: 5),
         color: AppColors.cardIconFill,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15, horizontal:20),
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           child: Column(
             children: [
               Card(
-                  elevation: 0,
-                  margin: EdgeInsets.zero,
-                  color: AppColors.cardProdukTidakDipilih,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 100,
-                          height: 100,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                              imagePath,
-                              fit: BoxFit.cover,
-                            ),
+                elevation: 0,
+                margin: EdgeInsets.zero,
+                color: AppColors.cardProdukTidakDipilih,
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            imagePath,
+                            fit: BoxFit.cover,
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Gantungan Kunci (Key Chain) Boneka unik",
-                              style: AppTextStyle()
-                                  .descriptionBold(AppColors.titleLine),
-                            ),
-                            Row(
-                                children: [
-                              SizedBox(
-                                height: 25,
-                                width: 25,
-                                child: ClipOval(
-                                  child: Image.network(
-                                    profileImagePath,
-                                    fit: BoxFit.cover,
-                                  ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Gantungan Kunci (Key Chain) Boneka unik",
+                            style: AppTextStyle()
+                                .descriptionBold(AppColors.titleLine),
+                          ),
+                          Row(
+                              children: [
+                            SizedBox(
+                              height: 25,
+                              width: 25,
+                              child: ClipOval(
+                                child: Image.network(
+                                  profileImagePath,
+                                  fit: BoxFit.cover,
                                 ),
                               ),
+                            ),
+                            Text(
+                              sellerUsername,
+                              style: AppTextStyle()
+                                  .textInfo(AppColors.description),
+                            ),
+                          ].withSpaceBetween(width: 5)),
+                          Row(
+                            children: [
+                              Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.star,
+                                    color: AppColors.bintang,
+                                    size: 18,
+                                  ),
+                                  Icon(
+                                    Icons.star_border_rounded,
+                                    color: AppColors.borderIcon,
+                                    size: 20,
+                                  ),
+                                ],
+                              ),
                               Text(
-                                sellerUsername,
+                                rating.toString(),
+                                style: AppTextStyle()
+                                    .textInfoBold(AppColors.description),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                '${'total'.tr} : ',
                                 style: AppTextStyle()
                                     .textInfo(AppColors.description),
                               ),
-                            ].withSpaceBetween(width: 5)),
-                            Row(
-                              children: [
-                                Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.star,
-                                      color: AppColors.bintang,
-                                      size: 18,
-                                    ),
-                                    Icon(
-                                      Icons.star_border_rounded,
-                                      color: AppColors.borderIcon,
-                                      size: 20,
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  rating.toString(),
-                                  style: AppTextStyle()
-                                      .textInfoBold(AppColors.description),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  '${'total'.tr} :',
-                                  style: AppTextStyle()
-                                      .textInfo(AppColors.description),
-                                ),
-                                Text(
-                                  'Rp $price',
-                                  style: AppTextStyle()
-                                      .textInfoBold(AppColors.hargaStat),
-                                ),
-                              ],
-                            )
-                          ].withSpaceBetween(height: 5),
-                        ),
-                      ].withSpaceBetween(width: 5),
-                    ),
-                  )),
+                              Text(
+                                'Rp $price',
+                                style: AppTextStyle()
+                                    .textInfoBold(AppColors.hargaStat),
+                              ),
+                            ],
+                          )
+                        ].withSpaceBetween(height: 5),
+                      ),
+                    ].withSpaceBetween(width: 5),
+                  ),
+                ),
+              ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -144,75 +144,79 @@ class ProductCardCart extends StatelessWidget {
                               AppTextStyle().textInfo(AppColors.description)),
                     ],
                   ),
-                ],
-              ),
-              Row(
-                children: [
                   Row(
                     children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(3),
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(3),
+                                child: Material(
+                                    color: AppColors.button2,
+                                    child: Center(
+                                        child: Icon(
+                                      FeatherIcons.minus,
+                                      color: AppColors.textButton2,
+                                      size: 20,
+                                    ))),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 40,
+                            height: 25,
                             child: Material(
-                                color: AppColors.button2,
-                                child: Center(
+                              color: AppColors.cardProdukTidakDipilih,
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                    color: AppColors.button2, width: 1),
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  quantity.toString(),
+                                  style: AppTextStyle()
+                                      .descriptionBold(AppColors.description),
+                                ),
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: SizedBox(
+                              width: 25,
+                              height: 25,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(3),
+                                child: Material(
+                                  color: AppColors.button2,
+                                  child: Center(
                                     child: Icon(
-                                  FeatherIcons.minus,
-                                  color: AppColors.textButton2,
-                                  size: 15,
-                                ))),
+                                      FeatherIcons.plus,
+                                      color: AppColors.textButton2,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                        ].withSpaceBetween(width: 6),
                       ),
-                      SizedBox(
-                        width: 30,
-                        height: 20,
-                        child: Material(
-                          color: AppColors.cardProdukTidakDipilih,
-                          shape: RoundedRectangleBorder(
-                            side:
-                                BorderSide(color: AppColors.button2, width: 1),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Center(
-                            child: Text(quantity.toString(),
-                                style: AppTextStyle()
-                                    .textInfoBold(AppColors.description)),
-                          ),
-                        ),
+                      const Spacer(),
+                      Text(
+                        'Rp $subtotalValue'.toString(),
+                        style: AppTextStyle().title(AppColors.hargaStat),
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(3),
-                            child: Material(
-                                color: AppColors.button2,
-                                child: Center(
-                                    child: Icon(
-                                  FeatherIcons.plus,
-                                  color: AppColors.textButton2,
-                                  size: 15,
-                                ))),
-                          ),
-                        ),
-                      ),
-                    ].withSpaceBetween(width: 5),
+                    ],
                   ),
-                  const Spacer(),
-                  Text(
-                    'Rp $subtotalValue'.toString(),
-                    style: AppTextStyle().header(AppColors.hargaStat),
-                  ),
-                ],
+                ].withSpaceBetween(height: 10),
               )
-            ].withSpaceBetween(height: 10),
+            ].withSpaceBetween(height: 20),
           ),
         ),
       ),

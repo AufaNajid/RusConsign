@@ -90,8 +90,11 @@ class LocationPage extends StatelessWidget {
                           style: BorderStyle.solid,
                           width: 1),
                     ),
-                    shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8))),
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
                     fixedSize: const MaterialStatePropertyAll(Size(24, 24)),
                   ),
                 )
