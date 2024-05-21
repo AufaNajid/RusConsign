@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/text_field_widget.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:get/get.dart';
 
 import '../../utils/text_style.dart';
 
@@ -11,6 +13,10 @@ class LoginPage extends StatelessWidget {
   final GoogleController googleController = GoogleController();
 
   LoginPage({Key? key}) : super(key: key);
+
+  final AuthLoginController controller = Get.put(AuthLoginController());
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +38,17 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 80),
                 Column(
                   children: [
-                    TextFieldInput(hintText: 'masukkanEmail'.tr),
+                    // Bind TextEditingController to TextFieldInput
+                    TextFieldInput(
+                      hintText: 'masukkanEmail'.tr,
+                      controller: emailController,
+                    ),
                     const SizedBox(height: 12),
-                    TextFieldPassword(hintText: 'masukkanPassword'.tr),
+                    // Bind TextEditingController to TextFieldPassword
+                    TextFieldPassword(
+                      hintText: 'masukkanPassword'.tr,
+                      controller: passwordController,
+                    ),
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -59,26 +73,41 @@ class LoginPage extends StatelessWidget {
                   width: AppResponsive().screenWidth(context),
                   height: AppResponsive().screenWidth(context) * 0.1,
                   child: ElevatedButton(
-                    onPressed: () {
-                      Get.offNamed('/menu');
+                    onPressed: () async {
+                      if (!(controller.emailTextEditingController.text == "" && controller.passwordTextEditingController.text == "")) {
+                        await controller.login(
+                          controller.emailTextEditingController.text,
+                          controller.passwordTextEditingController.text,
+                        );
+                        Get.offNamed('/menu');
+                      } else {
+                        controller.message.value = "Please fill username and password";
+                        controller.successfulLogin.value = false;
+                      }
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4))),
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(AppColors.button1),
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        AppColors.button1,
+                      ),
                     ),
-                    child: Text('Login',
-                        style: AppTextStyle().header(AppColors.textButton1)),
+                    child: Text(
+                      'Login',
+                      style: AppTextStyle().header(AppColors.textButton1),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 30),
                 Column(
                   children: [
-                    Text('loginDengan'.tr,
-                        style:
-                            AppTextStyle().description(AppColors.description)),
+                    Text(
+                      'loginDengan'.tr,
+                      style: AppTextStyle().description(AppColors.description),
+                    ),
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
@@ -96,9 +125,10 @@ class LoginPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('belumPunyaAkun'.tr,
-                        style:
-                            AppTextStyle().description(AppColors.description)),
+                    Text(
+                      'belumPunyaAkun'.tr,
+                      style: AppTextStyle().description(AppColors.description),
+                    ),
                     const SizedBox(width: 6),
                     GestureDetector(
                       onTap: () {
@@ -106,8 +136,7 @@ class LoginPage extends StatelessWidget {
                       },
                       child: Text(
                         "Register",
-                        style: AppTextStyle()
-                            .descriptionBold(AppColors.description),
+                        style: AppTextStyle().descriptionBold(AppColors.description),
                       ),
                     ),
                   ],
@@ -118,10 +147,11 @@ class LoginPage extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: AppResponsive().screenWidth(context) * 0.7,
-                      child: Text('descLogin'.tr,
-                          textAlign: TextAlign.center,
-                          style: AppTextStyle()
-                              .description(AppColors.description)),
+                      child: Text(
+                        'descLogin'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle().description(AppColors.description),
+                      ),
                     ),
                   ],
                 ),
