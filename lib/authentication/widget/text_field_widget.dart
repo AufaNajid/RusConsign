@@ -107,17 +107,17 @@ class TextFieldConfirmPassword extends StatelessWidget {
         style: AppTextStyle().descriptionBold(AppColors.description),
         cursorColor: AppColors.hargaStat,
         textAlign: TextAlign.left,
-        obscureText: !authController.isShowConfirmPassword.value,
+        obscureText: !authController.isShow.value,
         decoration: InputDecoration(
           suffixIcon: GestureDetector(
             onTap: () {
-              authController.showConfirmPassword();
+              authController.isShow();
             },
             child: Icon(
-              authController.isShowConfirmPassword.value
+              authController.isShow.value
                   ? FeatherIcons.eye
                   : FeatherIcons.eyeOff,
-              color: authController.isShowConfirmPassword.value
+              color: authController.isShow.value
                   ? AppColors.activeIcon
                   : AppColors.nonActiveIcon,
             ),

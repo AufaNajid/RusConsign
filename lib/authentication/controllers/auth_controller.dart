@@ -4,60 +4,57 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart'as http;
 
+
 class AuthController extends GetxController {
   RxBool isShow = false.obs;
-  RxBool isShowConfirmPassword = false.obs;
-  final TextEditingController usernameTextEditingController =
-  TextEditingController();
-  final TextEditingController emailTextEditingController =
-  TextEditingController();
-  final TextEditingController passwordTextEditingController =
-  TextEditingController();
-  RxBool isObsecure = true.obs;
-  RxBool isObsecureFalse = false.obs;
+  final TextEditingController usernameTextEditingController = TextEditingController();
+  final TextEditingController emailTextEditingController = TextEditingController();
+  final TextEditingController passwordTextEditingController = TextEditingController();
   RxBool isLoading = false.obs;
-  RxBool successfulRegister = true.obs;
+  RxBool successfulRegister = false.obs;
   RxString message = "".obs;
 
   void showPassword() {
     isShow.value = !isShow.value;
-    update();
   }
 
-  void showConfirmPassword() {
-    isShowConfirmPassword.value = !isShowConfirmPassword.value;
-    update();
-  }
-
-  signin(String username, String email, String password) async {
+  Future<void> signin(String name, String email, String password) async {
     isLoading.value = true;
-    final response = await http.post(
-      Uri.parse("https://rusconsign.com/api/register"),
-      headers: <String, String>{
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: <String, String>{
-        'username': username,
-        'email': email,
-        'password': password,
-      },
-    );
-    if (response.statusCode == 200) {
-      Map<String, dynamic> jsonResponse = json.decode(response.body);
-      bool status = jsonResponse['status'];
-      String message = jsonResponse['message'];
-      if (status) {
-        successfulRegister.value = true;
-        isLoading.value = false;
+    try {
+      final response = await http.post(
+        Uri.parse("https://rusconsign.com/api/register"),
+        headers: <String, String>{
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        },
+        body: <String, String>{
+          'name': name,
+          'email': email,
+          'password': password,
+        },
+      );
+
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+
+      if (response.statusCode == 200) {
+        var jsonResponse = json.decode(response.body);
+        bool status = jsonResponse['status'] ?? false;  // Default to false if null
+        String message = jsonResponse['message'] ?? 'Unknown error occurred';  // Provide default message
+
+        print('Status: $status, Message: $message');
+
+        successfulRegister.value = status;
         this.message.value = message;
-        return;
       } else {
         successfulRegister.value = false;
-        isLoading.value = false;
-        this.message.value = message;
+        message.value = 'Failed to register. Please try again.';
       }
-    } else {
+    } catch (e) {
       successfulRegister.value = false;
+      message.value = 'An error occurred: $e';
+    } finally {
+      isLoading.value = false;
     }
   }
 }
