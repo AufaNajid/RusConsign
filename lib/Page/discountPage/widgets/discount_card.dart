@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-class FavoriteCard extends StatelessWidget {
+class DiscountCard extends StatelessWidget {
   final String imagePath;
   final String title;
   final String profileImagePath;
   final String profileUsername;
   final int price;
   final double rating;
-  final VoidCallback onDelete;
+  final int discountAmount;
 
-  const FavoriteCard({
+  const DiscountCard({
     Key? key,
     required this.imagePath,
     required this.title,
@@ -23,7 +22,7 @@ class FavoriteCard extends StatelessWidget {
     required this.rating,
     required this.profileImagePath,
     required this.profileUsername,
-    required this.onDelete,
+    required this.discountAmount,
   }) : super(key: key);
 
   @override
@@ -135,19 +134,26 @@ class FavoriteCard extends StatelessWidget {
                                 style: AppTextStyle()
                                     .textInfoBold(AppColors.hargaStat),
                               ),
+                              SizedBox(
+                                height: 15,
+                                width: 30,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(4),
+                                  child: Material(
+                                    color: AppColors.produkDipilih,
+                                    child: Center(
+                                      child: Text(
+                                        '$discountAmount%',
+                                        style: AppTextStyle()
+                                            .textInfoBold(AppColors.hargaStat),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
                             ].withSpaceBetween(width: 4),
                           ),
                         ].withSpaceBetween(height: 8),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        onDelete;
-                      },
-                      child: const Icon(
-                        FeatherIcons.trash2,
-                        color: AppColors.button1,
-                        size: 24,
                       ),
                     ),
                   ],

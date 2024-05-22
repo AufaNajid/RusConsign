@@ -40,7 +40,7 @@ class SettingWidget extends StatelessWidget {
                 style: AppTextStyle().description(AppColors.description),
               ),
             ),
-            const Icon(
+            Icon(
               FeatherIcons.chevronRight,
               color: AppColors.description,
             )
@@ -210,9 +210,9 @@ class PribadiSection extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: AppColors.cardIconFill,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(10),
                 topRight: Radius.circular(10),
               ),
@@ -224,7 +224,7 @@ class PribadiSection extends StatelessWidget {
             ),
           ),
           Container(
-            decoration: const BoxDecoration(color: AppColors.cardIconFill),
+            decoration: BoxDecoration(color: AppColors.cardIconFill),
             child: SettingWidget(
               icon: FeatherIcons.messageCircle,
               text: 'chat'.tr,
@@ -232,7 +232,7 @@ class PribadiSection extends StatelessWidget {
             ),
           ),
           Container(
-            decoration: const BoxDecoration(color: AppColors.cardIconFill),
+            decoration: BoxDecoration(color: AppColors.cardIconFill),
             child: SettingWidget(
               icon: FeatherIcons.bell,
               text: 'notifikasi'.tr,
@@ -240,12 +240,13 @@ class PribadiSection extends StatelessWidget {
             ),
           ),
           Container(
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
-                color: AppColors.cardIconFill),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
+              color: AppColors.cardIconFill,
+            ),
             child: SettingWidget(
               icon: FeatherIcons.settings,
               text: 'pengaturan'.tr,

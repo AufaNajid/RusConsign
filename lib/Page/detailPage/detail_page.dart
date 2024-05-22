@@ -23,7 +23,7 @@ class DetailPage extends StatelessWidget {
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(
+          icon: Icon(
             FeatherIcons.chevronLeft,
             color: AppColors.borderIcon,
           ),
@@ -103,7 +103,7 @@ class DetailPage extends StatelessWidget {
                                   color: controller.isFavorite.value
                                       ? AppColors.hargaStat
                                       : AppColors.borderIcon,
-                                      size: 24,
+                                  size: 24,
                                 ),
                               ),
                             ),
@@ -137,10 +137,10 @@ class DetailPage extends StatelessWidget {
                       const Spacer(),
                       Row(
                         children: [
-                          const Stack(
+                          Stack(
                             alignment: Alignment.center,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 color: AppColors.bintang,
                                 size: 22,
@@ -164,7 +164,7 @@ class DetailPage extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const Divider(
+                      Divider(
                         color: AppColors.titleLine,
                         thickness: 1,
                       ),
@@ -192,8 +192,8 @@ class DetailPage extends StatelessWidget {
                             children: [
                               Text(
                                 'Bagas Prasetyo',
-                                style:
-                                    AppTextStyle().description(AppColors.titleLine),
+                                style: AppTextStyle()
+                                    .description(AppColors.titleLine),
                               ),
                               const SizedBox(height: 4),
                               Row(
@@ -201,7 +201,6 @@ class DetailPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   SizedBox(
-                                    width: 80,
                                     height: 30,
                                     child: ElevatedButton(
                                       onPressed: () {},
@@ -212,22 +211,22 @@ class DetailPage extends StatelessWidget {
                                             const MaterialStatePropertyAll(0),
                                         shape: MaterialStatePropertyAll(
                                           RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(4),
+                                            borderRadius:
+                                                BorderRadius.circular(4),
                                           ),
                                         ),
                                         backgroundColor:
-                                            const MaterialStatePropertyAll(
+                                            MaterialStatePropertyAll(
                                                 AppColors.button2),
                                       ),
                                       child: Text(
                                         'chatPenjual'.tr,
-                                        style: AppTextStyle()
-                                            .textInfoBold(AppColors.textButton2),
+                                        style: AppTextStyle().textInfoBold(
+                                            AppColors.textButton2),
                                       ),
                                     ),
                                   ),
                                   SizedBox(
-                                    width: 80,
                                     height: 30,
                                     child: ElevatedButton(
                                       onPressed: () {
@@ -240,17 +239,18 @@ class DetailPage extends StatelessWidget {
                                             const MaterialStatePropertyAll(0),
                                         shape: MaterialStatePropertyAll(
                                           RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(4),
+                                            borderRadius:
+                                                BorderRadius.circular(4),
                                           ),
                                         ),
                                         backgroundColor:
-                                            const MaterialStatePropertyAll(
+                                            MaterialStatePropertyAll(
                                                 AppColors.button2),
                                       ),
                                       child: Text(
                                         'lihatToko'.tr,
-                                        style: AppTextStyle()
-                                            .textInfoBold(AppColors.textButton2),
+                                        style: AppTextStyle().textInfoBold(
+                                            AppColors.textButton2),
                                       ),
                                     ),
                                   ),
@@ -260,14 +260,16 @@ class DetailPage extends StatelessWidget {
                           ),
                           Expanded(
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      width: 90,
+                                      width: 75,
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Text(
                                             'jumlahProduk'.tr,
@@ -277,16 +279,17 @@ class DetailPage extends StatelessWidget {
                                           const Spacer(),
                                           Text(
                                             '2',
-                                            style: AppTextStyle()
-                                                .textInfoBold(AppColors.hargaStat),
+                                            style: AppTextStyle().textInfoBold(
+                                                AppColors.hargaStat),
                                           ),
                                         ],
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 90,
+                                      width: 75,
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Text(
                                             'penilaian'.tr,
@@ -296,22 +299,22 @@ class DetailPage extends StatelessWidget {
                                           const Spacer(),
                                           Text(
                                             '4.5',
-                                            style: AppTextStyle()
-                                                .textInfoBold(AppColors.hargaStat),
+                                            style: AppTextStyle().textInfoBold(
+                                                AppColors.hargaStat),
                                           ),
                                         ],
                                       ),
                                     ),
                                   ].withSpaceBetween(height: 20),
                                 ),
-                                const Spacer(),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
                                       width: 90,
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Text(
                                             'jumlahJasa'.tr,
@@ -321,8 +324,8 @@ class DetailPage extends StatelessWidget {
                                           const Spacer(),
                                           Text(
                                             '5',
-                                            style: AppTextStyle()
-                                                .textInfoBold(AppColors.hargaStat),
+                                            style: AppTextStyle().textInfoBold(
+                                                AppColors.hargaStat),
                                           ),
                                         ],
                                       ),
@@ -330,7 +333,8 @@ class DetailPage extends StatelessWidget {
                                     SizedBox(
                                       width: 90,
                                       child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Text(
                                             'pengikut'.tr,
@@ -340,8 +344,8 @@ class DetailPage extends StatelessWidget {
                                           const Spacer(),
                                           Text(
                                             '287',
-                                            style: AppTextStyle()
-                                                .textInfoBold(AppColors.hargaStat),
+                                            style: AppTextStyle().textInfoBold(
+                                                AppColors.hargaStat),
                                           ),
                                         ],
                                       ),
@@ -353,7 +357,7 @@ class DetailPage extends StatelessWidget {
                           ),
                         ].withSpaceBetween(width: 8),
                       ),
-                      const Divider(
+                      Divider(
                         color: AppColors.titleLine,
                         thickness: 1,
                       ),
@@ -387,10 +391,10 @@ class DetailPage extends StatelessWidget {
                             direction: Axis.horizontal,
                             allowHalfRating: true,
                             itemCount: 5,
-                            itemBuilder: (context, _) => const Stack(
+                            itemBuilder: (context, _) => Stack(
                               alignment: Alignment.center,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.star,
                                   color: AppColors.bintang,
                                   size: 18,
@@ -479,16 +483,15 @@ class DetailPage extends StatelessWidget {
                     Get.toNamed('/checkoutpage');
                   },
                   style: ButtonStyle(
-                    padding: const MaterialStatePropertyAll(EdgeInsets.zero),
-                    elevation: const MaterialStatePropertyAll(0),
-                    shape: MaterialStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4),
+                      padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                      elevation: const MaterialStatePropertyAll(0),
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
                       ),
-                    ),
-                    backgroundColor:
-                        const MaterialStatePropertyAll(AppColors.button2),
-                  ),
+                      backgroundColor:
+                          MaterialStatePropertyAll(AppColors.button2)),
                   child: Text(
                     'beliSekarang'.tr,
                     style: AppTextStyle().subHeader(AppColors.textButton2),

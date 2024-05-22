@@ -26,14 +26,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final settingController = Get.put(SettingController());
-    return GetMaterialApp(
-      translations: AppTranslation(),
-      locale: Locale(settingController.selectedLanguage.value),
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Poppins',
-        useMaterial3: true,
-      ),
+    return Obx(
+      () => GetMaterialApp(
+        translations: AppTranslation(),
+        locale: Locale(settingController.selectedLanguage.value),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: 'Poppins',
+          useMaterial3: true,
+        ),
       initialRoute: "/login",
       getPages: routes,
     );

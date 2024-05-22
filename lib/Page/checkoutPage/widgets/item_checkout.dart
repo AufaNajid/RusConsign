@@ -116,10 +116,10 @@ class ItemChekcout extends StatelessWidget {
                                 ),
                                 Row(
                                   children: [
-                                    const Stack(
+                                    Stack(
                                       alignment: Alignment.center,
                                       children: [
-                                        Icon(
+                                        const Icon(
                                           Icons.star,
                                           color: AppColors.bintang,
                                           size: 18,
@@ -189,7 +189,7 @@ class ItemChekcout extends StatelessWidget {
                           child: Material(
                             color: AppColors.cardProdukTidakDipilih,
                             shape: RoundedRectangleBorder(
-                              side: const BorderSide(
+                              side: BorderSide(
                                   color: AppColors.button2, width: 1),
                               borderRadius: BorderRadius.circular(4),
                             ),

@@ -55,7 +55,7 @@ class AppTextStyle {
   textInfo(Color color) {
     return TextStyle(
       color: color,
-      fontSize: 9,
+      fontSize: 8,
       fontFamily: "Poppins",
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none,
@@ -65,7 +65,7 @@ class AppTextStyle {
   textInfoBold(Color color) {
     return TextStyle(
       color: color,
-      fontSize: 9,
+      fontSize: 8,
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,
