@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -20,9 +22,7 @@ class AuthLoginController extends GetxController {
 
   loadData() async {
     prefs = await SharedPreferences.getInstance();
-    // Check if token exists, if yes, navigate to home
     if (prefs.containsKey('token')) {
-      // Get.off(HomePage());
     }
   }
 
@@ -51,19 +51,16 @@ class AuthLoginController extends GetxController {
         String? token = jsonResponse['token'];
 
         if (status) {
-          // Login berhasil, simpan token dan arahkan pengguna ke halaman menu
           await prefs.setString('token', token!);
           this.message.value = message;
           successfulLogin.value = true;
           isLoading.value = false;
         } else {
-          // Login gagal, berikan pesan kesalahan kepada pengguna
           this.message.value = message;
           successfulLogin.value = false;
           isLoading.value = false;
         }
       } else {
-        // Respons tidak valid, login gagal
         successfulLogin.value = false;
         message.value = 'Failed to load data';
       }

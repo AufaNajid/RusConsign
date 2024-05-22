@@ -14,14 +14,13 @@ class RegisterPage extends StatelessWidget {
 
   RegisterPage({Key? key}) : super(key: key);
 
-  AuthController controller =Get.put(AuthController());
-
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final controller =Get.put(AuthController());
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Padding(

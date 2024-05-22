@@ -74,7 +74,6 @@ class LoginPage extends StatelessWidget {
 
                       if (email.isNotEmpty && password.isNotEmpty) {
                         // Panggil fungsi login dari controller saat tombol ditekan
-                        print("Attempting to login with email: $email and password: $password");
                         await controller.login(email, password);
 
                         // Setelah login berhasil, arahkan pengguna ke halaman menu
