@@ -5,8 +5,6 @@ import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/text_field_widget.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
-import 'package:get/get.dart';
-
 import '../../utils/text_style.dart';
 
 class LoginPage extends StatelessWidget {
@@ -15,7 +13,7 @@ class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
   final AuthLoginController controller = Get.put(AuthLoginController());
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   @override
@@ -38,13 +36,11 @@ class LoginPage extends StatelessWidget {
                 const SizedBox(height: 80),
                 Column(
                   children: [
-                    // Bind TextEditingController to TextFieldInput
                     TextFieldInput(
                       hintText: 'masukkanEmail'.tr,
                       controller: controller.emailTextEditingController,
                     ),
                     const SizedBox(height: 12),
-                    // Bind TextEditingController to TextFieldPassword
                     TextFieldPassword(
                       hintText: 'masukkanPassword'.tr,
                       controller: controller.passwordTextEditingController,
@@ -60,8 +56,7 @@ class LoginPage extends StatelessWidget {
                           child: Text(
                             textAlign: TextAlign.left,
                             'lupaPassword'.tr,
-                            style: AppTextStyle()
-                                .description(AppColors.description),
+                            style: AppTextStyle().description(AppColors.description),
                           ),
                         ),
                       ],
@@ -74,15 +69,24 @@ class LoginPage extends StatelessWidget {
                   height: AppResponsive().screenWidth(context) * 0.1,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (!(controller.emailTextEditingController.text == "" && controller.passwordTextEditingController.text == "")) {
-                        await controller.login(
-                          controller.emailTextEditingController.text,
-                          controller.passwordTextEditingController.text,
-                        );
-                        Get.offNamed('/menu');
+                      String email = controller.emailTextEditingController.text;
+                      String password = controller.passwordTextEditingController.text;
+
+                      if (email.isNotEmpty && password.isNotEmpty) {
+                        // Panggil fungsi login dari controller saat tombol ditekan
+                        print("Attempting to login with email: $email and password: $password");
+                        await controller.login(email, password);
+
+                        // Setelah login berhasil, arahkan pengguna ke halaman menu
+                        if (controller.successfulLogin.value) {
+                          Get.offNamed('/menu');
+                        } else {
+                          Get.snackbar('Error', controller.message.value);
+                        }
                       } else {
-                        controller.message.value = "Please fill username and password";
+                        controller.message.value = "Please fill in all fields";
                         controller.successfulLogin.value = false;
+                        Get.snackbar('Error', controller.message.value);
                       }
                     },
                     style: ButtonStyle(
