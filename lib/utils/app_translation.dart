@@ -160,6 +160,7 @@ class AppTranslation extends Translations {
           'metodePembayaran' : 'Metode Pembayaran',
           'beriPenilaian' : 'Beri Penilaian',
           'pemberitahuan' : '*Kamu perlu me-restart aplikasi untuk mengubah preferensi',
+          'namaToko' : 'Nama Toko',
         },
         'English': {
           'bahasa': 'Language',
@@ -318,6 +319,7 @@ class AppTranslation extends Translations {
           'metodePembayaran' : 'Payment Method',
           'beriPenilaian' : 'Give Rating',
           'pemberitahuan' : '*You need to restart the app to change preferences',
+          'namaToko' : 'Store Name',
         }
       };
 }

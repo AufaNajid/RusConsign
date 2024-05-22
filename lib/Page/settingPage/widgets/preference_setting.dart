@@ -63,7 +63,7 @@ class PreferenceSetting extends StatelessWidget {
             children: [
               Text(
                 'pemberitahuan'.tr,
-                style: AppTextStyle().textInfo(AppColors.description),
+                style: AppTextStyle().textInfo(AppColors.hargaStat),
               ),
             ],
           )

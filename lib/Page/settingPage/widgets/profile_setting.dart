@@ -128,6 +128,34 @@ class ProfileSetting extends StatelessWidget {
           children: [
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
+              child: Text('namaToko'.tr,
+                  style: AppTextStyle().textInfoBold(AppColors.description)),
+            ),
+            SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
+            Expanded(
+              child: TextField(
+                style: AppTextStyle().textInfo(AppColors.description),
+                cursorColor: AppColors.hargaStat,
+                textAlign: TextAlign.left,
+                decoration: InputDecoration(
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(6),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: AppColors.cardIconFill,
+                ),
+              ),
+            )
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: AppResponsive().screenWidth(context) * 0.15,
               child: Text('deskripsi'.tr,
                   style: AppTextStyle().textInfoBold(AppColors.description)),
             ),
