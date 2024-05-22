@@ -7,16 +7,20 @@ import '../../utils/text_style.dart';
 
 class TextFieldInput extends StatelessWidget {
   final String hintText;
+  final TextEditingController controller;
+
 
   const TextFieldInput({
-    super.key,
+    Key? key,
     required this.hintText,
-  });
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       cursorColor: AppColors.hargaStat,
+      controller: controller,
       style: AppTextStyle().descriptionBold(AppColors.description),
       decoration: InputDecoration(
         contentPadding:
@@ -37,11 +41,13 @@ class TextFieldInput extends StatelessWidget {
 
 class TextFieldPassword extends StatelessWidget {
   final String hintText;
+  final TextEditingController controller;
 
   const TextFieldPassword({
-    super.key,
+    Key? key,
     required this.hintText,
-  });
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +55,7 @@ class TextFieldPassword extends StatelessWidget {
     return Obx(
       () => TextField(
         style: AppTextStyle().descriptionBold(AppColors.description),
+        controller: controller,
         cursorColor: AppColors.hargaStat,
         textAlign: TextAlign.left,
         obscureText: !authController.isShow.value,
@@ -84,11 +91,13 @@ class TextFieldPassword extends StatelessWidget {
 
 class TextFieldConfirmPassword extends StatelessWidget {
   final String hintText;
+  final TextEditingController controller;
 
   const TextFieldConfirmPassword({
-    super.key,
+    Key? key,
     required this.hintText,
-  });
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,10 @@ import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({Key? key}) : super(key: key);
+   ForgotPasswordPage({Key? key}) : super(key: key);
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +37,23 @@ class ForgotPasswordPage extends StatelessWidget {
                       style: AppTextStyle().subHeader(AppColors.titleLine),
                     ),
                     const SizedBox(height: 12),
-                    TextFieldInput(hintText: 'masukkanEmail'.tr),
+                    // Bind TextEditingController to TextFieldInput
+                    TextFieldInput(
+                      hintText: 'masukkanEmail'.tr,
+                      controller: emailController,
+                    ),
                     const SizedBox(height: 12),
-                    TextFieldPassword(hintText: 'masukkanPasswordBaru'.tr),
+                    // Bind TextEditingController to TextFieldPassword
+                    TextFieldPassword(
+                      hintText: 'masukkanPasswordBaru'.tr,
+                      controller: newPasswordController,
+                    ),
                     const SizedBox(height: 12),
-                    TextFieldConfirmPassword(hintText: 'konfirmasiPasswordBaru'.tr),
+                    // Bind TextEditingController to TextFieldConfirmPassword
+                    TextFieldConfirmPassword(
+                      hintText: 'konfirmasiPasswordBaru'.tr,
+                      controller: confirmPasswordController,
+                    ),
                     const SizedBox(height: 10),
                   ],
                 ),
@@ -48,6 +63,10 @@ class ForgotPasswordPage extends StatelessWidget {
                   height: AppResponsive().screenWidth(context) * 0.1,
                   child: ElevatedButton(
                     onPressed: () {
+                      // Handle reset password logic here
+                      print('Email: ${emailController.text}');
+                      print('New Password: ${newPasswordController.text}');
+                      print('Confirm Password: ${confirmPasswordController.text}');
                       Get.offNamed('/login');
                     },
                     style: ButtonStyle(
@@ -55,7 +74,7 @@ class ForgotPasswordPage extends StatelessWidget {
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4))),
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(AppColors.button1),
+                      MaterialStateProperty.all<Color>(AppColors.button1),
                     ),
                     child: Text('ubah'.tr,
                         style: AppTextStyle().header(AppColors.textButton1)),
@@ -71,7 +90,7 @@ class ForgotPasswordPage extends StatelessWidget {
                       child: Text(
                         'kembali'.tr,
                         style:
-                            AppTextStyle().descriptionBold(AppColors.description),
+                        AppTextStyle().descriptionBold(AppColors.description),
                       ),
                     )
                   ],
