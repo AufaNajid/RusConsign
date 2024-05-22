@@ -60,7 +60,7 @@ class PaymentDetail extends StatelessWidget {
                   )
                 ],
               ),
-              const Divider(thickness: 1, color: AppColors.titleLine),
+              Divider(thickness: 1, color: AppColors.titleLine),
               Row(
                 children: [
                   Text(

@@ -1,37 +1,37 @@
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/cartPage/cart_page.dart';
-import 'package:rusconsign/Page/checkoutPage/checkout_page_binding.dart';
-import 'package:rusconsign/Page/paymentDone/payment_done.dart';
-import 'package:rusconsign/Page/qrisPage/qris_payment_binding.dart';
-import 'package:rusconsign/Page/registerSeller/register_seller_binding.dart';
-import 'package:rusconsign/Page/qrisPage/qris_payment_page.dart';
-import 'package:rusconsign/Page/userProfilePage/user_profile_binding.dart';
-import 'package:rusconsign/Page/userProfilePage/user_profile_page.dart';
+import 'package:rusconsign/page/chatPage/chat_cust_seller_page.dart';
+import 'package:rusconsign/page/chatPage/chatlist_page.dart';
+import 'package:rusconsign/page/detailPage/detail_page.dart';
+import 'package:rusconsign/page/detailPage/detail_page_binding.dart';
+import 'package:rusconsign/page/favoritePage/favorite_page.dart';
+import 'package:rusconsign/page/homePage/home_page.dart';
+import 'package:rusconsign/page/homePage/home_page_binding.dart';
+import 'package:rusconsign/page/notificationPage/notifcation_page.dart';
+import 'package:rusconsign/page/orderPage/order_page.dart';
+import 'package:rusconsign/page/orderPage/order_page_binding.dart';
+import 'package:rusconsign/page/profilePage/profile_page.dart';
+import 'package:rusconsign/page/registerSeller/register_seller.dart';
+import 'package:rusconsign/page/settingPage/setting_page.dart';
+import 'package:rusconsign/page/settingPage/setting_page_binding.dart';
+import 'package:rusconsign/page/splash/splash.dart';
+import 'package:rusconsign/authentication/page/forgot_password_page.dart';
+import 'package:rusconsign/authentication/page/login_page.dart';
+import 'package:rusconsign/authentication/page/register_page.dart';
+import 'package:rusconsign/menu.dart';
+import 'package:rusconsign/page/cartPage/cart_page.dart';
+import 'package:rusconsign/page/checkoutPage/checkout_page_binding.dart';
+import 'package:rusconsign/page/discountPage/discount_page.dart';
+import 'package:rusconsign/page/paymentDone/payment_done.dart';
+import 'package:rusconsign/page/qrisPage/qris_payment_binding.dart';
+import 'package:rusconsign/page/registerSeller/register_seller_binding.dart';
+import 'package:rusconsign/page/qrisPage/qris_payment_page.dart';
+import 'package:rusconsign/page/userProfilePage/user_profile_binding.dart';
+import 'package:rusconsign/page/userProfilePage/user_profile_page.dart';
 import 'package:rusconsign/authentication/auth_binding.dart';
 import 'package:rusconsign/page/locationPage/location_page.dart';
 import 'package:rusconsign/page/checkoutPage/checkout_page.dart';
-import '../page/notificationPage/notifcation_page.dart';
-import '../authentication/page/forgot_password_page.dart';
 import 'package:rusconsign/page/registerSeller/register_seller_done.dart';
 import 'package:rusconsign/page/registerSeller/register_seller_waiting.dart';
-import '../authentication/page/login_page.dart';
-import '../authentication/page/register_page.dart';
-import '../menu.dart';
-import '../page/chatPage/chat_cust_seller_page.dart';
-import '../page/chatPage/chatlist_page.dart';
-import '../page/detailPage/detail_page.dart';
-import '../page/detailPage/detail_page_binding.dart';
-import '../page/diskonPage/diskon_page.dart';
-import '../page/favoritePage/favorite_page.dart';
-import '../page/homePage/home_page.dart';
-import '../page/homePage/home_page_binding.dart';
-import '../page/orderPage/order_page.dart';
-import '../page/orderPage/order_page_binding.dart';
-import '../page/profilePage/profile_page.dart';
-import '../page/registerSeller/register_seller.dart';
-import '../page/settingPage/setting_page.dart';
-import '../page/settingPage/setting_page_binding.dart';
-import '../page/splash/splash.dart';
 
 List<GetPage> routes = [
   GetPage(name: "/splash", page: () => const SplashScreen()),
@@ -40,16 +40,15 @@ List<GetPage> routes = [
   GetPage(name: "/chatlist", page: () => const ChatListPage()),
   GetPage(name: "/chatpage", page: () => const ChatPage()),
   GetPage(name: "/profilepage", page: () => const ProfilePage()),
-  GetPage(name: "/diskonpage", page: () => const DiskonPage()),
+  GetPage(name: "/diskonpage", page: () => const DiscountPage()),
   GetPage(name: "/notificationpage", page: () => const NotificationPage()),
   GetPage(name: "/registerseller", page: () => const RegisterSeller()),
   GetPage(name: "/registerseller", page: () => const RegisterSeller()),
   GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
   GetPage(name: "/registersellerdone", page: () => const RegisterSellerDone()),
   GetPage(name: "/locationpage", page: () => const LocationPage()),
-  GetPage(name: "/paymentdone", page: () => const PaymentDone()), 
-  GetPage(name: "/cartpage", page: () => const CartPage()), 
-
+  GetPage(name: "/paymentdone", page: () => const PaymentDone()),
+  GetPage(name: "/cartpage", page: () => const CartPage()),
   GetPage(
       name: "/qrispayment",
       page: () => const QrisPaymentPage(),
@@ -99,5 +98,9 @@ List<GetPage> routes = [
     name: "/registersellerdone",
     page: () => const RegisterSellerDone(),
   ),
-    GetPage(name: "/checkoutpage", page: () => const ChekcoutPage(), binding: CheckoutPageBinding()),
+  GetPage(
+    name: "/checkoutpage",
+    page: () => const ChekcoutPage(),
+    binding: CheckoutPageBinding(),
+  ),
 ];

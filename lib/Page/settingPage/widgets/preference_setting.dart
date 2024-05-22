@@ -16,44 +16,59 @@ class PreferenceSetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SettingController settingController = Get.find();
-    return Obx(() => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'modeGelap'.tr,
-                  style: AppTextStyle().description(AppColors.description),
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text(
+                'modeGelap'.tr,
+                style: AppTextStyle().description(AppColors.description),
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: () {
+                  settingController.toggleDarkModeSwitch();
+                },
+                icon: Icon(
+                  settingController.isDarkModeSwitched.value
+                      ? FeatherIcons.toggleRight
+                      : FeatherIcons.toggleLeft,
+                  size: 30,
+                  color: settingController.isDarkModeSwitched.value
+                      ? AppColors.hargaStat
+                      : AppColors.borderIcon,
                 ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {
-                    settingController.toggleDarkModeSwitch();
-                  },
-                  icon: Icon(
-                    settingController.isDarkModeSwitched.value
-                        ? FeatherIcons.toggleRight
-                        : FeatherIcons.toggleLeft,
-                    size: 30,
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Text(
+                    'bahasa'.tr,
+                    style: AppTextStyle().description(AppColors.description),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      'bahasa'.tr,
-                      style: AppTextStyle().description(AppColors.description),
-                    ),
-                  ],
-                ),
-                const Spacer(),
-                const DropDownLang(),
-              ],
-            ),
-          ],
-        ));
+                ],
+              ),
+              const Spacer(),
+              const DropDownLang(),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'pemberitahuan'.tr,
+                style: AppTextStyle().textInfo(AppColors.description),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
   }
 }

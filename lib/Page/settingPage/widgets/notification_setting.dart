@@ -37,6 +37,9 @@ class NotificationSetting extends StatelessWidget {
                       ? FeatherIcons.toggleRight
                       : FeatherIcons.toggleLeft,
                   size: 30,
+                  color: settingController.isNotificationSwitched.value
+                      ? AppColors.hargaStat
+                      : AppColors.borderIcon,
                 ),
               ),
             ],

@@ -159,6 +159,7 @@ class AppTranslation extends Translations {
           'tanpaBiaya': '(Tanpa Biaya)',
           'metodePembayaran' : 'Metode Pembayaran',
           'beriPenilaian' : 'Beri Penilaian',
+          'pemberitahuan' : '*Kamu perlu me-restart aplikasi untuk mengubah preferensi',
         },
         'English': {
           'bahasa': 'Language',
@@ -316,6 +317,7 @@ class AppTranslation extends Translations {
           'tanpaBiaya': '(No Fees)',
           'metodePembayaran' : 'Payment Method',
           'beriPenilaian' : 'Give Rating',
+          'pemberitahuan' : '*You need to restart the app to change preferences',
         }
       };
 }

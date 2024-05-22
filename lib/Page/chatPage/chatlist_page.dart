@@ -19,7 +19,7 @@ class ChatListPage extends StatelessWidget {
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(
+          icon: Icon(
             FeatherIcons.chevronLeft,
             color: AppColors.borderIcon,
           ),
@@ -46,7 +46,7 @@ class ChatListPage extends StatelessWidget {
           },
           itemCount: 12,
           separatorBuilder: (BuildContext context, int index) {
-            return const Divider(
+            return Divider(
               color: AppColors.cardIconFill,
             );
           },

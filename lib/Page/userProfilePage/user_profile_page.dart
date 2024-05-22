@@ -27,7 +27,7 @@ class UserProfilePage extends StatelessWidget {
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(
+          icon: Icon(
             FeatherIcons.chevronLeft,
             color: AppColors.borderIcon,
           ),
@@ -192,7 +192,7 @@ class UserProfilePage extends StatelessWidget {
                               color: AppColors.cardIconFill,
                               child: GestureDetector(
                                 onTap: () {},
-                                child: const Icon(
+                                child: Icon(
                                   FeatherIcons.search,
                                   color: AppColors.borderIcon,
                                 ),

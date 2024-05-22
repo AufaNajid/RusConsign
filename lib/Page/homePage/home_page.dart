@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                       onTap: () {
                         Get.toNamed('/chatlist');
                       },
-                      child: const Icon(
+                      child: Icon(
                         FeatherIcons.messageCircle,
                         color: AppColors.borderIcon,
                         size: 24,
@@ -71,7 +71,7 @@ class HomePage extends StatelessWidget {
                     Row(
                       children: [
                         SizedBox(
-                          width: AppResponsive().screenWidth(context) * 0.770,
+                          width: AppResponsive().screenWidth(context) * 0.75,
                           height: 50,
                           child: TextField(
                             cursorColor: AppColors.hargaStat,
@@ -103,7 +103,7 @@ class HomePage extends StatelessWidget {
                                 color: AppColors.cardIconFill,
                                 child: GestureDetector(
                                   onTap: () {},
-                                  child: const Icon(
+                                  child: Icon(
                                     FeatherIcons.search,
                                     color: AppColors.borderIcon,
                                   ),
