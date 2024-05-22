@@ -57,6 +57,11 @@ class RegisterSellerForm extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text("Nama Toko",
+              style: AppTextStyle().subHeader(AppColors.titleLine)),
+              const SizedBox(height: 10,),
+              const TextFieldRegisterSeller(hintText: "Masukkan nama toko anda..."),
+              const SizedBox(height: 15,),
               Text("Nama Lengkap",
               style: AppTextStyle().subHeader(AppColors.titleLine)),
               const SizedBox(height: 10,),
