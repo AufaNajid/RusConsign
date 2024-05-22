@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/authentication/widget/widget.dart';
-import 'package:rusconsign/page/chatPage/widgets/komponen.dart';
+import 'package:rusconsign/Page/chatPage/chat_controller.dart';
+import 'package:rusconsign/Page/chatPage/widgets/custom_app_bar.dart';
+import 'package:rusconsign/Page/chatPage/widgets/textfield_chat.dart';
 import 'package:rusconsign/utils/extension.dart';
+import '../../authentication/widget/message_item.dart';
 import '../../utils/app_responsive.dart';
 import '../../utils/colors.dart';
+import '../../utils/text_style.dart';
 
 class ChatPage extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatter;
@@ -17,13 +20,14 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ChatController controller = Get.put(ChatController());
+    bool tes = true;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.background,
       appBar: CustomAppBarChat(
         title: "Username User",
-        imagepath:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU5NotY59b9Il4DR4FAUdE6cDxIvYQTHdi2CLPuMmv_Q&s",
+        imagepath: "https://via.placeholder.com/50x50",
         onBackPressed: () {
           Get.back();
         },
@@ -32,45 +36,65 @@ class ChatPage extends StatelessWidget {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 13.0)
-                  .copyWith(right: 130.0),
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6.0),
-                    child: MessageUi(
-                        message:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo ",
-                        time: DateTime.now()),
-                  );
-                },
-                itemCount: 5,
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.only(right: 10, left: 10),
+              itemBuilder: (BuildContext context, int index) {
+                tes = !tes;
+                return MessageUi(
+                  message:
+                      " aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo ",
+                  time: DateTime.now(),
+                  sender: tes,
+                );
+              },
+              itemCount: 20,
+            ),
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                    child: Container(
+                      constraints: BoxConstraints(
+                          maxWidth: AppResponsive().screenWidth(context) * 0.7),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 10),
+                      decoration: BoxDecoration(
+                          color: AppColors.cardIconFill,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          controller.pickedImage.value != null
+                          ?  ClipRRect(
+                            borderRadius:  const BorderRadius.all(Radius.circular(10)),
+                            child: Image.file(
+                              controller.pickedImage.value!,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                          :  Text(
+                            "message",
+                            style: AppTextStyle()
+                                .description(AppColors.description),
+                          ),
+                          Text(
+                            DateTime.now().toString().substring(11, 16),
+                            style: AppTextStyle()
+                                .textInfoBold(AppColors.description),
+                          )
+                        ].withSpaceBetween(height: 5),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 13.0, vertical: 10)
-                      .copyWith(bottom: 80)
-                      .copyWith(left: 130.0),
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 10.0),
-                    child: MessageUi(
-                        message:
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo ",
-                        time: DateTime.now()),
-                  );
-                },
-                itemCount: 5,
-              ),
-            ),
-          ].withSpaceBetween(height: 10),
+            const SizedBox(height: 80,)
+          ],
         ),
       ),
       bottomSheet: Container(
@@ -91,17 +115,14 @@ class ChatPage extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: controller.pickImage,
                 icon: const Icon(
                   FeatherIcons.plus,
                   size: 30,
                 ),
               ),
               const Expanded(
-                  child: MyTextField(
-                isObscured: false,
-                labelText: "Masukkan Pesan...",
-              )),
+                  child: TextFieldInputChat(hintText: "Masukkan Pesan")),
               GestureDetector(
                 onTap: () {},
                 child: ClipOval(
@@ -123,21 +144,3 @@ class ChatPage extends StatelessWidget {
   }
 }
 
-// TextField(
-// style: AppTextStyle().description(AppColors.description),
-// decoration: InputDecoration(
-// hintStyle: AppTextStyle().description(AppColors.description),
-// fillColor: AppColors.cardIconFill,
-// filled: true,
-// hintText: 'Masukkan Teks...',
-// border: OutlineInputBorder(
-// borderRadius: BorderRadius.circular(8.0),
-// ),
-// focusedBorder: const OutlineInputBorder(
-// borderSide: BorderSide(color: Color(0xFFFFFFFF)),
-// ),
-// enabledBorder: const OutlineInputBorder(
-// borderSide: BorderSide(color: Color(0xFFFFFFFF)),
-// ),
-// ),
-// ),

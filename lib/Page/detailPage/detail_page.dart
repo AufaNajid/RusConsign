@@ -203,7 +203,9 @@ class DetailPage extends StatelessWidget {
                                   SizedBox(
                                     height: 30,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Get.toNamed("/chatpage");
+                                      },
                                       style: ButtonStyle(
                                         padding: const MaterialStatePropertyAll(
                                             EdgeInsets.zero),
