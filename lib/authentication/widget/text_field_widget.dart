@@ -51,7 +51,7 @@ class TextFieldPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AuthController authController = Get.find();
+    final AuthController authController = Get.put(AuthController());
     return Obx(
       () => TextField(
         style: AppTextStyle().descriptionBold(AppColors.description),
