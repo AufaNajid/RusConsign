@@ -14,7 +14,7 @@ class RegisterPage extends StatelessWidget {
 
   RegisterPage({Key? key}) : super(key: key);
 
-  AuthController controller = Get.put(AuthController());
+  AuthController controller =Get.put(AuthController());
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -62,13 +62,24 @@ class RegisterPage extends StatelessWidget {
                   height: AppResponsive().screenWidth(context) * 0.1,
                   child: ElevatedButton(
                     onPressed: () async {
-                        if(!(controller.emailTextEditingController.text == "" && controller.passwordTextEditingController.text == "")){
-                        await controller.signin(controller.usernameTextEditingController.text, controller.emailTextEditingController.text, controller.passwordTextEditingController.text);
-                        Get.off(LoginPage());
-                        } else if(controller.successfulRegister.value) {
-                        controller.message.value = "Please fill username and password";
-                        controller.successfulRegister.value = false;
+                      if (controller.usernameTextEditingController.text.isNotEmpty &&
+                          controller.emailTextEditingController.text.isNotEmpty &&
+                          controller.passwordTextEditingController.text.isNotEmpty) {
+                        await controller.signin(
+                          controller.usernameTextEditingController.text,
+                          controller.emailTextEditingController.text,
+                          controller.passwordTextEditingController.text,
+                        );
+                        if (controller.successfulRegister.value) {
+                          Get.off(() => LoginPage());
+                        } else {
+                          Get.snackbar('Error', controller.message.value);
                         }
+                      } else {
+                        controller.message.value = "Please fill in all fields";
+                        controller.successfulRegister.value = false;
+                        Get.snackbar('Error', controller.message.value);
+                      }
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
