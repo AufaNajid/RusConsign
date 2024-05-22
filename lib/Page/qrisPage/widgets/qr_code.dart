@@ -83,7 +83,7 @@ class QrCode extends StatelessWidget {
               child: Screenshot(
                 controller: _qrCodeController.screenshotController,
                 child: QrImageView(
-                  data: "aaa",
+                  data: "aku nak 𝓯𝓻𝓮𝓪𝓴𝔂",
                   version: QrVersions.auto,
                   backgroundColor: Colors.white,
                 ),
