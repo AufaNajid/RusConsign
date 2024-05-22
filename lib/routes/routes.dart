@@ -65,7 +65,7 @@ List<GetPage> routes = [
   ),
   GetPage(
     name: "/forgotpasswordpage",
-    page: () => const ForgotPasswordPage(),
+    page: () =>  ForgotPasswordPage(),
     binding: AuthBinding(),
   ),
   GetPage(

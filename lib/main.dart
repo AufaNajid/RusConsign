@@ -35,9 +35,8 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Poppins',
           useMaterial3: true,
         ),
-        initialRoute: "/splash",
-        getPages: routes,
-      ),
+      initialRoute: "/login",
+      getPages: routes,
     );
   }
 }

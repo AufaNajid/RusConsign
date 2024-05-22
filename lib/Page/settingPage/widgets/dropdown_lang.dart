@@ -19,7 +19,7 @@ class DropDownLang extends StatelessWidget {
             ),
             PopupMenuButton<String>(
               color: AppColors.cardIconFill,
-              useRootNavigator: true,
+
               elevation: 0,
               icon: Icon(settingController.isOpenMenu.value
                   ? FeatherIcons.chevronUp
