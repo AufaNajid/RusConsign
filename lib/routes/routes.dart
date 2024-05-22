@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/chatPage/chat_binding.dart';
 import 'package:rusconsign/page/chatPage/chat_cust_seller_page.dart';
 import 'package:rusconsign/page/chatPage/chatlist_page.dart';
 import 'package:rusconsign/page/detailPage/detail_page.dart';
@@ -38,7 +39,6 @@ List<GetPage> routes = [
   GetPage(name: "/menu", page: () => const Menu()),
   GetPage(name: "/favoritepage", page: () => const FavoritePage()),
   GetPage(name: "/chatlist", page: () => const ChatListPage()),
-  GetPage(name: "/chatpage", page: () => const ChatPage()),
   GetPage(name: "/profilepage", page: () => const ProfilePage()),
   GetPage(name: "/diskonpage", page: () => const DiscountPage()),
   GetPage(name: "/notificationpage", page: () => const NotificationPage()),
@@ -62,6 +62,11 @@ List<GetPage> routes = [
     name: "/register",
     page: () => RegisterPage(),
     binding: AuthBinding(),
+  ),
+  GetPage(
+    name: "/chatpage",
+    page: () => const ChatPage(),
+    binding: ChatBinding(),
   ),
   GetPage(
     name: "/forgotpasswordpage",
