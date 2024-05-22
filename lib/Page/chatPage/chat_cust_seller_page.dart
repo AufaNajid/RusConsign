@@ -144,21 +144,3 @@ class ChatPage extends StatelessWidget {
   }
 }
 
-// TextField(
-// style: AppTextStyle().description(AppColors.description),
-// decoration: InputDecoration(
-// hintStyle: AppTextStyle().description(AppColors.description),
-// fillColor: AppColors.cardIconFill,
-// filled: true,
-// hintText: 'Masukkan Teks...',
-// border: OutlineInputBorder(
-// borderRadius: BorderRadius.circular(8.0),
-// ),
-// focusedBorder: const OutlineInputBorder(
-// borderSide: BorderSide(color: Color(0xFFFFFFFF)),
-// ),
-// enabledBorder: const OutlineInputBorder(
-// borderSide: BorderSide(color: Color(0xFFFFFFFF)),
-// ),
-// ),
-// ),
