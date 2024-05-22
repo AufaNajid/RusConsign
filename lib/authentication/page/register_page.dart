@@ -40,22 +40,19 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(height: 80),
                 Column(
                   children: [
-                    // Bind TextEditingController to TextFieldInput
                     TextFieldInput(
                       hintText: 'masukkanUsername'.tr,
-                      controller: usernameController,
+                      controller: controller.usernameTextEditingController,
                     ),
                     const SizedBox(height: 12),
-                    // Bind TextEditingController to TextFieldInput
                     TextFieldInput(
                       hintText: 'masukkanEmail'.tr,
-                      controller: emailController,
+                      controller: controller.emailTextEditingController,
                     ),
                     const SizedBox(height: 12),
-                    // Bind TextEditingController to TextFieldPassword
                     TextFieldPassword(
                       hintText: 'masukkanPassword'.tr,
-                      controller: passwordController,
+                      controller: controller.passwordTextEditingController,
                     ),
                   ],
                 ),
@@ -65,13 +62,13 @@ class RegisterPage extends StatelessWidget {
                   height: AppResponsive().screenWidth(context) * 0.1,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (!(controller.emailTextEditingController.text == "" && controller.passwordTextEditingController.text == "")) {
+                        if(!(controller.emailTextEditingController.text == "" && controller.passwordTextEditingController.text == "")){
                         await controller.signin(controller.usernameTextEditingController.text, controller.emailTextEditingController.text, controller.passwordTextEditingController.text);
                         Get.off(LoginPage());
-                      } else if (controller.successfulRegister.value) {
+                        } else if(controller.successfulRegister.value) {
                         controller.message.value = "Please fill username and password";
                         controller.successfulRegister.value = false;
-                      }
+                        }
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -88,8 +85,7 @@ class RegisterPage extends StatelessWidget {
                 Column(
                   children: [
                     Text('registerDengan'.tr,
-                        style:
-                        AppTextStyle().description(AppColors.description)),
+                        style: AppTextStyle().description(AppColors.description)),
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
@@ -108,8 +104,7 @@ class RegisterPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('sudahPunyaAkun'.tr,
-                        style:
-                        AppTextStyle().description(AppColors.description)),
+                        style: AppTextStyle().description(AppColors.description)),
                     const SizedBox(width: 6),
                     GestureDetector(
                       onTap: () {
@@ -143,5 +138,4 @@ class RegisterPage extends StatelessWidget {
       ),
     );
   }
-  }
-
+}

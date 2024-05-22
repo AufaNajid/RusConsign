@@ -41,13 +41,13 @@ class LoginPage extends StatelessWidget {
                     // Bind TextEditingController to TextFieldInput
                     TextFieldInput(
                       hintText: 'masukkanEmail'.tr,
-                      controller: emailController,
+                      controller: controller.emailTextEditingController,
                     ),
                     const SizedBox(height: 12),
                     // Bind TextEditingController to TextFieldPassword
                     TextFieldPassword(
                       hintText: 'masukkanPassword'.tr,
-                      controller: passwordController,
+                      controller: controller.passwordTextEditingController,
                     ),
                     const SizedBox(height: 10),
                     Row(
