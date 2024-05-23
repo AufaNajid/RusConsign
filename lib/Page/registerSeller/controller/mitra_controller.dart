@@ -1,65 +1,74 @@
-// ignore_for_file: avoid_print
-
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:rusconsign/Api/mitra_response.dart';
+import 'package:path/path.dart';
+import 'package:http_parser/http_parser.dart';
 
 class MitraController extends GetxController {
-  final TextEditingController imageProfileController = TextEditingController();
   final TextEditingController namaController = TextEditingController();
   final TextEditingController namaTokoController = TextEditingController();
   final TextEditingController nisController = TextEditingController();
   final TextEditingController nomorController = TextEditingController();
-  final TextEditingController imageController = TextEditingController();
-  final TextEditingController statusController = TextEditingController();
-  final TextEditingController pengikutController = TextEditingController();
-  final TextEditingController jumlahProductController = TextEditingController();
-  final TextEditingController jumlahJasaController = TextEditingController();
-  final TextEditingController penilaianController = TextEditingController();
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxString message = "".obs;
+  var pickedImage = Rx<File?>(null);
 
   Future<void> registermitra(
       String nama,
       String namaToko,
       int nis,
-      String nomor,
-      String image,
+      String noDompetDigital,
+      File imageIdCard,
       ) async {
     isLoading.value = true;
     try {
-      final response = await http.post(
+      var request = http.MultipartRequest(
+        'POST',
         Uri.parse("https://rusconsign.com/api/registermitra"),
-        headers: <String, String>{
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json',
-        },
-        body: <String, String>{
-          'nama_lengkap': nama,
-          'nama_toko': namaToko,
-          'nis': nis.toString(),
-          'nomor': nomor,
-          'image': image,
-        },
       );
 
+      request.fields['nama_lengkap'] = nama;
+      request.fields['nama_toko'] = namaToko;
+      request.fields['nis'] = nis.toString();
+      request.fields['no_dompet_digital'] = noDompetDigital;
+
+      var imageStream = http.ByteStream(imageIdCard.openRead());
+      var imageLength = await imageIdCard.length();
+      var multipartFile = http.MultipartFile(
+        'image_id_card',
+        imageStream,
+        imageLength,
+        filename: basename(imageIdCard.path),
+        contentType: MediaType('image', 'jpeg'),
+      );
+      request.files.add(multipartFile);
+
+      var response = await request.send();
+
       print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
 
       if (response.statusCode == 200) {
-        final data = json.decode(response.body);
+        var responseBody = await response.stream.bytesToString();
+        final data = json.decode(responseBody);
         Mitra mitra = Mitra.fromJson(data);
         successfulRegister.value = true;
         message.value = "Registration successful";
         print('Success: ${mitra.nama}');
       } else {
-        final data = json.decode(response.body);
+        var responseBody = await response.stream.bytesToString();
+        final data = json.decode(responseBody);
         successfulRegister.value = false;
-        message.value = data['message'] ?? 'Registration failed';
-        print('Failed to register: ${response.body}');
+        if (data['errors'] != null) {
+          message.value = data['errors'].toString();
+        } else {
+          message.value = data['message'] ?? 'Registration failed';
+        }
+        print('Failed to register: $responseBody');
       }
     } catch (e) {
       successfulRegister.value = false;
@@ -67,6 +76,13 @@ class MitraController extends GetxController {
       print('Error: $e');
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  Future<void> pickImage() async {
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      pickedImage.value = File(pickedFile.path);
     }
   }
 }

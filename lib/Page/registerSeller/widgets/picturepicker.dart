@@ -19,7 +19,7 @@ class PicturePicker extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Obx(
-          () => DottedBorder(
+              () => DottedBorder(
             borderType: BorderType.RRect,
             radius: const Radius.circular(10),
             strokeCap: StrokeCap.butt,
@@ -33,14 +33,14 @@ class PicturePicker extends StatelessWidget {
                 height: AppResponsive().screenHeight(context) * 0.3,
                 child: controller.pickedImage.value != null
                     ? Image.file(
-                        controller.pickedImage.value!,
-                        fit: BoxFit.cover,
-                      )
+                  controller.pickedImage.value!,
+                  fit: BoxFit.cover,
+                )
                     : Center(
-                        child: SvgPicture.asset(
-                          "assets/images/clarity_picture-line.svg",
-                        ),
-                      ),
+                  child: SvgPicture.asset(
+                    "assets/images/clarity_picture-line.svg",
+                  ),
+                ),
               ),
             ),
           ),
