@@ -12,7 +12,8 @@ class PicturePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final RegisterSellerController controller = Get.put(RegisterSellerController());
+    final RegisterSellerController controller =
+        Get.put(RegisterSellerController());
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,16 +51,16 @@ class PicturePicker extends StatelessWidget {
         ElevatedButton(
           onPressed: controller.pickImage,
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.activeIcon,
+            backgroundColor: AppColors.button1,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(2),
+              borderRadius: BorderRadius.circular(5),
             ),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(
               "Pilih Foto",
-              style: AppTextStyle().description(AppColors.background),
+              style: AppTextStyle().description(AppColors.textButton1),
             ),
           ),
         ),

@@ -13,8 +13,6 @@ class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
   final AuthLoginController controller = Get.put(AuthLoginController());
-  final TextEditingController emailcontroller = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +71,7 @@ class LoginPage extends StatelessWidget {
                       String password = controller.passwordTextEditingController.text;
 
                       if (email.isNotEmpty && password.isNotEmpty) {
-                        // Panggil fungsi login dari controller saat tombol ditekan
                         await controller.login(email, password);
-
-                        // Setelah login berhasil, arahkan pengguna ke halaman menu
                         if (controller.successfulLogin.value) {
                           Get.offNamed('/menu');
                         } else {

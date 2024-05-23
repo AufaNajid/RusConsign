@@ -12,7 +12,7 @@ class RegisterSellerWaiting extends StatelessWidget {
   Widget build(BuildContext context) {
 
         Future.delayed(const Duration(seconds: 3), () {
-      Get.toNamed("/registersellerdone"); 
+      Get.offNamed("/registersellerdone"); 
     });
 
 

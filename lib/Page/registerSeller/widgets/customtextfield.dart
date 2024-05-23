@@ -5,15 +5,18 @@ import 'package:rusconsign/utils/text_style.dart';
 
 class TextFieldRegisterSeller extends StatelessWidget {
   final String hintText;
+  final TextEditingController controller;
 
   const TextFieldRegisterSeller({
     Key? key,
     required this.hintText,
+    required this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       style: AppTextStyle().descriptionBold(AppColors.description),
       cursorColor: AppColors.hargaStat,
       textAlign: TextAlign.left,
@@ -34,15 +37,18 @@ class TextFieldRegisterSeller extends StatelessWidget {
 
 class TextFieldRegisterSellerNumber extends StatelessWidget {
   final String hintText;
+  final TextEditingController controller;
 
   const TextFieldRegisterSellerNumber({
     Key? key,
     required this.hintText,
+    required this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))],
       style: AppTextStyle().descriptionBold(AppColors.description),
