@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:rusconsign/Api/mitraResponse.dart';
+import 'package:rusconsign/Api/mitra_response.dart';
 
 class MitraController extends GetxController {
   final TextEditingController imageProfileController = TextEditingController();
@@ -21,17 +23,11 @@ class MitraController extends GetxController {
   RxString message = "".obs;
 
   Future<void> registermitra(
-      String imageProfile,
       String nama,
       String namaToko,
       int nis,
       String nomor,
       String image,
-      String status,
-      int pengikut,
-      int jumlahProduct,
-      int jumlahJasa,
-      int penilaian,
       ) async {
     isLoading.value = true;
     try {
@@ -42,17 +38,11 @@ class MitraController extends GetxController {
           'Accept': 'application/json',
         },
         body: <String, String>{
-          'image_profile': imageProfile,
           'nama_lengkap': nama,
           'nama_toko': namaToko,
           'nis': nis.toString(),
           'nomor': nomor,
           'image': image,
-          'status': status,
-          'pengikut': pengikut.toString(),
-          'jumlah_product': jumlahProduct.toString(),
-          'jumlah_jasa': jumlahJasa.toString(),
-          'penilaian': penilaian.toString(),
         },
       );
 
@@ -69,11 +59,11 @@ class MitraController extends GetxController {
         final data = json.decode(response.body);
         successfulRegister.value = false;
         message.value = data['message'] ?? 'Registration failed';
-        throw Exception('Failed to register: ${response.body}');
+        print('Failed to register: ${response.body}');
       }
     } catch (e) {
       successfulRegister.value = false;
-      message.value = 'An error occurred';
+      message.value = 'An error occurred: $e';
       print('Error: $e');
     } finally {
       isLoading.value = false;
