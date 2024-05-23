@@ -11,7 +11,7 @@ class QrisPaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 5), () {
-      // Get.toNamed("/paymentdone");
+      Get.toNamed("/paymentdone");
     });
     return Scaffold(
       appBar: CommonAppBar(title: 'pembayaranQRIS'.tr),

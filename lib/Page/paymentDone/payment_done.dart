@@ -12,6 +12,7 @@ class PaymentDone extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      backgroundColor: AppColors.background,
       bottomNavigationBar: BottomAppBar(
           surfaceTintColor: Colors.transparent,
           color: Colors.transparent,
@@ -27,8 +28,8 @@ class PaymentDone extends StatelessWidget {
                       shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.circular(2))),
                   child: Text(
-                    "Kembali",
-                    style: AppTextStyle().description(AppColors.background),
+                    'kembali'.tr,
+                    style: AppTextStyle().description(AppColors.textButton2),
                   ),
                 ),
               ),
@@ -42,11 +43,11 @@ class PaymentDone extends StatelessWidget {
             children: [
               SvgPicture.asset("assets/images/paymentdone.svg"),
               SizedBox(height: AppResponsive().screenHeight(context)*0.01,),
-              Text("Pembayaran Selesai",
+              Text('pembayaranSelesai'.tr,
                   style: AppTextStyle().title(AppColors.titleLine)),
               SizedBox(height: AppResponsive().screenHeight(context)*0.02,),
               Text(
-                "Terima kasih sudah membeli produk. Produk anda akan di proses oleh penjual produk. Untuk informasi lebih lanjut, anda bisa menghubungi penjual dari produk tersebut.",
+                'infoPembayaranSelesai'.tr,
                 style: AppTextStyle().description(AppColors.description),
                 textAlign: TextAlign.center,
                 maxLines: 3,
