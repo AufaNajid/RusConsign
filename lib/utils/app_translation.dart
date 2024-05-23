@@ -120,7 +120,7 @@ class AppTranslation extends Translations {
               'Anda sekarang dapat menjual produk atau jasa anda di Aplikasi ini. Selamat berjualan...',
           'belumAdaNotifikasi': 'Belum Ada Notifikasi',
           'masukkanTeks': 'Masukkan teks...',
-          'pembayaranQRIS': 'Pembayaran QRIS',
+          'pembayaranQRIS': 'QRIS Payment',
           'menungguPembayaran': 'Menunggu Pembayaran',
           'descMenungguPembayaran':
               'Selesaikan pembayaran sebelum waktu habis agar pesanan kamu tidak kedaluwarsa',

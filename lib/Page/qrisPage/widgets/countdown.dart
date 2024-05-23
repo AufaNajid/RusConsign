@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -35,6 +37,7 @@ class TimerTest extends StatelessWidget {
         final duration = snapshot.data!;
         final hours = DefaultTextStyle(
           style: AppTextStyle().countdownText(AppColors.hargaStat),
+          textAlign: TextAlign.center,
           child: Text(
             duration.inHours.toString().padLeft(2, '0'),
           ),
@@ -42,6 +45,7 @@ class TimerTest extends StatelessWidget {
 
         final minutes = DefaultTextStyle(
           style: AppTextStyle().countdownText(AppColors.hargaStat),
+          textAlign: TextAlign.center,
           child: Text(
             duration.inMinutes.remainder(60).toString().padLeft(2, '0'),
           ),
@@ -49,72 +53,82 @@ class TimerTest extends StatelessWidget {
 
         final seconds = DefaultTextStyle(
           style: AppTextStyle().countdownText(AppColors.hargaStat),
+          textAlign: TextAlign.center,
           child: Text(
             duration.inSeconds.remainder(60).toString().padLeft(2, '0'),
           ),
         );
 
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: AppColors.cardProdukTidakDipilih,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    hours,
-                    Text(
-                      "Jam",
-                      style: AppTextStyle().subHeader(AppColors.description),
-                    )
-                  ],
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: AppResponsive().screenHeight(context)*0.090,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: AppColors.cardProdukTidakDipilih,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      hours,
+                      Text(
+                        'jam'.tr,
+                        style: AppTextStyle().subHeader(AppColors.description),
+                        textAlign: TextAlign.center
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: AppColors.cardProdukTidakDipilih,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    minutes,
-                    Text(
-                      "Menit",
-                      style: AppTextStyle().subHeader(AppColors.description),
-                    )
-                  ],
+              Container(
+              height: AppResponsive().screenHeight(context)*0.090,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: AppColors.cardProdukTidakDipilih,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      minutes,
+                      Text(
+                        'menit'.tr,
+                        style: AppTextStyle().subHeader(AppColors.description),
+                        textAlign: TextAlign.center
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: AppColors.cardProdukTidakDipilih,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    seconds,
-                    Text(
-                      "Detik",
-                      style: AppTextStyle().subHeader(AppColors.description),
-                    )
-                  ],
+              Container(
+                height: AppResponsive().screenHeight(context)*0.090,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: AppColors.cardProdukTidakDipilih,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      seconds,
+                      Text(
+                        'detik'.tr,
+                        style: AppTextStyle().subHeader(AppColors.description),
+                        textAlign: TextAlign.center,
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ].withSpaceBetween(width: 10),
+            ].withSpaceBetween(width: 10),
+          ),
         );
       },
     );
