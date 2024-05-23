@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/chatPage/widgets/chat_item.dart';
-import 'package:rusconsign/utils/text_style.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import '../../utils/colors.dart';
 
 class ChatListPage extends StatelessWidget {
@@ -12,24 +11,7 @@ class ChatListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        surfaceTintColor: AppColors.background,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(
-            FeatherIcons.chevronLeft,
-            color: AppColors.borderIcon,
-          ),
-        ),
-        title: Text(
-          'chat'.tr,
-          style: AppTextStyle().title(AppColors.titleLine),
-        ),
-        centerTitle: true,
-      ),
+      appBar: CommonAppBar(title: 'chat'.tr),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: ListView.separated(

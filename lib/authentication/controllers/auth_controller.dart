@@ -41,8 +41,8 @@ class AuthController extends GetxController {
 
       if (response.statusCode == 200) {
         var jsonResponse = json.decode(response.body);
-        bool status = jsonResponse['status'] ?? false;  // Default to false if null
-        String message = jsonResponse['message'] ?? 'Unknown error occurred';  // Provide default message
+        bool status = jsonResponse['status'] ?? false;
+        String message = jsonResponse['message'] ?? 'Unknown error occurred';
 
         print('Status: $status, Message: $message');
 

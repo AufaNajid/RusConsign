@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/controllers/auth_controller.dart';
 import 'package:rusconsign/authentication/controllers/google_controller.dart';
-import 'package:rusconsign/authentication/page/login_page.dart';
 import 'package:rusconsign/authentication/widget/text_field_widget.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 
@@ -20,7 +19,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =Get.put(AuthController());
+    final controller = Get.put(AuthController());
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Padding(
@@ -61,16 +60,19 @@ class RegisterPage extends StatelessWidget {
                   height: AppResponsive().screenWidth(context) * 0.1,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (controller.usernameTextEditingController.text.isNotEmpty &&
-                          controller.emailTextEditingController.text.isNotEmpty &&
-                          controller.passwordTextEditingController.text.isNotEmpty) {
+                      if (controller
+                              .usernameTextEditingController.text.isNotEmpty &&
+                          controller
+                              .emailTextEditingController.text.isNotEmpty &&
+                          controller
+                              .passwordTextEditingController.text.isNotEmpty) {
                         await controller.signin(
                           controller.usernameTextEditingController.text,
                           controller.emailTextEditingController.text,
                           controller.passwordTextEditingController.text,
                         );
                         if (controller.successfulRegister.value) {
-                          Get.off(() => LoginPage());
+                          Get.offNamed("/login");
                         } else {
                           Get.snackbar('Error', controller.message.value);
                         }
@@ -82,20 +84,25 @@ class RegisterPage extends StatelessWidget {
                     },
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4))),
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(AppColors.button1),
+                          MaterialStateProperty.all<Color>(AppColors.button1),
                     ),
-                    child: Text('Register',
-                        style: AppTextStyle().header(AppColors.textButton1)),
+                    child: Text(
+                      'Register',
+                      style: AppTextStyle().header(AppColors.textButton1),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 30),
                 Column(
                   children: [
                     Text('registerDengan'.tr,
-                        style: AppTextStyle().description(AppColors.description)),
+                        style:
+                            AppTextStyle().description(AppColors.description)),
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
@@ -114,7 +121,8 @@ class RegisterPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('sudahPunyaAkun'.tr,
-                        style: AppTextStyle().description(AppColors.description)),
+                        style:
+                            AppTextStyle().description(AppColors.description)),
                     const SizedBox(width: 6),
                     GestureDetector(
                       onTap: () {

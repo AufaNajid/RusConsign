@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/discountPage/widgets/discount_card.dart';
-import 'package:rusconsign/utils/text_style.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 
 import '../../utils/colors.dart';
 
@@ -13,23 +12,7 @@ class DiscountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(
-              FeatherIcons.chevronLeft,
-              color: AppColors.borderIcon,
-            )),
-        title: Text(
-          'produkDiskon'.tr,
-          style: AppTextStyle().title(AppColors.titleLine),
-        ),
-        centerTitle: true,
-        backgroundColor: AppColors.background,
-        surfaceTintColor: AppColors.background,
-      ),
+      appBar: CommonAppBar(title: 'produkDiskon'.tr),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(

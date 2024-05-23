@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,11 +15,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final loginOption = Get.put(AuthLoginController());
   @override
   void initState() {
     super.initState();
     Timer(const Duration(milliseconds: 1650), () {
-      Get.offNamed("/login");
+      if (loginOption.successfulLogin.value == true) {
+        Get.offNamed("/menu");
+      } else {
+        Get.offNamed("/login");
+      }
     });
   }
 

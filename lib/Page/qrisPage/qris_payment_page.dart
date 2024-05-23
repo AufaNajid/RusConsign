@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/qrisPage/widgets/appbar.dart';
 import 'package:rusconsign/Page/qrisPage/widgets/payment_countdown.dart';
 import 'package:rusconsign/Page/qrisPage/widgets/qr_code.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 
 class QrisPaymentPage extends StatelessWidget {
   const QrisPaymentPage({super.key});
@@ -14,7 +14,7 @@ class QrisPaymentPage extends StatelessWidget {
       Get.toNamed("/paymentdone");
     });
     return Scaffold(
-      appBar: const AppBarQrisPayment(title: "Pembayaran QRIS"),
+      appBar: CommonAppBar(title: 'pembayaranQRIS'.tr),
       backgroundColor: AppColors.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),

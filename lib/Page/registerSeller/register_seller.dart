@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/registerSeller/widgets/picturepicker.dart';
-import 'package:rusconsign/page/registerSeller/widgets/appbar.dart';
 import 'package:rusconsign/page/registerSeller/widgets/customtextfield.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class RegisterSeller extends StatelessWidget {
@@ -48,7 +48,7 @@ class RegisterSellerForm extends StatelessWidget {
           ],
         ),
       ),
-      appBar: const AppBarRegisterSeller(title: "Registrasi Penjualan"),
+      appBar: CommonAppBar(title: 'registerPenjual'.tr),
       backgroundColor: AppColors.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15,

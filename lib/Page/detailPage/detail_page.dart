@@ -1,10 +1,10 @@
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/detailPage/widgets/comment_card.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import '../../utils/app_responsive.dart';
@@ -16,24 +16,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        surfaceTintColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(
-            FeatherIcons.chevronLeft,
-            color: AppColors.borderIcon,
-          ),
-        ),
-        title: Text(
-          'detailProduk'.tr,
-          style: AppTextStyle().title(AppColors.titleLine),
-        ),
-        centerTitle: true,
-      ),
+      appBar: CommonAppBar(title: 'detailProduk'.tr),
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,

@@ -1,22 +1,23 @@
-// ignore_for_file: avoid_print
-
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthLoginController extends GetxController {
   late SharedPreferences prefs;
+  static final box = GetStorage();
   final TextEditingController emailTextEditingController = TextEditingController();
   final TextEditingController passwordTextEditingController = TextEditingController();
   RxBool isLoading = false.obs;
-  RxBool successfulLogin = true.obs;
+  RxBool successfulLogin = false.obs;
   RxString message = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
+    successfulLogin.value = box.read('done') ?? false;
     loadData();
   }
 
@@ -26,7 +27,15 @@ class AuthLoginController extends GetxController {
     }
   }
 
-  login(String email, String password) async {
+  void logout() async {
+    successfulLogin.value = false;
+    box.write('done', successfulLogin.value);
+    await prefs.remove('token');
+    update();
+    Get.offAllNamed('/login');
+  }
+
+  Future<void> login(String email, String password) async {
     isLoading.value = true;
     try {
       final response = await http.post(
@@ -41,8 +50,6 @@ class AuthLoginController extends GetxController {
         },
       );
 
-      print("Response status: ${response.statusCode}");
-      print("Response body: ${response.body}");
 
       if (response.statusCode == 200) {
         Map<String, dynamic> jsonResponse = json.decode(response.body);
@@ -54,11 +61,10 @@ class AuthLoginController extends GetxController {
           await prefs.setString('token', token!);
           this.message.value = message;
           successfulLogin.value = true;
-          isLoading.value = false;
+          box.write('done', successfulLogin.value);
         } else {
           this.message.value = message;
           successfulLogin.value = false;
-          isLoading.value = false;
         }
       } else {
         successfulLogin.value = false;

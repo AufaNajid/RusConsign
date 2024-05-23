@@ -28,7 +28,7 @@ class CartPage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return const ProductCardCart(
                     profileImagePath: "https://via.placeholder.com/100x100",
-                    sellerUsername: "Ujang Kampas Rem",
+                    sellerUsername: "Username Toko",
                     rating: 5.0,
                     price: 15000,
                     imagePath: 'https://via.placeholder.com/100x100',
@@ -114,7 +114,9 @@ class CartPage extends StatelessWidget {
                   width: AppResponsive().screenWidth(context) * 0.45,
                   height: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed("/checkoutpage");
+                    },
                     style: ButtonStyle(
                       elevation: const MaterialStatePropertyAll(0),
                       padding: const MaterialStatePropertyAll(EdgeInsets.zero),
