@@ -5,8 +5,8 @@ class Mitra {
   final String nama;
   final String namaToko;
   final int nis;
-  final String nomor;
-  final String image;
+  final String no_dompet_digital;
+  final String image_id_card;
   final String status;
   final int? pengikut;
   final int jumlahProduct;
@@ -19,8 +19,8 @@ class Mitra {
     required this.nama,
     required this.namaToko,
     required this.nis,
-    required this.nomor,
-    required this.image,
+    required this.no_dompet_digital,
+    required this.image_id_card,
     required this.status,
     this.pengikut,
     required this.jumlahProduct,
@@ -35,8 +35,8 @@ class Mitra {
       nama: json['nama'],
       namaToko: json['nama toko'],
       nis: json['nis'],
-      nomor: json['nomor'],
-      image: json['image'],
+      no_dompet_digital: json['no_dompet_digital'],
+      image_id_card: json['image'],
       status: json['status'],
       pengikut: json['pengikut'],
       jumlahProduct: json['jumlahproduct'],
@@ -52,8 +52,8 @@ class Mitra {
       'nama': nama,
       'nama toko': namaToko,
       'nis': nis,
-      'nomor': nomor,
-      'image': image,
+      'no_dompet_digital': no_dompet_digital,
+      'image': image_id_card,
       'status': status,
       'pengikut': pengikut,
       'jumlahproduct': jumlahProduct,
