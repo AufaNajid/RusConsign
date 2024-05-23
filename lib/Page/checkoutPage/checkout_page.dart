@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/checkoutPage/checkout_page_controller.dart';
 import 'package:rusconsign/Page/checkoutPage/widgets/dropdown_payment.dart';
 import 'package:rusconsign/Page/checkoutPage/widgets/item_checkout.dart';
 import 'package:rusconsign/Page/checkoutPage/widgets/location.dart';
@@ -14,6 +15,7 @@ class ChekcoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CheckoutPageController());
     return Scaffold(
       appBar: CommonAppBar(title: 'checkout'.tr),
       backgroundColor: AppColors.background,
@@ -98,7 +100,11 @@ class ChekcoutPage extends StatelessWidget {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  Get.toNamed("/qrispayment");
+                  if (controller.selectedPaymentMethod.value == 'QRIS') {
+                    Get.toNamed("/qrispayment");
+                  } else {
+                    Get.toNamed("/paymentdone");
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 0,
@@ -109,7 +115,7 @@ class ChekcoutPage extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  "Buat Pesanan",
+                  'buatPesanan'.tr,
                   style: AppTextStyle().subHeader(AppColors.background),
                 ),
               ),
