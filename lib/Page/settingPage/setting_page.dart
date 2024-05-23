@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/page/settingPage/widgets/account_setting.dart';
 import 'package:rusconsign/page/settingPage/widgets/divider.dart';
 import 'package:rusconsign/page/settingPage/widgets/notification_setting.dart';
 import 'package:rusconsign/page/settingPage/widgets/preference_setting.dart';
 import 'package:rusconsign/page/settingPage/widgets/profile_setting.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
@@ -15,30 +17,14 @@ import 'setting_controller.dart';
 
 class SettingPage extends StatelessWidget {
   final settingController = Get.put(SettingController());
+  final loginOption = Get.put(AuthLoginController());
   SettingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        surfaceTintColor: AppColors.background,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(
-            FeatherIcons.chevronLeft,
-            color: AppColors.borderIcon,
-          ),
-        ),
-        title: Text(
-          'pengaturan'.tr,
-          style: AppTextStyle().title(AppColors.titleLine),
-        ),
-        centerTitle: true,
-      ),
+      appBar: CommonAppBar(title: 'pengaturan'.tr),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -90,6 +76,7 @@ class SettingPage extends StatelessWidget {
                     color: AppColors.activeIconType,
                   ),
                   onPressed: () {
+                    loginOption.logout();
                     Get.offAllNamed('/login');
                   },
                   style: ButtonStyle(

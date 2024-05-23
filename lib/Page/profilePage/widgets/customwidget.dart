@@ -187,12 +187,14 @@ class PenjualanSection extends StatelessWidget {
             Get.toNamed("/registerseller");
           },
           style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.activeIcon,
-              shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.circular(2))),
+            backgroundColor: AppColors.button1,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
           child: Text(
             'registerPenjualSekarang'.tr,
-            style: AppTextStyle().description(AppColors.background),
+            style: AppTextStyle().description(AppColors.textButton1),
           ),
         ),
       ],
@@ -228,7 +230,7 @@ class PribadiSection extends StatelessWidget {
             child: SettingWidget(
               icon: FeatherIcons.messageCircle,
               text: 'chat'.tr,
-              toPage: "/detailpage",
+              toPage: "/chatlist",
             ),
           ),
           Container(

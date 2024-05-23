@@ -22,7 +22,7 @@ class NotificationPage extends StatelessWidget {
               color: AppColors.borderIcon,
             )),
         title: Text(
-          "Notifikasi",
+          'notifikasi'.tr,
           style: AppTextStyle().title(AppColors.titleLine),
         ),
         centerTitle: true,

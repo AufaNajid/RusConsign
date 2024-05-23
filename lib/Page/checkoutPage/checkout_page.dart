@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/checkoutPage/widgets/appbar.dart';
 import 'package:rusconsign/Page/checkoutPage/widgets/dropdown_payment.dart';
 import 'package:rusconsign/Page/checkoutPage/widgets/item_checkout.dart';
 import 'package:rusconsign/Page/checkoutPage/widgets/location.dart';
 import 'package:rusconsign/Page/checkoutPage/widgets/payment_detail.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
@@ -15,7 +15,7 @@ class ChekcoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarCheckout(title: 'checkout'.tr),
+      appBar: CommonAppBar(title: 'checkout'.tr),
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         child: Padding(

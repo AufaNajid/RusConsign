@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/locationPage/widgets/location_card.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 
 import '../../utils/text_style.dart';
 
@@ -13,23 +14,7 @@ class LocationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(
-              FeatherIcons.chevronLeft,
-              color: AppColors.borderIcon,
-            )),
-        title: Text(
-          'editLokasi'.tr,
-          style: AppTextStyle().title(AppColors.titleLine),
-        ),
-        centerTitle: true,
-        backgroundColor: AppColors.background,
-        surfaceTintColor: AppColors.background,
-      ),
+      appBar: CommonAppBar(title: 'lokasiPertemuan'.tr),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         child: Column(

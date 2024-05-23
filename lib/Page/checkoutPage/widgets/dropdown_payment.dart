@@ -23,6 +23,7 @@ class DropdownPayment extends StatelessWidget {
             backgroundColor: AppColors.cardIconFill,
             collapsedBackgroundColor: AppColors.cardIconFill,
             iconColor: AppColors.nonActiveIcon,
+            collapsedIconColor: AppColors.nonActiveIcon,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(8),

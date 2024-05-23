@@ -46,6 +46,7 @@ class ProductCardCart extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
                         width: 100,
@@ -58,74 +59,82 @@ class ProductCardCart extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Gantungan Kunci (Key Chain) Boneka unik",
-                            style: AppTextStyle()
-                                .descriptionBold(AppColors.titleLine),
-                          ),
-                          Row(
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Column(
                               children: [
-                            SizedBox(
-                              height: 25,
-                              width: 25,
-                              child: ClipOval(
-                                child: Image.network(
-                                  profileImagePath,
-                                  fit: BoxFit.cover,
+                                Text(
+                                  "Gantungan Kunci (Key Chain) Boneka unik",
+                                  style: AppTextStyle()
+                                      .descriptionBold(AppColors.titleLine),
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                ),
+                              ],
+                            ),
+                            Row(
+                                children: [
+                              SizedBox(
+                                height: 25,
+                                width: 25,
+                                child: ClipOval(
+                                  child: Image.network(
+                                    profileImagePath,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              sellerUsername,
-                              style: AppTextStyle()
-                                  .textInfo(AppColors.description),
-                            ),
-                          ].withSpaceBetween(width: 5)),
-                          Row(
-                            children: [
-                              Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  const Icon(
-                                    Icons.star,
-                                    color: AppColors.bintang,
-                                    size: 18,
-                                  ),
-                                  Icon(
-                                    Icons.star_border_rounded,
-                                    color: AppColors.borderIcon,
-                                    size: 20,
-                                  ),
-                                ],
-                              ),
                               Text(
-                                rating.toString(),
-                                style: AppTextStyle()
-                                    .textInfoBold(AppColors.description),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '${'total'.tr} : ',
+                                sellerUsername,
                                 style: AppTextStyle()
                                     .textInfo(AppColors.description),
                               ),
-                              Text(
-                                'Rp $price',
-                                style: AppTextStyle()
-                                    .textInfoBold(AppColors.hargaStat),
-                              ),
-                            ],
-                          )
-                        ].withSpaceBetween(height: 5),
+                            ].withSpaceBetween(width: 5)),
+                            Row(
+                              children: [
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    const Icon(
+                                      Icons.star,
+                                      color: AppColors.bintang,
+                                      size: 18,
+                                    ),
+                                    Icon(
+                                      Icons.star_border_rounded,
+                                      color: AppColors.borderIcon,
+                                      size: 20,
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  rating.toString(),
+                                  style: AppTextStyle()
+                                      .textInfoBold(AppColors.description),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  '${'total'.tr} : ',
+                                  style: AppTextStyle()
+                                      .textInfo(AppColors.description),
+                                ),
+                                Text(
+                                  'Rp $price',
+                                  style: AppTextStyle()
+                                      .textInfoBold(AppColors.hargaStat),
+                                ),
+                              ],
+                            )
+                          ].withSpaceBetween(height: 5),
+                        ),
                       ),
-                    ].withSpaceBetween(width: 5),
+                    ].withSpaceBetween(width: 8),
                   ),
                 ),
               ),

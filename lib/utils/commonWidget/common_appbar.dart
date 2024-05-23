@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
-class AppBarCheckout extends StatelessWidget implements PreferredSizeWidget {
+class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  final VoidCallback? onBackPressed;
 
-  const AppBarCheckout({
+  const CommonAppBar({
     required this.title,
-    this.onBackPressed,
     Key? key,
   }) : super(key: key);
 
@@ -17,10 +16,10 @@ class AppBarCheckout extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.background,
-      surfaceTintColor: Colors.white,
+      surfaceTintColor: AppColors.background,
       elevation: null,
       leading: IconButton(
-        icon: const Icon(FeatherIcons.chevronLeft),
+        icon: Icon(FeatherIcons.chevronLeft ,color:AppColors.borderIcon  ,),
         onPressed: () {
           Get.back();
         },
@@ -28,10 +27,7 @@ class AppBarCheckout extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(
         title,
-        style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
+        style: AppTextStyle().title(AppColors.titleLine)
       ),
       centerTitle: true,
     );

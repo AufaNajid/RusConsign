@@ -7,6 +7,7 @@ import 'package:rusconsign/Page/userProfilePage/widgets/button_icon_widget.dart'
 import 'package:rusconsign/Page/userProfilePage/widgets/filter_button.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
 import '../../utils/colors.dart';
 import '../../utils/text_style.dart';
@@ -20,24 +21,7 @@ class UserProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        surfaceTintColor: AppColors.background,
-        leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: Icon(
-            FeatherIcons.chevronLeft,
-            color: AppColors.borderIcon,
-          ),
-        ),
-        title: Text(
-          'profilPengguna'.tr,
-          style: AppTextStyle().title(AppColors.titleLine),
-        ),
-        centerTitle: true,
-      ),
+      appBar: CommonAppBar(title: 'profilPengguna'.tr),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
