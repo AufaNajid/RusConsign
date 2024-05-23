@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:rusconsign/Page/qrisPage/widgets/countdown.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -22,12 +23,12 @@ class PaymentCountdown extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "Menunggu Pembayaran",
+                  'menungguPembayaran'.tr,
                   style: AppTextStyle().header(AppColors.titleLine),
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  "Selesaikan pembayaran sebelum waktu habis agar pesanan kamu tidak kadaluarsa",
+                  'descMenungguPembayaran'.tr,
                   style: AppTextStyle().description(AppColors.description),
                   textAlign: TextAlign.center,
                   maxLines: 2,
@@ -39,7 +40,7 @@ class PaymentCountdown extends StatelessWidget {
               height: 10,
             ),
             TimerTest(
-              deadline: DateTime.now().add(const Duration(seconds: 5)),
+              deadline: DateTime.now().add(const Duration(minutes: 10)),
             ),
             const SizedBox(
               height: 20,

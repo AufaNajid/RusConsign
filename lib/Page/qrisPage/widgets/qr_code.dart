@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:rusconsign/Page/qrisPage/qris_payment_controller.dart';
 import 'package:screenshot/screenshot.dart';
@@ -52,12 +53,12 @@ class QrCode extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Pembayaran QRIS",
+                            'pembayaranQRIS'.tr,
                             style: AppTextStyle().header(AppColors.titleLine),
                             textAlign: TextAlign.start,
                           ),
                           Text(
-                            "ShopeePay, OVO, DANA, Gopay, LinkAja, dan Transfer bank via QRIS",
+                            'shopeeOvoDana'.tr,
                             style: AppTextStyle()
                                 .description(AppColors.description),
                             textAlign: TextAlign.start,
@@ -83,7 +84,7 @@ class QrCode extends StatelessWidget {
               child: Screenshot(
                 controller: _qrCodeController.screenshotController,
                 child: QrImageView(
-                  data: "aku nak 𝓯𝓻𝓮𝓪𝓴𝔂",
+                  data: "test link payment",
                   version: QrVersions.auto,
                   backgroundColor: Colors.white,
                 ),
@@ -117,7 +118,7 @@ class QrCode extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Unduh Kode QR",
+                    'unduhKode'.tr,
                       style: AppTextStyle().description(AppColors.textButton1),
                     ),
                   ],
