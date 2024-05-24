@@ -18,12 +18,14 @@ class QrisPaymentPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: [
-            const PaymentCountdown(),
-            const SizedBox(height: 10),
-            QrCode()
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const PaymentCountdown(),
+              const SizedBox(height: 10),
+              QrCode()
+            ],
+          ),
         ),
       ),
     );
