@@ -13,12 +13,17 @@ class MitraController extends GetxController {
   final TextEditingController namaTokoController = TextEditingController();
   final TextEditingController nisController = TextEditingController();
   final TextEditingController nomorController = TextEditingController();
+  final TextEditingController namaproductController = TextEditingController();
+  final TextEditingController deskripsiController = TextEditingController();
+  final TextEditingController hargaController = TextEditingController();
+  final TextEditingController ratingController = TextEditingController();
+  final TextEditingController imageController = TextEditingController();
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxString message = "".obs;
   var pickedImage = Rx<File?>(null);
 
-  Future<void> registermitra(
+  Future<void> registerMitra(
       String nama,
       String namaToko,
       int nis,
@@ -50,8 +55,6 @@ class MitraController extends GetxController {
 
       var response = await request.send();
 
-      print('Response status: ${response.statusCode}');
-
       if (response.statusCode == 200) {
         var responseBody = await response.stream.bytesToString();
         final data = json.decode(responseBody);
@@ -63,11 +66,7 @@ class MitraController extends GetxController {
         var responseBody = await response.stream.bytesToString();
         final data = json.decode(responseBody);
         successfulRegister.value = false;
-        if (data['errors'] != null) {
-          message.value = data['errors'].toString();
-        } else {
-          message.value = data['message'] ?? 'Registration failed';
-        }
+        message.value = data['message'] ?? 'Registration failed';
         print('Failed to register: $responseBody');
       }
     } catch (e) {
@@ -84,5 +83,70 @@ class MitraController extends GetxController {
     if (pickedFile != null) {
       pickedImage.value = File(pickedFile.path);
     }
+  }
+
+  Future<void> addProduct(int mitraId) async {
+    isLoading.value = true;
+
+    try {
+      final mitraResponse = await http.get(Uri.parse('https://rusconsign.com/api/mitra/$mitraId'));
+
+      if (mitraResponse.statusCode == 200) {
+        final mitraData = json.decode(mitraResponse.body);
+
+        // Check if mitra status is accepted
+        if (mitraData['status'] == 'accepted') {
+          final productData = {
+            'name_product': namaproductController.text,
+            'desc_product': deskripsiController.text,
+            'price_product': hargaController.text,
+            'rating_product': ratingController.text,
+            'image': imageController.text,
+            'mitra_id': mitraId.toString(),
+          };
+
+          final response = await http.post(
+            Uri.parse('https://rusconsign.com/api/addProduct'),
+            headers: {'Content-Type': 'application/json'},
+            body: json.encode(productData),
+          );
+          if (response.statusCode == 201) {
+            successfulRegister.value = true;
+            message.value = 'Produk berhasil ditambahkan';
+          } else {
+            successfulRegister.value = false;
+            message.value = 'Gagal menambahkan produk';
+            print('Failed to add product: ${response.body}');
+          }
+        } else {
+          successfulRegister.value = false;
+          message.value = 'Mitra belum diterima';
+        }
+      } else {
+        successfulRegister.value = false;
+        message.value = 'Gagal mendapatkan data mitra';
+        print('Failed to get mitra data: ${mitraResponse.body}');
+      }
+    } catch (e) {
+      successfulRegister.value = false;
+      message.value = 'Terjadi kesalahan: $e';
+      print('Error: $e');
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  @override
+  void onClose() {
+    namaController.dispose();
+    namaTokoController.dispose();
+    nisController.dispose();
+    nomorController.dispose();
+    namaproductController.dispose();
+    deskripsiController.dispose();
+    hargaController.dispose();
+    ratingController.dispose();
+    imageController.dispose();
+    super.onClose();
   }
 }

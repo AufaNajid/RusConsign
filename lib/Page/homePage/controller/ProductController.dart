@@ -22,7 +22,6 @@ class ProductController extends GetxController {
     isLoading.value = true;
 
     try {
-      // Get mitra details
       final mitraResponse = await http.get(Uri.parse('$mitraUrl/$mitraId'));
 
       if (mitraResponse.statusCode == 200) {
