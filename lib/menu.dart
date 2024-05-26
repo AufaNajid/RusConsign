@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:rusconsign/Page/addItemPage/add_item_form.dart';
 import 'package:rusconsign/Page/cartPage/cart_page.dart';
 import 'package:rusconsign/page/favoritePage/favorite_page.dart';
 import 'package:rusconsign/page/homePage/home_page.dart';
@@ -21,7 +22,8 @@ class Menu extends StatelessWidget {
         HomePage(),
         const FavoritePage(),
         const CartPage(),
-        const ProfilePage(),
+        // const ProfilePage(),
+        AddItemForm()
       ];
     }
 

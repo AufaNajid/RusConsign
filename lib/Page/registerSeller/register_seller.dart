@@ -91,7 +91,7 @@ class RegisterSeller extends StatelessWidget {
                       nis.isNotEmpty &&
                       nomor.isNotEmpty &&
                       image_id_card != null) {
-                    await controller.registermitra(
+                    await controller.registerMitra(
                       nama,
                       namaToko,
                       int.parse(nis),

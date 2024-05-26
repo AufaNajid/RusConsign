@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/addItemPage/add_item_form.dart';
 import 'package:rusconsign/Page/chatPage/chat_binding.dart';
 import 'package:rusconsign/page/chatPage/chat_cust_seller_page.dart';
 import 'package:rusconsign/page/chatPage/chatlist_page.dart';
@@ -46,6 +47,7 @@ List<GetPage> routes = [
   GetPage(name: "/locationpage", page: () => const LocationPage()),
   GetPage(name: "/paymentdone", page: () => const PaymentDone()),
   GetPage(name: "/cartpage", page: () => const CartPage()),
+  GetPage(name: "/additemform", page:() => AddItemForm()),
   GetPage(
     name: "/qrispayment",
     page: () => const QrisPaymentPage(),
