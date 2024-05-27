@@ -4,14 +4,14 @@ class Mitra {
   final String imageProfile;
   final String nama;
   final String namaToko;
-  final int nis;
+  final String nis;
   final String no_dompet_digital;
   final String image_id_card;
   final String status;
   final int? pengikut;
   final int jumlahProduct;
   final int jumlahJasa;
-  final int penilaian;
+  final double penilaian;
 
   Mitra({
     required this.id,
@@ -30,20 +30,21 @@ class Mitra {
 
   factory Mitra.fromJson(Map<String, dynamic> json) {
     return Mitra(
-      id: json['id'],
-      imageProfile: json['image profile'],
-      nama: json['nama'],
-      namaToko: json['nama toko'],
-      nis: json['nis'],
-      no_dompet_digital: json['no_dompet_digital'],
-      image_id_card: json['image'],
-      status: json['status'],
+      id: json['data']['id'] != null ? json['data']['id'] : 0,
+      imageProfile: json['image profile'] != null ? json['image profile'] : '',
+      nama: json['data']['nama'] != null ? json['data']['nama'] : '',
+      namaToko: json['data']['nama_toko'] != null ? json['data']['nama_toko'] : '',
+      nis: json['data']['nis'] != null ? json['data']['nis'] : '',
+      no_dompet_digital: json['data']['no_dompet_digital'] != null ? json['data']['no_dompet_digital'] : '',
+      image_id_card: json['data']['image'] != null ? json['data']['image'] : '',
+      status: json['data']['status'] != null ? json['data']['status'] : 'pending',
       pengikut: json['pengikut'],
-      jumlahProduct: json['jumlahproduct'],
-      jumlahJasa: json['jumlahjasa'],
-      penilaian: json['penilaian'],
+      jumlahProduct : json['jumlahproduct'] != null ? json['jumlahproduct'] : 0,
+      jumlahJasa: json['jumlahjasa'] != null ? json['jumlahjasa'] : 0,
+      penilaian: json['penilaian'] != null ? json['penilaian'] : 0,
     );
   }
+
 
   Map<String, dynamic> toJson() {
     return {
