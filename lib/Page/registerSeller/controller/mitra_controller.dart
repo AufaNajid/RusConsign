@@ -27,7 +27,7 @@ class MitraController extends GetxController {
       String nama,
       String namaToko,
       int nis,
-      String noDompetDigital,
+      String no_dompet_digital,
       File imageIdCard,
       ) async {
     isLoading.value = true;
@@ -40,7 +40,7 @@ class MitraController extends GetxController {
       request.fields['nama_lengkap'] = nama;
       request.fields['nama_toko'] = namaToko;
       request.fields['nis'] = nis.toString();
-      request.fields['no_dompet_digital'] = noDompetDigital;
+      request.fields['no_dompet_digital'] = no_dompet_digital;
 
       var imageStream = http.ByteStream(imageIdCard.openRead());
       var imageLength = await imageIdCard.length();
@@ -53,9 +53,13 @@ class MitraController extends GetxController {
       );
       request.files.add(multipartFile);
 
+      print("Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");
+
       var response = await request.send();
 
-      if (response.statusCode == 200) {
+      print("Response status: ${response.statusCode}");
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
         var responseBody = await response.stream.bytesToString();
         final data = json.decode(responseBody);
         Mitra mitra = Mitra.fromJson(data);
@@ -121,11 +125,12 @@ class MitraController extends GetxController {
         } else {
           successfulRegister.value = false;
           message.value = 'Mitra belum diterima';
+          print('Mitra status: ${mitraData['status']}');
         }
       } else {
         successfulRegister.value = false;
-        message.value = 'Gagal mendapatkan data mitra';
-        print('Failed to get mitra data: ${mitraResponse.body}');
+        message.value = 'Gagal mengambil data mitra';
+        print('Failed to fetch mitra data: ${mitraResponse.body}');
       }
     } catch (e) {
       successfulRegister.value = false;
@@ -135,18 +140,5 @@ class MitraController extends GetxController {
       isLoading.value = false;
     }
   }
-
-  @override
-  void onClose() {
-    namaController.dispose();
-    namaTokoController.dispose();
-    nisController.dispose();
-    nomorController.dispose();
-    namaproductController.dispose();
-    deskripsiController.dispose();
-    hargaController.dispose();
-    ratingController.dispose();
-    imageController.dispose();
-    super.onClose();
-  }
 }
+
