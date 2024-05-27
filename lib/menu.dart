@@ -23,9 +23,7 @@ class Menu extends StatelessWidget {
         HomePage(),
         const FavoritePage(),
         const CartPage(),
-        const RegisterSellerWaiting()
-        // const ProfilePage(),
-        // AddItemForm()
+        const ProfilePage(),
       ];
     }
 

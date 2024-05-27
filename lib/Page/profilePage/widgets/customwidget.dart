@@ -170,34 +170,85 @@ class PenjualanSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-            height: AppResponsive().screenHeight(context) * 0.25,
-            child: SvgPicture.asset("assets/images/orang_mencet_hp.svg")),
-        Text(
-          'descResgisterPenjual'.tr,
-          style: AppTextStyle().description(AppColors.description),
-        ),
-        SizedBox(
-          height: AppResponsive().screenHeight(context) * 0.02,
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Get.toNamed("/registerseller");
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.button1,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+    // return Column(
+    //   children: [
+    //     SizedBox(
+    //         height: AppResponsive().screenHeight(context) * 0.25,
+    //         child: SvgPicture.asset("assets/images/orang_mencet_hp.svg")),
+    //     Text(
+    //       'descResgisterPenjual'.tr,
+    //       style: AppTextStyle().description(AppColors.description),
+    //     ),
+    //     SizedBox(
+    //       height: AppResponsive().screenHeight(context) * 0.02,
+    //     ),
+    //     ElevatedButton(
+    //       onPressed: () {
+    //         Get.toNamed("/registerseller");
+    //       },
+    //       style: ElevatedButton.styleFrom(
+    //         backgroundColor: AppColors.button1,
+    //         shape: RoundedRectangleBorder(
+    //           borderRadius: BorderRadius.circular(8),
+    //         ),
+    //       ),
+    //       child: Text(
+    //         'registerPenjualSekarang'.tr,
+    //         style: AppTextStyle().description(AppColors.textButton1),
+    //       ),
+    //     ),
+    //   ],
+    // );
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.cardIconFill,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+            ),
+            child: SettingWidget(
+              icon: FeatherIcons.plusSquare,
+              text: 'buatBaru'.tr,
+              toPage: "/additemform",
             ),
           ),
-          child: Text(
-            'registerPenjualSekarang'.tr,
-            style: AppTextStyle().description(AppColors.textButton1),
+          Container(
+            decoration: BoxDecoration(color: AppColors.cardIconFill),
+            child: SettingWidget(
+              icon: FeatherIcons.package,
+              text: 'pemesananPJ'.tr,
+              toPage: "/chatlist",
+            ),
           ),
-        ),
-      ],
+          Container(
+            decoration: BoxDecoration(color: AppColors.cardIconFill),
+            child: SettingWidget(
+              icon: FeatherIcons.edit,
+              text: 'kelolaPJ'.tr,
+              toPage: "/notificationpage",
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
+              color: AppColors.cardIconFill,
+            ),
+            child: SettingWidget(
+              icon: FeatherIcons.messageCircle,
+              text: 'chat'.tr,
+              toPage: "/chatlist",
+            ),
+          )
+        ],
+      ),
     );
   }
 }
