@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class ProfilePageController extends GetxController {
+class SellingPageController extends GetxController {
   final currentIndex = 0.obs;
   final _selectedIndex = 0.obs;
   RxBool isLoading = false.obs;

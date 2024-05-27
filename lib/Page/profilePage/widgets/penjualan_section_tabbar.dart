@@ -54,51 +54,61 @@ class PenjualSectionTrue extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.cardIconFill,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(10),
-                topRight: Radius.circular(10),
+          Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColors.cardIconFill,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
+                ),
+                child: ButtonProfile(
+                  icon: FeatherIcons.plusSquare,
+                  text: 'buatBaru'.tr,
+                  toPage: "/additemform",
+                ),
               ),
-            ),
-            child: ButtonProfile(
-              icon: FeatherIcons.plusSquare,
-              text: 'buatBaru'.tr,
-              toPage: "/additemform",
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(color: AppColors.cardIconFill),
-            child: ButtonProfile(
-              icon: FeatherIcons.package,
-              text: 'pemesananPJ'.tr,
-              toPage: "/chatlist",
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(color: AppColors.cardIconFill),
-            child: ButtonProfile(
-              icon: FeatherIcons.edit,
-              text: 'kelolaPJ'.tr,
-              toPage: "/notificationpage",
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
+              Container(
+                decoration: BoxDecoration(color: AppColors.cardIconFill),
+                child: ButtonProfile(
+                  icon: FeatherIcons.package,
+                  text: 'pemesananPJ'.tr,
+                  toPage: "/sellingpage",
+                ),
               ),
-              color: AppColors.cardIconFill,
-            ),
-            child: ButtonProfile(
-              icon: FeatherIcons.messageCircle,
-              text: 'chat'.tr,
-              toPage: "/chatlist",
-            ),
+              Container(
+                decoration: BoxDecoration(color: AppColors.cardIconFill),
+                child: ButtonProfile(
+                  icon: FeatherIcons.edit,
+                  text: 'kelolaPJ'.tr,
+                  toPage: "/notificationpage",
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                  ),
+                  color: AppColors.cardIconFill,
+                ),
+                child: ButtonProfile(
+                  icon: FeatherIcons.messageCircle,
+                  text: 'chat'.tr,
+                  toPage: "/chatlist",
+                ),
+              ),
+            ],
           ),
-          
+          //  Row(
+          //   children: [
+          //     FilterButtonSeller(text: 'semua'.tr, icon: FeatherIcons.alignJustify, index: 0),
+          //     FilterButtonSeller(text: 'jasa'.tr, icon: FeatherIcons.users, index: 1),
+          //     FilterButtonSeller(text: 'barang'.tr, icon: FeatherIcons.box, index: 2),
+          //   ],
+          // )
         ],
       ),
     );

@@ -1,6 +1,9 @@
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/addItemPage/add_item_form.dart';
 import 'package:rusconsign/Page/chatPage/chat_binding.dart';
+import 'package:rusconsign/Page/profilePage/profile_page_binding.dart';
+import 'package:rusconsign/Page/sellingPage/selling_page.dart';
+import 'package:rusconsign/Page/sellingPage/selling_page_binding.dart';
 import 'package:rusconsign/page/chatPage/chat_cust_seller_page.dart';
 import 'package:rusconsign/page/chatPage/chatlist_page.dart';
 import 'package:rusconsign/page/detailPage/detail_page.dart';
@@ -40,7 +43,7 @@ List<GetPage> routes = [
   GetPage(name: "/menu", page: () => const Menu()),
   GetPage(name: "/favoritepage", page: () => const FavoritePage()),
   GetPage(name: "/chatlist", page: () => const ChatListPage()),
-  GetPage(name: "/profilepage", page: () => const ProfilePage()),
+
   GetPage(name: "/diskonpage", page: () => const DiscountPage()),
   GetPage(name: "/notificationpage", page: () => const NotificationPage()),
   GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
@@ -48,6 +51,14 @@ List<GetPage> routes = [
   GetPage(name: "/paymentdone", page: () => const PaymentDone()),
   GetPage(name: "/cartpage", page: () => const CartPage()),
   GetPage(name: "/additemform", page:() => AddItemForm()),
+  GetPage(
+    name: "/sellingpage", 
+    page: () => SellingPage(),
+    binding: SellingPageBinding()),
+  GetPage(  
+    name: "/profilepage", 
+    page: () => const ProfilePage(),
+    binding: ProfilePageBinding()),
   GetPage(
     name: "/qrispayment",
     page: () => const QrisPaymentPage(),

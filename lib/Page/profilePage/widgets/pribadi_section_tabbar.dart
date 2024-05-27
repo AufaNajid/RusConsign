@@ -58,7 +58,9 @@ class PribadiSection extends StatelessWidget {
               text: 'pengaturan'.tr,
               toPage: "/settingpage",
             ),
-          )
+          ),
+
+
         ],
       ),
     );
