@@ -11,6 +11,7 @@ class RegisterSellerDone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       bottomNavigationBar: BottomAppBar(
           surfaceTintColor: Colors.transparent,
           color: Colors.transparent,
@@ -41,13 +42,13 @@ class RegisterSellerDone extends StatelessWidget {
             SizedBox(
               height: AppResponsive().screenHeight(context) * 0.01,
             ),
-            Text("Registrasi Selesai",
+            Text('registrasiSelesai'.tr,
                 style: AppTextStyle().title(AppColors.titleLine)),
             SizedBox(
               height: AppResponsive().screenHeight(context) * 0.02,
             ),
             Text(
-              "Anda sekarang dapat menjual produk atau jasa anda di Aplikasi ini. Selamat berjualan...",
+              'descRegistrasiSelesai'.tr,
               style: AppTextStyle().description(AppColors.description),
               textAlign: TextAlign.center,
             )

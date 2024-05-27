@@ -17,6 +17,7 @@ class RegisterSellerWaiting extends StatelessWidget {
 
 
     return Scaffold(
+      backgroundColor: AppColors.background,
       bottomNavigationBar: BottomAppBar(
           surfaceTintColor: Colors.transparent,
           color: Colors.transparent,
@@ -45,11 +46,11 @@ class RegisterSellerWaiting extends StatelessWidget {
           children: [
             SvgPicture.asset("assets/images/amico_waiting.svg"),
             SizedBox(height: AppResponsive().screenHeight(context)*0.01,),
-            Text("Menunggu Persetujuan",
+            Text('menungguPersetujuan'.tr,
                 style: AppTextStyle().title(AppColors.titleLine)),
             SizedBox(height: AppResponsive().screenHeight(context)*0.02,),
             Text(
-              "Anda perlu menunggu untuk persetujuan admin untuk mengantisipasi masalah antara Penjual dengan Pembeli",
+              'descPersetujuan'.tr,
               style: AppTextStyle().description(AppColors.description),
               textAlign: TextAlign.center,
             )
