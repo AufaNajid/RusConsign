@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/profilePage/widgets/penjualan_section_tabbar.dart';
-import 'package:rusconsign/page/profilePage/widgets/customwidget.dart';
+import 'package:rusconsign/Page/profilePage/widgets/pribadi_section_tabbar.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 

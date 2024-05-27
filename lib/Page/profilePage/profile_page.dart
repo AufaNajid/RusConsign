@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/profilePage/widgets/tab_bar_profile.dart';
 import 'package:rusconsign/page/profilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/page/profilePage/widgets/customappbar.dart';
-import 'package:rusconsign/page/profilePage/widgets/customwidget.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
