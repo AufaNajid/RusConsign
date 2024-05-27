@@ -4,14 +4,14 @@ class Mitra {
   final String imageProfile;
   final String nama;
   final String namaToko;
-  final int nis;
+  final String nis;
   final String no_dompet_digital;
   final String image_id_card;
   final String status;
   final int? pengikut;
   final int jumlahProduct;
   final int jumlahJasa;
-  final int penilaian;
+  final double penilaian;
 
   Mitra({
     required this.id,

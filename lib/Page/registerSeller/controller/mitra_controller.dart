@@ -24,66 +24,61 @@ class MitraController extends GetxController {
   var pickedImage = Rx<File?>(null);
 
   Future<void> registerMitra(
-      String nama,
-      String namaToko,
-      int nis,
-      String no_dompet_digital,
-      File imageIdCard,
-      ) async {
+    String nama,
+    String namaToko,
+    int nis,
+    String no_dompet_digital,
+    File imageIdCard,
+  ) async {
     isLoading.value = true;
-    try {
-      var request = http.MultipartRequest(
-        'POST',
-        Uri.parse("https://rusconsign.com/api/registermitra"),
-      );
 
-      request.fields['nama_lengkap'] = nama;
-      request.fields['nama_toko'] = namaToko;
-      request.fields['nis'] = nis.toString();
-      request.fields['no_dompet_digital'] = no_dompet_digital;
+    var request = http.MultipartRequest(
+      'POST',
+      Uri.parse("https://rusconsign.com/api/registermitra"),
+    );
 
-      var imageStream = http.ByteStream(imageIdCard.openRead());
-      var imageLength = await imageIdCard.length();
-      var multipartFile = http.MultipartFile(
-        'image_id_card',
-        imageStream,
-        imageLength,
-        filename: basename(imageIdCard.path),
-        contentType: MediaType('image', 'jpeg'),
-      );
-      request.files.add(multipartFile);
+    request.fields['nama_lengkap'] = nama;
+    request.fields['nama_toko'] = namaToko;
+    request.fields['nis'] = nis.toString();
+    request.fields['no_dompet_digital'] = no_dompet_digital;
 
-      print("Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");
+    var imageStream = http.ByteStream(imageIdCard.openRead());
+    var imageLength = await imageIdCard.length();
+    var multipartFile = http.MultipartFile(
+      'image_id_card',
+      imageStream,
+      imageLength,
+      filename: basename(imageIdCard.path),
+      contentType: MediaType('image', 'jpeg'),
+    );
+    request.files.add(multipartFile);
 
-      var response = await request.send();
+    print(
+        "Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");
 
-      print("Response status: ${response.statusCode}");
+    var response = await request.send();
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        var responseBody = await response.stream.bytesToString();
-        final data = json.decode(responseBody);
-        Mitra mitra = Mitra.fromJson(data);
-        successfulRegister.value = true;
-        message.value = "Registration successful";
-        print('Success: ${mitra.nama}');
-      } else {
-        var responseBody = await response.stream.bytesToString();
-        final data = json.decode(responseBody);
-        successfulRegister.value = false;
-        message.value = data['message'] ?? 'Registration failed';
-        print('Failed to register: $responseBody');
-      }
-    } catch (e) {
+    print("Response status: ${response.statusCode}");
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      var responseBody = await response.stream.bytesToString();
+      final data = json.decode(responseBody);
+      Mitra mitra = Mitra.fromJson(data);
+      successfulRegister.value = true;
+      message.value = "Registration successful";
+      print('Success: ${mitra.nama}');
+    } else {
+      var responseBody = await response.stream.bytesToString();
+      final data = json.decode(responseBody);
       successfulRegister.value = false;
-      message.value = 'An error occurred: $e';
-      print('Error: $e');
-    } finally {
-      isLoading.value = false;
+      message.value = data['message'] ?? 'Registration failed';
+      print('Failed to register: $responseBody');
     }
   }
 
   Future<void> pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       pickedImage.value = File(pickedFile.path);
     }
@@ -93,12 +88,12 @@ class MitraController extends GetxController {
     isLoading.value = true;
 
     try {
-      final mitraResponse = await http.get(Uri.parse('https://rusconsign.com/api/mitra/$mitraId'));
+      final mitraResponse = await http
+          .get(Uri.parse('https://rusconsign.com/api/mitra/$mitraId'));
 
       if (mitraResponse.statusCode == 200) {
         final mitraData = json.decode(mitraResponse.body);
 
-        // Check if mitra status is accepted
         if (mitraData['status'] == 'accepted') {
           final productData = {
             'name_product': namaproductController.text,
@@ -141,4 +136,3 @@ class MitraController extends GetxController {
     }
   }
 }
-
