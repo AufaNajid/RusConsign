@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:rusconsign/Api/mitra_response.dart';
 import 'package:path/path.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:rusconsign/Api/mitra_response.dart';
 
 class MitraController extends GetxController {
   final TextEditingController namaController = TextEditingController();
@@ -21,15 +21,17 @@ class MitraController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxString message = "".obs;
+  RxBool isPending = false.obs;
+  RxBool isAccepted = true.obs;
   var pickedImage = Rx<File?>(null);
 
   Future<void> registerMitra(
-    String nama,
-    String namaToko,
-    int nis,
-    String no_dompet_digital,
-    File imageIdCard,
-  ) async {
+      String nama,
+      String namaToko,
+      int nis,
+      String no_dompet_digital,
+      File imageIdCard,
+      ) async {
     isLoading.value = true;
 
     var request = http.MultipartRequest(
@@ -67,6 +69,12 @@ class MitraController extends GetxController {
       successfulRegister.value = true;
       message.value = "Registration successful";
       print('Success: ${mitra.nama}');
+      if (mitra.status == 'accepted') {
+        updateSellerProfile();
+      } else if (mitra.status == 'pending') {
+        isPending.value = true;
+        print('Registration is pending. Waiting for approval.');
+      }
     } else {
       var responseBody = await response.stream.bytesToString();
       final data = json.decode(responseBody);
@@ -78,7 +86,7 @@ class MitraController extends GetxController {
 
   Future<void> pickImage() async {
     final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       pickedImage.value = File(pickedFile.path);
     }
@@ -134,5 +142,10 @@ class MitraController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  void updateSellerProfile() {
+    isAccepted.value = true;
+    print('Seller profile updated after acceptance by admin');
   }
 }
