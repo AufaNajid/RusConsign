@@ -51,6 +51,7 @@ class AddImageProduct extends StatelessWidget {
         ElevatedButton(
           onPressed: controller.pickImage,
           style: ElevatedButton.styleFrom(
+            elevation: 0,
             backgroundColor: AppColors.button1,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
