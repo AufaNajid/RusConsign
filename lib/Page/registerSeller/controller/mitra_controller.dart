@@ -10,6 +10,7 @@ import 'package:rusconsign/Api/mitra_response.dart';
 
 class MitraController extends GetxController {
   final TextEditingController namaController = TextEditingController();
+  final TextEditingController namajasaController = TextEditingController();
   final TextEditingController namaTokoController = TextEditingController();
   final TextEditingController nisController = TextEditingController();
   final TextEditingController nomorController = TextEditingController();
@@ -20,18 +21,18 @@ class MitraController extends GetxController {
   final TextEditingController imageController = TextEditingController();
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
+  RxBool successfulAddProduct = false.obs;
+  RxBool successfulAddJasa = false.obs;
   RxString message = "".obs;
   RxBool isPending = false.obs;
   RxBool isAccepted = true.obs;
   var pickedImage = Rx<File?>(null);
 
-  Future<void> registerMitra(
-      String nama,
+  Future<void> registerMitra(String nama,
       String namaToko,
       int nis,
       String no_dompet_digital,
-      File imageIdCard,
-      ) async {
+      File imageIdCard,) async {
     isLoading.value = true;
 
     var request = http.MultipartRequest(
@@ -56,7 +57,8 @@ class MitraController extends GetxController {
     request.files.add(multipartFile);
 
     print(
-        "Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");
+        "Sending request with fields: ${request
+            .fields} and file: ${multipartFile.filename}");
 
     var response = await request.send();
 
@@ -113,30 +115,30 @@ class MitraController extends GetxController {
           };
 
           final response = await http.post(
-            Uri.parse('https://rusconsign.com/api/addProduct'),
+            Uri.parse('https://rusconsign.com/api/add-product'),
             headers: {'Content-Type': 'application/json'},
             body: json.encode(productData),
           );
           if (response.statusCode == 201) {
-            successfulRegister.value = true;
+            successfulAddProduct.value = true; // Fixed variable name
             message.value = 'Produk berhasil ditambahkan';
           } else {
-            successfulRegister.value = false;
+            successfulAddProduct.value = false; // Fixed variable name
             message.value = 'Gagal menambahkan produk';
             print('Failed to add product: ${response.body}');
           }
         } else {
-          successfulRegister.value = false;
+          successfulAddProduct.value = false; // Fixed variable name
           message.value = 'Mitra belum diterima';
           print('Mitra status: ${mitraData['status']}');
         }
       } else {
-        successfulRegister.value = false;
+        successfulAddProduct.value = false; // Fixed variable name
         message.value = 'Gagal mengambil data mitra';
         print('Failed to fetch mitra data: ${mitraResponse.body}');
       }
     } catch (e) {
-      successfulRegister.value = false;
+      successfulAddProduct.value = false; // Fixed variable name
       message.value = 'Terjadi kesalahan: $e';
       print('Error: $e');
     } finally {
@@ -147,5 +149,58 @@ class MitraController extends GetxController {
   void updateSellerProfile() {
     isAccepted.value = true;
     print('Seller profile updated after acceptance by admin');
+  }
+
+  Future<void> addJasa(int mitraId) async {
+    isLoading.value = true;
+
+    try {
+      final mitraResponse = await http.get(
+          Uri.parse('https://rusconsign.com/api/mitra/$mitraId'));
+
+      if (mitraResponse.statusCode == 200) {
+        final mitraData = json.decode(mitraResponse.body);
+
+        if (mitraData['status'] == 'accepted') {
+          final jasaData = {
+            'name_jasa': namajasaController.text,
+            'desc_jasa': deskripsiController.text,
+            'price_jasa': hargaController.text,
+            'rating_jasa': ratingController.text,
+            'image_jasa': imageController.text,
+            'mitra_id': mitraId.toString(),
+          };
+
+          final response = await http.post(
+            Uri.parse('https://rusconsign.com/api/add-jasa'),
+            headers: {'Content-Type': 'application/json'},
+            body: json.encode(jasaData),
+          );
+
+          if (response.statusCode == 201) {
+            successfulAddJasa.value = true; // Added variable assignment
+            message.value = 'Jasa berhasil ditambahkan';
+          } else {
+            successfulAddJasa.value = false; // Added variable assignment
+            message.value = 'Gagal menambahkan jasa';
+            print('Failed to add jasa: ${response.body}');
+          }
+        } else {
+          successfulAddJasa.value = false; // Added variable assignment
+          message.value = 'Mitra belum diterima';
+          print('Mitra status: ${mitraData['status']}');
+        }
+      } else {
+        successfulAddJasa.value = false; // Added variable assignment
+        message.value = 'Gagal mengambil data mitra';
+        print('Failed to fetch mitra data: ${mitraResponse.body}');
+      }
+    } catch (e) {
+      successfulAddJasa.value = false; // Added variable assignment
+      message.value = 'Terjadi kesalahan: $e';
+      print('Error: $e');
+    } finally {
+      isLoading.value = false;
+    }
   }
 }
