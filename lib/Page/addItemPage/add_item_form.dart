@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/addItemPage/add_item_form_controller.dart';
 import 'package:rusconsign/Page/addItemPage/widgets/add_image_product.dart';
@@ -55,11 +54,11 @@ class AddItemForm extends StatelessWidget {
                   Text('jenis'.tr ,style: AppTextStyle().description(AppColors.titleLine),),
                   Row(
                     children: [
-                      CategoryButton(
+                      const CategoryButton(
                         index: 0,
                         text: 'produk',
                       ),
-                      CategoryButton(
+                      const CategoryButton(
                         index: 1,
                         text: 'jasa',
                       ),
@@ -71,7 +70,7 @@ class AddItemForm extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('foto'.tr, style: AppTextStyle().description(AppColors.titleLine),),
-                  AddImageProduct(),
+                  const AddImageProduct(),
                 ].withSpaceBetween(width: 50),
               ),
               Row(
