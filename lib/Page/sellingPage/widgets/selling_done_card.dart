@@ -4,15 +4,15 @@ import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-class NotPaidCardSelling extends StatelessWidget {
-  final String imagePath;
+class SellingDoneCard extends StatelessWidget {
+    final String imagePath;
   final String title;
   final String metodePembayaran;
   final String lokasiPertemuan;
   final double rating;
   final int price;
 
-  const NotPaidCardSelling({
+  const SellingDoneCard({
     Key? key,
     required this.imagePath,
     required this.title,
@@ -24,16 +24,7 @@ class NotPaidCardSelling extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      decoration: BoxDecoration(
-        color: AppColors.cardIconFill,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Column(
-          children: [
-            Card(
+    return Card(
                             elevation: 0,
                             margin: const EdgeInsets.symmetric(vertical: 0),
                             color: AppColors.cardProdukTidakDipilih,
@@ -139,28 +130,6 @@ class NotPaidCardSelling extends StatelessWidget {
                                 ].withSpaceBetween(width: 8),
                               ),
                             ),
-                          ),
-        
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.button2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  elevation: 0,
-                  
-                ),
-                onPressed: () {
-              
-              }, child: Text('pesananDibatalkan'.tr
-              ,style: AppTextStyle().header(AppColors.textButton2),
-              )),
-            )
-          ].withSpaceBetween(height: 10),
-        ),
-      ),
-    );
+                          );
   }
 }
