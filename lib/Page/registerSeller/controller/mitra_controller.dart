@@ -8,6 +8,8 @@ import 'package:path/path.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:rusconsign/Api/mitra_response.dart';
 
+import '../../../Api/product_response.dart';
+
 class MitraController extends GetxController {
   final TextEditingController namaController = TextEditingController();
   final TextEditingController namajasaController = TextEditingController();
@@ -336,6 +338,16 @@ class MitraController extends GetxController {
       print('Error: $e');
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  Future<Product> fetchProduct(int productId) async {
+    final response = await http.get(Uri.parse('https:/https://rusconsign.com/api/product'));
+
+    if (response.statusCode == 200) {
+      return Product.fromJson(json.decode(response.body));
+    } else {
+      throw Exception('Failed to load product');
     }
   }
 
