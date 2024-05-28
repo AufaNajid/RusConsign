@@ -104,8 +104,7 @@ class MitraController extends GetxController {
     isLoading.value = true;
 
     try {
-      final mitraResponse = await http
-          .get(Uri.parse('https://rusconsign.com/api/mitra/$mitraId'));
+      final mitraResponse = await http.get(Uri.parse('https://rusconsign.com/api/mitra/$mitraId'));
 
       if (mitraResponse.statusCode == 200) {
         final mitraData = json.decode(mitraResponse.body);
@@ -125,26 +124,27 @@ class MitraController extends GetxController {
             headers: {'Content-Type': 'application/json'},
             body: json.encode(productData),
           );
+
           if (response.statusCode == 201) {
-            successfulAddProduct.value = true; // Fixed variable name
+            successfulAddProduct.value = true;
             message.value = 'Produk berhasil ditambahkan';
           } else {
-            successfulAddProduct.value = false; // Fixed variable name
+            successfulAddProduct.value = false;
             message.value = 'Gagal menambahkan produk';
             print('Failed to add product: ${response.body}');
           }
         } else {
-          successfulAddProduct.value = false; // Fixed variable name
+          successfulAddProduct.value = false;
           message.value = 'Mitra belum diterima';
           print('Mitra status: ${mitraData['status']}');
         }
       } else {
-        successfulAddProduct.value = false; // Fixed variable name
+        successfulAddProduct.value = false;
         message.value = 'Gagal mengambil data mitra';
         print('Failed to fetch mitra data: ${mitraResponse.body}');
       }
     } catch (e) {
-      successfulAddProduct.value = false; // Fixed variable name
+      successfulAddProduct.value = false;
       message.value = 'Terjadi kesalahan: $e';
       print('Error: $e');
     } finally {
