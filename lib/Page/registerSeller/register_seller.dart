@@ -98,7 +98,7 @@ class RegisterSeller extends StatelessWidget {
                       nomor,
                       image_id_card,
                     );
-                    if (controller.successfulRegister.value) {
+                    if (controller.successfulRegister.value == true) {
                       Get.offNamed("/waitingadmin");
                     } else {
                       Get.snackbar('Error', controller.message.value);

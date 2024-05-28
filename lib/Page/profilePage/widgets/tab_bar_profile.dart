@@ -3,9 +3,9 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/profilePage/widgets/penjualan_section_tabbar.dart';
 import 'package:rusconsign/Page/profilePage/widgets/pribadi_section_tabbar.dart';
+import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
-
 
 class TabList extends StatefulWidget {
   const TabList({super.key});
@@ -47,6 +47,7 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final MitraController mitraController = Get.put(MitraController());
     return Column(
       children: [
         TabBar(
@@ -111,12 +112,28 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
           width: double.maxFinite,
           height: AppResponsive().screenHeight(context) * 0.50,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
-          child: TabBarView(
-            controller: _tabController,
-            children: const [PribadiSection(), PenjualSectionTrue()],
-          ),
+          child: Obx(() {
+            if (mitraController.isAccepted.value == true) {
+              return TabBarView(
+              controller: _tabController,
+              children: const [
+                PribadiSection(),
+                PenjualSectionTrue()
+              ],
+            );
+            } else {
+              return TabBarView(
+              controller: _tabController,
+              children: const [
+                PribadiSection(),
+                PenjualanSectionFalse()
+              ],
+            );
+            }
+          },
+
         ),
-      ],
+    )],
     );
   }
 }
