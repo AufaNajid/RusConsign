@@ -2,22 +2,22 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/page/homePage/home_page_controller.dart';
-import 'package:rusconsign/page/homePage/widgets/filter_button.dart';
-import 'package:rusconsign/page/homePage/widgets/product_card.dart';
+import 'package:rusconsign/Page/homePage/home_page_controller.dart';
+import 'package:rusconsign/Page/homePage/widgets/filter_button.dart';
+import 'package:rusconsign/Page/homePage/widgets/product_card.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class HomePage extends StatelessWidget {
-  final controller = Get.put(HomePageController());
   HomePage({Key? key}) : super(key: key);
 
 
 
   @override
   Widget build(BuildContext context) {
+    final HomePageController controller = Get.put(HomePageController());
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -215,72 +215,92 @@ class HomePage extends StatelessWidget {
                         Obx(
                           () {
                             if (controller.selectedIndex == 1) {
-                              return GridView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: 10,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 8,
-                                  mainAxisSpacing: 8,
-                                  childAspectRatio: 0.8,
-                                ),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return ProductCard(
-                                    imagePath:
-                                        'https://via.placeholder.com/165x110',
-                                    title: 'Judul Jasa $index',
-                                    price: 12000,
-                                    rating: (index % 5) + 1,
+                              return Obx(() {
+                                if (controller.isLoading.value) {
+                                  return const Center(child: CircularProgressIndicator());
+                                } else if (controller.productList.isEmpty) {
+                                  return const Center(child: Text('No products found'));
+                                } else {
+                                  return GridView.builder(
+                                    shrinkWrap: true,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount: controller.productList.length,
+                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 8,
+                                      mainAxisSpacing: 8,
+                                      childAspectRatio: 0.8,
+                                    ),
+                                    itemBuilder: (BuildContext context, int index) {
+                                      final product = controller.productList[index];
+                                      return ProductCard(
+                                        imagePath: product.image,
+                                        title: product.namaProduct,
+                                        price: product.harga,
+                                        rating: product.rating,
+                                      );
+                                    },
                                   );
-                                },
-                              );
+                                }
+                              });
                             } else if (controller.selectedIndex == 2) {
-                              return GridView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: 10,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 8,
-                                  mainAxisSpacing: 8,
-                                  childAspectRatio: 0.8,
-                                ),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return ProductCard(
-                                    imagePath:
-                                        'https://via.placeholder.com/165x110',
-                                    title: 'Judul Produk $index',
-                                    price: 12000,
-                                    rating: (index % 5) + 1,
+                              return  Obx(() {
+                                if (controller.isLoading.value) {
+                                  return const Center(child: CircularProgressIndicator());
+                                } else if (controller.productList.isEmpty) {
+                                  return const Center(child: Text('No products found'));
+                                } else {
+                                  return GridView.builder(
+                                    shrinkWrap: true,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount: controller.productList.length,
+                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 8,
+                                      mainAxisSpacing: 8,
+                                      childAspectRatio: 0.8,
+                                    ),
+                                    itemBuilder: (BuildContext context, int index) {
+                                      final product = controller.productList[index];
+                                      return ProductCard(
+                                        imagePath: product.image,
+                                        title: product.namaProduct,
+                                        price: product.harga,
+                                        rating: product.rating,
+                                      );
+                                    },
                                   );
-                                },
-                              );
+                                }
+                              });
                             } else {
-                              return GridView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemCount: 10,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 8,
-                                  mainAxisSpacing: 8,
-                                  childAspectRatio: 0.8,
-                                ),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return ProductCard(
-                                    imagePath:
-                                        'https://via.placeholder.com/165x110',
-                                    title:
-                                        'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
-                                    price: 12000,
-                                    rating: (index % 5) + 1,
+                              return Obx(() {
+                                if (controller.isLoading.value) {
+                                  return const Center(child: CircularProgressIndicator());
+                                } else if (controller.productList.isEmpty) {
+                                  return const Center(child: Text('No products found'));
+                                } else {
+                                  return GridView.builder(
+                                    shrinkWrap: true,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount: controller.productList.length,
+                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 8,
+                                      mainAxisSpacing: 8,
+                                      childAspectRatio: 0.8,
+                                    ),
+                                    itemBuilder: (BuildContext context, int index) {
+                                      final product = controller.productList[index];
+                                      return ProductCard(
+                                        imagePath: product.image,
+                                        title: product.namaProduct,
+                                        price: product.harga,
+                                        rating: product.rating,
+                                      );
+                                    },
                                   );
-                                },
-                              );
+                                }
+                              });
                             }
                           },
                         ),
