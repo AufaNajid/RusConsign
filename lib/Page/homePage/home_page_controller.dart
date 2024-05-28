@@ -36,7 +36,7 @@ class HomePageController extends GetxController {
   }
 
   Future<Jasa> fetchJasa(int jasaId) async {
-    final response = await http.get(Uri.parse('https:/https://rusconsign.com/api/jasas'));
+    final response = await http.get(Uri.parse('https:/https://rusconsign.com/api/jasa'));
 
     if (response.statusCode == 200) {
       return Jasa.fromJson(json.decode(response.body));

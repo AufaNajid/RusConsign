@@ -4,6 +4,7 @@ import 'package:rusconsign/Page/chatPage/chat_binding.dart';
 import 'package:rusconsign/Page/profilePage/profile_page_binding.dart';
 import 'package:rusconsign/Page/sellingPage/selling_page.dart';
 import 'package:rusconsign/Page/sellingPage/selling_page_binding.dart';
+import 'package:rusconsign/authentication/page/forgot_password_reset_page.dart';
 import 'package:rusconsign/page/chatPage/chat_cust_seller_page.dart';
 import 'package:rusconsign/page/chatPage/chatlist_page.dart';
 import 'package:rusconsign/page/detailPage/detail_page.dart';
@@ -19,7 +20,7 @@ import 'package:rusconsign/page/registerSeller/register_seller.dart';
 import 'package:rusconsign/page/settingPage/setting_page.dart';
 import 'package:rusconsign/page/settingPage/setting_page_binding.dart';
 import 'package:rusconsign/page/splash/splash.dart';
-import 'package:rusconsign/authentication/page/forgot_password_page.dart';
+import 'package:rusconsign/authentication/page/forgot_password_verif_page.dart';
 import 'package:rusconsign/authentication/page/login_page.dart';
 import 'package:rusconsign/authentication/page/register_page.dart';
 import 'package:rusconsign/menu.dart';
@@ -82,6 +83,11 @@ List<GetPage> routes = [
   GetPage(
     name: "/forgotpasswordpage",
     page: () => ForgotPasswordPage(),
+    binding: AuthBinding(),
+  ),
+  GetPage(
+    name: "/forgotpasswordresetpage",
+    page: () => ForgotPasswordResetPage(),
     binding: AuthBinding(),
   ),
   GetPage(

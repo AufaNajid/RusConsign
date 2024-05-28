@@ -7,9 +7,8 @@ import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
-   ForgotPasswordPage({Key? key}) : super(key: key);
-  final TextEditingController emailController = TextEditingController();
+class ForgotPasswordResetPage extends StatelessWidget {
+  ForgotPasswordResetPage({Key? key}) : super(key: key);
   final TextEditingController newPasswordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
@@ -40,10 +39,6 @@ class ForgotPasswordPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     // Bind TextEditingController to TextFieldInput
-                    TextFieldInput(
-                      hintText: 'masukkanEmail'.tr,
-                      controller: emailController,
-                    ),
                     const SizedBox(height: 12),
                     // Bind TextEditingController to TextFieldPassword
                     TextFieldPassword(
@@ -51,7 +46,7 @@ class ForgotPasswordPage extends StatelessWidget {
                       controller: newPasswordController,
                     ),
                     const SizedBox(height: 12),
-                    // Bind TextEditingController to TextFieldConfirmPassword
+                    // Bind TextEditingController
                     TextFieldConfirmPassword(
                       hintText: 'konfirmasiPasswordBaru'.tr,
                       controller: confirmPasswordController,
@@ -66,9 +61,9 @@ class ForgotPasswordPage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       // Handle reset password logic here
-                      print('Email: ${emailController.text}');
-                      print('New Password: ${newPasswordController.text}');
-                      print('Confirm Password: ${confirmPasswordController.text}');
+                      // print('Email: ${emailController.text}');
+                      // print('New Password: ${newPasswordController.text}');
+                      // print('Confirm Password: ${confirmPasswordController.text}');
                       Get.offNamed('/login');
                     },
                     style: ButtonStyle(
@@ -87,7 +82,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.offNamed('/login');
+                        Get.offNamed('/forgotpasswordpage');
                       },
                       child: Text(
                         'kembali'.tr,
