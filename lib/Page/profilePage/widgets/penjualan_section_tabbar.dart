@@ -83,7 +83,7 @@ class PenjualSectionTrue extends StatelessWidget {
                 child: ButtonProfile(
                   icon: FeatherIcons.edit,
                   text: 'kelolaPJ'.tr,
-                  toPage: "/notificationpage",
+                  toPage: "/productmanagepage",
                 ),
               ),
               Container(
