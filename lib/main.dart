@@ -1,10 +1,10 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:rusconsign/authentication/page/register_page.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:rusconsign/page/settingPage/setting_controller.dart';
+import 'package:rusconsign/utils/app_translation.dart';
 import 'firebase_options.dart';
 import 'package:rusconsign/routes/routes.dart';
 
@@ -13,10 +13,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp
-  ]);
-
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp],
+  );
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -25,11 +25,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    final settingController = Get.put(SettingController());
+    return Obx(
+      () => GetMaterialApp(
+        translations: AppTranslation(),
+        locale: Locale(settingController.selectedLanguage.value),
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
-        initialRoute: "/menu",
-        getPages: routes
+        theme: ThemeData(
+          fontFamily: 'Poppins',
+          useMaterial3: true,
+        ),
+      initialRoute: "/splash",
+      getPages: routes,
+      )
     );
   }
 }

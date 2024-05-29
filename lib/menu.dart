@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:rusconsign/favoritePage/favorite_page.dart';
-import 'package:rusconsign/homePage/home_page.dart';
-import 'package:rusconsign/profilePage/profile_page.dart';
+import 'package:rusconsign/Page/cartPage/cart_page.dart';
+import 'package:rusconsign/page/favoritePage/favorite_page.dart';
+import 'package:rusconsign/page/homePage/home_page.dart';
+import 'package:rusconsign/page/profilePage/profile_page.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 
@@ -19,8 +20,8 @@ class Menu extends StatelessWidget {
       return [
         HomePage(),
         const FavoritePage(),
-        HomePage(),
-        ProfilePage(),
+        const CartPage(),
+        const ProfilePage(),
       ];
     }
 
@@ -65,11 +66,6 @@ class Menu extends StatelessWidget {
       itemAnimationProperties: const ItemAnimationProperties(
         duration: Duration(milliseconds: 200),
         curve: Curves.ease,
-      ),
-      screenTransitionAnimation: const ScreenTransitionAnimation(
-        animateTabTransition: true,
-        curve: Curves.ease,
-        duration: Duration(milliseconds: 200),
       ),
       navBarStyle: NavBarStyle.style6,
     );

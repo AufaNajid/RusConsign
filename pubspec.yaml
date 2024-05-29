@@ -40,9 +40,24 @@ dependencies:
   carousel_slider: ^4.2.1
   firebase_core:
   firebase_auth:
-  google_sign_in:
+  google_sign_in: ^6.2.1
   lottie:
   persistent_bottom_nav_bar: ^5.0.2
+  flutter_svg:
+  dotted_border: ^2.1.0
+  image_picker:
+  get_storage: ^2.1.1
+  flutter_rating_bar: ^4.0.1
+  qr_flutter: ^4.0.0
+  screenshot: ^2.1.0
+  permission_handler: ^10.0.0
+  image_gallery_saver: ^2.0.3
+  bootstrap_icons: ^1.11.3
+  shared_preferences:
+  http:
+  dio:
+
+  
 
 
 dev_dependencies:

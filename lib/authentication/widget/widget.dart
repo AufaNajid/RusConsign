@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 
 class MyButton extends StatelessWidget {
@@ -38,7 +41,7 @@ class MyButton extends StatelessWidget {
           width: labelWidth,
           child: Text(
             label,
-            style: const TextStyle(color: Color(0xFF30475E)),
+            style: TextStyle(color: AppColors.description),
           ),
         ),
         Expanded(
@@ -55,19 +58,16 @@ class MyButton extends StatelessWidget {
                 foregroundColor: foregroundColor,
               ),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(prefixIcon),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      text,
-                      textAlign: textAlign,
-                      style: const TextStyle(fontSize: 14),
-                    ),
+                  Text(
+                    text,
+                    textAlign: textAlign,
+                    style: const TextStyle(fontSize: 14),
                   ),
-                  const SizedBox(width: 10),
                   Icon(suffixIcon),
-                ],
+                ].withSpaceBetween(width: 8),
               ),
             ),
           ),
@@ -114,23 +114,13 @@ class MyTextFieldState extends State<MyTextField> {
       inputFormatters: widget.inputFormatter,
       keyboardType: widget.keyboardType,
       autofocus: false,
-      style: const TextStyle(
-        fontSize: 11,
-        color: Color(0xFF30475E),
-        fontWeight: FontWeight.w500,
-        decoration: TextDecoration.none,
-      ),
+      style: AppTextStyle().subHeader(AppColors.description),
       controller: widget.controller,
       obscureText: widget.isObscured ? isChecked : widget.isObscured,
       decoration: InputDecoration(
         labelText: widget.labelText,
-        labelStyle: const TextStyle(
-          fontSize: 11,
-          color: Color(0xFF30475E),
-          fontWeight: FontWeight.w500,
-          decoration: TextDecoration.none,
-        ),
-        fillColor: const Color(0xFFF5F5F5),
+        labelStyle: AppTextStyle().subHeader(AppColors.description),
+        fillColor: AppColors.cardIconFill,
         filled: true,
         hintStyle: const TextStyle(
           color: Colors.yellow,
@@ -141,7 +131,7 @@ class MyTextFieldState extends State<MyTextField> {
             ? IconButton(
           icon: Icon(
             isChecked ? FeatherIcons.eye : FeatherIcons.eyeOff,
-            color: const Color(0xFF30475E),
+            color: AppColors.nonActiveIcon,
           ),
           onPressed: () {
             setState(() {
