@@ -9,6 +9,7 @@ class ProductCard extends StatelessWidget {
   final String title;
   final int price;
   final double rating;
+  final int productId;
 
   const ProductCard({
     super.key,
@@ -16,6 +17,7 @@ class ProductCard extends StatelessWidget {
     required this.title,
     required this.price,
     required this.rating,
+    required this.productId,
   });
 
   @override
@@ -28,7 +30,7 @@ class ProductCard extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed("/detailpage");
+          Get.toNamed("/detailpage", arguments: productId);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),

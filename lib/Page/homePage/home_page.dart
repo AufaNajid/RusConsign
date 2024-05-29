@@ -11,7 +11,7 @@ import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
 
 
@@ -238,6 +238,7 @@ class HomePage extends StatelessWidget {
                                         title: product.namaProduct,
                                         price: product.harga,
                                         rating: product.rating,
+                                        productId: product.id,
                                       );
                                     },
                                   );
@@ -267,6 +268,7 @@ class HomePage extends StatelessWidget {
                                         title: product.namaProduct,
                                         price: product.harga,
                                         rating: product.rating,
+                                        productId: product.id,
                                       );
                                     },
                                   );
@@ -296,6 +298,7 @@ class HomePage extends StatelessWidget {
                                         title: product.namaProduct,
                                         price: product.harga,
                                         rating: product.rating,
+                                        productId: product.id,
                                       );
                                     },
                                   );

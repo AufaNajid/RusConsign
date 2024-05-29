@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final product = productFromJson(jsonString);
-
 import 'dart:convert';
 
 Product productFromJson(String str) => Product.fromJson(json.decode(str));
@@ -48,7 +44,7 @@ class Datum {
     namaProduct: json["nama_product"],
     deskripsi: json["deskripsi"],
     harga: json["harga"],
-    rating: json["rating"]?.toDouble(),
+    rating: json["rating"]?.toDouble() ?? 0.0,
     image: json["image"],
     idMitra: json["id_mitra"],
   );
