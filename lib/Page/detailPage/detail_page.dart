@@ -12,7 +12,8 @@ import '../../utils/app_responsive.dart';
 
 class DetailPage extends StatelessWidget {
   final controller = Get.put(DetailPageController());
-  DetailPage({Key? key}) : super(key: key);
+  DetailPage({Key? key, this.idProduct}) : super(key: key);
+  int? idProduct;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -449,67 +450,71 @@ class DetailPage extends StatelessWidget {
         );
       }
       }),
-      bottomNavigationBar: SizedBox(
-        width: double.infinity,
-        height: AppResponsive().screenHeight(context) * 0.08,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 50,
-                height: 50,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(6),
-                  child: Material(
-                    color: AppColors.cardIconFill,
-                    child: Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          controller.toggleAddcart();
-                        },
-                        child: Icon(
-                          controller.isAddCart.value
-                              ? BootstrapIcons.cart_check_fill
-                              : BootstrapIcons.cart,
-                          color: controller.isAddCart.value
-                              ? AppColors.hargaStat
-                              : AppColors.borderIcon,
+      bottomNavigationBar: Obx((){
+        final product = controller.product.value!;
+        return SizedBox(
+          width: double.infinity,
+          height: AppResponsive().screenHeight(context) * 0.08,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(6),
+                    child: Material(
+                      color: AppColors.cardIconFill,
+                      child: Obx(
+                            () => GestureDetector(
+                          onTap: () {
+                            controller.toggleAddcart();
+                          },
+                          child: Icon(
+                            controller.isAddCart.value
+                                ? BootstrapIcons.cart_check_fill
+                                : BootstrapIcons.cart,
+                            color: controller.isAddCart.value
+                                ? AppColors.hargaStat
+                                : AppColors.borderIcon,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: AppResponsive().screenWidth(context) * 0.7,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.toNamed('/checkoutpage');
-                  },
-                  style: ButtonStyle(
-                      padding: const MaterialStatePropertyAll(EdgeInsets.zero),
-                      elevation: const MaterialStatePropertyAll(0),
-                      shape: MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
+                const Spacer(),
+                SizedBox(
+                  width: AppResponsive().screenWidth(context) * 0.7,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed('/checkoutpage', arguments: idProduct = product.id );
+                      print("ID Produk adalah ${idProduct}");
+                    },
+                    style: ButtonStyle(
+                        padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                        elevation: const MaterialStatePropertyAll(0),
+                        shape: MaterialStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4),
+                          ),
                         ),
-                      ),
-                      backgroundColor:
-                          MaterialStatePropertyAll(AppColors.button2)),
-                  child: Text(
-                    'beliSekarang'.tr,
-                    style: AppTextStyle().subHeader(AppColors.textButton2),
+                        backgroundColor:
+                        MaterialStatePropertyAll(AppColors.button2)),
+                    child: Text(
+                      'beliSekarang'.tr,
+                      style: AppTextStyle().subHeader(AppColors.textButton2),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      })
     );
   }
 }

@@ -19,77 +19,85 @@ class ChekcoutPage extends StatelessWidget {
     return Scaffold(
       appBar: CommonAppBar(title: 'checkout'.tr),
       backgroundColor: AppColors.background,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'pembelian'.tr,
-                    style: AppTextStyle().header(AppColors.titleLine),
-                  ),
-                  const ItemChekcout(
-                    imagePath: 'https://via.placeholder.com/100x100',
-                    title: 'dadadwndandadjad',
-                    profileImagePath: 'https://via.placeholder.com/40x40',
-                    profileName: 'bagas Prasetyo',
-                    rating: 5.0,
-                    price: 15000,
-                    quantity: 2,
-                  ),
-                ].withSpaceBetween(height: 10),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'lokasiPertemuan'.tr,
-                    style: AppTextStyle().header(AppColors.titleLine),
-                    textAlign: TextAlign.start,
-                  ),
-                  const LocationChekout(
-                    locationHeader: "SMK Raden Umar Said Kudus",
-                    locationDetail:
-                        "Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333",
-                  ),
-                ].withSpaceBetween(height: 10),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'pembayaran'.tr,
-                    style: AppTextStyle().header(AppColors.titleLine),
-                    textAlign: TextAlign.start,
-                  ),
-                  const DropdownPayment(),
-                ].withSpaceBetween(height: 10),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'rincianPembayaran'.tr,
-                    style: AppTextStyle().header(AppColors.titleLine),
-                    textAlign: TextAlign.start,
-                  ),
-                  const PaymentDetail(
-                      subPrice: 15000,
+      body: Obx((){
+      if (controller.isLoading.value) {
+        return const Center(child: CircularProgressIndicator());
+      } else if (controller.product.value == null) {
+        return const Center(child: Text('Product not found'));
+      } else {
+        final product = controller.product.value!;
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'pembelian'.tr,
+                      style: AppTextStyle().header(AppColors.titleLine),
+                    ),
+                     ItemChekcout(
+                      imagePath: product.image,
+                      title: product.namaProduct,
+                      profileImagePath: 'https://via.placeholder.com/40x40',
+                      profileName: 'bagas Prasetyo',
+                      rating: product.rating,
+                      price: product.harga,
+                      quantity: 2,
+                    ),
+                  ].withSpaceBetween(height: 10),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'lokasiPertemuan'.tr,
+                      style: AppTextStyle().header(AppColors.titleLine),
+                      textAlign: TextAlign.start,
+                    ),
+                    const LocationChekout(
+                      locationHeader: "SMK Raden Umar Said Kudus",
+                      locationDetail:
+                      "Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333",
+                    ),
+                  ].withSpaceBetween(height: 10),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'pembayaran'.tr,
+                      style: AppTextStyle().header(AppColors.titleLine),
+                      textAlign: TextAlign.start,
+                    ),
+                    const DropdownPayment(),
+                  ].withSpaceBetween(height: 10),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'rincianPembayaran'.tr,
+                      style: AppTextStyle().header(AppColors.titleLine),
+                      textAlign: TextAlign.start,
+                    ),
+                     PaymentDetail(
+                      subPrice: product.harga,
                       adminPrice: 1000,),
-                ].withSpaceBetween(height: 10),
-              )
-            ].withSpaceBetween(height: 30),
+                  ].withSpaceBetween(height: 10),
+                )
+              ].withSpaceBetween(height: 30),
+            ),
           ),
-        ),
-      ),
+        );
+      }}),
       bottomNavigationBar: BottomAppBar(
         elevation: 5,
         shadowColor: AppColors.cardIconFill,

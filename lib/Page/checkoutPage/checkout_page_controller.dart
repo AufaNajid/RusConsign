@@ -1,10 +1,17 @@
 import 'package:get/get.dart';
+import 'package:http/http.dart';
+import 'package:rusconsign/Api/product_response.dart';
+import 'package:rusconsign/Page/homePage/home_page_controller.dart';
+
 
 class CheckoutPageController extends GetxController {
   var selectedPaymentMethod = 'QRIS'.obs;
   var selectedLeading = 'assets/images/qris.svg'.obs;
   var selectedTitle = 'QRIS'.obs;
   var expanded = false.obs;
+  RxBool isLoading = false.obs;
+  var product = Rx<Datum?>(null);
+
 
   var items = <Map<String, String>>[
     {'title': 'Dana', 'leading': 'assets/images/dana.svg'},
@@ -33,5 +40,24 @@ class CheckoutPageController extends GetxController {
 
     expanded.value = false;
     selectedPaymentMethod.refresh();
+  }
+
+  void onInit(){
+    super.onInit();
+    final productID = Get.arguments as int;
+    fetchProduct(productID);
+  }
+
+  fetchProduct(int productID) async {
+    try {
+      isLoading(true);
+      final homeController = Get.find<HomePageController>();
+      final fetchedProduct = homeController.productList.firstWhere((product) => product.id == productID);
+      product.value = fetchedProduct;
+    } catch (e) {
+      print("Error: $e");
+    } finally {
+      isLoading(false);
+    }
   }
 }
