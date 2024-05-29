@@ -35,7 +35,7 @@ class FavoriteCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed("/detailpage");
+          Get.toNamed("/detailpage", arguments: 1);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
