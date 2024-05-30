@@ -1,6 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserStatusService {
+class UserService {
   static const String _mitraStatusKey = 'mitra_status';
 
   static Future<void> setMitraStatus(int mitraId, String status) async {

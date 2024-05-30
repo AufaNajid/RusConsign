@@ -13,8 +13,6 @@ import 'package:rusconsign/utils/text_style.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     final HomePageController controller = Get.put(HomePageController());
@@ -64,9 +62,11 @@ class HomePage extends StatelessWidget {
                           'halo'.tr,
                           style: AppTextStyle().header(AppColors.titleLine),
                         ),
-                        Text(
-                          'Username',
-                          style: AppTextStyle().header(AppColors.titleLine),
+                        Obx(
+                          () => Text(
+                            'test',
+                            style: AppTextStyle().header(AppColors.titleLine),
+                          ),
                         ),
                       ],
                     ),
@@ -187,7 +187,8 @@ class HomePage extends StatelessWidget {
                           children: [
                             Text(
                               'halamanP&J'.tr,
-                              style: AppTextStyle().subHeader(AppColors.titleLine),
+                              style:
+                                  AppTextStyle().subHeader(AppColors.titleLine),
                             ),
                             Row(
                               children: [
@@ -217,22 +218,28 @@ class HomePage extends StatelessWidget {
                             if (controller.selectedIndex == 1) {
                               return Obx(() {
                                 if (controller.isLoading.value) {
-                                  return const Center(child: CircularProgressIndicator());
+                                  return const Center(
+                                      child: CircularProgressIndicator());
                                 } else if (controller.productList.isEmpty) {
-                                  return const Center(child: Text('No products found'));
+                                  return const Center(
+                                      child: Text('No products found'));
                                 } else {
                                   return GridView.builder(
                                     shrinkWrap: true,
-                                    physics: const NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     itemCount: controller.productList.length,
-                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
                                       crossAxisSpacing: 8,
                                       mainAxisSpacing: 8,
                                       childAspectRatio: 0.8,
                                     ),
-                                    itemBuilder: (BuildContext context, int index) {
-                                      final product = controller.productList[index];
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      final product =
+                                          controller.productList[index];
                                       return ProductCard(
                                         imagePath: product.image,
                                         title: product.namaProduct,
@@ -245,24 +252,30 @@ class HomePage extends StatelessWidget {
                                 }
                               });
                             } else if (controller.selectedIndex == 2) {
-                              return  Obx(() {
+                              return Obx(() {
                                 if (controller.isLoading.value) {
-                                  return const Center(child: CircularProgressIndicator());
+                                  return const Center(
+                                      child: CircularProgressIndicator());
                                 } else if (controller.productList.isEmpty) {
-                                  return const Center(child: Text('No products found'));
+                                  return const Center(
+                                      child: Text('No products found'));
                                 } else {
                                   return GridView.builder(
                                     shrinkWrap: true,
-                                    physics: const NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     itemCount: controller.productList.length,
-                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
                                       crossAxisSpacing: 8,
                                       mainAxisSpacing: 8,
                                       childAspectRatio: 0.8,
                                     ),
-                                    itemBuilder: (BuildContext context, int index) {
-                                      final product = controller.productList[index];
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      final product =
+                                          controller.productList[index];
                                       return ProductCard(
                                         imagePath: product.image,
                                         title: product.namaProduct,
@@ -277,22 +290,28 @@ class HomePage extends StatelessWidget {
                             } else {
                               return Obx(() {
                                 if (controller.isLoading.value) {
-                                  return const Center(child: CircularProgressIndicator());
+                                  return const Center(
+                                      child: CircularProgressIndicator());
                                 } else if (controller.productList.isEmpty) {
-                                  return const Center(child: Text('No products found'));
+                                  return const Center(
+                                      child: Text('No products found'));
                                 } else {
                                   return GridView.builder(
                                     shrinkWrap: true,
-                                    physics: const NeverScrollableScrollPhysics(),
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     itemCount: controller.productList.length,
-                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                    gridDelegate:
+                                        const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2,
                                       crossAxisSpacing: 8,
                                       mainAxisSpacing: 8,
                                       childAspectRatio: 0.8,
                                     ),
-                                    itemBuilder: (BuildContext context, int index) {
-                                      final product = controller.productList[index];
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      final product =
+                                          controller.productList[index];
                                       return ProductCard(
                                         imagePath: product.image,
                                         title: product.namaProduct,

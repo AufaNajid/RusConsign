@@ -15,7 +15,7 @@ class ProductController extends GetxController {
 
   // API endpoints
   final String apiUrl = 'http://rusconsign.com/add-product';
-  final String mitraUrl = 'http://rusconsign.com/mitra'; // Endpoint to get mitra details
+  final String mitraUrl = 'http://rusconsign.com/mitra';
 
   // Function to add a new product
   Future<void> addProduct(int mitraId) async {

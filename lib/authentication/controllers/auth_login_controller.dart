@@ -13,6 +13,7 @@ class AuthLoginController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool successfulLogin = false.obs;
   RxString message = ''.obs;
+  RxString dataUsername = ''.obs;
 
   @override
   void onInit() {
@@ -56,11 +57,15 @@ class AuthLoginController extends GetxController {
         bool status = jsonResponse['status'];
         String message = jsonResponse['message'];
         String? token = jsonResponse['token'];
+        String? username = jsonResponse['username'];
+
+        dataUsername.value = username.toString(); 
 
         if (status) {
           await prefs.setString('token', token!);
           this.message.value = message;
           successfulLogin.value = true;
+          box.write('username', username);
           box.write('done', successfulLogin.value);
         } else {
           this.message.value = message;

@@ -1,5 +1,6 @@
+// ignore_for_file: avoid_print
+
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:rusconsign/Api/product_response.dart';
 import 'package:rusconsign/Page/homePage/home_page_controller.dart';
 
@@ -42,6 +43,7 @@ class CheckoutPageController extends GetxController {
     selectedPaymentMethod.refresh();
   }
 
+  @override
   void onInit(){
     super.onInit();
     final productID = Get.arguments as int;

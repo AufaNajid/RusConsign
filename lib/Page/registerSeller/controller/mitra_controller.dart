@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, depend_on_referenced_packages, unnecessary_overrides, avoid_print, unrelated_type_equality_checks
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -30,7 +32,7 @@ class MitraController extends GetxController {
   RxBool successfulDestroyJasa = false.obs;
   RxString message = "".obs;
   RxBool isPending = false.obs;
-  RxBool isAccepted = true.obs;
+  RxBool isAccepted = false.obs;
   var pickedImage = Rx<File?>(null);
   var mitraId = 0.obs;
 
@@ -40,7 +42,7 @@ class MitraController extends GetxController {
     // print("MitraController initialized");
   }
 
-  Future<void> registerMitra(String nama, String namaToko, int nis, String no_dompet_digital, File imageIdCard) async {
+  Future<void> registerMitra(String nama, String namaToko, int nis, String noDompetDigital, File imageIdCard) async {
     isLoading.value = true;
 
     var request = http.MultipartRequest(
@@ -51,7 +53,7 @@ class MitraController extends GetxController {
     request.fields['nama_lengkap'] = nama;
     request.fields['nama_toko'] = namaToko;
     request.fields['nis'] = nis.toString();
-    request.fields['no_dompet_digital'] = no_dompet_digital;
+    request.fields['no_dompet_digital'] = noDompetDigital;
 
     var imageStream = http.ByteStream(imageIdCard.openRead());
     var imageLength = await imageIdCard.length();
@@ -125,151 +127,6 @@ class MitraController extends GetxController {
   }
 
   Future<String?> getMitraStatus(int mitraId) async {
-    return await UserStatusService.getMitraStatus(mitraId);
+    return await UserService.getMitraStatus(mitraId);
   }
 }
-
-
-
-
-// Future<void> editProduct(int productId) async {
-  //   isLoading.value = true;
-  //
-  //   try {
-  //     final productResponse = await http.get(
-  //         Uri.parse('https://rusconsign.com/api/product/$productId'));
-  //
-  //     if (productResponse.statusCode == 200) {
-  //       final productData = json.decode(productResponse.body);
-  //
-  //
-  //       final editedProductData = {
-  //         'name_product': namaproductController.text,
-  //         'desc_product': deskripsiController.text,
-  //         'price_product': hargaController.text,
-  //         'rating_product': ratingController.text,
-  //         'image': imageController.text,
-  //       };
-  //
-  //       final response = await http.put(
-  //         Uri.parse('https://rusconsign.com/api/edit-products/$productId'),
-  //         headers: {'Content-Type': 'application/json'},
-  //         body: json.encode(editedProductData),
-  //       );
-  //
-  //       if (response.statusCode == 200) {
-  //         successfulEditProduct.value = true;
-  //         message.value = 'Produk berhasil diubah';
-  //       } else {
-  //         successfulEditProduct.value = false;
-  //         message.value = 'Gagal mengubah produk';
-  //         print('Failed to edit product: ${response.body}');
-  //       }
-  //     } else {
-  //       successfulEditProduct.value = false;
-  //       message.value = 'Gagal mengambil data produk';
-  //       print('Failed to fetch product data: ${productResponse.body}');
-  //     }
-  //   } catch (e) {
-  //     successfulEditProduct.value = false;
-  //     message.value = 'Terjadi kesalahan: $e';
-  //     print('Error: $e');
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
-  //
-  // Future<void> destroyProduct(int productId) async {
-  //   isLoading.value = true;
-  //
-  //   try {
-  //     final response = await http.delete(
-  //       Uri.parse('https://rusconsign.com/api/products/$productId'),
-  //     );
-  //
-  //     if (response.statusCode == 200) {
-  //       successfulDestroyProduct.value = true;
-  //       message.value = 'Produk berhasil dihapus';
-  //     } else {
-  //       successfulDestroyProduct.value = false;
-  //       message.value = 'Gagal menghapus produk';
-  //       print('Failed to delete product: ${response.body}');
-  //     }
-  //   } catch (e) {
-  //     successfulDestroyProduct.value = false;
-  //     message.value = 'Terjadi kesalahan: $e';
-  //     print('Error: $e');
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
-  //
-  // Future<void> editJasa(int jasaId) async {
-  //   isLoading.value = true;
-  //
-  //   try {
-  //     final jasaData = {
-  //       'name_jasa': namajasaController.text,
-  //       'desc_jasa': deskripsiController.text,
-  //       'price_jasa': hargaController.text,
-  //       'rating_jasa': ratingController.text,
-  //       'image_jasa': imageController.text,
-  //     };
-  //
-  //     final response = await http.put(
-  //       Uri.parse('https://rusconsign.com/api/jasa/$jasaId'),
-  //       headers: {'Content-Type': 'application/json'},
-  //       body: json.encode(jasaData),
-  //     );
-  //
-  //     if (response.statusCode == 200) {
-  //       successfulEditJasa.value = true;
-  //       message.value = 'Jasa berhasil diubah';
-  //     } else {
-  //       successfulEditJasa.value = false;
-  //       message.value = 'Gagal mengubah jasa';
-  //       print('Failed to edit jasa: ${response.body}');
-  //     }
-  //   } catch (e) {
-  //     successfulEditJasa.value = false;
-  //     message.value = 'Terjadi kesalahan: $e';
-  //     print('Error: $e');
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
-  //
-  // Future<void> destroyJasa(int jasaId) async {
-  //   isLoading.value = true;
-  //
-  //   try {
-  //     final response = await http.delete(
-  //       Uri.parse('https://rusconsign.com/api/jasa/$jasaId'),
-  //     );
-  //
-  //     if (response.statusCode == 200) {
-  //       successfulDestroyJasa.value = true;
-  //       message.value = 'Jasa berhasil dihapus';
-  //     } else {
-  //       successfulDestroyJasa.value = false;
-  //       message.value = 'Gagal menghapus jasa';
-  //       print('Failed to delete jasa: ${response.body}');
-  //     }
-  //   } catch (e) {
-  //     successfulDestroyJasa.value = false;
-  //     message.value = 'Terjadi kesalahan: $e';
-  //     print('Error: $e');
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
-  //
-  // Future<Product> fetchProduct(int productId) async {
-  //   final response = await http.get(Uri.parse('https:/https://rusconsign.com/api/product'));
-  //
-  //   if (response.statusCode == 200) {
-  //     return Product.fromJson(json.decode(response.body));
-  //   } else {
-  //     throw Exception('Failed to load product');
-  //   }
-  // }
