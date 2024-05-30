@@ -161,6 +161,7 @@ class AppTranslation extends Translations {
           'beriPenilaian' : 'Beri Penilaian',
           'pemberitahuan' : '*Kamu perlu me-restart aplikasi untuk mengubah preferensi',
           'namaToko' : 'Nama Toko',
+          'belumAdaData' : 'Belum Ada Data',
         },
         'English': {
           'bahasa': 'Language',
@@ -320,6 +321,7 @@ class AppTranslation extends Translations {
           'beriPenilaian' : 'Give Rating',
           'pemberitahuan' : '*You need to restart the app to change preferences',
           'namaToko' : 'Store Name',
+          'belumAdaData' : 'There is no data yet',
         }
       };
 }

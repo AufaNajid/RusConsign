@@ -62,11 +62,9 @@ class HomePage extends StatelessWidget {
                           'halo'.tr,
                           style: AppTextStyle().header(AppColors.titleLine),
                         ),
-                        Obx(
-                          () => Text(
-                            'test',
-                            style: AppTextStyle().header(AppColors.titleLine),
-                          ),
+                        Text(
+                          'test',
+                          style: AppTextStyle().header(AppColors.titleLine),
                         ),
                       ],
                     ),
@@ -218,11 +216,37 @@ class HomePage extends StatelessWidget {
                             if (controller.selectedIndex == 1) {
                               return Obx(() {
                                 if (controller.isLoading.value) {
-                                  return const Center(
-                                      child: CircularProgressIndicator());
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: AppResponsive()
+                                                .screenHeight(context) *
+                                            0.4,
+                                        child: const Center(
+                                          child: CircularProgressIndicator(
+                                            color: AppColors.hargaStat,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  );
                                 } else if (controller.productList.isEmpty) {
-                                  return const Center(
-                                      child: Text('No products found'));
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: AppResponsive()
+                                                .screenHeight(context) *
+                                            0.4,
+                                        child: Center(
+                                          child: Text(
+                                            'belumAdaData'.tr,
+                                            style: AppTextStyle()
+                                                .subHeader(AppColors.hargaStat),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
                                 } else {
                                   return GridView.builder(
                                     shrinkWrap: true,
@@ -254,11 +278,37 @@ class HomePage extends StatelessWidget {
                             } else if (controller.selectedIndex == 2) {
                               return Obx(() {
                                 if (controller.isLoading.value) {
-                                  return const Center(
-                                      child: CircularProgressIndicator());
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: AppResponsive()
+                                                .screenHeight(context) *
+                                            0.4,
+                                        child: const Center(
+                                          child: CircularProgressIndicator(
+                                            color: AppColors.hargaStat,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  );
                                 } else if (controller.productList.isEmpty) {
-                                  return const Center(
-                                      child: Text('No products found'));
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: AppResponsive()
+                                                .screenHeight(context) *
+                                            0.4,
+                                        child: Center(
+                                          child: Text(
+                                            'belumAdaData'.tr,
+                                            style: AppTextStyle()
+                                                .subHeader(AppColors.hargaStat),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
                                 } else {
                                   return GridView.builder(
                                     shrinkWrap: true,
@@ -290,11 +340,37 @@ class HomePage extends StatelessWidget {
                             } else {
                               return Obx(() {
                                 if (controller.isLoading.value) {
-                                  return const Center(
-                                      child: CircularProgressIndicator());
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: AppResponsive()
+                                                .screenHeight(context) *
+                                            0.4,
+                                        child: const Center(
+                                          child: CircularProgressIndicator(
+                                            color: AppColors.hargaStat,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  );
                                 } else if (controller.productList.isEmpty) {
-                                  return const Center(
-                                      child: Text('No products found'));
+                                  return Column(
+                                    children: [
+                                      SizedBox(
+                                        height: AppResponsive()
+                                                .screenHeight(context) *
+                                            0.4,
+                                        child: Center(
+                                          child: Text(
+                                            'belumAdaData'.tr,
+                                            style: AppTextStyle()
+                                                .subHeader(AppColors.hargaStat),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
                                 } else {
                                   return GridView.builder(
                                     shrinkWrap: true,
