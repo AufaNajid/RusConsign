@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProductCard extends StatelessWidget {
@@ -61,7 +62,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Rp $price',
+                    MoneyFormat.format(price),
                     style: AppTextStyle().subHeader(AppColors.hargaStat),
                   ),
                   Row(

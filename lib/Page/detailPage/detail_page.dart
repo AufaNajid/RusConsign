@@ -9,6 +9,7 @@ import 'package:rusconsign/Page/detailPage/widgets/comment_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import '../../utils/app_responsive.dart';
 
@@ -126,7 +127,7 @@ class DetailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Rp ${product.harga}',
+                          MoneyFormat.format(product.harga),
                           style: AppTextStyle().title(AppColors.hargaStat),
                         ),
                         const Spacer(),

@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProductCardCart extends StatelessWidget {
@@ -125,7 +126,7 @@ class ProductCardCart extends StatelessWidget {
                                       .textInfo(AppColors.description),
                                 ),
                                 Text(
-                                  'Rp $price',
+                                  MoneyFormat.format(price),
                                   style: AppTextStyle()
                                       .textInfoBold(AppColors.hargaStat),
                                 ),
@@ -218,7 +219,7 @@ class ProductCardCart extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        'Rp $subtotalValue'.toString(),
+                        MoneyFormat.format(subtotalValue),
                         style: AppTextStyle().title(AppColors.hargaStat),
                       ),
                     ],
