@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +9,7 @@ import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/text_field_widget.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
-import '../../utils/text_style.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 class LoginPage extends StatelessWidget {
   final GoogleController googleController = GoogleController();
@@ -164,11 +166,11 @@ class LoginPage extends StatelessWidget {
   }
 
   Future<void> _signinWithGoogle() async {
-    final GoogleSignIn _googleSignIn = GoogleSignIn();
-    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
     try {
-      final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+      final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
 
       if (googleSignInAccount != null) {
         final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
@@ -178,9 +180,8 @@ class LoginPage extends StatelessWidget {
           accessToken: googleSignInAuthentication.accessToken,
         );
 
-        await _firebaseAuth.signInWithCredential(credential);
+        await firebaseAuth.signInWithCredential(credential);
         print("Sign in with Google succeeded");
-        // Setelah berhasil login, arahkan pengguna ke halaman lain
         Get.offNamed('/menu');
       } else {
         print("Sign in aborted by user");

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -161,11 +163,11 @@ class RegisterPage extends StatelessWidget {
 }
 
 Future<void> _signinWithGoogle() async {
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   try {
-    final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
 
     if (googleSignInAccount != null) {
       final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
@@ -175,7 +177,7 @@ Future<void> _signinWithGoogle() async {
         accessToken: googleSignInAuthentication.accessToken,
       );
 
-      await _firebaseAuth.signInWithCredential(credential);
+      await firebaseAuth.signInWithCredential(credential);
       print("Sign in with Google succeeded");
       // Setelah berhasil login, arahkan pengguna ke halaman lain
       Get.offNamed('/menu');

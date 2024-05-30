@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:get/get.dart';
 import 'package:rusconsign/Api/product_response.dart';
 import 'package:rusconsign/Page/homePage/home_page_controller.dart';

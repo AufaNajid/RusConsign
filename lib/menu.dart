@@ -18,7 +18,7 @@ class Menu extends StatelessWidget {
 
     List<Widget> buildScreens() {
       return [
-        HomePage(),
+        const HomePage(),
         const FavoritePage(),
         const CartPage(),
         const ProfilePage(),

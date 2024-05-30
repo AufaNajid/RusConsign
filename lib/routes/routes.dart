@@ -97,7 +97,7 @@ List<GetPage> routes = [
   ),
   GetPage(
     name: "/homepage",
-    page: () => HomePage(),
+    page: () => const HomePage(),
     binding: HomePageBinding(),
   ),
   GetPage(

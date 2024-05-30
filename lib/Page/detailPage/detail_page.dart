@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, avoid_print, unnecessary_brace_in_string_interps
+
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
