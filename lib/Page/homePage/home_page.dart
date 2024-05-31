@@ -2,9 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/homePage/home_page_controller.dart';
 import 'package:rusconsign/Page/homePage/widgets/filter_button.dart';
 import 'package:rusconsign/Page/homePage/widgets/product_card.dart';
+import 'package:rusconsign/Page/homePage/home_page_controller.dart';
+import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomePageController controller = Get.put(HomePageController());
+    final AuthLoginController controllerName = Get.put(AuthLoginController());
     return Scaffold(
       backgroundColor: AppColors.background,
       body: SafeArea(
@@ -62,9 +64,11 @@ class HomePage extends StatelessWidget {
                           'halo'.tr,
                           style: AppTextStyle().header(AppColors.titleLine),
                         ),
-                        Text(
-                          'test',
-                          style: AppTextStyle().header(AppColors.titleLine),
+                        Obx(
+                          () => Text(
+                            controllerName.dataUsername.value,
+                            style: AppTextStyle().header(AppColors.titleLine),
+                          ),
                         ),
                       ],
                     ),
