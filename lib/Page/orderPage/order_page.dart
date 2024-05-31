@@ -3,7 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/orderPage/widgets/finish_card.dart';
 import 'package:rusconsign/Page/orderPage/widgets/on_process_card.dart';
-import 'package:rusconsign/page/orderPage/order_page_controller.dart';
+import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 

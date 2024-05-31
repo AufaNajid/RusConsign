@@ -4,7 +4,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/chatPage/chat_controller.dart';
 import 'package:rusconsign/Page/chatPage/widgets/custom_app_bar.dart';
-import 'package:rusconsign/page/chatPage/widgets/textfield_chat.dart';
+import 'package:rusconsign/Page/chatPage/widgets/textfield_chat.dart';
 import 'package:rusconsign/utils/extension.dart';
 import '../../authentication/widget/message_item.dart';
 import '../../utils/app_responsive.dart';
