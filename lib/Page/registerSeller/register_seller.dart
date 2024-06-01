@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/registerSeller/register_seller_controller.dart';
 import 'package:rusconsign/Page/registerSeller/widgets/picturepicker.dart';
-import 'package:rusconsign/page/registerSeller/controller/mitra_controller.dart';
-import 'package:rusconsign/page/registerSeller/widgets/customtextfield.dart';
+import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
+import 'package:rusconsign/Page/registerSeller/widgets/customtextfield.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
@@ -81,18 +81,18 @@ class RegisterSeller extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () async {
                   String namaToko = controller.namaTokoController.text;
-                  String nama = controller.namaController.text;
+                  String nama_lengkap = controller.namaController.text;
                   String nis = controller.nisController.text;
                   String nomor = controller.nomorController.text;
                   File image_id_card = controllerImage.pickedImage.value!;
 
                   if (namaToko.isNotEmpty &&
-                      nama.isNotEmpty &&
+                      nama_lengkap.isNotEmpty &&
                       nis.isNotEmpty &&
                       nomor.isNotEmpty &&
                       image_id_card != null) {
                     await controller.registerMitra(
-                      nama,
+                      nama_lengkap,
                       namaToko,
                       int.parse(nis),
                       nomor,
