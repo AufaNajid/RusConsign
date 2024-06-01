@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/profilePage/widgets/tab_bar_profile.dart';
-import 'package:rusconsign/page/profilePage/widgets/profile_info_card.dart';
-import 'package:rusconsign/page/profilePage/widgets/customappbar.dart';
+import 'package:rusconsign/Page/profilePage/widgets/profile_info_card.dart';
+import 'package:rusconsign/Page/profilePage/widgets/customappbar.dart';
+import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -13,6 +14,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AuthLoginController dataProfile = Get.put(AuthLoginController());
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBarProfile(title: 'profil'.tr),
@@ -34,10 +36,14 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text("Raihan Pace",
-                    style: AppTextStyle().title(AppColors.titleLine)),
-                Text("raihanmaulana084@gmail.com",
-                    style: AppTextStyle().description(AppColors.description)),
+                Text(
+                  dataProfile.dataUsername.value,
+                  style: AppTextStyle().title(AppColors.titleLine),
+                ),
+                Text(
+                  dataProfile.dataEmail.value,
+                  style: AppTextStyle().description(AppColors.description),
+                ),
               ].withSpaceBetween(height: 5),
             ),
             Column(

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/registerSeller/register_seller_controller.dart';
 import 'package:rusconsign/Page/registerSeller/widgets/picturepicker.dart';
 import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
-import 'package:rusconsign/page/registerSeller/widgets/customtextfield.dart';
+import 'package:rusconsign/Page/registerSeller/widgets/customtextfield.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
