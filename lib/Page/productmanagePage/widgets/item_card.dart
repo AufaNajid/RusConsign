@@ -93,8 +93,8 @@ class ProductItemCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ButtonItemCard(icon: FeatherIcons.trash2, text: 'hapus'.tr, page: "",),
-                ButtonItemCard(icon: FeatherIcons.edit, text: 'edit'.tr, page: "",),
+                ButtonItemCardTrash(icon: FeatherIcons.trash2, text: 'hapus'.tr,),
+                ButtonItemCardEdit(icon: FeatherIcons.edit, text: 'edit'.tr,),
               ].withSpaceBetween(width:3),
             )
         
