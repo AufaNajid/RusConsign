@@ -11,6 +11,7 @@ import 'package:path/path.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:rusconsign/Api/User_service.dart';
 import 'package:rusconsign/Api/mitra_response.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../Api/product_response.dart';
 
 class MitraController extends GetxController {
@@ -45,10 +46,15 @@ class MitraController extends GetxController {
   Future<void> registerMitra(String nama, String namaToko, int nis, String noDompetDigital, File imageIdCard) async {
     isLoading.value = true;
 
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token =prefs.getString('token');
+
     var request = http.MultipartRequest(
       'POST',
       Uri.parse("https://rusconsign.com/api/registermitra"),
     );
+
+    request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['nama_lengkap'] = nama;
     request.fields['nama_toko'] = namaToko;
@@ -79,7 +85,7 @@ class MitraController extends GetxController {
       Mitra mitra = Mitra.fromJson(data);
       successfulRegister.value = true;
       message.value = "Registration successful";
-      print('Success: ${mitra.nama}');
+      print('Success: ${mitra.namaLengkap}');
       mitraId.value = mitra.id;
     } else {
       var responseBody = await response.stream.bytesToString();
