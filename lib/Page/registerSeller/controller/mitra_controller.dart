@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:rusconsign/Api/all_profile_response.dart';
 import 'package:rusconsign/Api/mitra_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,6 +47,7 @@ class MitraController extends GetxController {
   Future<void> initStatusMitra()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? status = prefs.getString("statuMitra");
+    print("Status Mitra Adalah ${status}");
 
     if(status != null) {
       statumitra.value = status;
@@ -56,8 +58,9 @@ class MitraController extends GetxController {
   Future<void> fecthProfile()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
+    print("Token User adalah${token}");
     var response = await http.get(
-        Uri.parse("https://rusconsign.com/api/mitra/show"),
+        Uri.parse("https://rusconsign.com/api/allprofile"),
         headers: {
           "Authorization":"Bearer ${token.toString()}"
         }
@@ -67,10 +70,11 @@ class MitraController extends GetxController {
      var responseBody = await response.body;
      print("Response Body${responseBody}");
      final data = json.decode(responseBody);
-     Mitra mitra = Mitra.fromJson(data);
-     String status = mitra.status;
-     print("Status Mitra Adalah: ${status}");
+     Profile profile = Profile.fromJson(data);
+     String status = profile.status;
      prefs.setString("statuMitra", status);
+   } else {
+     print("Eror FetchingProfile${response.statusCode}");
    }
 
   }
