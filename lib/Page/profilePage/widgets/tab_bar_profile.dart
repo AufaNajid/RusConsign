@@ -118,10 +118,20 @@ class _TabListState extends State<TabList>
                 controller: _tabController,
                 children: const [
                   PribadiSection(),
+                  Center(
+                    child: Text("Sedang Menunggu Admin"),
+                  ),
+                ],
+              );
+            } else if(mitraController.statumitra == "accepted"){
+              return TabBarView(
+                controller: _tabController,
+                children: const [
+                  PribadiSection(),
                   PenjualSectionTrue()
                 ],
               );
-            } else if(mitraController.statumitra == "accept"){
+            }else {
               return TabBarView(
                 controller: _tabController,
                 children: const [
@@ -129,8 +139,6 @@ class _TabListState extends State<TabList>
                   PenjualanSectionFalse()
                 ],
               );
-            }else {
-              return Container();
             }
           }),
         ),

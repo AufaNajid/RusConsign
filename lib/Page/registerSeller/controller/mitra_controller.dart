@@ -35,23 +35,43 @@ class MitraController extends GetxController {
   var mitraId = 0.obs;
 
   RxString statumitra = "".obs;
+
   @override
   void onInit() {
     super.onInit();
     fecthProfile();
+    initStatusMitra();
+  }
+
+  Future<void> initStatusMitra()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? status = prefs.getString("statuMitra");
+
+    if(status != null) {
+      statumitra.value = status;
+    }
+    await fecthProfile();
   }
 
   Future<void> fecthProfile()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
     var response = await http.get(
-      Uri.parse("https://rusconsign.com/api/registermitra"),
-      headers: {
-        "Authorization":"Bearer ${token.toString()}"
-      }
+        Uri.parse("https://rusconsign.com/api/mitra/show"),
+        headers: {
+          "Authorization":"Bearer ${token.toString()}"
+        }
     );
 
-    // statumitra.value = response.body.status;
+   if (response.statusCode == 200) {
+     var responseBody = await response.body;
+     print("Response Body${responseBody}");
+     final data = json.decode(responseBody);
+     Mitra mitra = Mitra.fromJson(data);
+     String status = mitra.status;
+     print("Status Mitra Adalah: ${status}");
+     prefs.setString("statuMitra", status);
+   }
 
   }
 
@@ -94,7 +114,7 @@ class MitraController extends GetxController {
 
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-        var responseBody = await response.stream.bytesToString();
+      var responseBody = await response.stream.bytesToString();
       final data = json.decode(responseBody);
       Mitra mitra = Mitra.fromJson(data);
       successfulRegister.value = true;
@@ -112,4 +132,3 @@ class MitraController extends GetxController {
 
 
 }
-

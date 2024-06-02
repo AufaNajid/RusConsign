@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Poppins',
           useMaterial3: true,
         ),
-      initialRoute: "/profilepage",
+      initialRoute: "/splash",
       getPages: routes,
       )
     );
