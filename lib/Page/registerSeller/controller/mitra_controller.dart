@@ -44,39 +44,35 @@ class MitraController extends GetxController {
     initStatusMitra();
   }
 
-  Future<void> initStatusMitra()async{
+  Future<void> initStatusMitra() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? status = prefs.getString("statuMitra");
+    String? status = prefs.getString("statusMitra");
     print("Status Mitra Adalah ${status}");
 
-    if(status != null) {
+    if (status != null) {
       statumitra.value = status;
     }
     await fecthProfile();
   }
 
-  Future<void> fecthProfile()async{
+  Future<void> fecthProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
     print("Token User adalah${token}");
     var response = await http.get(
         Uri.parse("https://rusconsign.com/api/allprofile"),
-        headers: {
-          "Authorization":"Bearer ${token.toString()}"
-        }
-    );
+        headers: {"Authorization": "Bearer ${token.toString()}"});
 
-   if (response.statusCode == 200) {
-     var responseBody = await response.body;
-     print("Response Body${responseBody}");
-     final data = json.decode(responseBody);
-     Profile profile = Profile.fromJson(data);
-     String status = profile.status;
-     prefs.setString("statuMitra", status);
-   } else {
-     print("Eror FetchingProfile${response.statusCode}");
-   }
+    if (response.statusCode == 200) {
+      ModelResponseProfile responseProfile =
+          modelResponseProfileFromJson(response.body);
 
+      prefs.setString("statusMitra", responseProfile.data.status.toString());
+
+      print(prefs.getString("statusMitra"));
+    } else {
+      print("Eror FetchingProfile${response.statusCode}");
+    }
   }
 
   Future<void> registerMitra(String nama, String namaToko, int nis,
@@ -109,13 +105,12 @@ class MitraController extends GetxController {
     );
     request.files.add(multipartFile);
 
-    print("Sending request with fields: ${request
-        .fields} and file: ${multipartFile.filename}");
+    print(
+        "Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");
 
     var response = await request.send();
 
     print("Response status: ${response.statusCode}");
-
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       var responseBody = await response.stream.bytesToString();
@@ -126,13 +121,7 @@ class MitraController extends GetxController {
       print('Success: ${mitra.nama_lengkap}');
       mitraId.value = mitra.id;
 
-
       isLoading.value = false;
     }
   }
-
-
-
-
-
 }
