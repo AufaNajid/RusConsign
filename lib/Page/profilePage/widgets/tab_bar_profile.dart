@@ -16,8 +16,7 @@ class TabList extends StatefulWidget {
   _TabListState createState() => _TabListState();
 }
 
-class _TabListState extends State<TabList>
-    with SingleTickerProviderStateMixin {
+class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   late Color _borderColor1;
   late Color _borderColor2;
@@ -125,21 +124,16 @@ class _TabListState extends State<TabList>
                   ),
                 ],
               );
-            } else if(mitraController.statumitra == "accepted"){
+            } else if (mitraController.statumitra == "accepted" &&
+                mitraController.isAccepted == true) {
               return TabBarView(
                 controller: _tabController,
-                children: const [
-                  PribadiSection(),
-                  PenjualSectionTrue()
-                ],
+                children: const [PribadiSection(), PenjualSectionTrue()],
               );
-            }else {
+            } else {
               return TabBarView(
                 controller: _tabController,
-                children: const [
-                  PribadiSection(),
-                  PenjualanSectionFalse()
-                ],
+                children: const [PribadiSection(), PenjualanSectionFalse()],
               );
             }
           }),

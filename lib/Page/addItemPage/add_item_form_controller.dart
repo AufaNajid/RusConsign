@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, unnecessary_overrides
+// ignore_for_file: avoid_print, unnecessary_overrides, depend_on_referenced_packages
 
 import 'dart:convert';
 import 'dart:io';
@@ -6,30 +6,21 @@ import 'package:path/path.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/add_barang_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddItemFormController extends GetxController {
-  // final TextEditingController namaController = TextEditingController();
-  // final TextEditingController namajasaController = TextEditingController();
-  // final TextEditingController namaTokoController = TextEditingController();
-  // final TextEditingController nisController = TextEditingController();
-  // final TextEditingController nomorController = TextEditingController();
   final TextEditingController namaproductController = TextEditingController();
   final TextEditingController deskripsiController = TextEditingController();
   final TextEditingController hargaController = TextEditingController();
-  final TextEditingController ratingController = TextEditingController();
-  // final TextEditingController imageController = TextEditingController();
   final currentIndex = 0.obs;
   final _selectedIndex = 0.obs;
   RxBool successfulAddProduct = false.obs;
   RxBool isLoading = false.obs;
-  RxBool successfulRegister = false.obs;
   RxBool successfulAddJasa = false.obs;
   RxString message = "".obs;
-  var pickedImage = Rxn<File>();
+  var pickedImage = Rxn<File?>();
 
   int get selectedIndex => _selectedIndex.value;
 
@@ -47,17 +38,17 @@ class AddItemFormController extends GetxController {
     _selectedIndex.value = index;
     update();
     _selectedIndex.refresh();
-    print("Selected Index adalah ${_selectedIndex}");
+    print("Selected Index adalah $_selectedIndex");
   }
 
   Future<void> addProduct(File imageProduct,
       String namaProduk, String descProduk, String harga ) async {
     isLoading.value = true;
-    String category = _selectedIndex.value.toString();
+    int category = _selectedIndex.value;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    print("Token Update Barang ${token}");
+    print("Token Update Barang $token");
 
     var request = http.MultipartRequest(
       'POST',
@@ -69,8 +60,7 @@ class AddItemFormController extends GetxController {
     request.fields['nama_barang'] = namaProduk;
     request.fields['deskrpsi'] = descProduk;
     request.fields["harga"] = harga;
-    request.fields["rating_barang"] = category;
-    request.fields["category_id"] = category;
+    request.fields["category_id"] = category.toString();
 
     var imageStream = http.ByteStream(imageProduct.openRead());
     var imageLength = await imageProduct.length();

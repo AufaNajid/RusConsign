@@ -14,80 +14,94 @@ class ProductManagePage extends StatelessWidget {
   ProductManagePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: CommonAppBar(title: 'kelolaPJ'.tr),
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: Column(
             children: [
-              const SearchItemProductManage(),
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FilterProductButton(text: 'semua'.tr, icon: FeatherIcons.alignJustify, index: 0),
-                  FilterProductButton(text: 'jasa'.tr, icon: FeatherIcons.users, index: 1),
-                  FilterProductButton(text: 'produk'.tr, icon: FeatherIcons.box, index: 2)
-                ].withSpaceBetween(width: 10),
+                  const SearchItemProductManage(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      FilterProductButton(
+                          text: 'semua'.tr,
+                          icon: FeatherIcons.alignJustify,
+                          index: 0),
+                      FilterProductButton(
+                        text: 'jasa'.tr,
+                        icon: FeatherIcons.users,
+                        index: 1,
+                      ),
+                      FilterProductButton(
+                        text: 'produk'.tr,
+                        icon: FeatherIcons.box,
+                        index: 2,
+                      ),
+                    ].withSpaceBetween(width: 10),
+                  ),
+                ].withSpaceBetween(height: 5),
               ),
-              Obx(() {
-                      if (controller.selectedIndex == 1) {
-                        return ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          shrinkWrap: true,
-                          itemCount: 5,
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const SizedBox(height: 10);
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            return const ProductItemCard(
-                              price: 10000,
-                              imagePath: 'https://via.placeholder.com/150',
-                              nameProduct: 'service',
-                            );
-                          },
+              Obx(
+                () {
+                  if (controller.selectedIndex == 1) {
+                    return ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(height: 12);
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return const ProductItemCard(
+                          price: 10000,
+                          imagePath: 'https://via.placeholder.com/150',
+                          nameProduct: 'service',
                         );
-                      }
-                      else if (controller.selectedIndex == 2) {
-                        return ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          shrinkWrap: true,
-                          itemCount: 5,
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const SizedBox(height: 10);
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            return const ProductItemCard(
-                              price: 10000,
-                              imagePath: 'https://via.placeholder.com/150',
-                              nameProduct: 'product',
-                            );
-                          },
-                        );}
-                        else{
-                                              return ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          shrinkWrap: true,
-                          itemCount: 5,
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const SizedBox(height: 10);
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            return const ProductItemCard(
-                              price: 10000,
-                              imagePath: 'https://via.placeholder.com/150',
-                              nameProduct: 'product & service',
-                            );
-                          },
+                      },
+                    );
+                  } else if (controller.selectedIndex == 2) {
+                    return ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(height: 12);
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return const ProductItemCard(
+                          price: 10000,
+                          imagePath: 'https://via.placeholder.com/150',
+                          nameProduct: 'product',
                         );
-                        }
-                      })
-            ],
+                      },
+                    );
+                  } else {
+                    return ListView.separated(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(height: 12);
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return const ProductItemCard(
+                          price: 10000,
+                          imagePath: 'https://via.placeholder.com/150',
+                          nameProduct: 'product & service',
+                        );
+                      },
+                    );
+                  }
+                },
+              ),
+            ].withSpaceBetween(height: 10),
           ),
         ),
       ),

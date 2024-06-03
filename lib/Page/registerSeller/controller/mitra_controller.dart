@@ -14,15 +14,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class MitraController extends GetxController {
   final TextEditingController namaController = TextEditingController();
-  // final TextEditingController namajasaController = TextEditingController();
   final TextEditingController namaTokoController = TextEditingController();
   final TextEditingController nisController = TextEditingController();
   final TextEditingController nomorController = TextEditingController();
-  // final TextEditingController namaproductController = TextEditingController();
-  // final TextEditingController deskripsiController = TextEditingController();
-  // final TextEditingController hargaController = TextEditingController();
-  // final TextEditingController ratingController = TextEditingController();
-  // final TextEditingController imageController = TextEditingController();
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxBool successfulEditProduct = false.obs;
@@ -30,7 +24,6 @@ class MitraController extends GetxController {
   RxBool successfulEditJasa = false.obs;
   RxBool successfulDestroyJasa = false.obs;
   RxString message = "".obs;
-  RxBool isPending = false.obs;
   RxBool isAccepted = false.obs;
   var pickedImage = Rx<File?>(null);
   var mitraId = 0.obs;
@@ -42,7 +35,6 @@ class MitraController extends GetxController {
     super.onInit();
     fecthProfile();
     initStatusMitra();
-
   }
 
   Future<void> initStatusMitra() async {
@@ -66,10 +58,9 @@ class MitraController extends GetxController {
 
     if (response.statusCode == 200) {
       ModelResponseProfile responseProfile =
-      modelResponseProfileFromJson(response.body);
-
+          modelResponseProfileFromJson(response.body);
       prefs.setString("statusMitra", responseProfile.data.status.toString());
-
+      isAccepted.value = true;
       print(prefs.getString("statusMitra"));
     } else {
       print("Eror FetchingProfile${response.statusCode}");
@@ -121,7 +112,6 @@ class MitraController extends GetxController {
       message.value = "Registration successful";
       print('Success: ${mitra.namaLengkap}');
       mitraId.value = mitra.id;
-
       isLoading.value = false;
     }
   }
