@@ -42,6 +42,7 @@ class MitraController extends GetxController {
     super.onInit();
     fecthProfile();
     initStatusMitra();
+
   }
 
   Future<void> initStatusMitra() async {
@@ -76,7 +77,7 @@ class MitraController extends GetxController {
   }
 
   Future<void> registerMitra(String nama, String namaToko, int nis,
-      String noDompetDigital, File imageIdCard) async {
+      String nomor, File imageIdCard) async {
     isLoading.value = true;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -92,7 +93,7 @@ class MitraController extends GetxController {
     request.fields['nama_lengkap'] = nama;
     request.fields['nama_toko'] = namaToko;
     request.fields['nis'] = nis.toString();
-    request.fields['no_dompet_digital'] = noDompetDigital;
+    request.fields['no_dompet_digital'] = nomor;
 
     var imageStream = http.ByteStream(imageIdCard.openRead());
     var imageLength = await imageIdCard.length();

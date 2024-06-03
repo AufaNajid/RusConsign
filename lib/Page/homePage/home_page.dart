@@ -283,10 +283,10 @@ class HomePage extends StatelessWidget {
                                         final product =
                                             controller.productList[index];
                                         return ProductCard(
-                                          imagePath: product.image,
-                                          title: product.namaProduct,
+                                          imagePath: product.imageBarang,
+                                          title: product.namaBarang,
                                           price: product.harga,
-                                          rating: product.rating,
+                                          rating: product.ratingBarang.toDouble(),
                                           productId: product.id,
                                         );
                                       },
@@ -345,10 +345,10 @@ class HomePage extends StatelessWidget {
                                         final product =
                                             controller.productList[index];
                                         return ProductCard(
-                                          imagePath: product.image,
-                                          title: product.namaProduct,
+                                          imagePath: product.imageBarang,
+                                          title: product.namaBarang,
                                           price: product.harga,
-                                          rating: product.rating,
+                                          rating: product.ratingBarang.toDouble(),
                                           productId: product.id,
                                         );
                                       },
@@ -407,10 +407,10 @@ class HomePage extends StatelessWidget {
                                         final product =
                                             controller.productList[index];
                                         return ProductCard(
-                                          imagePath: product.image,
-                                          title: product.namaProduct,
+                                          imagePath: product.imageBarang,
+                                          title: product.namaBarang,
                                           price: product.harga,
-                                          rating: product.rating,
+                                          rating: product.ratingBarang.toDouble(),
                                           productId: product.id,
                                         );
                                       },

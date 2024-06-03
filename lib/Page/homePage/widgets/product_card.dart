@@ -23,16 +23,17 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const imageUrl = "https://rusconsign.com/api";
     return Card(
       elevation: 0,
       color: AppColors.cardIconFill,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      child: GestureDetector(
-        onTap: () {
-          Get.toNamed("/detailpage", arguments: productId);
-        },
+      child: InkWell(
+         onTap: (){
+           Get.toNamed("/detailpage", arguments: productId);
+         } ,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           child: Column(
@@ -44,7 +45,7 @@ class ProductCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image.network(
-                    imagePath,
+                    "${imageUrl}${imagePath}",
                     fit: BoxFit.cover,
                   ),
                 ),

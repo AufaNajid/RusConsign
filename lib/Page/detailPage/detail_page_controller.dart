@@ -1,6 +1,9 @@
 // ignore_for_file: avoid_print
 
 import 'package:get/get.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:rusconsign/Api/all_barang_response.dart';
 import 'package:rusconsign/Api/product_response.dart';
 import 'package:rusconsign/Page/homePage/home_page_controller.dart';
 
@@ -10,7 +13,8 @@ class DetailPageController extends GetxController {
   var thumbsUpClicked = false.obs;
   var thumbsDownClicked = false.obs;
   var isAddCart = false.obs;
-  var product = Rx<Datum?>(null);
+  var productDetail = Rxn<Barang>();
+
 
   void toggleFavorite() {
     isFavorite.value = !isFavorite.value;
@@ -36,19 +40,22 @@ class DetailPageController extends GetxController {
   void onInit() {
     super.onInit();
     final productId = Get.arguments as int;
-    fetchProduct(productId);
+    fetchProductDetail(productId);
   }
 
-  fetchProduct(int productId) async {
-    try {
-      isLoading(true);
-      final homeController = Get.find<HomePageController>();
-      final fetchedProduct = homeController.productList.firstWhere((product) => product.id == productId);
-      product.value = fetchedProduct;
-    } catch (e) {
-      print("Error: $e");
-    } finally {
-      isLoading(false);
+  fetchProductDetail(int productId) async {
+    isLoading(true);
+    final response = await http.get(Uri.parse('https://rusconsign.com/api/barang/$productId'));
+
+    if (response.statusCode == 200) {
+      var jsonResponse = json.decode(response.body);
+      Barang product = Barang.fromJson(jsonResponse['barang']);
+      productDetail.value = product;
+      print('Product fetched successfully');
+    } else {
+      print('Failed to fetch product: ${response.statusCode}');
     }
+
+    isLoading(false);
   }
 }

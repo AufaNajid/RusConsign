@@ -1,6 +1,10 @@
 // ignore_for_file: avoid_print
 
 import 'package:get/get.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:rusconsign/Api/all_barang_response.dart';
+import 'package:rusconsign/Api/all_barang_response.dart';
 import 'package:rusconsign/Api/product_response.dart';
 import 'package:rusconsign/Page/homePage/home_page_controller.dart';
 
@@ -11,7 +15,7 @@ class CheckoutPageController extends GetxController {
   var selectedTitle = 'QRIS'.obs;
   var expanded = false.obs;
   RxBool isLoading = false.obs;
-  var product = Rx<Datum?>(null);
+  var productDetail = Rxn<Barang>();
 
 
   var items = <Map<String, String>>[
@@ -51,15 +55,18 @@ class CheckoutPageController extends GetxController {
   }
 
   fetchProduct(int productID) async {
-    try {
-      isLoading(true);
-      final homeController = Get.find<HomePageController>();
-      final fetchedProduct = homeController.productList.firstWhere((product) => product.id == productID);
-      product.value = fetchedProduct;
-    } catch (e) {
-      print("Error: $e");
-    } finally {
-      isLoading(false);
+    isLoading(true);
+    final response = await http.get(Uri.parse('https://rusconsign.com/api/barang/$productID'));
+
+    if (response.statusCode == 200) {
+      var jsonResponse = json.decode(response.body);
+      Barang product = Barang.fromJson(jsonResponse['barang']);
+      productDetail.value = product;
+      print('Product fetched successfully');
+    } else {
+      print('Failed to fetch product: ${response.statusCode}');
     }
+
+    isLoading(false);
   }
 }
