@@ -19,16 +19,17 @@ class DetailPage extends StatelessWidget {
   int? idProduct;
   @override
   Widget build(BuildContext context) {
+    const imageUrl = "https://rusconsign.com/api";
     return Scaffold(
       appBar: CommonAppBar(title: 'detailProduk'.tr),
       backgroundColor: AppColors.background,
       body: Obx((){
       if (controller.isLoading.value) {
         return const Center(child: CircularProgressIndicator());
-      } else if (controller.product.value == null) {
+      } else if (controller.productDetail.value == null) {
         return const Center(child: Text('Product not found'));
       } else {
-        final product = controller.product.value!;
+        final product = controller.productDetail.value!;
         return SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
@@ -36,7 +37,7 @@ class DetailPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                product.image,
+                "${imageUrl}${product.imageBarang}",
                 fit: BoxFit.cover,
                 height: AppResponsive().screenHeight(context) * 0.35,
                 width: double.infinity,
@@ -113,11 +114,11 @@ class DetailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          product.namaProduct,
+                          product.namaBarang,
                           style: AppTextStyle().title(AppColors.titleLine),
                         ),
                         Text(
-                          product.deskripsi,
+                          product.deskrpsi,
                           style:
                           AppTextStyle().description(AppColors.description),
                         ),
@@ -149,7 +150,7 @@ class DetailPage extends StatelessWidget {
                               ],
                             ),
                             Text(
-                              product.rating.toString(),
+                              product.ratingBarang.toString(),
                               style:
                               AppTextStyle().subHeader(AppColors.description),
                             ),
@@ -454,7 +455,7 @@ class DetailPage extends StatelessWidget {
       }
       }),
       bottomNavigationBar: Obx((){
-        final product = controller.product.value!;
+        final product = controller.productDetail.value!;
         return SizedBox(
           width: double.infinity,
           height: AppResponsive().screenHeight(context) * 0.08,

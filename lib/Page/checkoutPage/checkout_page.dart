@@ -22,10 +22,10 @@ class ChekcoutPage extends StatelessWidget {
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
-        } else if (controller.product.value == null) {
+        } else if (controller.productDetail.value == null) {
           return const Center(child: Text('Product not found'));
         } else {
-          final product = controller.product.value!;
+          final product = controller.productDetail.value!;
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -41,11 +41,11 @@ class ChekcoutPage extends StatelessWidget {
                         style: AppTextStyle().header(AppColors.titleLine),
                       ),
                       ItemCheckout(
-                        imagePath: product.image,
-                        title: product.namaProduct,
+                        imagePath: product.imageBarang,
+                        title: product.namaBarang,
                         profileImagePath: 'https://via.placeholder.com/40x40',
                         profileName: 'bagas Prasetyo',
-                        rating: product.rating,
+                        rating: product.ratingBarang,
                         price: product.harga,
                         quantity: 2,
                       ),

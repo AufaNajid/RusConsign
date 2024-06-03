@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:rusconsign/Api/all_barang_response.dart';
 import '../../Api/jasa_response.dart';
 import '../../Api/product_response.dart';
 
@@ -12,7 +13,7 @@ class HomePageController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxString message = "".obs;
-  var productList = <Datum>[].obs;
+  var productList = <Barang>[].obs;
 
   int get selectedIndex => _selectedIndex.value;
 
@@ -29,23 +30,16 @@ class HomePageController extends GetxController {
   void onInit(){
     super.onInit();
     fetchProduct();
+
   }
 
   fetchProduct() async {
-    try {
-      isLoading(true);
-      final response = await http.get(Uri.parse('https://rusconsign.com/api/barang'));
-      if (response.statusCode == 200) {
-        final Map<String, dynamic> jsonResponse = json.decode(response.body);
-        final List<dynamic> data = jsonResponse["data"];
-        productList.value = data.map((json) => Datum.fromJson(json)).toList();
-      } else {
-        print('Request failed with status: ${response.statusCode}.');
-      }
-    } catch (e) {
-      print("Error: $e");
-    } finally {
-      isLoading.value = false;
+    final response = await http.get(Uri.parse('https://rusconsign.com/api/barang'));
+
+    if(response.statusCode == 200) {
+      AllBarangModel data = allBarangModelFromJson(response.body);
+      productList.value = data.barangs;
+      isLoading(false);
     }
   }
   Future<Jasa> fetchJasa(int jasaId) async {
