@@ -83,18 +83,18 @@ class RegisterSeller extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () async {
                   String namaToko = controller.namaTokoController.text;
-                  String nama = controller.namaController.text;
+                  String nama_lengkap = controller.namaController.text;
                   String nis = controller.nisController.text;
                   String nomor = controller.nomorController.text;
                   File imageIdCard = controllerImage.pickedImage.value!;
 
                   if (namaToko.isNotEmpty &&
-                      nama.isNotEmpty &&
+                      nama_lengkap.isNotEmpty &&
                       nis.isNotEmpty &&
                       nomor.isNotEmpty &&
                       imageIdCard != null) {
                     await controller.registerMitra(
-                      nama,
+                      nama_lengkap,
                       namaToko,
                       int.parse(nis),
                       nomor,

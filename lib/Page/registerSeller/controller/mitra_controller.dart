@@ -1,18 +1,16 @@
-// ignore_for_file: unused_import, depend_on_referenced_packages, unnecessary_overrides, avoid_print, unrelated_type_equality_checks
-
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:rusconsign/Api/User_service.dart';
+import 'package:rusconsign/Api/all_profile_response.dart';
 import 'package:rusconsign/Api/mitra_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../Api/product_response.dart';
 
 class MitraController extends GetxController {
   final TextEditingController namaController = TextEditingController();
@@ -37,17 +35,52 @@ class MitraController extends GetxController {
   var pickedImage = Rx<File?>(null);
   var mitraId = 0.obs;
 
+  RxString statumitra = "".obs;
+
   @override
   void onInit() {
     super.onInit();
-    // print("MitraController initialized");
+    fecthProfile();
+    initStatusMitra();
   }
 
-  Future<void> registerMitra(String nama, String namaToko, int nis, String noDompetDigital, File imageIdCard) async {
+  Future<void> initStatusMitra() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? status = prefs.getString("statusMitra");
+    print("Status Mitra Adalah ${status}");
+
+    if (status != null) {
+      statumitra.value = status;
+    }
+    await fecthProfile();
+  }
+
+  Future<void> fecthProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    print("Token User adalah${token}");
+    var response = await http.get(
+        Uri.parse("https://rusconsign.com/api/allprofile"),
+        headers: {"Authorization": "Bearer ${token.toString()}"});
+
+    if (response.statusCode == 200) {
+      ModelResponseProfile responseProfile =
+      modelResponseProfileFromJson(response.body);
+
+      prefs.setString("statusMitra", responseProfile.data.status.toString());
+
+      print(prefs.getString("statusMitra"));
+    } else {
+      print("Eror FetchingProfile${response.statusCode}");
+    }
+  }
+
+  Future<void> registerMitra(String nama, String namaToko, int nis,
+      String noDompetDigital, File imageIdCard) async {
     isLoading.value = true;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? token =prefs.getString('token');
+    String? token = prefs.getString('token');
 
     var request = http.MultipartRequest(
       'POST',
@@ -72,12 +105,12 @@ class MitraController extends GetxController {
     );
     request.files.add(multipartFile);
 
-    print("Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");
+    print(
+        "Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");
 
     var response = await request.send();
 
     print("Response status: ${response.statusCode}");
-
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       var responseBody = await response.stream.bytesToString();
@@ -85,54 +118,10 @@ class MitraController extends GetxController {
       Mitra mitra = Mitra.fromJson(data);
       successfulRegister.value = true;
       message.value = "Registration successful";
-      print('Success: ${mitra.namaLengkap}');
+      print('Success: ${mitra.nama_lengkap}');
       mitraId.value = mitra.id;
-    } else {
-      var responseBody = await response.stream.bytesToString();
-      final data = json.decode(responseBody);
-      successfulRegister.value = false;
-      message.value = data['message'] ?? 'Registration failed';
-      print('Failed to register: $responseBody');
+
       isLoading.value = false;
-      return;
     }
-
-    String? status = await getMitraStatus(mitraId.value);
-    if (status == 'accepted') {
-      updateSellerProfile(mitraId.value);
-    } else if (status == 'pending') {
-      isPending.value = true;
-      print('Registration is pending. Waiting for approval.');
-    }
-
-    isLoading.value = false;
-  }
-
-  Future<void> pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      pickedImage.value = File(pickedFile.path);
-    }
-  }
-
-  void updateSellerProfile(int mitraId) {
-    isAccepted.value = true;
-    print('Seller profile updated after acceptance by admin for Mitra ID: $mitraId');
-  }
-
-  bool canAccessFunction(int mitraId) {
-    return getMitraStatus(mitraId) == 'accepted';
-  }
-
-  void someRestrictedFunction() {
-    if (canAccessFunction(mitraId.value)) {
-      print('Akses diberikan untuk Mitra ID: ${mitraId.value}');
-    } else {
-      print('Akses ditolak untuk Mitra ID: ${mitraId.value}');
-    }
-  }
-
-  Future<String?> getMitraStatus(int mitraId) async {
-    return await UserService.getMitraStatus(mitraId);
   }
 }
