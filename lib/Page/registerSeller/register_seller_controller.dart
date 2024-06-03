@@ -6,9 +6,7 @@ class RegisterSellerController extends GetxController {
   var pickedImage = Rxn<File>();
 
   Future<void> pickImage() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       pickedImage.value = File(pickedFile.path);
     }

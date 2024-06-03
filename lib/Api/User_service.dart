@@ -1,17 +1,22 @@
-// ignore_for_file: file_names
-
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class UserService {
-  static const String _mitraStatusKey = 'mitra_status';
-
-  static Future<void> setMitraStatus(int mitraId, String status) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('$_mitraStatusKey$mitraId', status);
-  }
-
+class UserStatusService {
   static Future<String?> getMitraStatus(int mitraId) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('$_mitraStatusKey$mitraId');
+    try {
+      final response = await http.get(Uri.parse('https://rusconsign.com/api/mitra/status/$mitraId'));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        return data['status'];
+      } else {
+        print('Failed to load status: ${response.statusCode}');
+        return null;
+      }
+    } catch (e) {
+      print('Error fetching mitra status: $e');
+      return null;
+    }
   }
 }
