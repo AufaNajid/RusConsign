@@ -14,15 +14,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class MitraController extends GetxController {
   final TextEditingController namaController = TextEditingController();
-  final TextEditingController namajasaController = TextEditingController();
+  // final TextEditingController namajasaController = TextEditingController();
   final TextEditingController namaTokoController = TextEditingController();
   final TextEditingController nisController = TextEditingController();
   final TextEditingController nomorController = TextEditingController();
-  final TextEditingController namaproductController = TextEditingController();
-  final TextEditingController deskripsiController = TextEditingController();
-  final TextEditingController hargaController = TextEditingController();
-  final TextEditingController ratingController = TextEditingController();
-  final TextEditingController imageController = TextEditingController();
+  // final TextEditingController namaproductController = TextEditingController();
+  // final TextEditingController deskripsiController = TextEditingController();
+  // final TextEditingController hargaController = TextEditingController();
+  // final TextEditingController ratingController = TextEditingController();
+  // final TextEditingController imageController = TextEditingController();
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxBool successfulEditProduct = false.obs;

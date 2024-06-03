@@ -34,7 +34,7 @@ class HomePageController extends GetxController {
   fetchProduct() async {
     try {
       isLoading(true);
-      final response = await http.get(Uri.parse('https://rusconsign.com/api/product'));
+      final response = await http.get(Uri.parse('https://rusconsign.com/api/barang'));
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         final List<dynamic> data = jsonResponse["data"];
