@@ -44,46 +44,39 @@ class AuthLoginController extends GetxController {
 
   Future<void> login(String email, String password) async {
     isLoading.value = true;
-    try {
-      final response = await http.post(
-        Uri.parse('https://rusconsign.com/api/login'),
-        headers: <String, String>{
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json',
-        },
-        body: <String, String>{
-          'email': email,
-          'password': password,
-        },
-      );
+    final response = await http.post(
+      Uri.parse('https://rusconsign.com/api/login'),
+      headers: <String, String>{
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
+      },
+      body: <String, String>{
+        'email': email,
+        'password': password,
+      },
+    );
 
-      if (response.statusCode == 200) {
-        Map<String, dynamic> jsonResponse = json.decode(response.body);
-        bool status = jsonResponse['status'];
-        String message = jsonResponse['message'];
-        String? token = jsonResponse['token'];
+    if (response.statusCode == 200) {
+      Map<String, dynamic> jsonResponse = json.decode(response.body);
+      bool status = jsonResponse['status'];
+      String message = jsonResponse['message'];
+      String? token = jsonResponse['token'];
 
-        if (status) {
-          await prefs.setString('token', token!);
-          this.message.value = message;
-          successfulLogin.value = true;
-          box.write('done', successfulLogin.value);
+      if (status) {
+        await prefs.setString('token', token!);
+        this.message.value = message;
+        successfulLogin.value = true;
+        box.write('done', successfulLogin.value);
 
-          box.write('email', email);
-          await emailData();
-        } else {
-          this.message.value = message;
-          successfulLogin.value = false;
-        }
+        box.write('email', email);
+        await emailData();
       } else {
+        this.message.value = message;
         successfulLogin.value = false;
-        message.value = 'Failed to load data';
       }
-    } catch (e) {
+    } else {
       successfulLogin.value = false;
-      message.value = 'An error occurred: $e';
-    } finally {
-      isLoading.value = false;
+      message.value = 'gagalDesc'.tr;
     }
   }
 
