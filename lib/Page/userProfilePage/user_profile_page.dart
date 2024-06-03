@@ -205,6 +205,7 @@ class UserProfilePage extends StatelessWidget {
                               title: 'Judul Jasa $index',
                               price: 12000,
                               rating: (index % 5) + 1,
+                              productId: 1,
                             );
                           },
                         );
@@ -226,6 +227,7 @@ class UserProfilePage extends StatelessWidget {
                               title: 'Judul Produk $index',
                               price: 12000,
                               rating: (index % 5) + 1,
+                              productId: 1,
                             );
                           },
                         );
@@ -248,6 +250,7 @@ class UserProfilePage extends StatelessWidget {
                                   'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
                               price: 12000,
                               rating: (index % 5) + 1,
+                              productId: 1,
                             );
                           },
                         );

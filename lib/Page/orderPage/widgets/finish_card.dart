@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 
 import '../../../utils/text_style.dart';
 
@@ -151,7 +152,7 @@ class FinishCard extends StatelessWidget {
                                           .textInfo(AppColors.description),
                                     ),
                                     Text(
-                                      'Rp $totalProductPrice',
+                                      MoneyFormat.format(totalProductPrice),
                                       style: AppTextStyle()
                                           .textInfoBold(AppColors.hargaStat),
                                     ),

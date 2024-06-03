@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,7 +9,7 @@ import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/text_field_widget.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
-import '../../utils/text_style.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 class LoginPage extends StatelessWidget {
   final GoogleController googleController = GoogleController();
@@ -56,7 +58,8 @@ class LoginPage extends StatelessWidget {
                           child: Text(
                             textAlign: TextAlign.left,
                             'lupaPassword'.tr,
-                            style: AppTextStyle().description(AppColors.description),
+                            style: AppTextStyle()
+                                .description(AppColors.description),
                           ),
                         ),
                       ],
@@ -70,19 +73,42 @@ class LoginPage extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () async {
                       String email = controller.emailTextEditingController.text;
-                      String password = controller.passwordTextEditingController.text;
+                      String password =
+                          controller.passwordTextEditingController.text;
 
                       if (email.isNotEmpty && password.isNotEmpty) {
                         await controller.login(email, password);
                         if (controller.successfulLogin.value) {
                           Get.offNamed('/menu');
                         } else {
-                          Get.snackbar('Error', controller.message.value);
+                          Get.snackbar(
+                            duration: const Duration(seconds: 2),
+                            borderRadius: 10,
+                            margin: const EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 20,
+                            ),
+                            'gagal'.tr,
+                            controller.message.value,
+                            backgroundColor: AppColors.error,
+                            colorText: Colors.white,
+                          );
                         }
                       } else {
-                        controller.message.value = "Please fill in all fields";
+                        controller.message.value = 'isiDeskripsi'.tr;
                         controller.successfulLogin.value = false;
-                        Get.snackbar('Error', controller.message.value);
+                        Get.snackbar(
+                          duration: const Duration(seconds: 2),
+                          borderRadius: 10,
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 20,
+                          ),
+                          'isi'.tr,
+                          controller.message.value,
+                          backgroundColor: AppColors.error,
+                          colorText: Colors.white,
+                        );
                       }
                     },
                     style: ButtonStyle(
@@ -136,7 +162,8 @@ class LoginPage extends StatelessWidget {
                       },
                       child: Text(
                         "Register",
-                        style: AppTextStyle().descriptionBold(AppColors.description),
+                        style: AppTextStyle()
+                            .descriptionBold(AppColors.description),
                       ),
                     ),
                   ],
@@ -150,7 +177,8 @@ class LoginPage extends StatelessWidget {
                       child: Text(
                         'descLogin'.tr,
                         textAlign: TextAlign.center,
-                        style: AppTextStyle().description(AppColors.description),
+                        style:
+                            AppTextStyle().description(AppColors.description),
                       ),
                     ),
                   ],
@@ -164,23 +192,24 @@ class LoginPage extends StatelessWidget {
   }
 
   Future<void> _signinWithGoogle() async {
-    final GoogleSignIn _googleSignIn = GoogleSignIn();
-    final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
     try {
-      final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
 
       if (googleSignInAccount != null) {
-        final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
 
         final AuthCredential credential = GoogleAuthProvider.credential(
           idToken: googleSignInAuthentication.idToken,
           accessToken: googleSignInAuthentication.accessToken,
         );
 
-        await _firebaseAuth.signInWithCredential(credential);
+        await firebaseAuth.signInWithCredential(credential);
         print("Sign in with Google succeeded");
-        // Setelah berhasil login, arahkan pengguna ke halaman lain
         Get.offNamed('/menu');
       } else {
         print("Sign in aborted by user");
@@ -190,4 +219,3 @@ class LoginPage extends StatelessWidget {
     }
   }
 }
-

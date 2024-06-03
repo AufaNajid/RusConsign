@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class FavoriteCard extends StatelessWidget {
@@ -35,7 +36,7 @@ class FavoriteCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed("/detailpage");
+          Get.toNamed("/detailpage", arguments: 1);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -131,7 +132,7 @@ class FavoriteCard extends StatelessWidget {
                                     .textInfo(AppColors.description),
                               ),
                               Text(
-                                'Rp $price',
+                                MoneyFormat.format(price),
                                 style: AppTextStyle()
                                     .textInfoBold(AppColors.hargaStat),
                               ),

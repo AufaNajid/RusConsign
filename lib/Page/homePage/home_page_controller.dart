@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -10,7 +12,7 @@ class HomePageController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxString message = "".obs;
-  RxList<Datum> productList = <Datum>[].obs;
+  var productList = <Datum>[].obs;
 
   int get selectedIndex => _selectedIndex.value;
 
@@ -23,19 +25,20 @@ class HomePageController extends GetxController {
     update();
     _selectedIndex.refresh();
   }
-
+  @override
   void onInit(){
     super.onInit();
     fetchProduct();
   }
 
   fetchProduct() async {
-    isLoading.value = true;
     try {
-      final response = await http.get(Uri.parse('https://rusconsign.com/api/product'));
+      isLoading(true);
+      final response = await http.get(Uri.parse('https://rusconsign.com/api/barang'));
       if (response.statusCode == 200) {
-        var productResponse = Product.fromJson(json.decode(response.body));
-        productList.value = productResponse.data;  // Periksa bahwa `data` adalah List<Datum>
+        final Map<String, dynamic> jsonResponse = json.decode(response.body);
+        final List<dynamic> data = jsonResponse["data"];
+        productList.value = data.map((json) => Datum.fromJson(json)).toList();
       } else {
         print('Request failed with status: ${response.statusCode}.');
       }

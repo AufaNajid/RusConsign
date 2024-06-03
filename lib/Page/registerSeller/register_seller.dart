@@ -1,11 +1,13 @@
+// ignore_for_file: must_be_immutable, unnecessary_null_comparison
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/registerSeller/register_seller_controller.dart';
 import 'package:rusconsign/Page/registerSeller/widgets/picturepicker.dart';
-import 'package:rusconsign/page/registerSeller/controller/mitra_controller.dart';
-import 'package:rusconsign/page/registerSeller/widgets/customtextfield.dart';
+import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
+import 'package:rusconsign/Page/registerSeller/widgets/customtextfield.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
@@ -16,10 +18,10 @@ class RegisterSeller extends StatelessWidget {
 
   final MitraController controller = Get.put(MitraController());
   final RegisterSellerController controllerImage = Get.put(RegisterSellerController());
-  final TextEditingController namaController = TextEditingController();
-  final TextEditingController namaTokoController = TextEditingController();
-  final TextEditingController nisController = TextEditingController();
-  final TextEditingController nomorController = TextEditingController();
+  // final TextEditingController namaController = TextEditingController();
+  // final TextEditingController nomorController = TextEditingController();
+  // final TextEditingController namaTokoController = TextEditingController();
+  // final TextEditingController nisController = TextEditingController();
   var pickedImage = Rx<File?>(null);
 
   @override
@@ -81,22 +83,22 @@ class RegisterSeller extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () async {
                   String namaToko = controller.namaTokoController.text;
-                  String nama = controller.namaController.text;
+                  String namaLengkap = controller.namaController.text;
                   String nis = controller.nisController.text;
                   String nomor = controller.nomorController.text;
-                  File image_id_card = controllerImage.pickedImage.value!;
+                  File imageIdCard = controllerImage.pickedImage.value!;
 
                   if (namaToko.isNotEmpty &&
-                      nama.isNotEmpty &&
+                      namaLengkap.isNotEmpty &&
                       nis.isNotEmpty &&
                       nomor.isNotEmpty &&
-                      image_id_card != null) {
+                      imageIdCard != null) {
                     await controller.registerMitra(
-                      nama,
+                      namaLengkap,
                       namaToko,
                       int.parse(nis),
                       nomor,
-                      image_id_card,
+                      imageIdCard,
                     );
                     if (controller.successfulRegister.value == true) {
                       Get.offNamed("/waitingadmin");

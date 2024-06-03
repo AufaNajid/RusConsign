@@ -11,11 +11,13 @@ import 'package:rusconsign/utils/text_style.dart';
 class ProductItemCard extends StatelessWidget {
   final int price;
   final String imagePath;
+  final String nameProduct;
 
   const ProductItemCard({
     Key? key,
     required this.price,
     required this.imagePath,
+    required this.nameProduct,
   }) : super(key: key);
 
   @override
@@ -56,7 +58,7 @@ class ProductItemCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'ini service',
+                            nameProduct,
                             style: AppTextStyle().subHeader(AppColors.titleLine),
                           ),
                           SizedBox(
@@ -91,8 +93,8 @@ class ProductItemCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ButtonItemCard(icon: FeatherIcons.trash2, text: 'hapus'.tr, page: "",),
-                ButtonItemCard(icon: FeatherIcons.edit, text: 'edit'.tr, page: "",),
+                ButtonItemCardTrash(icon: FeatherIcons.trash2, text: 'hapus'.tr,),
+                ButtonItemCardEdit(icon: FeatherIcons.edit, text: 'edit'.tr,),
               ].withSpaceBetween(width:3),
             )
         
