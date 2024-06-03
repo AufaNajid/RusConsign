@@ -4,13 +4,12 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditDataProductController extends GetxController {
-   var pickedImage = Rxn<File>();
+  var pickedImage = Rxn<File>();
   final TextEditingController namaPJController = TextEditingController();
   final TextEditingController deskripsiController = TextEditingController();
   final TextEditingController hargaController = TextEditingController();
 
-
-    Future<void> pickImage() async {
+  Future<void> pickImage() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
@@ -18,5 +17,4 @@ class EditDataProductController extends GetxController {
       pickedImage.value = File(pickedFile.path);
     }
   }
-
 }

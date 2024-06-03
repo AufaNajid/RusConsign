@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
 import '../../Api/jasa_response.dart';
+// ignore: unused_import
 import '../../Api/product_response.dart';
 
 class HomePageController extends GetxController {

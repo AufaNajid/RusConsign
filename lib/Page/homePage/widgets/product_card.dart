@@ -31,9 +31,9 @@ class ProductCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: InkWell(
-         onTap: (){
-           Get.toNamed("/detailpage", arguments: productId);
-         } ,
+        onTap: () {
+          Get.toNamed("/detailpage", arguments: productId);
+        },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           child: Column(
@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image.network(
-                    "${imageUrl}${imagePath}",
+                    "$imageUrl$imagePath",
                     fit: BoxFit.cover,
                   ),
                 ),
