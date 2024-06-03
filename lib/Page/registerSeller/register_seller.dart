@@ -18,10 +18,10 @@ class RegisterSeller extends StatelessWidget {
 
   final MitraController controller = Get.put(MitraController());
   final RegisterSellerController controllerImage = Get.put(RegisterSellerController());
-  final TextEditingController namaController = TextEditingController();
-  final TextEditingController namaTokoController = TextEditingController();
-  final TextEditingController nisController = TextEditingController();
-  final TextEditingController nomorController = TextEditingController();
+  // final TextEditingController namaController = TextEditingController();
+  // final TextEditingController nomorController = TextEditingController();
+  // final TextEditingController namaTokoController = TextEditingController();
+  // final TextEditingController nisController = TextEditingController();
   var pickedImage = Rx<File?>(null);
 
   @override
