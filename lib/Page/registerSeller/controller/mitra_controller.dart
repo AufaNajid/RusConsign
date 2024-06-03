@@ -1,11 +1,11 @@
+// ignore_for_file: depend_on_referenced_packages, avoid_print, unnecessary_brace_in_string_interps
+
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:rusconsign/Api/all_profile_response.dart';
@@ -118,7 +118,7 @@ class MitraController extends GetxController {
       Mitra mitra = Mitra.fromJson(data);
       successfulRegister.value = true;
       message.value = "Registration successful";
-      print('Success: ${mitra.nama_lengkap}');
+      print('Success: ${mitra.namaLengkap}');
       mitraId.value = mitra.id;
 
       isLoading.value = false;

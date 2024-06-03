@@ -47,4 +47,6 @@ class AppColors {
   static Color nonActiveBar = darkMode.isDarkModeSwitched.value
       ? const Color(0xFF3C4756)
       : const Color(0xFFE1E1E1);
+  static const Color error = Color.fromARGB(255, 182, 61, 45);
+  static const Color success = Color.fromARGB(255, 91, 206, 63);
 }

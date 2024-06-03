@@ -162,6 +162,10 @@ class AppTranslation extends Translations {
           'pemberitahuan' : '*Kamu perlu me-restart aplikasi untuk mengubah preferensi',
           'namaToko' : 'Nama Toko',
           'belumAdaData' : 'Belum Ada Data',
+          'isi' : 'Isi Semua Data',
+          'isiDeskripsi' : 'Silahkan isi semua data yang diperlukan',
+          'gagal' : 'Gagal Login',
+          'gagalDesc' : 'Username atau kata sandi anda salah',
         },
         'English': {
           'bahasa': 'Language',
@@ -322,6 +326,10 @@ class AppTranslation extends Translations {
           'pemberitahuan' : '*You need to restart the app to change preferences',
           'namaToko' : 'Store Name',
           'belumAdaData' : 'There is no data yet',
+          'isi' : 'Fill All Data',
+          'isiDeskripsi' : 'Please fill in all the required data',
+          'gagal' : 'Login Failed',
+          'gagalDesc' : 'Your username or password is incorrect',
         }
       };
 }
