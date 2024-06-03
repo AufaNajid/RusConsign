@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProductCard extends StatelessWidget {
@@ -9,6 +10,7 @@ class ProductCard extends StatelessWidget {
   final String title;
   final int price;
   final double rating;
+  final int productId;
 
   const ProductCard({
     super.key,
@@ -16,6 +18,7 @@ class ProductCard extends StatelessWidget {
     required this.title,
     required this.price,
     required this.rating,
+    required this.productId,
   });
 
   @override
@@ -28,7 +31,7 @@ class ProductCard extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed("/detailpage");
+          Get.toNamed("/detailpage", arguments: productId);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
@@ -59,7 +62,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Rp $price',
+                    MoneyFormat.format(price),
                     style: AppTextStyle().subHeader(AppColors.hargaStat),
                   ),
                   Row(

@@ -65,7 +65,7 @@ class MitraController extends GetxController {
 
     if (response.statusCode == 200) {
       ModelResponseProfile responseProfile =
-          modelResponseProfileFromJson(response.body);
+      modelResponseProfileFromJson(response.body);
 
       prefs.setString("statusMitra", responseProfile.data.status.toString());
 

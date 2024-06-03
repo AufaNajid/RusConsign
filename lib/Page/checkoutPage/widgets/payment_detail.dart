@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class PaymentDetail extends StatelessWidget {
@@ -39,7 +40,7 @@ class PaymentDetail extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    "Rp $subPrice".toString(),
+                    MoneyFormat.format(subPrice),
                     style: AppTextStyle().descriptionBold(AppColors.hargaStat),
                     textAlign: TextAlign.end,
                   )
@@ -54,7 +55,7 @@ class PaymentDetail extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    "Rp $adminPrice".toString(),
+                    MoneyFormat.format(adminPrice),
                     style: AppTextStyle().descriptionBold(AppColors.hargaStat),
                     textAlign: TextAlign.end,
                   )
@@ -70,7 +71,7 @@ class PaymentDetail extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    "Rp $totalPrice",
+                    MoneyFormat.format(totalPrice),
                     style: AppTextStyle().header(AppColors.hargaStat),
                     textAlign: TextAlign.end,
                   )
