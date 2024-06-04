@@ -112,9 +112,9 @@ class ChekcoutPage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   if (controller.selectedPaymentMethod.value == 'QRIS') {
-                    Get.toNamed("/qrispayment");
+                    Get.offNamed("/qrispayment");
                   } else {
-                    Get.toNamed("/paymentdone");
+                    Get.offAllNamed("/paymentdone");
                   }
                 },
                 style: ElevatedButton.styleFrom(

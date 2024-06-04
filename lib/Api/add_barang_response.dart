@@ -76,7 +76,7 @@ class Product {
   String namaBarang;
   String deskrpsi;
   String harga;
-  String ratingBarang;
+  double ratingBarang;
   String categoryId;
   String imageBarang;
   int mitraId;
@@ -98,16 +98,16 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-    namaBarang: json["nama_barang"],
-    deskrpsi: json["deskripsi"],
-    harga: json["harga"],
-    ratingBarang: json["rating_barang"],
-    categoryId: json["category_id"],
-    imageBarang: json["image_barang"],
-    mitraId: json["mitra_id"],
-    updatedAt: DateTime.parse(json["updated_at"]),
-    createdAt: DateTime.parse(json["created_at"]),
-    id: json["id"],
+    namaBarang: json["nama_barang"] ?? '',
+    deskrpsi: json["deskrpsi"] ?? '',
+    harga: json["harga"] ?? '',
+    ratingBarang: json["rating_barang"] ?? 0,
+    categoryId: json["category_id"] ?? '',
+    imageBarang: json["image_barang"] ?? '',
+    mitraId: json["mitra_id"] ?? 0,
+    updatedAt: json["updated_at"] != null ? DateTime.parse(json["updated_at"]) : DateTime.now(),
+    createdAt: json["created_at"] != null ? DateTime.parse(json["created_at"]) : DateTime.now(),
+    id: json["id"] ?? 0,
   );
 
   Map<String, dynamic> toJson() => {

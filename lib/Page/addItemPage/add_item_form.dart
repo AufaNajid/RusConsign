@@ -132,7 +132,7 @@ class AddItemForm extends StatelessWidget {
             Expanded(
               child: ElevatedButton(
                 onPressed: () async {
-                  File imageProduct = controllerImage.pickedImage.value!;
+                  File? imageProduct = controllerImage.pickedImage.value;
                   String namaProduk = controller.namaproductController.text;
                   String deskripsi = controller.deskripsiController.text;
                   String harga = controller.hargaController.text;
