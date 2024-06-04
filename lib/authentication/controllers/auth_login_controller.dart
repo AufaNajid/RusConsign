@@ -61,6 +61,7 @@ class AuthLoginController extends GetxController {
       bool status = jsonResponse['status'];
       String message = jsonResponse['message'];
       String? token = jsonResponse['token'];
+      print(token);
 
       if (status) {
         await prefs.setString('token', token!);
