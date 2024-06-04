@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/productmanagePage/widgets/button_item_card.dart';
+import 'package:rusconsign/Page/productmanagePage/widgets/button_item_card_delete.dart';
+import 'package:rusconsign/Page/productmanagePage/widgets/button_item_card_edit.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -13,6 +14,7 @@ class ProductItemCard extends StatelessWidget {
   final String imagePath;
   final String nameProduct;
   final String description;
+  final VoidCallback onPressed;
 
   const ProductItemCard({
     Key? key,
@@ -20,6 +22,7 @@ class ProductItemCard extends StatelessWidget {
     required this.imagePath,
     required this.nameProduct,
     required this.description,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -103,6 +106,7 @@ class ProductItemCard extends StatelessWidget {
                 ButtonItemCardTrash(
                   icon: FeatherIcons.trash2,
                   text: 'hapus'.tr,
+                  onPressed: onPressed
                 ),
                 ButtonItemCardEdit(
                   icon: FeatherIcons.edit,
