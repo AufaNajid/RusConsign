@@ -27,7 +27,6 @@ class AddItemFormController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // print("AddItemFormController initializaed");
   }
 
   void updateCurrentIndexIndicator(int index) {
@@ -41,7 +40,7 @@ class AddItemFormController extends GetxController {
     print("Selected Index adalah $_selectedIndex");
   }
 
-  Future<void> addProduct(File imageProduct,
+  Future<void> addProduct(File imageBarang,
       String namaProduk, String descProduk, String harga ) async {
     isLoading.value = true;
     int category = _selectedIndex.value;
@@ -52,24 +51,24 @@ class AddItemFormController extends GetxController {
 
     var request = http.MultipartRequest(
       'POST',
-      Uri.parse("https://rusconsign.com/api/add-barang")
+      Uri.parse("https://rusconsign.com/api/mitra/add-barang")
     );
 
     request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['nama_barang'] = namaProduk;
-    request.fields['deskrpsi'] = descProduk;
+    request.fields['deskripsi'] = descProduk;
     request.fields["harga"] = harga;
     request.fields["category_id"] = category.toString();
 
-    var imageStream = http.ByteStream(imageProduct.openRead());
-    var imageLength = await imageProduct.length();
+    var imageStream = http.ByteStream(imageBarang.openRead());
+    var imageLength = await imageBarang.length();
     var multipartFile = http.MultipartFile(
       'image_barang',
       imageStream,
       imageLength,
-      filename: basename(imageProduct.path),
-      contentType: MediaType('image', 'jpeg'),
+      filename: basename(imageBarang.path),
+      contentType: MediaType('image', 'jpeg,img,png,jpg'),
     );
     request.files.add(multipartFile);
 

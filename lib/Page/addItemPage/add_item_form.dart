@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/addItemPage/add_item_form_controller.dart';
-import 'package:rusconsign/Page/addItemPage/contoller/controllerPickImage.dart';
+import 'package:rusconsign/Page/addItemPage/contoller/controller_pick_image.dart';
 import 'package:rusconsign/Page/addItemPage/widgets/add_image_product.dart';
 import 'package:rusconsign/Page/addItemPage/widgets/category_button.dart';
 import 'package:rusconsign/Page/addItemPage/widgets/textfield.dart';
