@@ -12,16 +12,19 @@ class ProductItemCard extends StatelessWidget {
   final int price;
   final String imagePath;
   final String nameProduct;
+  final String description;
 
   const ProductItemCard({
     Key? key,
     required this.price,
     required this.imagePath,
     required this.nameProduct,
+    required this.description,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+     const imageUrl = "https://rusconsign.com/api";
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -40,7 +43,7 @@ class ProductItemCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
-                      imagePath,
+                      "$imageUrl$imagePath",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -65,7 +68,7 @@ class ProductItemCard extends StatelessWidget {
                           SizedBox(
                             width: AppResponsive().screenWidth(context) * 0.6,
                             child: Text(
-                              'Ampar ampar sigma, Sigma ku fanum tax Gyatt sebiji Dihurung skibidi Mangga rizzler mangga rizzler Mewing kai cenat Ligma dimakan sussy Apinya gooning mogging',
+                              description,
                               style: AppTextStyle()
                                   .textInfo(AppColors.description),
                               textAlign: TextAlign.start,

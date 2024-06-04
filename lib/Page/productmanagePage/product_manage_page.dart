@@ -59,10 +59,11 @@ class ProductManagePage extends StatelessWidget {
                         return const SizedBox(height: 12);
                       },
                       itemBuilder: (BuildContext context, int index) {
-                        return const ProductItemCard(
-                          price: 10000,
-                          imagePath: 'https://via.placeholder.com/150',
-                          nameProduct: 'service',
+                        return ProductItemCard(
+                          price: controller.productList[index].harga,
+                          imagePath: controller.productList[index].imageBarang,
+                          nameProduct: controller.productList[index].namaBarang,
+                          description: controller.productList[index].deskripsi,
                         );
                       },
                     );
@@ -75,10 +76,11 @@ class ProductManagePage extends StatelessWidget {
                         return const SizedBox(height: 12);
                       },
                       itemBuilder: (BuildContext context, int index) {
-                        return const ProductItemCard(
-                          price: 10000,
-                          imagePath: 'https://via.placeholder.com/150',
-                          nameProduct: 'product',
+                        return  ProductItemCard(
+                          price: controller.productList[index].harga,
+                          imagePath: controller.productList[index].imageBarang,
+                          nameProduct: controller.productList[index].namaBarang,
+                          description: controller.productList[index].deskripsi,
                         );
                       },
                     );
@@ -86,15 +88,16 @@ class ProductManagePage extends StatelessWidget {
                     return ListView.separated(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: 5,
+                      itemCount: controller.productList.length,
                       separatorBuilder: (BuildContext context, int index) {
                         return const SizedBox(height: 12);
                       },
                       itemBuilder: (BuildContext context, int index) {
-                        return const ProductItemCard(
-                          price: 10000,
-                          imagePath: 'https://via.placeholder.com/150',
-                          nameProduct: 'product & service',
+                        return ProductItemCard(
+                          price: controller.productList[index].harga,
+                          imagePath: controller.productList[index].imageBarang,
+                          nameProduct: controller.productList[index].namaBarang,
+                          description: controller.productList[index].deskripsi,
                         );
                       },
                     );
