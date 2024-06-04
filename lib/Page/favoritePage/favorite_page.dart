@@ -27,12 +27,12 @@ class FavoritePage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return FavoriteCard(
               onDelete: () {},
-              imagePath: 'https://via.placeholder.com/50x50',
+              imagePath: 'https://fakeimg.pl/50x50?text=Placeholder&font=museo',
               title:
                   'Product uadnadiadiadiwd awujdniandiandadjnwa iadniandandaikd aikujdnaidnad',
               price: 12000,
               rating: (index % 5) + 1,
-              profileImagePath: 'https://via.placeholder.com/30x30',
+              profileImagePath: 'https://fakeimg.pl/30x30?text=Placeholder&font=museo',
               profileUsername: 'Username Toko',
             );
           },

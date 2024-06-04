@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:rusconsign/Api/all_barang_response.dart';
 import 'package:rusconsign/Api/detail_barang_response.dart';
 
 class DetailService {
@@ -11,6 +9,7 @@ class DetailService {
       Uri.parse("https://rusconsign.com/api/barang/$productId"),
     );
 
+    // ignore: avoid_print
     print(response.body);
 
     if(response.statusCode == 200) {

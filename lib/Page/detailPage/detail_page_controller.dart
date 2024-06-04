@@ -1,8 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:rusconsign/Api/all_barang_response.dart';
 import 'package:rusconsign/Api/detail_barang_response.dart';
 import 'package:rusconsign/Page/detailPage/service/detail_service.dart';
 
@@ -42,9 +40,12 @@ class DetailPageController extends GetxController with StateMixin<DetailBarangMo
   }
   void loadData(int productId) async {
     try {
+      isLoading(true);
       change(await DetailService.fetchProductDetail(productId), status: RxStatus.success());
-    } catch (e) {
-
+    // ignore: empty_catches
+    } finally {
+      isLoading.value = false;
     }
+    update();
   }
 }

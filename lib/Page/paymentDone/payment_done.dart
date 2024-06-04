@@ -21,7 +21,7 @@ class PaymentDone extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed("/menu");
+                    Get.offAllNamed("/menu");
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.button2,
