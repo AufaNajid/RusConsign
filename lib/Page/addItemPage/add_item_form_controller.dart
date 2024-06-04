@@ -80,6 +80,7 @@ class AddItemFormController extends GetxController {
     print("Response status: ${response.statusCode}");
 
     if (response.statusCode == 200 || response.statusCode == 201) {
+      isLoading.value = true;
       var responseBody = await response.stream.bytesToString();
       final data =  json.decode(responseBody);
       Product product = Product.fromJson(data);
