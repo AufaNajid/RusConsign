@@ -118,7 +118,7 @@ class DetailPage extends StatelessWidget {
                           style: AppTextStyle().title(AppColors.titleLine),
                         ),
                         Text(
-                          product.deskrpsi,
+                          product.deskripsi,
                           style:
                           AppTextStyle().description(AppColors.description),
                         ),

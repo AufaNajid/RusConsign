@@ -31,7 +31,7 @@ class AllBarangModel {
 class Barang {
   int id;
   String namaBarang;
-  String deskrpsi;
+  String deskripsi;
   int harga;
   int ratingBarang;
   String categoryName;
@@ -43,7 +43,7 @@ class Barang {
   Barang({
     required this.id,
     required this.namaBarang,
-    required this.deskrpsi,
+    required this.deskripsi,
     required this.harga,
     required this.ratingBarang,
     required this.categoryName,
@@ -56,7 +56,7 @@ class Barang {
   factory Barang.fromJson(Map<String, dynamic> json) => Barang(
     id: json["id"],
     namaBarang: json["nama_barang"],
-    deskrpsi: json["deskrpsi"],
+    deskripsi: json["deskrpsi"],
     harga: json["harga"],
     ratingBarang: json["rating_barang"],
     categoryName: json["category_name"],
@@ -69,7 +69,7 @@ class Barang {
   Map<String, dynamic> toJson() => {
     "id": id,
     "nama_barang": namaBarang,
-    "deskrpsi": deskrpsi,
+    "deskrpsi": deskripsi,
     "harga": harga,
     "rating_barang": ratingBarang,
     "category_name": categoryName,
