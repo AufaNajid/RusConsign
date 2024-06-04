@@ -4,6 +4,8 @@ import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+
 import 'package:rusconsign/Page/detailPage/detail_page_controller.dart';
 import 'package:rusconsign/Page/detailPage/widgets/comment_card.dart';
 import 'package:rusconsign/utils/colors.dart';
@@ -13,31 +15,23 @@ import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import '../../utils/app_responsive.dart';
 
-class DetailPage extends StatelessWidget {
-  final controller = Get.put(DetailPageController());
+class DetailPage extends GetView<DetailPageController> {
   DetailPage({Key? key, this.idProduct}) : super(key: key);
   int? idProduct;
   @override
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api";
     return Scaffold(
-      appBar: CommonAppBar(title: 'detailProduk'.tr),
-      backgroundColor: AppColors.background,
-      body: Obx((){
-      if (controller.isLoading.value) {
-        return const Center(child: CircularProgressIndicator());
-      } else if (controller.productDetail.value == null) {
-        return const Center(child: Text('Product not found'));
-      } else {
-        final product = controller.productDetail.value!;
-        return SingleChildScrollView(
+        appBar: CommonAppBar(title: 'detailProduk'.tr),
+        backgroundColor: AppColors.background,
+        body: controller.obx((state) => SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                "${imageUrl}${product.imageBarang}",
+                "${imageUrl}${state!.barang.imageBarang}",
                 fit: BoxFit.cover,
                 height: AppResponsive().screenHeight(context) * 0.35,
                 width: double.infinity,
@@ -55,7 +49,8 @@ class DetailPage extends StatelessWidget {
                         Row(
                           children: [
                             SizedBox(
-                              width: AppResponsive().screenWidth(context) * 0.2,
+                              width: AppResponsive().screenWidth(context) *
+                                  0.2,
                               height: 30,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(4),
@@ -64,8 +59,7 @@ class DetailPage extends StatelessWidget {
                                   child: Center(
                                     child: Text(
                                       'produk'.tr,
-                                      style: AppTextStyle()
-                                          .descriptionBold(
+                                      style: AppTextStyle().descriptionBold(
                                           AppColors.textButton1),
                                     ),
                                   ),
@@ -88,21 +82,20 @@ class DetailPage extends StatelessWidget {
                             child: Material(
                               color: AppColors.cardIconFill,
                               child: Obx(
-                                    () =>
-                                    GestureDetector(
-                                      onTap: () {
-                                        controller.toggleFavorite();
-                                      },
-                                      child: Icon(
-                                        controller.isFavorite.value
-                                            ? Icons.favorite_rounded
-                                            : Icons.favorite_border_rounded,
-                                        color: controller.isFavorite.value
-                                            ? AppColors.hargaStat
-                                            : AppColors.borderIcon,
-                                        size: 24,
-                                      ),
-                                    ),
+                                    () => GestureDetector(
+                                  onTap: () {
+                                    controller.toggleFavorite();
+                                  },
+                                  child: Icon(
+                                    controller.isFavorite.value
+                                        ? Icons.favorite_rounded
+                                        : Icons.favorite_border_rounded,
+                                    color: controller.isFavorite.value
+                                        ? AppColors.hargaStat
+                                        : AppColors.borderIcon,
+                                    size: 24,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -114,13 +107,14 @@ class DetailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          product.namaBarang,
+                          "${state.barang.namaBarang}",
                           style: AppTextStyle().title(AppColors.titleLine),
+                          textAlign: TextAlign.start,
                         ),
                         Text(
-                          product.deskripsi,
-                          style:
-                          AppTextStyle().description(AppColors.description),
+                          state.barang.deskripsi,
+                          style: AppTextStyle()
+                              .description(AppColors.description),
                         ),
                       ].withSpaceBetween(height: 10),
                     ),
@@ -128,7 +122,7 @@ class DetailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          MoneyFormat.format(product.harga),
+                          MoneyFormat.format(state.barang.harga),
                           style: AppTextStyle().title(AppColors.hargaStat),
                         ),
                         const Spacer(),
@@ -150,9 +144,9 @@ class DetailPage extends StatelessWidget {
                               ],
                             ),
                             Text(
-                              product.ratingBarang.toString(),
-                              style:
-                              AppTextStyle().subHeader(AppColors.description),
+                              state.barang.ratingBarang.toString(),
+                              style: AppTextStyle()
+                                  .subHeader(AppColors.description),
                             ),
                           ].withSpaceBetween(width: 5),
                         ),
@@ -188,14 +182,16 @@ class DetailPage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Bagas Prasetyo',
+                                  state.barang.mitra.namaLengkap,
                                   style: AppTextStyle()
                                       .description(AppColors.titleLine),
                                 ),
                                 const SizedBox(height: 4),
                                 Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                  MainAxisAlignment.start,
                                   children: [
                                     SizedBox(
                                       height: 30,
@@ -204,10 +200,12 @@ class DetailPage extends StatelessWidget {
                                           Get.toNamed("/chatpage");
                                         },
                                         style: ButtonStyle(
-                                          padding: const MaterialStatePropertyAll(
+                                          padding:
+                                          const MaterialStatePropertyAll(
                                               EdgeInsets.zero),
                                           elevation:
-                                          const MaterialStatePropertyAll(0),
+                                          const MaterialStatePropertyAll(
+                                              0),
                                           shape: MaterialStatePropertyAll(
                                             RoundedRectangleBorder(
                                               borderRadius:
@@ -220,7 +218,8 @@ class DetailPage extends StatelessWidget {
                                         ),
                                         child: Text(
                                           'chatPenjual'.tr,
-                                          style: AppTextStyle().textInfoBold(
+                                          style: AppTextStyle()
+                                              .textInfoBold(
                                               AppColors.textButton2),
                                         ),
                                       ),
@@ -232,10 +231,12 @@ class DetailPage extends StatelessWidget {
                                           Get.toNamed('/userprofilepage');
                                         },
                                         style: ButtonStyle(
-                                          padding: const MaterialStatePropertyAll(
+                                          padding:
+                                          const MaterialStatePropertyAll(
                                               EdgeInsets.zero),
                                           elevation:
-                                          const MaterialStatePropertyAll(0),
+                                          const MaterialStatePropertyAll(
+                                              0),
                                           shape: MaterialStatePropertyAll(
                                             RoundedRectangleBorder(
                                               borderRadius:
@@ -248,7 +249,8 @@ class DetailPage extends StatelessWidget {
                                         ),
                                         child: Text(
                                           'lihatToko'.tr,
-                                          style: AppTextStyle().textInfoBold(
+                                          style: AppTextStyle()
+                                              .textInfoBold(
                                               AppColors.textButton2),
                                         ),
                                       ),
@@ -259,12 +261,12 @@ class DetailPage extends StatelessWidget {
                             ),
                             Expanded(
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment
-                                    .spaceAround,
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceAround,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .start,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
                                         width: 75,
@@ -273,14 +275,15 @@ class DetailPage extends StatelessWidget {
                                           MainAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'jumlahProduk'.tr,
+                                              "Jumlah Produk".tr,
                                               style: AppTextStyle()
                                                   .textInfo(
                                                   AppColors.titleLine),
                                             ),
                                             const Spacer(),
                                             Text(
-                                              '2',
+                                              state.barang.mitra.jumlahProduct
+                                                  .toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(
                                                   AppColors.hargaStat),
@@ -302,7 +305,7 @@ class DetailPage extends StatelessWidget {
                                             ),
                                             const Spacer(),
                                             Text(
-                                              '4.5',
+                                              state.barang.mitra.penilaian.toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(
                                                   AppColors.hargaStat),
@@ -313,8 +316,8 @@ class DetailPage extends StatelessWidget {
                                     ].withSpaceBetween(height: 20),
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .start,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
                                         width: 90,
@@ -330,7 +333,7 @@ class DetailPage extends StatelessWidget {
                                             ),
                                             const Spacer(),
                                             Text(
-                                              '5',
+                                              state.barang.mitra.jumlahJasa.toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(
                                                   AppColors.hargaStat),
@@ -379,7 +382,8 @@ class DetailPage extends StatelessWidget {
                       children: [
                         Text(
                           'penilaianProduk'.tr,
-                          style: AppTextStyle().subHeader(AppColors.titleLine),
+                          style:
+                          AppTextStyle().subHeader(AppColors.titleLine),
                         ),
                         const Spacer(),
                         Column(
@@ -401,22 +405,21 @@ class DetailPage extends StatelessWidget {
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               itemCount: 5,
-                              itemBuilder: (context, _) =>
-                                  Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.star,
-                                        color: AppColors.bintang,
-                                        size: 18,
-                                      ),
-                                      Icon(
-                                        Icons.star_border_rounded,
-                                        color: AppColors.borderIcon,
-                                        size: 20,
-                                      ),
-                                    ],
+                              itemBuilder: (context, _) => Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.star,
+                                    color: AppColors.bintang,
+                                    size: 18,
                                   ),
+                                  Icon(
+                                    Icons.star_border_rounded,
+                                    color: AppColors.borderIcon,
+                                    size: 20,
+                                  ),
+                                ],
+                              ),
                               onRatingUpdate: (rating) {},
                             ),
                           ].withSpaceBetween(height: 5),
@@ -451,12 +454,9 @@ class DetailPage extends StatelessWidget {
               ),
             ].withSpaceBetween(height: 15),
           ),
-        );
-      }
-      }),
-      bottomNavigationBar: Obx((){
-        final product = controller.productDetail.value!;
-        return SizedBox(
+        ),
+            onLoading: Center(child: CircularProgressIndicator())),
+        bottomNavigationBar: controller.obx((state) => SizedBox(
           width: double.infinity,
           height: AppResponsive().screenHeight(context) * 0.08,
           child: Padding(
@@ -495,11 +495,13 @@ class DetailPage extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.toNamed('/checkoutpage', arguments: idProduct = product.id );
+                      Get.toNamed('/checkoutpage',
+                          arguments: idProduct = state!.barang.id);
                       print("ID Produk adalah ${idProduct}");
                     },
                     style: ButtonStyle(
-                        padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                        padding:
+                        const MaterialStatePropertyAll(EdgeInsets.zero),
                         elevation: const MaterialStatePropertyAll(0),
                         shape: MaterialStatePropertyAll(
                           RoundedRectangleBorder(
@@ -517,8 +519,7 @@ class DetailPage extends StatelessWidget {
               ],
             ),
           ),
-        );
-      })
+        ),)
     );
   }
 }
