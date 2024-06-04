@@ -34,7 +34,8 @@ class Barang {
   String deskripsi;
   int harga;
   int ratingBarang;
-  String categoryName;
+  int categoryId;
+  String categoryNama;
   String imageBarang;
   DateTime createdAt;
   DateTime updatedAt;
@@ -46,7 +47,8 @@ class Barang {
     required this.deskripsi,
     required this.harga,
     required this.ratingBarang,
-    required this.categoryName,
+    required this.categoryId,
+    required this.categoryNama,
     required this.imageBarang,
     required this.createdAt,
     required this.updatedAt,
@@ -59,7 +61,8 @@ class Barang {
     deskripsi: json["deskripsi"],
     harga: json["harga"],
     ratingBarang: json["rating_barang"],
-    categoryName: json["category_name"],
+    categoryId: json["category_id"],
+    categoryNama: json["category_nama"],
     imageBarang: json["image_barang"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
@@ -72,7 +75,8 @@ class Barang {
     "deskripsi": deskripsi,
     "harga": harga,
     "rating_barang": ratingBarang,
-    "category_name": categoryName,
+    "category_id": categoryId,
+    "category_nama": categoryNama,
     "image_barang": imageBarang,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
@@ -85,7 +89,7 @@ class Mitra {
   String namaLengkap;
   int jumlahProduct;
   int jumlahJasa;
-  dynamic pengikut;
+  int pengikut;
   int penilaian;
 
   Mitra({
