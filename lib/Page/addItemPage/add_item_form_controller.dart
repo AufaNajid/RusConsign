@@ -59,7 +59,6 @@ class AddItemFormController extends GetxController {
     request.fields['nama_barang'] = namaProduk;
     request.fields['deskripsi'] = descProduk;
     request.fields["harga"] = harga;
-    request.fields["rating_barang"] = category.toString();
     request.fields["category_id"] = category.toString();
 
     var imageStream = http.ByteStream(imageBarang.openRead());
