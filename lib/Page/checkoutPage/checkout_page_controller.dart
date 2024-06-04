@@ -4,9 +4,6 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
-import 'package:rusconsign/Api/all_barang_response.dart';
-import 'package:rusconsign/Api/product_response.dart';
-import 'package:rusconsign/Page/homePage/home_page_controller.dart';
 
 
 class CheckoutPageController extends GetxController {

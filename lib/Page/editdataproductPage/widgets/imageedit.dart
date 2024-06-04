@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/editdataproductPage/edit_data_product_controller.dart';
+import 'package:rusconsign/Page/editDataProductPage/edit_data_product_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';

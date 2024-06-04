@@ -39,13 +39,12 @@ class DetailPageController extends GetxController with StateMixin<DetailBarangMo
     super.onInit();
     final productId = Get.arguments as int;
     loadData(productId);
-    }
-    void loadData(int productId) async {
+  }
+  void loadData(int productId) async {
     try {
       change(await DetailService.fetchProductDetail(productId), status: RxStatus.success());
     } catch (e) {
 
     }
-    }
   }
-
+}
