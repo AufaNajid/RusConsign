@@ -1,30 +1,30 @@
 // To parse this JSON data, do
 //
-//     final allBarangResponse = allBarangResponseFromJson(jsonString);
+//     final detailBarangModel = detailBarangModelFromJson(jsonString);
 
 import 'dart:convert';
 
-AllBarangResponse allBarangResponseFromJson(String str) => AllBarangResponse.fromJson(json.decode(str));
+DetailBarangModel detailBarangModelFromJson(String str) => DetailBarangModel.fromJson(json.decode(str));
 
-String allBarangResponseToJson(AllBarangResponse data) => json.encode(data.toJson());
+String detailBarangModelToJson(DetailBarangModel data) => json.encode(data.toJson());
 
-class AllBarangResponse {
+class DetailBarangModel {
   String message;
-  List<Barang> barangs;
+  Barang barang;
 
-  AllBarangResponse({
+  DetailBarangModel({
     required this.message,
-    required this.barangs,
+    required this.barang,
   });
 
-  factory AllBarangResponse.fromJson(Map<String, dynamic> json) => AllBarangResponse(
+  factory DetailBarangModel.fromJson(Map<String, dynamic> json) => DetailBarangModel(
     message: json["message"],
-    barangs: List<Barang>.from(json["barangs"].map((x) => Barang.fromJson(x))),
+    barang: Barang.fromJson(json["barang"]),
   );
 
   Map<String, dynamic> toJson() => {
     "message": message,
-    "barangs": List<dynamic>.from(barangs.map((x) => x.toJson())),
+    "barang": barang.toJson(),
   };
 }
 

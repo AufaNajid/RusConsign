@@ -35,9 +35,9 @@ class HomePageController extends GetxController {
 
   fetchProduct() async {
     final response = await http.get(Uri.parse('https://rusconsign.com/api/barang'));
-
+    print ("Status Code ${response.statusCode}");
     if(response.statusCode == 200) {
-      AllBarangModel data = allBarangModelFromJson(response.body);
+      AllBarangResponse data = allBarangResponseFromJson(response.body);
       productList.value = data.barangs;
       isLoading(false);
     }

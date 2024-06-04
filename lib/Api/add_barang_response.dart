@@ -99,7 +99,7 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
     namaBarang: json["nama_barang"],
-    deskrpsi: json["deskrpsi"],
+    deskrpsi: json["deskripsi"],
     harga: json["harga"],
     ratingBarang: json["rating_barang"],
     categoryId: json["category_id"],
@@ -112,7 +112,7 @@ class Product {
 
   Map<String, dynamic> toJson() => {
     "nama_barang": namaBarang,
-    "deskrpsi": deskrpsi,
+    "deskripsi": deskrpsi,
     "harga": harga,
     "rating_barang": ratingBarang,
     "category_id": categoryId,

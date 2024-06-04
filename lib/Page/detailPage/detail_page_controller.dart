@@ -1,19 +1,17 @@
 // ignore_for_file: avoid_print
 
 import 'package:get/get.dart';
-import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
-import 'package:rusconsign/Api/product_response.dart';
-import 'package:rusconsign/Page/homePage/home_page_controller.dart';
+import 'package:rusconsign/Api/detail_barang_response.dart';
+import 'package:rusconsign/Page/detailPage/service/detail_service.dart';
 
-class DetailPageController extends GetxController {
+class DetailPageController extends GetxController with StateMixin<DetailBarangModel>{
   RxBool isLoading = false.obs;
   var isFavorite = false.obs;
   var thumbsUpClicked = false.obs;
   var thumbsDownClicked = false.obs;
   var isAddCart = false.obs;
-  var productDetail = Rxn<Barang>();
 
 
   void toggleFavorite() {
@@ -40,22 +38,14 @@ class DetailPageController extends GetxController {
   void onInit() {
     super.onInit();
     final productId = Get.arguments as int;
-    fetchProductDetail(productId);
-  }
-
-  fetchProductDetail(int productId) async {
-    isLoading(true);
-    final response = await http.get(Uri.parse('https://rusconsign.com/api/barang/$productId'));
-
-    if (response.statusCode == 200) {
-      var jsonResponse = json.decode(response.body);
-      Barang product = Barang.fromJson(jsonResponse['barang']);
-      productDetail.value = product;
-      print('Product fetched successfully');
-    } else {
-      print('Failed to fetch product: ${response.statusCode}');
+    loadData(productId);
     }
+    void loadData(int productId) async {
+    try {
+      change(await DetailService.fetchProductDetail(productId), status: RxStatus.success());
+    } catch (e) {
 
-    isLoading(false);
+    }
+    }
   }
-}
+

@@ -26,6 +26,7 @@ class ChekcoutPage extends StatelessWidget {
           return const Center(child: Text('Product not found'));
         } else {
           final product = controller.productDetail.value!;
+          final mitra = product.mitra;
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -44,7 +45,7 @@ class ChekcoutPage extends StatelessWidget {
                         imagePath: product.imageBarang,
                         title: product.namaBarang,
                         profileImagePath: 'https://via.placeholder.com/40x40',
-                        profileName: 'bagas Prasetyo',
+                        profileName: mitra.namaLengkap,
                         rating: product.ratingBarang,
                         price: product.harga,
                         quantity: 2,

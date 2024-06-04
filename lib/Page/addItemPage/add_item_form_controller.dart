@@ -61,13 +61,13 @@ class AddItemFormController extends GetxController {
 
     var request = http.MultipartRequest(
       'POST',
-      Uri.parse("https://rusconsign.com/api/add-barang")
+      Uri.parse("https://rusconsign.com/api/mitra/add-barang")
     );
 
     request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['nama_barang'] = namaProduk;
-    request.fields['deskrpsi'] = descProduk;
+    request.fields['deskripsi'] = descProduk;
     request.fields["harga"] = harga;
     request.fields["rating_barang"] = category;
     request.fields["category_id"] = category;
