@@ -15,6 +15,7 @@ class ProductItemCard extends StatelessWidget {
   final String nameProduct;
   final String description;
   final VoidCallback onPressed;
+  final VoidCallback onEdit;
 
   const ProductItemCard({
     Key? key,
@@ -23,11 +24,12 @@ class ProductItemCard extends StatelessWidget {
     required this.nameProduct,
     required this.description,
     required this.onPressed,
+    required this.onEdit,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-     const imageUrl = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api";
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -106,11 +108,12 @@ class ProductItemCard extends StatelessWidget {
                 ButtonItemCardTrash(
                   icon: FeatherIcons.trash2,
                   text: 'hapus'.tr,
-                  onPressed: onPressed
+                  onPressed: onPressed,
                 ),
                 ButtonItemCardEdit(
                   icon: FeatherIcons.edit,
                   text: 'edit'.tr,
+                  onPressed: onEdit,
                 ),
               ].withSpaceBetween(width: 10),
             )

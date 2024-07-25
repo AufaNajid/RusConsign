@@ -8,7 +8,6 @@ class ButtonItemCardTrash extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-
   const ButtonItemCardTrash({
     Key? key,
     required this.icon,
@@ -20,32 +19,33 @@ class ButtonItemCardTrash extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ElevatedButton.icon(
-            style: ButtonStyle(
-              elevation: const MaterialStatePropertyAll(0),
-              padding: const MaterialStatePropertyAll(EdgeInsets.zero),
-              backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-                return AppColors.button1;
-              }),
-              shape: MaterialStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6),
-                ),
-              ),
-              fixedSize: MaterialStatePropertyAll(
-                Size(AppResponsive().screenWidth(context) * 0.450,
-                    AppResponsive().screenWidth(context) * 0.04),
-              ),
+        style: ButtonStyle(
+          elevation: const MaterialStatePropertyAll(0),
+          padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+          backgroundColor: MaterialStateProperty.resolveWith<Color>(
+            (states) {
+              return AppColors.button1;
+            },
+          ),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6),
             ),
-            icon: Icon(
-              icon,
-              color: AppColors.activeIconType
+          ),
+          fixedSize: MaterialStatePropertyAll(
+            Size(
+              AppResponsive().screenWidth(context) * 0.450,
+              AppResponsive().screenWidth(context) * 0.04,
             ),
-            label: Text(
-              text,
-              style: AppTextStyle().subHeader(AppColors.textButton1)
-              ),
-            onPressed: onPressed,
-            ),
+          ),
+        ),
+        icon: Icon(icon, color: AppColors.activeIconType),
+        label: Text(
+          text,
+          style: AppTextStyle().subHeader(AppColors.textButton1),
+        ),
+        onPressed: onPressed,
+      ),
     );
   }
 }

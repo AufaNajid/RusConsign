@@ -30,29 +30,26 @@ class ProductManageController extends GetxController {
     super.onInit();
     fetchProductMitra();
   }
-  
-  
+
   fetchProductMitra() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('token');
-     String? idMitra = prefs.getString('idMitra');
-     print(idMitra);
+      String? idMitra = prefs.getString('idMitra');
+      print(idMitra);
       final response = await http.get(
         Uri.parse('https://rusconsign.com/api/mitra/$idMitra'),
-        
         headers: <String, String>{
           'Authorization': "Bearer ${token.toString()}",
         },
       );
-  
-      if(response.statusCode == 200) {
+
+      if (response.statusCode == 200) {
         ProductMitraList data = productMitraListFromJson(response.body);
         productList.value = data.barangs;
         isLoading(false);
         print(response.body);
         print("Token User adalah${token}");
-        
       }
     } catch (e) {
       print('Error: $e');
@@ -60,26 +57,24 @@ class ProductManageController extends GetxController {
   }
 
   Future<void> deleteBarang(int idBarang) async {
-  try {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? token = prefs.getString('token');
-    final response = await http.delete(
-      Uri.parse('https://rusconsign.com/api/mitra/delete-barang/$idBarang'),
-      headers: <String, String>{
-        'Authorization': "Bearer ${token.toString()}",
-      },
-    );
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('token');
+      final response = await http.delete(
+        Uri.parse('https://rusconsign.com/api/mitra/delete-barang/$idBarang'),
+        headers: <String, String>{
+          'Authorization': "Bearer ${token.toString()}",
+        },
+      );
 
-    if (response.statusCode == 200) {
-      fetchProductMitra();
-      print('Barang deleted successfully');
-
-    } else {
-      // If the server did not return a 200 OK response, then throw an exception.
-      throw Exception('Failed to delete barang');
+      if (response.statusCode == 200) {
+        fetchProductMitra();
+        print('Barang deleted successfully');
+      } else {
+        throw Exception('Failed to delete barang');
+      }
+    } catch (e) {
+      print('Error: $e');
     }
-  } catch (e) {
-    print('Error: $e');
   }
-}
 }
