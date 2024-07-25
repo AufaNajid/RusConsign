@@ -82,9 +82,9 @@ class DetailPage extends GetView<DetailPageController> {
                             child: Material(
                               color: AppColors.cardIconFill,
                               child: Obx(
-                                () => GestureDetector(
+                                    () => GestureDetector(
                                   onTap: () {
-                                    controller.toggleFavorite();
+                                    controller.toggleFavorite(state.barang.id);
                                   },
                                   child: Icon(
                                     controller.isFavorite.value
@@ -433,11 +433,9 @@ class DetailPage extends GetView<DetailPageController> {
                           like: 142,
                           disLike: 12,
                           onliked: () {
-                            controller.toggleThumbsUp();
+                            (){};
                           },
-                          ondisliked: () {
-                            controller.toggleThumbsDown();
-                          },
+                          ondisliked: () {},
                         );
                       },
                     ),
@@ -467,7 +465,7 @@ class DetailPage extends GetView<DetailPageController> {
                       child: Obx(
                         () => GestureDetector(
                           onTap: () {
-                            controller.toggleAddcart();
+                            (){};
                           },
                           child: Icon(
                             controller.isAddCart.value

@@ -46,7 +46,7 @@ class ChekcoutPage extends StatelessWidget {
                         title: product.namaBarang,
                         profileImagePath: 'https://via.placeholder.com/40x40',
                         profileName: mitra.namaLengkap,
-                        rating: product.ratingBarang.toInt(),
+                        rating: product.ratingBarang.toDouble(),
                         price: product.harga,
                         quantity: 2,
                       ),

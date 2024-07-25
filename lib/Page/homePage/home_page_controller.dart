@@ -1,12 +1,8 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
-import '../../Api/jasa_response.dart';
-// ignore: unused_import
-import '../../Api/product_response.dart';
 
 class HomePageController extends GetxController {
   final currentIndex = 0.obs;
@@ -24,33 +20,38 @@ class HomePageController extends GetxController {
 
   void setSelectedFilter(int index) {
     _selectedIndex.value = index;
+    fetchProduct(index); // Fetch products based on selected filter
     update();
     _selectedIndex.refresh();
   }
-  @override
-  void onInit(){
-    super.onInit();
-    fetchProduct();
 
+  @override
+  void onInit() {
+    super.onInit();
+    fetchProduct(0); // Default fetch all products
   }
 
-  fetchProduct() async {
+  Future<void> fetchProduct(int filter) async {
     isLoading.value = true;
-    final response = await http.get(Uri.parse('https://rusconsign.com/api/barang'));
-    print ("Status Code ${response.statusCode}");
-    if(response.statusCode == 200) {
+    Uri uri;
+
+    if (filter == 1) {
+      uri = Uri.parse(
+          'https://rusconsign.com/api/accepted-barangs?category_id=2');
+    } else if (filter == 2) {
+      uri = Uri.parse(
+          'https://rusconsign.com/api/accepted-barangs?category_id=1');
+    } else {
+      uri = Uri.parse('https://rusconsign.com/api/accepted-barangs');
+    }
+
+    final response = await http.get(uri);
+    if (response.statusCode == 200) {
       AllBarangResponse data = allBarangResponseFromJson(response.body);
       productList.value = data.barangs;
-      isLoading(false);
-    }
-  }
-  Future<Jasa> fetchJasa(int jasaId) async {
-    final response = await http.get(Uri.parse('https:/https://rusconsign.com/api/jasas'));
-
-    if (response.statusCode == 200) {
-      return Jasa.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load Jasa');
+      productList.clear();
     }
+    isLoading.value = false;
   }
 }

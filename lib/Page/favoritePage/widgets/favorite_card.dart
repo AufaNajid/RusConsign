@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
@@ -13,8 +12,10 @@ class FavoriteCard extends StatelessWidget {
   final String profileImagePath;
   final String profileUsername;
   final int price;
+  final int idBarang;
   final double rating;
-  final VoidCallback onDelete;
+  final bool isFavorite;
+  final VoidCallback onFavoriteToggle;
 
   const FavoriteCard({
     Key? key,
@@ -22,13 +23,17 @@ class FavoriteCard extends StatelessWidget {
     required this.title,
     required this.price,
     required this.rating,
+    required this.idBarang,
     required this.profileImagePath,
     required this.profileUsername,
-    required this.onDelete,
+    required this.isFavorite,
+    required this.onFavoriteToggle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print("id barang adalah $idBarang");
+    const imageUrl = "https://rusconsign.com/api";
     return Card(
       elevation: 0,
       color: AppColors.cardIconFill,
@@ -36,7 +41,7 @@ class FavoriteCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed("/detailpage", arguments: 1);
+          Get.toNamed("/detailpage", arguments: idBarang);
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -49,7 +54,7 @@ class FavoriteCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image.network(
-                    imagePath,
+                    "$imageUrl$imagePath",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -78,7 +83,7 @@ class FavoriteCard extends StatelessWidget {
                                 width: 25,
                                 child: ClipOval(
                                   child: Image.network(
-                                    profileImagePath,
+                                    "$imageUrl$profileImagePath",
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -142,12 +147,14 @@ class FavoriteCard extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        onDelete;
-                      },
-                      child: const Icon(
-                        FeatherIcons.trash2,
-                        color: AppColors.button1,
+                      onTap: onFavoriteToggle,
+                      child: Icon(
+                        isFavorite
+                            ? Icons.favorite_rounded
+                            : Icons.favorite_border_rounded,
+                        color: isFavorite
+                            ? AppColors.hargaStat
+                            : AppColors.borderIcon,
                         size: 24,
                       ),
                     ),
