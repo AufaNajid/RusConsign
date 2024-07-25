@@ -56,10 +56,11 @@ List<GetPage> routes = [
   GetPage(name: "/cartpage", page: () => const CartPage()),
   GetPage(name: "/additemform", page: () => AddItemForm()),
   GetPage(
-    name: "/editdataproduct",
-    page: () => EditDataProduct(),
-    binding: EditDataProductBinding(),
-  ),
+  name: "/editdataproduct",
+  page: () => EditDataProduct(idBarang: Get.arguments),
+  binding: EditDataProductBinding(),
+),
+
   GetPage(
     name: "/productmanagepage",
     page: () => ProductManagePage(),

@@ -13,11 +13,9 @@ class ProductController extends GetxController {
   RxBool successfulRegister = false.obs;
   RxString message = "".obs;
 
-  // API endpoints
   final String apiUrl = 'http://rusconsign.com/add-product';
   final String mitraUrl = 'http://rusconsign.com/mitra';
 
-  // Function to add a new product
   Future<void> addProduct(int mitraId) async {
     isLoading.value = true;
 

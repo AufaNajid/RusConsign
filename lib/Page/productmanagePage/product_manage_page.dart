@@ -73,8 +73,7 @@ class ProductManagePage extends StatelessWidget {
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6)
-                                  ),
+                                      borderRadius: BorderRadius.circular(6)),
                                   backgroundColor: AppColors.background,
                                   title: Text(
                                     'konfirmasiHapus'.tr,
@@ -101,12 +100,13 @@ class ProductManagePage extends StatelessWidget {
                                     ),
                                     TextButton(
                                       style: TextButton.styleFrom(
-                                        foregroundColor: AppColors.solidWhite,
-                                        backgroundColor: AppColors.button1,
-                                                            shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)
-                    ) // Warna teks tombol
-                                      ),
+                                          foregroundColor: AppColors.solidWhite,
+                                          backgroundColor: AppColors.button1,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      4)) // Warna teks tombol
+                                          ),
                                       child: Text('yaHapus'.tr),
                                       onPressed: () async {
                                         await controller.deleteBarang(controller
@@ -118,6 +118,11 @@ class ProductManagePage extends StatelessWidget {
                                 );
                               },
                             );
+                          },
+                          onEdit: () {
+                            Get.toNamed("/editdataproduct",
+                                arguments:
+                                    controller.productList[index].idBarang);
                           },
                         );
                       },
@@ -142,8 +147,7 @@ class ProductManagePage extends StatelessWidget {
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6)
-                                  ),
+                                      borderRadius: BorderRadius.circular(6)),
                                   backgroundColor: AppColors.background,
                                   title: Text(
                                     'konfirmasiHapus'.tr,
@@ -170,12 +174,13 @@ class ProductManagePage extends StatelessWidget {
                                     ),
                                     TextButton(
                                       style: TextButton.styleFrom(
-                                        foregroundColor: AppColors.solidWhite,
-                                        backgroundColor: AppColors.button1,
-                                                            shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)
-                    ) // Warna teks tombol
-                                      ),
+                                          foregroundColor: AppColors.solidWhite,
+                                          backgroundColor: AppColors.button1,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      4)) // Warna teks tombol
+                                          ),
                                       child: Text('yaHapus'.tr),
                                       onPressed: () async {
                                         await controller.deleteBarang(controller
@@ -187,6 +192,11 @@ class ProductManagePage extends StatelessWidget {
                                 );
                               },
                             );
+                          },
+                          onEdit: () {
+                            Get.toNamed("/editdataproduct",
+                                arguments:
+                                    controller.productList[index].idBarang);
                           },
                         );
                       },
@@ -211,8 +221,7 @@ class ProductManagePage extends StatelessWidget {
                               builder: (BuildContext context) {
                                 return AlertDialog(
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6)
-                                  ),
+                                      borderRadius: BorderRadius.circular(6)),
                                   backgroundColor: AppColors.background,
                                   title: Text(
                                     'konfirmasiHapus'.tr,
@@ -239,12 +248,13 @@ class ProductManagePage extends StatelessWidget {
                                     ),
                                     TextButton(
                                       style: TextButton.styleFrom(
-                                        foregroundColor: AppColors.solidWhite,
-                                        backgroundColor: AppColors.button1,
-                                                            shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)
-                    ) // Warna teks tombol
-                                      ),
+                                          foregroundColor: AppColors.solidWhite,
+                                          backgroundColor: AppColors.button1,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      4)) // Warna teks tombol
+                                          ),
                                       child: Text('yaHapus'.tr),
                                       onPressed: () async {
                                         await controller.deleteBarang(controller
@@ -256,6 +266,11 @@ class ProductManagePage extends StatelessWidget {
                                 );
                               },
                             );
+                          },
+                          onEdit: () {
+                            Get.toNamed("/editdataproduct",
+                                arguments:
+                                    controller.productList[index].idBarang);
                           },
                         );
                       },

@@ -33,7 +33,7 @@ class Barang {
   String namaBarang;
   String deskripsi;
   int harga;
-  int ratingBarang;
+  double ratingBarang;
   int categoryId;
   String categoryNama;
   String imageBarang;
@@ -60,7 +60,7 @@ class Barang {
     namaBarang: json["nama_barang"],
     deskripsi: json["deskripsi"],
     harga: json["harga"],
-    ratingBarang: json["rating_barang"],
+    ratingBarang: (json['rating_barang'] as num).toDouble(),
     categoryId: json["category_id"],
     categoryNama: json["category_nama"],
     imageBarang: json["image_barang"],
