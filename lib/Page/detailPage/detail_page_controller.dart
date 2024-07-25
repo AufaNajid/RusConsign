@@ -19,6 +19,7 @@ class DetailPageController extends GetxController
 
   @override
   void onInit() {
+    Get.put(LikeController());
     super.onInit();
     final productId = Get.arguments as int;
     loadData(productId);

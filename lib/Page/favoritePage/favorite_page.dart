@@ -24,67 +24,70 @@ class FavoritePage extends StatelessWidget {
       strokeWidth: RefreshProgressIndicator.defaultStrokeWidth,
       onRefresh: () => Future.delayed(const Duration(seconds: 2), refreshData),
       child: Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: AppColors.background,
-            surfaceTintColor: AppColors.background,
-            title: Text(
-              'favorit'.tr,
-              style: AppTextStyle().title(AppColors.titleLine),
-            ),
-          ),
+        appBar: AppBar(
+          centerTitle: true,
           backgroundColor: AppColors.background,
-          body: Obx(() {
-            if (controller.isLoading.value) {
-              return Column(
-                children: [
-                  SizedBox(
-                    height: AppResponsive().screenHeight(context) * 0.4,
-                    child: const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.hargaStat,
-                      ),
-                    ),
-                  )
-                ],
-              );
-            } else if (controller.favoriteList.isEmpty) {
-              return Column(
-                children: [
-                  SizedBox(
-                    height: AppResponsive().screenHeight(context) * 0.4,
-                    child: Center(
-                      child: Text(
-                        'belumAdaData'.tr,
-                        style: AppTextStyle().subHeader(AppColors.hargaStat),
-                      ),
+          surfaceTintColor: AppColors.background,
+          title: Text(
+            'favorit'.tr,
+            style: AppTextStyle().title(AppColors.titleLine),
+          ),
+        ),
+        backgroundColor: AppColors.background,
+        body: Obx(() {
+          if (controller.isLoading.value) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: AppResponsive().screenHeight(context) * 0.4,
+                  child: const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.hargaStat,
                     ),
                   ),
-                ],
-              );
-            } else {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: ListView.builder(
-                  itemCount: controller.favoriteList.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final like = controller.favoriteList[index];
-                    final barang = like.barang;
-                    final mitra = barang.mitra;
-                    return FavoriteCard(
-                      imagePath: barang.imageBarang,
-                      idBarang: barang.id,
-                      title: barang.namaBarang,
-                      price: barang.harga,
-                      rating: barang.ratingBarang.toDouble(),
-                      profileImagePath: barang.imageBarang,
-                      profileUsername: mitra.namaLengkap,
-                    );
-                  },
                 ),
-              );
-            }
-          })),
+              ],
+            );
+          } else if (controller.favoriteList.isEmpty) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: AppResponsive().screenHeight(context) * 0.4,
+                  child: Center(
+                    child: Text(
+                      'belumAdaData'.tr,
+                      style: AppTextStyle().subHeader(AppColors.hargaStat),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView.builder(
+                itemCount: controller.favoriteList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final like = controller.favoriteList[index];
+                  final barang = like.barang;
+                  final mitra = barang.mitra;
+                  return FavoriteCard(
+                    imagePath: barang.imageBarang,
+                    idBarang: barang.id,
+                    title: barang.namaBarang,
+                    price: barang.harga,
+                    rating: barang.ratingBarang.toDouble(),
+                    profileImagePath: barang.imageBarang,
+                    profileUsername: mitra.namaLengkap,
+                    isFavorite: controller.isItemFavorite(barang.id),
+                    onFavoriteToggle: () => controller.toggleFavorite(barang.id),
+                  );
+                },
+              ),
+            );
+          }
+        }),
+      ),
     );
   }
 }
