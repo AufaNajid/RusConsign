@@ -56,7 +56,7 @@ class TextFieldEditDataNumber extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))],
-      style: AppTextStyle().descriptionBold(AppColors.description),
+      style: AppTextStyle().descriptionBold(AppColors.description,),
       cursorColor: AppColors.hargaStat,
       textAlign: TextAlign.left,
       decoration: InputDecoration(

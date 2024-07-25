@@ -33,7 +33,11 @@ class Barang {
   String namaBarang;
   String deskripsi;
   int harga;
+<<<<<<< HEAD
   var ratingBarang;
+=======
+  double ratingBarang;
+>>>>>>> c05ce53ead39b1a651be6eb7ca5cd3a6c4898e6e
   int categoryId;
   String categoryNama;
   String imageBarang;
@@ -60,7 +64,7 @@ class Barang {
     namaBarang: json["nama_barang"],
     deskripsi: json["deskripsi"],
     harga: json["harga"],
-    ratingBarang: json["rating_barang"],
+    ratingBarang: (json['rating_barang'] as num).toDouble(),
     categoryId: json["category_id"],
     categoryNama: json["category_nama"],
     imageBarang: json["image_barang"],
