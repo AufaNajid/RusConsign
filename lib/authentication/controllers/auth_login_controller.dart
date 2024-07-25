@@ -95,7 +95,7 @@ class AuthLoginController extends GetxController {
       ModelResponseProfile responseProfile =
           modelResponseProfileFromJson(response.body);
       prefs.setString("statusMitra", responseProfile.data.status.toString());
-      final responseBody = jsonDecode(response.body);
+      jsonDecode(response.body);
       dataUsername.value = responseProfile.data.name.toString();
       dataEmail.value = responseProfile.data.email.toString();
       print(prefs.getString("statusMitra"));

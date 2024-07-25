@@ -33,11 +33,7 @@ class Barang {
   String namaBarang;
   String deskripsi;
   int harga;
-<<<<<<< HEAD
-  var ratingBarang;
-=======
   double ratingBarang;
->>>>>>> c05ce53ead39b1a651be6eb7ca5cd3a6c4898e6e
   int categoryId;
   String categoryNama;
   String imageBarang;

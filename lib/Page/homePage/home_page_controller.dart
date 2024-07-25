@@ -1,11 +1,8 @@
 // ignore_for_file: avoid_print
 
-import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
-import '../../Api/jasa_response.dart';
-import '../../Api/product_response.dart';
 
 class HomePageController extends GetxController {
   final currentIndex = 0.obs;
