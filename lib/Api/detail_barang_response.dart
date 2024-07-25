@@ -33,7 +33,7 @@ class Barang {
   String namaBarang;
   String deskripsi;
   int harga;
-  int ratingBarang;
+  var ratingBarang;
   int categoryId;
   String categoryNama;
   String imageBarang;

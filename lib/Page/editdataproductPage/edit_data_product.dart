@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/editDataProductPage/edit_data_product_controller.dart';
 import 'package:rusconsign/Page/editDataProductPage/widgets/imageedit.dart';
 import 'package:rusconsign/Page/editDataProductPage/widgets/textfield_edit_data.dart';
+import 'package:rusconsign/Page/editdataproductPage/edit_data_product_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
@@ -10,11 +10,16 @@ import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class EditDataProduct extends StatelessWidget {
-  final controller = Get.put(EditDataProductController());
+  final EditDataProductController controller =
+      Get.put(EditDataProductController());
   final TextEditingController namaPJController = TextEditingController();
   final TextEditingController deskripsiController = TextEditingController();
   final TextEditingController hargaController = TextEditingController();
-  EditDataProduct({Key? key}) : super(key: key);
+  final int idBarang;
+
+  EditDataProduct({Key? key, required this.idBarang}) : super(key: key) {
+    controller.fetchData(idBarang);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class EditDataProduct extends StatelessWidget {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  Get.back();
+                  controller.updateData(idBarang);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.button2,
@@ -60,10 +65,8 @@ class EditDataProduct extends StatelessWidget {
                     style: AppTextStyle().description(AppColors.titleLine),
                   ),
                 ),
-                const ImageEdit(
-                  imageUrl:
-                      "https://i.pinimg.com/564x/49/b8/88/49b88899cfd2889ddcc7d436b192cd23.jpg",
-                ),
+                Obx(() => ImageEdit(
+                    imageUrl: controller.pickedImage.value.toString())),
               ],
             ),
             Row(
@@ -78,10 +81,11 @@ class EditDataProduct extends StatelessWidget {
                 ),
                 Expanded(
                   child: TextFieldEditData(
-                      hintText: 'inputNamaPJ'.tr,
-                      controller: namaPJController,
-                      maxlines: 1),
-                )
+                    hintText: 'inputNamaPJ'.tr,
+                    controller: namaPJController,
+                    maxlines: 1,
+                  ),
+                ),
               ],
             ),
             Row(
@@ -96,10 +100,11 @@ class EditDataProduct extends StatelessWidget {
                 ),
                 Expanded(
                   child: TextFieldEditData(
-                      hintText: 'inputDeskripsi'.tr,
-                      controller: deskripsiController,
-                      maxlines: 5),
-                )
+                    hintText: 'inputDeskripsi'.tr,
+                    controller: deskripsiController,
+                    maxlines: 5,
+                  ),
+                ),
               ],
             ),
             Row(
@@ -114,7 +119,9 @@ class EditDataProduct extends StatelessWidget {
                 ),
                 Expanded(
                   child: TextFieldEditDataNumber(
-                      hintText: 'inputHarga'.tr, controller: hargaController),
+                    hintText: 'inputHarga'.tr,
+                    controller: hargaController,
+                  ),
                 )
               ],
             )

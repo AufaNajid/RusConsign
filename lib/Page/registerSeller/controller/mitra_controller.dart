@@ -60,9 +60,9 @@ class MitraController extends GetxController {
       ModelResponseProfile responseProfile =
           modelResponseProfileFromJson(response.body);
       prefs.setString("statusMitra", responseProfile.data.status.toString());
-       final responseBody = jsonDecode(response.body);
-       final idMitra = responseBody['data']['id_mitra'].toString();
-       prefs.setString("idMitra", idMitra);
+      final responseBody = jsonDecode(response.body);
+      final idMitra = responseBody['data']['id_mitra'].toString();
+      prefs.setString("idMitra", idMitra);
       isAccepted.value = true;
       print(prefs.getString("statusMitra"));
     } else {

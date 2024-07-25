@@ -16,13 +16,14 @@ class HomePage extends StatelessWidget {
 
   Future<void> refreshData() async {
     final HomePageController controller = Get.find<HomePageController>();
-    await controller.fetchProduct();
+    await controller.fetchProduct(controller.selectedIndex);
   }
 
   @override
   Widget build(BuildContext context) {
     final HomePageController controller = Get.put(HomePageController());
     final AuthLoginController controllerName = Get.put(AuthLoginController());
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: RefreshIndicator(
@@ -32,7 +33,7 @@ class HomePage extends StatelessWidget {
         strokeWidth: RefreshProgressIndicator.defaultStrokeWidth,
         onRefresh: () => Future.delayed(
           const Duration(seconds: 2),
-          refreshData
+          refreshData,
         ),
         child: SafeArea(
           child: SingleChildScrollView(
@@ -118,14 +119,15 @@ class HomePage extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(6),
                               child: Material(
-                                  color: AppColors.cardIconFill,
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Icon(
-                                      FeatherIcons.search,
-                                      color: AppColors.borderIcon,
-                                    ),
-                                  )),
+                                color: AppColors.cardIconFill,
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Icon(
+                                    FeatherIcons.search,
+                                    color: AppColors.borderIcon,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -231,192 +233,63 @@ class HomePage extends StatelessWidget {
                           ),
                           Obx(
                             () {
-                              if (controller.selectedIndex == 1) {
-                                return Obx(() {
-                                  if (controller.isLoading.value) {
-                                    return Column(
-                                      children: [
-                                        SizedBox(
-                                          height: AppResponsive()
-                                                  .screenHeight(context) *
-                                              0.4,
-                                          child: const Center(
-                                            child: CircularProgressIndicator(
-                                              color: AppColors.hargaStat,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    );
-                                  } else if (controller.productList.isEmpty) {
-                                    return Column(
-                                      children: [
-                                        SizedBox(
-                                          height: AppResponsive()
-                                                  .screenHeight(context) *
-                                              0.4,
-                                          child: Center(
-                                            child: Text(
-                                              'belumAdaData'.tr,
-                                              style: AppTextStyle().subHeader(
-                                                  AppColors.hargaStat),
-                                            ),
-                                          ),
+                              if (controller.isLoading.value) {
+                                return Column(
+                                  children: [
+                                    SizedBox(
+                                      height: AppResponsive()
+                                              .screenHeight(context) *
+                                          0.4,
+                                      child: const Center(
+                                        child: CircularProgressIndicator(
+                                          color: AppColors.hargaStat,
                                         ),
-                                      ],
-                                    );
-                                  } else {
-                                    return GridView.builder(
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: controller.productList.length,
-                                      gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        crossAxisSpacing: 8,
-                                        mainAxisSpacing: 8,
-                                        childAspectRatio: 0.8,
                                       ),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        final product =
-                                            controller.productList[index];
-                                        return ProductCard(
-                                          imagePath: product.imageBarang,
-                                          title: product.namaBarang,
-                                          price: product.harga,
-                                          rating: product.ratingBarang.toDouble(),
-                                          productId: product.id,
-                                        );
-                                      },
-                                    );
-                                  }
-                                });
-                              } else if (controller.selectedIndex == 2) {
-                                return Obx(() {
-                                  if (controller.isLoading.value) {
-                                    return Column(
-                                      children: [
-                                        SizedBox(
-                                          height: AppResponsive()
-                                                  .screenHeight(context) *
-                                              0.4,
-                                          child: const Center(
-                                            child: CircularProgressIndicator(
-                                              color: AppColors.hargaStat,
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    );
-                                  } else if (controller.productList.isEmpty) {
-                                    return Column(
-                                      children: [
-                                        SizedBox(
-                                          height: AppResponsive()
-                                                  .screenHeight(context) *
-                                              0.4,
-                                          child: Center(
-                                            child: Text(
-                                              'belumAdaData'.tr,
-                                              style: AppTextStyle().subHeader(
-                                                  AppColors.hargaStat),
-                                            ),
-                                          ),
+                                    )
+                                  ],
+                                );
+                              } else if (controller.productList.isEmpty) {
+                                return Column(
+                                  children: [
+                                    SizedBox(
+                                      height: AppResponsive()
+                                              .screenHeight(context) *
+                                          0.4,
+                                      child: Center(
+                                        child: Text(
+                                          'belumAdaData'.tr,
+                                          style: AppTextStyle()
+                                              .subHeader(AppColors.hargaStat),
                                         ),
-                                      ],
-                                    );
-                                  } else {
-                                    return GridView.builder(
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: controller.productList.length,
-                                      gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        crossAxisSpacing: 8,
-                                        mainAxisSpacing: 8,
-                                        childAspectRatio: 0.8,
                                       ),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        final product =
-                                            controller.productList[index];
-                                        return ProductCard(
-                                          imagePath: product.imageBarang,
-                                          title: product.namaBarang,
-                                          price: product.harga,
-                                          rating: product.ratingBarang.toDouble(),
-                                          productId: product.id,
-                                        );
-                                      },
-                                    );
-                                  }
-                                });
+                                    ),
+                                  ],
+                                );
                               } else {
-                                return Obx(() {
-                                  if (controller.isLoading.value) {
-                                    return Column(
-                                      children: [
-                                        SizedBox(
-                                          height: AppResponsive()
-                                                  .screenHeight(context) *
-                                              0.4,
-                                          child: const Center(
-                                            child: CircularProgressIndicator(
-                                              color: AppColors.hargaStat,
-                                            ),
-                                          ),
-                                        )
-                                      ],
+                                return GridView.builder(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount: controller.productList.length,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 8,
+                                    mainAxisSpacing: 8,
+                                    childAspectRatio: 0.8,
+                                  ),
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    final product =
+                                        controller.productList[index];
+                                    return ProductCard(
+                                      imagePath: product.imageBarang,
+                                      title: product.namaBarang,
+                                      price: product.harga,
+                                      rating: product.ratingBarang.toDouble(),
+                                      productId: product.id,
                                     );
-                                  } else if (controller.productList.isEmpty) {
-                                    return Column(
-                                      children: [
-                                        SizedBox(
-                                          height: AppResponsive()
-                                                  .screenHeight(context) *
-                                              0.4,
-                                          child: Center(
-                                            child: Text(
-                                              'belumAdaData'.tr,
-                                              style: AppTextStyle().subHeader(
-                                                  AppColors.hargaStat),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    );
-                                  } else {
-                                    return GridView.builder(
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: controller.productList.length,
-                                      gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 2,
-                                        crossAxisSpacing: 8,
-                                        mainAxisSpacing: 8,
-                                        childAspectRatio: 0.8,
-                                      ),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        final product =
-                                            controller.productList[index];
-                                        return ProductCard(
-                                          imagePath: product.imageBarang,
-                                          title: product.namaBarang,
-                                          price: product.harga,
-                                          rating: product.ratingBarang.toDouble(),
-                                          productId: product.id,
-                                        );
-                                      },
-                                    );
-                                  }
-                                });
+                                  },
+                                );
                               }
                             },
                           ),

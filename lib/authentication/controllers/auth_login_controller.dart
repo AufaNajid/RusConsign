@@ -7,6 +7,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Api/all_profile_response.dart';
+
 class AuthLoginController extends GetxController {
   late SharedPreferences prefs;
   static final box = GetStorage();
@@ -82,32 +84,50 @@ class AuthLoginController extends GetxController {
   }
 
   Future<void> emailData() async {
-    final response = await http.get(
-      Uri.parse('https://rusconsign.com/api/users'),
-    );
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    print("Token User adalah${token}");
+    var response = await http.get(
+        Uri.parse("https://rusconsign.com/api/allprofile"),
+        headers: {"Authorization": "Bearer ${token.toString()}"});
+
     if (response.statusCode == 200) {
-      final List<dynamic> jsonResponse = json.decode(response.body);
-      String? email = box.read('email');
-
-      if (email != null) {
-        Map<String, dynamic>? user = jsonResponse
-            .firstWhere((user) => user['email'] == email, orElse: () => null);
-
-        if (user != null) {
-          String userEmail = user['email'];
-          String username = user['name'];
-          dataEmail.value = userEmail;
-          dataUsername.value = username;
-          box.write('email', dataEmail.value);
-          box.write('username', dataUsername.value);
-        } else {
-          print('No user found with the provided email.');
-        }
-      } else {
-        print('No email found in storage.');
-      }
+      ModelResponseProfile responseProfile =
+          modelResponseProfileFromJson(response.body);
+      prefs.setString("statusMitra", responseProfile.data.status.toString());
+      jsonDecode(response.body);
+      dataUsername.value = responseProfile.data.name.toString();
+      dataEmail.value = responseProfile.data.email.toString();
+      print(prefs.getString("statusMitra"));
     } else {
-      print('Request failed with status: ${response.statusCode}.');
+      print("Eror FetchingProfile${response.statusCode}");
     }
+    // final response = await http.get(
+    //   Uri.parse('https://rusconsign.com/api/users'),
+    // );
+    // if (response.statusCode == 200) {
+    //   final List<dynamic> jsonResponse = json.decode(response.body);
+    //   String? email = box.read('email');
+    //
+    //   if (email != null) {
+    //     Map<String, dynamic>? user = jsonResponse
+    //         .firstWhere((user) => user['email'] == email, orElse: () => null);
+    //
+    //     if (user != null) {
+    //       String userEmail = user['email'];
+    //       String username = user['name'];
+    //       dataEmail.value = userEmail;
+    //       dataUsername.value = username;
+    //       box.write('email', dataEmail.value);
+    //       box.write('username', dataUsername.value);
+    //     } else {
+    //       print('No user found with the provided email.');
+    //     }
+    //   } else {
+    //     print('No email found in storage.');
+    //   }
+    // } else {
+    //   print('Request failed with status: ${response.statusCode}.');
+    // }
   }
 }

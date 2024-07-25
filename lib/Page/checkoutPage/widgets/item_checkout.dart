@@ -10,7 +10,7 @@ class ItemCheckout extends StatelessWidget {
   final String title;
   final String profileImagePath;
   final String profileName;
-  final int rating;
+  final double rating;
   final int price;
   final int quantity;
 

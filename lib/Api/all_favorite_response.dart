@@ -1,30 +1,58 @@
 // To parse this JSON data, do
 //
-//     final allBarangResponse = allBarangResponseFromJson(jsonString);
+//     final productFavorite = productFavoriteFromJson(jsonString);
 
 import 'dart:convert';
 
-AllBarangResponse allBarangResponseFromJson(String str) => AllBarangResponse.fromJson(json.decode(str));
+ProductFavorite productFavoriteFromJson(String str) => ProductFavorite.fromJson(json.decode(str));
 
-String allBarangResponseToJson(AllBarangResponse data) => json.encode(data.toJson());
+String productFavoriteToJson(ProductFavorite data) => json.encode(data.toJson());
 
-class AllBarangResponse {
+class ProductFavorite {
   String message;
-  List<Barang> barangs;
+  List<Like> likes;
 
-  AllBarangResponse({
+  ProductFavorite({
     required this.message,
-    required this.barangs,
+    required this.likes,
   });
 
-  factory AllBarangResponse.fromJson(Map<String, dynamic> json) => AllBarangResponse(
+  factory ProductFavorite.fromJson(Map<String, dynamic> json) => ProductFavorite(
     message: json["message"],
-    barangs: List<Barang>.from(json["barangs"].map((x) => Barang.fromJson(x))),
+    likes: List<Like>.from(json["likes"].map((x) => Like.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "message": message,
-    "barangs": List<dynamic>.from(barangs.map((x) => x.toJson())),
+    "likes": List<dynamic>.from(likes.map((x) => x.toJson())),
+  };
+}
+
+class Like {
+  dynamic id;
+  DateTime createdAt;
+  DateTime updatedAt;
+  Barang barang;
+
+  Like({
+    required this.id,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.barang,
+  });
+
+  factory Like.fromJson(Map<String, dynamic> json) => Like(
+    id: json["id"],
+    createdAt: DateTime.parse(json["created_at"]),
+    updatedAt: DateTime.parse(json["updated_at"]),
+    barang: Barang.fromJson(json["barang"]),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "created_at": createdAt.toIso8601String(),
+    "updated_at": updatedAt.toIso8601String(),
+    "barang": barang.toJson(),
   };
 }
 
@@ -37,6 +65,7 @@ class Barang {
   int categoryId;
   String categoryNama;
   String imageBarang;
+  String status;
   DateTime createdAt;
   DateTime updatedAt;
   Mitra mitra;
@@ -50,6 +79,7 @@ class Barang {
     required this.categoryId,
     required this.categoryNama,
     required this.imageBarang,
+    required this.status,
     required this.createdAt,
     required this.updatedAt,
     required this.mitra,
@@ -60,10 +90,11 @@ class Barang {
     namaBarang: json["nama_barang"],
     deskripsi: json["deskripsi"],
     harga: json["harga"],
-    ratingBarang: (json['rating_barang'] as num).toDouble(),
+    ratingBarang: json["rating_barang"]?.toDouble(),
     categoryId: json["category_id"],
     categoryNama: json["category_nama"],
     imageBarang: json["image_barang"],
+    status: json["status"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
     mitra: Mitra.fromJson(json["mitra"]),
@@ -78,6 +109,7 @@ class Barang {
     "category_id": categoryId,
     "category_nama": categoryNama,
     "image_barang": imageBarang,
+    "status": status,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
     "mitra": mitra.toJson(),
@@ -86,6 +118,7 @@ class Barang {
 
 class Mitra {
   int id;
+  dynamic namaToko;
   String namaLengkap;
   int jumlahProduct;
   int jumlahJasa;
@@ -94,6 +127,7 @@ class Mitra {
 
   Mitra({
     required this.id,
+    required this.namaToko,
     required this.namaLengkap,
     required this.jumlahProduct,
     required this.jumlahJasa,
@@ -103,6 +137,7 @@ class Mitra {
 
   factory Mitra.fromJson(Map<String, dynamic> json) => Mitra(
     id: json["id"],
+    namaToko: json["nama_toko"],
     namaLengkap: json["nama_lengkap"],
     jumlahProduct: json["jumlah_product"],
     jumlahJasa: json["jumlah_jasa"],
@@ -112,6 +147,7 @@ class Mitra {
 
   Map<String, dynamic> toJson() => {
     "id": id,
+    "nama_toko": namaToko,
     "nama_lengkap": namaLengkap,
     "jumlah_product": jumlahProduct,
     "jumlah_jasa": jumlahJasa,
@@ -119,3 +155,4 @@ class Mitra {
     "penilaian": penilaian,
   };
 }
+
