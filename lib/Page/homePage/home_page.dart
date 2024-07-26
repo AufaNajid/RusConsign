@@ -93,6 +93,7 @@ class HomePage extends StatelessWidget {
                             width: AppResponsive().screenWidth(context) * 0.75,
                             height: 50,
                             child: TextField(
+                              controller: controller.namaBarangController,
                               cursorColor: AppColors.hargaStat,
                               style: AppTextStyle()
                                   .descriptionBold(AppColors.description),
@@ -121,7 +122,12 @@ class HomePage extends StatelessWidget {
                               child: Material(
                                 color: AppColors.cardIconFill,
                                 child: GestureDetector(
-                                  onTap: () {},
+                                  onTap: () async {
+                                    String namaBarang =
+                                        controller.namaBarangController.text;
+                                    await controller.searchProduct(namaBarang);
+                                    controller.namaBarangController.clear();
+                                  },
                                   child: Icon(
                                     FeatherIcons.search,
                                     color: AppColors.borderIcon,

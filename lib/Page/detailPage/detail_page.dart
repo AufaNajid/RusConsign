@@ -224,7 +224,7 @@ class DetailPage extends GetView<DetailPageController> {
                                       height: 30,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Get.toNamed('/userprofilepage');
+                                          Get.toNamed('/userprofilepage', arguments: state.barang.mitra.id);
                                         },
                                         style: ButtonStyle(
                                           padding:

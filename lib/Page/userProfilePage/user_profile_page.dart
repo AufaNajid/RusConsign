@@ -191,7 +191,7 @@ class UserProfilePage extends StatelessWidget {
                         return GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 10,
+                          itemCount: controller.productList.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -201,11 +201,11 @@ class UserProfilePage extends StatelessWidget {
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return ProductCard(
-                              imagePath: 'https://via.placeholder.com/165x110',
-                              title: 'Judul Jasa $index',
-                              price: 12000,
-                              rating: (index % 5) + 1,
-                              productId: 1,
+                              imagePath: controller.productList[index].imageBarang,
+                              title: controller.productList[index].namaBarang,
+                              price: controller.productList[index].harga,
+                              rating: controller.productList[index].ratingBarang.toDouble(),
+                              productId: controller.productList[index].idBarang,
                             );
                           },
                         );
@@ -213,7 +213,7 @@ class UserProfilePage extends StatelessWidget {
                         return GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 10,
+                          itemCount: controller.productList.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -223,11 +223,11 @@ class UserProfilePage extends StatelessWidget {
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return ProductCard(
-                              imagePath: 'https://via.placeholder.com/165x110',
-                              title: 'Judul Produk $index',
-                              price: 12000,
-                              rating: (index % 5) + 1,
-                              productId: 1,
+                              imagePath: controller.productList[index].imageBarang,
+                              title: controller.productList[index].namaBarang,
+                              price: controller.productList[index].harga,
+                              rating: controller.productList[index].ratingBarang.toDouble(),
+                              productId: controller.productList[index].idBarang,
                             );
                           },
                         );
@@ -235,7 +235,7 @@ class UserProfilePage extends StatelessWidget {
                         return GridView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 10,
+                          itemCount: controller.productList.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -245,12 +245,11 @@ class UserProfilePage extends StatelessWidget {
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return ProductCard(
-                              imagePath: 'https://via.placeholder.com/165x110',
-                              title:
-                                  'Product awdmidjnmaiud dhuawnduawndad ahuwduawydhaydh uahdnuawnduawyd $index',
-                              price: 12000,
-                              rating: (index % 5) + 1,
-                              productId: 1,
+                              imagePath: controller.productList[index].imageBarang,
+                              title: controller.productList[index].namaBarang,
+                              price: controller.productList[index].harga,
+                              rating: controller.productList[index].ratingBarang.toDouble(),
+                              productId: controller.productList[index].idBarang,
                             );
                           },
                         );
