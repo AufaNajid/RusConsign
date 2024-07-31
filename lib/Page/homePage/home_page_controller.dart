@@ -20,7 +20,7 @@ class HomePageController extends GetxController {
 
   void setSelectedFilter(int index) {
     _selectedIndex.value = index;
-    fetchProduct(index); // Fetch products based on selected filter
+    fetchProduct(index);
     update();
     _selectedIndex.refresh();
   }
@@ -28,7 +28,7 @@ class HomePageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchProduct(0); // Default fetch all products
+    fetchProduct(0);
   }
 
   Future<void> fetchProduct(int filter) async {
