@@ -1,17 +1,17 @@
+import 'dart:io';
+
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/editDataProductPage/edit_data_product_controller.dart';
+import 'package:rusconsign/Page/editdataproductPage/edit_data_product_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
-import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ImageEdit extends StatelessWidget {
-  final String imageUrl;
-
   const ImageEdit({
     Key? key,
-    required this.imageUrl,
   }) : super(key: key);
 
   @override
@@ -23,34 +23,45 @@ class ImageEdit extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         Container(
-          width: AppResponsive().screenWidth(context) * 0.6,
-          height: AppResponsive().screenHeight(context) * 0.3,
-          decoration: BoxDecoration(
-            color: AppColors.activeIcon,
-            image: DecorationImage(image: NetworkImage(imageUrl)),
-          ),
-          child: Obx(() {
-            return SizedBox(
-              width: AppResponsive().screenWidth(context) * 0.6,
-              height: AppResponsive().screenHeight(context) * 0.3,
-              child: controller.pickedImage.value != null
-                  ? Image.file(
-                      controller.pickedImage.value!,
-                      fit: BoxFit.cover,
-                    )
-                  : Center(
-                      child: Image.network(
-                        imageUrl,
+        Obx(
+          () => DottedBorder(
+            borderType: BorderType.RRect,
+            radius: const Radius.circular(10),
+            strokeCap: StrokeCap.butt,
+            strokeWidth: 4,
+            color: AppColors.cardIconFill,
+            dashPattern: const [20, 8],
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+              child: SizedBox(
+                width: AppResponsive().screenWidth(context) * 0.6,
+                height: AppResponsive().screenHeight(context) * 0.3,
+                child: controller.pickedImage.value != null
+                    ? Image.file(
+                        File(controller.pickedImage.value!.path),
                         fit: BoxFit.cover,
-                      ),
-                    ),
-            );
-          }),
+                      )
+                    : (controller.imageUrl.value != null
+                        ? Image.network(
+                            controller.imageUrl.value!,
+                            fit: BoxFit.cover,
+                          )
+                        : Center(
+                            child: SvgPicture.asset(
+                              "assets/images/clarity_picture-line.svg",
+                            ),
+                          )),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: AppResponsive().screenHeight(context) * 0.01,
         ),
         ElevatedButton(
           onPressed: controller.pickImage,
           style: ElevatedButton.styleFrom(
+            elevation: 0,
             backgroundColor: AppColors.button1,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
@@ -59,12 +70,12 @@ class ImageEdit extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(
-              'pilihFoto'.tr,
+              "Pilih Foto",
               style: AppTextStyle().description(AppColors.textButton1),
             ),
           ),
         ),
-      ].withSpaceBetween(height: 10),
+      ],
     );
   }
 }

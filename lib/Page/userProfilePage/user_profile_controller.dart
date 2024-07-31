@@ -40,7 +40,7 @@ class UserProfilePageController extends GetxController {
     String? token = prefs.getString('token');
 
     final response = await http.get(
-      Uri.parse('https://rusconsign.com/api/mitra/$idProduct'),
+      Uri.parse('https://rusconsign.com/api/mitra/barang/$idProduct'),
       headers: <String, String>{
         'Authorization': "Bearer ${token.toString()}",
       },
