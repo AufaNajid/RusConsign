@@ -31,29 +31,26 @@ class ProductManageController extends GetxController {
     fetchProductMitra();
   }
 
-  fetchProductMitra() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? token = prefs.getString('token');
-      String? idMitra = prefs.getString('idMitra');
-      print(idMitra);
-      final response = await http.get(
-        Uri.parse('https://rusconsign.com/api/mitra/$idMitra'),
-        headers: <String, String>{
-          'Authorization': "Bearer ${token.toString()}",
-        },
-      );
+  Future<void> fetchProductMitra() async {
+    isLoading.value = true;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    String? idMitra = prefs.getString('idMitra');
+    print(idMitra);
+    final response = await http.get(
+      Uri.parse('https://rusconsign.com/api/mitra/barang/$idMitra'),
+      headers: <String, String>{
+        'Authorization': "Bearer $token",
+      },
+    );
 
-      if (response.statusCode == 200) {
-        ProductMitraList data = productMitraListFromJson(response.body);
-        productList.value = data.barangs;
-        isLoading(false);
-        print(response.body);
-        print("Token User adalah${token}");
-      }
-    } catch (e) {
-      print('Error: $e');
+    if (response.statusCode == 200) {
+      ProductMitraList data = productMitraListFromJson(response.body);
+      productList.value = data.barangs;
+      print(response.body);
+      print("Token User adalah${token}");
     }
+    isLoading.value = false;
   }
 
   Future<void> deleteBarang(int idBarang) async {
@@ -63,7 +60,7 @@ class ProductManageController extends GetxController {
       final response = await http.delete(
         Uri.parse('https://rusconsign.com/api/mitra/delete-barang/$idBarang'),
         headers: <String, String>{
-          'Authorization': "Bearer ${token.toString()}",
+          'Authorization': "Bearer $token",
         },
       );
 

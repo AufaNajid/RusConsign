@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -33,7 +35,7 @@ class AddImageProduct extends StatelessWidget {
                 height: AppResponsive().screenHeight(context) * 0.3,
                 child: controller.pickedImage.value != null
                     ? Image.file(
-                  controller.pickedImage.value!,
+                  File(controller.pickedImage.value!.path) ,
                   fit: BoxFit.cover,
                 )
                     : Center(
