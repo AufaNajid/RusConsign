@@ -33,7 +33,7 @@ class Barang {
     String namaBarang;
     String deskripsi;
     int harga;
-    int ratingBarang;
+    dynamic ratingBarang;
     String categoryName;
     String imageBarang;
     DateTime createdAt;

@@ -76,12 +76,12 @@ class ProfilePage extends StatelessWidget {
                         ProfileInfoCard(
                           icon: FeatherIcons.users,
                           title: 'jumlahJasa'.tr,
-                          data: "2",
+                          data: dataProfile.dataJumJasa.toString(),
                         ),
                         ProfileInfoCard(
                           icon: FeatherIcons.box,
                           title: 'jumlahProduk'.tr,
-                          data: "3",
+                          data: dataProfile.dataJumProduk.toString(),
                         ),
                         ProfileInfoCard(
                           icon: FeatherIcons.star,
