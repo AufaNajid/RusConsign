@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-class ItemChekcout extends StatelessWidget {
+class ItemCheckout extends StatelessWidget {
   final String imagePath;
   final String title;
   final String profileImagePath;
@@ -13,7 +14,7 @@ class ItemChekcout extends StatelessWidget {
   final int price;
   final int quantity;
 
-  const ItemChekcout({
+  const ItemCheckout({
     Key? key,
     required this.imagePath,
     required this.title,
@@ -27,6 +28,7 @@ class ItemChekcout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int subtotalValue = price * quantity;
+    const imageUrl = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -70,7 +72,7 @@ class ItemChekcout extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                imagePath,
+                                "${imageUrl}${imagePath}",
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -146,7 +148,7 @@ class ItemChekcout extends StatelessWidget {
                                           .textInfo(AppColors.description),
                                     ),
                                     Text(
-                                      'Rp $price',
+                                      MoneyFormat.format(price),
                                       style: AppTextStyle()
                                           .textInfoBold(AppColors.hargaStat),
                                     ),
@@ -194,15 +196,17 @@ class ItemChekcout extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Center(
-                              child: Text(quantity.toString(),
-                                  style: AppTextStyle()
-                                      .textInfoBold(AppColors.description)),
+                              child: Text(
+                                quantity.toString(),
+                                style: AppTextStyle()
+                                    .textInfoBold(AppColors.description),
+                              ),
                             ),
                           ),
                         ),
                         const Spacer(),
                         Text(
-                          'Rp $subtotalValue'.toString(),
+                          MoneyFormat.format(subtotalValue),
                           style: AppTextStyle().header(AppColors.hargaStat),
                         ),
                       ],

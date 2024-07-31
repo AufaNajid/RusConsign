@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:rusconsign/page/settingPage/setting_controller.dart";
+import "package:rusconsign/Page/settingPage/setting_controller.dart";
 
 class AppColors {
   static final SettingController darkMode = Get.find();
@@ -11,7 +11,7 @@ class AppColors {
   static const Color button1 = Color(0xFFFF3D3D);
   static const Color textButton1 = Color(0xFFF5F5F5);
   static Color button2 = darkMode.isDarkModeSwitched.value
-      ? const Color(0xFFF5F5F5)
+      ? const Color(0xFFE1E1E1)
       : const Color(0xFF30475E);
   static Color textButton2 = darkMode.isDarkModeSwitched.value
       ? const Color(0xFF30475E)
@@ -29,7 +29,7 @@ class AppColors {
   static const Color activeIcon = Color(0xFFFF3D3D);
   static const Color activeIconType = Color(0xFFF5F5F5);
   static Color borderIcon = darkMode.isDarkModeSwitched.value
-      ? const Color(0xFFF5F5F5)
+      ? const Color(0xFFE1E1E1)
       : const Color(0xFF222831);
   static const Color bintang = Color(0xFFFFDD55);
   static Color cardIconFill = darkMode.isDarkModeSwitched.value
@@ -47,4 +47,7 @@ class AppColors {
   static Color nonActiveBar = darkMode.isDarkModeSwitched.value
       ? const Color(0xFF3C4756)
       : const Color(0xFFE1E1E1);
+  static const Color error = Color.fromARGB(255, 182, 61, 45);
+  static const Color success = Color.fromARGB(255, 91, 206, 63);
+  static const Color solidWhite = Color.fromARGB(255, 255, 255, 255);
 }

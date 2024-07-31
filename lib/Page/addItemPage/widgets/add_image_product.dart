@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/addItemPage/add_item_form_controller.dart';
+import 'package:rusconsign/Page/addItemPage/contoller/controller_pick_image.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -12,8 +14,8 @@ class AddImageProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AddItemFormController controller =
-        Get.put(AddItemFormController());
+    final PickedImageController controller =
+        Get.put(PickedImageController());
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +35,7 @@ class AddImageProduct extends StatelessWidget {
                 height: AppResponsive().screenHeight(context) * 0.3,
                 child: controller.pickedImage.value != null
                     ? Image.file(
-                  controller.pickedImage.value!,
+                  File(controller.pickedImage.value!.path) ,
                   fit: BoxFit.cover,
                 )
                     : Center(

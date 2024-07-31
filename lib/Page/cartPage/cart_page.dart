@@ -6,6 +6,7 @@ import 'package:rusconsign/Page/cartPage/widgets/product_card.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class CartPage extends StatelessWidget {
@@ -102,7 +103,7 @@ class CartPage extends StatelessWidget {
                               AppTextStyle().description(AppColors.description),
                         ),
                         Text(
-                          'Rp ${10000}',
+                          MoneyFormat.format(10000),
                           style: AppTextStyle().subHeader(AppColors.hargaStat),
                         )
                       ].withSpaceBetween(width: 5),

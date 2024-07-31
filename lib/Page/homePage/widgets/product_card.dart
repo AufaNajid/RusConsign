@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProductCard extends StatelessWidget {
@@ -22,13 +23,14 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const imageUrl = "https://rusconsign.com/api";
     return Card(
       elevation: 0,
       color: AppColors.cardIconFill,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
           Get.toNamed("/detailpage", arguments: productId);
         },
@@ -43,7 +45,7 @@ class ProductCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image.network(
-                    imagePath,
+                    "$imageUrl$imagePath",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -61,7 +63,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Rp $price',
+                    MoneyFormat.format(price),
                     style: AppTextStyle().subHeader(AppColors.hargaStat),
                   ),
                   Row(

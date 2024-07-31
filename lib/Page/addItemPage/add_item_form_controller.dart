@@ -1,39 +1,32 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, unnecessary_overrides, depend_on_referenced_packages
 
 import 'dart:convert';
 import 'dart:io';
-
+import 'package:path/path.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
+import 'package:rusconsign/Api/add_barang_response.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AddItemFormController extends GetxController {
-  final TextEditingController namaController = TextEditingController();
-  final TextEditingController namajasaController = TextEditingController();
-  final TextEditingController namaTokoController = TextEditingController();
-  final TextEditingController nisController = TextEditingController();
-  final TextEditingController nomorController = TextEditingController();
   final TextEditingController namaproductController = TextEditingController();
   final TextEditingController deskripsiController = TextEditingController();
   final TextEditingController hargaController = TextEditingController();
-  final TextEditingController ratingController = TextEditingController();
-  final TextEditingController imageController = TextEditingController();
   final currentIndex = 0.obs;
   final _selectedIndex = 0.obs;
   RxBool successfulAddProduct = false.obs;
   RxBool isLoading = false.obs;
-  RxBool successfulRegister = false.obs;
   RxBool successfulAddJasa = false.obs;
   RxString message = "".obs;
-  var pickedImage = Rxn<File>();
+  var pickedImage = Rxn<File?>();
 
   int get selectedIndex => _selectedIndex.value;
 
   @override
   void onInit() {
     super.onInit();
-    // print("AddItemFormController initialized");
   }
 
   void updateCurrentIndexIndicator(int index) {
@@ -44,131 +37,61 @@ class AddItemFormController extends GetxController {
     _selectedIndex.value = index;
     update();
     _selectedIndex.refresh();
-    print(index);
+    print("Selected Index adalah $_selectedIndex");
   }
 
-  Future<void> pickImage() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      pickedImage.value = File(pickedFile.path);
-    }
-  }
-
-  Future<void> addProduct(int mitraId) async {
+  Future<void> addProduct(File imageBarang,
+      String namaProduk, String descProduk, String harga ) async {
     isLoading.value = true;
+    int category = _selectedIndex.value;
 
-    try {
-      if (canAccessFunction(mitraId)) {
-        final productData = _buildProductData(mitraId);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    print("Token Update Barang $token");
 
-        final response = await _postRequest(
-          'https://rusconsign.com/api/add-product',
-          productData,
-        );
+    var request = http.MultipartRequest(
+      'POST',
+      Uri.parse("https://rusconsign.com/api/mitra/add-barang")
+    );
 
-        if (response.statusCode == 201) {
-          successfulAddProduct.value = true;
-          message.value = 'Produk berhasil ditambahkan';
-        } else {
-          successfulAddProduct.value = false;
-          message.value = 'Gagal menambahkan produk';
-          print('Failed to add product: ${response.body}');
-        }
-      } else {
-        successfulAddProduct.value = false;
-        message.value = 'Mitra belum diterima';
-        print('Mitra status: pending or rejected');
-      }
-    } catch (e) {
-      successfulAddProduct.value = false;
-      message.value = 'Terjadi kesalahan: $e';
-      print('Error: $e');
-    } finally {
+    request.headers['Authorization'] = 'Bearer $token';
+
+    request.fields['nama_barang'] = namaProduk;
+    request.fields['deskripsi'] = descProduk;
+    request.fields["harga"] = harga;
+    request.fields["category_id"] = category.toString();
+
+    var imageStream = http.ByteStream(imageBarang.openRead());
+    var imageLength = await imageBarang.length();
+    var multipartFile = http.MultipartFile(
+      'image_barang',
+      imageStream,
+      imageLength,
+      filename: basename(imageBarang.path),
+      contentType: MediaType('image', 'jpeg,img,png,jpg'),
+    );
+    request.files.add(multipartFile);
+
+    print(
+        "Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");
+
+    var response = await request.send();
+
+    print("Response status: ${response.statusCode}");
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      isLoading.value = true;
+      var responseBody = await response.stream.bytesToString();
+      final data =  json.decode(responseBody);
+      Product product = Product.fromJson(data);
+      successfulAddProduct.value = true;
+      message.value = "Add Product Successful";
+      print("Success: ${product.namaBarang}");
       isLoading.value = false;
-    }
-  }
-
-  Future<void> addJasa(int mitraId) async {
-    isLoading.value = true;
-
-    try {
-      if (canAccessFunction(mitraId)) {
-        final jasaData = _buildJasaData(mitraId);
-
-        final response = await _postRequest(
-          'https://rusconsign.com/api/add-jasa',
-          jasaData,
-        );
-
-        if (response.statusCode == 201) {
-          successfulAddJasa.value = true;
-          message.value = 'Jasa berhasil ditambahkan';
-        } else {
-          successfulAddJasa.value = false;
-          message.value = 'Gagal menambahkan jasa';
-          print('Failed to add jasa: ${response.body}');
-        }
-      } else {
-        successfulAddJasa.value = false;
-        message.value = 'Mitra belum diterima';
-        print('Mitra status: pending or rejected');
-      }
-    } catch (e) {
-      successfulAddJasa.value = false;
-      message.value = 'Terjadi kesalahan: $e';
-      print('Error: $e');
-    } finally {
-      isLoading.value = false;
-    }
-  }
-
-  Future<http.Response> _postRequest(String url, Map<String, String> data) async {
-    try {
-      final response = await http.post(
-        Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
-        body: json.encode(data),
-      );
-      return response;
-    } catch (e) {
-      print('Error making POST request: $e');
-      rethrow;
-    }
-  }
-
-  Map<String, String> _buildProductData(int mitraId) {
-    return {
-      'name_product': namaproductController.text,
-      'desc_product': deskripsiController.text,
-      'price_product': hargaController.text,
-      'rating_product': ratingController.text,
-      'image': imageController.text,
-      'mitra_id': mitraId.toString(),
-    };
-  }
-
-  Map<String, String> _buildJasaData(int mitraId) {
-    return {
-      'name_jasa': namajasaController.text,
-      'desc_jasa': deskripsiController.text,
-      'price_jasa': hargaController.text,
-      'rating_jasa': ratingController.text,
-      'image_jasa': imageController.text,
-      'mitra_id': mitraId.toString(),
-    };
-  }
-
-  bool canAccessFunction(int mitraId) {
-    return getMitraStatus(mitraId) == 'accepted';
-  }
-
-  String getMitraStatus(int mitraId) {
-    if (mitraId == 123) {
-      return 'accepted';
     } else {
-      return 'pending';
+      print("Eror Add-Product ${response.statusCode}");
     }
+
   }
+
 }

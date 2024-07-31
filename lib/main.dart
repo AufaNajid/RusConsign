@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:rusconsign/page/settingPage/setting_controller.dart';
+import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/utils/app_translation.dart';
 import 'firebase_options.dart';
 import 'package:rusconsign/routes/routes.dart';

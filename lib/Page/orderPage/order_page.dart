@@ -3,15 +3,17 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/orderPage/widgets/finish_card.dart';
 import 'package:rusconsign/Page/orderPage/widgets/on_process_card.dart';
-import 'package:rusconsign/page/orderPage/order_page_controller.dart';
+import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
+import '../../utils/app_responsive.dart';
 import 'widgets/filter_order_button.dart';
 import 'widgets/not_paid_card.dart';
 
 class OrderPage extends StatelessWidget {
-  final orderController = Get.put(OrderPageController());
+  final OrderPageController orderController = Get.put(OrderPageController());
+
   OrderPage({super.key});
 
   @override
@@ -72,87 +74,112 @@ class OrderPage extends StatelessWidget {
           ),
           Expanded(
             child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(height: 4),
-                    Obx(
-                      () {
-                        if (orderController.selectedIndex == 0) {
-                          return ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
-                            itemBuilder: (context, index) {
-                              return NotPaidCard(
-                                imagePath:
-                                    'https://via.placeholder.com/100x150',
-                                title:
-                                    'Jasa Photo individual,potrait photo (Lingkungan RUS)',
-                                profileImagePath:
-                                    'https://via.placeholder.com/30x30',
-                                profileUsername: 'mndinadinadjn',
-                                rating: 5.0,
-                                totalProductPrice: 100000,
-                                paymentMethod: "CODadbubabda ",
-                                meetingLocation: "SMK RUS",
-                                onCancelProduct: () {},
-                              );
-                            },
-                          );
-                        } else if (orderController.selectedIndex == 1) {
-                          return ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
-                            itemBuilder: (context, index) {
-                              return OnProcessCard(
-                                imagePath:
-                                    'https://via.placeholder.com/100x150',
-                                title:
-                                    'Gantungan Kunci (Key Chain) Bodadad had adjneka Unik',
-                                profileImagePath:
-                                    'https://via.placeholder.com/30x30',
-                                profileUsername: 'efijwfisi iaduhhdhdia mfef',
-                                rating: 4.5,
-                                totalProductPrice: 155000,
-                                paymentMethod: "Dana",
-                                meetingLocation: "Gazebo dekat sekolah",
-                                onChatSeller: () {},
-                              );
-                            },
-                          );
-                        } else if (orderController.selectedIndex == 2) {
-                          return ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
-                            itemBuilder: (context, index) {
-                              return FinishCard(
-                                imagePath:
-                                    'https://via.placeholder.com/100x150',
-                                title:
-                                    'Jasa Pengeditan Vide Tugas, atau video individu di sekitaran RUS',
-                                profileImagePath:
-                                    'https://via.placeholder.com/30x30',
-                                profileUsername: 'edadisi iaduadybad ad daidna',
-                                rating: 4.0,
-                                totalProductPrice: 155000,
-                                paymentMethod: "Gopay",
-                                meetingLocation: "Depan Studio RUS",
-                                onGiveRating: () {},
-                              );
-                            },
-                          );
-                        }
-                        return const SizedBox();
-                      },
-                    ),
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 4),
+                  Obx(
+                        () {
+                      if (orderController.isLoading.value) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: AppResponsive()
+                                  .screenHeight(context) *
+                                  0.4,
+                              child: const Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.hargaStat,
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      } else if (orderController.productList.isEmpty) {
+                        return Column(
+                          children: [
+                            SizedBox(
+                              height: AppResponsive()
+                                  .screenHeight(context) *
+                                  0.4,
+                              child: Center(
+                                child: Text(
+                                  'belumAdaData'.tr,
+                                  style: AppTextStyle()
+                                      .subHeader(AppColors.hargaStat),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+
+                      if (orderController.selectedIndex == 0) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: orderController.productList.length,
+                          itemBuilder: (context, index) {
+                            final cod = orderController.productList[index];
+                            return NotPaidCard(
+                              imagePath: cod.barang.imageBarang,
+                              title: cod.barang.namaBarang,
+                              profileImagePath: cod.lokasi.mitra.imageProfile,
+                              profileUsername: cod.lokasi.mitra.namaToko,
+                              rating: cod.barang.ratingBarang.toDouble(),
+                              totalProductPrice: cod.barang.harga,
+                              paymentMethod: cod.statusPembayaran,
+                              meetingLocation: cod.lokasi.namaLokasi,
+                              onCancelProduct: () {},
+                            );
+                          },
+                        );
+                      } else if (orderController.selectedIndex == 1) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: orderController.productList.length,
+                          itemBuilder: (context, index) {
+                            final cod = orderController.productList[index];
+                            return OnProcessCard(
+                              imagePath: cod.barang.imageBarang,
+                              title: cod.barang.namaBarang,
+                              profileImagePath: cod.lokasi.mitra.imageProfile,
+                              profileUsername: cod.lokasi.mitra.namaToko,
+                              rating: cod.barang.ratingBarang.toDouble(),
+                              totalProductPrice: cod.barang.harga,
+                              paymentMethod: cod.statusPembayaran,
+                              meetingLocation: cod.lokasi.namaLokasi,
+                              onChatSeller: () {},
+                            );
+                          },
+                        );
+                      } else if (orderController.selectedIndex == 2) {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: orderController.productList.length,
+                          itemBuilder: (context, index) {
+                            final cod = orderController.productList[index];
+                            return FinishCard(
+                              imagePath: cod.barang.imageBarang,
+                              title: cod.barang.namaBarang,
+                              profileImagePath: cod.lokasi.mitra.imageProfile,
+                              profileUsername: cod.lokasi.mitra.namaToko,
+                              rating: cod.barang.ratingBarang.toDouble(),
+                              totalProductPrice: cod.barang.harga,
+                              paymentMethod: cod.statusPembayaran,
+                              meetingLocation: cod.lokasi.namaLokasi,
+                              onGiveRating: () {},
+                            );
+                          },
+                        );
+                      }
+                      return const SizedBox();
+                    },
+                  ),
+                ],
               ),
             ),
           ),

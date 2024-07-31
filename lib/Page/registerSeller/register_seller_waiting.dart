@@ -11,11 +11,6 @@ class RegisterSellerWaiting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-        Future.delayed(const Duration(seconds: 3), () {
-      Get.offNamed("/registersellerdone"); 
-    });
-
-
     return Scaffold(
       backgroundColor: AppColors.background,
       bottomNavigationBar: BottomAppBar(

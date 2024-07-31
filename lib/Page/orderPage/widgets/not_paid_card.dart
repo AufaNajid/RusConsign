@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 
 import '../../../utils/text_style.dart';
 
@@ -32,6 +33,7 @@ class NotPaidCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final img = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -75,7 +77,7 @@ class NotPaidCard extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                imagePath,
+                                "$img$imagePath",
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -101,7 +103,7 @@ class NotPaidCard extends StatelessWidget {
                                       width: 25,
                                       child: ClipOval(
                                         child: Image.network(
-                                          profileImagePath,
+                                          "$img$profileImagePath",
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -153,7 +155,7 @@ class NotPaidCard extends StatelessWidget {
                                           .textInfo(AppColors.description),
                                     ),
                                     Text(
-                                      'Rp $totalProductPrice',
+                                      MoneyFormat.format(totalProductPrice),
                                       style: AppTextStyle()
                                           .textInfoBold(AppColors.hargaStat),
                                     ),

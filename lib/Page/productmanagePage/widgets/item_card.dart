@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/productmanagePage/widgets/button_item_card.dart';
+import 'package:rusconsign/Page/productmanagePage/widgets/button_item_card_delete.dart';
+import 'package:rusconsign/Page/productmanagePage/widgets/button_item_card_edit.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -12,23 +13,29 @@ class ProductItemCard extends StatelessWidget {
   final int price;
   final String imagePath;
   final String nameProduct;
+  final String description;
+  final VoidCallback onPressed;
+  final VoidCallback onEdit;
 
   const ProductItemCard({
     Key? key,
     required this.price,
     required this.imagePath,
     required this.nameProduct,
+    required this.description,
+    required this.onPressed,
+    required this.onEdit,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const imageUrl = "https://rusconsign.com/api";
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: AppColors.cardIconFill
-      ),
+          borderRadius: BorderRadius.circular(8),
+          color: AppColors.cardIconFill),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 15),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -41,14 +48,15 @@ class ProductItemCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
                     child: Image.network(
-                      imagePath,
+                      "$imageUrl$imagePath",
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
                 Expanded(
                   child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         color: AppColors.cardProdukTidakDipilih),
@@ -59,13 +67,15 @@ class ProductItemCard extends StatelessWidget {
                         children: [
                           Text(
                             nameProduct,
-                            style: AppTextStyle().subHeader(AppColors.titleLine),
+                            style:
+                                AppTextStyle().subHeader(AppColors.titleLine),
                           ),
                           SizedBox(
                             width: AppResponsive().screenWidth(context) * 0.6,
                             child: Text(
-                              'Ampar ampar sigma, Sigma ku fanum tax Gyatt sebiji Dihurung skibidi Mangga rizzler mangga rizzler Mewing kai cenat Ligma dimakan sussy Apinya gooning mogging',
-                              style: AppTextStyle().textInfo(AppColors.description),
+                              description,
+                              style: AppTextStyle()
+                                  .textInfo(AppColors.description),
                               textAlign: TextAlign.start,
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
@@ -75,11 +85,13 @@ class ProductItemCard extends StatelessWidget {
                             children: [
                               Text(
                                 '${'total'.tr} :',
-                                style: AppTextStyle().textInfo(AppColors.description),
+                                style: AppTextStyle()
+                                    .textInfo(AppColors.description),
                               ),
                               Text(
                                 'Rp $price',
-                                style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                                style: AppTextStyle()
+                                    .textInfoBold(AppColors.hargaStat),
                               ),
                             ].withSpaceBetween(width: 4),
                           ),
@@ -93,12 +105,19 @@ class ProductItemCard extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ButtonItemCard(icon: FeatherIcons.trash2, text: 'hapus'.tr, page: "",),
-                ButtonItemCard(icon: FeatherIcons.edit, text: 'edit'.tr, page: "",),
-              ].withSpaceBetween(width:3),
+                ButtonItemCardTrash(
+                  icon: FeatherIcons.trash2,
+                  text: 'hapus'.tr,
+                  onPressed: onPressed,
+                ),
+                ButtonItemCardEdit(
+                  icon: FeatherIcons.edit,
+                  text: 'edit'.tr,
+                  onPressed: onEdit,
+                ),
+              ].withSpaceBetween(width: 10),
             )
-        
-          ].withSpaceBetween(width: 5,height: 5),
+          ].withSpaceBetween(width: 5, height: 5),
         ),
       ),
     );

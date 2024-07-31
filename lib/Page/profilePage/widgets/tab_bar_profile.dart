@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
@@ -8,10 +10,9 @@ import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 
 class TabList extends StatefulWidget {
-  const TabList({super.key});
+  const TabList({Key? key}) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _TabListState createState() => _TabListState();
 }
 
@@ -113,27 +114,31 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
           height: AppResponsive().screenHeight(context) * 0.50,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
           child: Obx(() {
-            if (mitraController.isAccepted.value == true) {
+            if (mitraController.statumitra == "pending") {
               return TabBarView(
-              controller: _tabController,
-              children: const [
-                PribadiSection(),
-                PenjualSectionTrue()
-              ],
-            );
+                controller: _tabController,
+                children: const [
+                  PribadiSection(),
+                  Center(
+                    child: Text("Sedang Menunggu Admin"),
+                  ),
+                ],
+              );
+            } else if (mitraController.statumitra == "accepted" &&
+                mitraController.isAccepted == true) {
+              return TabBarView(
+                controller: _tabController,
+                children: const [PribadiSection(), PenjualSectionTrue()],
+              );
             } else {
               return TabBarView(
-              controller: _tabController,
-              children: const [
-                PribadiSection(),
-                PenjualanSectionFalse()
-              ],
-            );
+                controller: _tabController,
+                children: const [PribadiSection(), PenjualanSectionFalse()],
+              );
             }
-          },
-
+          }),
         ),
-    )],
+      ],
     );
   }
 }

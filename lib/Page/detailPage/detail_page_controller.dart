@@ -1,52 +1,94 @@
-import 'package:get/get.dart';
-import 'package:rusconsign/Api/product_response.dart';
-import 'package:rusconsign/Page/homePage/home_page_controller.dart';
+// ignore_for_file: avoid_print
 
-class DetailPageController extends GetxController {
+import 'package:get/get.dart';
+import 'package:rusconsign/Api/detail_barang_response.dart';
+import 'package:http/http.dart' as http;
+import 'package:rusconsign/Page/detailPage/service/detail_service.dart';
+import 'package:rusconsign/Page/favoritePage/controller/like_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Api/all_favorite_response.dart';
+
+class DetailPageController extends GetxController
+    with StateMixin<DetailBarangModel> {
   RxBool isLoading = false.obs;
   var isFavorite = false.obs;
   var thumbsUpClicked = false.obs;
   var thumbsDownClicked = false.obs;
   var isAddCart = false.obs;
-  var product = Rx<Datum?>(null);
-
-  void toggleFavorite() {
-    isFavorite.value = !isFavorite.value;
-    update();
-  }
-
-  void toggleThumbsUp() {
-    thumbsUpClicked.value = !thumbsUpClicked.value;
-    update();
-  }
-
-  void toggleThumbsDown() {
-    thumbsDownClicked.value = !thumbsDownClicked.value;
-    update();
-  }
-
-  void toggleAddcart() {
-    isAddCart.value = !isAddCart.value;
-    update();
-  }
 
   @override
   void onInit() {
+    Get.put(LikeController());
     super.onInit();
     final productId = Get.arguments as int;
-    fetchProduct(productId);
+    loadData(productId);
+    checkFavoriteStatus(productId);
   }
 
-  fetchProduct(int productId) async {
+  void loadData(int productId) async {
     try {
       isLoading(true);
-      final homeController = Get.find<HomePageController>();
-      final fetchedProduct = homeController.productList.firstWhere((product) => product.id == productId);
-      product.value = fetchedProduct;
-    } catch (e) {
-      print("Error: $e");
+      change(await DetailService.fetchProductDetail(productId),
+          status: RxStatus.success());
     } finally {
-      isLoading(false);
+      isLoading.value = false;
     }
+    update();
+  }
+
+  void checkFavoriteStatus(int productId) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final response = await http.get(
+      Uri.parse('https://rusconsign.com/api/likes'),
+      headers: <String, String>{
+        'Authorization': "Bearer $token",
+      },
+    );
+
+    if (response.statusCode == 200) {
+      ProductFavorite data = productFavoriteFromJson(response.body);
+      var isFav = data.likes.any((like) => like.barang.id == productId);
+      isFavorite.value = isFav;
+    }
+  }
+
+  Future<void> toggleFavorite(int idBarang) async {
+    isLoading.value = true;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final LikeController controller = Get.find<LikeController>();
+
+    if (isFavorite.value) {
+      // If already favorite, remove it
+      final response = await http.delete(
+        Uri.parse('https://rusconsign.com/api/likes/$idBarang'),
+        headers: <String, String>{
+          'Authorization': "Bearer $token",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        await controller.fetchFavorite();
+        isFavorite.value = false;
+      }
+    } else {
+      // Add to favorite
+      var request = http.MultipartRequest(
+          'POST', Uri.parse("https://rusconsign.com/api/likes"));
+
+      request.headers['Authorization'] = 'Bearer $token';
+      request.fields['barang_id'] = idBarang.toString();
+
+      var response = await request.send();
+
+      if (response.statusCode == 200) {
+        await controller.fetchFavorite();
+        isFavorite.value = true;
+      }
+    }
+    isLoading.value = false;
+    update();
   }
 }

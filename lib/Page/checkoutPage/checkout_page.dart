@@ -17,120 +17,126 @@ class ChekcoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(CheckoutPageController());
     return Scaffold(
-      appBar: CommonAppBar(title: 'checkout'.tr),
-      backgroundColor: AppColors.background,
-      body: Obx((){
-      if (controller.isLoading.value) {
-        return const Center(child: CircularProgressIndicator());
-      } else if (controller.product.value == null) {
-        return const Center(child: Text('Product not found'));
-      } else {
-        final product = controller.product.value!;
-        return SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+        appBar: CommonAppBar(title: 'checkout'.tr),
+        backgroundColor: AppColors.background,
+        body: Obx(() {
+          if (controller.isLoading.value) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (controller.productDetail.value == null) {
+            return const Center(child: Text('Product not found'));
+          } else {
+            final product = controller.productDetail.value!;
+            final mitra = product.mitra;
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'pembelian'.tr,
-                      style: AppTextStyle().header(AppColors.titleLine),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'pembelian'.tr,
+                          style: AppTextStyle().header(AppColors.titleLine),
+                        ),
+                        ItemCheckout(
+                          imagePath: product.imageBarang,
+                          title: product.namaBarang,
+                          profileImagePath: 'https://via.placeholder.com/40x40',
+                          profileName: mitra.namaLengkap,
+                          rating: product.ratingBarang.toDouble(),
+                          price: product.harga,
+                          quantity: 2,
+                        ),
+                      ].withSpaceBetween(height: 10),
                     ),
-                     ItemChekcout(
-                      imagePath: product.image,
-                      title: product.namaProduct,
-                      profileImagePath: 'https://via.placeholder.com/40x40',
-                      profileName: 'bagas Prasetyo',
-                      rating: product.rating,
-                      price: product.harga,
-                      quantity: 2,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'lokasiPertemuan'.tr,
+                          style: AppTextStyle().header(AppColors.titleLine),
+                          textAlign: TextAlign.start,
+                        ),
+                        const LocationChekout(
+                          locationHeader: "SMK Raden Umar Said Kudus",
+                          locationDetail:
+                              "Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333",
+                        ),
+                      ].withSpaceBetween(height: 10),
                     ),
-                  ].withSpaceBetween(height: 10),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'lokasiPertemuan'.tr,
-                      style: AppTextStyle().header(AppColors.titleLine),
-                      textAlign: TextAlign.start,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'pembayaran'.tr,
+                          style: AppTextStyle().header(AppColors.titleLine),
+                          textAlign: TextAlign.start,
+                        ),
+                        const DropdownPayment(),
+                      ].withSpaceBetween(height: 10),
                     ),
-                    const LocationChekout(
-                      locationHeader: "SMK Raden Umar Said Kudus",
-                      locationDetail:
-                      "Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333",
-                    ),
-                  ].withSpaceBetween(height: 10),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'pembayaran'.tr,
-                      style: AppTextStyle().header(AppColors.titleLine),
-                      textAlign: TextAlign.start,
-                    ),
-                    const DropdownPayment(),
-                  ].withSpaceBetween(height: 10),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'rincianPembayaran'.tr,
-                      style: AppTextStyle().header(AppColors.titleLine),
-                      textAlign: TextAlign.start,
-                    ),
-                     PaymentDetail(
-                      subPrice: product.harga,
-                      adminPrice: 1000,),
-                  ].withSpaceBetween(height: 10),
-                )
-              ].withSpaceBetween(height: 30),
-            ),
-          ),
-        );
-      }}),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 5,
-        shadowColor: AppColors.cardIconFill,
-        surfaceTintColor: AppColors.background,
-        color: AppColors.background,
-        child: Row(
-          children: [
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {
-                  if (controller.selectedPaymentMethod.value == 'QRIS') {
-                    Get.toNamed("/qrispayment");
-                  } else {
-                    Get.toNamed("/paymentdone");
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  padding: EdgeInsets.zero,
-                  backgroundColor: AppColors.button2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                ),
-                child: Text(
-                  'buatPesanan'.tr,
-                  style: AppTextStyle().subHeader(AppColors.background),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'rincianPembayaran'.tr,
+                          style: AppTextStyle().header(AppColors.titleLine),
+                          textAlign: TextAlign.start,
+                        ),
+                        PaymentDetail(
+                          subPrice: product.harga,
+                          adminPrice: 1000,
+                        ),
+                      ].withSpaceBetween(height: 10),
+                    )
+                  ].withSpaceBetween(height: 30),
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            );
+          }
+        }),
+        bottomNavigationBar: BottomAppBar(
+          elevation: 5,
+          shadowColor: AppColors.cardIconFill,
+          surfaceTintColor: AppColors.background,
+          color: AppColors.background,
+          child: Row(
+            children: [
+              Expanded(
+                child: ElevatedButton(
+                  onPressed: () async {
+                    await controller.addPesanan(controller.productDetail.value!.id.toString());
+                    if (controller.successfulPesanProduct.value == true) {
+                      Get.offNamed("/paymentdone");
+                    }
+                    // if (controller.selectedPaymentMethod.value == 'QRIS') {
+                    //   Get.offNamed("/qrispayment");
+                    // } else {
+                    //   Get.offAllNamed("/paymentdone");
+                    // }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    padding: EdgeInsets.zero,
+                    backgroundColor: AppColors.button2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                  ),
+                  child: Text(
+                    'buatPesanan'.tr,
+                    style: AppTextStyle().subHeader(AppColors.background),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),);
   }
 }
