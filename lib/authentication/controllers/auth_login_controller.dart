@@ -88,21 +88,21 @@ class AuthLoginController extends GetxController {
   Future<void> emailData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    print("Token User adalah${token}");
+    print("Token User adalah$token");
     var response = await http.get(
         Uri.parse("https://rusconsign.com/api/allprofile"),
-        headers: {"Authorization": "Bearer ${token.toString()}"});
+        headers: {"Authorization": "Bearer $token"});
 
     if (response.statusCode == 200) {
       ModelResponseProfile responseProfile =
           modelResponseProfileFromJson(response.body);
-      prefs.setString("statusMitra", responseProfile.data.status.toString());
+      // prefs.setString("statusMitra", responseProfile.data.status.toString() ?? "");
       jsonDecode(response.body);
-      dataJumJasa.value = responseProfile.data.jumlahjasa;
+      dataJumJasa.value = responseProfile.data.jumlahjasa ?? 0;
       dataUsername.value = responseProfile.data.name.toString();
       dataEmail.value = responseProfile.data.email.toString();
-      dataJumProduk.value = responseProfile.data.jumlahproduct;
-      print(prefs.getString("statusMitra"));
+      dataJumProduk.value = responseProfile.data.jumlahproduct ?? 0;
+      // print(prefs.getString("statusMitra"));
     } else {
       print("Eror FetchingProfile${response.statusCode}");
     }
