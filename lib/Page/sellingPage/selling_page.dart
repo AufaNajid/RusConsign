@@ -26,25 +26,28 @@ class SellingPage extends StatelessWidget {
           children: [
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  SellingFilterButton(
-                      text: 'belumBayar'.tr,
-                      icon: FeatherIcons.creditCard,
-                      index: 0),
-                  SellingFilterButton(
-                      text: 'proses'.tr,
-                      icon: FeatherIcons.clock,
-                      index: 1),
-                  SellingFilterButton(
-                      text: 'selesai'.tr,
-                      icon: FeatherIcons.check,
-                      index: 2),
-                  SellingFilterButton(
-                      text: 'ulasan'.tr, icon: FeatherIcons.star, index: 3),
-                  SellingFilterButton(
-                      text: 'batal'.tr, icon: FeatherIcons.x, index: 4),
-                ].withSpaceBetween(width: 10),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Row(
+                  children: [
+                    SellingFilterButton(
+                        text: 'belumBayar'.tr,
+                        icon: FeatherIcons.creditCard,
+                        index: 0),
+                    SellingFilterButton(
+                        text: 'proses'.tr,
+                        icon: FeatherIcons.clock,
+                        index: 1),
+                    SellingFilterButton(
+                        text: 'selesai'.tr,
+                        icon: FeatherIcons.check,
+                        index: 2),
+                    SellingFilterButton(
+                        text: 'ulasan'.tr, icon: FeatherIcons.star, index: 3),
+                    SellingFilterButton(
+                        text: 'batal'.tr, icon: FeatherIcons.x, index: 4),
+                  ].withSpaceBetween(width: 10),
+                ),
               ),
             ),
             Expanded(
@@ -106,6 +109,7 @@ class SellingPage extends StatelessWidget {
                           itemBuilder: (context, index) {
                             final pesanan = controller.pesananList[index];
                             return  NotPaidCardSelling(
+                              idPesanan: pesanan.id,
                               imagePath: pesanan.barang.imageBarang,
                               title: pesanan.barang.namaBarang,
                               metodePembayaran: pesanan.statusPembayaran,

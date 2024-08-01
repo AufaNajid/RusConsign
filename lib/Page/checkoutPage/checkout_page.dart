@@ -111,10 +111,15 @@ class ChekcoutPage extends StatelessWidget {
               Expanded(
                 child: ElevatedButton(
                   onPressed: () async {
-                    await controller.addPesanan(controller.productDetail.value!.id.toString());
-                    if (controller.successfulPesanProduct.value == true) {
+                    if (controller.selectedPaymentMethod == 'Cash On Delivery (COD)') {
+                      await controller.addPesanan(controller.productDetail.value!.id.toString());
+                      if (controller.successfulPesanProduct.value == true) {
+                        Get.offNamed("/paymentdone");
+                      }
+                    } else {
                       Get.offNamed("/paymentdone");
                     }
+
                     // if (controller.selectedPaymentMethod.value == 'QRIS') {
                     //   Get.offNamed("/qrispayment");
                     // } else {

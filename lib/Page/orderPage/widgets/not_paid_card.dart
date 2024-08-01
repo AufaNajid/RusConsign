@@ -72,8 +72,8 @@ class NotPaidCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: AppResponsive().screenWidth(context) * 0.240,
-                            height: 150,
+                            width: 100,
+                            height: 120,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(

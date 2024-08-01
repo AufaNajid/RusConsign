@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/sellingPage/selling_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -11,6 +12,7 @@ class NotPaidCardSelling extends StatelessWidget {
   final String lokasiPertemuan;
   final double rating;
   final int price;
+  final int idPesanan;
 
   const NotPaidCardSelling({
     Key? key,
@@ -20,10 +22,12 @@ class NotPaidCardSelling extends StatelessWidget {
     required this.lokasiPertemuan,
     required this.rating,
     required this.price,
+    required this.idPesanan,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final SellingPageController controller = Get.put(SellingPageController());
     final img = "https://rusconsign.com/api";
     return Container(
       decoration: BoxDecoration(
@@ -151,9 +155,11 @@ class NotPaidCardSelling extends StatelessWidget {
                     ),
                     elevation: 0,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.updateProgress(idPesanan);
+                  },
                   child: Text(
-                    'pesananDibatalkan'.tr,
+                    'Proses Pesanan'.tr,
                     style: AppTextStyle().header(AppColors.textButton2),
                   )),
             )

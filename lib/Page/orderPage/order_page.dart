@@ -49,7 +49,7 @@ class OrderPage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             child: Row(
               children: [
                 FilterOrderButton(
@@ -68,118 +68,127 @@ class OrderPage extends StatelessWidget {
                   text: 'selesai'.tr,
                   icon: FeatherIcons.check,
                   index: 2,
-                )
+                ),
+                // const Spacer(),
+                // FilterOrderButton(
+                //   text: 'Dibatalkan'.tr,
+                //   icon: FeatherIcons.check,
+                //   index: 2,
+                // )
               ],
             ),
           ),
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 4),
-                  Obx(
-                        () {
-                      if (orderController.isLoading.value) {
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: AppResponsive()
-                                  .screenHeight(context) *
-                                  0.4,
-                              child: const Center(
-                                child: CircularProgressIndicator(
-                                  color: AppColors.hargaStat,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 4),
+                    Obx(
+                          () {
+                        if (orderController.isLoading.value) {
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: AppResponsive()
+                                    .screenHeight(context) *
+                                    0.4,
+                                child: const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColors.hargaStat,
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        } else if (orderController.productList.isEmpty) {
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: AppResponsive()
+                                    .screenHeight(context) *
+                                    0.4,
+                                child: Center(
+                                  child: Text(
+                                    'belumAdaData'.tr,
+                                    style: AppTextStyle()
+                                        .subHeader(AppColors.hargaStat),
+                                  ),
                                 ),
                               ),
-                            )
-                          ],
-                        );
-                      } else if (orderController.productList.isEmpty) {
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height: AppResponsive()
-                                  .screenHeight(context) *
-                                  0.4,
-                              child: Center(
-                                child: Text(
-                                  'belumAdaData'.tr,
-                                  style: AppTextStyle()
-                                      .subHeader(AppColors.hargaStat),
-                                ),
-                              ),
-                            ),
-                          ],
-                        );
-                      }
+                            ],
+                          );
+                        }
 
-                      if (orderController.selectedIndex == 0) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: orderController.productList.length,
-                          itemBuilder: (context, index) {
-                            final cod = orderController.productList[index];
-                            return NotPaidCard(
-                              imagePath: cod.barang.imageBarang,
-                              title: cod.barang.namaBarang,
-                              profileImagePath: cod.lokasi.mitra.imageProfile,
-                              profileUsername: cod.lokasi.mitra.namaToko,
-                              rating: cod.barang.ratingBarang.toDouble(),
-                              totalProductPrice: cod.barang.harga,
-                              paymentMethod: cod.statusPembayaran,
-                              meetingLocation: cod.lokasi.namaLokasi,
-                              onCancelProduct: () {},
-                            );
-                          },
-                        );
-                      } else if (orderController.selectedIndex == 1) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: orderController.productList.length,
-                          itemBuilder: (context, index) {
-                            final cod = orderController.productList[index];
-                            return OnProcessCard(
-                              imagePath: cod.barang.imageBarang,
-                              title: cod.barang.namaBarang,
-                              profileImagePath: cod.lokasi.mitra.imageProfile,
-                              profileUsername: cod.lokasi.mitra.namaToko,
-                              rating: cod.barang.ratingBarang.toDouble(),
-                              totalProductPrice: cod.barang.harga,
-                              paymentMethod: cod.statusPembayaran,
-                              meetingLocation: cod.lokasi.namaLokasi,
-                              onChatSeller: () {},
-                            );
-                          },
-                        );
-                      } else if (orderController.selectedIndex == 2) {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: orderController.productList.length,
-                          itemBuilder: (context, index) {
-                            final cod = orderController.productList[index];
-                            return FinishCard(
-                              imagePath: cod.barang.imageBarang,
-                              title: cod.barang.namaBarang,
-                              profileImagePath: cod.lokasi.mitra.imageProfile,
-                              profileUsername: cod.lokasi.mitra.namaToko,
-                              rating: cod.barang.ratingBarang.toDouble(),
-                              totalProductPrice: cod.barang.harga,
-                              paymentMethod: cod.statusPembayaran,
-                              meetingLocation: cod.lokasi.namaLokasi,
-                              onGiveRating: () {},
-                            );
-                          },
-                        );
-                      }
-                      return const SizedBox();
-                    },
-                  ),
-                ],
+                        if (orderController.selectedIndex == 0) {
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: orderController.productList.length,
+                            itemBuilder: (context, index) {
+                              final cod = orderController.productList[index];
+                              return NotPaidCard(
+                                imagePath: cod.barang.imageBarang,
+                                title: cod.barang.namaBarang,
+                                profileImagePath: cod.lokasi.mitra.imageProfile,
+                                profileUsername: cod.lokasi.mitra.namaToko,
+                                rating: cod.barang.ratingBarang.toDouble(),
+                                totalProductPrice: cod.barang.harga,
+                                paymentMethod: cod.statusPembayaran,
+                                meetingLocation: cod.lokasi.namaLokasi,
+                                onCancelProduct: () {},
+                              );
+                            },
+                          );
+                        } else if (orderController.selectedIndex == 1) {
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: orderController.productList.length,
+                            itemBuilder: (context, index) {
+                              final cod = orderController.productList[index];
+                              return OnProcessCard(
+                                imagePath: cod.barang.imageBarang,
+                                title: cod.barang.namaBarang,
+                                profileImagePath: cod.lokasi.mitra.imageProfile,
+                                profileUsername: cod.lokasi.mitra.namaToko,
+                                rating: cod.barang.ratingBarang.toDouble(),
+                                totalProductPrice: cod.barang.harga,
+                                paymentMethod: cod.statusPembayaran,
+                                meetingLocation: cod.lokasi.namaLokasi,
+                                onChatSeller: () {},
+                              );
+                            },
+                          );
+                        } else if (orderController.selectedIndex == 2) {
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: orderController.productList.length,
+                            itemBuilder: (context, index) {
+                              final cod = orderController.productList[index];
+                              return FinishCard(
+                                imagePath: cod.barang.imageBarang,
+                                title: cod.barang.namaBarang,
+                                profileImagePath: cod.lokasi.mitra.imageProfile,
+                                profileUsername: cod.lokasi.mitra.namaToko,
+                                rating: cod.barang.ratingBarang.toDouble(),
+                                totalProductPrice: cod.barang.harga,
+                                paymentMethod: cod.statusPembayaran,
+                                meetingLocation: cod.lokasi.namaLokasi,
+                                onGiveRating: () {},
+                              );
+                            },
+                          );
+                        }
+                        return const SizedBox();
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
