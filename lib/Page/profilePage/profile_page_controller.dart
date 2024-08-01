@@ -1,8 +1,4 @@
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'package:rusconsign/Api/all_profile_response.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 class ProfilePageController extends GetxController {
   final currentIndex = 0.obs;
   final _selectedIndex = 0.obs;
