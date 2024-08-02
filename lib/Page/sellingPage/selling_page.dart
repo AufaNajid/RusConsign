@@ -78,21 +78,32 @@ class SellingPage extends StatelessWidget {
                           ],
                         );
                       } else if (controller.pesananList.isEmpty) {
-                        return Column(
-                          children: [
-                            SizedBox(
-                              height:
-                                  AppResponsive().screenHeight(context) *
-                                      0.4,
-                              child: Center(
-                                child: Text(
-                                  'belumAdaData'.tr,
-                                  style: AppTextStyle()
-                                      .subHeader(AppColors.hargaStat),
-                                ),
+                        return SizedBox(
+                          width: double.infinity,
+                          height:
+                          AppResponsive().screenHeight(context) * 0.8,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                "assets/images/fluent--box-search-24-regular.svg",
+                                // ignore: deprecated_member_use
+                                color: AppColors.hargaStat,
+                                width:
+                                AppResponsive().screenWidth(context) *
+                                    0.1,
+                                height:
+                                AppResponsive().screenHeight(context) *
+                                    0.1,
                               ),
-                            ),
-                          ],
+                              Text(
+                                'belumAdaPesanan'.tr,
+                                style: AppTextStyle()
+                                    .subHeader(AppColors.description),
+                              )
+                            ],
+                          ),
                         );
                       }
 
@@ -117,6 +128,7 @@ class SellingPage extends StatelessWidget {
                               rating:
                                   pesanan.barang.ratingBarang.toDouble(),
                               price: pesanan.barang.harga,
+                              pemesan: pesanan.user.name,
                             );
                           },
                         );
@@ -139,6 +151,7 @@ class SellingPage extends StatelessWidget {
                               lokasiPertemuan: cod.lokasi.namaLokasi,
                               rating: cod.barang.ratingBarang.toDouble(),
                               price: cod.barang.harga,
+                              pemesan: cod.user.name,
                             );
                           },
                         );
@@ -161,6 +174,7 @@ class SellingPage extends StatelessWidget {
                               lokasiPertemuan: cod.lokasi.namaLokasi,
                               rating: cod.barang.ratingBarang.toDouble(),
                               price: cod.barang.harga,
+                              pemesan: cod.user.name,
                             );
                           },
                         );

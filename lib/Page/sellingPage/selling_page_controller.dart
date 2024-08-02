@@ -45,18 +45,21 @@ class SellingPageController extends GetxController {
   }
 
   Future<void> fetchPesanan(int filter) async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    String? idMitra = pref.getString('idMitra');
     isLoading.value = true;
     Uri uri;
 
     switch (filter) {
       case 1:
-        uri = Uri.parse("https://rusconsign.com/api/cods/status/mitra/progres");
+        uri = Uri.parse("https://rusconsign.com/api/cods/mitra/progres/$idMitra");
         break;
       case 2:
-        uri = Uri.parse("https://rusconsign.com/api/cods/status/mitra/selesai");
+        uri = Uri.parse("https://rusconsign.com/api/cods/mitra/selesai/$idMitra");
         break;
       default:
-        uri = Uri.parse("https://rusconsign.com/api/cods/status/mitra/pending");
+        uri = Uri.parse(
+            "https://rusconsign.com/api/cods/mitra/belum_pembayaran/$idMitra");
         break;
     }
 
@@ -72,11 +75,12 @@ class SellingPageController extends GetxController {
     );
 
     if (response.statusCode == 200) {
+
       final data = jsonDecode(response.body);
       final allOrderResponse = AllOrderResponse.fromJson(data);
       pesananList.value = allOrderResponse.cods;
     } else {
-      // Handle error
+      print("Response Status Penjualan = ${response.statusCode}");
     }
 
     isLoading.value = false;

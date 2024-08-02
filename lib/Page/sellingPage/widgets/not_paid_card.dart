@@ -12,12 +12,14 @@ class NotPaidCardSelling extends StatelessWidget {
   final String lokasiPertemuan;
   final double rating;
   final int price;
+  final String pemesan;
   final int idPesanan;
 
   const NotPaidCardSelling({
     Key? key,
     required this.imagePath,
     required this.title,
+    required this.pemesan,
     required this.metodePembayaran,
     required this.lokasiPertemuan,
     required this.rating,
@@ -119,6 +121,20 @@ class NotPaidCardSelling extends StatelessWidget {
                               ),
                               Text(
                                 metodePembayaran,
+                                style: AppTextStyle()
+                                    .textInfoBold(AppColors.hargaStat),
+                              ),
+                            ].withSpaceBetween(width: 4),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Pesanan Oleh'.tr,
+                                style: AppTextStyle()
+                                    .textInfo(AppColors.description),
+                              ),
+                              Text(
+                                pemesan,
                                 style: AppTextStyle()
                                     .textInfoBold(AppColors.hargaStat),
                               ),

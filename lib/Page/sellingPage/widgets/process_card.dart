@@ -7,6 +7,7 @@ import 'package:rusconsign/utils/text_style.dart';
 class ProcessCardSelling extends StatelessWidget {
   final String imagePath;
   final String title;
+  final String pemesan;
   final String metodePembayaran;
   final String lokasiPertemuan;
   final double rating;
@@ -15,6 +16,7 @@ class ProcessCardSelling extends StatelessWidget {
   const ProcessCardSelling({
     Key? key,
     required this.imagePath,
+    required this.pemesan,
     required this.title,
     required this.metodePembayaran,
     required this.lokasiPertemuan,
@@ -24,6 +26,7 @@ class ProcessCardSelling extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final img = "https://rusconsign.com/api";
     return Card(
       elevation: 0,
       margin: const EdgeInsets.symmetric(vertical: 0),
@@ -43,7 +46,7 @@ class ProcessCardSelling extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  imagePath,
+                  "$img$imagePath",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -101,6 +104,18 @@ class ProcessCardSelling extends StatelessWidget {
                       ),
                       Text(
                         metodePembayaran,
+                        style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                      ),
+                    ].withSpaceBetween(width: 4),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Pesanan Oleh'.tr,
+                        style: AppTextStyle().textInfo(AppColors.description),
+                      ),
+                      Text(
+                        pemesan,
                         style: AppTextStyle().textInfoBold(AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),

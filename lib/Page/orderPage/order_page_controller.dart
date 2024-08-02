@@ -25,18 +25,21 @@ class OrderPageController extends GetxController {
   }
 
   Future<void> fetchPesanan(int filter) async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    String? idUser = pref.getString('idUser');
     isLoading.value = true;
     Uri uri;
 
     switch (filter) {
       case 1:
-        uri = Uri.parse("https://rusconsign.com/api/cods/status/user/progres");
+        uri = Uri.parse("https://rusconsign.com/api/cods/user/progres/$idUser");
         break;
       case 2:
-        uri = Uri.parse("https://rusconsign.com/api/cods/status/user/selesai");
+        uri = Uri.parse("https://rusconsign.com/api/cods/user/selesai/$idUser");
         break;
       default:
-        uri = Uri.parse("https://rusconsign.com/api/cods/status/user/pending");
+        uri = Uri.parse(
+            "https://rusconsign.com/api/cods/user/belum_pembayaran/$idUser");
         break;
     }
 

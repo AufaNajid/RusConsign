@@ -71,7 +71,7 @@ class CheckoutPageController extends GetxController {
     isLoading(false);
   }
 
-  Future<void> addPesanan(String idProduct) async {
+  Future<void> addPesanan(String idProduct, String idMitra) async {
     isLoading.value = true;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -84,6 +84,7 @@ class CheckoutPageController extends GetxController {
     request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['barang_id'] = idProduct;
+  request.fields['mitra_id'] = idMitra;
     request.fields['lokasi_id'] = "1";
     request.fields['quantity'] = "1";
 
