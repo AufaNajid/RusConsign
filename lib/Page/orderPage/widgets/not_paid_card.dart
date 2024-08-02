@@ -33,6 +33,7 @@ class NotPaidCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final img = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -71,12 +72,12 @@ class NotPaidCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: AppResponsive().screenWidth(context) * 0.240,
-                            height: 150,
+                            width: 100,
+                            height: 120,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                imagePath,
+                                "$img$imagePath",
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -102,7 +103,7 @@ class NotPaidCard extends StatelessWidget {
                                       width: 25,
                                       child: ClipOval(
                                         child: Image.network(
-                                          profileImagePath,
+                                          "$img$profileImagePath",
                                           fit: BoxFit.cover,
                                         ),
                                       ),

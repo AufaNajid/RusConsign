@@ -6,12 +6,14 @@ import 'package:rusconsign/Page/orderPage/widgets/on_process_card.dart';
 import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
-
+import 'package:flutter_svg/svg.dart';
+import '../../utils/app_responsive.dart';
 import 'widgets/filter_order_button.dart';
 import 'widgets/not_paid_card.dart';
 
 class OrderPage extends StatelessWidget {
-  final orderController = Get.put(OrderPageController());
+  final OrderPageController orderController = Get.put(OrderPageController());
+
   OrderPage({super.key});
 
   @override
@@ -47,7 +49,7 @@ class OrderPage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             child: Row(
               children: [
                 FilterOrderButton(
@@ -66,39 +68,88 @@ class OrderPage extends StatelessWidget {
                   text: 'selesai'.tr,
                   icon: FeatherIcons.check,
                   index: 2,
-                )
+                ),
+                // const Spacer(),
+                // FilterOrderButton(
+                //   text: 'Dibatalkan'.tr,
+                //   icon: FeatherIcons.check,
+                //   index: 2,
+                // )
               ],
             ),
           ),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 15.0, right: 15.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 4),
                     Obx(
-                      () {
+                          () {
+                        if (orderController.isLoading.value) {
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: AppResponsive()
+                                    .screenHeight(context) *
+                                    0.4,
+                                child: const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColors.hargaStat,
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
+                        } else if (orderController.productList.isEmpty) {
+                          return SizedBox(
+                            width: double.infinity,
+                            height:
+                            AppResponsive().screenHeight(context) * 0.8,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/images/fluent--box-search-24-regular.svg",
+                                  // ignore: deprecated_member_use
+                                  color: AppColors.hargaStat,
+                                  width:
+                                  AppResponsive().screenWidth(context) *
+                                      0.1,
+                                  height:
+                                  AppResponsive().screenHeight(context) *
+                                      0.1,
+                                ),
+                                Text(
+                                  'belumAdaPesanan'.tr,
+                                  style: AppTextStyle()
+                                      .subHeader(AppColors.description),
+                                )
+                              ],
+                            ),
+                          );
+                        }
+
                         if (orderController.selectedIndex == 0) {
                           return ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
+                            itemCount: orderController.productList.length,
                             itemBuilder: (context, index) {
+                              final cod = orderController.productList[index];
                               return NotPaidCard(
-                                imagePath:
-                                    'https://via.placeholder.com/100x150',
-                                title:
-                                    'Jasa Photo individual,potrait photo (Lingkungan RUS)',
-                                profileImagePath:
-                                    'https://via.placeholder.com/30x30',
-                                profileUsername: 'mndinadinadjn',
-                                rating: 5.0,
-                                totalProductPrice: 100000,
-                                paymentMethod: "CODadbubabda ",
-                                meetingLocation: "SMK RUS",
+                                imagePath: cod.barang.imageBarang,
+                                title: cod.barang.namaBarang,
+                                profileImagePath: cod.lokasi.mitra.imageProfile,
+                                profileUsername: cod.lokasi.mitra.namaToko,
+                                rating: cod.barang.ratingBarang.toDouble(),
+                                totalProductPrice: cod.barang.harga,
+                                paymentMethod: cod.statusPembayaran,
+                                meetingLocation: cod.lokasi.namaLokasi,
                                 onCancelProduct: () {},
                               );
                             },
@@ -107,20 +158,18 @@ class OrderPage extends StatelessWidget {
                           return ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
+                            itemCount: orderController.productList.length,
                             itemBuilder: (context, index) {
+                              final cod = orderController.productList[index];
                               return OnProcessCard(
-                                imagePath:
-                                    'https://via.placeholder.com/100x150',
-                                title:
-                                    'Gantungan Kunci (Key Chain) Bodadad had adjneka Unik',
-                                profileImagePath:
-                                    'https://via.placeholder.com/30x30',
-                                profileUsername: 'efijwfisi iaduhhdhdia mfef',
-                                rating: 4.5,
-                                totalProductPrice: 155000,
-                                paymentMethod: "Dana",
-                                meetingLocation: "Gazebo dekat sekolah",
+                                imagePath: cod.barang.imageBarang,
+                                title: cod.barang.namaBarang,
+                                profileImagePath: cod.lokasi.mitra.imageProfile,
+                                profileUsername: cod.lokasi.mitra.namaToko,
+                                rating: cod.barang.ratingBarang.toDouble(),
+                                totalProductPrice: cod.barang.harga,
+                                paymentMethod: cod.statusPembayaran,
+                                meetingLocation: cod.lokasi.namaLokasi,
                                 onChatSeller: () {},
                               );
                             },
@@ -129,20 +178,18 @@ class OrderPage extends StatelessWidget {
                           return ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: 10,
+                            itemCount: orderController.productList.length,
                             itemBuilder: (context, index) {
+                              final cod = orderController.productList[index];
                               return FinishCard(
-                                imagePath:
-                                    'https://via.placeholder.com/100x150',
-                                title:
-                                    'Jasa Pengeditan Vide Tugas, atau video individu di sekitaran RUS',
-                                profileImagePath:
-                                    'https://via.placeholder.com/30x30',
-                                profileUsername: 'edadisi iaduadybad ad daidna',
-                                rating: 4.0,
-                                totalProductPrice: 155000,
-                                paymentMethod: "Gopay",
-                                meetingLocation: "Depan Studio RUS",
+                                imagePath: cod.barang.imageBarang,
+                                title: cod.barang.namaBarang,
+                                profileImagePath: cod.lokasi.mitra.imageProfile,
+                                profileUsername: cod.lokasi.mitra.namaToko,
+                                rating: cod.barang.ratingBarang.toDouble(),
+                                totalProductPrice: cod.barang.harga,
+                                paymentMethod: cod.statusPembayaran,
+                                meetingLocation: cod.lokasi.namaLokasi,
                                 onGiveRating: () {},
                               );
                             },

@@ -11,10 +11,9 @@ class DropdownPayment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CheckoutPageController());
-  
 
     return Obx(
-      () {
+          () {
         return AnimatedSize(
           alignment: Alignment.topCenter,
           duration: const Duration(milliseconds: 300),
@@ -45,7 +44,7 @@ class DropdownPayment extends StatelessWidget {
               controller.expanded.value = expanded;
             },
             children: controller.items.asMap().entries.map(
-              (entry) {
+                  (entry) {
                 int index = entry.key;
                 var item = entry.value;
                 return ListTile(
@@ -57,8 +56,7 @@ class DropdownPayment extends StatelessWidget {
                   onTap: () {
                     controller.selectPaymentMethod(index);
                   },
-                  selected:
-                      controller.selectedPaymentMethod.value == item['title'],
+                  selected: controller.selectedPaymentMethod.value == item['title'],
                 );
               },
             ).toList(),

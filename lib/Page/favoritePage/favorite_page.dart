@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/favoritePage/controller/like_controller.dart';
 import 'package:rusconsign/Page/favoritePage/widgets/favorite_card.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
@@ -49,18 +50,32 @@ class FavoritePage extends StatelessWidget {
               ],
             );
           } else if (controller.favoriteList.isEmpty) {
-            return Column(
-              children: [
-                SizedBox(
-                  height: AppResponsive().screenHeight(context) * 0.4,
-                  child: Center(
-                    child: Text(
-                      'belumAdaData'.tr,
-                      style: AppTextStyle().subHeader(AppColors.hargaStat),
-                    ),
+            return SizedBox(
+              width: double.infinity,
+              height:
+              AppResponsive().screenHeight(context) * 0.8,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/images/fluent--box-search-24-regular.svg",
+                    // ignore: deprecated_member_use
+                    color: AppColors.hargaStat,
+                    width:
+                    AppResponsive().screenWidth(context) *
+                        0.1,
+                    height:
+                    AppResponsive().screenHeight(context) *
+                        0.1,
                   ),
-                ),
-              ],
+                  Text(
+                    'belum Ada Barang'.tr,
+                    style: AppTextStyle()
+                        .subHeader(AppColors.description),
+                  )
+                ],
+              ),
             );
           } else {
             return Padding(
