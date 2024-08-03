@@ -58,7 +58,7 @@ class EditDataProductController extends GetxController {
       namaPJController.text = data.barang.namaBarang;
       deskripsiController.text = data.barang.deskripsi;
       hargaController.text = data.barang.harga.toString();
-      imageUrl.value = 'https://rusconsign.com/api${data.barang.imageBarang}';
+      imageUrl.value = 'https://rusconsign.com/api/storage/public${data.barang.imageBarang.replaceFirst("storage/", "")}';
       pickedImage.value = null;
     } else {
       Get.snackbar('Error', 'Ada data error: ${response.statusCode}');
@@ -81,23 +81,27 @@ class EditDataProductController extends GetxController {
     final uri =
         Uri.parse('https://rusconsign.com/api/mitra/edit-barang/$idBarang');
     final request = http.MultipartRequest('POST', uri);
-      request.headers['Authorization'] = "Bearer $token";
-      request.fields['nama_barang'] = namaPJController.text;
-      request.fields['deskripsi'] = deskripsiController.text;
-      request.fields['harga'] = hargaController.text;
-
+    request.headers['Authorization'] = "Bearer $token";
+    request.fields['nama_barang'] = namaPJController.text;
+    request.fields['deskripsi'] = deskripsiController.text;
+    request.fields['harga'] = hargaController.text;
 
     if (pickedImage.value != null) {
       print("data galeri");
       imageUrl.value = null;
-    var imageStream = http.ByteStream(pickedImage.value!.openRead());
-    var imageLength = await pickedImage.value!.length();
+      var imageStream = http.ByteStream(pickedImage.value!.openRead());
+      var imageLength = await pickedImage.value!.length();
       request.files.add(
         http.MultipartFile(
           'image_barang',
           imageStream,
           imageLength,
-          filename: basename(pickedImage.value!.path),
+          filename: basename(
+            pickedImage.value!.path.replaceFirst(
+              "https://rusconsign.com/api",
+              "https://rusconsign.com/api/storage/public/",
+            ),
+          ),
           contentType: MediaType('image', 'jpeg,img,png,jpg'),
         ),
       );
