@@ -14,7 +14,12 @@ class QrisPaymentPage extends StatelessWidget {
       Get.toNamed("/paymentdone");
     });
     return Scaffold(
-      appBar: CommonAppBar(title: 'pembayaranQRIS'.tr),
+      appBar: CommonAppBar(
+        title: 'pembayaranQRIS'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       backgroundColor: AppColors.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),

@@ -71,7 +71,7 @@ class ProfilePage extends StatelessWidget {
                         ProfileInfoCard(
                           icon: FeatherIcons.userCheck,
                           title: 'pengikut'.tr,
-                          data: "182",
+                          data: dataProfile.dataPengikut.toString(),
                         ),
                         ProfileInfoCard(
                           icon: FeatherIcons.users,
@@ -86,7 +86,7 @@ class ProfilePage extends StatelessWidget {
                         ProfileInfoCard(
                           icon: FeatherIcons.star,
                           title: 'penilaian'.tr,
-                          data: "4.5",
+                          data: dataProfile.dataPenilaian.toString(),
                         ),
                       ],
                     ),

@@ -24,7 +24,12 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: CommonAppBar(title: 'pengaturan'.tr),
+      appBar: CommonAppBar(
+        title: 'pengaturan'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

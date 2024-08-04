@@ -78,12 +78,34 @@ class RegisterPage extends StatelessWidget {
                         if (controller.successfulRegister.value) {
                           Get.offNamed("/login");
                         } else {
-                          Get.snackbar('Error', controller.message.value);
+                          Get.snackbar(
+                            duration: const Duration(seconds: 2),
+                            borderRadius: 10,
+                            margin: const EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 20,
+                            ),
+                            'gagalRegis'.tr,
+                            controller.message.value,
+                            backgroundColor: AppColors.error,
+                            colorText: Colors.white,
+                          );
                         }
                       } else {
-                        controller.message.value = "Please fill in all fields";
+                        controller.message.value = 'isiDeskripsi'.tr;
                         controller.successfulRegister.value = false;
-                        Get.snackbar('Error', controller.message.value);
+                        Get.snackbar(
+                          duration: const Duration(seconds: 2),
+                          borderRadius: 10,
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 10,
+                            horizontal: 20,
+                          ),
+                          'isi'.tr,
+                          controller.message.value,
+                          backgroundColor: AppColors.error,
+                          colorText: Colors.white,
+                        );
                       }
                     },
                     style: ButtonStyle(
@@ -167,10 +189,12 @@ Future<void> _signinWithGoogle() async {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   try {
-    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAccount? googleSignInAccount =
+        await googleSignIn.signIn();
 
     if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleSignInAuthentication.idToken,

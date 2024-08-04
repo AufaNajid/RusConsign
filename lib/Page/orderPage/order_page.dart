@@ -39,11 +39,12 @@ class OrderPage extends StatelessWidget {
         surfaceTintColor: AppColors.background,
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                FeatherIcons.messageCircle,
-                color: AppColors.borderIcon,
-              ))
+            onPressed: () {},
+            icon: Icon(
+              FeatherIcons.messageCircle,
+              color: AppColors.borderIcon,
+            ),
+          ),
         ],
       ),
       body: Column(

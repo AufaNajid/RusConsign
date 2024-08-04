@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final VoidCallback route;
 
   const CommonAppBar({
     required this.title,
-    Key? key,
+    Key? key, required this.route,
   }) : super(key: key);
 
   @override
@@ -20,9 +20,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: null,
       leading: IconButton(
         icon: Icon(FeatherIcons.chevronLeft ,color:AppColors.borderIcon  ,),
-        onPressed: () {
-          Get.back();
-        },
+        onPressed: route,
         iconSize: 24,
       ),
       title: Text(

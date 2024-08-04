@@ -17,13 +17,23 @@ class ChekcoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(CheckoutPageController());
     return Scaffold(
-      appBar: CommonAppBar(title: 'checkout'.tr),
+      appBar: CommonAppBar(
+        title: 'checkout'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       backgroundColor: AppColors.background,
       body: Obx(() {
         if (controller.isLoading.value) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+              child: CircularProgressIndicator(
+            color: AppColors.hargaStat,
+          ));
         } else if (controller.productDetail.value == null) {
-          return const Center(child: Text('Product not found'));
+          return const Center(
+            child: Text('Product not found'),
+          );
         } else {
           final product = controller.productDetail.value!;
           final mitra = product.mitra;

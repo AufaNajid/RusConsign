@@ -22,7 +22,7 @@ class DetailPage extends GetView<DetailPageController> {
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api";
     return Scaffold(
-      appBar: CommonAppBar(title: 'detailProduk'.tr),
+      appBar: CommonAppBar(title: 'detailProduk'.tr, route: () { Get.back(); },),
       backgroundColor: AppColors.background,
       body: controller.obx(
         (state) => SingleChildScrollView(

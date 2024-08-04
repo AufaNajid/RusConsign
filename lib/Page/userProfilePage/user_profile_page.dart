@@ -21,7 +21,12 @@ class UserProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: CommonAppBar(title: 'profilPengguna'.tr),
+      appBar: CommonAppBar(
+        title: 'profilPengguna'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
@@ -201,10 +206,12 @@ class UserProfilePage extends StatelessWidget {
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return ProductCard(
-                              imagePath: controller.productList[index].imageBarang,
+                              imagePath:
+                                  controller.productList[index].imageBarang,
                               title: controller.productList[index].namaBarang,
                               price: controller.productList[index].harga,
-                              rating: controller.productList[index].ratingBarang.toDouble(),
+                              rating: controller.productList[index].ratingBarang
+                                  .toDouble(),
                               productId: controller.productList[index].idBarang,
                             );
                           },
@@ -223,10 +230,12 @@ class UserProfilePage extends StatelessWidget {
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return ProductCard(
-                              imagePath: controller.productList[index].imageBarang,
+                              imagePath:
+                                  controller.productList[index].imageBarang,
                               title: controller.productList[index].namaBarang,
                               price: controller.productList[index].harga,
-                              rating: controller.productList[index].ratingBarang.toDouble(),
+                              rating: controller.productList[index].ratingBarang
+                                  .toDouble(),
                               productId: controller.productList[index].idBarang,
                             );
                           },
@@ -245,10 +254,12 @@ class UserProfilePage extends StatelessWidget {
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return ProductCard(
-                              imagePath: controller.productList[index].imageBarang,
+                              imagePath:
+                                  controller.productList[index].imageBarang,
                               title: controller.productList[index].namaBarang,
                               price: controller.productList[index].harga,
-                              rating: controller.productList[index].ratingBarang.toDouble(),
+                              rating: controller.productList[index].ratingBarang
+                                  .toDouble(),
                               productId: controller.productList[index].idBarang,
                             );
                           },
