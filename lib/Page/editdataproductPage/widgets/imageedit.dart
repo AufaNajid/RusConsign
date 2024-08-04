@@ -70,7 +70,7 @@ class ImageEdit extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(
-              "Pilih Foto",
+              'pilihFoto'.tr,
               style: AppTextStyle().description(AppColors.textButton1),
             ),
           ),

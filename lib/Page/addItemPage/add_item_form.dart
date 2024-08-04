@@ -24,7 +24,12 @@ class AddItemForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: 'buatBaru'.tr),
+      appBar: CommonAppBar(
+        title: 'buatBaru'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       backgroundColor: AppColors.background,
       body: SingleChildScrollView(
         child: Padding(
@@ -147,19 +152,23 @@ class AddItemForm extends StatelessWidget {
                       harga,
                     );
                     if (controller.successfulAddProduct.value == true) {
-                      Get.offNamed("/menu");
+                      Get.back();
                     } else {
                       Get.snackbar("Eror", controller.message.value);
                     }
                   } else {
-                    Get.snackbar("Error", "Please fill all fields",
-                        snackPosition: SnackPosition.BOTTOM);
+                    Get.snackbar(
+                      "Error",
+                      "Please fill all fields",
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.button2,
-                    shape: BeveledRectangleBorder(
-                        borderRadius: BorderRadius.circular(2))),
+                  backgroundColor: AppColors.button2,
+                  shape: BeveledRectangleBorder(
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
                 child: Text(
                   'buat'.tr,
                   style: AppTextStyle().description(AppColors.background),

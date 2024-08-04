@@ -23,6 +23,8 @@ class AuthLoginController extends GetxController {
   RxString dataEmail = ''.obs;
   RxInt dataJumJasa = 0.obs;
   RxInt dataJumProduk = 0.obs;
+  RxInt dataPenilaian = 0.obs;
+  RxInt dataPengikut = 0.obs;
 
   @override
   void onInit() {
@@ -102,6 +104,8 @@ class AuthLoginController extends GetxController {
       dataUsername.value = responseProfile.data.name.toString();
       dataEmail.value = responseProfile.data.email.toString();
       dataJumProduk.value = responseProfile.data.jumlahproduct ?? 0;
+      dataPenilaian.value = responseProfile.data.penilaian ?? 0;
+      dataPengikut.value = responseProfile.data.pengikut ?? 0;
       // print(prefs.getString("statusMitra"));
     } else {
       print("Eror FetchingProfile${response.statusCode}");

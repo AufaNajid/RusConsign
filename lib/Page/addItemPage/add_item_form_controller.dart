@@ -20,7 +20,7 @@ class AddItemFormController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool successfulAddJasa = false.obs;
   RxString message = "".obs;
-  var pickedImage = Rxn<File?>();
+  var pickedImage = Rxn<File>();
 
   int get selectedIndex => _selectedIndex.value;
 
