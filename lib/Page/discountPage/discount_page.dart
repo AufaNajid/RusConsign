@@ -12,7 +12,7 @@ class DiscountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: CommonAppBar(title: 'produkDiskon'.tr),
+      appBar: CommonAppBar(title: 'produkDiskon'.tr, route: () { Get.back(); },),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(

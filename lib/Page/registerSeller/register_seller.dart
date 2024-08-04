@@ -17,7 +17,8 @@ class RegisterSeller extends StatelessWidget {
   RegisterSeller({Key? key}) : super(key: key);
 
   final MitraController controller = Get.put(MitraController());
-  final RegisterSellerController controllerImage = Get.put(RegisterSellerController());
+  final RegisterSellerController controllerImage =
+      Get.put(RegisterSellerController());
   // final TextEditingController namaController = TextEditingController();
   // final TextEditingController nomorController = TextEditingController();
   // final TextEditingController namaTokoController = TextEditingController();
@@ -27,7 +28,12 @@ class RegisterSeller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: 'registerPenjual'.tr),
+      appBar: CommonAppBar(
+        title: 'registerPenjual'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       backgroundColor: AppColors.background,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -35,14 +41,16 @@ class RegisterSeller extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Nama Toko", style: AppTextStyle().subHeader(AppColors.titleLine)),
+              Text("Nama Toko",
+                  style: AppTextStyle().subHeader(AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSeller(
                 hintText: "Masukkan nama toko anda...",
                 controller: controller.namaTokoController,
               ),
               const SizedBox(height: 15),
-              Text("Nama Lengkap", style: AppTextStyle().subHeader(AppColors.titleLine)),
+              Text("Nama Lengkap",
+                  style: AppTextStyle().subHeader(AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSeller(
                 hintText: "Masukkan nama lengkap anda...",

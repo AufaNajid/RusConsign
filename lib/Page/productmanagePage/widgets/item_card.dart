@@ -30,94 +30,103 @@ class ProductItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api/storage/public";
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: AppColors.cardIconFill),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      "$imageUrl${imagePath.replaceFirst("storage/", "")}",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        color: AppColors.cardProdukTidakDipilih),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            nameProduct,
-                            style:
-                                AppTextStyle().subHeader(AppColors.titleLine),
-                          ),
-                          SizedBox(
-                            width: AppResponsive().screenWidth(context) * 0.6,
-                            child: Text(
-                              description,
-                              style: AppTextStyle()
-                                  .textInfo(AppColors.description),
-                              textAlign: TextAlign.start,
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                '${'total'.tr} :',
-                                style: AppTextStyle()
-                                    .textInfo(AppColors.description),
-                              ),
-                              Text(
-                                'Rp $price',
-                                style: AppTextStyle()
-                                    .textInfoBold(AppColors.hargaStat),
-                              ),
-                            ].withSpaceBetween(width: 4),
-                          ),
-                        ].withSpaceBetween(height: 5),
+    return SizedBox(
+      child: Card(
+        elevation: 0,
+        color: AppColors.cardIconFill,
+        margin: const EdgeInsets.all(0),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        "$imageUrl${imagePath.replaceFirst("storage/", "")}",
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                ),
-              ].withSpaceBetween(width: 5),
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ButtonItemCardTrash(
-                  icon: FeatherIcons.trash2,
-                  text: 'hapus'.tr,
-                  onPressed: onPressed,
-                ),
-                ButtonItemCardEdit(
-                  icon: FeatherIcons.edit,
-                  text: 'edit'.tr,
-                  onPressed: onEdit,
-                ),
-              ].withSpaceBetween(width: 10),
-            )
-          ].withSpaceBetween(width: 5, height: 5),
+                  Expanded(
+                    child: SizedBox(
+                      height: 100,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: AppColors.cardProdukTidakDipilih,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 8,
+                            horizontal: 10,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                nameProduct,
+                                style: AppTextStyle()
+                                    .subHeader(AppColors.titleLine),
+                              ),
+                              SizedBox(
+                                width:
+                                    AppResponsive().screenWidth(context) * 0.6,
+                                child: Text(
+                                  description,
+                                  style: AppTextStyle()
+                                      .textInfo(AppColors.description),
+                                  textAlign: TextAlign.start,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '${'total'.tr} :',
+                                    style: AppTextStyle()
+                                        .textInfo(AppColors.description),
+                                  ),
+                                  Text(
+                                    'Rp $price',
+                                    style: AppTextStyle()
+                                        .textInfoBold(AppColors.hargaStat),
+                                  ),
+                                ].withSpaceBetween(width: 4),
+                              ),
+                            ].withSpaceBetween(height: 5),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ].withSpaceBetween(width: 5),
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ButtonItemCardTrash(
+                    icon: FeatherIcons.trash2,
+                    text: 'hapus'.tr,
+                    onPressed: onPressed,
+                  ),
+                  ButtonItemCardEdit(
+                    icon: FeatherIcons.edit,
+                    text: 'edit'.tr,
+                    onPressed: onEdit,
+                  ),
+                ].withSpaceBetween(width: 10),
+              )
+            ].withSpaceBetween(width: 5, height: 5),
+          ),
         ),
       ),
     );

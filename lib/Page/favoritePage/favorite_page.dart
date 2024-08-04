@@ -5,6 +5,7 @@ import 'package:rusconsign/Page/favoritePage/widgets/favorite_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -37,44 +38,39 @@ class FavoritePage extends StatelessWidget {
         backgroundColor: AppColors.background,
         body: Obx(() {
           if (controller.isLoading.value) {
-            return Column(
-              children: [
-                SizedBox(
-                  height: AppResponsive().screenHeight(context) * 0.4,
-                  child: const Center(
+            return SizedBox(
+              width: double.infinity,
+              height: AppResponsive().screenHeight(context),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
                     child: CircularProgressIndicator(
                       color: AppColors.hargaStat,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             );
           } else if (controller.favoriteList.isEmpty) {
             return SizedBox(
               width: double.infinity,
-              height:
-              AppResponsive().screenHeight(context) * 0.8,
+              height: AppResponsive().screenHeight(context),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(
                     "assets/images/fluent--box-search-24-regular.svg",
-                    // ignore: deprecated_member_use
-                    color: AppColors.hargaStat,
-                    width:
-                    AppResponsive().screenWidth(context) *
-                        0.1,
-                    height:
-                    AppResponsive().screenHeight(context) *
-                        0.1,
+                    width: AppResponsive().screenWidth(context) * 0.1,
+                    height: AppResponsive().screenHeight(context) * 0.1,
                   ),
                   Text(
-                    'belum Ada Barang'.tr,
-                    style: AppTextStyle()
-                        .subHeader(AppColors.description),
+                    'belumAdaBarang'.tr,
+                    style: AppTextStyle().subHeader(AppColors.description),
                   )
-                ],
+                ].withSpaceBetween(height: 20),
               ),
             );
           } else {
@@ -95,7 +91,8 @@ class FavoritePage extends StatelessWidget {
                     profileImagePath: barang.imageBarang,
                     profileUsername: mitra.namaLengkap,
                     isFavorite: controller.isItemFavorite(barang.id),
-                    onFavoriteToggle: () => controller.toggleFavorite(barang.id),
+                    onFavoriteToggle: () =>
+                        controller.toggleFavorite(barang.id),
                   );
                 },
               ),

@@ -14,7 +14,7 @@ class LocationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: CommonAppBar(title: 'lokasiPertemuan'.tr),
+      appBar: CommonAppBar(title: 'lokasiPertemuan'.tr, route: () { Get.back(); },),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         child: Column(

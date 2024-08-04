@@ -39,11 +39,12 @@ class OrderPage extends StatelessWidget {
         surfaceTintColor: AppColors.background,
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                FeatherIcons.messageCircle,
-                color: AppColors.borderIcon,
-              ))
+            onPressed: () {},
+            icon: Icon(
+              FeatherIcons.messageCircle,
+              color: AppColors.borderIcon,
+            ),
+          ),
         ],
       ),
       body: Column(
@@ -88,14 +89,13 @@ class OrderPage extends StatelessWidget {
                   children: [
                     const SizedBox(height: 4),
                     Obx(
-                          () {
+                      () {
                         if (orderController.isLoading.value) {
                           return Column(
                             children: [
                               SizedBox(
-                                height: AppResponsive()
-                                    .screenHeight(context) *
-                                    0.4,
+                                height:
+                                    AppResponsive().screenHeight(context) * 0.4,
                                 child: const Center(
                                   child: CircularProgressIndicator(
                                     color: AppColors.hargaStat,
@@ -107,8 +107,7 @@ class OrderPage extends StatelessWidget {
                         } else if (orderController.productList.isEmpty) {
                           return SizedBox(
                             width: double.infinity,
-                            height:
-                            AppResponsive().screenHeight(context) * 0.8,
+                            height: AppResponsive().screenHeight(context) * 0.8,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -117,12 +116,11 @@ class OrderPage extends StatelessWidget {
                                   "assets/images/fluent--box-search-24-regular.svg",
                                   // ignore: deprecated_member_use
                                   color: AppColors.hargaStat,
-                                  width:
-                                  AppResponsive().screenWidth(context) *
+                                  width: AppResponsive().screenWidth(context) *
                                       0.1,
                                   height:
-                                  AppResponsive().screenHeight(context) *
-                                      0.1,
+                                      AppResponsive().screenHeight(context) *
+                                          0.1,
                                 ),
                                 Text(
                                   'belumAdaPesanan'.tr,

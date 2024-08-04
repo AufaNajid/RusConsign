@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/cartPage/widgets/appbar_cart.dart';
 import 'package:rusconsign/Page/cartPage/widgets/product_card.dart';
@@ -56,63 +55,19 @@ class CartPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 30,
-                          width: 30,
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              FeatherIcons.check,
-                              color: Colors.transparent,
-                              size: 14,
-                            ),
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
-                                  AppColors.cardIconFill),
-                              side: MaterialStatePropertyAll(
-                                BorderSide(
-                                  color: AppColors.borderIcon,
-                                  style: BorderStyle.solid,
-                                  width: 1,
-                                ),
-                              ),
-                              shape: MaterialStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'semua'.tr,
-                          style:
-                              AppTextStyle().description(AppColors.description),
-                        )
-                      ].withSpaceBetween(width: 10),
+                    Text(
+                      '${'total'.tr} : ',
+                      style: AppTextStyle().subHeader(AppColors.description),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          '${'total'.tr} : ',
-                          style:
-                              AppTextStyle().description(AppColors.description),
-                        ),
-                        Text(
-                          MoneyFormat.format(10000),
-                          style: AppTextStyle().subHeader(AppColors.hargaStat),
-                        )
-                      ].withSpaceBetween(width: 5),
-                    ),
-                  ].withSpaceBetween(width: 15),
+                    Text(
+                      MoneyFormat.format(10000),
+                      style: AppTextStyle().subHeader(AppColors.hargaStat),
+                    )
+                  ].withSpaceBetween(width: 5),
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: AppResponsive().screenWidth(context) * 0.45,
+                  width: AppResponsive().screenWidth(context) * 0.5,
                   height: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {

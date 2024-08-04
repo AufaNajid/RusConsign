@@ -26,7 +26,12 @@ class ProductManagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CommonAppBar(title: 'kelolaPJ'.tr),
+      appBar: CommonAppBar(
+        title: 'kelolaPJ'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       backgroundColor: AppColors.background,
       body: RefreshIndicator(
         edgeOffset: 15,
@@ -171,7 +176,7 @@ class ProductManagePage extends StatelessWidget {
                               );
                             },
                             onEdit: () {
-                              Get.toNamed("/editdataproduct",
+                              Get.offNamed("/editdataproduct",
                                   arguments:
                                       controller.productList[index].idBarang);
                             },
