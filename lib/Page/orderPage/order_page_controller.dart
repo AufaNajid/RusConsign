@@ -24,6 +24,24 @@ class OrderPageController extends GetxController {
     fetchPesanan(0);
   }
 
+  Future<void> updateComplete(int idPesanan) async {
+    isLoading.value = true;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+
+    final response = await http.put(
+      Uri.parse(
+          "https://rusconsign.com/api/cod/$idPesanan/complete?status_pembayaran=selesai"),
+      headers: <String, String>{
+        'Authorization': "Bearer $token",
+      },
+    );
+
+    if (response.statusCode == 200) {
+      await fetchPesanan(1);
+    }
+  }
+
   Future<void> fetchPesanan(int filter) async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     String? idUser = pref.getString('idUser');

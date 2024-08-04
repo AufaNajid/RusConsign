@@ -34,6 +34,7 @@ class NotPaidCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final img = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -77,7 +78,7 @@ class NotPaidCard extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                "$img$imagePath",
+                                "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                                 fit: BoxFit.cover,
                               ),
                             ),

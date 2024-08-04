@@ -93,14 +93,14 @@ class CheckoutPageController extends GetxController {
     print("Response status: ${response.statusCode}");
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      isLoading.value = true;
+      // isLoading.value = true;
       successfulPesanProduct.value = true;
       message.value = "Pesan Product Successfull";
     } else {
       print("Eror Pesan-Product ${response.statusCode}");
 
     }
-    isLoading.value = false;
+    // isLoading.value = false;
 
   }
 }

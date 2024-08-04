@@ -30,7 +30,7 @@ class NotPaidCardSelling extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SellingPageController controller = Get.put(SellingPageController());
-    final img = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return Container(
       decoration: BoxDecoration(
         color: AppColors.cardIconFill,
@@ -59,7 +59,7 @@ class NotPaidCardSelling extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.network(
-                          "$img$imagePath",
+                          "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -172,7 +172,54 @@ class NotPaidCardSelling extends StatelessWidget {
                     elevation: 0,
                   ),
                   onPressed: () {
-                    controller.updateProgress(idPesanan);
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6)),
+                            backgroundColor: AppColors.background,
+                            title: Text(
+                              'Konfirmasi Proses Pesanan?'.tr,
+                              style: AppTextStyle().title(AppColors.titleLine),
+                            ),
+                            content: Text(
+                                'Apakah Anda Yakin Ingin Mem-Proses Pesanan Ini?'
+                                    .tr),
+                            actions: <Widget>[
+                              OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                        color: AppColors.button1),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(4))),
+                                child: Text(
+                                  'batal'.tr,
+                                  style: AppTextStyle()
+                                      .subHeader(AppColors.hargaStat),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  foregroundColor: AppColors.solidWhite,
+                                  backgroundColor: AppColors.button1,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                                child: Text('Ya, Proses'.tr),
+                                onPressed: () async {
+                                  await controller.updateProgress(idPesanan);
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        });
                   },
                   child: Text(
                     'Proses Pesanan'.tr,

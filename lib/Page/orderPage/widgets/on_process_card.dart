@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -8,6 +9,7 @@ import 'package:rusconsign/utils/money_format.dart';
 import '../../../utils/text_style.dart';
 
 class OnProcessCard extends StatelessWidget {
+  final int idPesanan;
   final String imagePath;
   final String title;
   final String profileImagePath;
@@ -21,6 +23,7 @@ class OnProcessCard extends StatelessWidget {
   const OnProcessCard({
     Key? key,
     required this.imagePath,
+    required this.idPesanan,
     required this.title,
     required this.profileImagePath,
     required this.profileUsername,
@@ -33,7 +36,9 @@ class OnProcessCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final OrderPageController orderController = Get.put(OrderPageController());
     final img = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -77,7 +82,7 @@ class OnProcessCard extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                "$img$imagePath",
+                                "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -224,6 +229,79 @@ class OnProcessCard extends StatelessWidget {
                     ),
                     child: Text(
                       'chatPenjual'.tr,
+                      style: AppTextStyle().header(AppColors.textButton2),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: AppResponsive().screenWidth(context) * 0.080,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6)),
+                              backgroundColor: AppColors.background,
+                              title: Text(
+                                'Konfirmasi Proses Pesanan?'.tr,
+                                style:
+                                    AppTextStyle().title(AppColors.titleLine),
+                              ),
+                              content: Text(
+                                  'Apakah Anda Yakin Ingin Mem-Proses Pesanan Ini?'
+                                      .tr),
+                              actions: <Widget>[
+                                OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                      side: const BorderSide(
+                                          color: AppColors.button1),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(4))),
+                                  child: Text(
+                                    'batal'.tr,
+                                    style: AppTextStyle()
+                                        .subHeader(AppColors.hargaStat),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: AppColors.solidWhite,
+                                    backgroundColor: AppColors.button1,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                  ),
+                                  child: Text('Ya, Proses'.tr),
+                                  onPressed: () async {
+                                    await orderController
+                                        .updateComplete(idPesanan);
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          });
+                    },
+                    style: ButtonStyle(
+                      elevation: const MaterialStatePropertyAll(0),
+                      padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      ),
+                      backgroundColor:
+                          MaterialStatePropertyAll(AppColors.button2),
+                    ),
+                    child: Text(
+                      'Pesanan Diterima'.tr,
                       style: AppTextStyle().header(AppColors.textButton2),
                     ),
                   ),

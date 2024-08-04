@@ -160,6 +160,7 @@ class OrderPage extends StatelessWidget {
                             itemBuilder: (context, index) {
                               final cod = orderController.productList[index];
                               return OnProcessCard(
+                                idPesanan: cod.id,
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
                                 profileImagePath: cod.lokasi.mitra.imageProfile,

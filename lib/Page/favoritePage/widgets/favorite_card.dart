@@ -32,8 +32,8 @@ class FavoriteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("id barang adalah $idBarang");
-    const imageUrl = "https://rusconsign.com/api";
+    // print("id barang adalah $idBarang");
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       child: Card(
         elevation: 0,
@@ -55,7 +55,7 @@ class FavoriteCard extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12.0),
                     child: Image.network(
-                      "$imageUrl$imagePath",
+                      "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -84,7 +84,7 @@ class FavoriteCard extends StatelessWidget {
                                   width: 25,
                                   child: ClipOval(
                                     child: Image.network(
-                                      "$imageUrl$profileImagePath",
+                                      "$imageUrl${profileImagePath.replaceFirst("storage/", "")}",
                                       fit: BoxFit.cover,
                                     ),
                                   ),
