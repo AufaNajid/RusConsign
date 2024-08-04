@@ -33,6 +33,7 @@ class FinishCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     final img = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
@@ -77,7 +78,7 @@ class FinishCard extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                "$img$imagePath",
+                                "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                                 fit: BoxFit.cover,
                               ),
                             ),

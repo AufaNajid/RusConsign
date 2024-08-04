@@ -38,6 +38,7 @@ class OnProcessCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final OrderPageController orderController = Get.put(OrderPageController());
     final img = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -81,7 +82,7 @@ class OnProcessCard extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                "$img$imagePath",
+                                "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                                 fit: BoxFit.cover,
                               ),
                             ),

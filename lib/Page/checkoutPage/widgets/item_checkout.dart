@@ -28,7 +28,7 @@ class ItemCheckout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int subtotalValue = price * quantity;
-    const imageUrl = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -72,7 +72,7 @@ class ItemCheckout extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
-                                "${imageUrl}${imagePath}",
+                                "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                                 fit: BoxFit.cover,
                               ),
                             ),

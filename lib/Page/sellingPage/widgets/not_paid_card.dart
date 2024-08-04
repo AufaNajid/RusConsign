@@ -30,7 +30,7 @@ class NotPaidCardSelling extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SellingPageController controller = Get.put(SellingPageController());
-    final img = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return Container(
       decoration: BoxDecoration(
         color: AppColors.cardIconFill,
@@ -59,7 +59,7 @@ class NotPaidCardSelling extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.network(
-                          "$img$imagePath",
+                          "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                           fit: BoxFit.cover,
                         ),
                       ),

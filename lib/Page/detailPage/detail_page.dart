@@ -20,7 +20,7 @@ class DetailPage extends GetView<DetailPageController> {
 
   @override
   Widget build(BuildContext context) {
-    const imageUrl = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return Scaffold(
       appBar: CommonAppBar(title: 'detailProduk'.tr, route: () { Get.back(); },),
       backgroundColor: AppColors.background,
@@ -32,7 +32,7 @@ class DetailPage extends GetView<DetailPageController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                "$imageUrl${state!.barang.imageBarang}",
+                "$imageUrl${state!.barang.imageBarang.replaceFirst("storage/", "")}",
                 fit: BoxFit.cover,
                 height: AppResponsive().screenHeight(context) * 0.35,
                 width: double.infinity,

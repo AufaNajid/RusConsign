@@ -27,6 +27,7 @@ class ProcessCardSelling extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final img = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return Card(
       elevation: 0,
       margin: const EdgeInsets.symmetric(vertical: 0),
@@ -46,7 +47,7 @@ class ProcessCardSelling extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
-                  "$img$imagePath",
+                  "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                   fit: BoxFit.cover,
                 ),
               ),
