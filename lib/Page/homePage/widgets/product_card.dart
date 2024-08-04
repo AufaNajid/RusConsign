@@ -23,7 +23,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const imageUrl = "https://rusconsign.com/api";
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return Card(
       elevation: 0,
       color: AppColors.cardIconFill,
@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: Image.network(
-                    "$imageUrl$imagePath",
+                    "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                     fit: BoxFit.cover,
                   ),
                 ),
