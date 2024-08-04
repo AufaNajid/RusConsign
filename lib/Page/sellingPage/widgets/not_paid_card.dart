@@ -172,7 +172,54 @@ class NotPaidCardSelling extends StatelessWidget {
                     elevation: 0,
                   ),
                   onPressed: () {
-                    controller.updateProgress(idPesanan);
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(6)),
+                            backgroundColor: AppColors.background,
+                            title: Text(
+                              'Konfirmasi Proses Pesanan?'.tr,
+                              style: AppTextStyle().title(AppColors.titleLine),
+                            ),
+                            content: Text(
+                                'Apakah Anda Yakin Ingin Mem-Proses Pesanan Ini?'
+                                    .tr),
+                            actions: <Widget>[
+                              OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                    side: const BorderSide(
+                                        color: AppColors.button1),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(4))),
+                                child: Text(
+                                  'batal'.tr,
+                                  style: AppTextStyle()
+                                      .subHeader(AppColors.hargaStat),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  foregroundColor: AppColors.solidWhite,
+                                  backgroundColor: AppColors.button1,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4),
+                                  ),
+                                ),
+                                child: Text('Ya, Proses'.tr),
+                                onPressed: () async {
+                                  await controller.updateProgress(idPesanan);
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        });
                   },
                   child: Text(
                     'Proses Pesanan'.tr,
