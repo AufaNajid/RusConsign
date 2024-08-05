@@ -58,7 +58,7 @@ class ChekcoutPage extends StatelessWidget {
                         profileName: mitra.namaLengkap,
                         rating: product.ratingBarang.toDouble(),
                         price: product.harga,
-                        quantity: 2,
+                        quantity: 1,
                       ),
                     ].withSpaceBetween(height: 10),
                   ),
@@ -130,7 +130,7 @@ class ChekcoutPage extends StatelessWidget {
                       Get.offNamed("/paymentdone");
                     }
                   } else {
-                    Get.offNamed("/paymentdone");
+                    await controller.paymentTesting(controller.productDetail.value!.id.toString(), "1");
                   }
 
                   // if (controller.selectedPaymentMethod.value == 'QRIS') {

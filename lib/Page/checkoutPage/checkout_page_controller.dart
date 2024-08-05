@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
+import 'package:rusconsign/Api/testing_payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckoutPageController extends GetxController {
@@ -57,7 +59,8 @@ class CheckoutPageController extends GetxController {
 
   fetchProduct(int productID) async {
     isLoading(true);
-    final response = await http.get(Uri.parse('https://rusconsign.com/api/barang/$productID'));
+    final response = await http
+        .get(Uri.parse('https://rusconsign.com/api/barang/$productID'));
 
     if (response.statusCode == 200) {
       var jsonResponse = json.decode(response.body);
@@ -71,20 +74,50 @@ class CheckoutPageController extends GetxController {
     isLoading(false);
   }
 
+  Future<void> paymentTesting(String idBarang, String jumlah) async {
+    isLoading.value = true;
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    print("Token saat TestingPaymentv = $token");
+
+    var request = http.MultipartRequest(
+        'POST', Uri.parse("https://rusconsign.com/api/create-invoice"));
+    request.headers['Authorization'] = 'Bearer $token';
+    request.fields['barang id'] = idBarang;
+    request.fields['quantity'] = jumlah;
+
+    var response = await request.send();
+    print("Response status: ${response.statusCode}");
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      var responseData = await response.stream.bytesToString();
+      print("Response data saat testPayment: $responseData");
+      var jsonResponse = json.decode(responseData);
+      TestingPayment invoice = TestingPayment.fromJson(jsonResponse);
+      print("Url Xendit = ${invoice.invoiceUrl}");
+
+      isLoading.value = false;
+      _showUrlDialog(invoice.invoiceUrl);
+    } else {
+      isLoading.value = false;
+      Get.snackbar('Error', 'Failed to create invoice',
+          snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
   Future<void> addPesanan(String idProduct, String idMitra) async {
     isLoading.value = true;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    
+
     var request = http.MultipartRequest(
-      'POST',
-      Uri.parse("https://rusconsign.com/api/add-pembayaran-cod")
-    );
+        'POST', Uri.parse("https://rusconsign.com/api/add-pembayaran-cod"));
     request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['barang_id'] = idProduct;
-  request.fields['mitra_id'] = idMitra;
+    request.fields['mitra_id'] = idMitra;
     request.fields['lokasi_id'] = "1";
     request.fields['quantity'] = "1";
 
@@ -93,14 +126,34 @@ class CheckoutPageController extends GetxController {
     print("Response status: ${response.statusCode}");
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      // isLoading.value = true;
       successfulPesanProduct.value = true;
       message.value = "Pesan Product Successfull";
     } else {
       print("Eror Pesan-Product ${response.statusCode}");
-
     }
-    // isLoading.value = false;
+  }
 
+  void _showUrlDialog(String url) {
+    Get.defaultDialog(
+      title: "URL Invoice",
+      content: Column(
+        children: [
+          Text("Silakan salin URL di bawah ini:"),
+          SizedBox(height: 10),
+          SelectableText(
+            url,
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.blue),
+          ),
+          SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Text("Tutup"),
+          ),
+        ],
+      ),
+    );
   }
 }
