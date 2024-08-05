@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/settingPage/setting_controller.dart';
+import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 
 import '../../../utils/app_responsive.dart';
 import '../../../utils/text_style.dart';
 
 class DividerProfile extends StatelessWidget {
-  const DividerProfile({super.key});
+  final settingController = Get.put(SettingController());
+  final dataAuth = Get.put(AuthLoginController());
+  DividerProfile({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,31 @@ class DividerProfile extends StatelessWidget {
             SizedBox(
               height: AppResponsive().screenWidth(context) * 0.070,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (settingController.namaProfileController.text !=
+                      settingController.originalNamaProfile.value || 
+                      settingController.bioDescController.text !=
+                      settingController.originalBioDesc.value ||
+                      settingController.namaTokoController.text !=
+                      settingController.originalNamaToko.value ||
+                      settingController.imageUrl.value !=
+                      settingController.originalImageUrl.value) {
+                    settingController.updateData();
+                }else{
+                   Get.snackbar(
+                      duration: const Duration(seconds: 2),
+                      borderRadius: 10,
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 20,
+                      ),
+                      'gagalUbah'.tr,
+                      'gagalUbahDesc'.tr,
+                      backgroundColor: AppColors.error,
+                      colorText: Colors.white,
+                    );
+                }
+                },
                 style: ButtonStyle(
                   elevation: const MaterialStatePropertyAll(0),
                   padding: const MaterialStatePropertyAll(EdgeInsets.zero),

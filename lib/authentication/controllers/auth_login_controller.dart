@@ -25,12 +25,21 @@ class AuthLoginController extends GetxController {
   RxInt dataJumProduk = 0.obs;
   RxInt dataPenilaian = 0.obs;
   RxInt dataPengikut = 0.obs;
+  RxString dataBio = ''.obs;
+  RxString dataImageUrl = ''.obs;
+
+  get dataName => null;
+  
+  
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    prefs = await SharedPreferences.getInstance();
     successfulLogin.value = box.read('done') ?? false;
-    loadData();
+    if (successfulLogin.value) {
+      await emailData();
+    }
   }
 
   void loadData() async {
@@ -88,24 +97,26 @@ class AuthLoginController extends GetxController {
   }
 
   Future<void> emailData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    print("Token User adalah$token");
-    var response = await http.get(
+    print("Token User adalah $token");
+   if (token != null) {
+      var response = await http.get(
         Uri.parse("https://rusconsign.com/api/allprofile"),
-        headers: {"Authorization": "Bearer $token"});
-
+        headers: {"Authorization": "Bearer $token"},
+      );
     if (response.statusCode == 200) {
       ModelResponseProfile responseProfile =
           modelResponseProfileFromJson(response.body);
       // prefs.setString("statusMitra", responseProfile.data.status.toString() ?? "");
       jsonDecode(response.body);
-      dataJumJasa.value = responseProfile.data.jumlahjasa ?? 0;
+      dataJumJasa.value = responseProfile.data.jumlahjasa ;
       dataUsername.value = responseProfile.data.name.toString();
       dataEmail.value = responseProfile.data.email.toString();
-      dataJumProduk.value = responseProfile.data.jumlahproduct ?? 0;
-      dataPenilaian.value = responseProfile.data.penilaian ?? 0;
-      dataPengikut.value = responseProfile.data.pengikut ?? 0;
+      dataJumProduk.value = responseProfile.data.jumlahproduct;
+      dataPenilaian.value = responseProfile.data.penilaian;
+      dataPengikut.value = responseProfile.data.pengikut;
+      dataBio.value = responseProfile.data.bioDesc;
+      dataImageUrl.value = 'https://rusconsign.com${responseProfile.data.imageProfiles.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}';
       // print(prefs.getString("statusMitra"));
     } else {
       print("Eror FetchingProfile${response.statusCode}");
@@ -138,4 +149,4 @@ class AuthLoginController extends GetxController {
     //   print('Request failed with status: ${response.statusCode}.');
     // }
   }
-}
+}}

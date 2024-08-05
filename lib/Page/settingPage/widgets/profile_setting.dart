@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:rusconsign/Page/settingPage/setting_controller.dart';
+import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/extension.dart';
 
 import '../../../utils/app_responsive.dart';
@@ -9,11 +11,14 @@ import '../../../utils/colors.dart';
 import '../../../utils/text_style.dart';
 
 class ProfileSetting extends StatelessWidget {
-  const ProfileSetting({super.key});
+  final SettingController settingController = Get.put(SettingController());
+  final AuthLoginController dataProfile = Get.put(AuthLoginController());
+  ProfileSetting({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final SettingController settingController = Get.find();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -29,16 +34,35 @@ class ProfileSetting extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: ClipOval(
-                    child: Image.network(
-                      "https://via.placeholder.com/90x90",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                Obx(() => SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: ClipOval(
+                        child: 
+                                                
+                        settingController.imageUrl.value != null
+                            ? Image.network(
+                                settingController.imageUrl.value!,
+                                fit: BoxFit.cover,
+                              )
+                            : settingController.pickedImage.value != null
+                                ? Image.file(
+                                    settingController.pickedImage.value!,
+                                    fit: BoxFit.cover,
+                                  )
+                                  :dataProfile.dataImageUrl.value.isNotEmpty
+                            ? Image.network(
+                                dataProfile.dataImageUrl.value,
+                                fit: BoxFit.cover,
+                              )
+                                : Center(
+                                    child: Image.network(
+                                      'https://avatar.iran.liara.run/public',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                      ),
+                    )),
                 Row(
                   children: [
                     SizedBox(
@@ -69,7 +93,7 @@ class ProfileSetting extends StatelessWidget {
                       height: AppResponsive().screenWidth(context) * 0.070,
                       width: 95,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: settingController.pickImage,
                         style: ButtonStyle(
                           elevation: const MaterialStatePropertyAll(0),
                           padding:
@@ -106,6 +130,7 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
+                controller: settingController.namaProfileController,
                 style: AppTextStyle().textInfo(AppColors.description),
                 cursorColor: AppColors.hargaStat,
                 textAlign: TextAlign.left,
@@ -134,6 +159,7 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
+                controller: settingController.namaTokoController,
                 style: AppTextStyle().textInfo(AppColors.description),
                 cursorColor: AppColors.hargaStat,
                 textAlign: TextAlign.left,
@@ -162,6 +188,7 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
+                controller: settingController.bioDescController,
                 style: AppTextStyle().textInfo(AppColors.description),
                 cursorColor: AppColors.hargaStat,
                 textAlign: TextAlign.left,
