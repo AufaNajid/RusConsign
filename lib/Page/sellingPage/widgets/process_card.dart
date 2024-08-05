@@ -26,7 +26,6 @@ class ProcessCardSelling extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final img = "https://rusconsign.com/api";
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return Card(
       elevation: 0,
