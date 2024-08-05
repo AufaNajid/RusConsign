@@ -5,6 +5,7 @@ import 'package:rusconsign/Page/cartPage/cart_page.dart';
 import 'package:rusconsign/Page/favoritePage/favorite_page.dart';
 import 'package:rusconsign/Page/homePage/home_page.dart';
 import 'package:rusconsign/Page/profilePage/profile_page.dart';
+import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 
@@ -15,6 +16,7 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     PersistentTabController controller =
         PersistentTabController(initialIndex: 0);
+    
 
     List<Widget> buildScreens() {
       return [

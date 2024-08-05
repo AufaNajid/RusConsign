@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:rusconsign/Page/profilePage/widgets/tab_bar_profile.dart';
 import 'package:rusconsign/Page/profilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/Page/profilePage/widgets/customappbar.dart';
 import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
+import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -14,6 +16,8 @@ class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   Future<void> refreshData() async {
+    final AuthLoginController dataProfile = Get.put(AuthLoginController());
+    await dataProfile.emailData();
     final MitraController controller = Get.find<MitraController>();
     await controller.initStatusMitra();
   }
@@ -21,7 +25,9 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthLoginController dataProfile = Get.put(AuthLoginController());
-    return Scaffold(
+    final SettingController settingController = Get.put(SettingController());
+    
+    return Scaffold( 
       backgroundColor: AppColors.background,
       appBar: AppBarProfile(title: 'profil'.tr),
       body: RefreshIndicator(
@@ -40,20 +46,36 @@ class ProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    width: 90,
-                    height: 90,
-                    child: ClipOval(
-                      child: Image.network(
-                        'https://via.placeholder.com/90x90',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
+                  Obx(() => SizedBox(
+  width: 90,
+  height: 90,
+  child: ClipOval(
+    child: settingController.imageUrl.value != null
+        ? Image.network(
+            settingController.imageUrl.value!,
+            fit: BoxFit.cover,
+          )
+        : dataProfile.dataImageUrl.value.isNotEmpty
+            ? Image.network(
+                dataProfile.dataImageUrl.value,
+                fit: BoxFit.cover,
+              )
+            : Center(
+                child: Image.network(
+                  'https://avatar.iran.liara.run/public',
+                  fit: BoxFit.cover,
+                ),
+              ),
+  ),
+)),
+
                   Text(
-                    dataProfile.dataUsername.value,
-                    style: AppTextStyle().title(AppColors.titleLine),
-                  ),
+  dataProfile.dataUsername.value.isNotEmpty
+      ? dataProfile.dataUsername.value
+      : settingController.namaProfileController.text,
+  style: AppTextStyle().title(AppColors.titleLine),
+),
+
                   Text(
                     dataProfile.dataEmail.value,
                     style: AppTextStyle().description(AppColors.description),
@@ -94,13 +116,13 @@ class ProfilePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: Text(
-                      "Halo.. Selamat datang di profil saya. Kalian bisa melihat produk atau jasa yang saya berikan disini. Saya sendiiri juga termasuk siswa SMK RUS, jadi kalau mau ngobrol sama saya bisa ketemuan di sekolah",
-                      style: AppTextStyle().textInfo(AppColors.description),
-                      maxLines: 5,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
+                        dataProfile.dataBio.value,
+                        style: AppTextStyle().textInfo(AppColors.description),
+                        maxLines: 5,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
                 ].withSpaceBetween(height: 10),
               ),
               const TabList(),
