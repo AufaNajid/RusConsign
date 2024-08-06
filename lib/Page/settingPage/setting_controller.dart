@@ -101,8 +101,8 @@ class SettingController extends GetxController {
       print('Bio Desc: ${dataProfile.bioDesc}');
 
       namaProfileController.text = editData.data.name;
-      namaTokoController.text = editData.data.namaToko;
-      bioDescController.text = editData.data.bioDesc;
+      namaTokoController.text = editData.data.namaToko!;
+      bioDescController.text = editData.data.bioDesc!;
 
       String originalPath = allProfile.profiles.imageProfiles; 
       String newPath = originalPath.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/");
@@ -110,13 +110,13 @@ class SettingController extends GetxController {
       print(imageUrl.value); 
 
       originalNamaProfile.value = editData.data.name;
-      originalBioDesc.value = editData.data.bioDesc;
+      originalBioDesc.value = editData.data.bioDesc!;
       originalNamaToko.value = editData.data.namaToko.toString();
       originalImageUrl.value = imageUrl.value!;
 
       dataEmail.value = editData.data.email.toString();
-      dataJumProduk.value = editData.data.jumlahproduct;
-      dataPenilaian.value = editData.data.penilaian;
+      dataJumProduk.value = editData.data.jumlahproduct!;
+      dataPenilaian.value = editData.data.penilaian!;
       dataPengikut.value = editData.data.pengikut;
     } else {
       print('error');

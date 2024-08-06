@@ -33,46 +33,46 @@ class Data {
     String name;
     String email;
     dynamic emailVerifiedAt;
-    String bioDesc;
-    String imageProfiles;
+    String? bioDesc;
+    String? imageProfiles;
     DateTime createdAt;
     DateTime updatedAt;
-    int idMitra;
-    String imageProfile;
-    String nama;
-    String namaToko;
-    int nis;
+    dynamic idMitra;
+    String? imageProfile;
+    String? nama;
+    String? namaToko;
+    int? nis;
     dynamic nomor;
-    String image;
+    String? image;
     String? status;
-    int pengikut;
-    String emailDariUser;
-    int jumlahproduct;
-    int jumlahjasa;
-    int penilaian;
+    dynamic pengikut;
+    String? emailDariUser;
+    int? jumlahproduct;
+    int? jumlahjasa;
+    int? penilaian;
 
     Data({
         required this.id,
         required this.name,
         required this.email,
-        required this.emailVerifiedAt,
-        required this.bioDesc,
-        required this.imageProfiles,
+        this.emailVerifiedAt,
+        this.bioDesc,
+        this.imageProfiles,
         required this.createdAt,
         required this.updatedAt,
-        required this.idMitra,
-        required this.imageProfile,
-        required this.nama,
-        required this.namaToko,
-        required this.nis,
-        required this.nomor,
-        required this.image,
-        required this.status,
-        required this.pengikut,
-        required this.emailDariUser,
-        required this.jumlahproduct,
-        required this.jumlahjasa,
-        required this.penilaian,
+        this.idMitra,
+        this.imageProfile,
+        this.nama,
+        this.namaToko,
+        this.nis,
+        this.nomor,
+        this.image,
+        this.status,
+        this.pengikut,
+        this.emailDariUser,
+        this.jumlahproduct,
+        this.jumlahjasa,
+        this.penilaian,
     });
 
     factory Data.fromJson(Map<String, dynamic> json) => Data(

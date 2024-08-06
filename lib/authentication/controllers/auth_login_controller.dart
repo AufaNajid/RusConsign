@@ -109,14 +109,14 @@ class AuthLoginController extends GetxController {
           modelResponseProfileFromJson(response.body);
       // prefs.setString("statusMitra", responseProfile.data.status.toString() ?? "");
       jsonDecode(response.body);
-      dataJumJasa.value = responseProfile.data.jumlahjasa ;
+      dataJumJasa.value = responseProfile.data.jumlahjasa ?? 0;
       dataUsername.value = responseProfile.data.name.toString();
       dataEmail.value = responseProfile.data.email.toString();
-      dataJumProduk.value = responseProfile.data.jumlahproduct;
-      dataPenilaian.value = responseProfile.data.penilaian;
-      dataPengikut.value = responseProfile.data.pengikut;
-      dataBio.value = responseProfile.data.bioDesc;
-      dataImageUrl.value = 'https://rusconsign.com${responseProfile.data.imageProfiles.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}';
+      dataJumProduk.value = responseProfile.data.jumlahproduct ?? 0;
+      dataPenilaian.value = responseProfile.data.penilaian ?? 0;
+      dataPengikut.value = responseProfile.data.pengikut ?? 0;
+      dataBio.value = responseProfile.data.bioDesc ?? 'desc tidak ada';
+      dataImageUrl.value = responseProfile.data.imageProfiles != null ?'https://rusconsign.com${responseProfile.data.imageProfiles!.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}' : '';
       // print(prefs.getString("statusMitra"));
     } else {
       print("Eror FetchingProfile${response.statusCode}");
