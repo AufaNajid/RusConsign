@@ -12,7 +12,6 @@ class DividerProfile extends StatelessWidget {
   final settingController = Get.put(SettingController());
   final dataAuth = Get.put(AuthLoginController());
   DividerProfile({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
@@ -33,16 +32,16 @@ class DividerProfile extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   if (settingController.namaProfileController.text !=
-                      settingController.originalNamaProfile.value || 
+                          settingController.originalNamaProfile.value ||
                       settingController.bioDescController.text !=
-                      settingController.originalBioDesc.value ||
+                          settingController.originalBioDesc.value ||
                       settingController.namaTokoController.text !=
-                      settingController.originalNamaToko.value ||
+                          settingController.originalNamaToko.value ||
                       settingController.imageUrl.value !=
-                      settingController.originalImageUrl.value) {
+                          settingController.originalImageUrl.value) {
                     settingController.updateData();
-                }else{
-                   Get.snackbar(
+                  } else {
+                    Get.snackbar(
                       duration: const Duration(seconds: 2),
                       borderRadius: 10,
                       margin: const EdgeInsets.symmetric(
@@ -54,7 +53,7 @@ class DividerProfile extends StatelessWidget {
                       backgroundColor: AppColors.error,
                       colorText: Colors.white,
                     );
-                }
+                  }
                 },
                 style: ButtonStyle(
                   elevation: const MaterialStatePropertyAll(0),

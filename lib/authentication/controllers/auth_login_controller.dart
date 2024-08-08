@@ -29,8 +29,6 @@ class AuthLoginController extends GetxController {
   RxString dataImageUrl = ''.obs;
 
   get dataName => null;
-  
-  
 
   @override
   void onInit() async {
@@ -99,54 +97,54 @@ class AuthLoginController extends GetxController {
   Future<void> emailData() async {
     String? token = prefs.getString('token');
     print("Token User adalah $token");
-   if (token != null) {
+    if (token != null) {
       var response = await http.get(
         Uri.parse("https://rusconsign.com/api/allprofile"),
         headers: {"Authorization": "Bearer $token"},
       );
-    if (response.statusCode == 200) {
-      ModelResponseProfile responseProfile =
-          modelResponseProfileFromJson(response.body);
-      // prefs.setString("statusMitra", responseProfile.data.status.toString() ?? "");
-      jsonDecode(response.body);
-      dataJumJasa.value = responseProfile.data.jumlahjasa ?? 0;
-      dataUsername.value = responseProfile.data.name.toString();
-      dataEmail.value = responseProfile.data.email.toString();
-      dataJumProduk.value = responseProfile.data.jumlahproduct ?? 0;
-      dataPenilaian.value = responseProfile.data.penilaian ?? 0;
-      dataPengikut.value = responseProfile.data.pengikut ?? 0;
-      dataBio.value = responseProfile.data.bioDesc ?? 'desc tidak ada';
-      dataImageUrl.value = responseProfile.data.imageProfiles != null ?'https://rusconsign.com${responseProfile.data.imageProfiles!.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}' : '';
-      // print(prefs.getString("statusMitra"));
-    } else {
-      print("Eror FetchingProfile${response.statusCode}");
+      if (response.statusCode == 200) {
+        ModelResponseProfile responseProfile =
+            modelResponseProfileFromJson(response.body);
+        jsonDecode(response.body);
+        dataJumJasa.value = responseProfile.data.jumlahjasa ?? 0;
+        dataUsername.value = responseProfile.data.name.toString();
+        dataEmail.value = responseProfile.data.email.toString();
+        dataJumProduk.value = responseProfile.data.jumlahproduct ?? 0;
+        dataPenilaian.value = responseProfile.data.penilaian ?? 0;
+        dataPengikut.value = responseProfile.data.pengikut ?? 0;
+        dataBio.value = responseProfile.data.bioDesc ?? 'Deskripsi Masih Kosong';
+        dataImageUrl.value = responseProfile.data.imageProfiles.toString();
+        print(prefs.getString("statusMitra"));
+      } else {
+        print("Eror FetchingProfile${response.statusCode}");
+      }
+      // final response = await http.get(
+      //   Uri.parse('https://rusconsign.com/api/users'),
+      // );
+      // if (response.statusCode == 200) {
+      //   final List<dynamic> jsonResponse = json.decode(response.body);
+      //   String? email = box.read('email');
+      //
+      //   if (email != null) {
+      //     Map<String, dynamic>? user = jsonResponse
+      //         .firstWhere((user) => user['email'] == email, orElse: () => null);
+      //
+      //     if (user != null) {
+      //       String userEmail = user['email'];
+      //       String username = user['name'];
+      //       dataEmail.value = userEmail;
+      //       dataUsername.value = username;
+      //       box.write('email', dataEmail.value);
+      //       box.write('username', dataUsername.value);
+      //     } else {
+      //       print('No user found with the provided email.');
+      //     }
+      //   } else {
+      //     print('No email found in storage.');
+      //   }
+      // } else {
+      //   print('Request failed with status: ${response.statusCode}.');
+      // }
     }
-    // final response = await http.get(
-    //   Uri.parse('https://rusconsign.com/api/users'),
-    // );
-    // if (response.statusCode == 200) {
-    //   final List<dynamic> jsonResponse = json.decode(response.body);
-    //   String? email = box.read('email');
-    //
-    //   if (email != null) {
-    //     Map<String, dynamic>? user = jsonResponse
-    //         .firstWhere((user) => user['email'] == email, orElse: () => null);
-    //
-    //     if (user != null) {
-    //       String userEmail = user['email'];
-    //       String username = user['name'];
-    //       dataEmail.value = userEmail;
-    //       dataUsername.value = username;
-    //       box.write('email', dataEmail.value);
-    //       box.write('username', dataUsername.value);
-    //     } else {
-    //       print('No user found with the provided email.');
-    //     }
-    //   } else {
-    //     print('No email found in storage.');
-    //   }
-    // } else {
-    //   print('Request failed with status: ${response.statusCode}.');
-    // }
   }
-}}
+}
