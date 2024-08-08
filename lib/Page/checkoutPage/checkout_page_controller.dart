@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
 import 'package:rusconsign/Api/testing_payment.dart';
+import 'package:rusconsign/Page/webView/testing_web_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckoutPageController extends GetxController {
@@ -98,7 +99,8 @@ class CheckoutPageController extends GetxController {
       print("Url Xendit = ${invoice.invoiceUrl}");
 
       isLoading.value = false;
-      _showUrlDialog(invoice.invoiceUrl);
+      Get.to(() => TestingWebcView(url: invoice.invoiceUrl));
+      // _showUrlDialog(invoice.invoiceUrl);
     } else {
       isLoading.value = false;
       Get.snackbar('Error', 'Failed to create invoice',
