@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class TestingWebcView extends StatelessWidget {
@@ -8,14 +12,15 @@ class TestingWebcView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final urlYtb = "https://www.youtube.com/watch?v=EZ-Gq2wuj18";
     final controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
-            CircularProgressIndicator();
+            CircularProgressIndicator(
+              color: AppColors.hargaStat,
+            );
           },
           onPageStarted: (String url) {
 
@@ -34,8 +39,11 @@ class TestingWebcView extends StatelessWidget {
       ..loadRequest(Uri.parse(url));
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Testing WebView"),
+      appBar: CommonAppBar(
+        title: 'Payment',
+        route: () {
+          Get.back();
+        },
       ),
       body: WebViewWidget(
         controller: controller,
