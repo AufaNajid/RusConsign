@@ -19,6 +19,7 @@ class ProfileSetting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final img = "https://rusconsign.com";
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -34,27 +35,25 @@ class ProfileSetting extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Obx(() => SizedBox(
+                Obx(
+                  () {
+                    final imageUrl = settingController.imageUrl.value;
+                    final pickedImage = settingController.pickedImage.value;
+
+                    return SizedBox(
                       width: 100,
                       height: 100,
                       child: ClipOval(
-                        child: 
-                                                
-                        settingController.imageUrl.value != null
+                        child: imageUrl != null && imageUrl.isNotEmpty
                             ? Image.network(
-                                settingController.imageUrl.value!,
+                                "$img${imageUrl.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
                                 fit: BoxFit.cover,
                               )
-                            : settingController.pickedImage.value != null
+                            : pickedImage != null
                                 ? Image.file(
-                                    settingController.pickedImage.value!,
+                                    pickedImage,
                                     fit: BoxFit.cover,
                                   )
-                                  :dataProfile.dataImageUrl.value.isNotEmpty
-                            ? Image.network(
-                                dataProfile.dataImageUrl.value,
-                                fit: BoxFit.cover,
-                              )
                                 : Center(
                                     child: Image.network(
                                       'https://avatar.iran.liara.run/public',
@@ -62,7 +61,9 @@ class ProfileSetting extends StatelessWidget {
                                     ),
                                   ),
                       ),
-                    )),
+                    );
+                  },
+                ),
                 Row(
                   children: [
                     SizedBox(

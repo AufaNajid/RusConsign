@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:rusconsign/Page/profilePage/widgets/tab_bar_profile.dart';
 import 'package:rusconsign/Page/profilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/Page/profilePage/widgets/customappbar.dart';
@@ -24,10 +25,11 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final img = "https://rusconsign.com";
     final AuthLoginController dataProfile = Get.put(AuthLoginController());
     final SettingController settingController = Get.put(SettingController());
-    
-    return Scaffold( 
+
+    return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBarProfile(title: 'profil'.tr),
       body: RefreshIndicator(
@@ -46,36 +48,35 @@ class ProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Obx(() => SizedBox(
-  width: 90,
-  height: 90,
-  child: ClipOval(
-    child: settingController.imageUrl.value != null
-        ? Image.network(
-            settingController.imageUrl.value!,
-            fit: BoxFit.cover,
-          )
-        : dataProfile.dataImageUrl.value.isNotEmpty
-            ? Image.network(
-                dataProfile.dataImageUrl.value,
-                fit: BoxFit.cover,
-              )
-            : Center(
-                child: Image.network(
-                  'https://avatar.iran.liara.run/public',
-                  fit: BoxFit.cover,
-                ),
-              ),
-  ),
-)),
-
+                  Obx(
+                    () {
+                      final imageUrl = dataProfile.dataImageUrl.value;
+                      return SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: ClipOval(
+                          child: imageUrl.isNotEmpty
+                              ? Image.network(
+                                  "$img${imageUrl.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
+                                  fit: BoxFit.cover,
+                                )
+                              : Center(
+                                  child: Image.network(
+                                    'https://avatar.iran.liara.run/public',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                        ),
+                      );
+                    },
+                  ),
                   Text(
-  dataProfile.dataUsername.value.isNotEmpty
-      ? dataProfile.dataUsername.value
-      : settingController.namaProfileController.text,
-  style: AppTextStyle().title(AppColors.titleLine),
-),
-
+                    dataProfile.dataUsername.value.isNotEmpty
+                        ? dataProfile.dataUsername.value
+                        : "data nama kosong",
+                    // : settingController.namaProfileController.text,
+                    style: AppTextStyle().title(AppColors.titleLine),
+                  ),
                   Text(
                     dataProfile.dataEmail.value,
                     style: AppTextStyle().description(AppColors.description),
@@ -116,13 +117,13 @@ class ProfilePage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: Text(
-                        dataProfile.dataBio.value,
-                        style: AppTextStyle().textInfo(AppColors.description),
-                        maxLines: 5,
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                      dataProfile.dataBio.value,
+                      style: AppTextStyle().textInfo(AppColors.description),
+                      maxLines: 5,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
                     ),
+                  ),
                 ].withSpaceBetween(height: 10),
               ),
               const TabList(),

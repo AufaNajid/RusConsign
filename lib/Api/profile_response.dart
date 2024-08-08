@@ -1,30 +1,31 @@
 import 'dart:convert';
 
-Profile profileFromJson(String str) => Profile.fromJson(json.decode(str));
+Profilee profileFromJson(String str) => Profilee.fromJson(json.decode(str));
 
-String profileToJson(Profile data) => json.encode(data.toJson());
+String profileToJson(Profilee data) => json.encode(data.toJson());
 
-class Profile {
+class Profilee {
   String message;
-  Profiles profiles; // Perubahan dari data menjadi profiles
+  ProfilesData profiles; // Perubahan dari data menjadi profiles
 
-  Profile({
+  Profilee({
     required this.message,
     required this.profiles, // Perubahan dari data menjadi profiles
   });
 
-  factory Profile.fromJson(Map<String, dynamic> json) => Profile(
-    message: json["message"],
-    profiles: Profiles.fromJson(json["data"]), // Perubahan dari data menjadi profiles
-  );
+  factory Profilee.fromJson(Map<String, dynamic> json) => Profilee(
+        message: json["message"],
+        profiles: ProfilesData.fromJson(
+            json["data"]), // Perubahan dari data menjadi profiles
+      );
 
   Map<String, dynamic> toJson() => {
-    "message": message,
-    "profiles": profiles.toJson(), // Perubahan dari data menjadi profiles
-  };
+        "message": message,
+        "profiles": profiles.toJson(), // Perubahan dari data menjadi profiles
+      };
 }
 
-class Profiles {
+class ProfilesData {
   int id;
   String name;
   String email;
@@ -47,7 +48,7 @@ class Profiles {
   int jumlahjasa;
   int penilaian;
 
-  Profiles({
+  ProfilesData({
     required this.id,
     required this.name,
     required this.email,
@@ -71,51 +72,51 @@ class Profiles {
     required this.penilaian,
   });
 
-  factory Profiles.fromJson(Map<String, dynamic> json) => Profiles(
-    id: json["id"],
-    name: json["name"],
-    email: json["email"],
-    emailVerifiedAt: json["email_verified_at"],
-    bioDesc: json["bio_desc"],
-    imageProfiles: json["image_profiles"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-    idMitra: json["id_mitra"],
-    imageProfile: json["image_profile"],
-    nama: json["nama"],
-    namaToko: json["nama_toko"],
-    nis: json["nis"],
-    nomor: json["nomor"],
-    image: json["image"],
-    status: json["status"],
-    pengikut: json["pengikut"],
-    emailDariUser: json["email_dariUser"],
-    jumlahproduct: json["jumlahproduct"],
-    jumlahjasa: json["jumlahjasa"],
-    penilaian: json["penilaian"],
-  );
+  factory ProfilesData.fromJson(Map<String, dynamic> json) => ProfilesData(
+        id: json["id"],
+        name: json["name"] ?? '',
+        email: json["email"],
+        emailVerifiedAt: json["email_verified_at"],
+        bioDesc: json["bio_desc"] ?? 'Bio Masih Kosong',
+        imageProfiles: json["image_profiles"] ?? '',
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        idMitra: json["id_mitra"] ?? 0,
+        imageProfile: json["image_profile"] ?? '',
+        nama: json["nama"] ?? '',
+        namaToko: json["nama_toko"] ?? 'Nama Toko Masih Kosong',
+        nis: json["nis"] ?? 0,
+        nomor: json["nomor"] ?? '',
+        image: json["image"] ?? '',
+        status: json["status"] ?? "",
+        pengikut: json["pengikut"] ?? 0,
+        emailDariUser: json["email_dariUser"] ?? '',
+        jumlahproduct: json["jumlahproduct"] ?? 0,
+        jumlahjasa: json["jumlahjasa"] ?? 0,
+        penilaian: json["penilaian"] ?? 0,
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "email": email,
-    "email_verified_at": emailVerifiedAt,
-    "bio_desc": bioDesc,
-    "image_profiles": imageProfiles,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-    "id_mitra": idMitra,
-    "image_profile": imageProfile,
-    "nama": nama,
-    "nama_toko": namaToko,
-    "nis": nis,
-    "nomor": nomor,
-    "image": image,
-    "status": status,
-    "pengikut": pengikut,
-    "email_dariUser": emailDariUser,
-    "jumlahproduct": jumlahproduct,
-    "jumlahjasa": jumlahjasa,
-    "penilaian": penilaian,
-  };
+        "id": id,
+        "name": name,
+        "email": email,
+        "email_verified_at": emailVerifiedAt,
+        "bio_desc": bioDesc,
+        "image_profiles": imageProfiles,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+        "id_mitra": idMitra,
+        "image_profile": imageProfile,
+        "nama": nama,
+        "nama_toko": namaToko,
+        "nis": nis,
+        "nomor": nomor,
+        "image": image,
+        "status": status,
+        "pengikut": pengikut,
+        "email_dariUser": emailDariUser,
+        "jumlahproduct": jumlahproduct,
+        "jumlahjasa": jumlahjasa,
+        "penilaian": penilaian,
+      };
 }
