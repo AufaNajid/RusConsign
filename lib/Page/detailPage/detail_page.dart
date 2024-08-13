@@ -22,7 +22,12 @@ class DetailPage extends GetView<DetailPageController> {
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return Scaffold(
-      appBar: CommonAppBar(title: 'detailProduk'.tr, route: () { Get.back(); },),
+      appBar: CommonAppBar(
+        title: 'detailProduk'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       backgroundColor: AppColors.background,
       body: controller.obx(
         (state) => SingleChildScrollView(
@@ -58,7 +63,7 @@ class DetailPage extends GetView<DetailPageController> {
                                   color: AppColors.button1,
                                   child: Center(
                                     child: Text(
-                                      'produk'.tr,
+                                      state.barang.categoryNama.tr,
                                       style: AppTextStyle().descriptionBold(
                                           AppColors.textButton1),
                                     ),
@@ -67,7 +72,7 @@ class DetailPage extends GetView<DetailPageController> {
                               ),
                             ),
                             Text(
-                              '20 ${'terjual'.tr}',
+                              "${state.barang.stock} Stok",
                               style: AppTextStyle()
                                   .descriptionBold(AppColors.description),
                             )
@@ -82,7 +87,7 @@ class DetailPage extends GetView<DetailPageController> {
                             child: Material(
                               color: AppColors.cardIconFill,
                               child: Obx(
-                                    () => GestureDetector(
+                                () => GestureDetector(
                                   onTap: () {
                                     controller.toggleFavorite(state.barang.id);
                                   },
@@ -170,7 +175,7 @@ class DetailPage extends GetView<DetailPageController> {
                                 children: [
                                   ClipOval(
                                     child: Image.network(
-                                      'https://via.placeholder.com/40x40',
+                                      'https://avatar.iran.liara.run/public',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -182,7 +187,7 @@ class DetailPage extends GetView<DetailPageController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  state.barang.mitra.namaLengkap,
+                                  state.barang.mitra.namaToko,
                                   style: AppTextStyle()
                                       .description(AppColors.titleLine),
                                 ),
@@ -224,7 +229,8 @@ class DetailPage extends GetView<DetailPageController> {
                                       height: 30,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Get.toNamed('/userprofilepage', arguments: state.barang.mitra.id);
+                                          Get.toNamed('/userprofilepage',
+                                              arguments: state.barang.mitra.id);
                                         },
                                         style: ButtonStyle(
                                           padding:
@@ -424,7 +430,7 @@ class DetailPage extends GetView<DetailPageController> {
                       itemCount: 5,
                       itemBuilder: (context, index) {
                         return CommentCard(
-                          imagePath: 'https://via.placeholder.com/40x40',
+                          imagePath: 'https://avatar.iran.liara.run/public',
                           username: 'Muhammad Alfarezi',
                           rating: 4.0,
                           date: DateTime.now(),
@@ -433,7 +439,7 @@ class DetailPage extends GetView<DetailPageController> {
                           like: 142,
                           disLike: 12,
                           onliked: () {
-                            (){};
+                            () {};
                           },
                           ondisliked: () {},
                         );
@@ -465,7 +471,7 @@ class DetailPage extends GetView<DetailPageController> {
                       child: Obx(
                         () => GestureDetector(
                           onTap: () {
-                            (){};
+                            () {};
                           },
                           child: Icon(
                             controller.isAddCart.value
@@ -486,9 +492,42 @@ class DetailPage extends GetView<DetailPageController> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.toNamed('/checkoutpage',
-                          arguments: idProduct = state!.barang.id);
-                      print("ID Produk adalah $idProduct");
+                      if (state!.barang.stock == 0) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6)),
+                                backgroundColor: AppColors.background,
+                                title: Text(
+                                  'Stok Produk Telah Habis!'.tr,
+                                  style:
+                                      AppTextStyle().title(AppColors.titleLine),
+                                ),
+                                content:
+                                    Text('Stok Produk Ini Telah Habis!'.tr),
+                                actions: <Widget>[
+                                  TextButton(
+                                    style: TextButton.styleFrom(
+                                      foregroundColor: AppColors.solidWhite,
+                                      backgroundColor: AppColors.button1,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(4),
+                                      ),
+                                    ),
+                                    child: Text('Tutup'.tr),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            });
+                      } else {
+                        Get.toNamed('/checkoutpage',
+                            arguments: idProduct = state.barang.id);
+                      }
                     },
                     style: ButtonStyle(
                         padding:

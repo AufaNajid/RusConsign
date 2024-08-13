@@ -88,7 +88,7 @@ class FavoritePage extends StatelessWidget {
                     title: barang.namaBarang,
                     price: barang.harga,
                     rating: barang.ratingBarang.toDouble(),
-                    profileImagePath: barang.imageBarang,
+                    profileImagePath: "https://avatar.iran.liara.run/public",
                     profileUsername: mitra.namaLengkap,
                     isFavorite: controller.isItemFavorite(barang.id),
                     onFavoriteToggle: () =>
