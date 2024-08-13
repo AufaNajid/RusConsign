@@ -31,104 +31,131 @@ class AddItemForm extends StatelessWidget {
         },
       ),
       backgroundColor: AppColors.background,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
+      body: Obx(() {
+        if (controller.isLoading.value) {
+          return const Center(
+              child: CircularProgressIndicator(
+            color: AppColors.hargaStat,
+          ));
+        } else {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    width: AppResponsive().screenWidth(context) * 0.16,
-                    child: Text(
-                      'jenis'.tr,
-                      style: AppTextStyle().description(AppColors.titleLine),
-                    ),
-                  ),
                   Row(
                     children: [
-                      const CategoryButton(
-                        index: 1,
-                        text: 'produk',
+                      SizedBox(
+                        width: AppResponsive().screenWidth(context) * 0.16,
+                        child: Text(
+                          'jenis'.tr,
+                          style:
+                              AppTextStyle().description(AppColors.titleLine),
+                        ),
                       ),
-                      const CategoryButton(
-                        index: 2,
-                        text: 'jasa',
+                      Row(
+                        children: [
+                          const CategoryButton(
+                            index: 1,
+                            text: 'produk',
+                          ),
+                          const CategoryButton(
+                            index: 2,
+                            text: 'jasa',
+                          ),
+                        ].withSpaceBetween(width: 10),
                       ),
-                    ].withSpaceBetween(width: 10),
+                    ],
                   ),
-                ],
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: AppResponsive().screenWidth(context) * 0.16,
+                        child: Text(
+                          'foto'.tr,
+                          style:
+                              AppTextStyle().description(AppColors.titleLine),
+                        ),
+                      ),
+                      const AddImageProduct(),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: AppResponsive().screenWidth(context) * 0.16,
+                        child: Text(
+                          'nama'.tr,
+                          style:
+                              AppTextStyle().description(AppColors.titleLine),
+                        ),
+                      ),
+                      Expanded(
+                        child: TextFieldAddItem(
+                          hintText: 'inputNamaPJ'.tr,
+                          controller: controller.namaproductController,
+                          maxlines: 1,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: AppResponsive().screenWidth(context) * 0.16,
+                        child: Text(
+                          'deskripsi'.tr,
+                          style:
+                              AppTextStyle().description(AppColors.titleLine),
+                        ),
+                      ),
+                      Expanded(
+                        child: TextFieldAddItem(
+                          hintText: 'inputDeskripsi'.tr,
+                          controller: controller.deskripsiController,
+                          maxlines: 6,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    SizedBox(
+                      width: AppResponsive().screenWidth(context) * 0.16,
+                      child: Text(
+                        'harga'.tr,
+                        style: AppTextStyle().description(AppColors.titleLine),
+                      ),
+                    ),
+                    Expanded(
+                        child: TextFieldAddItemNumber(
+                      hintText: 'inputHarga'.tr,
+                      controller: controller.hargaController,
+                    )),
+                  ]),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    SizedBox(
+                      width: AppResponsive().screenWidth(context) * 0.16,
+                      child: Text(
+                        'Stock'.tr,
+                        style: AppTextStyle().description(AppColors.titleLine),
+                      ),
+                    ),
+                    Expanded(
+                        child: TextFieldAddItemNumber(
+                      hintText: 'Masukkan Stock'.tr,
+                      controller: controller.stockController,
+                    )),
+                  ])
+                ].withSpaceBetween(height: 15),
               ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: AppResponsive().screenWidth(context) * 0.16,
-                    child: Text(
-                      'foto'.tr,
-                      style: AppTextStyle().description(AppColors.titleLine),
-                    ),
-                  ),
-                  const AddImageProduct(),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: AppResponsive().screenWidth(context) * 0.16,
-                    child: Text(
-                      'nama'.tr,
-                      style: AppTextStyle().description(AppColors.titleLine),
-                    ),
-                  ),
-                  Expanded(
-                    child: TextFieldAddItem(
-                      hintText: 'inputNamaPJ'.tr,
-                      controller: controller.namaproductController,
-                      maxlines: 1,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: AppResponsive().screenWidth(context) * 0.16,
-                    child: Text(
-                      'deskripsi'.tr,
-                      style: AppTextStyle().description(AppColors.titleLine),
-                    ),
-                  ),
-                  Expanded(
-                    child: TextFieldAddItem(
-                      hintText: 'inputDeskripsi'.tr,
-                      controller: controller.deskripsiController,
-                      maxlines: 6,
-                    ),
-                  ),
-                ],
-              ),
-              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                SizedBox(
-                  width: AppResponsive().screenWidth(context) * 0.16,
-                  child: Text(
-                    'harga'.tr,
-                    style: AppTextStyle().description(AppColors.titleLine),
-                  ),
-                ),
-                Expanded(
-                    child: TextFieldAddItemNumber(
-                  hintText: 'inputHarga'.tr,
-                  controller: controller.hargaController,
-                )),
-              ])
-            ].withSpaceBetween(height: 15),
-          ),
-        ),
-      ),
+            ),
+          );
+        }
+      }),
       bottomNavigationBar: BottomAppBar(
         surfaceTintColor: Colors.transparent,
         color: Colors.transparent,
@@ -141,16 +168,14 @@ class AddItemForm extends StatelessWidget {
                   String namaProduk = controller.namaproductController.text;
                   String deskripsi = controller.deskripsiController.text;
                   String harga = controller.hargaController.text;
+                  String stok = controller.stockController.text;
                   if (imageProduct != null &&
                       namaProduk.isNotEmpty &&
                       deskripsi.isNotEmpty &&
-                      harga.isNotEmpty) {
+                      harga.isNotEmpty &&
+                      stok.isNotEmpty) {
                     await controller.addProduct(
-                      imageProduct,
-                      namaProduk,
-                      deskripsi,
-                      harga,
-                    );
+                        imageProduct, namaProduk, deskripsi, harga, stok);
                     if (controller.successfulAddProduct.value == true) {
                       Get.back();
                     } else {

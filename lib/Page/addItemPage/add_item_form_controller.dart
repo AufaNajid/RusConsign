@@ -14,6 +14,7 @@ class AddItemFormController extends GetxController {
   final TextEditingController namaproductController = TextEditingController();
   final TextEditingController deskripsiController = TextEditingController();
   final TextEditingController hargaController = TextEditingController();
+  final TextEditingController stockController = TextEditingController();
   final currentIndex = 0.obs;
   final _selectedIndex = 0.obs;
   RxBool successfulAddProduct = false.obs;
@@ -40,8 +41,8 @@ class AddItemFormController extends GetxController {
     print("Selected Index adalah $_selectedIndex");
   }
 
-  Future<void> addProduct(File imageBarang,
-      String namaProduk, String descProduk, String harga ) async {
+  Future<void> addProduct(File imageBarang, String namaProduk,
+      String descProduk, String harga, String stock) async {
     isLoading.value = true;
     int category = _selectedIndex.value;
 
@@ -50,15 +51,14 @@ class AddItemFormController extends GetxController {
     print("Token Update Barang $token");
 
     var request = http.MultipartRequest(
-      'POST',
-      Uri.parse("https://rusconsign.com/api/mitra/add-barang")
-    );
+        'POST', Uri.parse("https://rusconsign.com/api/mitra/add-barang"));
 
     request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['nama_barang'] = namaProduk;
     request.fields['deskripsi'] = descProduk;
     request.fields["harga"] = harga;
+    request.fields["stock_barang"] = stock;
     request.fields["category_id"] = category.toString();
 
     var imageStream = http.ByteStream(imageBarang.openRead());
@@ -82,7 +82,7 @@ class AddItemFormController extends GetxController {
     if (response.statusCode == 200 || response.statusCode == 201) {
       isLoading.value = true;
       var responseBody = await response.stream.bytesToString();
-      final data =  json.decode(responseBody);
+      final data = json.decode(responseBody);
       Product product = Product.fromJson(data);
       successfulAddProduct.value = true;
       message.value = "Add Product Successful";
@@ -91,7 +91,5 @@ class AddItemFormController extends GetxController {
     } else {
       print("Eror Add-Product ${response.statusCode}");
     }
-
   }
-
 }

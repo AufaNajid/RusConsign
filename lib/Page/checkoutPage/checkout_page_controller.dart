@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
@@ -11,6 +12,8 @@ class CheckoutPageController extends GetxController {
   var selectedPaymentMethod = 'QRIS'.obs;
   var selectedLeading = 'assets/images/qris.svg'.obs;
   var selectedTitle = 'QRIS'.obs;
+  RxString titleLokasi = 'SMK Raden Umar Said Kudus'.obs;
+  var descLokasi = 'Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333'.obs;
   var expanded = false.obs;
   RxBool successfulPesanProduct = false.obs;
   RxString message = "".obs;
@@ -133,29 +136,5 @@ class CheckoutPageController extends GetxController {
     } else {
       print("Eror Pesan-Product ${response.statusCode}");
     }
-  }
-
-  void _showUrlDialog(String url) {
-    Get.defaultDialog(
-      title: "URL Invoice",
-      content: Column(
-        children: [
-          Text("Silakan salin URL di bawah ini:"),
-          SizedBox(height: 10),
-          SelectableText(
-            url,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.blue),
-          ),
-          SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: Text("Tutup"),
-          ),
-        ],
-      ),
-    );
   }
 }

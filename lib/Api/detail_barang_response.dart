@@ -37,6 +37,7 @@ class Barang {
   int categoryId;
   String categoryNama;
   String imageBarang;
+  int stock;
   DateTime createdAt;
   DateTime updatedAt;
   Mitra mitra;
@@ -50,6 +51,7 @@ class Barang {
     required this.categoryId,
     required this.categoryNama,
     required this.imageBarang,
+    required this.stock,
     required this.createdAt,
     required this.updatedAt,
     required this.mitra,
@@ -64,6 +66,7 @@ class Barang {
     categoryId: json["category_id"],
     categoryNama: json["category_nama"],
     imageBarang: json["image_barang"],
+    stock: json["stock"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
     mitra: Mitra.fromJson(json["mitra"]),
@@ -78,6 +81,7 @@ class Barang {
     "category_id": categoryId,
     "category_nama": categoryNama,
     "image_barang": imageBarang,
+    "stock" : stock,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
     "mitra": mitra.toJson(),
@@ -86,6 +90,7 @@ class Barang {
 
 class Mitra {
   int id;
+  String namaToko;
   String namaLengkap;
   int jumlahProduct;
   int jumlahJasa;
@@ -94,6 +99,7 @@ class Mitra {
 
   Mitra({
     required this.id,
+    required this.namaToko,
     required this.namaLengkap,
     required this.jumlahProduct,
     required this.jumlahJasa,
@@ -103,6 +109,7 @@ class Mitra {
 
   factory Mitra.fromJson(Map<String, dynamic> json) => Mitra(
     id: json["id"],
+    namaToko: json["nama_toko"],
     namaLengkap: json["nama_lengkap"],
     jumlahProduct: json["jumlah_product"],
     jumlahJasa: json["jumlah_jasa"],
@@ -112,6 +119,7 @@ class Mitra {
 
   Map<String, dynamic> toJson() => {
     "id": id,
+    "nama_toko": namaToko,
     "nama_lengkap": namaLengkap,
     "jumlah_product": jumlahProduct,
     "jumlah_jasa": jumlahJasa,

@@ -71,11 +71,9 @@ class ChekcoutPage extends StatelessWidget {
                         style: AppTextStyle().header(AppColors.titleLine),
                         textAlign: TextAlign.start,
                       ),
-                      const LocationChekout(
-                        locationHeader: "SMK Raden Umar Said Kudus",
-                        locationDetail:
-                            "Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333",
-                      ),
+                       LocationChekout(
+                        locationHeader: controller.titleLokasi.toString(),
+                        locationDetail: controller.descLokasi.toString()),
                     ].withSpaceBetween(height: 10),
                   ),
                   Column(
