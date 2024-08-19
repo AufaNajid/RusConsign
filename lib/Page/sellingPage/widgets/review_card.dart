@@ -69,7 +69,7 @@ class ReviewCardSelling extends StatelessWidget {
                   children: [
                     Text(
                       username,
-                      style: AppTextStyle().subHeader(AppColors.titleLine),
+                      style: AppTextStyle().subHeader(context, AppColors.titleLine),
                     ),
                     const SizedBox(height: 5),
                     RatingBar.builder(
@@ -102,12 +102,12 @@ class ReviewCardSelling extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       date.toString().substring(0, 16),
-                      style: AppTextStyle().textInfoBold(AppColors.description),
+                      style: AppTextStyle().textInfoBold(context, AppColors.description),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       desc,
-                      style: AppTextStyle().textInfo(AppColors.description),
+                      style: AppTextStyle().textInfo(context, AppColors.description),
                     ),
                     const SizedBox(height: 10),
                     Row(
@@ -121,7 +121,7 @@ class ReviewCardSelling extends StatelessWidget {
                               const Spacer(),
                               Text(like.toString(),
                                   style: AppTextStyle()
-                                      .descriptionBold(AppColors.description)),
+                                      .descriptionBold(context, AppColors.description)),
                             ],
                           ),
                         ),
@@ -134,7 +134,7 @@ class ReviewCardSelling extends StatelessWidget {
                               const Spacer(),
                               Text(disLike.toString(),
                                   style: AppTextStyle()
-                                      .descriptionBold(AppColors.description)),
+                                      .descriptionBold(context, AppColors.description)),
                             ],
                           ),
                         )

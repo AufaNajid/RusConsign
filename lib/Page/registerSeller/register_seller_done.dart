@@ -28,7 +28,7 @@ class RegisterSellerDone extends StatelessWidget {
                           borderRadius: BorderRadius.circular(2))),
                   child: Text(
                     "Kembali",
-                    style: AppTextStyle().description(AppColors.background),
+                    style: AppTextStyle().description(context, AppColors.background),
                   ),
                 ),
               ),
@@ -43,13 +43,13 @@ class RegisterSellerDone extends StatelessWidget {
               height: AppResponsive().screenHeight(context) * 0.01,
             ),
             Text('registrasiSelesai'.tr,
-                style: AppTextStyle().title(AppColors.titleLine)),
+                style: AppTextStyle().title(context, AppColors.titleLine)),
             SizedBox(
               height: AppResponsive().screenHeight(context) * 0.02,
             ),
             Text(
               'descRegistrasiSelesai'.tr,
-              style: AppTextStyle().description(AppColors.description),
+              style: AppTextStyle().description(context, AppColors.description),
               textAlign: TextAlign.center,
             )
           ],

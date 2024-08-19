@@ -8,10 +8,11 @@ import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
-   ForgotPasswordPage({Key? key}) : super(key: key);
+  ForgotPasswordPage({Key? key}) : super(key: key);
   final TextEditingController emailController = TextEditingController();
   final TextEditingController newPasswordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   children: [
                     Text(
                       'Reset Password',
-                      style: AppTextStyle().subHeader(AppColors.titleLine),
+                      style: AppTextStyle().subHeader(context, AppColors.titleLine),
                     ),
                     const SizedBox(height: 12),
                     // Bind TextEditingController to TextFieldInput
@@ -68,7 +69,8 @@ class ForgotPasswordPage extends StatelessWidget {
                       // Handle reset password logic here
                       print('Email: ${emailController.text}');
                       print('New Password: ${newPasswordController.text}');
-                      print('Confirm Password: ${confirmPasswordController.text}');
+                      print(
+                          'Confirm Password: ${confirmPasswordController.text}');
                       Get.offNamed('/login');
                     },
                     style: ButtonStyle(
@@ -76,10 +78,10 @@ class ForgotPasswordPage extends StatelessWidget {
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4))),
                       backgroundColor:
-                      MaterialStateProperty.all<Color>(AppColors.button1),
+                          MaterialStateProperty.all<Color>(AppColors.button1),
                     ),
                     child: Text('ubah'.tr,
-                        style: AppTextStyle().header(AppColors.textButton1)),
+                        style: AppTextStyle().header(context, AppColors.textButton1)),
                   ),
                 ),
                 const SizedBox(height: 30),
@@ -91,8 +93,8 @@ class ForgotPasswordPage extends StatelessWidget {
                       },
                       child: Text(
                         'kembali'.tr,
-                        style:
-                        AppTextStyle().descriptionBold(AppColors.description),
+                        style: AppTextStyle()
+                            .descriptionBold(context, AppColors.description),
                       ),
                     )
                   ],
@@ -106,7 +108,7 @@ class ForgotPasswordPage extends StatelessWidget {
                       child: Text('descRegister'.tr,
                           textAlign: TextAlign.center,
                           style: AppTextStyle()
-                              .description(AppColors.description)),
+                              .description(context, AppColors.description)),
                     ),
                   ],
                 ),

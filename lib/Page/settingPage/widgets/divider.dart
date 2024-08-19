@@ -25,7 +25,8 @@ class DividerProfile extends StatelessWidget {
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.04),
             Text('profil'.tr,
-                style: AppTextStyle().subHeader(AppColors.description)),
+                style:
+                    AppTextStyle().subHeader(context, AppColors.description)),
             const Spacer(),
             SizedBox(
               height: AppResponsive().screenWidth(context) * 0.070,
@@ -67,13 +68,16 @@ class DividerProfile extends StatelessWidget {
                       const MaterialStatePropertyAll(AppColors.button1),
                   fixedSize: MaterialStatePropertyAll(
                     Size(
-                      AppResponsive().screenWidth(context) * 0.24,
+                      AppResponsive().screenWidth(context) * 0.2,
                       AppResponsive().screenWidth(context) * 0.070,
                     ),
                   ),
                 ),
-                child: Text('simpan'.tr,
-                    style: AppTextStyle().textInfoBold(AppColors.textButton1)),
+                child: Text(
+                  'simpan'.tr,
+                  style: AppTextStyle()
+                      .textInfoBold(context, AppColors.textButton1),
+                ),
               ),
             ),
           ],
@@ -103,7 +107,9 @@ class DividerComponent extends StatelessWidget {
               color: AppColors.nonActiveIcon,
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.04),
-            Text(text, style: AppTextStyle().subHeader(AppColors.description)),
+            Text(text,
+                style:
+                    AppTextStyle().subHeader(context, AppColors.description)),
           ],
         ),
         Divider(

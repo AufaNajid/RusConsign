@@ -15,7 +15,7 @@ class DropDownLang extends StatelessWidget {
           children: [
             Text(
               settingController.selectedLanguage.value,
-              style: AppTextStyle().textInfoBold(AppColors.description),
+              style: AppTextStyle().textInfoBold(context, AppColors.description),
             ),
             PopupMenuButton<String>(
               color: AppColors.cardIconFill,
@@ -34,14 +34,14 @@ class DropDownLang extends StatelessWidget {
                   value: 'Indonesia',
                   child: Text(
                     'Indonesia',
-                    style: AppTextStyle().textInfoBold(AppColors.description),
+                    style: AppTextStyle().textInfoBold(context, AppColors.description),
                   ),
                 ),
                 PopupMenuItem<String>(
                   value: 'English',
                   child: Text(
                     'English',
-                    style: AppTextStyle().textInfoBold(AppColors.description),
+                    style: AppTextStyle().textInfoBold(context, AppColors.description),
                   ),
                 ),
               ],

@@ -35,13 +35,13 @@ class PaymentDetail extends StatelessWidget {
                 children: [
                   Text(
                     'subtotalProduk'.tr,
-                    style: AppTextStyle().description(AppColors.description),
+                    style: AppTextStyle().description(context, AppColors.description),
                     textAlign: TextAlign.start,
                   ),
                   const Spacer(),
                   Text(
                     MoneyFormat.format(subPrice),
-                    style: AppTextStyle().descriptionBold(AppColors.hargaStat),
+                    style: AppTextStyle().descriptionBold(context, AppColors.hargaStat),
                     textAlign: TextAlign.end,
                   )
                 ],
@@ -50,13 +50,13 @@ class PaymentDetail extends StatelessWidget {
                 children: [
                   Text(
                     'biayaAdmin'.tr,
-                    style: AppTextStyle().description(AppColors.description),
+                    style: AppTextStyle().description(context, AppColors.description),
                     textAlign: TextAlign.start,
                   ),
                   const Spacer(),
                   Text(
                     MoneyFormat.format(adminPrice),
-                    style: AppTextStyle().descriptionBold(AppColors.hargaStat),
+                    style: AppTextStyle().descriptionBold(context, AppColors.hargaStat),
                     textAlign: TextAlign.end,
                   )
                 ],
@@ -66,13 +66,13 @@ class PaymentDetail extends StatelessWidget {
                 children: [
                   Text(
                     'total'.tr,
-                    style: AppTextStyle().description(AppColors.description),
+                    style: AppTextStyle().description(context, AppColors.description),
                     textAlign: TextAlign.start,
                   ),
                   const Spacer(),
                   Text(
                     MoneyFormat.format(totalPrice),
-                    style: AppTextStyle().header(AppColors.hargaStat),
+                    style: AppTextStyle().header(context, AppColors.hargaStat),
                     textAlign: TextAlign.end,
                   )
                 ],

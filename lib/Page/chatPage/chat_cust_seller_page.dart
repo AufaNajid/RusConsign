@@ -79,12 +79,12 @@ class ChatPage extends StatelessWidget {
                           :  Text(
                             "message",
                             style: AppTextStyle()
-                                .description(AppColors.description),
+                                .description(context, AppColors.description),
                           ),
                           Text(
                             DateTime.now().toString().substring(11, 16),
                             style: AppTextStyle()
-                                .textInfoBold(AppColors.description),
+                                .textInfoBold(context, AppColors.description),
                           )
                         ].withSpaceBetween(height: 5),
                       ),

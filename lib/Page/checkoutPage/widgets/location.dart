@@ -24,6 +24,7 @@ class LocationChekout extends StatelessWidget {
               child: Material(
             color: AppColors.cardIconFill,
             child: Icon(
+              size: 20,
               FeatherIcons.mapPin,
               color: AppColors.nonActiveIcon,
             ),
@@ -35,11 +36,11 @@ class LocationChekout extends StatelessWidget {
             children: [
               Text(
                 locationHeader,
-                style: AppTextStyle().subHeader(AppColors.description),
+                style: AppTextStyle().subHeader(context, AppColors.description),
               ),
               Text(
                 locationDetail,
-                style: AppTextStyle().textInfo(AppColors.description),
+                style: AppTextStyle().textInfo(context, AppColors.description),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               )
@@ -51,6 +52,7 @@ class LocationChekout extends StatelessWidget {
               Get.toNamed("/locationpage");
             },
             icon: Icon(
+              size: 20,
               FeatherIcons.edit,
               color: AppColors.nonActiveIcon,
             ))

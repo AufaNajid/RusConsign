@@ -35,11 +35,12 @@ class FilterButton extends StatelessWidget {
           ),
         ),
         fixedSize: MaterialStatePropertyAll(
-          Size(AppResponsive().screenWidth(context) * 0.290,
+          Size(AppResponsive().screenWidth(context) * 0.285,
               AppResponsive().screenWidth(context) * 0.04),
         ),
       ),
       icon: Icon(
+        size: 20,
         icon,
         color: filterButtonController.selectedIndex == index
             ? AppColors.activeIconType
@@ -51,7 +52,7 @@ class FilterButton extends StatelessWidget {
           color: filterButtonController.selectedIndex == index
               ? AppColors.textButton1
               : AppColors.description,
-          fontSize: 12,
+          fontSize: 11,
         ),
       ),
       onPressed: () {

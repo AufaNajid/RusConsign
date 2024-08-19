@@ -14,7 +14,7 @@ class TextFieldInputChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       cursorColor: AppColors.hargaStat,
-      style: AppTextStyle().descriptionBold(AppColors.description),
+      style: AppTextStyle().descriptionBold(context, AppColors.description),
       decoration: InputDecoration(
         contentPadding:
         const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -25,7 +25,7 @@ class TextFieldInputChat extends StatelessWidget {
         filled: true,
         fillColor: AppColors.cardIconFill,
         hintText: hintText,
-        hintStyle: AppTextStyle().description(AppColors.description),
+        hintStyle: AppTextStyle().description(context, AppColors.description),
       ),
       textAlign: TextAlign.left,
     );

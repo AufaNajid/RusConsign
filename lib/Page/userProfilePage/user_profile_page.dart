@@ -53,12 +53,12 @@ class UserProfilePage extends StatelessWidget {
                         ),
                         Text(
                           'Raihan Maulana',
-                          style: AppTextStyle().title(AppColors.titleLine),
+                          style: AppTextStyle().title(context, AppColors.titleLine),
                         ),
                         Text(
                           'raihanmaulana084@gmail.com',
                           style:
-                              AppTextStyle().description(AppColors.description),
+                              AppTextStyle().description(context, AppColors.description),
                         ),
                       ].withSpaceBetween(height: 10),
                     ),
@@ -92,7 +92,7 @@ class UserProfilePage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         'afenuihidhiad andiad idanduand oawkdne vknma coijcjcinadin acnincanc inanic iadiand adiandoandiandiand adianndiandianidad iadniandinadina diandiandianda diandiandia',
-                        style: AppTextStyle().textInfo(AppColors.description),
+                        style: AppTextStyle().textInfo(context, AppColors.description),
                         textAlign: TextAlign.center,
                         maxLines: 5,
                         overflow: TextOverflow.ellipsis,
@@ -121,7 +121,7 @@ class UserProfilePage extends StatelessWidget {
                     children: [
                       Text(
                         'halamanP&J'.tr,
-                        style: AppTextStyle().subHeader(AppColors.titleLine),
+                        style: AppTextStyle().subHeader(context, AppColors.titleLine),
                       ),
                       Row(
                         children: [
@@ -154,7 +154,7 @@ class UserProfilePage extends StatelessWidget {
                         child: TextField(
                           cursorColor: AppColors.hargaStat,
                           style: AppTextStyle()
-                              .descriptionBold(AppColors.description),
+                              .descriptionBold(context, AppColors.description),
                           decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 10),
@@ -166,7 +166,7 @@ class UserProfilePage extends StatelessWidget {
                             fillColor: AppColors.cardIconFill,
                             hintText: 'cari'.tr,
                             hintStyle: AppTextStyle()
-                                .description(AppColors.description),
+                                .description(context, AppColors.description),
                           ),
                           textAlign: TextAlign.left,
                         ),

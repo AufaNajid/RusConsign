@@ -104,7 +104,7 @@ class SettingPage extends StatelessWidget {
                       ),
                       label: Text(
                         'keluar'.tr,
-                        style: AppTextStyle().header(AppColors.textButton1),
+                        style: AppTextStyle().header(context, AppColors.textButton1),
                       ),
                     ),
                   ),

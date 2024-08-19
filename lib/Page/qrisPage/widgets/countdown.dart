@@ -35,7 +35,7 @@ class TimerTest extends StatelessWidget {
         }
         final duration = snapshot.data!;
         final hours = DefaultTextStyle(
-          style: AppTextStyle().countdownText(AppColors.hargaStat),
+          style: AppTextStyle().countdownText(context, AppColors.hargaStat),
           textAlign: TextAlign.center,
           child: Text(
             duration.inHours.toString().padLeft(2, '0'),
@@ -43,7 +43,7 @@ class TimerTest extends StatelessWidget {
         );
 
         final minutes = DefaultTextStyle(
-          style: AppTextStyle().countdownText(AppColors.hargaStat),
+          style: AppTextStyle().countdownText(context, AppColors.hargaStat),
           textAlign: TextAlign.center,
           child: Text(
             duration.inMinutes.remainder(60).toString().padLeft(2, '0'),
@@ -51,7 +51,7 @@ class TimerTest extends StatelessWidget {
         );
 
         final seconds = DefaultTextStyle(
-          style: AppTextStyle().countdownText(AppColors.hargaStat),
+          style: AppTextStyle().countdownText(context, AppColors.hargaStat),
           textAlign: TextAlign.center,
           child: Text(
             duration.inSeconds.remainder(60).toString().padLeft(2, '0'),
@@ -78,7 +78,7 @@ class TimerTest extends StatelessWidget {
                         hours,
                         Text(
                           'jam'.tr,
-                          style: AppTextStyle().subHeader(AppColors.description),
+                          style: AppTextStyle().subHeader(context, AppColors.description),
                           textAlign: TextAlign.center
                         )
                       ],
@@ -102,7 +102,7 @@ class TimerTest extends StatelessWidget {
                         minutes,
                         Text(
                           'menit'.tr,
-                          style: AppTextStyle().subHeader(AppColors.description),
+                          style: AppTextStyle().subHeader(context, AppColors.description),
                           textAlign: TextAlign.center
                         )
                       ],
@@ -126,7 +126,7 @@ class TimerTest extends StatelessWidget {
                         seconds,
                         Text(
                           'detik'.tr,
-                          style: AppTextStyle().subHeader(AppColors.description),
+                          style: AppTextStyle().subHeader(context, AppColors.description),
                           textAlign: TextAlign.center,
                         )
                       ],

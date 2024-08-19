@@ -60,7 +60,7 @@ class PicturePicker extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(
               "Pilih Foto",
-              style: AppTextStyle().description(AppColors.textButton1),
+              style: AppTextStyle().description(context, AppColors.textButton1),
             ),
           ),
         ),

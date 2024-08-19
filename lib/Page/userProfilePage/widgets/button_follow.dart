@@ -51,7 +51,7 @@ class ButtonFollow extends StatelessWidget {
           ),
           label: Text(
             controller.following.value ? 'mengikuti'.tr : 'ikuti'.tr,
-            style: AppTextStyle().subHeader(controller.following.value
+            style: AppTextStyle().subHeader(context, controller.following.value
                 ? AppColors.button1
                 : AppColors.textButton1),
           ),

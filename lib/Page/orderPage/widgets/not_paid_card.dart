@@ -92,7 +92,7 @@ class NotPaidCard extends StatelessWidget {
                                   child: Text(
                                     title,
                                     style: AppTextStyle()
-                                        .descriptionBold(AppColors.titleLine),
+                                        .descriptionBold(context, AppColors.titleLine),
                                   ),
                                 ),
                                 Row(
@@ -117,7 +117,7 @@ class NotPaidCard extends StatelessWidget {
                                           Text(
                                             profileUsername,
                                             style: AppTextStyle().textInfo(
-                                                AppColors.description),
+                                                context, AppColors.description),
                                           ),
                                         ],
                                       ),
@@ -144,7 +144,7 @@ class NotPaidCard extends StatelessWidget {
                                     Text(
                                       '$rating',
                                       style: AppTextStyle()
-                                          .textInfoBold(AppColors.description),
+                                          .textInfoBold(context, AppColors.description),
                                     ),
                                   ].withSpaceBetween(width: 6),
                                 ),
@@ -153,12 +153,12 @@ class NotPaidCard extends StatelessWidget {
                                     Text(
                                       '${'total'.tr} :',
                                       style: AppTextStyle()
-                                          .textInfo(AppColors.description),
+                                          .textInfo(context, AppColors.description),
                                     ),
                                     Text(
                                       MoneyFormat.format(totalProductPrice),
                                       style: AppTextStyle()
-                                          .textInfoBold(AppColors.hargaStat),
+                                          .textInfoBold(context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -167,12 +167,12 @@ class NotPaidCard extends StatelessWidget {
                                     Text(
                                       '${'metodePembayaran'.tr} :',
                                       style: AppTextStyle()
-                                          .textInfo(AppColors.description),
+                                          .textInfo(context, AppColors.description),
                                     ),
                                     Text(
                                       paymentMethod,
                                       style: AppTextStyle()
-                                          .textInfoBold(AppColors.hargaStat),
+                                          .textInfoBold(context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -182,7 +182,7 @@ class NotPaidCard extends StatelessWidget {
                                     Text(
                                       '${'lokasiPertemuan'.tr} :',
                                       style: AppTextStyle()
-                                          .textInfo(AppColors.description),
+                                          .textInfo(context, AppColors.description),
                                     ),
                                     Expanded(
                                       child: Column(
@@ -192,7 +192,7 @@ class NotPaidCard extends StatelessWidget {
                                           Text(
                                             meetingLocation,
                                             style: AppTextStyle().textInfoBold(
-                                                AppColors.hargaStat),
+                                                context, AppColors.hargaStat),
                                           ),
                                         ],
                                       ),
@@ -227,7 +227,7 @@ class NotPaidCard extends StatelessWidget {
                     ),
                     child: Text(
                       'batalkanPesanan'.tr,
-                      style: AppTextStyle().header(AppColors.textButton2),
+                      style: AppTextStyle().header(context, AppColors.textButton2),
                     ),
                   ),
                 ),

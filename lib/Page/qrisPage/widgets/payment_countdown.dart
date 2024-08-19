@@ -24,12 +24,12 @@ class PaymentCountdown extends StatelessWidget {
               children: [
                 Text(
                   'menungguPembayaran'.tr,
-                  style: AppTextStyle().header(AppColors.titleLine),
+                  style: AppTextStyle().header(context, AppColors.titleLine),
                   textAlign: TextAlign.center,
                 ),
                 Text(
                   'descMenungguPembayaran'.tr,
-                  style: AppTextStyle().description(AppColors.description),
+                  style: AppTextStyle().description(context, AppColors.description),
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,

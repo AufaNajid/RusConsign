@@ -27,7 +27,7 @@ class SellingAppbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(
         title,
-        style: AppTextStyle().title(AppColors.titleLine)
+        style: AppTextStyle().title(context, AppColors.titleLine)
       ),
       centerTitle: true,
       actions: <Widget>[

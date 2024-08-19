@@ -54,13 +54,13 @@ class QrCode extends StatelessWidget {
                         children: [
                           Text(
                             'pembayaranQRIS'.tr,
-                            style: AppTextStyle().header(AppColors.titleLine),
+                            style: AppTextStyle().header(context, AppColors.titleLine),
                             textAlign: TextAlign.start,
                           ),
                           Text(
                             'shopeeOvoDana'.tr,
                             style: AppTextStyle()
-                                .description(AppColors.description),
+                                .description(context, AppColors.description),
                             textAlign: TextAlign.start,
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -119,7 +119,7 @@ class QrCode extends StatelessWidget {
                     ),
                     Text(
                     'unduhKode'.tr,
-                      style: AppTextStyle().description(AppColors.textButton1),
+                      style: AppTextStyle().description(context, AppColors.textButton1),
                     ),
                   ],
                 ),

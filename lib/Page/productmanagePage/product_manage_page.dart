@@ -99,7 +99,7 @@ class ProductManagePage extends StatelessWidget {
                               child: Text(
                                 'belumAdaData'.tr,
                                 style: AppTextStyle()
-                                    .subHeader(AppColors.hargaStat),
+                                    .subHeader(context, AppColors.hargaStat),
                               ),
                             ),
                           ),
@@ -133,7 +133,7 @@ class ProductManagePage extends StatelessWidget {
                                     title: Text(
                                       'konfirmasiHapus'.tr,
                                       style: AppTextStyle()
-                                          .title(AppColors.titleLine),
+                                          .title(context, AppColors.titleLine),
                                     ),
                                     content: Text('hapusItemToko'.tr),
                                     actions: <Widget>[
@@ -147,7 +147,7 @@ class ProductManagePage extends StatelessWidget {
                                         child: Text(
                                           'batal'.tr,
                                           style: AppTextStyle()
-                                              .subHeader(AppColors.hargaStat),
+                                              .subHeader(context, AppColors.hargaStat),
                                         ),
                                         onPressed: () {
                                           Navigator.of(context).pop();

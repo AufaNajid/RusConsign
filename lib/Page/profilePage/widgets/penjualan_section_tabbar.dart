@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/profilePage/widgets/custom_button_profile.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 
@@ -16,14 +17,11 @@ class PenjualanSectionFalse extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-            height: AppResponsive().screenHeight(context) * 0.25,
-            child: SvgPicture.asset("assets/images/orang_mencet_hp.svg")),
+            height: AppResponsive().screenWidth(context) * 0.450,
+            child: SvgPicture.asset("assets/images/orang_mencet_hp.svg"),),
         Text(
           'descResgisterPenjual'.tr,
-          style: AppTextStyle().description(AppColors.description),
-        ),
-        SizedBox(
-          height: AppResponsive().screenHeight(context) * 0.02,
+          style: AppTextStyle().description(context, AppColors.description),
         ),
         ElevatedButton(
           onPressed: () {
@@ -32,15 +30,17 @@ class PenjualanSectionFalse extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.button1,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(6),
             ),
+            elevation: 0,
+            shadowColor: AppColors.background
           ),
           child: Text(
             'registerPenjualSekarang'.tr,
-            style: AppTextStyle().description(AppColors.textButton1),
+            style: AppTextStyle().description(context, AppColors.textButton1),
           ),
         ),
-      ],
+      ].withSpaceBetween(height: 12),
     );
   }
 }

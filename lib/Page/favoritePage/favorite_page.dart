@@ -32,7 +32,7 @@ class FavoritePage extends StatelessWidget {
           surfaceTintColor: AppColors.background,
           title: Text(
             'favorit'.tr,
-            style: AppTextStyle().title(AppColors.titleLine),
+            style: AppTextStyle().title(context, AppColors.titleLine),
           ),
         ),
         backgroundColor: AppColors.background,
@@ -68,9 +68,9 @@ class FavoritePage extends StatelessWidget {
                   ),
                   Text(
                     'belumAdaBarang'.tr,
-                    style: AppTextStyle().subHeader(AppColors.description),
+                    style: AppTextStyle().subHeader(context, AppColors.description),
                   )
-                ].withSpaceBetween(height: 20),
+                ].withSpaceBetween(height: 12),
               ),
             );
           } else {

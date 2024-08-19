@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
@@ -25,14 +26,15 @@ class ProfileInfoCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: 60,
-              width: 60,
+              height: AppResponsive().screenWidth(context) * 0.13,
+              width: AppResponsive().screenWidth(context) * 0.13,
               child: ClipOval(
                 child: Material(
                   color: AppColors.cardIconFill,
                   child: Icon(
                     icon,
                     color: AppColors.nonActiveIcon,
+                    size: 20,
                   ),
                 ),
               ),
@@ -40,12 +42,12 @@ class ProfileInfoCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               title,
-              style: AppTextStyle().textInfoBold(AppColors.description),
+              style: AppTextStyle().textInfoBold(context, AppColors.description),
             ),
             const SizedBox(height: 10),
             Text(
               data,
-              style: AppTextStyle().descriptionBold(AppColors.hargaStat),
+              style: AppTextStyle().descriptionBold(context, AppColors.hargaStat),
             )
           ],
         ),

@@ -25,7 +25,7 @@ class NotificationSetting extends StatelessWidget {
             children: [
               Text(
                 'tampilkanNotifikasi'.tr,
-                style: AppTextStyle().description(AppColors.description),
+                style: AppTextStyle().description(context, AppColors.description),
               ),
               const Spacer(),
               IconButton(

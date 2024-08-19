@@ -50,7 +50,7 @@ class EditDataProduct extends StatelessWidget {
                           child: Text(
                             'foto'.tr,
                             style:
-                                AppTextStyle().description(AppColors.titleLine),
+                                AppTextStyle().description(context, AppColors.titleLine),
                           ),
                         ),
                         const ImageEdit(),
@@ -64,7 +64,7 @@ class EditDataProduct extends StatelessWidget {
                           child: Text(
                             'nama'.tr,
                             style:
-                                AppTextStyle().description(AppColors.titleLine),
+                                AppTextStyle().description(context, AppColors.titleLine),
                           ),
                         ),
                         Expanded(
@@ -84,7 +84,7 @@ class EditDataProduct extends StatelessWidget {
                           child: Text(
                             'deskripsi'.tr,
                             style:
-                                AppTextStyle().description(AppColors.titleLine),
+                                AppTextStyle().description(context, AppColors.titleLine),
                           ),
                         ),
                         Expanded(
@@ -104,7 +104,7 @@ class EditDataProduct extends StatelessWidget {
                           child: Text(
                             'hargaRP'.tr,
                             style:
-                                AppTextStyle().description(AppColors.titleLine),
+                                AppTextStyle().description(context, AppColors.titleLine),
                           ),
                         ),
                         Expanded(
@@ -161,7 +161,7 @@ class EditDataProduct extends StatelessWidget {
                 ),
                 child: Text(
                   'ubahData'.tr,
-                  style: AppTextStyle().description(AppColors.background),
+                  style: AppTextStyle().description(context, AppColors.background),
                 ),
               ),
             ),

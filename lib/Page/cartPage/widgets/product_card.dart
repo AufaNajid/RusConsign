@@ -70,7 +70,7 @@ class ProductCardCart extends StatelessWidget {
                                 Text(
                                   "Gantungan Kunci (Key Chain) Boneka unik",
                                   style: AppTextStyle()
-                                      .descriptionBold(AppColors.titleLine),
+                                      .descriptionBold(context, AppColors.titleLine),
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                 ),
@@ -91,7 +91,7 @@ class ProductCardCart extends StatelessWidget {
                               Text(
                                 sellerUsername,
                                 style: AppTextStyle()
-                                    .textInfo(AppColors.description),
+                                    .textInfo(context, AppColors.description),
                               ),
                             ].withSpaceBetween(width: 5)),
                             Row(
@@ -114,7 +114,7 @@ class ProductCardCart extends StatelessWidget {
                                 Text(
                                   rating.toString(),
                                   style: AppTextStyle()
-                                      .textInfoBold(AppColors.description),
+                                      .textInfoBold(context, AppColors.description),
                                 ),
                               ],
                             ),
@@ -123,12 +123,12 @@ class ProductCardCart extends StatelessWidget {
                                 Text(
                                   '${'total'.tr} : ',
                                   style: AppTextStyle()
-                                      .textInfo(AppColors.description),
+                                      .textInfo(context, AppColors.description),
                                 ),
                                 Text(
                                   MoneyFormat.format(price),
                                   style: AppTextStyle()
-                                      .textInfoBold(AppColors.hargaStat),
+                                      .textInfoBold(context, AppColors.hargaStat),
                                 ),
                               ],
                             )
@@ -145,13 +145,13 @@ class ProductCardCart extends StatelessWidget {
                     children: [
                       Text(
                         'jumlah'.tr,
-                        style: AppTextStyle().textInfo(AppColors.description),
+                        style: AppTextStyle().textInfo(context, AppColors.description),
                         textAlign: TextAlign.start,
                       ),
                       const Spacer(),
                       Text('Subtotal'.tr,
                           style:
-                              AppTextStyle().textInfo(AppColors.description)),
+                              AppTextStyle().textInfo(context, AppColors.description)),
                     ],
                   ),
                   Row(
@@ -171,7 +171,7 @@ class ProductCardCart extends StatelessWidget {
                                         child: Icon(
                                       FeatherIcons.minus,
                                       color: AppColors.textButton2,
-                                      size: 20,
+                                      size: 18,
                                     ))),
                               ),
                             ),
@@ -190,7 +190,7 @@ class ProductCardCart extends StatelessWidget {
                                 child: Text(
                                   quantity.toString(),
                                   style: AppTextStyle()
-                                      .descriptionBold(AppColors.description),
+                                      .descriptionBold(context, AppColors.description),
                                 ),
                               ),
                             ),
@@ -208,7 +208,7 @@ class ProductCardCart extends StatelessWidget {
                                     child: Icon(
                                       FeatherIcons.plus,
                                       color: AppColors.textButton2,
-                                      size: 20,
+                                      size: 18,
                                     ),
                                   ),
                                 ),
@@ -220,7 +220,7 @@ class ProductCardCart extends StatelessWidget {
                       const Spacer(),
                       Text(
                         MoneyFormat.format(subtotalValue),
-                        style: AppTextStyle().title(AppColors.hargaStat),
+                        style: AppTextStyle().title(context, AppColors.hargaStat),
                       ),
                     ],
                   ),

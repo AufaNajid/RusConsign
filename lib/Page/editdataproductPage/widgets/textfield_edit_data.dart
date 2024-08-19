@@ -20,7 +20,7 @@ class TextFieldEditData extends StatelessWidget {
       width: double.infinity,
       child: TextField(
         controller: controller,
-        style: AppTextStyle().descriptionBold(AppColors.description),
+        style: AppTextStyle().descriptionBold(context, AppColors.description),
         cursorColor: AppColors.hargaStat,
         textAlign: TextAlign.left,
         maxLines: maxlines,
@@ -34,7 +34,7 @@ class TextFieldEditData extends StatelessWidget {
             filled: true,
             fillColor: AppColors.cardIconFill,
             hintText: hintText,
-            hintStyle: AppTextStyle().description(AppColors.description)),
+            hintStyle: AppTextStyle().description(context, AppColors.description)),
       ),
     );
   }
@@ -56,7 +56,7 @@ class TextFieldEditDataNumber extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))],
-      style: AppTextStyle().descriptionBold(AppColors.description,),
+      style: AppTextStyle().descriptionBold(context, AppColors.description,),
       cursorColor: AppColors.hargaStat,
       textAlign: TextAlign.left,
       decoration: InputDecoration(
@@ -69,7 +69,7 @@ class TextFieldEditDataNumber extends StatelessWidget {
           filled: true,
           fillColor: AppColors.cardIconFill,
           hintText: hintText,
-          hintStyle: AppTextStyle().description(AppColors.description)),
+          hintStyle: AppTextStyle().description(context, AppColors.description)),
     );
   }
 }

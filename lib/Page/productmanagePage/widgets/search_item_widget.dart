@@ -17,7 +17,7 @@ class SearchItemProductManage extends StatelessWidget {
           height: 50,
           child: TextField(
             cursorColor: AppColors.hargaStat,
-            style: AppTextStyle().descriptionBold(AppColors.description),
+            style: AppTextStyle().descriptionBold(context, AppColors.description),
             decoration: InputDecoration(
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -28,7 +28,7 @@ class SearchItemProductManage extends StatelessWidget {
               filled: true,
               fillColor: AppColors.cardIconFill,
               hintText: 'cari'.tr,
-              hintStyle: AppTextStyle().description(AppColors.description),
+              hintStyle: AppTextStyle().description(context, AppColors.description),
             ),
             textAlign: TextAlign.left,
           ),
