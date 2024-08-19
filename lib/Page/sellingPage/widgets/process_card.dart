@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProcessCardSelling extends StatelessWidget {
@@ -11,7 +13,9 @@ class ProcessCardSelling extends StatelessWidget {
   final String metodePembayaran;
   final String lokasiPertemuan;
   final double rating;
+  final String timeMeeting;
   final int price;
+  final int quantity;
 
   const ProcessCardSelling({
     Key? key,
@@ -22,6 +26,8 @@ class ProcessCardSelling extends StatelessWidget {
     required this.lokasiPertemuan,
     required this.rating,
     required this.price,
+    required this.quantity,
+    required this.timeMeeting
   }) : super(key: key);
 
   @override
@@ -41,8 +47,8 @@ class ProcessCardSelling extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: 100,
-              height: 100,
+              width: AppResponsive().screenWidth(context) * 0.240,
+              height: 150,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.network(
@@ -91,8 +97,20 @@ class ProcessCardSelling extends StatelessWidget {
                         style: AppTextStyle().textInfo(context, AppColors.description),
                       ),
                       Text(
-                        'Rp $price',
-                        style: AppTextStyle().textInfoBold(context, AppColors.hargaStat),
+                        MoneyFormat.format(price),
+                        style: AppTextStyle().textInfoBold(context,AppColors.hargaStat),
+                      ),
+                    ].withSpaceBetween(width: 4),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        '${'Quantity'.tr} :',
+                        style: AppTextStyle().textInfo(context,AppColors.description),
+                      ),
+                      Text(
+                        quantity.toString(),
+                        style: AppTextStyle().textInfoBold(context,AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),
                   ),
@@ -129,6 +147,18 @@ class ProcessCardSelling extends StatelessWidget {
                       Text(
                         lokasiPertemuan,
                         style: AppTextStyle().textInfoBold(context, AppColors.hargaStat),
+                      ),
+                    ].withSpaceBetween(width: 4),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Waktu Pertemuan'.tr,
+                        style: AppTextStyle().textInfo(context,AppColors.description),
+                      ),
+                      Text(
+                        timeMeeting,
+                        style: AppTextStyle().textInfoBold(context,AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),
                   ),

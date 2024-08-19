@@ -134,12 +134,6 @@ class ChekcoutPage extends StatelessWidget {
                     await controller.paymentTesting(
                         controller.productDetail.value!.id.toString(), "1");
                   }
-
-                  // if (controller.selectedPaymentMethod.value == 'QRIS') {
-                  //   Get.offNamed("/qrispayment");
-                  // } else {
-                  //   Get.offAllNamed("/paymentdone");
-                  // }
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 0,

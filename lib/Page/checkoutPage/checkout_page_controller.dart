@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
@@ -12,7 +11,9 @@ class CheckoutPageController extends GetxController {
   var selectedLeading = 'assets/images/qris.svg'.obs;
   var selectedTitle = 'QRIS'.obs;
   RxString titleLokasi = 'SMK Raden Umar Said Kudus'.obs;
-  var descLokasi = 'Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333'.obs;
+  var descLokasi =
+      'Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333'
+          .obs;
   var expanded = false.obs;
   RxBool successfulPesanProduct = false.obs;
   RxString message = "".obs;
@@ -29,11 +30,6 @@ class CheckoutPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    print("Pembayaran yang dipilih adalah ${selectedPaymentMethod.value}");
-    selectedPaymentMethod.listen((value) {
-      print("Pembayaran yang dipilih berubah menjadi $value");
-    });
-
     final productID = Get.arguments as int;
     fetchProduct(productID);
   }
@@ -69,7 +65,6 @@ class CheckoutPageController extends GetxController {
       var jsonResponse = json.decode(response.body);
       Barang product = Barang.fromJson(jsonResponse['barang']);
       productDetail.value = product;
-      print('Product fetched successfully');
     } else {
       print('Failed to fetch product: ${response.statusCode}');
     }
@@ -82,7 +77,6 @@ class CheckoutPageController extends GetxController {
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    print("Token saat TestingPaymentv = $token");
 
     var request = http.MultipartRequest(
         'POST', Uri.parse("https://rusconsign.com/api/create-invoice"));
@@ -91,18 +85,14 @@ class CheckoutPageController extends GetxController {
     request.fields['quantity'] = jumlah;
 
     var response = await request.send();
-    print("Response status: ${response.statusCode}");
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       var responseData = await response.stream.bytesToString();
-      print("Response data saat testPayment: $responseData");
       var jsonResponse = json.decode(responseData);
       TestingPayment invoice = TestingPayment.fromJson(jsonResponse);
-      print("Url Xendit = ${invoice.invoiceUrl}");
 
       isLoading.value = false;
       Get.to(() => TestingWebcView(url: invoice.invoiceUrl));
-      // _showUrlDialog(invoice.invoiceUrl);
     } else {
       isLoading.value = false;
       Get.snackbar('Error', 'Failed to create invoice',
@@ -121,13 +111,11 @@ class CheckoutPageController extends GetxController {
     request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['barang_id'] = idProduct;
-    request.fields['mitra_id'] = idMitra;
+    // request.fields['mitra_id'] = idMitra;
     request.fields['lokasi_id'] = "1";
     request.fields['quantity'] = "1";
 
     var response = await request.send();
-
-    print("Response status: ${response.statusCode}");
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       successfulPesanProduct.value = true;

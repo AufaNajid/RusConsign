@@ -37,6 +37,7 @@ class AllOrderResponse {
 class Cod {
   int id;
   int userId;
+  int mitraId;
   int barangId;
   int lokasiId;
   int quantity;
@@ -48,11 +49,13 @@ class Cod {
   DateTime updatedAt;
   Barang barang;
   Lokasi lokasi;
+  Mitra mitra;
   User user;
 
   Cod({
     required this.id,
     required this.userId,
+    required this.mitraId,
     required this.barangId,
     required this.lokasiId,
     required this.quantity,
@@ -64,12 +67,14 @@ class Cod {
     required this.updatedAt,
     required this.barang,
     required this.lokasi,
+    required this.mitra,
     required this.user,
   });
 
   factory Cod.fromJson(Map<String, dynamic> json) => Cod(
     id: json["id"],
     userId: json["user_id"],
+    mitraId: json["mitra_id"],
     barangId: json["barang_id"],
     lokasiId: json["lokasi_id"],
     quantity: json["quantity"],
@@ -81,12 +86,14 @@ class Cod {
     updatedAt: DateTime.parse(json["updated_at"]),
     barang: Barang.fromJson(json["barang"]),
     lokasi: Lokasi.fromJson(json["lokasi"]),
+    mitra: Mitra.fromJson(json["mitra"]),
     user: User.fromJson(json["user"]),
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "user_id": userId,
+    "mitra_id": mitraId,
     "barang_id": barangId,
     "lokasi_id": lokasiId,
     "quantity": quantity,
@@ -98,6 +105,7 @@ class Cod {
     "updated_at": updatedAt.toIso8601String(),
     "barang": barang.toJson(),
     "lokasi": lokasi.toJson(),
+    "mitra": mitra.toJson(),
     "user": user.toJson(),
   };
 }
@@ -111,6 +119,7 @@ class Barang {
   int categoryId;
   int mitraId;
   String statusPost;
+  int stockBarang;
   String imageBarang;
   DateTime createdAt;
   DateTime updatedAt;
@@ -124,6 +133,7 @@ class Barang {
     required this.categoryId,
     required this.mitraId,
     required this.statusPost,
+    required this.stockBarang,
     required this.imageBarang,
     required this.createdAt,
     required this.updatedAt,
@@ -138,6 +148,7 @@ class Barang {
     categoryId: json["category_id"],
     mitraId: json["mitra_id"],
     statusPost: json["status_post"],
+    stockBarang: json["stock_barang"],
     imageBarang: json["image_barang"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
@@ -152,6 +163,7 @@ class Barang {
     "category_id": categoryId,
     "mitra_id": mitraId,
     "status_post": statusPost,
+    "stock_barang": stockBarang,
     "image_barang": imageBarang,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
@@ -163,20 +175,16 @@ class Lokasi {
   String namaLokasi;
   String descLokasi;
   String gambarLokasi;
-  int mitraId;
   DateTime createdAt;
   DateTime updatedAt;
-  Mitra mitra;
 
   Lokasi({
     required this.id,
     required this.namaLokasi,
     required this.descLokasi,
     required this.gambarLokasi,
-    required this.mitraId,
     required this.createdAt,
     required this.updatedAt,
-    required this.mitra,
   });
 
   factory Lokasi.fromJson(Map<String, dynamic> json) => Lokasi(
@@ -184,10 +192,8 @@ class Lokasi {
     namaLokasi: json["nama_lokasi"],
     descLokasi: json["desc_lokasi"],
     gambarLokasi: json["gambar_lokasi"],
-    mitraId: json["mitra_id"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
-    mitra: Mitra.fromJson(json["mitra"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -195,10 +201,8 @@ class Lokasi {
     "nama_lokasi": namaLokasi,
     "desc_lokasi": descLokasi,
     "gambar_lokasi": gambarLokasi,
-    "mitra_id": mitraId,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
-    "mitra": mitra.toJson(),
   };
 }
 
@@ -287,9 +291,10 @@ class User {
   String name;
   String email;
   dynamic emailVerifiedAt;
-  dynamic bioDesc;
+  String bioDesc;
   int mitraId;
   dynamic statusPembayaran;
+  String imageProfiles;
   DateTime createdAt;
   DateTime updatedAt;
 
@@ -301,6 +306,7 @@ class User {
     required this.bioDesc,
     required this.mitraId,
     required this.statusPembayaran,
+    required this.imageProfiles,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -313,6 +319,7 @@ class User {
     bioDesc: json["bio_desc"],
     mitraId: json["mitra_id"],
     statusPembayaran: json["status_pembayaran"],
+    imageProfiles: json["image_profiles"],
     createdAt: DateTime.parse(json["created_at"]),
     updatedAt: DateTime.parse(json["updated_at"]),
   );
@@ -325,6 +332,7 @@ class User {
     "bio_desc": bioDesc,
     "mitra_id": mitraId,
     "status_pembayaran": statusPembayaran,
+    "image_profiles": imageProfiles,
     "created_at": createdAt.toIso8601String(),
     "updated_at": updatedAt.toIso8601String(),
   };

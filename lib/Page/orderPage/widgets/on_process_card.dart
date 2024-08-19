@@ -16,6 +16,8 @@ class OnProcessCard extends StatelessWidget {
   final String profileUsername;
   final double rating;
   final int totalProductPrice;
+  final int quantity;
+  final String timeMeeting;
   final String paymentMethod;
   final String meetingLocation;
   final VoidCallback onChatSeller;
@@ -32,6 +34,8 @@ class OnProcessCard extends StatelessWidget {
     required this.paymentMethod,
     required this.meetingLocation,
     required this.onChatSeller,
+    required this.quantity,
+    required this.timeMeeting,
   }) : super(key: key);
 
   @override
@@ -94,8 +98,8 @@ class OnProcessCard extends StatelessWidget {
                               children: [
                                 Text(
                                   title,
-                                  style: AppTextStyle()
-                                      .descriptionBold(context, AppColors.titleLine),
+                                  style: AppTextStyle().descriptionBold(
+                                      context, AppColors.titleLine),
                                 ),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -145,8 +149,8 @@ class OnProcessCard extends StatelessWidget {
                                     ),
                                     Text(
                                       '$rating',
-                                      style: AppTextStyle()
-                                          .textInfoBold(context, AppColors.description),
+                                      style: AppTextStyle().textInfoBold(
+                                          context, AppColors.description),
                                     ),
                                   ].withSpaceBetween(width: 6),
                                 ),
@@ -154,13 +158,27 @@ class OnProcessCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'total'.tr} :',
-                                      style: AppTextStyle()
-                                          .textInfo(context, AppColors.description),
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
                                     ),
                                     Text(
                                       MoneyFormat.format(totalProductPrice),
-                                      style: AppTextStyle()
-                                          .textInfoBold(context, AppColors.hargaStat),
+                                      style: AppTextStyle().textInfoBold(
+                                          context, AppColors.hargaStat),
+                                    ),
+                                  ].withSpaceBetween(width: 4),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${'Quantity'.tr} :',
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
+                                    ),
+                                    Text(
+                                      quantity.toString(),
+                                      style: AppTextStyle().textInfoBold(
+                                          context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -168,13 +186,13 @@ class OnProcessCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'metodePembayaran'.tr} :',
-                                      style: AppTextStyle()
-                                          .textInfo(context, AppColors.description),
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
                                     ),
                                     Text(
                                       paymentMethod,
-                                      style: AppTextStyle()
-                                          .textInfoBold(context, AppColors.hargaStat),
+                                      style: AppTextStyle().textInfoBold(
+                                          context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -183,8 +201,8 @@ class OnProcessCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'lokasiPertemuan'.tr} :',
-                                      style: AppTextStyle()
-                                          .textInfo(context, AppColors.description),
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
                                     ),
                                     Expanded(
                                       child: Column(
@@ -193,6 +211,29 @@ class OnProcessCard extends StatelessWidget {
                                         children: [
                                           Text(
                                             meetingLocation,
+                                            style: AppTextStyle().textInfoBold(
+                                                context, AppColors.hargaStat),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ].withSpaceBetween(width: 4),
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${'Waktu Pertemuan'.tr} :',
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            timeMeeting,
                                             style: AppTextStyle().textInfoBold(
                                                 context, AppColors.hargaStat),
                                           ),
@@ -229,7 +270,8 @@ class OnProcessCard extends StatelessWidget {
                     ),
                     child: Text(
                       'chatPenjual'.tr,
-                      style: AppTextStyle().header(context, AppColors.textButton2),
+                      style:
+                          AppTextStyle().header(context, AppColors.textButton2),
                     ),
                   ),
                 ),
@@ -247,8 +289,8 @@ class OnProcessCard extends StatelessWidget {
                               backgroundColor: AppColors.background,
                               title: Text(
                                 'Konfirmasi Proses Pesanan?'.tr,
-                                style:
-                                    AppTextStyle().title(context, AppColors.titleLine),
+                                style: AppTextStyle()
+                                    .title(context, AppColors.titleLine),
                               ),
                               content: Text(
                                   'Apakah Anda Yakin Ingin Mem-Proses Pesanan Ini?'
@@ -263,8 +305,8 @@ class OnProcessCard extends StatelessWidget {
                                               BorderRadius.circular(4))),
                                   child: Text(
                                     'batal'.tr,
-                                    style: AppTextStyle()
-                                        .subHeader(context, AppColors.hargaStat),
+                                    style: AppTextStyle().subHeader(
+                                        context, AppColors.hargaStat),
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).pop();
@@ -302,7 +344,8 @@ class OnProcessCard extends StatelessWidget {
                     ),
                     child: Text(
                       'Pesanan Diterima'.tr,
-                      style: AppTextStyle().header(context, AppColors.textButton2),
+                      style:
+                          AppTextStyle().header(context, AppColors.textButton2),
                     ),
                   ),
                 ),
