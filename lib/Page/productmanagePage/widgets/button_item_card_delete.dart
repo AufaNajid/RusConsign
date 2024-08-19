@@ -42,7 +42,7 @@ class ButtonItemCardTrash extends StatelessWidget {
         icon: Icon(icon, color: AppColors.activeIconType),
         label: Text(
           text,
-          style: AppTextStyle().subHeader(AppColors.textButton1),
+          style: AppTextStyle().subHeader(context, AppColors.textButton1),
         ),
         onPressed: onPressed,
       ),

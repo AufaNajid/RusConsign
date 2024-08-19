@@ -24,7 +24,7 @@ class PreferenceSetting extends StatelessWidget {
             children: [
               Text(
                 'modeGelap'.tr,
-                style: AppTextStyle().description(AppColors.description),
+                style: AppTextStyle().description(context, AppColors.description),
               ),
               const Spacer(),
               IconButton(
@@ -49,7 +49,7 @@ class PreferenceSetting extends StatelessWidget {
                 children: [
                   Text(
                     'bahasa'.tr,
-                    style: AppTextStyle().description(AppColors.description),
+                    style: AppTextStyle().description(context, AppColors.description),
                   ),
                 ],
               ),
@@ -63,7 +63,7 @@ class PreferenceSetting extends StatelessWidget {
             children: [
               Text(
                 'pemberitahuan'.tr,
-                style: AppTextStyle().textInfo(AppColors.hargaStat),
+                style: AppTextStyle().textInfo(context, AppColors.hargaStat),
               ),
             ],
           )

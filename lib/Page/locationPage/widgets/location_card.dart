@@ -54,12 +54,14 @@ class LocationCard extends StatelessWidget {
                       children: [
                         Text(
                           title,
-                          style: AppTextStyle().subHeader(AppColors.titleLine),
+                          style: AppTextStyle()
+                              .subHeader(context, AppColors.titleLine),
                         ),
                         const SizedBox(height: 5),
                         Text(
                           desc,
-                          style: AppTextStyle().textInfo(AppColors.description),
+                          style: AppTextStyle()
+                              .textInfo(context, AppColors.description),
                         )
                       ],
                     ),
@@ -69,6 +71,7 @@ class LocationCard extends StatelessWidget {
                     onPressed: () {},
                     icon: const Icon(
                       FeatherIcons.check,
+                      size: 20,
                       color: AppColors.activeIconType,
                     ),
                     style: ButtonStyle(
@@ -80,9 +83,11 @@ class LocationCard extends StatelessWidget {
                             style: BorderStyle.solid,
                             width: 0),
                       ),
-                      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8))),
-                      fixedSize: const MaterialStatePropertyAll(Size(24, 24)),
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
                     ),
                   )
                 ],

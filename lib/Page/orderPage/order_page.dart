@@ -6,6 +6,7 @@ import 'package:rusconsign/Page/orderPage/widgets/finish_card.dart';
 import 'package:rusconsign/Page/orderPage/widgets/on_process_card.dart';
 import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../utils/app_responsive.dart';
@@ -36,7 +37,7 @@ class OrderPage extends StatelessWidget {
         ),
         title: Text(
           'pesananSaya'.tr,
-          style: AppTextStyle().title(AppColors.titleLine),
+          style: AppTextStyle().title(context, AppColors.titleLine),
         ),
         centerTitle: true,
         backgroundColor: AppColors.background,
@@ -123,9 +124,9 @@ class OrderPage extends StatelessWidget {
                                 Text(
                                   'belumAdaPesanan'.tr,
                                   style: AppTextStyle()
-                                      .subHeader(AppColors.description),
+                                      .subHeader(context, AppColors.description),
                                 )
-                              ],
+                              ].withSpaceBetween(height: 12)
                             ),
                           );
                         }

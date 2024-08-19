@@ -74,7 +74,7 @@ class FavoriteCard extends StatelessWidget {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyle()
-                                  .descriptionBold(AppColors.titleLine),
+                                  .descriptionBold(context, AppColors.titleLine),
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -99,7 +99,7 @@ class FavoriteCard extends StatelessWidget {
                                       Text(
                                         profileUsername,
                                         style: AppTextStyle()
-                                            .textInfo(AppColors.description),
+                                            .textInfo(context, AppColors.description),
                                       ),
                                     ],
                                   ),
@@ -127,7 +127,7 @@ class FavoriteCard extends StatelessWidget {
                                 Text(
                                   '$rating',
                                   style: AppTextStyle()
-                                      .textInfoBold(AppColors.description),
+                                      .textInfoBold(context, AppColors.description),
                                 ),
                               ].withSpaceBetween(width: 6),
                             ),
@@ -136,12 +136,12 @@ class FavoriteCard extends StatelessWidget {
                                 Text(
                                   'harga'.tr,
                                   style: AppTextStyle()
-                                      .textInfo(AppColors.description),
+                                      .textInfo(context, AppColors.description),
                                 ),
                                 Text(
                                   MoneyFormat.format(price),
                                   style: AppTextStyle()
-                                      .textInfoBold(AppColors.hargaStat),
+                                      .textInfoBold(context, AppColors.hargaStat),
                                 ),
                               ].withSpaceBetween(width: 4),
                             ),

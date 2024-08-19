@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/detailPage/detail_page_controller.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
@@ -51,8 +52,7 @@ class CommentCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                width: 40,
-                height: 40,
+                width: AppResponsive().screenWidth(context) * 0.1,
                 child: Column(
                   children: [
                     ClipOval(
@@ -72,7 +72,7 @@ class CommentCard extends StatelessWidget {
                   children: [
                     Text(
                       username,
-                      style: AppTextStyle().subHeader(AppColors.titleLine),
+                      style: AppTextStyle().subHeader(context, AppColors.titleLine),
                     ),
                     const SizedBox(height: 5),
                     RatingBar.builder(
@@ -105,12 +105,12 @@ class CommentCard extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       date.toString().substring(0, 16),
-                      style: AppTextStyle().textInfoBold(AppColors.description),
+                      style: AppTextStyle().textInfoBold(context, AppColors.description),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       desc,
-                      style: AppTextStyle().textInfo(AppColors.description),
+                      style: AppTextStyle().textInfo(context, AppColors.description),
                     ),
                     const SizedBox(height: 10),
                     Row(
@@ -137,7 +137,7 @@ class CommentCard extends StatelessWidget {
                               const Spacer(),
                               Text(like.toString(),
                                   style: AppTextStyle()
-                                      .descriptionBold(AppColors.description)),
+                                      .descriptionBold(context, AppColors.description)),
                             ],
                           ),
                         ),
@@ -163,7 +163,7 @@ class CommentCard extends StatelessWidget {
                               const Spacer(),
                               Text(disLike.toString(),
                                   style: AppTextStyle()
-                                      .descriptionBold(AppColors.description)),
+                                      .descriptionBold(context, AppColors.description)),
                             ],
                           ),
                         )

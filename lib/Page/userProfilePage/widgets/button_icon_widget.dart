@@ -39,7 +39,7 @@ class ButtonIconWidget extends StatelessWidget {
         ),
         label: Text(
           title,
-          style: AppTextStyle().subHeader(AppColors.textButton1),
+          style: AppTextStyle().subHeader(context, AppColors.textButton1),
         ),
       ),
     );

@@ -34,11 +34,12 @@ class FilterOrderButton extends StatelessWidget {
           ),
         ),
         fixedSize: MaterialStatePropertyAll(
-          Size(AppResponsive().screenWidth(context) * 0.290,
+          Size(AppResponsive().screenWidth(context) * 0.310,
               AppResponsive().screenWidth(context) * 0.04),
         ),
       ),
       icon: Icon(
+        size: 20,
         icon,
         color: filterOrderController.selectedIndex == index
             ? AppColors.activeIconType
@@ -50,7 +51,7 @@ class FilterOrderButton extends StatelessWidget {
           color: filterOrderController.selectedIndex == index
               ? AppColors.textButton1
               : AppColors.description,
-          fontSize: 12,
+          fontSize: 11,
         ),
       ),
       onPressed: () {

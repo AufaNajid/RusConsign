@@ -5,7 +5,6 @@ import 'package:rusconsign/Page/cartPage/cart_page.dart';
 import 'package:rusconsign/Page/favoritePage/favorite_page.dart';
 import 'package:rusconsign/Page/homePage/home_page.dart';
 import 'package:rusconsign/Page/profilePage/profile_page.dart';
-import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 
@@ -16,7 +15,6 @@ class Menu extends StatelessWidget {
   Widget build(BuildContext context) {
     PersistentTabController controller =
         PersistentTabController(initialIndex: 0);
-    
 
     List<Widget> buildScreens() {
       return [
@@ -30,22 +28,34 @@ class Menu extends StatelessWidget {
     List<PersistentBottomNavBarItem> navbarItem() {
       return [
         PersistentBottomNavBarItem(
-          icon: const Icon(FeatherIcons.home),
+          icon: const Icon(
+            FeatherIcons.home,
+            size: 20,
+          ),
           inactiveColorPrimary: AppColors.nonActiveIcon,
           activeColorPrimary: AppColors.activeIcon,
         ),
         PersistentBottomNavBarItem(
-          icon: const Icon(FeatherIcons.heart),
+          icon: const Icon(
+            FeatherIcons.heart,
+            size: 20,
+          ),
           inactiveColorPrimary: AppColors.nonActiveIcon,
           activeColorPrimary: AppColors.activeIcon,
         ),
         PersistentBottomNavBarItem(
-          icon: const Icon(FeatherIcons.shoppingCart),
+          icon: const Icon(
+            FeatherIcons.shoppingCart,
+            size: 20,
+          ),
           inactiveColorPrimary: AppColors.nonActiveIcon,
           activeColorPrimary: AppColors.activeIcon,
         ),
         PersistentBottomNavBarItem(
-          icon: const Icon(FeatherIcons.user),
+          icon: const Icon(
+            FeatherIcons.user,
+            size: 20,
+          ),
           inactiveColorPrimary: AppColors.nonActiveIcon,
           activeColorPrimary: AppColors.activeIcon,
         ),

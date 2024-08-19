@@ -51,7 +51,7 @@ class AddItemForm extends StatelessWidget {
                         child: Text(
                           'jenis'.tr,
                           style:
-                              AppTextStyle().description(AppColors.titleLine),
+                              AppTextStyle().description(context, AppColors.titleLine),
                         ),
                       ),
                       Row(
@@ -76,7 +76,7 @@ class AddItemForm extends StatelessWidget {
                         child: Text(
                           'foto'.tr,
                           style:
-                              AppTextStyle().description(AppColors.titleLine),
+                              AppTextStyle().description(context, AppColors.titleLine),
                         ),
                       ),
                       const AddImageProduct(),
@@ -90,7 +90,7 @@ class AddItemForm extends StatelessWidget {
                         child: Text(
                           'nama'.tr,
                           style:
-                              AppTextStyle().description(AppColors.titleLine),
+                              AppTextStyle().description(context, AppColors.titleLine),
                         ),
                       ),
                       Expanded(
@@ -110,7 +110,7 @@ class AddItemForm extends StatelessWidget {
                         child: Text(
                           'deskripsi'.tr,
                           style:
-                              AppTextStyle().description(AppColors.titleLine),
+                              AppTextStyle().description(context, AppColors.titleLine),
                         ),
                       ),
                       Expanded(
@@ -127,7 +127,7 @@ class AddItemForm extends StatelessWidget {
                       width: AppResponsive().screenWidth(context) * 0.16,
                       child: Text(
                         'harga'.tr,
-                        style: AppTextStyle().description(AppColors.titleLine),
+                        style: AppTextStyle().description(context, AppColors.titleLine),
                       ),
                     ),
                     Expanded(
@@ -141,7 +141,7 @@ class AddItemForm extends StatelessWidget {
                       width: AppResponsive().screenWidth(context) * 0.16,
                       child: Text(
                         'Stock'.tr,
-                        style: AppTextStyle().description(AppColors.titleLine),
+                        style: AppTextStyle().description(context, AppColors.titleLine),
                       ),
                     ),
                     Expanded(
@@ -196,7 +196,7 @@ class AddItemForm extends StatelessWidget {
                 ),
                 child: Text(
                   'buat'.tr,
-                  style: AppTextStyle().description(AppColors.background),
+                  style: AppTextStyle().description(context, AppColors.background),
                 ),
               ),
             ),

@@ -1,9 +1,8 @@
-import 'dart:convert';
+// ignore_for_file: depend_on_referenced_packages, avoid_print
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-import 'package:get/state_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rusconsign/Api/profile_response.dart';

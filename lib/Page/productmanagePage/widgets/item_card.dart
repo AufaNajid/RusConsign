@@ -74,7 +74,7 @@ class ProductItemCard extends StatelessWidget {
                               Text(
                                 nameProduct,
                                 style: AppTextStyle()
-                                    .subHeader(AppColors.titleLine),
+                                    .subHeader(context, AppColors.titleLine),
                               ),
                               SizedBox(
                                 width:
@@ -82,7 +82,7 @@ class ProductItemCard extends StatelessWidget {
                                 child: Text(
                                   description,
                                   style: AppTextStyle()
-                                      .textInfo(AppColors.description),
+                                      .textInfo(context, AppColors.description),
                                   textAlign: TextAlign.start,
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
@@ -93,12 +93,12 @@ class ProductItemCard extends StatelessWidget {
                                   Text(
                                     '${'total'.tr} :',
                                     style: AppTextStyle()
-                                        .textInfo(AppColors.description),
+                                        .textInfo(context, AppColors.description),
                                   ),
                                   Text(
                                     'Rp $price',
                                     style: AppTextStyle()
-                                        .textInfoBold(AppColors.hargaStat),
+                                        .textInfoBold(context, AppColors.hargaStat),
                                   ),
                                 ].withSpaceBetween(width: 4),
                               ),

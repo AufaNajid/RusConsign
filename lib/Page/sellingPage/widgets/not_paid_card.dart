@@ -76,7 +76,7 @@ class NotPaidCardSelling extends StatelessWidget {
                           Text(
                             title,
                             style: AppTextStyle()
-                                .descriptionBold(AppColors.titleLine),
+                                .descriptionBold(context, AppColors.titleLine),
                           ),
                           Row(
                             children: [
@@ -98,7 +98,7 @@ class NotPaidCardSelling extends StatelessWidget {
                               Text(
                                 rating.toString(),
                                 style: AppTextStyle()
-                                    .textInfoBold(AppColors.description),
+                                    .textInfoBold(context, AppColors.description),
                               ),
                             ].withSpaceBetween(width: 6),
                           ),
@@ -107,12 +107,12 @@ class NotPaidCardSelling extends StatelessWidget {
                               Text(
                                 '${'total'.tr} :',
                                 style: AppTextStyle()
-                                    .textInfo(AppColors.description),
+                                    .textInfo(context, AppColors.description),
                               ),
                               Text(
                                 MoneyFormat.format(price),
                                 style: AppTextStyle()
-                                    .textInfoBold(AppColors.hargaStat),
+                                    .textInfoBold(context, AppColors.hargaStat),
                               ),
                             ].withSpaceBetween(width: 4),
                           ),
@@ -121,12 +121,12 @@ class NotPaidCardSelling extends StatelessWidget {
                               Text(
                                 '${'Quantity'.tr} :',
                                 style: AppTextStyle()
-                                    .textInfo(AppColors.description),
+                                    .textInfo(context, AppColors.description),
                               ),
                               Text(
                                 quantity.toString(),
                                 style: AppTextStyle()
-                                    .textInfoBold(AppColors.hargaStat),
+                                    .textInfoBold(context, AppColors.hargaStat),
                               ),
                             ].withSpaceBetween(width: 4),
                           ),
@@ -135,12 +135,12 @@ class NotPaidCardSelling extends StatelessWidget {
                               Text(
                                 'metodePembayaran'.tr,
                                 style: AppTextStyle()
-                                    .textInfo(AppColors.description),
+                                    .textInfo(context, AppColors.description),
                               ),
                               Text(
                                 metodePembayaran,
                                 style: AppTextStyle()
-                                    .textInfoBold(AppColors.hargaStat),
+                                    .textInfoBold(context, AppColors.hargaStat),
                               ),
                             ].withSpaceBetween(width: 4),
                           ),
@@ -149,12 +149,12 @@ class NotPaidCardSelling extends StatelessWidget {
                               Text(
                                 'Pesanan Oleh'.tr,
                                 style: AppTextStyle()
-                                    .textInfo(AppColors.description),
+                                    .textInfo(context, AppColors.description),
                               ),
                               Text(
                                 pemesan,
                                 style: AppTextStyle()
-                                    .textInfoBold(AppColors.hargaStat),
+                                    .textInfoBold(context, AppColors.hargaStat),
                               ),
                             ].withSpaceBetween(width: 4),
                           ),
@@ -163,12 +163,12 @@ class NotPaidCardSelling extends StatelessWidget {
                               Text(
                                 'lokasiPertemuan'.tr,
                                 style: AppTextStyle()
-                                    .textInfo(AppColors.description),
+                                    .textInfo(context, AppColors.description),
                               ),
                               Text(
                                 lokasiPertemuan,
                                 style: AppTextStyle()
-                                    .textInfoBold(AppColors.hargaStat),
+                                    .textInfoBold(context, AppColors.hargaStat),
                               ),
                             ].withSpaceBetween(width: 4),
                           ),
@@ -199,7 +199,7 @@ class NotPaidCardSelling extends StatelessWidget {
                             backgroundColor: AppColors.background,
                             title: Text(
                               'Konfirmasi Proses Pesanan?'.tr,
-                              style: AppTextStyle().title(AppColors.titleLine),
+                              style: AppTextStyle().title(context, AppColors.titleLine),
                             ),
                             content: Text(
                                 'Apakah Anda Yakin Ingin Mem-Proses Pesanan Ini?'
@@ -215,7 +215,7 @@ class NotPaidCardSelling extends StatelessWidget {
                                 child: Text(
                                   'batal'.tr,
                                   style: AppTextStyle()
-                                      .subHeader(AppColors.hargaStat),
+                                      .subHeader(context, AppColors.hargaStat),
                                 ),
                                 onPressed: () {
                                   Navigator.of(context).pop();
@@ -241,7 +241,7 @@ class NotPaidCardSelling extends StatelessWidget {
                   },
                   child: Text(
                     'Proses Pesanan'.tr,
-                    style: AppTextStyle().header(AppColors.textButton2),
+                    style: AppTextStyle().header(context, AppColors.textButton2),
                   )),
             )
           ].withSpaceBetween(height: 10),

@@ -55,7 +55,7 @@ class ProductCard extends StatelessWidget {
                 title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: AppTextStyle().description(AppColors.description),
+                style: AppTextStyle().description(context, AppColors.description),
               ),
               const Spacer(),
               Row(
@@ -64,7 +64,7 @@ class ProductCard extends StatelessWidget {
                 children: [
                   Text(
                     MoneyFormat.format(price),
-                    style: AppTextStyle().subHeader(AppColors.hargaStat),
+                    style: AppTextStyle().subHeader(context, AppColors.hargaStat),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,7 +87,7 @@ class ProductCard extends StatelessWidget {
                       const SizedBox(width: 6),
                       Text(
                         '$rating',
-                        style: AppTextStyle().subHeader(AppColors.description),
+                        style: AppTextStyle().subHeader(context, AppColors.description),
                       ),
                     ],
                   ),

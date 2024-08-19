@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:rusconsign/Page/profilePage/widgets/tab_bar_profile.dart';
 import 'package:rusconsign/Page/profilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/Page/profilePage/widgets/customappbar.dart';
@@ -25,9 +23,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final img = "https://rusconsign.com";
+    const img = "https://rusconsign.com";
     final AuthLoginController dataProfile = Get.put(AuthLoginController());
-    final SettingController settingController = Get.put(SettingController());
+    Get.put(SettingController());
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -75,11 +73,11 @@ class ProfilePage extends StatelessWidget {
                         ? dataProfile.dataUsername.value
                         : "data nama kosong",
                     // : settingController.namaProfileController.text,
-                    style: AppTextStyle().title(AppColors.titleLine),
+                    style: AppTextStyle().title(context, AppColors.titleLine),
                   ),
                   Text(
                     dataProfile.dataEmail.value,
-                    style: AppTextStyle().description(AppColors.description),
+                    style: AppTextStyle().description(context, AppColors.description),
                   ),
                 ].withSpaceBetween(height: 5),
               ),
@@ -118,7 +116,7 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: Text(
                       dataProfile.dataBio.value,
-                      style: AppTextStyle().textInfo(AppColors.description),
+                      style: AppTextStyle().textInfo(context, AppColors.description),
                       maxLines: 5,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,

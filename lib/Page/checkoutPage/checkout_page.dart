@@ -49,7 +49,8 @@ class ChekcoutPage extends StatelessWidget {
                     children: [
                       Text(
                         'pembelian'.tr,
-                        style: AppTextStyle().header(AppColors.titleLine),
+                        style:
+                            AppTextStyle().header(context, AppColors.titleLine),
                       ),
                       ItemCheckout(
                         imagePath: product.imageBarang,
@@ -68,12 +69,13 @@ class ChekcoutPage extends StatelessWidget {
                     children: [
                       Text(
                         'lokasiPertemuan'.tr,
-                        style: AppTextStyle().header(AppColors.titleLine),
+                        style:
+                            AppTextStyle().header(context, AppColors.titleLine),
                         textAlign: TextAlign.start,
                       ),
-                       LocationChekout(
-                        locationHeader: controller.titleLokasi.toString(),
-                        locationDetail: controller.descLokasi.toString()),
+                      LocationChekout(
+                          locationHeader: controller.titleLokasi.toString(),
+                          locationDetail: controller.descLokasi.toString()),
                     ].withSpaceBetween(height: 10),
                   ),
                   Column(
@@ -82,7 +84,8 @@ class ChekcoutPage extends StatelessWidget {
                     children: [
                       Text(
                         'pembayaran'.tr,
-                        style: AppTextStyle().header(AppColors.titleLine),
+                        style:
+                            AppTextStyle().header(context, AppColors.titleLine),
                         textAlign: TextAlign.start,
                       ),
                       const DropdownPayment(),
@@ -94,7 +97,7 @@ class ChekcoutPage extends StatelessWidget {
                     children: [
                       Text(
                         'rincianPembayaran'.tr,
-                        style: AppTextStyle().header(AppColors.titleLine),
+                        style: AppTextStyle().header(context, AppColors.titleLine),
                         textAlign: TextAlign.start,
                       ),
                       PaymentDetail(
@@ -128,7 +131,8 @@ class ChekcoutPage extends StatelessWidget {
                       Get.offNamed("/paymentdone");
                     }
                   } else {
-                    await controller.paymentTesting(controller.productDetail.value!.id.toString(), "1");
+                    await controller.paymentTesting(
+                        controller.productDetail.value!.id.toString(), "1");
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -141,7 +145,7 @@ class ChekcoutPage extends StatelessWidget {
                 ),
                 child: Text(
                   'buatPesanan'.tr,
-                  style: AppTextStyle().subHeader(AppColors.background),
+                  style: AppTextStyle().subHeader(context, AppColors.background),
                 ),
               ),
             ),

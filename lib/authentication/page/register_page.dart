@@ -119,7 +119,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                     child: Text(
                       'Register',
-                      style: AppTextStyle().header(AppColors.textButton1),
+                      style: AppTextStyle().header(context, AppColors.textButton1),
                     ),
                   ),
                 ),
@@ -128,7 +128,7 @@ class RegisterPage extends StatelessWidget {
                   children: [
                     Text('registerDengan'.tr,
                         style:
-                            AppTextStyle().description(AppColors.description)),
+                            AppTextStyle().description(context, AppColors.description)),
                     const SizedBox(height: 20),
                     GestureDetector(
                       onTap: () {
@@ -148,7 +148,7 @@ class RegisterPage extends StatelessWidget {
                   children: [
                     Text('sudahPunyaAkun'.tr,
                         style:
-                            AppTextStyle().description(AppColors.description)),
+                            AppTextStyle().description(context, AppColors.description)),
                     const SizedBox(width: 6),
                     GestureDetector(
                       onTap: () {
@@ -157,7 +157,7 @@ class RegisterPage extends StatelessWidget {
                       child: Text(
                         'Login',
                         style: AppTextStyle()
-                            .descriptionBold(AppColors.description),
+                            .descriptionBold(context, AppColors.description),
                       ),
                     ),
                   ],
@@ -171,7 +171,7 @@ class RegisterPage extends StatelessWidget {
                       child: Text('descRegister'.tr,
                           textAlign: TextAlign.center,
                           style: AppTextStyle()
-                              .description(AppColors.description)),
+                              .description(context, AppColors.description)),
                     ),
                   ],
                 ),

@@ -85,7 +85,7 @@ class ItemCheckout extends StatelessWidget {
                                 Text(
                                   title,
                                   style: AppTextStyle()
-                                      .descriptionBold(AppColors.titleLine),
+                                      .descriptionBold(context, AppColors.titleLine),
                                 ),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,7 +109,7 @@ class ItemCheckout extends StatelessWidget {
                                           Text(
                                             profileName,
                                             style: AppTextStyle().textInfo(
-                                                AppColors.description),
+                                                context, AppColors.description),
                                           ),
                                         ],
                                       ),
@@ -136,7 +136,7 @@ class ItemCheckout extends StatelessWidget {
                                     Text(
                                       rating.toString(),
                                       style: AppTextStyle()
-                                          .textInfoBold(AppColors.description),
+                                          .textInfoBold(context, AppColors.description),
                                     ),
                                   ].withSpaceBetween(width: 6),
                                 ),
@@ -145,12 +145,12 @@ class ItemCheckout extends StatelessWidget {
                                     Text(
                                       '${'total'.tr} :',
                                       style: AppTextStyle()
-                                          .textInfo(AppColors.description),
+                                          .textInfo(context, AppColors.description),
                                     ),
                                     Text(
                                       MoneyFormat.format(price),
                                       style: AppTextStyle()
-                                          .textInfoBold(AppColors.hargaStat),
+                                          .textInfoBold(context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -172,12 +172,12 @@ class ItemCheckout extends StatelessWidget {
                       children: [
                         Text(
                           'jumlah'.tr,
-                          style: AppTextStyle().textInfo(AppColors.description),
+                          style: AppTextStyle().textInfo(context, AppColors.description),
                         ),
                         const Spacer(),
                         Text(
                           'subtotal'.tr,
-                          style: AppTextStyle().textInfo(AppColors.description),
+                          style: AppTextStyle().textInfo(context, AppColors.description),
                         ),
                       ],
                     ),
@@ -199,7 +199,7 @@ class ItemCheckout extends StatelessWidget {
                               child: Text(
                                 quantity.toString(),
                                 style: AppTextStyle()
-                                    .textInfoBold(AppColors.description),
+                                    .textInfoBold(context, AppColors.description),
                               ),
                             ),
                           ),
@@ -207,7 +207,7 @@ class ItemCheckout extends StatelessWidget {
                         const Spacer(),
                         Text(
                           MoneyFormat.format(subtotalValue),
-                          style: AppTextStyle().header(AppColors.hargaStat),
+                          style: AppTextStyle().header(context, AppColors.hargaStat),
                         ),
                       ],
                     ),

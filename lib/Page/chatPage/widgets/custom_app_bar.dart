@@ -37,7 +37,7 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Text(title, style: AppTextStyle().header(AppColors.titleLine)),
+          Text(title, style: AppTextStyle().header(context, AppColors.titleLine)),
         ].withSpaceBetween(width: 5),
       ),
     );

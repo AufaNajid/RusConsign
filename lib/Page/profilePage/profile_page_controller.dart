@@ -1,6 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:rusconsign/Api/all_profile_response.dart';
 import 'package:rusconsign/Api/profile_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class ProfilePageController extends GetxController {

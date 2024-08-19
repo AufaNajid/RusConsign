@@ -64,7 +64,7 @@ class ProcessCardSelling extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: AppTextStyle().descriptionBold(AppColors.titleLine),
+                    style: AppTextStyle().descriptionBold(context, AppColors.titleLine),
                   ),
                   Row(
                     children: [
@@ -86,7 +86,7 @@ class ProcessCardSelling extends StatelessWidget {
                       Text(
                         rating.toString(),
                         style:
-                            AppTextStyle().textInfoBold(AppColors.description),
+                            AppTextStyle().textInfoBold(context, AppColors.description),
                       ),
                     ].withSpaceBetween(width: 6),
                   ),
@@ -94,11 +94,11 @@ class ProcessCardSelling extends StatelessWidget {
                     children: [
                       Text(
                         '${'total'.tr} :',
-                        style: AppTextStyle().textInfo(AppColors.description),
+                        style: AppTextStyle().textInfo(context, AppColors.description),
                       ),
                       Text(
                         MoneyFormat.format(price),
-                        style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                        style: AppTextStyle().textInfoBold(context,AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),
                   ),
@@ -106,11 +106,11 @@ class ProcessCardSelling extends StatelessWidget {
                     children: [
                       Text(
                         '${'Quantity'.tr} :',
-                        style: AppTextStyle().textInfo(AppColors.description),
+                        style: AppTextStyle().textInfo(context,AppColors.description),
                       ),
                       Text(
                         quantity.toString(),
-                        style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                        style: AppTextStyle().textInfoBold(context,AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),
                   ),
@@ -118,11 +118,11 @@ class ProcessCardSelling extends StatelessWidget {
                     children: [
                       Text(
                         'metodePembayaran'.tr,
-                        style: AppTextStyle().textInfo(AppColors.description),
+                        style: AppTextStyle().textInfo(context, AppColors.description),
                       ),
                       Text(
                         metodePembayaran,
-                        style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                        style: AppTextStyle().textInfoBold(context, AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),
                   ),
@@ -130,11 +130,11 @@ class ProcessCardSelling extends StatelessWidget {
                     children: [
                       Text(
                         'Pesanan Oleh'.tr,
-                        style: AppTextStyle().textInfo(AppColors.description),
+                        style: AppTextStyle().textInfo(context, AppColors.description),
                       ),
                       Text(
                         pemesan,
-                        style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                        style: AppTextStyle().textInfoBold(context, AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),
                   ),
@@ -142,11 +142,11 @@ class ProcessCardSelling extends StatelessWidget {
                     children: [
                       Text(
                         'lokasiPertemuan'.tr,
-                        style: AppTextStyle().textInfo(AppColors.description),
+                        style: AppTextStyle().textInfo(context, AppColors.description),
                       ),
                       Text(
                         lokasiPertemuan,
-                        style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                        style: AppTextStyle().textInfoBold(context, AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),
                   ),
@@ -154,11 +154,11 @@ class ProcessCardSelling extends StatelessWidget {
                     children: [
                       Text(
                         'Waktu Pertemuan'.tr,
-                        style: AppTextStyle().textInfo(AppColors.description),
+                        style: AppTextStyle().textInfo(context,AppColors.description),
                       ),
                       Text(
                         timeMeeting,
-                        style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                        style: AppTextStyle().textInfoBold(context,AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),
                   ),
