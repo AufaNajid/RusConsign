@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/checkoutPage/checkout_page_controller.dart';
 import 'package:rusconsign/Page/locationPage/widgets/location_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
@@ -12,6 +13,7 @@ class LocationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CheckoutPageController controller = Get.put(CheckoutPageController());
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: CommonAppBar(title: 'lokasiPertemuan'.tr, route: () { Get.back(); },),
@@ -95,13 +97,13 @@ class LocationPage extends StatelessWidget {
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: 4,
+              itemCount: controller.lokasi.length,
               itemBuilder: (context, index) {
+                final pertemuan = controller.lokasi[index];
                 return LocationCard(
-                  imagePath: 'https://via.placeholder.com/200x175',
-                  title: 'Title lokasi',
-                  desc:
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sijssed  adipiscing do  aliqua.',
+                  imagePath: pertemuan.gambarLokasi,
+                  title: pertemuan.namaLokasi,
+                  desc: pertemuan.descLokasi,
                   onSelected: () {},
                 );
               },

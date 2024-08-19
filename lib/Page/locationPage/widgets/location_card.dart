@@ -18,6 +18,7 @@ class LocationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -37,7 +38,7 @@ class LocationCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.network(
-                    imagePath,
+                    "$imageUrl${imagePath.replaceFirst("storage/", "")}",
                     fit: BoxFit.cover,
                   ),
                 ),
