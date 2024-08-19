@@ -59,7 +59,7 @@ class LoginPage extends StatelessWidget {
                             textAlign: TextAlign.left,
                             'lupaPassword'.tr,
                             style: AppTextStyle()
-                                .description(AppColors.description),
+                                .description(context, AppColors.description),
                           ),
                         ),
                       ],
@@ -123,7 +123,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     child: Text(
                       'Login',
-                      style: AppTextStyle().header(AppColors.textButton1),
+                      style: AppTextStyle().header(context, AppColors.textButton1),
                     ),
                   ),
                 ),
@@ -132,7 +132,7 @@ class LoginPage extends StatelessWidget {
                   children: [
                     Text(
                       'loginDengan'.tr,
-                      style: AppTextStyle().description(AppColors.description),
+                      style: AppTextStyle().description(context, AppColors.description),
                     ),
                     const SizedBox(height: 20),
                     GestureDetector(
@@ -153,7 +153,7 @@ class LoginPage extends StatelessWidget {
                   children: [
                     Text(
                       'belumPunyaAkun'.tr,
-                      style: AppTextStyle().description(AppColors.description),
+                      style: AppTextStyle().description(context, AppColors.description),
                     ),
                     const SizedBox(width: 6),
                     GestureDetector(
@@ -163,7 +163,7 @@ class LoginPage extends StatelessWidget {
                       child: Text(
                         "Register",
                         style: AppTextStyle()
-                            .descriptionBold(AppColors.description),
+                            .descriptionBold(context, AppColors.description),
                       ),
                     ),
                   ],
@@ -178,7 +178,7 @@ class LoginPage extends StatelessWidget {
                         'descLogin'.tr,
                         textAlign: TextAlign.center,
                         style:
-                            AppTextStyle().description(AppColors.description),
+                            AppTextStyle().description(context, AppColors.description),
                       ),
                     ),
                   ],

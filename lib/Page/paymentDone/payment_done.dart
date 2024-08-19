@@ -29,7 +29,7 @@ class PaymentDone extends StatelessWidget {
                           borderRadius: BorderRadius.circular(2))),
                   child: Text(
                     'kembali'.tr,
-                    style: AppTextStyle().description(AppColors.textButton2),
+                    style: AppTextStyle().description(context, AppColors.textButton2),
                   ),
                 ),
               ),
@@ -44,11 +44,11 @@ class PaymentDone extends StatelessWidget {
               SvgPicture.asset("assets/images/paymentdone.svg"),
               SizedBox(height: AppResponsive().screenHeight(context)*0.01,),
               Text('pembayaranSelesai'.tr,
-                  style: AppTextStyle().title(AppColors.titleLine)),
+                  style: AppTextStyle().title(context, AppColors.titleLine)),
               SizedBox(height: AppResponsive().screenHeight(context)*0.02,),
               Text(
                 'infoPembayaranSelesai'.tr,
-                style: AppTextStyle().description(AppColors.description),
+                style: AppTextStyle().description(context, AppColors.description),
                 textAlign: TextAlign.center,
                 maxLines: 3,
               )

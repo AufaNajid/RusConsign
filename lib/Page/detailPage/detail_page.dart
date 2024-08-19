@@ -65,7 +65,7 @@ class DetailPage extends GetView<DetailPageController> {
                                     child: Text(
                                       state.barang.categoryNama.tr,
                                       style: AppTextStyle().descriptionBold(
-                                          AppColors.textButton1),
+                                          context, AppColors.textButton1),
                                     ),
                                   ),
                                 ),
@@ -73,8 +73,8 @@ class DetailPage extends GetView<DetailPageController> {
                             ),
                             Text(
                               "${state.barang.stock} Stok",
-                              style: AppTextStyle()
-                                  .descriptionBold(AppColors.description),
+                              style: AppTextStyle().descriptionBold(
+                                  context, AppColors.description),
                             )
                           ].withSpaceBetween(width: 10),
                         ),
@@ -113,13 +113,14 @@ class DetailPage extends GetView<DetailPageController> {
                       children: [
                         Text(
                           state.barang.namaBarang,
-                          style: AppTextStyle().title(AppColors.titleLine),
+                          style: AppTextStyle()
+                              .title(context, AppColors.titleLine),
                           textAlign: TextAlign.start,
                         ),
                         Text(
                           state.barang.deskripsi,
-                          style:
-                              AppTextStyle().description(AppColors.description),
+                          style: AppTextStyle()
+                              .description(context, AppColors.description),
                         ),
                       ].withSpaceBetween(height: 10),
                     ),
@@ -128,7 +129,8 @@ class DetailPage extends GetView<DetailPageController> {
                       children: [
                         Text(
                           MoneyFormat.format(state.barang.harga),
-                          style: AppTextStyle().title(AppColors.hargaStat),
+                          style: AppTextStyle()
+                              .title(context, AppColors.hargaStat),
                         ),
                         const Spacer(),
                         Row(
@@ -151,7 +153,7 @@ class DetailPage extends GetView<DetailPageController> {
                             Text(
                               state.barang.ratingBarang.toString(),
                               style: AppTextStyle()
-                                  .subHeader(AppColors.description),
+                                  .subHeader(context, AppColors.description),
                             ),
                           ].withSpaceBetween(width: 5),
                         ),
@@ -169,8 +171,7 @@ class DetailPage extends GetView<DetailPageController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: 40,
-                              height: 40,
+                              width: AppResponsive().screenWidth(context) * 0.1,
                               child: Column(
                                 children: [
                                   ClipOval(
@@ -188,8 +189,8 @@ class DetailPage extends GetView<DetailPageController> {
                               children: [
                                 Text(
                                   state.barang.mitra.namaToko,
-                                  style: AppTextStyle()
-                                      .description(AppColors.titleLine),
+                                  style: AppTextStyle().description(
+                                      context, AppColors.titleLine),
                                 ),
                                 const SizedBox(height: 4),
                                 Row(
@@ -197,7 +198,12 @@ class DetailPage extends GetView<DetailPageController> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     SizedBox(
-                                      height: 30,
+                                      height:
+                                          AppResponsive().screenWidth(context) *
+                                              0.075,
+                                      width:
+                                          AppResponsive().screenWidth(context) *
+                                              0.16,
                                       child: ElevatedButton(
                                         onPressed: () {
                                           Get.toNamed("/chatpage");
@@ -221,12 +227,17 @@ class DetailPage extends GetView<DetailPageController> {
                                         child: Text(
                                           'chatPenjual'.tr,
                                           style: AppTextStyle().textInfoBold(
-                                              AppColors.textButton2),
+                                              context, AppColors.textButton2),
                                         ),
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 30,
+                                      height:
+                                          AppResponsive().screenWidth(context) *
+                                              0.075,
+                                      width:
+                                          AppResponsive().screenWidth(context) *
+                                              0.16,
                                       child: ElevatedButton(
                                         onPressed: () {
                                           Get.toNamed('/userprofilepage',
@@ -251,7 +262,7 @@ class DetailPage extends GetView<DetailPageController> {
                                         child: Text(
                                           'lihatToko'.tr,
                                           style: AppTextStyle().textInfoBold(
-                                              AppColors.textButton2),
+                                              context, AppColors.textButton2),
                                         ),
                                       ),
                                     ),
@@ -269,7 +280,9 @@ class DetailPage extends GetView<DetailPageController> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        width: 75,
+                                        width: AppResponsive()
+                                                .screenWidth(context) *
+                                            0.185,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -277,21 +290,23 @@ class DetailPage extends GetView<DetailPageController> {
                                             Text(
                                               "Jumlah Produk".tr,
                                               style: AppTextStyle().textInfo(
-                                                  AppColors.titleLine),
+                                                  context, AppColors.titleLine),
                                             ),
                                             const Spacer(),
                                             Text(
                                               state.barang.mitra.jumlahProduct
                                                   .toString(),
                                               style: AppTextStyle()
-                                                  .textInfoBold(
+                                                  .textInfoBold(context,
                                                       AppColors.hargaStat),
                                             ),
                                           ],
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 75,
+                                        width: AppResponsive()
+                                                .screenWidth(context) *
+                                            0.185,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -299,14 +314,14 @@ class DetailPage extends GetView<DetailPageController> {
                                             Text(
                                               'penilaian'.tr,
                                               style: AppTextStyle().textInfo(
-                                                  AppColors.titleLine),
+                                                  context, AppColors.titleLine),
                                             ),
                                             const Spacer(),
                                             Text(
                                               state.barang.mitra.penilaian
                                                   .toString(),
                                               style: AppTextStyle()
-                                                  .textInfoBold(
+                                                  .textInfoBold(context,
                                                       AppColors.hargaStat),
                                             ),
                                           ],
@@ -319,7 +334,9 @@ class DetailPage extends GetView<DetailPageController> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(
-                                        width: 90,
+                                        width: AppResponsive()
+                                                .screenWidth(context) *
+                                            0.185,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -327,21 +344,23 @@ class DetailPage extends GetView<DetailPageController> {
                                             Text(
                                               'jumlahJasa'.tr,
                                               style: AppTextStyle().textInfo(
-                                                  AppColors.titleLine),
+                                                  context, AppColors.titleLine),
                                             ),
                                             const Spacer(),
                                             Text(
                                               state.barang.mitra.jumlahJasa
                                                   .toString(),
                                               style: AppTextStyle()
-                                                  .textInfoBold(
+                                                  .textInfoBold(context,
                                                       AppColors.hargaStat),
                                             ),
                                           ],
                                         ),
                                       ),
                                       SizedBox(
-                                        width: 90,
+                                        width: AppResponsive()
+                                                .screenWidth(context) *
+                                            0.185,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -349,13 +368,13 @@ class DetailPage extends GetView<DetailPageController> {
                                             Text(
                                               'pengikut'.tr,
                                               style: AppTextStyle().textInfo(
-                                                  AppColors.titleLine),
+                                                  context, AppColors.titleLine),
                                             ),
                                             const Spacer(),
                                             Text(
                                               '287',
                                               style: AppTextStyle()
-                                                  .textInfoBold(
+                                                  .textInfoBold(context,
                                                       AppColors.hargaStat),
                                             ),
                                           ],
@@ -380,7 +399,8 @@ class DetailPage extends GetView<DetailPageController> {
                       children: [
                         Text(
                           'penilaianProduk'.tr,
-                          style: AppTextStyle().subHeader(AppColors.titleLine),
+                          style: AppTextStyle()
+                              .subHeader(context, AppColors.titleLine),
                         ),
                         const Spacer(),
                         Column(
@@ -390,7 +410,7 @@ class DetailPage extends GetView<DetailPageController> {
                             Text(
                               'ulasan'.tr,
                               style: AppTextStyle()
-                                  .description(AppColors.description),
+                                  .description(context, AppColors.description),
                             ),
                             RatingBar.builder(
                               ignoreGestures: true,
@@ -455,15 +475,15 @@ class DetailPage extends GetView<DetailPageController> {
       bottomNavigationBar: controller.obx(
         (state) => SizedBox(
           width: double.infinity,
-          height: AppResponsive().screenHeight(context) * 0.08,
+          height: AppResponsive().screenWidth(context) * 0.16,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: 50,
-                  height: 50,
+                  width: AppResponsive().screenWidth(context) * 0.13,
+                  height: AppResponsive().screenWidth(context) * 0.13,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(6),
                     child: Material(
@@ -474,6 +494,7 @@ class DetailPage extends GetView<DetailPageController> {
                             () {};
                           },
                           child: Icon(
+                            size: 20,
                             controller.isAddCart.value
                                 ? BootstrapIcons.cart_check_fill
                                 : BootstrapIcons.cart,
@@ -488,8 +509,7 @@ class DetailPage extends GetView<DetailPageController> {
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: AppResponsive().screenWidth(context) * 0.7,
-                  height: 50,
+                  width: AppResponsive().screenWidth(context) * 0.70,
                   child: ElevatedButton(
                     onPressed: () {
                       if (state!.barang.stock == 0) {
@@ -502,8 +522,8 @@ class DetailPage extends GetView<DetailPageController> {
                                 backgroundColor: AppColors.background,
                                 title: Text(
                                   'Stok Produk Telah Habis!'.tr,
-                                  style:
-                                      AppTextStyle().title(AppColors.titleLine),
+                                  style: AppTextStyle()
+                                      .title(context, AppColors.titleLine),
                                 ),
                                 content:
                                     Text('Stok Produk Ini Telah Habis!'.tr),
@@ -530,19 +550,20 @@ class DetailPage extends GetView<DetailPageController> {
                       }
                     },
                     style: ButtonStyle(
-                        padding:
-                            const MaterialStatePropertyAll(EdgeInsets.zero),
-                        elevation: const MaterialStatePropertyAll(0),
-                        shape: MaterialStatePropertyAll(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
+                      padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                      elevation: const MaterialStatePropertyAll(0),
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4),
                         ),
-                        backgroundColor:
-                            MaterialStatePropertyAll(AppColors.button2)),
+                      ),
+                      backgroundColor:
+                          MaterialStatePropertyAll(AppColors.button2),
+                    ),
                     child: Text(
                       'beliSekarang'.tr,
-                      style: AppTextStyle().subHeader(AppColors.textButton2),
+                      style: AppTextStyle()
+                          .subHeader(context, AppColors.textButton2),
                     ),
                   ),
                 ),

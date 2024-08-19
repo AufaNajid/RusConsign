@@ -52,15 +52,15 @@ class NotificationCard extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: AppTextStyle().header(AppColors.titleLine),
+                      style: AppTextStyle().header(context, AppColors.titleLine),
                     ),
                     Text(
                       date.toString().substring(0, 16),
-                      style: AppTextStyle().textInfoBold(AppColors.hargaStat),
+                      style: AppTextStyle().textInfoBold(context, AppColors.hargaStat),
                     ),
                     Text(
                       desc,
-                      style: AppTextStyle().textInfo(AppColors.description),
+                      style: AppTextStyle().textInfo(context, AppColors.description),
                     ),
                   ].withSpaceBetween(height: 8),
                 ),

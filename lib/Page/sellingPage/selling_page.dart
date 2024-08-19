@@ -100,7 +100,7 @@ class SellingPage extends StatelessWidget {
                               Text(
                                 'belumAdaPesanan'.tr,
                                 style: AppTextStyle()
-                                    .subHeader(AppColors.description),
+                                    .subHeader(context, AppColors.description),
                               )
                             ],
                           ),
@@ -225,7 +225,7 @@ class SellingPage extends StatelessWidget {
                               Text(
                                 'belumAdaPesanan'.tr,
                                 style: AppTextStyle()
-                                    .subHeader(AppColors.description),
+                                    .subHeader(context, AppColors.description),
                               )
                             ],
                           ),

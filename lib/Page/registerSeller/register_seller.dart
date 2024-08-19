@@ -42,7 +42,7 @@ class RegisterSeller extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Nama Toko",
-                  style: AppTextStyle().subHeader(AppColors.titleLine)),
+                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSeller(
                 hintText: "Masukkan nama toko anda...",
@@ -50,14 +50,14 @@ class RegisterSeller extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               Text("Nama Lengkap",
-                  style: AppTextStyle().subHeader(AppColors.titleLine)),
+                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSeller(
                 hintText: "Masukkan nama lengkap anda...",
                 controller: controller.namaController,
               ),
               const SizedBox(height: 15),
-              Text("NIS", style: AppTextStyle().subHeader(AppColors.titleLine)),
+              Text("NIS", style: AppTextStyle().subHeader(context, AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSellerNumber(
                 hintText: "Masukkan NIS anda...",
@@ -65,7 +65,7 @@ class RegisterSeller extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               Text("Nomor Dompet Digital Aktif (Dana, Gopay atau OVO)",
-                  style: AppTextStyle().subHeader(AppColors.titleLine)),
+                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSellerNumber(
                 hintText: "Masukkan nomor dompet digital anda...",
@@ -73,7 +73,7 @@ class RegisterSeller extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               Text("Foto ID Card SMK RUS",
-                  style: AppTextStyle().subHeader(AppColors.titleLine)),
+                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
               SizedBox(
                 height: AppResponsive().screenHeight(context) * 0.02,
               ),
@@ -126,7 +126,7 @@ class RegisterSeller extends StatelessWidget {
                 ),
                 child: Text(
                   "Registrasi",
-                  style: AppTextStyle().description(AppColors.textButton2),
+                  style: AppTextStyle().description(context, AppColors.textButton2),
                 ),
               ),
             ),

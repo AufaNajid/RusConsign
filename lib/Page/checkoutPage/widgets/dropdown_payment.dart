@@ -36,7 +36,7 @@ class DropdownPayment extends StatelessWidget {
             ),
             title: Text(
               controller.selectedTitle.value,
-              style: AppTextStyle().description(AppColors.description),
+              style: AppTextStyle().description(context, AppColors.description),
             ),
             leading: SvgPicture.asset(controller.selectedLeading.value),
             initiallyExpanded: controller.expanded.value,
@@ -51,7 +51,7 @@ class DropdownPayment extends StatelessWidget {
                   leading: SvgPicture.asset(item['leading']!),
                   title: Text(
                     item['title']!,
-                    style: AppTextStyle().description(AppColors.titleLine),
+                    style: AppTextStyle().description(context, AppColors.titleLine),
                   ),
                   onTap: () {
                     controller.selectPaymentMethod(index);

@@ -36,7 +36,7 @@ class ButtonProfile extends StatelessWidget {
             Expanded(
               child: Text(
                 text,
-                style: AppTextStyle().description(AppColors.description),
+                style: AppTextStyle().description(context, AppColors.description),
               ),
             ),
             Icon(

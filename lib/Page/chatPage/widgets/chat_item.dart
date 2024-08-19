@@ -55,20 +55,20 @@ class ChatItem extends StatelessWidget {
                         children: [
                           Text(
                             name,
-                            style: AppTextStyle().header(AppColors.titleLine),
+                            style: AppTextStyle().header(context, AppColors.titleLine),
                           ),
                           const Spacer(),
                           Text(
                             time.toString().substring(11, 16),
                             style:
-                                AppTextStyle().subHeader(AppColors.description),
+                                AppTextStyle().subHeader(context, AppColors.description),
                           ),
                         ],
                       ),
                       Text(
                         message,
                         style:
-                            AppTextStyle().description(AppColors.description),
+                            AppTextStyle().description(context, AppColors.description),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       )

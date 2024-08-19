@@ -66,7 +66,7 @@ class DiscountCard extends StatelessWidget {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: AppTextStyle()
-                                .descriptionBold(AppColors.titleLine),
+                                .descriptionBold(context, AppColors.titleLine),
                           ),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,8 +89,8 @@ class DiscountCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       profileUsername,
-                                      style: AppTextStyle()
-                                          .textInfo(AppColors.description),
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
                                     ),
                                   ],
                                 ),
@@ -117,8 +117,8 @@ class DiscountCard extends StatelessWidget {
                               ),
                               Text(
                                 '$rating',
-                                style: AppTextStyle()
-                                    .textInfoBold(AppColors.description),
+                                style: AppTextStyle().textInfoBold(
+                                    context, AppColors.description),
                               ),
                             ].withSpaceBetween(width: 6),
                           ),
@@ -127,12 +127,12 @@ class DiscountCard extends StatelessWidget {
                               Text(
                                 'harga'.tr,
                                 style: AppTextStyle()
-                                    .textInfo(AppColors.description),
+                                    .textInfo(context, AppColors.description),
                               ),
                               Text(
                                 'Rp $price',
                                 style: AppTextStyle()
-                                    .textInfoBold(AppColors.hargaStat),
+                                    .textInfoBold(context, AppColors.hargaStat),
                               ),
                               SizedBox(
                                 height: 15,
@@ -144,8 +144,8 @@ class DiscountCard extends StatelessWidget {
                                     child: Center(
                                       child: Text(
                                         '$discountAmount%',
-                                        style: AppTextStyle()
-                                            .textInfoBold(AppColors.hargaStat),
+                                        style: AppTextStyle().textInfoBold(
+                                            context, AppColors.hargaStat),
                                       ),
                                     ),
                                   ),

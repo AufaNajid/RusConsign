@@ -2,80 +2,87 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppTextStyle {
-  title(Color color) {
+  double responsiveFontSize(BuildContext context, double fontSize) {
+    double baseWidth = 475;
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return fontSize * (screenWidth / baseWidth);
+  }
+
+  TextStyle title(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: 16,
+      fontSize: responsiveFontSize(context, 16), // Gunakan metode responsiveFontSize
       fontFamily: "Poppins",
       fontWeight: FontWeight.w700,
       decoration: TextDecoration.none,
     );
   }
 
-  header(Color color) {
+  TextStyle header(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: 14,
+      fontSize: responsiveFontSize(context, 14), // Gunakan metode responsiveFontSize
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,
     );
   }
 
-  subHeader(Color color) {
+  TextStyle subHeader(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: 12,
+      fontSize: responsiveFontSize(context, 12), // Gunakan metode responsiveFontSize
       fontFamily: "Poppins",
       fontWeight: FontWeight.w500,
       decoration: TextDecoration.none,
     );
   }
 
-  description(Color color) {
+  TextStyle description(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: 10,
+      fontSize: responsiveFontSize(context, 10), // Gunakan metode responsiveFontSize
       fontFamily: "Poppins",
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none,
     );
   }
 
-  descriptionBold(Color color) {
+  TextStyle descriptionBold(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: 10,
+      fontSize: responsiveFontSize(context, 10), // Gunakan metode responsiveFontSize
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,
     );
   }
 
-  textInfo(Color color) {
+  TextStyle textInfo(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: 8,
+      fontSize: responsiveFontSize(context, 8), // Gunakan metode responsiveFontSize
       fontFamily: "Poppins",
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none,
     );
   }
 
-  textInfoBold(Color color) {
+  TextStyle textInfoBold(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: 8,
+      fontSize: responsiveFontSize(context, 8), // Gunakan metode responsiveFontSize
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,
     );
   }
 
-    countdownText(Color color) {
+  TextStyle countdownText(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: 30,
+      fontSize: responsiveFontSize(context, 30), // Gunakan metode responsiveFontSize
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,

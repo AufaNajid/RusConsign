@@ -29,7 +29,7 @@ class RegisterSellerWaiting extends StatelessWidget {
                           borderRadius: BorderRadius.circular(2))),
                   child: Text(
                     "Kembali",
-                    style: AppTextStyle().description(AppColors.background),
+                    style: AppTextStyle().description(context, AppColors.background),
                   ),
                 ),
               ),
@@ -42,11 +42,11 @@ class RegisterSellerWaiting extends StatelessWidget {
             SvgPicture.asset("assets/images/amico_waiting.svg"),
             SizedBox(height: AppResponsive().screenHeight(context)*0.01,),
             Text('menungguPersetujuan'.tr,
-                style: AppTextStyle().title(AppColors.titleLine)),
+                style: AppTextStyle().title(context, AppColors.titleLine)),
             SizedBox(height: AppResponsive().screenHeight(context)*0.02,),
             Text(
               'descPersetujuan'.tr,
-              style: AppTextStyle().description(AppColors.description),
+              style: AppTextStyle().description(context, AppColors.description),
               textAlign: TextAlign.center,
             )
           ],

@@ -77,12 +77,14 @@ class HomePage extends StatelessWidget {
                         children: [
                           Text(
                             'halo'.tr,
-                            style: AppTextStyle().header(AppColors.titleLine),
+                            style: AppTextStyle()
+                                .header(context, AppColors.titleLine),
                           ),
                           Obx(
                             () => Text(
                               controllerName.dataUsername.value,
-                              style: AppTextStyle().header(AppColors.titleLine),
+                              style: AppTextStyle()
+                                  .header(context, AppColors.titleLine),
                             ),
                           ),
                         ],
@@ -91,15 +93,17 @@ class HomePage extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: AppResponsive().screenWidth(context) * 0.75,
-                            height: 50,
+                            height: AppResponsive().screenWidth(context) * 0.13,
                             child: TextField(
                               controller: controller.namaBarangController,
                               cursorColor: AppColors.hargaStat,
-                              style: AppTextStyle()
-                                  .descriptionBold(AppColors.description),
+                              style: AppTextStyle().descriptionBold(
+                                  context, AppColors.description),
                               decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 10, horizontal: 10),
+                                  vertical: 10,
+                                  horizontal: 10,
+                                ),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(6),
                                   borderSide: BorderSide.none,
@@ -107,16 +111,16 @@ class HomePage extends StatelessWidget {
                                 filled: true,
                                 fillColor: AppColors.cardIconFill,
                                 hintText: 'cari'.tr,
-                                hintStyle: AppTextStyle()
-                                    .description(AppColors.description),
+                                hintStyle: AppTextStyle().description(
+                                    context, AppColors.description),
                               ),
                               textAlign: TextAlign.left,
                             ),
                           ),
                           const Spacer(),
                           SizedBox(
-                            width: 50,
-                            height: 50,
+                            width: AppResponsive().screenWidth(context) * 0.13,
+                            height: AppResponsive().screenWidth(context) * 0.13,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(6),
                               child: Material(
@@ -131,6 +135,7 @@ class HomePage extends StatelessWidget {
                                   child: Icon(
                                     FeatherIcons.search,
                                     color: AppColors.borderIcon,
+                                    size: 20,
                                   ),
                                 ),
                               ),
@@ -163,7 +168,7 @@ class HomePage extends StatelessWidget {
                         );
                       }).toList(),
                       options: CarouselOptions(
-                        height: AppResponsive().screenHeight(context) * 0.18,
+                        height: AppResponsive().screenWidth(context) * 0.35,
                         enlargeFactor: 0.25,
                         autoPlay: true,
                         autoPlayInterval: const Duration(seconds: 3),
@@ -212,7 +217,7 @@ class HomePage extends StatelessWidget {
                               Text(
                                 'halamanP&J'.tr,
                                 style: AppTextStyle()
-                                    .subHeader(AppColors.titleLine),
+                                    .subHeader(context, AppColors.titleLine),
                               ),
                               Row(
                                 children: [
@@ -264,8 +269,8 @@ class HomePage extends StatelessWidget {
                                       child: Center(
                                         child: Text(
                                           'belumAdaData'.tr,
-                                          style: AppTextStyle()
-                                              .subHeader(AppColors.hargaStat),
+                                          style: AppTextStyle().subHeader(
+                                              context, AppColors.hargaStat),
                                         ),
                                       ),
                                     ),

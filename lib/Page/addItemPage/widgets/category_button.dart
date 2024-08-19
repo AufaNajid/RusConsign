@@ -45,7 +45,7 @@ class CategoryButton extends StatelessWidget {
             }
           },
           child: Text(text.tr,
-              style: AppTextStyle().description(categoryButtonController.selectedIndex == index
+              style: AppTextStyle().description(context, categoryButtonController.selectedIndex == index
                   ? AppColors.textButton1
                   : AppColors.description)),
         ));

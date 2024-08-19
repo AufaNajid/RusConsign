@@ -21,7 +21,7 @@ class TextFieldInput extends StatelessWidget {
     return TextField(
       cursorColor: AppColors.hargaStat,
       controller: controller,
-      style: AppTextStyle().descriptionBold(AppColors.description),
+      style: AppTextStyle().descriptionBold(context, AppColors.description),
       decoration: InputDecoration(
         contentPadding:
             const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -32,7 +32,7 @@ class TextFieldInput extends StatelessWidget {
         filled: true,
         fillColor: AppColors.cardIconFill,
         hintText: hintText,
-        hintStyle: AppTextStyle().description(AppColors.description),
+        hintStyle: AppTextStyle().description(context, AppColors.description),
       ),
       textAlign: TextAlign.left,
     );
@@ -54,7 +54,7 @@ class TextFieldPassword extends StatelessWidget {
     final AuthController authController = Get.put(AuthController());
     return Obx(
       () => TextField(
-        style: AppTextStyle().descriptionBold(AppColors.description),
+        style: AppTextStyle().descriptionBold(context, AppColors.description),
         controller: controller,
         cursorColor: AppColors.hargaStat,
         textAlign: TextAlign.left,
@@ -82,7 +82,7 @@ class TextFieldPassword extends StatelessWidget {
           filled: true,
           fillColor: AppColors.cardIconFill,
           hintText: hintText,
-          hintStyle: AppTextStyle().description(AppColors.description),
+          hintStyle: AppTextStyle().description(context, AppColors.description),
         ),
       ),
     );
@@ -104,7 +104,7 @@ class TextFieldConfirmPassword extends StatelessWidget {
     final AuthController authController = Get.find();
     return Obx(
       () => TextField(
-        style: AppTextStyle().descriptionBold(AppColors.description),
+        style: AppTextStyle().descriptionBold(context, AppColors.description),
         cursorColor: AppColors.hargaStat,
         textAlign: TextAlign.left,
         obscureText: !authController.isShow.value,
@@ -131,7 +131,7 @@ class TextFieldConfirmPassword extends StatelessWidget {
           filled: true,
           fillColor: AppColors.cardIconFill,
           hintText: hintText,
-          hintStyle: AppTextStyle().description(AppColors.description),
+          hintStyle: AppTextStyle().description(context, AppColors.description),
         ),
       ),
     );

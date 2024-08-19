@@ -13,7 +13,7 @@ class AppBarProfile extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title, style: AppTextStyle().title(AppColors.titleLine)),
+      title: Text(title, style: AppTextStyle().title(context, AppColors.titleLine)),
       centerTitle: true,
       backgroundColor: AppColors.background,
       surfaceTintColor: AppColors.background,

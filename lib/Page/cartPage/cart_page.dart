@@ -42,7 +42,7 @@ class CartPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: SizedBox(
-        height: AppResponsive().screenHeight(context) * 0.07,
+        height: AppResponsive().screenWidth(context) * 0.15,
         width: double.infinity,
         child: Material(
           color: AppColors.cardIconFill,
@@ -57,18 +57,20 @@ class CartPage extends StatelessWidget {
                   children: [
                     Text(
                       '${'total'.tr} : ',
-                      style: AppTextStyle().subHeader(AppColors.description),
+                      style: AppTextStyle()
+                          .subHeader(context, AppColors.description),
                     ),
                     Text(
                       MoneyFormat.format(10000),
-                      style: AppTextStyle().subHeader(AppColors.hargaStat),
+                      style: AppTextStyle()
+                          .subHeader(context, AppColors.hargaStat),
                     )
                   ].withSpaceBetween(width: 5),
                 ),
                 const Spacer(),
                 SizedBox(
                   width: AppResponsive().screenWidth(context) * 0.5,
-                  height: double.infinity,
+                  height: AppResponsive().screenWidth(context) * 0.5,
                   child: ElevatedButton(
                     onPressed: () {
                       Get.toNamed("/checkoutpage");
@@ -84,8 +86,11 @@ class CartPage extends StatelessWidget {
                       backgroundColor:
                           const MaterialStatePropertyAll(AppColors.button1),
                     ),
-                    child: Text('checkout'.tr,
-                        style: AppTextStyle().subHeader(AppColors.textButton1)),
+                    child: Text(
+                      'checkout'.tr,
+                      style: AppTextStyle()
+                          .subHeader(context, AppColors.textButton1),
+                    ),
                   ),
                 ),
               ],

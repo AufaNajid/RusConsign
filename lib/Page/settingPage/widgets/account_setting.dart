@@ -16,7 +16,7 @@ class AccountSetting extends StatelessWidget {
             children: [
               Text(
                 "exampleemail123@gmail.com",
-                style: AppTextStyle().description(AppColors.description),
+                style: AppTextStyle().description(context, AppColors.description),
               ),
               const Spacer(),
               const ClipOval(

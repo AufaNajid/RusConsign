@@ -29,7 +29,8 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
               child: Text('fotoProfil'.tr,
-                  style: AppTextStyle().textInfoBold(AppColors.description)),
+                  style: AppTextStyle()
+                      .textInfoBold(context, AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Column(
@@ -68,7 +69,7 @@ class ProfileSetting extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: AppResponsive().screenWidth(context) * 0.070,
-                      width: 95,
+                      width: AppResponsive().screenWidth(context) * 0.2,
                       child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
@@ -86,13 +87,13 @@ class ProfileSetting extends StatelessWidget {
                         child: Text(
                           'lihatFoto'.tr,
                           style: AppTextStyle()
-                              .textInfoBold(AppColors.textButton2),
+                              .textInfoBold(context, AppColors.textButton2),
                         ),
                       ),
                     ),
                     SizedBox(
                       height: AppResponsive().screenWidth(context) * 0.070,
-                      width: 95,
+                      width: AppResponsive().screenWidth(context) * 0.2,
                       child: ElevatedButton(
                         onPressed: settingController.pickImage,
                         style: ButtonStyle(
@@ -110,7 +111,7 @@ class ProfileSetting extends StatelessWidget {
                         child: Text(
                           'gantiFoto'.tr,
                           style: AppTextStyle()
-                              .textInfoBold(AppColors.textButton2),
+                              .textInfoBold(context, AppColors.textButton2),
                         ),
                       ),
                     ),
@@ -126,13 +127,14 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
               child: Text('nama'.tr,
-                  style: AppTextStyle().textInfoBold(AppColors.description)),
+                  style: AppTextStyle()
+                      .textInfoBold(context, AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
                 controller: settingController.namaProfileController,
-                style: AppTextStyle().textInfo(AppColors.description),
+                style: AppTextStyle().textInfo(context, AppColors.description),
                 cursorColor: AppColors.hargaStat,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
@@ -155,13 +157,14 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
               child: Text('namaToko'.tr,
-                  style: AppTextStyle().textInfoBold(AppColors.description)),
+                  style: AppTextStyle()
+                      .textInfoBold(context, AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
                 controller: settingController.namaTokoController,
-                style: AppTextStyle().textInfo(AppColors.description),
+                style: AppTextStyle().textInfo(context, AppColors.description),
                 cursorColor: AppColors.hargaStat,
                 textAlign: TextAlign.left,
                 decoration: InputDecoration(
@@ -184,13 +187,14 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
               child: Text('deskripsi'.tr,
-                  style: AppTextStyle().textInfoBold(AppColors.description)),
+                  style: AppTextStyle()
+                      .textInfoBold(context, AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
               child: TextField(
                 controller: settingController.bioDescController,
-                style: AppTextStyle().textInfo(AppColors.description),
+                style: AppTextStyle().textInfo(context, AppColors.description),
                 cursorColor: AppColors.hargaStat,
                 textAlign: TextAlign.left,
                 maxLines: 6,
@@ -214,13 +218,15 @@ class ProfileSetting extends StatelessWidget {
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
               child: Text('gantiPW'.tr,
-                  style: AppTextStyle().textInfoBold(AppColors.description)),
+                  style: AppTextStyle()
+                      .textInfoBold(context, AppColors.description)),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Obx(
               () => Expanded(
                 child: TextField(
-                  style: AppTextStyle().textInfo(AppColors.description),
+                  style:
+                      AppTextStyle().textInfo(context, AppColors.description),
                   cursorColor: AppColors.hargaStat,
                   textAlign: TextAlign.left,
                   obscureText: !settingController.isShow.value,

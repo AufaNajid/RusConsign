@@ -63,7 +63,7 @@ class AddImageProduct extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(
             'pilihFoto'.tr,
-              style: AppTextStyle().description(AppColors.textButton1),
+              style: AppTextStyle().description(context, AppColors.textButton1),
             ),
           ),
         ),

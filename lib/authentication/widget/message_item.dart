@@ -34,11 +34,11 @@ class MessageUi extends StatelessWidget {
               children: [
                 Text(
                   message,
-                  style: AppTextStyle().description(AppColors.description),
+                  style: AppTextStyle().description(context, AppColors.description),
                 ),
                 Text(
                   time.toString().substring(11, 16),
-                  style: AppTextStyle().textInfoBold(AppColors.description),
+                  style: AppTextStyle().textInfoBold(context, AppColors.description),
                 )
               ],
             ),

@@ -40,12 +40,12 @@ class ProfileInfoCard extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               title,
-              style: AppTextStyle().textInfoBold(AppColors.description),
+              style: AppTextStyle().textInfoBold(context, AppColors.description),
             ),
             const SizedBox(height: 10),
             Text(
               data,
-              style: AppTextStyle().descriptionBold(AppColors.hargaStat),
+              style: AppTextStyle().descriptionBold(context, AppColors.hargaStat),
             )
           ],
         ),

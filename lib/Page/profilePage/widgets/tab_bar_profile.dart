@@ -73,10 +73,16 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(FeatherIcons.user),
+                    const Icon(
+                      FeatherIcons.user,
+                      size: 20,
+                    ),
                     SizedBox(
                         width: AppResponsive().screenWidth(context) * 0.01),
-                    Text('pribadi'.tr)
+                    Text(
+                      'pribadi'.tr,
+                      style: const TextStyle(fontSize: 12),
+                    )
                   ],
                 ),
               ),
@@ -97,10 +103,14 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
                   children: [
                     const Icon(
                       FeatherIcons.shoppingBag,
+                      size: 20,
                     ),
                     SizedBox(
                         width: AppResponsive().screenWidth(context) * 0.01),
-                    Text('penjualan'.tr)
+                    Text(
+                      'penjualan'.tr,
+                      style: const TextStyle(fontSize: 12),
+                    ),
                   ],
                 ),
               ),
