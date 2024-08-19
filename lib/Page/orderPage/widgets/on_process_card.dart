@@ -16,6 +16,8 @@ class OnProcessCard extends StatelessWidget {
   final String profileUsername;
   final double rating;
   final int totalProductPrice;
+  final int quantity;
+  final String timeMeeting;
   final String paymentMethod;
   final String meetingLocation;
   final VoidCallback onChatSeller;
@@ -32,6 +34,8 @@ class OnProcessCard extends StatelessWidget {
     required this.paymentMethod,
     required this.meetingLocation,
     required this.onChatSeller,
+    required this.quantity,
+    required this.timeMeeting,
   }) : super(key: key);
 
   @override
@@ -167,6 +171,20 @@ class OnProcessCard extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
+                                      '${'Quantity'.tr} :',
+                                      style: AppTextStyle()
+                                          .textInfo(AppColors.description),
+                                    ),
+                                    Text(
+                                      quantity.toString(),
+                                      style: AppTextStyle()
+                                          .textInfoBold(AppColors.hargaStat),
+                                    ),
+                                  ].withSpaceBetween(width: 4),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
                                       '${'metodePembayaran'.tr} :',
                                       style: AppTextStyle()
                                           .textInfo(AppColors.description),
@@ -193,6 +211,29 @@ class OnProcessCard extends StatelessWidget {
                                         children: [
                                           Text(
                                             meetingLocation,
+                                            style: AppTextStyle().textInfoBold(
+                                                AppColors.hargaStat),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ].withSpaceBetween(width: 4),
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${'Waktu Pertemuan'.tr} :',
+                                      style: AppTextStyle()
+                                          .textInfo(AppColors.description),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            timeMeeting,
                                             style: AppTextStyle().textInfoBold(
                                                 AppColors.hargaStat),
                                           ),

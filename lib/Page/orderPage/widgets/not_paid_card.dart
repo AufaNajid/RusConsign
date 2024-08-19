@@ -14,6 +14,7 @@ class NotPaidCard extends StatelessWidget {
   final String profileUsername;
   final double rating;
   final int totalProductPrice;
+  final int quantity;
   final String paymentMethod;
   final String meetingLocation;
   final VoidCallback onCancelProduct;
@@ -26,6 +27,7 @@ class NotPaidCard extends StatelessWidget {
     required this.profileUsername,
     required this.rating,
     required this.totalProductPrice,
+    required this.quantity,
     required this.paymentMethod,
     required this.meetingLocation,
     required this.onCancelProduct,
@@ -73,8 +75,8 @@ class NotPaidCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: 100,
-                            height: 120,
+                            width: AppResponsive().screenWidth(context) * 0.240,
+                            height: 150,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
@@ -157,6 +159,20 @@ class NotPaidCard extends StatelessWidget {
                                     ),
                                     Text(
                                       MoneyFormat.format(totalProductPrice),
+                                      style: AppTextStyle()
+                                          .textInfoBold(AppColors.hargaStat),
+                                    ),
+                                  ].withSpaceBetween(width: 4),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${'Quantity'.tr} :',
+                                      style: AppTextStyle()
+                                          .textInfo(AppColors.description),
+                                    ),
+                                    Text(
+                                      quantity.toString(),
                                       style: AppTextStyle()
                                           .textInfoBold(AppColors.hargaStat),
                                     ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:rusconsign/Page/sellingPage/selling_page_controller.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/not_paid_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/process_card.dart';
@@ -19,6 +20,9 @@ class SellingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime futureDate = DateTime.now().add(Duration(days: 2));
+
+    String dayName = DateFormat('EEEE').format(futureDate);
     return Scaffold(
         appBar: SellingAppbar(title: 'penjualanSaya'.tr),
         backgroundColor: AppColors.background,
@@ -35,13 +39,9 @@ class SellingPage extends StatelessWidget {
                         icon: FeatherIcons.creditCard,
                         index: 0),
                     SellingFilterButton(
-                        text: 'proses'.tr,
-                        icon: FeatherIcons.clock,
-                        index: 1),
+                        text: 'proses'.tr, icon: FeatherIcons.clock, index: 1),
                     SellingFilterButton(
-                        text: 'selesai'.tr,
-                        icon: FeatherIcons.check,
-                        index: 2),
+                        text: 'selesai'.tr, icon: FeatherIcons.check, index: 2),
                     SellingFilterButton(
                         text: 'ulasan'.tr, icon: FeatherIcons.star, index: 3),
                     SellingFilterButton(
@@ -67,8 +67,7 @@ class SellingPage extends StatelessWidget {
                           children: [
                             SizedBox(
                               height:
-                                  AppResponsive().screenHeight(context) *
-                                      0.4,
+                                  AppResponsive().screenHeight(context) * 0.4,
                               child: const Center(
                                 child: CircularProgressIndicator(
                                   color: AppColors.hargaStat,
@@ -80,8 +79,7 @@ class SellingPage extends StatelessWidget {
                       } else if (controller.pesananList.isEmpty) {
                         return SizedBox(
                           width: double.infinity,
-                          height:
-                          AppResponsive().screenHeight(context) * 0.8,
+                          height: AppResponsive().screenHeight(context) * 0.8,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -91,11 +89,9 @@ class SellingPage extends StatelessWidget {
                                 // ignore: deprecated_member_use
                                 color: AppColors.hargaStat,
                                 width:
-                                AppResponsive().screenWidth(context) *
-                                    0.1,
+                                    AppResponsive().screenWidth(context) * 0.1,
                                 height:
-                                AppResponsive().screenHeight(context) *
-                                    0.1,
+                                    AppResponsive().screenHeight(context) * 0.1,
                               ),
                               Text(
                                 'belumAdaPesanan'.tr,
@@ -113,20 +109,19 @@ class SellingPage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shrinkWrap: true,
                           itemCount: controller.pesananList.length,
-                          separatorBuilder:
-                              (BuildContext context, int index) {
+                          separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox(height: 10);
                           },
                           itemBuilder: (context, index) {
                             final pesanan = controller.pesananList[index];
-                            return  NotPaidCardSelling(
+                            return NotPaidCardSelling(
                               idPesanan: pesanan.id,
+                              quantity: pesanan.quantity,
                               imagePath: pesanan.barang.imageBarang,
                               title: pesanan.barang.namaBarang,
                               metodePembayaran: pesanan.statusPembayaran,
                               lokasiPertemuan: pesanan.lokasi.namaLokasi,
-                              rating:
-                                  pesanan.barang.ratingBarang.toDouble(),
+                              rating: pesanan.barang.ratingBarang.toDouble(),
                               price: pesanan.barang.harga,
                               pemesan: pesanan.user.name,
                             );
@@ -138,13 +133,13 @@ class SellingPage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shrinkWrap: true,
                           itemCount: controller.pesananList.length,
-                          separatorBuilder:
-                              (BuildContext context, int index) {
+                          separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox(height: 10);
                           },
                           itemBuilder: (BuildContext context, int index) {
                             final cod = controller.pesananList[index];
-                            return  ProcessCardSelling(
+                            return ProcessCardSelling(
+                              quantity: cod.quantity,
                               imagePath: cod.barang.imageBarang,
                               title: cod.barang.namaBarang,
                               metodePembayaran: cod.statusPembayaran,
@@ -152,6 +147,7 @@ class SellingPage extends StatelessWidget {
                               rating: cod.barang.ratingBarang.toDouble(),
                               price: cod.barang.harga,
                               pemesan: cod.user.name,
+                              timeMeeting: dayName,
                             );
                           },
                         );
@@ -161,13 +157,12 @@ class SellingPage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shrinkWrap: true,
                           itemCount: controller.pesananList.length,
-                          separatorBuilder:
-                              (BuildContext context, int index) {
+                          separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox(height: 10);
                           },
                           itemBuilder: (BuildContext context, int index) {
                             final cod = controller.pesananList[index];
-                            return  ProcessCardSelling(
+                            return ProcessCardSelling(
                               imagePath: cod.barang.imageBarang,
                               title: cod.barang.namaBarang,
                               metodePembayaran: cod.statusPembayaran,
@@ -175,6 +170,8 @@ class SellingPage extends StatelessWidget {
                               rating: cod.barang.ratingBarang.toDouble(),
                               price: cod.barang.harga,
                               pemesan: cod.user.name,
+                              quantity: cod.quantity,
+                              timeMeeting: dayName,
                             );
                           },
                         );
@@ -184,14 +181,12 @@ class SellingPage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shrinkWrap: true,
                           itemCount: 10,
-                          separatorBuilder:
-                              (BuildContext context, int index) {
+                          separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox(height: 10);
                           },
                           itemBuilder: (BuildContext context, int index) {
                             return ReviewCardSelling(
-                              imagePath:
-                                  'https://via.placeholder.com/100x100',
+                              imagePath: 'https://via.placeholder.com/100x100',
                               username: "Agus Spakbor",
                               rating: 4.5,
                               date: DateTime.now(),
@@ -205,8 +200,7 @@ class SellingPage extends StatelessWidget {
                       } else {
                         return SizedBox(
                           width: double.infinity,
-                          height:
-                              AppResponsive().screenHeight(context) * 0.8,
+                          height: AppResponsive().screenHeight(context) * 0.8,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -216,11 +210,9 @@ class SellingPage extends StatelessWidget {
                                 // ignore: deprecated_member_use
                                 color: AppColors.hargaStat,
                                 width:
-                                    AppResponsive().screenWidth(context) *
-                                        0.1,
+                                    AppResponsive().screenWidth(context) * 0.1,
                                 height:
-                                    AppResponsive().screenHeight(context) *
-                                        0.1,
+                                    AppResponsive().screenHeight(context) * 0.1,
                               ),
                               Text(
                                 'belumAdaPesanan'.tr,

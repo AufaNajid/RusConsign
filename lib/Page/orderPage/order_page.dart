@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:rusconsign/Page/orderPage/widgets/finish_card.dart';
 import 'package:rusconsign/Page/orderPage/widgets/on_process_card.dart';
 import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
@@ -18,6 +19,9 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime futureDate = DateTime.now().add(Duration(days: 2));
+
+    String dayName = DateFormat('EEEE').format(futureDate);
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -70,12 +74,6 @@ class OrderPage extends StatelessWidget {
                   icon: FeatherIcons.check,
                   index: 2,
                 ),
-                // const Spacer(),
-                // FilterOrderButton(
-                //   text: 'Dibatalkan'.tr,
-                //   icon: FeatherIcons.check,
-                //   index: 2,
-                // )
               ],
             ),
           ),
@@ -142,10 +140,11 @@ class OrderPage extends StatelessWidget {
                               return NotPaidCard(
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
-                                profileImagePath: cod.lokasi.mitra.imageProfile,
-                                profileUsername: cod.lokasi.mitra.namaToko,
+                                profileImagePath: cod.mitra.imageProfile,
+                                profileUsername: cod.mitra.namaToko,
                                 rating: cod.barang.ratingBarang.toDouble(),
                                 totalProductPrice: cod.barang.harga,
+                                quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
                                 onCancelProduct: () {},
@@ -163,10 +162,12 @@ class OrderPage extends StatelessWidget {
                                 idPesanan: cod.id,
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
-                                profileImagePath: cod.lokasi.mitra.imageProfile,
-                                profileUsername: cod.lokasi.mitra.namaToko,
+                                profileImagePath: cod.mitra.imageProfile,
+                                profileUsername: cod.mitra.namaToko,
                                 rating: cod.barang.ratingBarang.toDouble(),
                                 totalProductPrice: cod.barang.harga,
+                                quantity: cod.quantity,
+                                timeMeeting: dayName,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
                                 onChatSeller: () {},
@@ -183,10 +184,11 @@ class OrderPage extends StatelessWidget {
                               return FinishCard(
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
-                                profileImagePath: cod.lokasi.mitra.imageProfile,
-                                profileUsername: cod.lokasi.mitra.namaToko,
+                                profileImagePath: cod.mitra.imageProfile,
+                                profileUsername: cod.mitra.namaLengkap,
                                 rating: cod.barang.ratingBarang.toDouble(),
                                 totalProductPrice: cod.barang.harga,
+                                quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
                                 onGiveRating: () {},

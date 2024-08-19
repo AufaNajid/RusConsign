@@ -14,6 +14,7 @@ class FinishCard extends StatelessWidget {
   final String profileUsername;
   final double rating;
   final int totalProductPrice;
+  final int quantity;
   final String paymentMethod;
   final String meetingLocation;
   final VoidCallback onGiveRating;
@@ -26,6 +27,7 @@ class FinishCard extends StatelessWidget {
     required this.profileUsername,
     required this.rating,
     required this.totalProductPrice,
+    required this.quantity,
     required this.paymentMethod,
     required this.meetingLocation,
     required this.onGiveRating,
@@ -155,6 +157,20 @@ class FinishCard extends StatelessWidget {
                                     ),
                                     Text(
                                       MoneyFormat.format(totalProductPrice),
+                                      style: AppTextStyle()
+                                          .textInfoBold(AppColors.hargaStat),
+                                    ),
+                                  ].withSpaceBetween(width: 4),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${'Quantity'.tr} :',
+                                      style: AppTextStyle()
+                                          .textInfo(AppColors.description),
+                                    ),
+                                    Text(
+                                      quantity.toString(),
                                       style: AppTextStyle()
                                           .textInfoBold(AppColors.hargaStat),
                                     ),
