@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/money_format.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
-import '../../../utils/text_style.dart';
-
-class NotPaidCard extends StatelessWidget {
+class SellingCancelCard extends StatelessWidget {
   final String imagePath;
   final String title;
   final String profileImagePath;
@@ -16,12 +15,11 @@ class NotPaidCard extends StatelessWidget {
   final double rating;
   final int totalProductPrice;
   final int quantity;
-  final int idPesanan;
   final String paymentMethod;
   final String meetingLocation;
-  final VoidCallback onCancelProduct;
+  final VoidCallback onGiveRating;
 
-  const NotPaidCard({
+  const SellingCancelCard({
     Key? key,
     required this.imagePath,
     required this.title,
@@ -32,15 +30,13 @@ class NotPaidCard extends StatelessWidget {
     required this.quantity,
     required this.paymentMethod,
     required this.meetingLocation,
-    required this.onCancelProduct,
-    required this.idPesanan,
+    required this.onGiveRating,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final OrderPageController orderController = Get.put(OrderPageController());
-    final img = "https://rusconsign.com/api";
     const imageUrl = "https://rusconsign.com/api/storage/public";
+    final img = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -94,12 +90,10 @@ class NotPaidCard extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
-                                  child: Text(
-                                    title,
-                                    style: AppTextStyle().descriptionBold(
-                                        context, AppColors.titleLine),
-                                  ),
+                                Text(
+                                  title,
+                                  style: AppTextStyle()
+                                      .descriptionBold(context, AppColors.titleLine),
                                 ),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,7 +112,7 @@ class NotPaidCard extends StatelessWidget {
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             profileUsername,
@@ -149,8 +143,8 @@ class NotPaidCard extends StatelessWidget {
                                     ),
                                     Text(
                                       '$rating',
-                                      style: AppTextStyle().textInfoBold(
-                                          context, AppColors.description),
+                                      style: AppTextStyle()
+                                          .textInfoBold(context, AppColors.description),
                                     ),
                                   ].withSpaceBetween(width: 6),
                                 ),
@@ -158,13 +152,13 @@ class NotPaidCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'total'.tr} :',
-                                      style: AppTextStyle().textInfo(
-                                          context, AppColors.description),
+                                      style: AppTextStyle()
+                                          .textInfo(context, AppColors.description),
                                     ),
                                     Text(
                                       MoneyFormat.format(totalProductPrice),
-                                      style: AppTextStyle().textInfoBold(
-                                          context, AppColors.hargaStat),
+                                      style: AppTextStyle()
+                                          .textInfoBold(context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -172,13 +166,13 @@ class NotPaidCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'Quantity'.tr} :',
-                                      style: AppTextStyle().textInfo(
-                                          context, AppColors.description),
+                                      style: AppTextStyle()
+                                          .textInfo(context,AppColors.description),
                                     ),
                                     Text(
                                       quantity.toString(),
-                                      style: AppTextStyle().textInfoBold(
-                                          context, AppColors.hargaStat),
+                                      style: AppTextStyle()
+                                          .textInfoBold(context,AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -186,13 +180,13 @@ class NotPaidCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'metodePembayaran'.tr} :',
-                                      style: AppTextStyle().textInfo(
-                                          context, AppColors.description),
+                                      style: AppTextStyle()
+                                          .textInfo(context, AppColors.description),
                                     ),
                                     Text(
                                       paymentMethod,
-                                      style: AppTextStyle().textInfoBold(
-                                          context, AppColors.hargaStat),
+                                      style: AppTextStyle()
+                                          .textInfoBold(context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -201,13 +195,13 @@ class NotPaidCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'lokasiPertemuan'.tr} :',
-                                      style: AppTextStyle().textInfo(
-                                          context, AppColors.description),
+                                      style: AppTextStyle()
+                                          .textInfo(context, AppColors.description),
                                     ),
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             meetingLocation,
@@ -228,60 +222,11 @@ class NotPaidCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: double.infinity,
+                  width: AppResponsive().screenWidth(context),
                   height: AppResponsive().screenWidth(context) * 0.080,
                   child: ElevatedButton(
                     onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6)),
-                              backgroundColor: AppColors.background,
-                              title: Text(
-                                'Konfirmasi Batalkan Pesanan?'.tr,
-                                style: AppTextStyle()
-                                    .title(context, AppColors.titleLine),
-                              ),
-                              content: Text(
-                                  'Apakah Anda Yakin Ingin Mem-Batalkan Pesanan Ini?'
-                                      .tr),
-                              actions: <Widget>[
-                                OutlinedButton(
-                                  style: OutlinedButton.styleFrom(
-                                      side: const BorderSide(
-                                          color: AppColors.button1),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(4))),
-                                  child: Text(
-                                    'batal'.tr,
-                                    style: AppTextStyle().subHeader(
-                                        context, AppColors.hargaStat),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                                TextButton(
-                                  style: TextButton.styleFrom(
-                                    foregroundColor: AppColors.solidWhite,
-                                    backgroundColor: AppColors.button1,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
-                                    ),
-                                  ),
-                                  child: Text('Ya, Batalkan'.tr),
-                                  onPressed: () async {
-                                    await orderController
-                                        .cancelOrder(idPesanan);
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          });
+                      onGiveRating;
                     },
                     style: ButtonStyle(
                       elevation: const MaterialStatePropertyAll(0),
@@ -292,13 +237,10 @@ class NotPaidCard extends StatelessWidget {
                         ),
                       ),
                       backgroundColor:
-                          MaterialStatePropertyAll(AppColors.button2),
+                      MaterialStatePropertyAll(AppColors.button2),
                     ),
-                    child: Text(
-                      'batalkanPesanan'.tr,
-                      style:
-                          AppTextStyle().header(context, AppColors.textButton2),
-                    ),
+                    child: Text('Pesanan Dibatalkan'.tr,
+                        style: AppTextStyle().header(context, AppColors.textButton2)),
                   ),
                 ),
               ].withSpaceBetween(height: 10),

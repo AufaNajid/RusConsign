@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:rusconsign/Page/orderPage/widgets/cancel_card.dart';
 import 'package:rusconsign/Page/orderPage/widgets/finish_card.dart';
 import 'package:rusconsign/Page/orderPage/widgets/on_process_card.dart';
 import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../utils/app_responsive.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'widgets/filter_order_button.dart';
 import 'widgets/not_paid_card.dart';
 
@@ -54,28 +55,33 @@ class OrderPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-            child: Row(
-              children: [
-                FilterOrderButton(
-                  text: 'belumBayar'.tr,
-                  icon: FeatherIcons.creditCard,
-                  index: 0,
-                ),
-                const Spacer(),
-                FilterOrderButton(
-                  text: 'proses'.tr,
-                  icon: FeatherIcons.clock,
-                  index: 1,
-                ),
-                const Spacer(),
-                FilterOrderButton(
-                  text: 'selesai'.tr,
-                  icon: FeatherIcons.check,
-                  index: 2,
-                ),
-              ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Row(
+                children: [
+                  FilterOrderButton(
+                    text: 'belumBayar'.tr,
+                    icon: FeatherIcons.creditCard,
+                    index: 0,
+                  ),
+                  FilterOrderButton(
+                    text: 'proses'.tr,
+                    icon: FeatherIcons.clock,
+                    index: 1,
+                  ),
+                  FilterOrderButton(
+                    text: 'selesai'.tr,
+                    icon: FeatherIcons.check,
+                    index: 2,
+                  ),FilterOrderButton(
+                    text: 'Dibatalkan'.tr,
+                    icon: FeatherIcons.x,
+                    index: 3,
+                  ),
+                ].withSpaceBetween(width: 10),
+              ),
             ),
           ),
           Expanded(
@@ -108,26 +114,25 @@ class OrderPage extends StatelessWidget {
                             width: double.infinity,
                             height: AppResponsive().screenHeight(context) * 0.8,
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/images/fluent--box-search-24-regular.svg",
-                                  // ignore: deprecated_member_use
-                                  color: AppColors.hargaStat,
-                                  width: AppResponsive().screenWidth(context) *
-                                      0.1,
-                                  height:
-                                      AppResponsive().screenHeight(context) *
-                                          0.1,
-                                ),
-                                Text(
-                                  'belumAdaPesanan'.tr,
-                                  style: AppTextStyle()
-                                      .subHeader(context, AppColors.description),
-                                )
-                              ].withSpaceBetween(height: 12)
-                            ),
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    "assets/images/fluent--box-search-24-regular.svg",
+                                    color: AppColors.hargaStat,
+                                    width:
+                                        AppResponsive().screenWidth(context) *
+                                            0.1,
+                                    height:
+                                        AppResponsive().screenHeight(context) *
+                                            0.1,
+                                  ),
+                                  Text(
+                                    'belumAdaPesanan'.tr,
+                                    style: AppTextStyle().subHeader(
+                                        context, AppColors.description),
+                                  )
+                                ].withSpaceBetween(height: 12)),
                           );
                         }
 
@@ -139,6 +144,7 @@ class OrderPage extends StatelessWidget {
                             itemBuilder: (context, index) {
                               final cod = orderController.productList[index];
                               return NotPaidCard(
+                                idPesanan: cod.id,
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
                                 profileImagePath: cod.mitra.imageProfile,
@@ -183,6 +189,27 @@ class OrderPage extends StatelessWidget {
                             itemBuilder: (context, index) {
                               final cod = orderController.productList[index];
                               return FinishCard(
+                                imagePath: cod.barang.imageBarang,
+                                title: cod.barang.namaBarang,
+                                profileImagePath: cod.mitra.imageProfile,
+                                profileUsername: cod.mitra.namaLengkap,
+                                rating: cod.barang.ratingBarang.toDouble(),
+                                totalProductPrice: cod.barang.harga,
+                                quantity: cod.quantity,
+                                paymentMethod: cod.statusPembayaran,
+                                meetingLocation: cod.lokasi.namaLokasi,
+                                onGiveRating: () {},
+                              );
+                            },
+                          );
+                        } else if (orderController.selectedIndex == 3) {
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: orderController.productList.length,
+                            itemBuilder: (context, index) {
+                              final cod = orderController.productList[index];
+                              return OrderCancelCard(
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
                                 profileImagePath: cod.mitra.imageProfile,

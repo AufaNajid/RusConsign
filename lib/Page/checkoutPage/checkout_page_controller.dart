@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
+import 'package:rusconsign/Api/lokasi_response.dart';
 import 'package:rusconsign/Api/testing_payment.dart';
 import 'package:rusconsign/Page/webView/testing_web_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +20,7 @@ class CheckoutPageController extends GetxController {
   RxString message = "".obs;
   RxBool isLoading = false.obs;
   var productDetail = Rxn<Barang>();
+  var lokasi = <LokasiResponse>[].obs;
 
   var items = <Map<String, String>>[
     {'title': 'Dana', 'leading': 'assets/images/dana.svg'},
@@ -32,6 +34,7 @@ class CheckoutPageController extends GetxController {
     super.onInit();
     final productID = Get.arguments as int;
     fetchProduct(productID);
+    fetchLokasi();
   }
 
   void selectPaymentMethod(int index) {
@@ -70,6 +73,17 @@ class CheckoutPageController extends GetxController {
     }
 
     isLoading(false);
+  }
+
+  fetchLokasi() async {
+    isLoading(true);
+    final response = await http
+        .get(Uri.parse('https://rusconsign.com/api/lokasi'));
+
+    if (response.statusCode == 200) {
+      List<LokasiResponse> lokasiList = lokasiResponseFromJson(response.body);
+      lokasi.value = lokasiList;
+    }
   }
 
   Future<void> paymentTesting(String idBarang, String jumlah) async {
