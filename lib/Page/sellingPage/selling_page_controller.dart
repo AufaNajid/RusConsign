@@ -57,6 +57,9 @@ class SellingPageController extends GetxController {
       case 2:
         uri = Uri.parse("https://rusconsign.com/api/cods/mitra/selesai/$idMitra");
         break;
+      case 3:
+        uri = Uri.parse("https://rusconsign.com/api/cods/mitra/batal_pesanan/$idMitra");
+        break;
       default:
         uri = Uri.parse(
             "https://rusconsign.com/api/cods/mitra/belum_pembayaran/$idMitra");

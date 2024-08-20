@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:rusconsign/Page/sellingPage/selling_page_controller.dart';
+import 'package:rusconsign/Page/sellingPage/widgets/cancel_selling_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/not_paid_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/process_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/review_card.dart';
@@ -43,9 +44,9 @@ class SellingPage extends StatelessWidget {
                     SellingFilterButton(
                         text: 'selesai'.tr, icon: FeatherIcons.check, index: 2),
                     SellingFilterButton(
-                        text: 'ulasan'.tr, icon: FeatherIcons.star, index: 3),
+                        text: 'batal'.tr, icon: FeatherIcons.x, index: 3),
                     SellingFilterButton(
-                        text: 'batal'.tr, icon: FeatherIcons.x, index: 4),
+                        text: 'ulasan'.tr, icon: FeatherIcons.star, index: 4),
                   ].withSpaceBetween(width: 10),
                 ),
               ),
@@ -180,20 +181,23 @@ class SellingPage extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           shrinkWrap: true,
-                          itemCount: 10,
+                          itemCount: controller.pesananList.length,
                           separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox(height: 10);
                           },
                           itemBuilder: (BuildContext context, int index) {
-                            return ReviewCardSelling(
-                              imagePath: 'https://via.placeholder.com/100x100',
-                              username: "Agus Spakbor",
-                              rating: 4.5,
-                              date: DateTime.now(),
-                              desc:
-                                  "Ampar ampar sigma, Sigma ku fanum tax Gyatt sebiji Dihurung skibidi Mangga rizzler mangga rizzler Mewing kai cenat Ligma dimakan sussy Apinya gooning mogging",
-                              like: 156,
-                              disLike: 12,
+                            final cod = controller.pesananList[index];
+                            return SellingCancelCard(
+                              imagePath: cod.barang.imageBarang,
+                              title: cod.barang.namaBarang,
+                              profileImagePath: cod.mitra.imageProfile,
+                              profileUsername: cod.mitra.namaLengkap,
+                              rating: cod.barang.ratingBarang.toDouble(),
+                              totalProductPrice: cod.barang.harga,
+                              quantity: cod.quantity,
+                              paymentMethod: cod.statusPembayaran,
+                              meetingLocation: cod.lokasi.namaLokasi,
+                              onGiveRating: () {},
                             );
                           },
                         );

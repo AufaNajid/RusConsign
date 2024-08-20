@@ -42,6 +42,23 @@ class OrderPageController extends GetxController {
     }
   }
 
+  Future<void> cancelOrder(int idPesanan) async {
+    isLoading.value = true;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+
+    final response = await http.delete(
+      Uri.parse(
+          "https://rusconsign.com/api/cod/cancel/$idPesanan"),
+      headers: <String, String>{
+        'Authorization': "Bearer $token",
+      },
+    );
+    if (response.statusCode == 200) {
+      await fetchPesanan(0);
+    }
+  }
+
   Future<void> fetchPesanan(int filter) async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     String? idUser = pref.getString('idUser');
@@ -54,6 +71,9 @@ class OrderPageController extends GetxController {
         break;
       case 2:
         uri = Uri.parse("https://rusconsign.com/api/cods/user/selesai/$idUser");
+        break;
+      case 3:
+        uri = Uri.parse("https://rusconsign.com/api/cods/user/batal_pesanan/$idUser");
         break;
       default:
         uri = Uri.parse(
