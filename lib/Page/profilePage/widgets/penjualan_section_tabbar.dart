@@ -8,7 +8,6 @@ import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-
 class PenjualanSectionFalse extends StatelessWidget {
   const PenjualanSectionFalse({super.key});
 
@@ -17,8 +16,9 @@ class PenjualanSectionFalse extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-            height: AppResponsive().screenWidth(context) * 0.450,
-            child: SvgPicture.asset("assets/images/orang_mencet_hp.svg"),),
+          height: AppResponsive().screenWidth(context) * 0.450,
+          child: SvgPicture.asset("assets/images/orang_mencet_hp.svg"),
+        ),
         Text(
           'descResgisterPenjual'.tr,
           style: AppTextStyle().description(context, AppColors.description),
@@ -28,13 +28,12 @@ class PenjualanSectionFalse extends StatelessWidget {
             Get.toNamed("/registerseller");
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.button1,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6),
-            ),
-            elevation: 0,
-            shadowColor: AppColors.background
-          ),
+              backgroundColor: AppColors.button1,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6),
+              ),
+              elevation: 0,
+              shadowColor: AppColors.background),
           child: Text(
             'registerPenjualSekarang'.tr,
             style: AppTextStyle().description(context, AppColors.textButton1),
@@ -114,4 +113,3 @@ class PenjualSectionTrue extends StatelessWidget {
     );
   }
 }
-

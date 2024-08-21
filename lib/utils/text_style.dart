@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 class AppTextStyle {
   double responsiveFontSize(BuildContext context, double fontSize) {
@@ -12,7 +13,7 @@ class AppTextStyle {
   TextStyle title(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: responsiveFontSize(context, 16), // Gunakan metode responsiveFontSize
+      fontSize: responsiveFontSize(context, SizeData.fontTitleSize),
       fontFamily: "Poppins",
       fontWeight: FontWeight.w700,
       decoration: TextDecoration.none,
@@ -22,7 +23,7 @@ class AppTextStyle {
   TextStyle header(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: responsiveFontSize(context, 14), // Gunakan metode responsiveFontSize
+      fontSize: responsiveFontSize(context, SizeData.fontHeaderSize),
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,
@@ -32,7 +33,7 @@ class AppTextStyle {
   TextStyle subHeader(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: responsiveFontSize(context, 12), // Gunakan metode responsiveFontSize
+      fontSize: responsiveFontSize(context, SizeData.fontSubHeaderSize),
       fontFamily: "Poppins",
       fontWeight: FontWeight.w500,
       decoration: TextDecoration.none,
@@ -42,7 +43,7 @@ class AppTextStyle {
   TextStyle description(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: responsiveFontSize(context, 10), // Gunakan metode responsiveFontSize
+      fontSize: responsiveFontSize(context, SizeData.fontDescriptionSize),
       fontFamily: "Poppins",
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none,
@@ -52,7 +53,7 @@ class AppTextStyle {
   TextStyle descriptionBold(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: responsiveFontSize(context, 10), // Gunakan metode responsiveFontSize
+      fontSize: responsiveFontSize(context, SizeData.fontDescriptionBoldSize),
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,
@@ -62,7 +63,7 @@ class AppTextStyle {
   TextStyle textInfo(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: responsiveFontSize(context, 8), // Gunakan metode responsiveFontSize
+      fontSize: responsiveFontSize(context, SizeData.fontTextInfoSize),
       fontFamily: "Poppins",
       fontWeight: FontWeight.w400,
       decoration: TextDecoration.none,
@@ -72,7 +73,7 @@ class AppTextStyle {
   TextStyle textInfoBold(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: responsiveFontSize(context, 8), // Gunakan metode responsiveFontSize
+      fontSize: responsiveFontSize(context, SizeData.fontDescriptionBoldSize),
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,
@@ -82,7 +83,7 @@ class AppTextStyle {
   TextStyle countdownText(BuildContext context, Color color) {
     return TextStyle(
       color: color,
-      fontSize: responsiveFontSize(context, 30), // Gunakan metode responsiveFontSize
+      fontSize: responsiveFontSize(context, SizeData.fontCountdownSize),
       fontFamily: "Poppins",
       fontWeight: FontWeight.w600,
       decoration: TextDecoration.none,

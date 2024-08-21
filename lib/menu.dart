@@ -7,6 +7,7 @@ import 'package:rusconsign/Page/homePage/home_page.dart';
 import 'package:rusconsign/Page/profilePage/profile_page.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 class Menu extends StatelessWidget {
   const Menu({super.key});
@@ -30,7 +31,7 @@ class Menu extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: const Icon(
             FeatherIcons.home,
-            size: 20,
+            size: SizeData.iconSize,
           ),
           inactiveColorPrimary: AppColors.nonActiveIcon,
           activeColorPrimary: AppColors.activeIcon,
@@ -38,7 +39,7 @@ class Menu extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: const Icon(
             FeatherIcons.heart,
-            size: 20,
+            size: SizeData.iconSize,
           ),
           inactiveColorPrimary: AppColors.nonActiveIcon,
           activeColorPrimary: AppColors.activeIcon,
@@ -46,7 +47,7 @@ class Menu extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: const Icon(
             FeatherIcons.shoppingCart,
-            size: 20,
+            size: SizeData.iconSize,
           ),
           inactiveColorPrimary: AppColors.nonActiveIcon,
           activeColorPrimary: AppColors.activeIcon,
@@ -54,7 +55,7 @@ class Menu extends StatelessWidget {
         PersistentBottomNavBarItem(
           icon: const Icon(
             FeatherIcons.user,
-            size: 20,
+            size: SizeData.iconSize,
           ),
           inactiveColorPrimary: AppColors.nonActiveIcon,
           activeColorPrimary: AppColors.activeIcon,

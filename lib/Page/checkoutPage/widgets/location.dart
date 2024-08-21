@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class LocationChekout extends StatelessWidget {
@@ -24,7 +25,7 @@ class LocationChekout extends StatelessWidget {
               child: Material(
             color: AppColors.cardIconFill,
             child: Icon(
-              size: 20,
+              size: SizeData.iconSize,
               FeatherIcons.mapPin,
               color: AppColors.nonActiveIcon,
             ),
@@ -52,7 +53,7 @@ class LocationChekout extends StatelessWidget {
               Get.toNamed("/locationpage");
             },
             icon: Icon(
-              size: 20,
+              size: SizeData.iconSize,
               FeatherIcons.edit,
               color: AppColors.nonActiveIcon,
             ))

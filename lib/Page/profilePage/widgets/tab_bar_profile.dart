@@ -8,6 +8,7 @@ import 'package:rusconsign/Page/profilePage/widgets/pribadi_section_tabbar.dart'
 import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 class TabList extends StatefulWidget {
   const TabList({Key? key}) : super(key: key);
@@ -75,13 +76,13 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
                   children: [
                     const Icon(
                       FeatherIcons.user,
-                      size: 20,
+                      size: SizeData.iconSize,
                     ),
                     SizedBox(
                         width: AppResponsive().screenWidth(context) * 0.01),
                     Text(
                       'pribadi'.tr,
-                      style: const TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: SizeData.fontSubHeaderSize),
                     )
                   ],
                 ),
@@ -103,13 +104,13 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
                   children: [
                     const Icon(
                       FeatherIcons.shoppingBag,
-                      size: 20,
+                      size: SizeData.iconSize,
                     ),
                     SizedBox(
                         width: AppResponsive().screenWidth(context) * 0.01),
                     Text(
                       'penjualan'.tr,
-                      style: const TextStyle(fontSize: 12),
+                      style: const TextStyle(fontSize: SizeData.fontSubHeaderSize),
                     ),
                   ],
                 ),

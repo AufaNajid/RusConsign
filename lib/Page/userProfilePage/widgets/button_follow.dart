@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/userProfilePage/user_profile_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ButtonFollow extends StatelessWidget {
@@ -26,6 +27,7 @@ class ButtonFollow extends StatelessWidget {
             color: controller.following.value
                 ? AppColors.activeIcon
                 : AppColors.activeIconType,
+                size: SizeData.iconSize,
           ),
           onPressed: () {
             controller.onFollow();

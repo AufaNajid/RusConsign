@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 import '../../../utils/app_responsive.dart';
 import '../../../utils/text_style.dart';
@@ -22,11 +23,13 @@ class DividerProfile extends StatelessWidget {
             Icon(
               FeatherIcons.user,
               color: AppColors.nonActiveIcon,
+              size: SizeData.iconSize,
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.04),
-            Text('profil'.tr,
-                style:
-                    AppTextStyle().subHeader(context, AppColors.description)),
+            Text(
+              'profil'.tr,
+              style: AppTextStyle().subHeader(context, AppColors.description),
+            ),
             const Spacer(),
             SizedBox(
               height: AppResponsive().screenWidth(context) * 0.070,
@@ -105,11 +108,13 @@ class DividerComponent extends StatelessWidget {
             Icon(
               icon,
               color: AppColors.nonActiveIcon,
+              size: SizeData.iconSize,
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.04),
-            Text(text,
-                style:
-                    AppTextStyle().subHeader(context, AppColors.description)),
+            Text(
+              text,
+              style: AppTextStyle().subHeader(context, AppColors.description),
+            ),
           ],
         ),
         Divider(

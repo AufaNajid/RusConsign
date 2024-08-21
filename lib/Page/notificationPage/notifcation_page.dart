@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/notificationPage/widgets/notification_card.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -14,13 +15,15 @@ class NotificationPage extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: Icon(
-              FeatherIcons.chevronLeft,
-              color: AppColors.borderIcon,
-            )),
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(
+            FeatherIcons.chevronLeft,
+            color: AppColors.borderIcon,
+            size: SizeData.iconSize,
+          ),
+        ),
         title: Text(
           'notifikasi'.tr,
           style: AppTextStyle().title(context, AppColors.titleLine),
@@ -34,6 +37,7 @@ class NotificationPage extends StatelessWidget {
             icon: const Icon(
               FeatherIcons.trash2,
               color: AppColors.button1,
+              size: SizeData.iconSize,
             ),
           ),
         ],

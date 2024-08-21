@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ButtonIconWidget extends StatelessWidget {
@@ -23,6 +24,7 @@ class ButtonIconWidget extends StatelessWidget {
         icon: Icon(
           icon,
           color: AppColors.activeIconType,
+          size: SizeData.iconSize,
         ),
         onPressed: () {
           Get.toNamed('/chatpage');

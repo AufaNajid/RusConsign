@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/profilePage/profile_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 class FilterButtonSeller extends StatelessWidget {
   final String text;
@@ -35,8 +36,10 @@ class FilterButtonSeller extends StatelessWidget {
               ),
             ),
             fixedSize: MaterialStatePropertyAll(
-              Size(AppResponsive().screenWidth(context) * 0.290,
-                  AppResponsive().screenWidth(context) * 0.04),
+              Size(
+                AppResponsive().screenWidth(context) * 0.290,
+                AppResponsive().screenWidth(context) * 0.04,
+              ),
             ),
           ),
           icon: Icon(
@@ -51,7 +54,7 @@ class FilterButtonSeller extends StatelessWidget {
               color: filterButtonController.selectedIndex == index
                   ? AppColors.textButton1
                   : AppColors.description,
-              fontSize: 12,
+              fontSize: SizeData.fontSubHeaderSize,
             ),
           ),
           onPressed: () {

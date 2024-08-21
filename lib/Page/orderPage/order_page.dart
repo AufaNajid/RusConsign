@@ -9,6 +9,7 @@ import 'package:rusconsign/Page/orderPage/widgets/on_process_card.dart';
 import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'widgets/filter_order_button.dart';
@@ -21,7 +22,7 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime futureDate = DateTime.now().add(Duration(days: 2));
+    DateTime futureDate = DateTime.now().add(const Duration(days: 2));
 
     String dayName = DateFormat('EEEE').format(futureDate);
     return Scaffold(
@@ -34,6 +35,7 @@ class OrderPage extends StatelessWidget {
           icon: Icon(
             FeatherIcons.chevronLeft,
             color: AppColors.borderIcon,
+            size: SizeData.iconSize,
           ),
         ),
         title: Text(
@@ -49,6 +51,7 @@ class OrderPage extends StatelessWidget {
             icon: Icon(
               FeatherIcons.messageCircle,
               color: AppColors.borderIcon,
+              size: SizeData.iconSize,
             ),
           ),
         ],

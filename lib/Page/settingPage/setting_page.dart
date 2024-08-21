@@ -10,6 +10,7 @@ import 'package:rusconsign/Page/settingPage/widgets/profile_setting.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 import '../../utils/app_responsive.dart';
@@ -33,9 +34,10 @@ class SettingPage extends StatelessWidget {
       body: Obx(() {
         if (settingController.isLoading.value) {
           return const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.hargaStat,
-              ));
+            child: CircularProgressIndicator(
+              color: AppColors.hargaStat,
+            ),
+          );
         } else {
           return SingleChildScrollView(
             child: Padding(
@@ -56,8 +58,10 @@ class SettingPage extends StatelessWidget {
                       DividerComponent(
                           icon: FeatherIcons.bell, text: 'notifikasi'.tr),
                       NotificationSetting(
-                        iSwitched: settingController.isNotificationSwitched.value,
-                        toggleSwitch: settingController.toggleNotificationSwitch,
+                        iSwitched:
+                            settingController.isNotificationSwitched.value,
+                        toggleSwitch:
+                            settingController.toggleNotificationSwitch,
                       ),
                     ],
                   ),
@@ -67,7 +71,8 @@ class SettingPage extends StatelessWidget {
                       DividerComponent(
                           icon: FeatherIcons.aperture, text: 'preferensi'.tr),
                       PreferenceSetting(
-                          isSwitched: settingController.isDarkModeSwitched.value,
+                          isSwitched:
+                              settingController.isDarkModeSwitched.value,
                           toggleSwitch: settingController.toggleDarkModeSwitch),
                     ],
                   ),
@@ -86,6 +91,7 @@ class SettingPage extends StatelessWidget {
                       icon: const Icon(
                         FeatherIcons.logOut,
                         color: AppColors.activeIconType,
+                        size: SizeData.iconSize,
                       ),
                       onPressed: () {
                         loginOption.logout();
@@ -93,18 +99,20 @@ class SettingPage extends StatelessWidget {
                       },
                       style: ButtonStyle(
                         elevation: const MaterialStatePropertyAll(0),
-                        padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+                        padding:
+                            const MaterialStatePropertyAll(EdgeInsets.zero),
                         shape: MaterialStatePropertyAll(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4),
                           ),
                         ),
                         backgroundColor:
-                        const MaterialStatePropertyAll(AppColors.button1),
+                            const MaterialStatePropertyAll(AppColors.button1),
                       ),
                       label: Text(
                         'keluar'.tr,
-                        style: AppTextStyle().header(context, AppColors.textButton1),
+                        style: AppTextStyle()
+                            .header(context, AppColors.textButton1),
                       ),
                     ),
                   ),
@@ -113,7 +121,6 @@ class SettingPage extends StatelessWidget {
             ),
           );
         }
-
       }),
     );
   }

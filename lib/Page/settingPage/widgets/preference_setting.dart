@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/Page/settingPage/widgets/dropdown_lang.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class PreferenceSetting extends StatelessWidget {
@@ -35,7 +36,7 @@ class PreferenceSetting extends StatelessWidget {
                   settingController.isDarkModeSwitched.value
                       ? FeatherIcons.toggleRight
                       : FeatherIcons.toggleLeft,
-                  size: 30,
+                  size: SizeData.iconToggleSwitchSize,
                   color: settingController.isDarkModeSwitched.value
                       ? AppColors.hargaStat
                       : AppColors.borderIcon,

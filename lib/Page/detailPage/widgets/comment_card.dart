@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/detailPage/detail_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class CommentCard extends StatelessWidget {
@@ -91,12 +92,12 @@ class CommentCard extends StatelessWidget {
                           const Icon(
                             Icons.star,
                             color: AppColors.bintang,
-                            size: 18,
+                            size: SizeData.iconStarInsideSize,
                           ),
                           Icon(
                             Icons.star_border_rounded,
                             color: AppColors.borderIcon,
-                            size: 20,
+                            size: SizeData.iconSize,
                           ),
                         ],
                       ),
@@ -130,7 +131,7 @@ class CommentCard extends StatelessWidget {
                                     color: controller.thumbsDownClicked.value
                                         ? AppColors.hargaStat
                                         : AppColors.titleLine,
-                                    size: 20,
+                                    size: SizeData.iconSize,
                                   ),
                                 ),
                               ),
@@ -156,7 +157,7 @@ class CommentCard extends StatelessWidget {
                                     color: controller.thumbsDownClicked.value
                                         ? AppColors.hargaStat
                                         : AppColors.titleLine,
-                                    size: 20,
+                                    size: SizeData.iconSize,
                                   ),
                                 ),
                               ),

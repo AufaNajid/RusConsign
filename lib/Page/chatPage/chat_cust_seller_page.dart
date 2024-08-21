@@ -6,6 +6,7 @@ import 'package:rusconsign/Page/chatPage/chat_controller.dart';
 import 'package:rusconsign/Page/chatPage/widgets/custom_app_bar.dart';
 import 'package:rusconsign/Page/chatPage/widgets/textfield_chat.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import '../../authentication/widget/message_item.dart';
 import '../../utils/app_responsive.dart';
 import '../../utils/colors.dart';
@@ -56,7 +57,8 @@ class ChatPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                     child: Container(
                       constraints: BoxConstraints(
                           maxWidth: AppResponsive().screenWidth(context) * 0.7),
@@ -69,18 +71,19 @@ class ChatPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           controller.pickedImage.value != null
-                          ?  ClipRRect(
-                            borderRadius:  const BorderRadius.all(Radius.circular(10)),
-                            child: Image.file(
-                              controller.pickedImage.value!,
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                          :  Text(
-                            "message",
-                            style: AppTextStyle()
-                                .description(context, AppColors.description),
-                          ),
+                              ? ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
+                                  child: Image.file(
+                                    controller.pickedImage.value!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )
+                              : Text(
+                                  "message",
+                                  style: AppTextStyle().description(
+                                      context, AppColors.description),
+                                ),
                           Text(
                             DateTime.now().toString().substring(11, 16),
                             style: AppTextStyle()
@@ -93,13 +96,15 @@ class ChatPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 80,)
+            const SizedBox(
+              height: 80,
+            )
           ],
         ),
       ),
       bottomSheet: Container(
           width: double.infinity,
-          height: AppResponsive().screenHeight(context) * 0.090,
+          height: AppResponsive().screenWidth(context) * 0.180,
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
           decoration: BoxDecoration(
             color: AppColors.background,
@@ -113,26 +118,29 @@ class ChatPage extends StatelessWidget {
             ],
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               IconButton(
                 onPressed: controller.pickImage,
                 icon: const Icon(
                   FeatherIcons.plus,
-                  size: 30,
+                  size: SizeData.iconSize + 4,
                 ),
               ),
               const Expanded(
-                  child: TextFieldInputChat(hintText: "Masukkan Pesan")),
+                child: TextFieldInputChat(hintText: "Masukkan Pesan"),
+              ),
               GestureDetector(
                 onTap: () {},
                 child: ClipOval(
                   child: Container(
-                    height: AppResponsive().screenHeight(context) * 0.25,
-                    width: AppResponsive().screenWidth(context) * 0.15,
+                    height: AppResponsive().screenWidth(context) * 0.12,
+                    width: AppResponsive().screenWidth(context) * 0.12,
                     decoration: const BoxDecoration(color: AppColors.button1),
                     child: const Icon(
                       Icons.send,
-                      size: 25,
+                      size: SizeData.iconSize,
                       color: AppColors.activeIconType,
                     ),
                   ),
@@ -143,4 +151,3 @@ class ChatPage extends StatelessWidget {
     );
   }
 }
-

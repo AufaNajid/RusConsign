@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import '../../../utils/app_responsive.dart';
 import '../../../utils/colors.dart';
 import '../user_profile_controller.dart';
@@ -35,8 +36,10 @@ class FilterButton extends StatelessWidget {
               ),
             ),
             fixedSize: MaterialStatePropertyAll(
-              Size(AppResponsive().screenWidth(context) * 0.290,
-                  AppResponsive().screenWidth(context) * 0.04),
+              Size(
+                AppResponsive().screenWidth(context) * 0.290,
+                AppResponsive().screenWidth(context) * 0.04,
+              ),
             ),
           ),
           icon: Icon(
@@ -44,6 +47,7 @@ class FilterButton extends StatelessWidget {
             color: filterButtonController.selectedIndex == index
                 ? AppColors.activeIconType
                 : AppColors.nonActiveIcon,
+                size: SizeData.iconSize,
           ),
           label: Text(
             text,
@@ -51,7 +55,7 @@ class FilterButton extends StatelessWidget {
               color: filterButtonController.selectedIndex == index
                   ? AppColors.textButton1
                   : AppColors.description,
-              fontSize: 12,
+              fontSize: SizeData.fontSubHeaderSize,
             ),
           ),
           onPressed: () {

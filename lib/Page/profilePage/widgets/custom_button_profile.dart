@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ButtonProfile extends StatelessWidget {
@@ -31,17 +32,25 @@ class ButtonProfile extends StatelessWidget {
         },
         child: Row(
           children: [
-            Icon(icon, color: AppColors.description),
-            const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+            Icon(
+              icon,
+              color: AppColors.description,
+              size: SizeData.iconSize,
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+            ),
             Expanded(
               child: Text(
                 text,
-                style: AppTextStyle().description(context, AppColors.description),
+                style:
+                    AppTextStyle().description(context, AppColors.description),
               ),
             ),
             Icon(
               FeatherIcons.chevronRight,
               color: AppColors.description,
+              size: SizeData.iconSize,
             )
           ],
         ),

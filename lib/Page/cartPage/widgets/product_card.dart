@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/money_format.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProductCardCart extends StatelessWidget {
@@ -69,31 +70,32 @@ class ProductCardCart extends StatelessWidget {
                               children: [
                                 Text(
                                   "Gantungan Kunci (Key Chain) Boneka unik",
-                                  style: AppTextStyle()
-                                      .descriptionBold(context, AppColors.titleLine),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
+                                  style: AppTextStyle().descriptionBold(
+                                      context, AppColors.titleLine),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ],
                             ),
                             Row(
-                                children: [
-                              SizedBox(
-                                height: 25,
-                                width: 25,
-                                child: ClipOval(
-                                  child: Image.network(
-                                    profileImagePath,
-                                    fit: BoxFit.cover,
+                              children: [
+                                SizedBox(
+                                  height: 25,
+                                  width: 25,
+                                  child: ClipOval(
+                                    child: Image.network(
+                                      profileImagePath,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Text(
-                                sellerUsername,
-                                style: AppTextStyle()
-                                    .textInfo(context, AppColors.description),
-                              ),
-                            ].withSpaceBetween(width: 5)),
+                                Text(
+                                  sellerUsername,
+                                  style: AppTextStyle()
+                                      .textInfo(context, AppColors.description),
+                                ),
+                              ].withSpaceBetween(width: 5),
+                            ),
                             Row(
                               children: [
                                 Stack(
@@ -102,19 +104,19 @@ class ProductCardCart extends StatelessWidget {
                                     const Icon(
                                       Icons.star,
                                       color: AppColors.bintang,
-                                      size: 18,
+                                      size: SizeData.iconStarInsideSize,
                                     ),
                                     Icon(
                                       Icons.star_border_rounded,
                                       color: AppColors.borderIcon,
-                                      size: 20,
+                                      size: SizeData.iconSize,
                                     ),
                                   ],
                                 ),
                                 Text(
                                   rating.toString(),
-                                  style: AppTextStyle()
-                                      .textInfoBold(context, AppColors.description),
+                                  style: AppTextStyle().textInfoBold(
+                                      context, AppColors.description),
                                 ),
                               ],
                             ),
@@ -127,8 +129,8 @@ class ProductCardCart extends StatelessWidget {
                                 ),
                                 Text(
                                   MoneyFormat.format(price),
-                                  style: AppTextStyle()
-                                      .textInfoBold(context, AppColors.hargaStat),
+                                  style: AppTextStyle().textInfoBold(
+                                      context, AppColors.hargaStat),
                                 ),
                               ],
                             )
@@ -145,13 +147,14 @@ class ProductCardCart extends StatelessWidget {
                     children: [
                       Text(
                         'jumlah'.tr,
-                        style: AppTextStyle().textInfo(context, AppColors.description),
+                        style: AppTextStyle()
+                            .textInfo(context, AppColors.description),
                         textAlign: TextAlign.start,
                       ),
                       const Spacer(),
                       Text('Subtotal'.tr,
-                          style:
-                              AppTextStyle().textInfo(context, AppColors.description)),
+                          style: AppTextStyle()
+                              .textInfo(context, AppColors.description)),
                     ],
                   ),
                   Row(
@@ -171,7 +174,7 @@ class ProductCardCart extends StatelessWidget {
                                         child: Icon(
                                       FeatherIcons.minus,
                                       color: AppColors.textButton2,
-                                      size: 18,
+                                      size: SizeData.iconCartQuantitySize,
                                     ))),
                               ),
                             ),
@@ -189,8 +192,8 @@ class ProductCardCart extends StatelessWidget {
                               child: Center(
                                 child: Text(
                                   quantity.toString(),
-                                  style: AppTextStyle()
-                                      .descriptionBold(context, AppColors.description),
+                                  style: AppTextStyle().descriptionBold(
+                                      context, AppColors.description),
                                 ),
                               ),
                             ),
@@ -208,7 +211,7 @@ class ProductCardCart extends StatelessWidget {
                                     child: Icon(
                                       FeatherIcons.plus,
                                       color: AppColors.textButton2,
-                                      size: 18,
+                                      size: SizeData.iconCartQuantitySize,
                                     ),
                                   ),
                                 ),
@@ -220,7 +223,8 @@ class ProductCardCart extends StatelessWidget {
                       const Spacer(),
                       Text(
                         MoneyFormat.format(subtotalValue),
-                        style: AppTextStyle().title(context, AppColors.hargaStat),
+                        style:
+                            AppTextStyle().title(context, AppColors.hargaStat),
                       ),
                     ],
                   ),

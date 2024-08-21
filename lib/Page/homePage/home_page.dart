@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,7 @@ import 'package:rusconsign/authentication/controllers/auth_login_controller.dart
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class HomePage extends StatelessWidget {
@@ -60,7 +62,7 @@ class HomePage extends StatelessWidget {
                         child: Icon(
                           FeatherIcons.messageCircle,
                           color: AppColors.borderIcon,
-                          size: 24,
+                          size: SizeData.iconSize,
                         ),
                       ),
                     ],
@@ -90,34 +92,32 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: AppResponsive().screenWidth(context) * 0.75,
-                            height: AppResponsive().screenWidth(context) * 0.13,
-                            child: TextField(
-                              controller: controller.namaBarangController,
-                              cursorColor: AppColors.hargaStat,
-                              style: AppTextStyle().descriptionBold(
-                                  context, AppColors.description),
-                              decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                  horizontal: 10,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(6),
-                                  borderSide: BorderSide.none,
-                                ),
-                                filled: true,
-                                fillColor: AppColors.cardIconFill,
-                                hintText: 'cari'.tr,
-                                hintStyle: AppTextStyle().description(
+                          Expanded(
+                              child: TextField(
+                                controller: controller.namaBarangController,
+                                cursorColor: AppColors.hargaStat,
+                                style: AppTextStyle().descriptionBold(
                                     context, AppColors.description),
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: (AppResponsive().screenWidth(context) * 0.1) / 2,
+                                    horizontal: 10,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(6),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  filled: true,
+                                  fillColor: AppColors.cardIconFill,
+                                  hintText: 'cari'.tr,
+                                  hintStyle: AppTextStyle().description(
+                                      context, AppColors.description),
+                                ),
+                                textAlign: TextAlign.left,
                               ),
-                              textAlign: TextAlign.left,
-                            ),
                           ),
-                          const Spacer(),
                           SizedBox(
                             width: AppResponsive().screenWidth(context) * 0.13,
                             height: AppResponsive().screenWidth(context) * 0.13,
@@ -135,13 +135,13 @@ class HomePage extends StatelessWidget {
                                   child: Icon(
                                     FeatherIcons.search,
                                     color: AppColors.borderIcon,
-                                    size: 20,
+                                    size: SizeData.iconSize,
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ],
+                        ].withSpaceBetween(width: 10),
                       ),
                     ].withSpaceBetween(height: 16),
                   ),
