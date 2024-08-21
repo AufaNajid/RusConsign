@@ -5,6 +5,7 @@ import 'package:rusconsign/Page/checkoutPage/checkout_page_controller.dart';
 import 'package:rusconsign/Page/locationPage/widgets/location_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 import '../../utils/text_style.dart';
 
@@ -16,7 +17,12 @@ class LocationPage extends StatelessWidget {
     final CheckoutPageController controller = Get.put(CheckoutPageController());
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: CommonAppBar(title: 'lokasiPertemuan'.tr, route: () { Get.back(); },),
+      appBar: CommonAppBar(
+        title: 'lokasiPertemuan'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         child: Column(
@@ -37,7 +43,7 @@ class LocationPage extends StatelessWidget {
                     child: Material(
                       color: AppColors.cardIconFill,
                       child: Icon(
-                        size: 20,
+                        size: SizeData.iconSize,
                         FeatherIcons.mapPin,
                         color: AppColors.nonActiveIcon,
                       ),
@@ -51,12 +57,14 @@ class LocationPage extends StatelessWidget {
                     children: [
                       Text(
                         'SMK Raden Umar Said',
-                        style: AppTextStyle().subHeader(context, AppColors.description),
+                        style: AppTextStyle()
+                            .subHeader(context, AppColors.description),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         'Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333',
-                        style: AppTextStyle().textInfo(context, AppColors.titleLine),
+                        style: AppTextStyle()
+                            .textInfo(context, AppColors.titleLine),
                       ),
                       const SizedBox(height: 5),
                     ],
@@ -68,16 +76,17 @@ class LocationPage extends StatelessWidget {
                   icon: const Icon(
                     FeatherIcons.check,
                     color: AppColors.activeIcon,
-                    size: 20,
+                    size: SizeData.iconSize,
                   ),
                   style: ButtonStyle(
                     backgroundColor:
                         MaterialStatePropertyAll(AppColors.cardIconFill),
                     side: const MaterialStatePropertyAll(
                       BorderSide(
-                          color: AppColors.button1,
-                          style: BorderStyle.solid,
-                          width: 1),
+                        color: AppColors.button1,
+                        style: BorderStyle.solid,
+                        width: 1,
+                      ),
                     ),
                     shape: MaterialStatePropertyAll(
                       RoundedRectangleBorder(

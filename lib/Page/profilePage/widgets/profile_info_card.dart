@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProfileInfoCard extends StatelessWidget {
@@ -34,22 +36,20 @@ class ProfileInfoCard extends StatelessWidget {
                   child: Icon(
                     icon,
                     color: AppColors.nonActiveIcon,
-                    size: 20,
+                    size: SizeData.iconSize,
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 10),
             Text(
               title,
               style: AppTextStyle().textInfoBold(context, AppColors.description),
             ),
-            const SizedBox(height: 10),
             Text(
               data,
               style: AppTextStyle().descriptionBold(context, AppColors.hargaStat),
             )
-          ],
+          ].withSpaceBetween(height: 10),
         ),
       ),
     );

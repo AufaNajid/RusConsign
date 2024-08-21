@@ -11,7 +11,12 @@ class ChatListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: CommonAppBar(title: 'chat'.tr, route: () { Get.back(); },),
+      appBar: CommonAppBar(
+        title: 'chat'.tr,
+        route: () {
+          Get.back();
+        },
+      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: ListView.separated(

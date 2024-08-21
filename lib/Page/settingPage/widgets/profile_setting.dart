@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 import '../../../utils/app_responsive.dart';
 import '../../../utils/colors.dart';
@@ -19,7 +19,7 @@ class ProfileSetting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final img = "https://rusconsign.com";
+    const img = "https://rusconsign.com";
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,9 +28,11 @@ class ProfileSetting extends StatelessWidget {
           children: [
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
-              child: Text('fotoProfil'.tr,
-                  style: AppTextStyle()
-                      .textInfoBold(context, AppColors.description)),
+              child: Text(
+                'fotoProfil'.tr,
+                style:
+                    AppTextStyle().textInfoBold(context, AppColors.description),
+              ),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Column(
@@ -40,7 +42,6 @@ class ProfileSetting extends StatelessWidget {
                   () {
                     final imageUrl = settingController.imageUrl.value;
                     final pickedImage = settingController.pickedImage.value;
-
                     return SizedBox(
                       width: 100,
                       height: 100,
@@ -242,6 +243,7 @@ class ProfileSetting extends StatelessWidget {
                         color: settingController.isShow.value
                             ? AppColors.activeIcon
                             : AppColors.nonActiveIcon,
+                            size: SizeData.iconSize,
                       ),
                     ),
                     contentPadding: const EdgeInsets.symmetric(

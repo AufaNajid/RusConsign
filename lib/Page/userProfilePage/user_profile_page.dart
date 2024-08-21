@@ -53,12 +53,13 @@ class UserProfilePage extends StatelessWidget {
                         ),
                         Text(
                           'Raihan Maulana',
-                          style: AppTextStyle().title(context, AppColors.titleLine),
+                          style: AppTextStyle()
+                              .title(context, AppColors.titleLine),
                         ),
                         Text(
                           'raihanmaulana084@gmail.com',
-                          style:
-                              AppTextStyle().description(context, AppColors.description),
+                          style: AppTextStyle()
+                              .description(context, AppColors.description),
                         ),
                       ].withSpaceBetween(height: 10),
                     ),
@@ -92,7 +93,8 @@ class UserProfilePage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         'afenuihidhiad andiad idanduand oawkdne vknma coijcjcinadin acnincanc inanic iadiand adiandoandiandiand adianndiandianidad iadniandinadina diandiandianda diandiandia',
-                        style: AppTextStyle().textInfo(context, AppColors.description),
+                        style: AppTextStyle()
+                            .textInfo(context, AppColors.description),
                         textAlign: TextAlign.center,
                         maxLines: 5,
                         overflow: TextOverflow.ellipsis,
@@ -121,7 +123,8 @@ class UserProfilePage extends StatelessWidget {
                     children: [
                       Text(
                         'halamanP&J'.tr,
-                        style: AppTextStyle().subHeader(context, AppColors.titleLine),
+                        style: AppTextStyle()
+                            .subHeader(context, AppColors.titleLine),
                       ),
                       Row(
                         children: [
@@ -148,16 +151,18 @@ class UserProfilePage extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      SizedBox(
-                        width: AppResponsive().screenWidth(context) * 0.75,
-                        height: 50,
+                      Expanded(
                         child: TextField(
                           cursorColor: AppColors.hargaStat,
                           style: AppTextStyle()
                               .descriptionBold(context, AppColors.description),
                           decoration: InputDecoration(
-                            contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical:
+                                    (AppResponsive().screenWidth(context) *
+                                            0.1) /
+                                        2,
+                                horizontal: 10),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(6),
                               borderSide: BorderSide.none,
@@ -171,24 +176,24 @@ class UserProfilePage extends StatelessWidget {
                           textAlign: TextAlign.left,
                         ),
                       ),
-                      const Spacer(),
                       SizedBox(
-                        width: 50,
-                        height: 50,
+                        width: AppResponsive().screenWidth(context) * 0.13,
+                        height: AppResponsive().screenWidth(context) * 0.13,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(6),
                           child: Material(
-                              color: AppColors.cardIconFill,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Icon(
-                                  FeatherIcons.search,
-                                  color: AppColors.borderIcon,
-                                ),
-                              )),
+                            color: AppColors.cardIconFill,
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Icon(
+                                FeatherIcons.search,
+                                color: AppColors.borderIcon,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ],
+                    ].withSpaceBetween(width: 10),
                   ),
                   Obx(
                     () {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 import '../../../utils/colors.dart';
 
@@ -25,19 +27,22 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         icon: const Icon(FeatherIcons.chevronLeft),
         onPressed: onBackPressed,
-        iconSize: 30,
+        iconSize: SizeData.iconSize,
       ),
       title: Row(
         children: [
           ClipOval(
             child: Image.network(
               imagepath,
-              width: 40,
-              height: 40,
+              width: AppResponsive().screenWidth(context) * 0.09,
+              height: AppResponsive().screenWidth(context) * 0.09,
               fit: BoxFit.cover,
             ),
           ),
-          Text(title, style: AppTextStyle().header(context, AppColors.titleLine)),
+          Text(
+            title,
+            style: AppTextStyle().header(context, AppColors.titleLine),
+          ),
         ].withSpaceBetween(width: 5),
       ),
     );
@@ -46,5 +51,3 @@ class CustomAppBarChat extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-
-

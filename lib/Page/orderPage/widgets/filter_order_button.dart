@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 class FilterOrderButton extends StatelessWidget {
   final String text;
@@ -39,7 +40,7 @@ class FilterOrderButton extends StatelessWidget {
         ),
       ),
       icon: Icon(
-        size: 20,
+        size: SizeData.iconSize,
         icon,
         color: filterOrderController.selectedIndex == index
             ? AppColors.activeIconType
@@ -51,7 +52,7 @@ class FilterOrderButton extends StatelessWidget {
           color: filterOrderController.selectedIndex == index
               ? AppColors.textButton1
               : AppColors.description,
-          fontSize: 11,
+          fontSize: SizeData.fontDescriptionSize,
         ),
       ),
       onPressed: () {

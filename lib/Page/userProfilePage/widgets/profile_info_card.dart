@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProfileInfoCard extends StatelessWidget {
@@ -33,6 +34,7 @@ class ProfileInfoCard extends StatelessWidget {
                   child: Icon(
                     icon,
                     color: AppColors.nonActiveIcon,
+                    size: SizeData.iconSize,
                   ),
                 ),
               ),

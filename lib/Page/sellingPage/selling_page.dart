@@ -7,7 +7,6 @@ import 'package:rusconsign/Page/sellingPage/selling_page_controller.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/cancel_selling_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/not_paid_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/process_card.dart';
-import 'package:rusconsign/Page/sellingPage/widgets/review_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/selling_appbar.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/selling_filter_button.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -21,7 +20,7 @@ class SellingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime futureDate = DateTime.now().add(Duration(days: 2));
+    DateTime futureDate = DateTime.now().add(const Duration(days: 2));
 
     String dayName = DateFormat('EEEE').format(futureDate);
     return Scaffold(

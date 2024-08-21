@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
@@ -23,7 +24,7 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           onPressed: () {},
           icon: const Icon(
-            size: 20,
+            size: SizeData.iconSize,
             FeatherIcons.trash2,
             color: AppColors.activeIcon,
           ),
@@ -36,7 +37,7 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
             Get.toNamed("/chatlist");
           },
           icon: Icon(
-            size: 20,
+            size: SizeData.iconSize,
             FeatherIcons.messageCircle,
             color: AppColors.borderIcon,
           ),

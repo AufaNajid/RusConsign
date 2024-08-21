@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/homePage/home_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 class FilterButton extends StatelessWidget {
   final String text;
@@ -40,7 +41,7 @@ class FilterButton extends StatelessWidget {
         ),
       ),
       icon: Icon(
-        size: 20,
+        size: SizeData.iconSize,
         icon,
         color: filterButtonController.selectedIndex == index
             ? AppColors.activeIconType
@@ -52,7 +53,7 @@ class FilterButton extends StatelessWidget {
           color: filterButtonController.selectedIndex == index
               ? AppColors.textButton1
               : AppColors.description,
-          fontSize: 11,
+          fontSize: SizeData.fontDescriptionSize,
         ),
       ),
       onPressed: () {

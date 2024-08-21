@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class NotificationSetting extends StatelessWidget {
@@ -36,7 +37,7 @@ class NotificationSetting extends StatelessWidget {
                   settingController.isNotificationSwitched.value
                       ? FeatherIcons.toggleRight
                       : FeatherIcons.toggleLeft,
-                  size: 30,
+                  size: SizeData.iconToggleSwitchSize,
                   color: settingController.isNotificationSwitched.value
                       ? AppColors.hargaStat
                       : AppColors.borderIcon,
