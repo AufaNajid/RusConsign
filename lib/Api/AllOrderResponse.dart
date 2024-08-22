@@ -291,10 +291,10 @@ class User {
   String name;
   String email;
   dynamic emailVerifiedAt;
-  String bioDesc;
+  dynamic bioDesc;
   int mitraId;
   dynamic statusPembayaran;
-  String imageProfiles;
+  dynamic imageProfiles;
   DateTime createdAt;
   DateTime updatedAt;
 

@@ -3,6 +3,8 @@ import 'package:rusconsign/Page/addItemPage/add_item_form.dart';
 import 'package:rusconsign/Page/chatPage/chat_binding.dart';
 import 'package:rusconsign/Page/editdataproductPage/edit_data_product.dart';
 import 'package:rusconsign/Page/editdataproductPage/edit_data_product_binding.dart';
+import 'package:rusconsign/Page/giveRatingPage/binding/give_rating_binding.dart';
+import 'package:rusconsign/Page/giveRatingPage/page/give_rating_page.dart';
 import 'package:rusconsign/Page/productmanagePage/product_manage_binding.dart';
 import 'package:rusconsign/Page/productmanagePage/product_manage_page.dart';
 import 'package:rusconsign/Page/profilePage/profile_page_binding.dart';
@@ -59,6 +61,12 @@ List<GetPage> routes = [
     name: "/editdataproduct",
     page: () => EditDataProduct(idBarang: Get.arguments),
     binding: EditDataProductBinding(),
+  ),
+
+  GetPage(
+      name: "/giverating",
+      page: () => GiveRatingPage(),
+      binding: GiveRatingBinding()
   ),
 
   GetPage(

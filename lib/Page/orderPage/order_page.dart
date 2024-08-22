@@ -192,6 +192,7 @@ class OrderPage extends StatelessWidget {
                             itemBuilder: (context, index) {
                               final cod = orderController.productList[index];
                               return FinishCard(
+                                idBarang: cod.barang.id,
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
                                 profileImagePath: cod.mitra.imageProfile,

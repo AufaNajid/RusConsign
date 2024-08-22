@@ -152,7 +152,7 @@ class DetailPage extends GetView<DetailPageController> {
                               ],
                             ),
                             Text(
-                              state.barang.ratingBarang.toString(),
+                              controller.avgRating.toString(),
                               style: AppTextStyle()
                                   .subHeader(context, AppColors.description),
                             ),
@@ -319,7 +319,7 @@ class DetailPage extends GetView<DetailPageController> {
                                             ),
                                             const Spacer(),
                                             Text(
-                                              state.barang.mitra.penilaian
+                                              controller.avgRating
                                                   .toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(context,
@@ -419,7 +419,7 @@ class DetailPage extends GetView<DetailPageController> {
                               itemSize: 20,
                               maxRating: 5.0,
                               initialRating:
-                                  state.barang.ratingBarang.toDouble(),
+                                  controller.avgRating.toDouble(),
                               minRating: 0.0,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
@@ -445,27 +445,39 @@ class DetailPage extends GetView<DetailPageController> {
                         )
                       ],
                     ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        return CommentCard(
-                          imagePath: 'https://avatar.iran.liara.run/public',
-                          username: 'Muhammad Alfarezi',
-                          rating: 4.0,
-                          date: DateTime.now(),
-                          desc:
-                              'mndinadinaidn uwbndbwdnuiwd iwndiwdnw iwdbwd iwdnujwjdb iwdbuiwnduiw ijjdaosfmeai kakwmdiawdjaw dnadaw da wdiknawidaw diandiawdi awdawdada diamnd adnad adawndjawd diandi andjawd',
-                          like: 142,
-                          disLike: 12,
-                          onliked: () {
-                            () {};
+                    Obx((){
+                      if(controller.isLoading.value == true) {
+                        return const Center(
+                            child: CircularProgressIndicator(
+                              color: AppColors.hargaStat,
+                            ));
+                      } else if (controller.listKomen.isEmpty) {
+                        return Text('Belum ada Komentar');
+                      } else {
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: controller.listKomen.length,
+                          itemBuilder: (context, index) {
+                            final penilaian = controller.listKomen[index];
+                            return CommentCard(
+                              imagePath: 'https://avatar.iran.liara.run/public',
+                              username: penilaian.user.name,
+                              rating: penilaian.rate.toDouble(),
+                              date: DateTime.now(),
+                              desc: penilaian.komentar,
+                              like: 142,
+                              disLike: 12,
+                              onliked: () {
+                                    () {};
+                              },
+                              ondisliked: () {},
+                            );
                           },
-                          ondisliked: () {},
                         );
-                      },
-                    ),
+                      }
+                    }),
+
                   ].withSpaceBetween(height: 15),
                 ),
               ),
