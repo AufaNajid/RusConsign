@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:rusconsign/Api/KomentarResponse.dart';
 import 'package:rusconsign/Api/detail_barang_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Page/detailPage/service/detail_service.dart';
@@ -16,6 +18,8 @@ class DetailPageController extends GetxController
   var thumbsUpClicked = false.obs;
   var thumbsDownClicked = false.obs;
   var isAddCart = false.obs;
+  var listKomen = <Review>[].obs;
+  var avgRating = 0.0.obs;
 
   @override
   void onInit() {
@@ -24,6 +28,8 @@ class DetailPageController extends GetxController
     final productId = Get.arguments as int;
     loadData(productId);
     checkFavoriteStatus(productId);
+    fetchDataKomentar(productId);
+    avgRating.value;
   }
 
   void loadData(int productId) async {
@@ -35,6 +41,34 @@ class DetailPageController extends GetxController
       isLoading.value = false;
     }
     update();
+  }
+
+  void fetchDataKomentar(int productId) async {
+    isLoading.value = true;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final response = await http.get(
+      Uri.parse('https://rusconsign.com/api/komentar?barang_id=$productId'),
+      headers: <String, String>{
+        'Authorization': "Bearer $token",
+      },
+    );
+
+    if(response.statusCode == 200) {
+      KomentarResponse dataKomentar = komentarResponseFromJson(response.body);
+      listKomen.value = dataKomentar.reviews;
+      print("value rating ${dataKomentar.summary.avg}");
+
+      if (dataKomentar.summary.avg is int) {
+        avgRating.value = (dataKomentar.summary.avg as int).toDouble();
+      } else if (dataKomentar.summary.avg is double) {
+        avgRating.value = dataKomentar.summary.avg;
+      }
+
+      update();
+      print(avgRating);
+    }
+    isLoading.value = false;
   }
 
   void checkFavoriteStatus(int productId) async {

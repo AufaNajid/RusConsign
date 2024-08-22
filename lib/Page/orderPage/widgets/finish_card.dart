@@ -15,6 +15,7 @@ class FinishCard extends StatelessWidget {
   final double rating;
   final int totalProductPrice;
   final int quantity;
+  final int idBarang;
   final String paymentMethod;
   final String meetingLocation;
   final VoidCallback onGiveRating;
@@ -31,6 +32,7 @@ class FinishCard extends StatelessWidget {
     required this.paymentMethod,
     required this.meetingLocation,
     required this.onGiveRating,
+    required this.idBarang,
   }) : super(key: key);
 
   @override
@@ -226,7 +228,7 @@ class FinishCard extends StatelessWidget {
                   height: AppResponsive().screenWidth(context) * 0.080,
                   child: ElevatedButton(
                     onPressed: () {
-                      onGiveRating;
+                      Get.toNamed("/giverating", arguments: idBarang);
                     },
                     style: ButtonStyle(
                       elevation: const MaterialStatePropertyAll(0),
