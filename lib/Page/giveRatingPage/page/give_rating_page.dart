@@ -48,6 +48,27 @@ class GiveRatingPage extends StatelessWidget {
                       price: product.barang.harga,
                       quantity: product.barang.stock,
                       timeMeeting: product.barang.mitra.namaToko),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(5, (index) {
+                      return IconButton(
+                        icon: Icon(
+                          Icons.star,
+                          color: index < controller.selectedRating.value
+                              ? Colors.yellow
+                              : Colors.grey,
+                        ),
+                        onPressed: () {
+                          if (controller.selectedRating.value == index + 1) {
+                            controller.selectedRating.value = index;
+                          } else {
+                            controller.selectedRating.value = index + 1;
+                          }
+                          print('Selected Rating: ${controller.selectedRating.value}');
+                        },
+                      );
+                    }),
+                  ),
                   TextFieldGiveRating(
                       hintText: "Berikan Penilaian-mu! ",
                       controller: controller.penilaianController,
