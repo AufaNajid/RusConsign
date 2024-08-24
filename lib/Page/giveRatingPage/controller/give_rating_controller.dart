@@ -11,6 +11,7 @@ class GiveRatingController extends GetxController {
   final TextEditingController penilaianController = TextEditingController();
   RxBool isLoading = false.obs;
   var productDetail = Rxn<DetailBarangModel>();
+  RxInt selectedRating = 0.obs;
 
   @override
   void onInit() {
@@ -50,7 +51,7 @@ class GiveRatingController extends GetxController {
     request.headers['Authorization'] = "Bearer $token";
     request.fields['komentar'] = penilaianController.text;
     request.fields['barang_id'] = idBarang;
-    request.fields['rate'] = "4";
+    request.fields['rate'] = selectedRating.value.toString();
 
     var response = await request.send();
     print("Response status saat tambahkan komentar ${response.statusCode}");
