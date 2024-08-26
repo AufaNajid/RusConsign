@@ -113,7 +113,7 @@ class LocationPage extends StatelessWidget {
                   imagePath: pertemuan.gambarLokasi,
                   title: pertemuan.namaLokasi,
                   desc: pertemuan.descLokasi,
-                  onSelected: () {},
+                  index: index,
                 );
               },
             ),

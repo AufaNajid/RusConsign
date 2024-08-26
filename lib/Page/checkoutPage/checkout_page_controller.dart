@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/all_barang_response.dart';
+import 'package:rusconsign/Api/lokasi_by_id.dart';
 import 'package:rusconsign/Api/lokasi_response.dart';
 import 'package:rusconsign/Api/testing_payment.dart';
 import 'package:rusconsign/Page/webView/testing_web_view.dart';
@@ -21,6 +22,13 @@ class CheckoutPageController extends GetxController {
   RxBool isLoading = false.obs;
   var productDetail = Rxn<Barang>();
   var lokasi = <LokasiResponse>[].obs;
+  var detailLokasi = Rxn<LokasiById>();
+  var selectedLocationIndex = Rxn<int>();
+
+  void selectLocation(int index) {
+    selectedLocationIndex.value = index + 1;
+    fetchLokasiById(lokasi[index].id);
+  }
 
   var items = <Map<String, String>>[
     {'title': 'Dana', 'leading': 'assets/images/dana.svg'},
@@ -35,6 +43,7 @@ class CheckoutPageController extends GetxController {
     final productID = Get.arguments as int;
     fetchProduct(productID);
     fetchLokasi();
+    fetchLokasiById(1);
   }
 
   void selectPaymentMethod(int index) {
@@ -57,6 +66,18 @@ class CheckoutPageController extends GetxController {
 
     expanded.value = false;
     selectedPaymentMethod.refresh();
+  }
+
+  fetchLokasiById(int lokasiID) async {
+    isLoading(true);
+    final response = await http
+        .get(Uri.parse('https://rusconsign.com/api/lokasi/$lokasiID'));
+
+    if (response.statusCode == 200) {
+      LokasiById lokasiDetail =  lokasiByIdFromJson(response.body);
+      detailLokasi.value = lokasiDetail;
+    }
+    isLoading(false);
   }
 
   fetchProduct(int productID) async {
@@ -125,8 +146,7 @@ class CheckoutPageController extends GetxController {
     request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['barang_id'] = idProduct;
-    // request.fields['mitra_id'] = idMitra;
-    request.fields['lokasi_id'] = "1";
+    request.fields['lokasi_id'] = selectedLocationIndex.value?.toString() ?? "1";
     request.fields['quantity'] = "1";
 
     var response = await request.send();
