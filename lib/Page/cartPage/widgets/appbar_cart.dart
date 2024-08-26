@@ -17,7 +17,7 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
       surfaceTintColor: AppColors.background,
       backgroundColor: AppColors.background,
       title: Text(
-        'Keranjang'.tr,
+        'keranjang'.tr,
         style: AppTextStyle().title(context, AppColors.titleLine),
       ),
       actions: [

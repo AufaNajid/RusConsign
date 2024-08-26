@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
 import 'package:rusconsign/Page/detailPage/detail_page_controller.dart';
 import 'package:rusconsign/Page/detailPage/widgets/comment_card.dart';
 import 'package:rusconsign/utils/colors.dart';
@@ -17,6 +16,7 @@ import '../../utils/app_responsive.dart';
 
 class DetailPage extends GetView<DetailPageController> {
   DetailPage({Key? key, this.idProduct}) : super(key: key);
+  final DetailPageController ctr = Get.put(DetailPageController());
   int? idProduct;
 
   @override
@@ -319,8 +319,7 @@ class DetailPage extends GetView<DetailPageController> {
                                             ),
                                             const Spacer(),
                                             Text(
-                                              controller.avgRating
-                                                  .toString(),
+                                              controller.avgRating.toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(context,
                                                       AppColors.hargaStat),
@@ -418,8 +417,7 @@ class DetailPage extends GetView<DetailPageController> {
                               unratedColor: AppColors.nonActiveBar,
                               itemSize: 20,
                               maxRating: 5.0,
-                              initialRating:
-                                  controller.avgRating.toDouble(),
+                              initialRating: controller.avgRating.toDouble(),
                               minRating: 0.0,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
@@ -445,39 +443,46 @@ class DetailPage extends GetView<DetailPageController> {
                         )
                       ],
                     ),
-                    Obx((){
-                      if(controller.isLoading.value == true) {
-                        return const Center(
+                    Obx(
+                      () {
+                        if (controller.isLoading.value == true) {
+                          return const Center(
                             child: CircularProgressIndicator(
                               color: AppColors.hargaStat,
-                            ));
-                      } else if (controller.listKomen.isEmpty) {
-                        return Text('Belum ada Komentar');
-                      } else {
-                        return ListView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: controller.listKomen.length,
-                          itemBuilder: (context, index) {
-                            final penilaian = controller.listKomen[index];
-                            return CommentCard(
-                              imagePath: 'https://avatar.iran.liara.run/public',
-                              username: penilaian.user.name,
-                              rating: penilaian.rate.toDouble(),
-                              date: DateTime.now(),
-                              desc: penilaian.komentar,
-                              like: 142,
-                              disLike: 12,
-                              onliked: () {
-                                    () {};
-                              },
-                              ondisliked: () {},
-                            );
-                          },
-                        );
-                      }
-                    }),
-
+                            ),
+                          );
+                        } else if (controller.listKomen.isEmpty) {
+                          return Center(
+                            child: Text(
+                              'Belum ada Komentar',
+                              style: AppTextStyle()
+                                  .header(context, AppColors.description),
+                            ),
+                          );
+                        } else {
+                          return ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: controller.listKomen.length,
+                            itemBuilder: (context, index) {
+                              final penilaian = controller.listKomen[index];
+                              return CommentCard(
+                                imagePath:
+                                    'https://avatar.iran.liara.run/public',
+                                username: penilaian.user.name,
+                                rating: penilaian.rate.toDouble(),
+                                date: DateTime.now(),
+                                desc: penilaian.komentar,
+                                like: 142,
+                                disLike: 12,
+                                onliked: () {},
+                                ondisliked: () {},
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
                   ].withSpaceBetween(height: 15),
                 ),
               ),
@@ -504,7 +509,7 @@ class DetailPage extends GetView<DetailPageController> {
                       child: Obx(
                         () => GestureDetector(
                           onTap: () {
-                            () {};
+                            ctr.toogleCart(state!.barang.id);
                           },
                           child: Icon(
                             size: SizeData.iconSize,
@@ -531,7 +536,8 @@ class DetailPage extends GetView<DetailPageController> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6)),
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
                                 backgroundColor: AppColors.background,
                                 title: Text(
                                   'Stok Produk Telah Habis!'.tr,

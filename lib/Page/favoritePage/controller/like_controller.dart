@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,7 +42,6 @@ class LikeController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
     if (isItemFavorite(idBarang)) {
-      // If already favorite, remove it
       final response = await http.delete(
         Uri.parse('https://rusconsign.com/api/likes/$idBarang'),
         headers: <String, String>{

@@ -95,28 +95,31 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Expanded(
-                              child: TextField(
-                                controller: controller.namaBarangController,
-                                cursorColor: AppColors.hargaStat,
-                                style: AppTextStyle().descriptionBold(
-                                    context, AppColors.description),
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                    vertical: (AppResponsive().screenWidth(context) * 0.1) / 2,
-                                    horizontal: 10,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(6),
-                                    borderSide: BorderSide.none,
-                                  ),
-                                  filled: true,
-                                  fillColor: AppColors.cardIconFill,
-                                  hintText: 'cari'.tr,
-                                  hintStyle: AppTextStyle().description(
-                                      context, AppColors.description),
+                            child: TextField(
+                              controller: controller.namaBarangController,
+                              cursorColor: AppColors.hargaStat,
+                              style: AppTextStyle().descriptionBold(
+                                  context, AppColors.description),
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.symmetric(
+                                  vertical:
+                                      (AppResponsive().screenWidth(context) *
+                                              0.1) /
+                                          2,
+                                  horizontal: 10,
                                 ),
-                                textAlign: TextAlign.left,
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                  borderSide: BorderSide.none,
+                                ),
+                                filled: true,
+                                fillColor: AppColors.cardIconFill,
+                                hintText: 'cari'.tr,
+                                hintStyle: AppTextStyle().description(
+                                    context, AppColors.description),
                               ),
+                              textAlign: TextAlign.left,
+                            ),
                           ),
                           SizedBox(
                             width: AppResponsive().screenWidth(context) * 0.13,
@@ -127,10 +130,16 @@ class HomePage extends StatelessWidget {
                                 color: AppColors.cardIconFill,
                                 child: GestureDetector(
                                   onTap: () async {
-                                    String namaBarang =
-                                        controller.namaBarangController.text;
-                                    await controller.searchProduct(namaBarang);
-                                    controller.namaBarangController.clear();
+                                    if (controller
+                                        .namaBarangController.text.isNotEmpty) {
+                                      String namaBarang =
+                                          controller.namaBarangController.text;
+                                      await controller
+                                          .searchProduct(namaBarang);
+                                    }
+                                    else {
+                                      controller.fetchProduct(controller.selectedIndex);
+                                    }
                                   },
                                   child: Icon(
                                     FeatherIcons.search,

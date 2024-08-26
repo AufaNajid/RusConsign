@@ -32,7 +32,6 @@ class FavoriteCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print("id barang adalah $idBarang");
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       child: Card(

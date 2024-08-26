@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/addItemPage/add_item_form.dart';
+import 'package:rusconsign/Page/cartPage/cart_page_binding.dart';
 import 'package:rusconsign/Page/chatPage/chat_binding.dart';
 import 'package:rusconsign/Page/editdataproductPage/edit_data_product.dart';
 import 'package:rusconsign/Page/editdataproductPage/edit_data_product_binding.dart';
@@ -47,7 +48,7 @@ import 'package:rusconsign/Page/registerSeller/register_seller_waiting.dart';
 
 List<GetPage> routes = [
   GetPage(name: "/splash", page: () => const SplashScreen()),
-  GetPage(name: "/menu", page: () =>  Menu()),
+  GetPage(name: "/menu", page: () => Menu()),
   GetPage(name: "/favoritepage", page: () => const FavoritePage()),
   GetPage(name: "/chatlist", page: () => const ChatListPage()),
   GetPage(name: "/diskonpage", page: () => const DiscountPage()),
@@ -55,20 +56,21 @@ List<GetPage> routes = [
   GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
   GetPage(name: "/locationpage", page: () => const LocationPage()),
   GetPage(name: "/paymentdone", page: () => const PaymentDone()),
-  GetPage(name: "/cartpage", page: () => const CartPage()),
   GetPage(name: "/additemform", page: () => AddItemForm()),
+  GetPage(
+    name: "/cartpage",
+    page: () => const CartPage(),
+    binding: CartPageBinding(),
+  ),
   GetPage(
     name: "/editdataproduct",
     page: () => EditDataProduct(idBarang: Get.arguments),
     binding: EditDataProductBinding(),
   ),
-
   GetPage(
       name: "/giverating",
       page: () => GiveRatingPage(),
-      binding: GiveRatingBinding()
-  ),
-
+      binding: GiveRatingBinding()),
   GetPage(
     name: "/productmanagepage",
     page: () => ProductManagePage(),
