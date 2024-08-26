@@ -37,6 +37,7 @@ class ChekcoutPage extends StatelessWidget {
         } else {
           final product = controller.productDetail.value!;
           final mitra = product.mitra;
+          final lokasi = controller.detailLokasi.value!;
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -74,8 +75,9 @@ class ChekcoutPage extends StatelessWidget {
                         textAlign: TextAlign.start,
                       ),
                       LocationChekout(
-                          locationHeader: controller.titleLokasi.toString(),
-                          locationDetail: controller.descLokasi.toString()),
+                          locationHeader: lokasi.namaLokasi,
+                          locationDetail: lokasi.descLokasi
+                      ),
                     ].withSpaceBetween(height: 10),
                   ),
                   Column(

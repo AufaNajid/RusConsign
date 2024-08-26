@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
+import 'package:rusconsign/Page/checkoutPage/checkout_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -8,17 +10,18 @@ class LocationCard extends StatelessWidget {
   final String imagePath;
   final String title;
   final String desc;
-  final VoidCallback onSelected;
+  final int index;
 
   const LocationCard(
       {super.key,
       required this.imagePath,
       required this.title,
       required this.desc,
-      required this.onSelected});
+      required this.index});
 
   @override
   Widget build(BuildContext context) {
+    final CheckoutPageController locationController = Get.find();
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
@@ -69,16 +72,24 @@ class LocationCard extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
+                  Obx(() => IconButton(
+                    onPressed: () {
+                      locationController.selectLocation(index);
+                    },
+                    icon: Icon(
                       FeatherIcons.check,
                       size: SizeData.iconSize,
-                      color: AppColors.activeIconType,
+                      color: locationController.selectedLocationIndex == index + 1
+                      ? AppColors.activeIconType
+                      : AppColors.activeIcon,
                     ),
                     style: ButtonStyle(
                       backgroundColor:
-                          const MaterialStatePropertyAll(AppColors.button1),
+                      MaterialStatePropertyAll(
+                        locationController.selectedLocationIndex == index + 1
+                        ? AppColors.button1
+                        : AppColors.cardIconFill,
+                      ),
                       side: const MaterialStatePropertyAll(
                         BorderSide(
                             color: AppColors.button1,
@@ -91,7 +102,7 @@ class LocationCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                  )
+                  ))
                 ],
               )
             ],
