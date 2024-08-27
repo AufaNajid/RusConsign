@@ -55,4 +55,24 @@ class CartController extends GetxController {
     }
     isLoading(false);
   }
+
+  void removeFromCart(int idCart) async {
+    isLoading(true);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    final response = await http.delete(
+      Uri.parse("https://rusconsign.com/api/cart/$idCart"),
+      headers: <String, String>{
+        'Authorization': "Bearer $token",
+      },
+    );
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      fetchCart();
+    } else {
+      Get.snackbar("Error", "Failed to remove item from cart");
+    }
+
+    isLoading(false);
+  }
 }

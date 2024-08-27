@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/cartPage/controller/cart_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
@@ -12,6 +13,8 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CartController controller = Get.find();
+
     return AppBar(
       elevation: null,
       surfaceTintColor: AppColors.background,
@@ -22,15 +25,15 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            final idCart = controller.cartItems[controller.selectedIndex].cartsId;
+            controller.removeFromCart(idCart);
+          },
           icon: const Icon(
+            FeatherIcons.trash,
+            color: AppColors.button1,
             size: SizeData.iconSize,
-            FeatherIcons.trash2,
-            color: AppColors.activeIcon,
           ),
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          hoverColor: Colors.transparent,
         ),
         IconButton(
           onPressed: () {
@@ -41,9 +44,6 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
             FeatherIcons.messageCircle,
             color: AppColors.borderIcon,
           ),
-          highlightColor: Colors.transparent,
-          splashColor: Colors.transparent,
-          hoverColor: Colors.transparent,
         ),
       ],
     );

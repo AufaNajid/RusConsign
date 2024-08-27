@@ -18,6 +18,7 @@ class DetailPage extends GetView<DetailPageController> {
   DetailPage({Key? key, this.idProduct}) : super(key: key);
   final DetailPageController ctr = Get.put(DetailPageController());
   int? idProduct;
+  int? quantityProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -564,8 +565,13 @@ class DetailPage extends GetView<DetailPageController> {
                               );
                             });
                       } else {
-                        Get.toNamed('/checkoutpage',
-                            arguments: idProduct = state.barang.id);
+                        Get.toNamed(
+                          '/checkoutpage',
+                          arguments: {
+                            "idProduct" : state.barang.id,
+                            "quantityProduct" : state.barang.quantity,
+                            },
+                        );
                       }
                     },
                     style: ButtonStyle(

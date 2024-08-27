@@ -1,3 +1,5 @@
+// ignore_for_file: unrelated_type_equality_checks
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/checkoutPage/checkout_page_controller.dart';
@@ -16,6 +18,7 @@ class ChekcoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(CheckoutPageController());
+    final quantityTotal = controller.productCheckoutData["quantityProduct"];
     return Scaffold(
       appBar: CommonAppBar(
         title: 'checkout'.tr,
@@ -60,7 +63,7 @@ class ChekcoutPage extends StatelessWidget {
                         profileName: mitra.namaLengkap,
                         rating: product.ratingBarang.toDouble(),
                         price: product.harga,
-                        quantity: 1,
+                        quantity: controller.productCheckoutData["quantityProduct"],
                       ),
                     ].withSpaceBetween(height: 10),
                   ),
@@ -75,8 +78,8 @@ class ChekcoutPage extends StatelessWidget {
                         textAlign: TextAlign.start,
                       ),
                       LocationChekout(
-                          locationHeader: lokasi.namaLokasi,
-                          locationDetail: lokasi.descLokasi
+                        locationHeader: lokasi.namaLokasi,
+                        locationDetail: lokasi.descLokasi,
                       ),
                     ].withSpaceBetween(height: 10),
                   ),
@@ -99,11 +102,12 @@ class ChekcoutPage extends StatelessWidget {
                     children: [
                       Text(
                         'rincianPembayaran'.tr,
-                        style: AppTextStyle().header(context, AppColors.titleLine),
+                        style:
+                            AppTextStyle().header(context, AppColors.titleLine),
                         textAlign: TextAlign.start,
                       ),
                       PaymentDetail(
-                        subPrice: product.harga,
+                        subPrice: product.harga * quantityTotal,
                         adminPrice: 1000,
                       ),
                     ].withSpaceBetween(height: 10),
@@ -134,7 +138,9 @@ class ChekcoutPage extends StatelessWidget {
                     }
                   } else {
                     await controller.paymentTesting(
-                        controller.productDetail.value!.id.toString(), "1");
+                      controller.productDetail.value!.id.toString(),
+                      controller.productCheckoutData["quantityProduct"].toString(),
+                    );
                   }
                 },
                 style: ElevatedButton.styleFrom(
@@ -147,7 +153,8 @@ class ChekcoutPage extends StatelessWidget {
                 ),
                 child: Text(
                   'buatPesanan'.tr,
-                  style: AppTextStyle().subHeader(context, AppColors.background),
+                  style:
+                      AppTextStyle().subHeader(context, AppColors.background),
                 ),
               ),
             ),
