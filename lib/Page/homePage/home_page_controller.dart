@@ -10,7 +10,6 @@ class HomePageController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxString message = "".obs;
-  var searching = false.obs;
   var productList = <Barang>[].obs;
 
   int get selectedIndex => _selectedIndex.value;
@@ -39,6 +38,7 @@ class HomePageController extends GetxController {
     if (response.statusCode == 200) {
       AllBarangResponse data = allBarangResponseFromJson(response.body);
       productList.value = data.barangs;
+      namaBarangController.clear();
     } else {
       productList.clear();
     }
