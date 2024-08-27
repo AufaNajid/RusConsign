@@ -153,11 +153,12 @@ class OrderPage extends StatelessWidget {
                                 profileImagePath: cod.mitra.imageProfile,
                                 profileUsername: cod.mitra.namaToko,
                                 rating: cod.barang.ratingBarang.toDouble(),
-                                totalProductPrice: cod.barang.harga,
+                                totalProductPrice: int.parse(cod.grandTotal),
                                 quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
-                                onCancelProduct: () {},
+                                onCancelProduct: () {}, 
+                                idBarang: cod.barang.id,
                               );
                             },
                           );
@@ -175,12 +176,13 @@ class OrderPage extends StatelessWidget {
                                 profileImagePath: cod.mitra.imageProfile,
                                 profileUsername: cod.mitra.namaToko,
                                 rating: cod.barang.ratingBarang.toDouble(),
-                                totalProductPrice: cod.barang.harga,
+                                totalProductPrice: int.parse(cod.grandTotal),
                                 quantity: cod.quantity,
                                 timeMeeting: dayName,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
                                 onChatSeller: () {},
+                                idBarang: cod.barang.id,
                               );
                             },
                           );
@@ -198,7 +200,7 @@ class OrderPage extends StatelessWidget {
                                 profileImagePath: cod.mitra.imageProfile,
                                 profileUsername: cod.mitra.namaLengkap,
                                 rating: cod.barang.ratingBarang.toDouble(),
-                                totalProductPrice: cod.barang.harga,
+                                totalProductPrice: int.parse(cod.grandTotal),
                                 quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
@@ -219,11 +221,11 @@ class OrderPage extends StatelessWidget {
                                 profileImagePath: cod.mitra.imageProfile,
                                 profileUsername: cod.mitra.namaLengkap,
                                 rating: cod.barang.ratingBarang.toDouble(),
-                                totalProductPrice: cod.barang.harga,
+                                totalProductPrice: int.parse(cod.grandTotal),
                                 quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
-                                onGiveRating: () {},
+                                onGiveRating: () {}, idBarang: cod.barang.id,
                               );
                             },
                           );

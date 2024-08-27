@@ -34,15 +34,15 @@ class FavoriteCard extends StatelessWidget {
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
-      child: Card(
-        elevation: 0,
-        color: AppColors.cardIconFill,
-        margin: const EdgeInsets.symmetric(vertical: 6),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: GestureDetector(
-          onTap: () {
-            Get.toNamed("/detailpage", arguments: idBarang);
-          },
+      child: GestureDetector(
+        onTap: () {
+          Get.toNamed("/detailpage", arguments: idBarang);
+        },
+        child: Card(
+          elevation: 0,
+          color: AppColors.cardIconFill,
+          margin: const EdgeInsets.symmetric(vertical: 6),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
             child: Row(

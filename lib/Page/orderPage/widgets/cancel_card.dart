@@ -9,6 +9,7 @@ import 'package:rusconsign/utils/text_style.dart';
 
 class OrderCancelCard extends StatelessWidget {
   final String imagePath;
+  final int idBarang;
   final String title;
   final String profileImagePath;
   final String profileUsername;
@@ -30,7 +31,7 @@ class OrderCancelCard extends StatelessWidget {
     required this.quantity,
     required this.paymentMethod,
     required this.meetingLocation,
-    required this.onGiveRating,
+    required this.onGiveRating, required this.idBarang,
   }) : super(key: key);
 
   @override
@@ -48,7 +49,7 @@ class OrderCancelCard extends StatelessWidget {
         ),
         child: GestureDetector(
           onTap: () {
-            Get.toNamed("/detailpage");
+            Get.toNamed("/detailpage", arguments: idBarang);
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(

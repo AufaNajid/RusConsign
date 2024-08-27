@@ -166,9 +166,7 @@ class HomePage extends StatelessWidget {
                           'assets/images/item_carousel_2.png',
                         ].map((item) {
                           return GestureDetector(
-                            onTap: () {
-                              Get.toNamed("/diskonpage");
-                            },
+                            onTap: () {},
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(12),
                               child: Image.asset(
