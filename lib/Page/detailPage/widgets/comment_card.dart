@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:rusconsign/Page/detailPage/detail_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
@@ -105,7 +106,7 @@ class CommentCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      date.toString().substring(0, 16),
+                      DateFormat('dd MMMM yyyy').format(date),
                       style: AppTextStyle().textInfoBold(context, AppColors.description),
                     ),
                     const SizedBox(height: 5),

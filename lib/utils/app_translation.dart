@@ -172,6 +172,7 @@ class AppTranslation extends Translations {
           'belumAdaBarang': 'Belum Ada Barang',
           'gagalUbah': 'Gagal Ubah',
           'gagalUbahDesc': 'Anda perlu mengubah setidaknya 1 data',
+          'hapusFavoritePesan': 'Barang telah dihapus dari favorit',
         },
         'English': {
           'bahasa': 'Language',
@@ -341,6 +342,7 @@ class AppTranslation extends Translations {
           'belumAdaBarang': 'No Product Yet',
           'gagalUbah': 'Failed to Change',
           'gagalUbahDesc': 'You need to change at least 1 data',
+          'hapusFavoritePesan': 'Item has been removed from favorites',
         }
       };
 }

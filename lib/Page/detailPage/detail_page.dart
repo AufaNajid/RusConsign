@@ -472,7 +472,7 @@ class DetailPage extends GetView<DetailPageController> {
                                     'https://avatar.iran.liara.run/public',
                                 username: penilaian.user.name,
                                 rating: penilaian.rate.toDouble(),
-                                date: DateTime.now(),
+                                date: penilaian.createdAt,
                                 desc: penilaian.komentar,
                                 like: 142,
                                 disLike: 12,

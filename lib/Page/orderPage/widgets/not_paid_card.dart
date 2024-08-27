@@ -10,6 +10,7 @@ import '../../../utils/text_style.dart';
 
 class NotPaidCard extends StatelessWidget {
   final String imagePath;
+  final int idBarang;
   final String title;
   final String profileImagePath;
   final String profileUsername;
@@ -33,7 +34,7 @@ class NotPaidCard extends StatelessWidget {
     required this.paymentMethod,
     required this.meetingLocation,
     required this.onCancelProduct,
-    required this.idPesanan,
+    required this.idPesanan, required this.idBarang,
   }) : super(key: key);
 
   @override
@@ -52,7 +53,7 @@ class NotPaidCard extends StatelessWidget {
         ),
         child: GestureDetector(
           onTap: () {
-            Get.toNamed("/detailpage");
+            Get.toNamed("/detailpage", arguments: idBarang);
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(

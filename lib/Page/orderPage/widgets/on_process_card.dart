@@ -10,6 +10,7 @@ import '../../../utils/text_style.dart';
 
 class OnProcessCard extends StatelessWidget {
   final int idPesanan;
+  final int idBarang;
   final String imagePath;
   final String title;
   final String profileImagePath;
@@ -35,7 +36,7 @@ class OnProcessCard extends StatelessWidget {
     required this.meetingLocation,
     required this.onChatSeller,
     required this.quantity,
-    required this.timeMeeting,
+    required this.timeMeeting, required this.idBarang,
   }) : super(key: key);
 
   @override
@@ -54,7 +55,7 @@ class OnProcessCard extends StatelessWidget {
         ),
         child: GestureDetector(
           onTap: () {
-            Get.toNamed("/detailpage");
+            Get.toNamed("/detailpage", arguments: idBarang);
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(

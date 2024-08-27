@@ -30,9 +30,10 @@ class ChekcoutPage extends StatelessWidget {
       body: Obx(() {
         if (controller.isLoading.value) {
           return const Center(
-              child: CircularProgressIndicator(
-            color: AppColors.hargaStat,
-          ));
+            child: CircularProgressIndicator(
+              color: AppColors.hargaStat,
+            ),
+          );
         } else if (controller.productDetail.value == null) {
           return const Center(
             child: Text('Product not found'),
@@ -63,7 +64,8 @@ class ChekcoutPage extends StatelessWidget {
                         profileName: mitra.namaLengkap,
                         rating: product.ratingBarang.toDouble(),
                         price: product.harga,
-                        quantity: controller.productCheckoutData["quantityProduct"],
+                        quantity:
+                            controller.productCheckoutData["quantityProduct"],
                       ),
                     ].withSpaceBetween(height: 10),
                   ),
@@ -139,7 +141,8 @@ class ChekcoutPage extends StatelessWidget {
                   } else {
                     await controller.paymentTesting(
                       controller.productDetail.value!.id.toString(),
-                      controller.productCheckoutData["quantityProduct"].toString(),
+                      controller.productCheckoutData["quantityProduct"]
+                          .toString(),
                     );
                   }
                 },

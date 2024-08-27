@@ -157,7 +157,8 @@ class OrderPage extends StatelessWidget {
                                 quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
-                                onCancelProduct: () {},
+                                onCancelProduct: () {}, 
+                                idBarang: cod.barang.id,
                               );
                             },
                           );
@@ -181,6 +182,7 @@ class OrderPage extends StatelessWidget {
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
                                 onChatSeller: () {},
+                                idBarang: cod.barang.id,
                               );
                             },
                           );
@@ -223,7 +225,7 @@ class OrderPage extends StatelessWidget {
                                 quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
-                                onGiveRating: () {},
+                                onGiveRating: () {}, idBarang: cod.barang.id,
                               );
                             },
                           );

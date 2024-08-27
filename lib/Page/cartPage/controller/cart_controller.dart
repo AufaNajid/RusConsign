@@ -1,5 +1,7 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Api/all_cart_response.dart';
+import 'package:rusconsign/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -68,7 +70,19 @@ class CartController extends GetxController {
     );
 
     if (response.statusCode == 200 || response.statusCode == 201) {
-      fetchCart();
+      Fluttertoast.showToast(
+        msg: 'produkHapusKeranjang'.tr,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        fontSize: 12,
+        backgroundColor: AppColors.cardIconFill,
+        textColor: AppColors.description
+      );
+      await fetchCart();
+
+      if (cartItems.isNotEmpty) {
+        _selectedIndex.value = 0;
+      }
     } else {
       Get.snackbar("Error", "Failed to remove item from cart");
     }

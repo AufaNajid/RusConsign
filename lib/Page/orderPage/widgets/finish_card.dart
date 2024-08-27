@@ -50,7 +50,7 @@ class FinishCard extends StatelessWidget {
         ),
         child: GestureDetector(
           onTap: () {
-            Get.toNamed("/detailpage");
+            Get.toNamed("/detailpage", arguments: idBarang);
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(
