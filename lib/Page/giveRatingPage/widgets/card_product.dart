@@ -16,7 +16,7 @@ class CardProductGiveRating extends StatelessWidget {
   final String pemesan;
   final String metodePembayaran;
   final String lokasiPertemuan;
-  final int rating;
+  final dynamic rating;
   final String timeMeeting;
   final int price;
   final int quantity;

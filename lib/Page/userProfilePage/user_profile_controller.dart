@@ -13,6 +13,7 @@ class UserProfilePageController extends GetxController {
   var detailMitra = Rxn<Data>();
 
   int get selectedIndex => _selectedIndex.value;
+  late int mitraId;
 
   void updateCurrentIndexIndicator(int index) {
     currentIndex.value = index;
@@ -20,6 +21,7 @@ class UserProfilePageController extends GetxController {
 
   void setSelectedFilter(int index) {
     _selectedIndex.value = index;
+    fetchProduct(index);
     update();
     _selectedIndex.refresh();
   }
@@ -32,8 +34,10 @@ class UserProfilePageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    mitraId = Get.arguments as int;
+    print("id Mitra $mitraId");
     final idMitra = Get.arguments as int;
-    fetchProduct(idMitra);
+    fetchProduct(0);
     fetchDetailMitra(idMitra);
   }
 
@@ -56,22 +60,35 @@ class UserProfilePageController extends GetxController {
     isLoading.value = false;
   }
 
-  Future<void> fetchProduct(int idProduct) async {
+  Future<void> fetchProduct(int filter) async {
     isLoading.value = true;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
+    Uri uri;
+
+    if (filter == 1) {
+      uri = Uri.parse(
+          'https://rusconsign.com/api/filter-products-by-mitra?mitra_id=$mitraId&category_id=2');
+    } else if (filter == 2) {
+      uri = Uri.parse(
+          'https://rusconsign.com/api/filter-products-by-mitra?mitra_id=$mitraId&category_id=1');
+    } else {
+      uri = Uri.parse('https://rusconsign.com/api/mitra/barang/$mitraId');
+    }
 
     final response = await http.get(
-      Uri.parse('https://rusconsign.com/api/mitra/barang/$idProduct'),
+      uri,
       headers: <String, String>{
         'Authorization': "Bearer ${token.toString()}",
       },
     );
 
-    if(response.statusCode == 200) {
+    if (response.statusCode == 200) {
       ProductMitraList data = productMitraListFromJson(response.body);
       productList.value = data.barangs;
-      isLoading(false);
+    } else {
+      productList.clear();
     }
+    isLoading.value = false;
   }
 }

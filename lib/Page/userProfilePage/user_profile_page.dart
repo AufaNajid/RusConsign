@@ -208,51 +208,10 @@ class UserProfilePage extends StatelessWidget {
                     ),
                     Obx(
                           () {
-                        if (controller.selectedIndex == 1) {
-                          return GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: controller.productList.length,
-                            gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 0.8,
-                            ),
-                            itemBuilder: (BuildContext context, int index) {
-                              return ProductCard(
-                                imagePath: controller.productList[index].imageBarang,
-                                title: controller.productList[index].namaBarang,
-                                price: controller.productList[index].harga,
-                                rating: controller.productList[index].ratingBarang
-                                    .toDouble(),
-                                productId: controller.productList[index].idBarang,
-                              );
-                            },
-                          );
-                        } else if (controller.selectedIndex == 2) {
-                          return GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: controller.productList.length,
-                            gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 0.8,
-                            ),
-                            itemBuilder: (BuildContext context, int index) {
-                              return ProductCard(
-                                imagePath: controller.productList[index].imageBarang,
-                                title: controller.productList[index].namaBarang,
-                                price: controller.productList[index].harga,
-                                rating: controller.productList[index].ratingBarang
-                                    .toDouble(),
-                                productId: controller.productList[index].idBarang,
-                              );
-                            },
+                        if (controller.productList.isEmpty) {
+                          return  Center(
+                            child: Text("Data Product Kosong!.", style: AppTextStyle()
+                                .header(context, AppColors.description),),
                           );
                         } else {
                           return GridView.builder(
