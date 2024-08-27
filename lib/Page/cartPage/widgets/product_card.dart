@@ -215,35 +215,37 @@ class ProductCardCart extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Obx(() => SizedBox(
-                                      width: 40,
-                                      height: 25,
-                                      child: Material(
-                                        color: controller.selectedIndex == index
-                                            ? AppColors.cardProdukDipilih
-                                            : AppColors.cardProdukTidakDipilih,
-                                        shape: RoundedRectangleBorder(
-                                          side: BorderSide(
-                                            color: controller.selectedIndex ==
-                                                    index
-                                                ? AppColors.button1
-                                                : AppColors.button2,
-                                            width: 1,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(4),
+                                Obx(
+                                  () => SizedBox(
+                                    width: 40,
+                                    height: 25,
+                                    child: Material(
+                                      color: controller.selectedIndex == index
+                                          ? AppColors.cardProdukDipilih
+                                          : AppColors.cardProdukTidakDipilih,
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          color:
+                                              controller.selectedIndex == index
+                                                  ? AppColors.button1
+                                                  : AppColors.button2,
+                                          width: 1,
                                         ),
-                                        child: Center(
-                                          child: Text(
-                                            controller.cartItems[index].quantity
-                                                .toString(),
-                                            style: AppTextStyle()
-                                                .descriptionBold(context,
-                                                    AppColors.description),
+                                        borderRadius: BorderRadius.circular(4),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          controller.cartItems[index].quantity
+                                              .toString(),
+                                          style: AppTextStyle().subHeader(
+                                            context,
+                                            AppColors.description,
                                           ),
                                         ),
                                       ),
-                                    )),
+                                    ),
+                                  ),
+                                ),
                                 GestureDetector(
                                   onTap: () {
                                     controller.incrementQuantity(index);

@@ -48,7 +48,7 @@ import 'package:rusconsign/Page/registerSeller/register_seller_waiting.dart';
 
 List<GetPage> routes = [
   GetPage(name: "/splash", page: () => const SplashScreen()),
-  GetPage(name: "/menu", page: () => Menu()),
+  GetPage(name: "/menu", page: () => const Menu()),
   GetPage(name: "/favoritepage", page: () => const FavoritePage()),
   GetPage(name: "/chatlist", page: () => const ChatListPage()),
   GetPage(name: "/diskonpage", page: () => const DiscountPage()),
@@ -69,7 +69,7 @@ List<GetPage> routes = [
   ),
   GetPage(
       name: "/giverating",
-      page: () => GiveRatingPage(),
+      page: () => const GiveRatingPage(),
       binding: GiveRatingBinding()),
   GetPage(
     name: "/productmanagepage",

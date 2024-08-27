@@ -36,7 +36,7 @@ class SellingCancelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api/storage/public";
-    final img = "https://rusconsign.com/api";
+    const img = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
       child: Card(

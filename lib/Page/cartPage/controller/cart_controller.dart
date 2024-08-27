@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Api/all_cart_response.dart';
@@ -22,8 +24,21 @@ class CartController extends GetxController {
   }
 
   void incrementQuantity(int index) {
-    cartItems[index].quantity++;
-    cartItems.refresh();
+    print (cartItems[index].barang.stockBarang);
+    if (cartItems[index].quantity <cartItems[index].barang.stockBarang) {
+      cartItems[index].quantity++;
+      cartItems.refresh();
+    } else {
+      Fluttertoast.showToast(
+        msg: 'batasStok'.tr,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        fontSize: 12,
+        backgroundColor: AppColors.cardIconFill,
+        textColor: AppColors.description,
+      );
+      cartItems.refresh();
+    }
   }
 
   void decrementQuantity(int index) {
@@ -76,7 +91,7 @@ class CartController extends GetxController {
         gravity: ToastGravity.CENTER,
         fontSize: 12,
         backgroundColor: AppColors.cardIconFill,
-        textColor: AppColors.description
+        textColor: AppColors.description,
       );
       await fetchCart();
 

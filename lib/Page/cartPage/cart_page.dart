@@ -119,7 +119,7 @@ class CartPage extends StatelessWidget {
                             Text(
                               '${'total'.tr} : ',
                               style: AppTextStyle()
-                                  .subHeader(context, AppColors.description),
+                                  .header(context, AppColors.description),
                             ),
                             Obx(
                               () => Text(
@@ -131,7 +131,7 @@ class CartPage extends StatelessWidget {
                                           .quantity,
                                 ),
                                 style: AppTextStyle()
-                                    .subHeader(context, AppColors.hargaStat),
+                                    .header(context, AppColors.hargaStat),
                               ),
                             ),
                           ].withSpaceBetween(width: 5),
