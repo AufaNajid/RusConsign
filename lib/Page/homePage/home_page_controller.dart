@@ -10,6 +10,7 @@ class HomePageController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxString message = "".obs;
+  var searching = false.obs;
   var productList = <Barang>[].obs;
 
   int get selectedIndex => _selectedIndex.value;
@@ -33,7 +34,8 @@ class HomePageController extends GetxController {
 
   Future<void> searchProduct(String namaBarang) async {
     isLoading.value = true;
-    final response = await http.get(Uri.parse('https://rusconsign.com/api/barangs/search?q=$namaBarang'));
+    final response = await http.get(
+        Uri.parse('https://rusconsign.com/api/barangs/search?q=$namaBarang'));
     if (response.statusCode == 200) {
       AllBarangResponse data = allBarangResponseFromJson(response.body);
       productList.value = data.barangs;
@@ -48,9 +50,11 @@ class HomePageController extends GetxController {
     Uri uri;
 
     if (filter == 1) {
-      uri = Uri.parse('https://rusconsign.com/api/accepted-barangs?category_id=2');
+      uri = Uri.parse(
+          'https://rusconsign.com/api/accepted-barangs?category_id=2');
     } else if (filter == 2) {
-      uri = Uri.parse('https://rusconsign.com/api/accepted-barangs?category_id=1');
+      uri = Uri.parse(
+          'https://rusconsign.com/api/accepted-barangs?category_id=1');
     } else {
       uri = Uri.parse('https://rusconsign.com/api/accepted-barangs');
     }

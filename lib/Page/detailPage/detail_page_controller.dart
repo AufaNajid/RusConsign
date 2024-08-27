@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Api/KomentarResponse.dart';
 import 'package:rusconsign/Api/all_cart_response.dart';
@@ -8,6 +9,7 @@ import 'package:http/http.dart' as http;
 import 'package:rusconsign/Page/cartPage/controller/cart_controller.dart';
 import 'package:rusconsign/Page/detailPage/service/detail_service.dart';
 import 'package:rusconsign/Page/favoritePage/controller/like_controller.dart';
+import 'package:rusconsign/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Api/all_favorite_response.dart';
@@ -64,7 +66,8 @@ class DetailPageController extends GetxController
       if (dataKomentar.summary.avg is int) {
         avgRating.value = (dataKomentar.summary.avg as int).toDouble();
       } else if (dataKomentar.summary.avg is double) {
-        avgRating.value = double.parse(dataKomentar.summary.avg.toStringAsFixed(2));
+        avgRating.value =
+            double.parse(dataKomentar.summary.avg.toStringAsFixed(2));
       }
 
       update();
@@ -149,7 +152,7 @@ class DetailPageController extends GetxController
     isLoading.value = true;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    final CartController controller = Get.find<CartController>();
+    final CartController controller = Get.put(CartController());
 
     if (isAddCart.value == true) {
       final cartItemIndex =
@@ -164,6 +167,14 @@ class DetailPageController extends GetxController
         );
 
         if (response.statusCode == 200 || response.statusCode == 201) {
+          Fluttertoast.showToast(
+            msg: 'produkHapusKeranjang'.tr,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            fontSize: 12,
+            backgroundColor: AppColors.cardIconFill,
+            textColor: AppColors.description,
+          );
           isAddCart.value = false;
           await controller.fetchCart();
           print("selesai masuk");
@@ -182,6 +193,14 @@ class DetailPageController extends GetxController
       var response = await request.send();
 
       if (response.statusCode == 200 || response.statusCode == 201) {
+        Fluttertoast.showToast(
+            msg: 'produkTambahKeranjang'.tr,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            fontSize: 12,
+            backgroundColor: AppColors.cardIconFill,
+            textColor: AppColors.description,
+          );
         isAddCart.value = true;
         await controller.fetchCart();
         print("selesai");
