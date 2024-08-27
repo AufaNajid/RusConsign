@@ -46,7 +46,7 @@ class GiveRatingPage extends StatelessWidget {
                       title: product.barang.namaBarang,
                       metodePembayaran: "metodePembayaran",
                       lokasiPertemuan: "lokasiPertemuan",
-                      rating: product.barang.ratingBarang,
+                      rating: controller.avgRating,
                       price: product.barang.harga,
                       quantity: product.barang.stock,
                       timeMeeting: product.barang.mitra.namaToko),

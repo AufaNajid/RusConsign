@@ -13,6 +13,7 @@ class GiveRatingController extends GetxController {
   RxBool isLoading = false.obs;
   var productDetail = Rxn<DetailBarangModel>();
   RxInt selectedRating = 0.obs;
+  var avgRating = 0.0.obs;
 
   @override
   void onInit() {
@@ -29,6 +30,14 @@ class GiveRatingController extends GetxController {
     if (response.statusCode == 200) {
       DetailBarangModel detailBarang = detailBarangModelFromJson(response.body);
       productDetail.value = detailBarang;
+
+      if (detailBarang.barang.ratingBarang is int) {
+        avgRating.value = (detailBarang.barang.ratingBarang as int).toDouble();
+      } else if (detailBarang.barang.ratingBarang is double) {
+        avgRating.value =
+            double.parse(detailBarang.barang.ratingBarang.toStringAsFixed(2));
+      }
+
     } else {
       print('Failed to fetch product: ${response.statusCode}');
     }
