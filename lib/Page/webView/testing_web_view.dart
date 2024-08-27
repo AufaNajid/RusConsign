@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -18,7 +17,7 @@ class TestingWebcView extends StatelessWidget {
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               color: AppColors.hargaStat,
             );
           },

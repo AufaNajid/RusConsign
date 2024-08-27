@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -37,7 +36,7 @@ class OrderCancelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api/storage/public";
-    final img = "https://rusconsign.com/api";
+    const img = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
       child: Card(

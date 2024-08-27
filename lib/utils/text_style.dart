@@ -4,7 +4,7 @@ import 'package:rusconsign/utils/size_data.dart';
 
 class AppTextStyle {
   double responsiveFontSize(BuildContext context, double fontSize) {
-    double baseWidth = 475;
+    double baseWidth = 500;
     double screenWidth = MediaQuery.of(context).size.width;
 
     return fontSize * (screenWidth / baseWidth);
