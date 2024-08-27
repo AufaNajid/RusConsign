@@ -26,7 +26,9 @@ class CheckoutPageController extends GetxController {
   var lokasi = <LokasiResponse>[].obs;
   var detailLokasi = Rxn<LokasiById>();
   var selectedLocationIndex = Rxn<int>();
-  final productCheckoutData = Get.arguments as Map<String, dynamic>;
+  final Map<String, dynamic> productCheckoutData = Get.arguments != null
+      ? Get.arguments as Map<String, dynamic>
+      : {};
 
   void selectLocation(int index) {
     selectedLocationIndex.value = index + 1;
