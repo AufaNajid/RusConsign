@@ -24,8 +24,6 @@ class ProductController extends GetxController {
 
       if (mitraResponse.statusCode == 200) {
         final mitraData = json.decode(mitraResponse.body);
-
-        // Check if mitra status is accepted
         if (mitraData['status'] == 'accepted') {
           final productData = {
             'name_product': namaproductController.text,

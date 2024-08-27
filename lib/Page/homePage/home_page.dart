@@ -131,14 +131,13 @@ class HomePage extends StatelessWidget {
                                   onTap: () async {
                                     if (controller
                                         .namaBarangController.text.isNotEmpty) {
-                                          controller.searching.value = true;
                                       String namaBarang =
                                           controller.namaBarangController.text;
                                       await controller
                                           .searchProduct(namaBarang);
                                     } else {
-                                      controller.searching.value = false;
-                                      controller.fetchProduct(controller.currentIndex.value);
+                                      controller.fetchProduct(
+                                          controller.currentIndex.value);
                                     }
                                   },
                                   child: Icon(
@@ -155,59 +154,57 @@ class HomePage extends StatelessWidget {
                     ].withSpaceBetween(height: 16),
                   ),
                 ),
-                Obx(
-                  () => controller.searching.value == false ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CarouselSlider(
-                        items: [
-                          'assets/images/item_carousel_1.png',
-                          'assets/images/item_carousel_2.png',
-                        ].map((item) {
-                          return GestureDetector(
-                            onTap: () {},
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Image.asset(
-                                item,
-                                fit: BoxFit.cover,
-                              ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CarouselSlider(
+                      items: [
+                        'assets/images/item_carousel_1.png',
+                        'assets/images/item_carousel_2.png',
+                      ].map((item) {
+                        return GestureDetector(
+                          onTap: () {},
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.asset(
+                              item,
+                              fit: BoxFit.cover,
                             ),
-                          );
-                        }).toList(),
-                        options: CarouselOptions(
-                          height: AppResponsive().screenWidth(context) * 0.35,
-                          enlargeFactor: 0.25,
-                          autoPlay: true,
-                          autoPlayInterval: const Duration(seconds: 3),
-                          enlargeCenterPage: true,
-                          onPageChanged: (index, reason) {
-                            controller.updateCurrentIndexIndicator(index);
-                          },
-                        ),
+                          ),
+                        );
+                      }).toList(),
+                      options: CarouselOptions(
+                        height: AppResponsive().screenWidth(context) * 0.35,
+                        enlargeFactor: 0.25,
+                        autoPlay: true,
+                        autoPlayInterval: const Duration(seconds: 3),
+                        enlargeCenterPage: true,
+                        onPageChanged: (index, reason) {
+                          controller.updateCurrentIndexIndicator(index);
+                        },
                       ),
-                      Obx(
-                        () => Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                            2,
-                            (index) => Container(
-                              width: 8,
-                              height: 8,
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 8.0, horizontal: 4.0),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: (controller.currentIndex.value == index)
-                                    ? AppColors.activeIcon
-                                    : AppColors.activeIconType,
-                              ),
+                    ),
+                    Obx(
+                      () => Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          2,
+                          (index) => Container(
+                            width: 8,
+                            height: 8,
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 4.0),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: (controller.currentIndex.value == index)
+                                  ? AppColors.activeIcon
+                                  : AppColors.activeIconType,
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ) : const SizedBox(),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
