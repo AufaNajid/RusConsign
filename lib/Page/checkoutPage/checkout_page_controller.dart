@@ -26,6 +26,7 @@ class CheckoutPageController extends GetxController {
   var lokasi = <LokasiResponse>[].obs;
   var detailLokasi = Rxn<LokasiById>();
   var selectedLocationIndex = Rxn<int>();
+  final productCheckoutData = Get.arguments as Map<String, dynamic>;
 
   void selectLocation(int index) {
     selectedLocationIndex.value = index + 1;
@@ -42,8 +43,7 @@ class CheckoutPageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    final productID = Get.arguments as int;
-    fetchProduct(productID);
+    fetchProduct(productCheckoutData["idProduct"]);
     fetchLokasi();
     fetchLokasiById(1);
   }
@@ -76,7 +76,7 @@ class CheckoutPageController extends GetxController {
         .get(Uri.parse('https://rusconsign.com/api/lokasi/$lokasiID'));
 
     if (response.statusCode == 200) {
-      LokasiById lokasiDetail =  lokasiByIdFromJson(response.body);
+      LokasiById lokasiDetail = lokasiByIdFromJson(response.body);
       detailLokasi.value = lokasiDetail;
     }
     isLoading(false);
@@ -100,8 +100,8 @@ class CheckoutPageController extends GetxController {
 
   fetchLokasi() async {
     isLoading(true);
-    final response = await http
-        .get(Uri.parse('https://rusconsign.com/api/lokasi'));
+    final response =
+        await http.get(Uri.parse('https://rusconsign.com/api/lokasi'));
 
     if (response.statusCode == 200) {
       List<LokasiResponse> lokasiList = lokasiResponseFromJson(response.body);
@@ -115,22 +115,28 @@ class CheckoutPageController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
 
+    print('Token: $token');
+
     var request = http.MultipartRequest(
         'POST', Uri.parse("https://rusconsign.com/api/create-invoice"));
     request.headers['Authorization'] = 'Bearer $token';
-    request.fields['barang id'] = idBarang;
+    request.fields['barang_id'] = idBarang; // Ensure field name is correct
     request.fields['quantity'] = jumlah;
 
     var response = await request.send();
 
+    var responseData = await response.stream.bytesToString();
+    print('Response Status: ${response.statusCode}');
+    print('Response Data: $responseData');
+
     if (response.statusCode == 200 || response.statusCode == 201) {
-      var responseData = await response.stream.bytesToString();
       var jsonResponse = json.decode(responseData);
       TestingPayment invoice = TestingPayment.fromJson(jsonResponse);
 
       isLoading.value = false;
       Get.to(() => TestingWebcView(url: invoice.invoiceUrl));
     } else {
+      print('Error: ${response.statusCode}');
       isLoading.value = false;
       Get.snackbar('Error', 'Failed to create invoice',
           snackPosition: SnackPosition.BOTTOM);
@@ -148,8 +154,10 @@ class CheckoutPageController extends GetxController {
     request.headers['Authorization'] = 'Bearer $token';
 
     request.fields['barang_id'] = idProduct;
-    request.fields['lokasi_id'] = selectedLocationIndex.value?.toString() ?? "1";
-    request.fields['quantity'] = "1";
+    request.fields['lokasi_id'] =
+        selectedLocationIndex.value?.toString() ?? "1";
+    request.fields['quantity'] =
+        productCheckoutData["quantityProduct"].toString();
 
     var response = await request.send();
 

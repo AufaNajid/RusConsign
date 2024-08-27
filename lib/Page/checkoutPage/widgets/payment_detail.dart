@@ -6,7 +6,7 @@ import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class PaymentDetail extends StatelessWidget {
-  final int subPrice;
+  final num subPrice;
   final int adminPrice;
 
   const PaymentDetail({
@@ -17,7 +17,7 @@ class PaymentDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int totalPrice = subPrice + adminPrice;
+    num totalPrice = subPrice + adminPrice;
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -40,7 +40,7 @@ class PaymentDetail extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    MoneyFormat.format(subPrice),
+                    MoneyFormat.format(subPrice.toInt()),
                     style: AppTextStyle().descriptionBold(context, AppColors.hargaStat),
                     textAlign: TextAlign.end,
                   )
@@ -71,7 +71,7 @@ class PaymentDetail extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    MoneyFormat.format(totalPrice),
+                    MoneyFormat.format(totalPrice.toInt()),
                     style: AppTextStyle().header(context, AppColors.hargaStat),
                     textAlign: TextAlign.end,
                   )

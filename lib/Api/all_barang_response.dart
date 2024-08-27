@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-AllBarangResponse allBarangResponseFromJson(String str) => AllBarangResponse.fromJson(json.decode(str));
+AllBarangResponse allBarangResponseFromJson(String str) =>
+    AllBarangResponse.fromJson(json.decode(str));
 
-String allBarangResponseToJson(AllBarangResponse data) => json.encode(data.toJson());
+String allBarangResponseToJson(AllBarangResponse data) =>
+    json.encode(data.toJson());
 
 class AllBarangResponse {
   String message;
@@ -17,15 +19,17 @@ class AllBarangResponse {
     required this.barangs,
   });
 
-  factory AllBarangResponse.fromJson(Map<String, dynamic> json) => AllBarangResponse(
-    message: json["message"],
-    barangs: List<Barang>.from(json["barangs"].map((x) => Barang.fromJson(x))),
-  );
+  factory AllBarangResponse.fromJson(Map<String, dynamic> json) =>
+      AllBarangResponse(
+        message: json["message"],
+        barangs:
+            List<Barang>.from(json["barangs"].map((x) => Barang.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "message": message,
-    "barangs": List<dynamic>.from(barangs.map((x) => x.toJson())),
-  };
+        "message": message,
+        "barangs": List<dynamic>.from(barangs.map((x) => x.toJson())),
+      };
 }
 
 class Barang {
@@ -33,6 +37,7 @@ class Barang {
   String namaBarang;
   String deskripsi;
   int harga;
+  int quantity;
   double ratingBarang;
   int categoryId;
   String categoryNama;
@@ -46,6 +51,7 @@ class Barang {
     required this.namaBarang,
     required this.deskripsi,
     required this.harga,
+    required this.quantity,
     required this.ratingBarang,
     required this.categoryId,
     required this.categoryNama,
@@ -56,32 +62,34 @@ class Barang {
   });
 
   factory Barang.fromJson(Map<String, dynamic> json) => Barang(
-    id: json["id"],
-    namaBarang: json["nama_barang"],
-    deskripsi: json["deskripsi"],
-    harga: json["harga"],
-    ratingBarang: (json['rating_barang'] as num).toDouble(),
-    categoryId: json["category_id"],
-    categoryNama: json["category_nama"],
-    imageBarang: json["image_barang"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-    mitra: Mitra.fromJson(json["mitra"]),
-  );
+        id: json["id"],
+        namaBarang: json["nama_barang"],
+        deskripsi: json["deskripsi"],
+        harga: json["harga"],
+        ratingBarang: (json['rating_barang'] as num).toDouble(),
+        categoryId: json["category_id"],
+        categoryNama: json["category_nama"],
+        imageBarang: json["image_barang"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        mitra: Mitra.fromJson(json["mitra"]),
+        quantity: 1,
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "nama_barang": namaBarang,
-    "deskripsi": deskripsi,
-    "harga": harga,
-    "rating_barang": ratingBarang,
-    "category_id": categoryId,
-    "category_nama": categoryNama,
-    "image_barang": imageBarang,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-    "mitra": mitra.toJson(),
-  };
+        "id": id,
+        "nama_barang": namaBarang,
+        "deskripsi": deskripsi,
+        "harga": harga,
+        "rating_barang": ratingBarang,
+        "category_id": categoryId,
+        "category_nama": categoryNama,
+        "image_barang": imageBarang,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+        "mitra": mitra.toJson(),
+        "quantity" : quantity,
+      };
 }
 
 class Mitra {
@@ -102,20 +110,20 @@ class Mitra {
   });
 
   factory Mitra.fromJson(Map<String, dynamic> json) => Mitra(
-    id: json["id"],
-    namaLengkap: json["nama_lengkap"],
-    jumlahProduct: json["jumlah_product"],
-    jumlahJasa: json["jumlah_jasa"],
-    pengikut: json["pengikut"],
-    penilaian: json["penilaian"],
-  );
+        id: json["id"],
+        namaLengkap: json["nama_lengkap"],
+        jumlahProduct: json["jumlah_product"],
+        jumlahJasa: json["jumlah_jasa"],
+        pengikut: json["pengikut"],
+        penilaian: json["penilaian"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "nama_lengkap": namaLengkap,
-    "jumlah_product": jumlahProduct,
-    "jumlah_jasa": jumlahJasa,
-    "pengikut": pengikut,
-    "penilaian": penilaian,
-  };
+        "id": id,
+        "nama_lengkap": namaLengkap,
+        "jumlah_product": jumlahProduct,
+        "jumlah_jasa": jumlahJasa,
+        "pengikut": pengikut,
+        "penilaian": penilaian,
+      };
 }

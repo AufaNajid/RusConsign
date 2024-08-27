@@ -98,62 +98,81 @@ class CartPage extends StatelessWidget {
           },
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: AppResponsive().screenWidth(context) * 0.15,
-        width: double.infinity,
-        child: Material(
-          color: AppColors.cardIconFill,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${'total'.tr} : ',
-                      style: AppTextStyle()
-                          .subHeader(context, AppColors.description),
-                    ),
-                    Text(
-                      MoneyFormat.format(10000),
-                      style: AppTextStyle()
-                          .subHeader(context, AppColors.hargaStat),
-                    )
-                  ].withSpaceBetween(width: 5),
-                ),
-                const Spacer(),
-                SizedBox(
-                  width: AppResponsive().screenWidth(context) * 0.5,
-                  height: AppResponsive().screenWidth(context) * 0.5,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.toNamed("/checkoutpage");
-                    },
-                    style: ButtonStyle(
-                      elevation: const MaterialStatePropertyAll(0),
-                      padding: const MaterialStatePropertyAll(EdgeInsets.zero),
-                      shape: MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(4),
+      bottomNavigationBar: Obx(
+        () => controller.cartItems.isEmpty
+            ? const SizedBox()
+            : SizedBox(
+                height: AppResponsive().screenWidth(context) * 0.15,
+                width: double.infinity,
+                child: Material(
+                  color: AppColors.cardIconFill,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              '${'total'.tr} : ',
+                              style: AppTextStyle()
+                                  .subHeader(context, AppColors.description),
+                            ),
+                            Obx(
+                              () => Text(
+                                MoneyFormat.format(
+                                  controller.cartItems[controller.selectedIndex]
+                                          .barang.harga *
+                                      controller
+                                          .cartItems[controller.selectedIndex]
+                                          .quantity,
+                                ),
+                                style: AppTextStyle()
+                                    .subHeader(context, AppColors.hargaStat),
+                              ),
+                            ),
+                          ].withSpaceBetween(width: 5),
                         ),
-                      ),
-                      backgroundColor:
-                          const MaterialStatePropertyAll(AppColors.button1),
-                    ),
-                    child: Text(
-                      'checkout'.tr,
-                      style: AppTextStyle()
-                          .subHeader(context, AppColors.textButton1),
+                        const Spacer(),
+                        SizedBox(
+                          width: AppResponsive().screenWidth(context) * 0.5,
+                          height: AppResponsive().screenWidth(context) * 0.5,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              Get.toNamed("/checkoutpage", arguments: {
+                                "idProduct" : controller.cartItems[controller.selectedIndex]
+                                    .barang.id,
+                                "quantityProduct" : controller.cartItems[controller.selectedIndex].quantity,
+                              });
+                            },
+                            style: ButtonStyle(
+                              elevation: const MaterialStatePropertyAll(0),
+                              padding: const MaterialStatePropertyAll(
+                                  EdgeInsets.zero),
+                              shape: MaterialStatePropertyAll(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
+                              backgroundColor: const MaterialStatePropertyAll(
+                                AppColors.button1,
+                              ),
+                            ),
+                            child: Text(
+                              'checkout'.tr,
+                              style: AppTextStyle()
+                                  .subHeader(context, AppColors.textButton1),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ],
-            ),
-          ),
-        ),
+              ),
       ),
     );
   }
