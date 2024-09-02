@@ -21,6 +21,7 @@ class ProductManageController extends GetxController {
 
   void setSelectedFilter(int index) {
     _selectedIndex.value = index;
+    fetchProductMitra(index);
     update();
     _selectedIndex.refresh();
   }
@@ -28,17 +29,29 @@ class ProductManageController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchProductMitra();
+    fetchProductMitra(0);
   }
 
-  Future<void> fetchProductMitra() async {
+  Future<void> fetchProductMitra(int filter) async {
     isLoading.value = true;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
     String? idMitra = prefs.getString('idMitra');
-    print(idMitra);
+    // print(idMitra);
+    Uri uri;
+
+    if (filter == 1) {
+      uri = Uri.parse(
+          'https://rusconsign.com/api/filter-products-by-mitra?mitra_id=$idMitra&category_id=2');
+    } else if (filter == 2) {
+      uri = Uri.parse(
+          'https://rusconsign.com/api/filter-products-by-mitra?mitra_id=$idMitra&category_id=1');
+    } else {
+      uri = Uri.parse('https://rusconsign.com/api/mitra/barang/$idMitra');
+    }
+
     final response = await http.get(
-      Uri.parse('https://rusconsign.com/api/mitra/barang/$idMitra'),
+      uri,
       headers: <String, String>{
         'Authorization': "Bearer $token",
       },
@@ -47,8 +60,11 @@ class ProductManageController extends GetxController {
     if (response.statusCode == 200) {
       ProductMitraList data = productMitraListFromJson(response.body);
       productList.value = data.barangs;
-      print(response.body);
-      print("Token User adalah${token}");
+
+      // print(response.body);
+      // print("Token User adalah${token}");
+    } else {
+      productList.clear();
     }
     isLoading.value = false;
   }
@@ -65,7 +81,7 @@ class ProductManageController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        fetchProductMitra();
+        fetchProductMitra(0);
         print('Barang deleted successfully');
       } else {
         throw Exception('Failed to delete barang');

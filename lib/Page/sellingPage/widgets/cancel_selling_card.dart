@@ -14,6 +14,7 @@ class SellingCancelCard extends StatelessWidget {
   final String profileUsername;
   final double rating;
   final int totalProductPrice;
+  final String pembeli;
   final int quantity;
   final String paymentMethod;
   final String meetingLocation;
@@ -25,6 +26,7 @@ class SellingCancelCard extends StatelessWidget {
     required this.title,
     required this.profileImagePath,
     required this.profileUsername,
+    required this.pembeli,
     required this.rating,
     required this.totalProductPrice,
     required this.quantity,
@@ -173,6 +175,20 @@ class SellingCancelCard extends StatelessWidget {
                                       quantity.toString(),
                                       style: AppTextStyle()
                                           .textInfoBold(context,AppColors.hargaStat),
+                                    ),
+                                  ].withSpaceBetween(width: 4),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${'Pesanan Oleh'.tr} :',
+                                      style: AppTextStyle()
+                                          .textInfo(context, AppColors.description),
+                                    ),
+                                    Text(
+                                      pembeli,
+                                      style: AppTextStyle()
+                                          .textInfoBold(context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),

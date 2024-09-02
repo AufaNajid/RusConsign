@@ -78,27 +78,33 @@ class PenjualSectionTrue extends StatelessWidget {
                 ),
               ),
               Container(
-                decoration: BoxDecoration(color: AppColors.cardIconFill),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(10),
+                    bottomRight: Radius.circular(10),
+                  ),
+                  
+                  color: AppColors.cardIconFill),
                 child: ButtonProfile(
                   icon: FeatherIcons.edit,
                   text: 'kelolaPJ'.tr,
                   toPage: "/productmanagepage",
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                  color: AppColors.cardIconFill,
-                ),
-                child: ButtonProfile(
-                  icon: FeatherIcons.messageCircle,
-                  text: 'chat'.tr,
-                  toPage: "/chatlist",
-                ),
-              ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     borderRadius: const BorderRadius.only(
+              //       bottomLeft: Radius.circular(10),
+              //       bottomRight: Radius.circular(10),
+              //     ),
+              //     color: AppColors.cardIconFill,
+              //   ),
+              //   child: ButtonProfile(
+              //     icon: FeatherIcons.messageCircle,
+              //     text: 'chat'.tr,
+              //     toPage: "/chatlist",
+              //   ),
+              // ),
             ],
           ),
           //  Row(

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ButtonIconWidget extends StatelessWidget {
   final IconData icon;
   final String title;
+  final String noWhatsapp;
 
   const ButtonIconWidget({
     super.key,
     required this.icon,
-    required this.title,
+    required this.title, required this.noWhatsapp,
   });
 
   @override
@@ -26,9 +27,10 @@ class ButtonIconWidget extends StatelessWidget {
           color: AppColors.activeIconType,
           size: SizeData.iconSize,
         ),
-        onPressed: () {
-          Get.toNamed('/chatpage');
-        },
+        onPressed: () async {
+          var url = Uri.parse("https://wa.me/$noWhatsapp");
+          await launchUrl(url);
+          },
         style: ButtonStyle(
           elevation: const MaterialStatePropertyAll(0),
           padding: const MaterialStatePropertyAll(EdgeInsets.zero),

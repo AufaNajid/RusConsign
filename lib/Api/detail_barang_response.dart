@@ -102,6 +102,7 @@ class Mitra {
   int jumlahJasa;
   int pengikut;
   int penilaian;
+  String noWa;
 
   Mitra({
     required this.id,
@@ -110,6 +111,7 @@ class Mitra {
     required this.jumlahProduct,
     required this.jumlahJasa,
     required this.pengikut,
+    required this.noWa,
     required this.penilaian,
   });
 
@@ -120,6 +122,7 @@ class Mitra {
         jumlahProduct: json["jumlah_product"],
         jumlahJasa: json["jumlah_jasa"],
         pengikut: json["pengikut"],
+        noWa: json["no_whatsapp"],
         penilaian: json["penilaian"],
       );
 
@@ -130,6 +133,7 @@ class Mitra {
         "jumlah_product": jumlahProduct,
         "jumlah_jasa": jumlahJasa,
         "pengikut": pengikut,
+        "no_whatsapp": noWa,
         "penilaian": penilaian,
       };
 }

@@ -72,7 +72,15 @@ class RegisterSeller extends StatelessWidget {
                 controller: controller.nomorController,
               ),
               const SizedBox(height: 15),
-              Text("Foto ID Card SMK RUS",
+              Text("Nomor WhatsApp",
+                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
+              const SizedBox(height: 10),
+              TextFieldRegisterSellerNumber(
+                hintText: "Masukkan nomor WhatsApp anda...",
+                controller: controller.nomroWaController,
+              ),
+              const SizedBox(height: 15),
+              Text("Foto Selfie bersama Foto ID Card SMK RUS",
                   style: AppTextStyle().subHeader(context, AppColors.titleLine)),
               SizedBox(
                 height: AppResponsive().screenHeight(context) * 0.02,
@@ -94,12 +102,14 @@ class RegisterSeller extends StatelessWidget {
                   String namaLengkap = controller.namaController.text;
                   String nis = controller.nisController.text;
                   String nomor = controller.nomorController.text;
+                  String nomorWa = controller.nomroWaController.text;
                   File imageIdCard = controllerImage.pickedImage.value!;
 
                   if (namaToko.isNotEmpty &&
                       namaLengkap.isNotEmpty &&
                       nis.isNotEmpty &&
                       nomor.isNotEmpty &&
+                      nomorWa.isNotEmpty &&
                       imageIdCard != null) {
                     await controller.registerMitra(
                       namaLengkap,
@@ -107,6 +117,7 @@ class RegisterSeller extends StatelessWidget {
                       int.parse(nis),
                       nomor,
                       imageIdCard,
+                      nomorWa,
                     );
                     if (controller.successfulRegister.value == true) {
                       Get.offNamed("/waitingadmin");

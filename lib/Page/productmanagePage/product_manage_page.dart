@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/productmanagePage/product_manage_controller.dart';
 import 'package:rusconsign/Page/productmanagePage/widgets/filter_product_button.dart';
 import 'package:rusconsign/Page/productmanagePage/widgets/item_card.dart';
-import 'package:rusconsign/Page/productmanagePage/widgets/search_item_widget.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
@@ -20,7 +19,7 @@ class ProductManagePage extends StatelessWidget {
   Future<void> refreshData() async {
     final ProductManageController controller =
         Get.find<ProductManageController>();
-    await controller.fetchProductMitra();
+    await controller.fetchProductMitra(controller.selectedIndex);
   }
 
   @override
@@ -53,7 +52,6 @@ class ProductManagePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SearchItemProductManage(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -122,58 +120,95 @@ class ProductManagePage extends StatelessWidget {
                                 controller.productList[index].namaBarang,
                             description:
                                 controller.productList[index].deskripsi,
+                            statusBarang:
+                                controller.productList[index].status,
                             onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(6)),
-                                    backgroundColor: AppColors.background,
-                                    title: Text(
-                                      'konfirmasiHapus'.tr,
-                                      style: AppTextStyle()
-                                          .title(context, AppColors.titleLine),
-                                    ),
-                                    content: Text('hapusItemToko'.tr),
-                                    actions: <Widget>[
-                                      OutlinedButton(
-                                        style: OutlinedButton.styleFrom(
-                                            side: const BorderSide(
-                                                color: AppColors.button1),
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(4))),
-                                        child: Text(
-                                          'batal'.tr,
+                              if(controller.productList[index].status == "publish") {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(6),
+                                        ),
+                                        backgroundColor: AppColors.background,
+                                        title: Text(
+                                          'Item Telah Di Publish!'.tr,
                                           style: AppTextStyle()
-                                              .subHeader(context, AppColors.hargaStat),
+                                              .title(context, AppColors.titleLine),
                                         ),
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                      ),
-                                      TextButton(
-                                        style: TextButton.styleFrom(
-                                          foregroundColor: AppColors.solidWhite,
-                                          backgroundColor: AppColors.button1,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(4),
+                                        content:
+                                        Text('Item ini telah di publish, anda tidak bisa menghapusnya!'.tr),
+                                        actions: <Widget>[
+                                          TextButton(
+                                            style: TextButton.styleFrom(
+                                              foregroundColor: AppColors.solidWhite,
+                                              backgroundColor: AppColors.button1,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(4),
+                                              ),
+                                            ),
+                                            child: Text('Tutup'.tr),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
                                           ),
-                                        ),
-                                        child: Text('yaHapus'.tr),
-                                        onPressed: () async {
-                                          await controller.deleteBarang(
-                                              controller
-                                                  .productList[index].idBarang);
-                                          Navigator.of(context).pop();
-                                        },
+                                        ],
+                                      );
+                                    });
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(6)),
+                                      backgroundColor: AppColors.background,
+                                      title: Text(
+                                        'konfirmasiHapus'.tr,
+                                        style: AppTextStyle()
+                                            .title(context, AppColors.titleLine),
                                       ),
-                                    ],
-                                  );
-                                },
-                              );
+                                      content: Text('hapusItemToko'.tr),
+                                      actions: <Widget>[
+                                        OutlinedButton(
+                                          style: OutlinedButton.styleFrom(
+                                              side: const BorderSide(
+                                                  color: AppColors.button1),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(4))),
+                                          child: Text(
+                                            'batal'.tr,
+                                            style: AppTextStyle()
+                                                .subHeader(context, AppColors.hargaStat),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                        TextButton(
+                                          style: TextButton.styleFrom(
+                                            foregroundColor: AppColors.solidWhite,
+                                            backgroundColor: AppColors.button1,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                              BorderRadius.circular(4),
+                                            ),
+                                          ),
+                                          child: Text('yaHapus'.tr),
+                                          onPressed: () async {
+                                            await controller.deleteBarang(
+                                                controller
+                                                    .productList[index].idBarang);
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
                             },
                             onEdit: () {
                               Get.offNamed("/editdataproduct",

@@ -33,6 +33,7 @@ class Barang {
     String namaBarang;
     String deskripsi;
     int harga;
+    String status;
     dynamic ratingBarang;
     String categoryName;
     String imageBarang;
@@ -44,6 +45,7 @@ class Barang {
         required this.namaBarang,
         required this.deskripsi,
         required this.harga,
+        required this.status,
         required this.ratingBarang,
         required this.categoryName,
         required this.imageBarang,
@@ -56,6 +58,7 @@ class Barang {
         namaBarang: json["nama_barang"],
         deskripsi: json["deskripsi"],
         harga: json["harga"],
+        status: json["status_post"],
         ratingBarang: json["rating_barang"],
         categoryName: json["category_name"],
         imageBarang: json["image_barang"],
@@ -68,6 +71,7 @@ class Barang {
         "nama_barang": namaBarang,
         "deskripsi": deskripsi,
         "harga": harga,
+        "status_post": status,
         "rating_barang": ratingBarang,
         "category_name": categoryName,
         "image_barang": imageBarang,

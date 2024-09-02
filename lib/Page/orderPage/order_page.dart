@@ -182,7 +182,7 @@ class OrderPage extends StatelessWidget {
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
                                 onChatSeller: () {},
-                                idBarang: cod.barang.id,
+                                idBarang: cod.barang.id, noWa: cod.mitra.noWhatsapp,
                               );
                             },
                           );

@@ -29,75 +29,75 @@ class LocationPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'lokasiBawaan'.tr,
-              style: AppTextStyle().header(context, AppColors.titleLine),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                SizedBox(
-                  width: 40,
-                  height: 40,
-                  child: ClipOval(
-                    child: Material(
-                      color: AppColors.cardIconFill,
-                      child: Icon(
-                        size: SizeData.iconSize,
-                        FeatherIcons.mapPin,
-                        color: AppColors.nonActiveIcon,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'SMK Raden Umar Said',
-                        style: AppTextStyle()
-                            .subHeader(context, AppColors.description),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333',
-                        style: AppTextStyle()
-                            .textInfo(context, AppColors.titleLine),
-                      ),
-                      const SizedBox(height: 5),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 10),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    FeatherIcons.check,
-                    color: AppColors.activeIcon,
-                    size: SizeData.iconSize,
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll(AppColors.cardIconFill),
-                    side: const MaterialStatePropertyAll(
-                      BorderSide(
-                        color: AppColors.button1,
-                        style: BorderStyle.solid,
-                        width: 1,
-                      ),
-                    ),
-                    shape: MaterialStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(height: 20),
+            // Text(
+            //   'lokasiBawaan'.tr,
+            //   style: AppTextStyle().header(context, AppColors.titleLine),
+            // ),
+            // const SizedBox(height: 10),
+            // Row(
+            //   children: [
+            //     SizedBox(
+            //       width: 40,
+            //       height: 40,
+            //       child: ClipOval(
+            //         child: Material(
+            //           color: AppColors.cardIconFill,
+            //           child: Icon(
+            //             size: SizeData.iconSize,
+            //             FeatherIcons.mapPin,
+            //             color: AppColors.nonActiveIcon,
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //     const SizedBox(width: 10),
+            //     Expanded(
+            //       child: Column(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: [
+            //           Text(
+            //             'SMK Raden Umar Said',
+            //             style: AppTextStyle()
+            //                 .subHeader(context, AppColors.description),
+            //           ),
+            //           const SizedBox(height: 4),
+            //           Text(
+            //             'Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333',
+            //             style: AppTextStyle()
+            //                 .textInfo(context, AppColors.titleLine),
+            //           ),
+            //           const SizedBox(height: 5),
+            //         ],
+            //       ),
+            //     ),
+            //     const SizedBox(width: 10),
+            //     IconButton(
+            //       onPressed: () {},
+            //       icon: const Icon(
+            //         FeatherIcons.check,
+            //         color: AppColors.activeIcon,
+            //         size: SizeData.iconSize,
+            //       ),
+            //       style: ButtonStyle(
+            //         backgroundColor:
+            //             MaterialStatePropertyAll(AppColors.cardIconFill),
+            //         side: const MaterialStatePropertyAll(
+            //           BorderSide(
+            //             color: AppColors.button1,
+            //             style: BorderStyle.solid,
+            //             width: 1,
+            //           ),
+            //         ),
+            //         shape: MaterialStatePropertyAll(
+            //           RoundedRectangleBorder(
+            //             borderRadius: BorderRadius.circular(8),
+            //           ),
+            //         ),
+            //       ),
+            //     )
+            //   ],
+            // ),
+            // const SizedBox(height: 20),
             Text(
               'rekomendasiLokasi'.tr,
               style: AppTextStyle().header(context, AppColors.titleLine),

@@ -17,6 +17,7 @@ class MitraController extends GetxController {
   final TextEditingController namaTokoController = TextEditingController();
   final TextEditingController nisController = TextEditingController();
   final TextEditingController nomorController = TextEditingController();
+  final TextEditingController nomroWaController = TextEditingController();
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
   RxBool successfulEditProduct = false.obs;
@@ -72,7 +73,7 @@ class MitraController extends GetxController {
   }
 
   Future<void> registerMitra(String nama, String namaToko, int nis,
-      String nomor, File imageIdCard) async {
+      String nomor, File imageIdCard, String nomorWa) async {
     isLoading.value = true;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -89,6 +90,7 @@ class MitraController extends GetxController {
     request.fields['nama_toko'] = namaToko;
     request.fields['nis'] = nis.toString();
     request.fields['no_dompet_digital'] = nomor;
+    
 
     var imageStream = http.ByteStream(imageIdCard.openRead());
     var imageLength = await imageIdCard.length();
@@ -100,6 +102,7 @@ class MitraController extends GetxController {
       contentType: MediaType('image', 'jpeg'),
     );
     request.files.add(multipartFile);
+    request.fields['no_whatsapp'] = nomorWa;
 
     print(
         "Sending request with fields: ${request.fields} and file: ${multipartFile.filename}");

@@ -39,6 +39,7 @@ class Data {
   int jumlahproduct;
   int jumlahjasa;
   int penilaian;
+  String noWa;
   // dynamic user;
 
   Data({
@@ -56,6 +57,7 @@ class Data {
     required this.jumlahproduct,
     required this.jumlahjasa,
     required this.penilaian,
+    required this.noWa,
     // required this.user,
   });
 
@@ -74,6 +76,7 @@ class Data {
     jumlahproduct: json["jumlahproduct"],
     jumlahjasa: json["jumlahjasa"],
     penilaian: json["penilaian"],
+    noWa: json["no_whatsapp"]
     // user: json["user"],
   );
 
@@ -92,6 +95,7 @@ class Data {
     "jumlahproduct": jumlahproduct,
     "jumlahjasa": jumlahjasa,
     "penilaian": penilaian,
+    "no_whatsapp" : noWa,
     // "user": user,
   };
 }

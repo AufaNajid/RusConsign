@@ -5,6 +5,7 @@ import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/money_format.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/text_style.dart';
 
@@ -20,6 +21,7 @@ class OnProcessCard extends StatelessWidget {
   final int quantity;
   final String timeMeeting;
   final String paymentMethod;
+  final String noWa;
   final String meetingLocation;
   final VoidCallback onChatSeller;
 
@@ -35,6 +37,7 @@ class OnProcessCard extends StatelessWidget {
     required this.paymentMethod,
     required this.meetingLocation,
     required this.onChatSeller,
+    required this.noWa,
     required this.quantity,
     required this.timeMeeting, required this.idBarang,
   }) : super(key: key);
@@ -255,8 +258,9 @@ class OnProcessCard extends StatelessWidget {
                   width: double.infinity,
                   height: AppResponsive().screenWidth(context) * 0.080,
                   child: ElevatedButton(
-                    onPressed: () {
-                      onChatSeller;
+                    onPressed: () async {
+                      var url = Uri.parse("https://wa.me/$noWa");
+                      await launchUrl(url);
                     },
                     style: ButtonStyle(
                       elevation: const MaterialStatePropertyAll(0),
@@ -270,7 +274,7 @@ class OnProcessCard extends StatelessWidget {
                           MaterialStatePropertyAll(AppColors.button2),
                     ),
                     child: Text(
-                      'chatPenjual'.tr,
+                      'Hubungi Penjual'.tr,
                       style:
                           AppTextStyle().header(context, AppColors.textButton2),
                     ),

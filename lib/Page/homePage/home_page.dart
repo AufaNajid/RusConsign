@@ -54,16 +54,16 @@ class HomePage extends StatelessWidget {
                         height: 28,
                       ),
                       const Spacer(),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed('/chatlist');
-                        },
-                        child: Icon(
-                          FeatherIcons.messageCircle,
-                          color: AppColors.borderIcon,
-                          size: SizeData.iconSize,
-                        ),
-                      ),
+                      // GestureDetector(
+                      //   onTap: () {
+                      //     Get.toNamed('/chatlist');
+                      //   },
+                      //   child: Icon(
+                      //     FeatherIcons.messageCircle,
+                      //     color: AppColors.borderIcon,
+                      //     size: SizeData.iconSize,
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
