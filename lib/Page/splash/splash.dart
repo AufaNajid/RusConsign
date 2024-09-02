@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,15 +14,12 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   final loginOption = Get.put(AuthLoginController());
+
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(milliseconds: 1650), () {
-      if (loginOption.successfulLogin.value == true) {
-        Get.offNamed("/menu");
-      } else {
-        Get.offNamed("/login");
-      }
+    Timer(const Duration(milliseconds: 1650), () async {
+      await loginOption.checkUserStatus();
     });
   }
 

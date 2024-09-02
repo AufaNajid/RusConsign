@@ -143,9 +143,13 @@ class CartPage extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               Get.toNamed("/checkoutpage", arguments: {
-                                "idProduct" : controller.cartItems[controller.selectedIndex]
-                                    .barang.id,
-                                "quantityProduct" : controller.cartItems[controller.selectedIndex].quantity,
+                                "idProduct": controller
+                                    .cartItems[controller.selectedIndex]
+                                    .barang
+                                    .id,
+                                "quantityProduct": controller
+                                    .cartItems[controller.selectedIndex]
+                                    .quantity,
                               });
                             },
                             style: ButtonStyle(

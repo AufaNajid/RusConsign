@@ -26,9 +26,8 @@ class CheckoutPageController extends GetxController {
   var lokasi = <LokasiResponse>[].obs;
   var detailLokasi = Rxn<LokasiById>();
   var selectedLocationIndex = Rxn<int>();
-  final Map<String, dynamic> productCheckoutData = Get.arguments != null
-      ? Get.arguments as Map<String, dynamic>
-      : {};
+  final Map<String, dynamic> productCheckoutData =
+      Get.arguments != null ? Get.arguments as Map<String, dynamic> : {};
 
   void selectLocation(int index) {
     selectedLocationIndex.value = index + 1;
@@ -85,19 +84,23 @@ class CheckoutPageController extends GetxController {
   }
 
   fetchProduct(int productID) async {
-    isLoading(true);
-    final response = await http
-        .get(Uri.parse('https://rusconsign.com/api/barang/$productID'));
+    try {
+      isLoading(true);
+      final response = await http
+          .get(Uri.parse('https://rusconsign.com/api/barang/$productID'));
 
-    if (response.statusCode == 200) {
-      var jsonResponse = json.decode(response.body);
-      Barang product = Barang.fromJson(jsonResponse['barang']);
-      productDetail.value = product;
-    } else {
-      print('Failed to fetch product: ${response.statusCode}');
+      if (response.statusCode == 200) {
+        var jsonResponse = json.decode(response.body);
+        Barang product = Barang.fromJson(jsonResponse['barang']);
+        productDetail.value = product;
+      } else {
+        print('Failed to fetch product: ${response.statusCode}');
+      }
+
+      isLoading(false);
+    } catch (e) {
+      print(e);
     }
-
-    isLoading(false);
   }
 
   fetchLokasi() async {
