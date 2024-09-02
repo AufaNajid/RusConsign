@@ -6,12 +6,14 @@ import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:rusconsign/Page/detailPage/detail_page_controller.dart';
 import 'package:rusconsign/Page/detailPage/widgets/comment_card.dart';
+import 'package:rusconsign/Page/webView/testing_web_view.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../utils/app_responsive.dart';
 
 class DetailPage extends GetView<DetailPageController> {
@@ -207,9 +209,10 @@ class DetailPage extends GetView<DetailPageController> {
                                           AppResponsive().screenWidth(context) *
                                               0.16,
                                       child: ElevatedButton(
-                                        onPressed: () {
+                                        onPressed: () async {
                                           print("nomor hp = ${state.barang.mitra.noWa}");
-                                          // Get.toNamed("/chatpage");
+                                          var url = Uri.parse("https://wa.me/${state.barang.mitra.noWa}");
+                                          await launchUrl(url);
                                         },
                                         style: ButtonStyle(
                                           padding:
@@ -601,3 +604,9 @@ class DetailPage extends GetView<DetailPageController> {
     );
   }
 }
+
+// Future<void> _launchUrl( String url) async {
+//   if (!await launchUrl(Uri.parse(url))) {
+//     throw Exception('Could not launch $url');
+//   }
+// }

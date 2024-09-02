@@ -119,7 +119,8 @@ class UserProfilePage extends StatelessWidget {
                         children: [
                           ButtonIconWidget(
                             icon: FeatherIcons.messageCircle,
-                            title: 'chatPenjual'.tr,
+                            title: 'Hubungi Penjual'.tr,
+                            noWhatsapp: mitra.noWa,
                           ),
                           // const ButtonFollow(),
                         ].withSpaceBetween(height: 10),

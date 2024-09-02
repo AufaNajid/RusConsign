@@ -220,6 +220,7 @@ class Mitra {
   int jumlahProduct;
   int penilaian;
   String email;
+  String noWhatsapp;
   dynamic statusPembayaran;
   dynamic rememberToken;
   DateTime createdAt;
@@ -239,6 +240,7 @@ class Mitra {
     required this.jumlahProduct,
     required this.penilaian,
     required this.email,
+    required this.noWhatsapp,
     required this.statusPembayaran,
     required this.rememberToken,
     required this.createdAt,
@@ -259,6 +261,7 @@ class Mitra {
     jumlahProduct: json["jumlah_product"],
     penilaian: json["penilaian"],
     email: json["email"],
+    noWhatsapp: json["no_whatsapp"],
     statusPembayaran: json["status_pembayaran"],
     rememberToken: json["remember_token"],
     createdAt: DateTime.parse(json["created_at"]),
@@ -279,6 +282,7 @@ class Mitra {
     "jumlah_product": jumlahProduct,
     "penilaian": penilaian,
     "email": email,
+    "no_whatsapp" : noWhatsapp,
     "status_pembayaran": statusPembayaran,
     "remember_token": rememberToken,
     "created_at": createdAt.toIso8601String(),
