@@ -6,6 +6,7 @@ import 'package:rusconsign/Page/userProfilePage/widgets/button_follow.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/button_icon_widget.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/filter_button.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/profile_info_card.dart';
+import 'package:rusconsign/Page/userProfilePage/widgets/user_product_card.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -120,7 +121,7 @@ class UserProfilePage extends StatelessWidget {
                             icon: FeatherIcons.messageCircle,
                             title: 'chatPenjual'.tr,
                           ),
-                          const ButtonFollow(),
+                          // const ButtonFollow(),
                         ].withSpaceBetween(height: 10),
                       ),
                     ].withSpaceBetween(height: 15),
@@ -161,51 +162,51 @@ class UserProfilePage extends StatelessWidget {
                         ),
                       ].withSpaceBetween(height: 10),
                     ),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: AppResponsive().screenWidth(context) * 0.75,
-                          height: 50,
-                          child: TextField(
-                            cursorColor: AppColors.hargaStat,
-                            style: AppTextStyle().descriptionBold(
-                                context, AppColors.description),
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(6),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              fillColor: AppColors.cardIconFill,
-                              hintText: 'cari'.tr,
-                              hintStyle: AppTextStyle().description(
-                                  context, AppColors.description),
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                        ),
-                        const Spacer(),
-                        SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(6),
-                            child: Material(
-                              color: AppColors.cardIconFill,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Icon(
-                                  FeatherIcons.search,
-                                  color: AppColors.borderIcon,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     SizedBox(
+                    //       width: AppResponsive().screenWidth(context) * 0.75,
+                    //       height: 50,
+                    //       child: TextField(
+                    //         cursorColor: AppColors.hargaStat,
+                    //         style: AppTextStyle().descriptionBold(
+                    //             context, AppColors.description),
+                    //         decoration: InputDecoration(
+                    //           contentPadding: const EdgeInsets.symmetric(
+                    //               vertical: 10, horizontal: 10),
+                    //           border: OutlineInputBorder(
+                    //             borderRadius: BorderRadius.circular(6),
+                    //             borderSide: BorderSide.none,
+                    //           ),
+                    //           filled: true,
+                    //           fillColor: AppColors.cardIconFill,
+                    //           hintText: 'cari'.tr,
+                    //           hintStyle: AppTextStyle().description(
+                    //               context, AppColors.description),
+                    //         ),
+                    //         textAlign: TextAlign.left,
+                    //       ),
+                    //     ),
+                    //     const Spacer(),
+                    //     SizedBox(
+                    //       width: 50,
+                    //       height: 50,
+                    //       child: ClipRRect(
+                    //         borderRadius: BorderRadius.circular(6),
+                    //         child: Material(
+                    //           color: AppColors.cardIconFill,
+                    //           child: GestureDetector(
+                    //             onTap: () {},
+                    //             child: Icon(
+                    //               FeatherIcons.search,
+                    //               color: AppColors.borderIcon,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     Obx(
                           () {
                         if (controller.productList.isEmpty) {
@@ -226,13 +227,14 @@ class UserProfilePage extends StatelessWidget {
                               childAspectRatio: 0.8,
                             ),
                             itemBuilder: (BuildContext context, int index) {
-                              return ProductCard(
+                              return UserProductCard(
                                 imagePath: controller.productList[index].imageBarang,
                                 title: controller.productList[index].namaBarang,
                                 price: controller.productList[index].harga,
                                 rating: controller.productList[index].ratingBarang
                                     .toDouble(),
                                 productId: controller.productList[index].idBarang,
+                                status: controller.productList[index].status,
                               );
                             },
                           );

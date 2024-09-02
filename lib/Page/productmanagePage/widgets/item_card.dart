@@ -14,6 +14,7 @@ class ProductItemCard extends StatelessWidget {
   final String imagePath;
   final String nameProduct;
   final String description;
+  final String statusBarang;
   final VoidCallback onPressed;
   final VoidCallback onEdit;
 
@@ -22,6 +23,7 @@ class ProductItemCard extends StatelessWidget {
     required this.price,
     required this.imagePath,
     required this.nameProduct,
+    required this.statusBarang,
     required this.description,
     required this.onPressed,
     required this.onEdit,
@@ -75,6 +77,20 @@ class ProductItemCard extends StatelessWidget {
                                 nameProduct,
                                 style: AppTextStyle()
                                     .subHeader(context, AppColors.titleLine),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '${'Status Product '.tr} :',
+                                    style: AppTextStyle()
+                                        .textInfo(context, AppColors.description),
+                                  ),
+                                  Text(
+                                    statusBarang,
+                                    style: AppTextStyle()
+                                        .subHeader(context, AppColors.titleLine),
+                                  ),
+                                ].withSpaceBetween(width: 4),
                               ),
                               SizedBox(
                                 width:

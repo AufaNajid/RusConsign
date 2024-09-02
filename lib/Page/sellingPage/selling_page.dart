@@ -44,8 +44,8 @@ class SellingPage extends StatelessWidget {
                         text: 'selesai'.tr, icon: FeatherIcons.check, index: 2),
                     SellingFilterButton(
                         text: 'batal'.tr, icon: FeatherIcons.x, index: 3),
-                    SellingFilterButton(
-                        text: 'ulasan'.tr, icon: FeatherIcons.star, index: 4),
+                    // SellingFilterButton(
+                    //     text: 'ulasan'.tr, icon: FeatherIcons.star, index: 4),
                   ].withSpaceBetween(width: 10),
                 ),
               ),
@@ -196,7 +196,7 @@ class SellingPage extends StatelessWidget {
                               quantity: cod.quantity,
                               paymentMethod: cod.statusPembayaran,
                               meetingLocation: cod.lokasi.namaLokasi,
-                              onGiveRating: () {},
+                              onGiveRating: () {}, pembeli: cod.user.name,
                             );
                           },
                         );
