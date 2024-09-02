@@ -3,7 +3,7 @@ class SizeData {
   static const double fontTitleSize = 16;
   static const double fontHeaderSize = 14;
   static const double fontSubHeaderSize = 12;
-  static const double fontDescriptionSize = 10;
+  static const double fontDescriptionSize = 11;
   static const double fontDescriptionBoldSize = 10;
   static const double fontTextInfoSize = 8;
   static const double fontTextInfoBoldSize = 8;

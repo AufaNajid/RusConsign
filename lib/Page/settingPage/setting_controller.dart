@@ -82,8 +82,8 @@ class SettingController extends GetxController {
       bioDescController.text = allProfile.profiles.bioDesc.toString();
       imageUrl.value = allProfile.profiles.imageProfiles.toString();
     } else {
-      print('error');
-      Get.snackbar('Error', 'Ada data error: ${response.statusCode}');
+      // print('error');
+      // Get.snackbar('Error', 'Ada data error: ${response.statusCode}');
     }
 
     isLoading.value = false;

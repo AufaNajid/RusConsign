@@ -48,22 +48,22 @@ class LoginPage extends StatelessWidget {
                       controller: controller.passwordTextEditingController,
                     ),
                     const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.toNamed('/forgotpasswordpage');
-                          },
-                          child: Text(
-                            textAlign: TextAlign.left,
-                            'lupaPassword'.tr,
-                            style: AppTextStyle()
-                                .description(context, AppColors.description),
-                          ),
-                        ),
-                      ],
-                    )
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.end,
+                    //   children: [
+                    //     GestureDetector(
+                    //       onTap: () {
+                    //         Get.toNamed('/forgotpasswordpage');
+                    //       },
+                    //       child: Text(
+                    //         textAlign: TextAlign.left,
+                    //         'lupaPassword'.tr,
+                    //         style: AppTextStyle()
+                    //             .description(context, AppColors.description),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // )
                   ],
                 ),
                 const SizedBox(height: 30),
@@ -128,25 +128,25 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                Column(
-                  children: [
-                    Text(
-                      'loginDengan'.tr,
-                      style: AppTextStyle().description(context, AppColors.description),
-                    ),
-                    const SizedBox(height: 20),
-                    GestureDetector(
-                      onTap: () {
-                        _signinWithGoogle();
-                      },
-                      child: Image.asset(
-                        'assets/images/google_logo.png',
-                        height: 40,
-                        width: 40,
-                      ),
-                    ),
-                  ],
-                ),
+                // Column(
+                //   children: [
+                //     Text(
+                //       'loginDengan'.tr,
+                //       style: AppTextStyle().description(context, AppColors.description),
+                //     ),
+                //     const SizedBox(height: 20),
+                //     GestureDetector(
+                //       onTap: () {
+                //         _signinWithGoogle();
+                //       },
+                //       child: Image.asset(
+                //         'assets/images/google_logo.png',
+                //         height: 40,
+                //         width: 40,
+                //       ),
+                //     ),
+                //   ],
+                // ),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,8 +26,6 @@ class AuthLoginController extends GetxController {
   RxString dataBio = ''.obs;
   RxString dataImageUrl = ''.obs;
 
-  get dataName => null;
-
   @override
   void onInit() async {
     super.onInit();
@@ -37,6 +33,17 @@ class AuthLoginController extends GetxController {
     successfulLogin.value = box.read('done') ?? false;
     if (successfulLogin.value) {
       await emailData();
+    }
+  }
+
+  Future<void> checkUserStatus() async {
+    prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+
+    if (token != null && dataEmail.isNotEmpty) {
+      Get.offNamed("/menu");
+    } else {
+      Get.offNamed("/login");
     }
   }
 
@@ -92,6 +99,7 @@ class AuthLoginController extends GetxController {
       successfulLogin.value = false;
       message.value = 'gagalDesc'.tr;
     }
+    isLoading.value = false;
   }
 
   Future<void> emailData() async {
@@ -118,33 +126,6 @@ class AuthLoginController extends GetxController {
       } else {
         print("Eror FetchingProfile${response.statusCode}");
       }
-      // final response = await http.get(
-      //   Uri.parse('https://rusconsign.com/api/users'),
-      // );
-      // if (response.statusCode == 200) {
-      //   final List<dynamic> jsonResponse = json.decode(response.body);
-      //   String? email = box.read('email');
-      //
-      //   if (email != null) {
-      //     Map<String, dynamic>? user = jsonResponse
-      //         .firstWhere((user) => user['email'] == email, orElse: () => null);
-      //
-      //     if (user != null) {
-      //       String userEmail = user['email'];
-      //       String username = user['name'];
-      //       dataEmail.value = userEmail;
-      //       dataUsername.value = username;
-      //       box.write('email', dataEmail.value);
-      //       box.write('username', dataUsername.value);
-      //     } else {
-      //       print('No user found with the provided email.');
-      //     }
-      //   } else {
-      //     print('No email found in storage.');
-      //   }
-      // } else {
-      //   print('Request failed with status: ${response.statusCode}.');
-      // }
     }
   }
 }

@@ -124,24 +124,24 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                Column(
-                  children: [
-                    Text('registerDengan'.tr,
-                        style:
-                            AppTextStyle().description(context, AppColors.description)),
-                    const SizedBox(height: 20),
-                    GestureDetector(
-                      onTap: () {
-                        _signinWithGoogle();
-                      },
-                      child: Image.asset(
-                        'assets/images/google_logo.png',
-                        height: 40,
-                        width: 40,
-                      ),
-                    ),
-                  ],
-                ),
+                // Column(
+                //   children: [
+                //     Text('registerDengan'.tr,
+                //         style:
+                //             AppTextStyle().description(context, AppColors.description)),
+                //     const SizedBox(height: 20),
+                //     GestureDetector(
+                //       onTap: () {
+                //         _signinWithGoogle();
+                //       },
+                //       child: Image.asset(
+                //         'assets/images/google_logo.png',
+                //         height: 40,
+                //         width: 40,
+                //       ),
+                //     ),
+                //   ],
+                // ),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
