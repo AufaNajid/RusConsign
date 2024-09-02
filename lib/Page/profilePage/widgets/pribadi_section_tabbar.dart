@@ -29,14 +29,14 @@ class PribadiSection extends StatelessWidget {
                 toPage: "/orderpage",
               ),
             ),
-            Container(
-              decoration: BoxDecoration(color: AppColors.cardIconFill),
-              child: ButtonProfile(
-                icon: FeatherIcons.messageCircle,
-                text: 'chat'.tr,
-                toPage: "/chatlist",
-              ),
-            ),
+            // Container(
+            //   decoration: BoxDecoration(color: AppColors.cardIconFill),
+            //   child: ButtonProfile(
+            //     icon: FeatherIcons.messageCircle,
+            //     text: 'chat'.tr,
+            //     toPage: "/chatlist",
+            //   ),
+            // ),
             Container(
               decoration: BoxDecoration(color: AppColors.cardIconFill),
               child: ButtonProfile(
