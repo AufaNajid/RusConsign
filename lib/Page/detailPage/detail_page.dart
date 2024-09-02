@@ -208,7 +208,8 @@ class DetailPage extends GetView<DetailPageController> {
                                               0.16,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Get.toNamed("/chatpage");
+                                          print("nomor hp = ${state.barang.mitra.noWa}");
+                                          // Get.toNamed("/chatpage");
                                         },
                                         style: ButtonStyle(
                                           padding:
