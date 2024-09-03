@@ -2,7 +2,7 @@
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:rusconsign/Api/KomentarResponse.dart';
+import 'package:rusconsign/Api/komentar_response.dart';
 import 'package:rusconsign/Api/all_cart_response.dart';
 import 'package:rusconsign/Api/detail_barang_response.dart';
 import 'package:http/http.dart' as http;

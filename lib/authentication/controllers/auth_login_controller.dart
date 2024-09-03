@@ -1,11 +1,14 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../Api/all_profile_response.dart';
+import '../../Api/model_response_profile.dart';
 
 class AuthLoginController extends GetxController {
   late SharedPreferences prefs;
@@ -37,11 +40,16 @@ class AuthLoginController extends GetxController {
   }
 
   Future<void> checkUserStatus() async {
+    final checkMitra = Get.put(MitraController());
     prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
 
-    if (token != null && dataEmail.isNotEmpty) {
+    if (token != null &&
+        box.read('email') != null &&
+        successfulLogin.value == true &&
+        dataEmail.value != '') {
       Get.offNamed("/menu");
+      checkMitra.checkMitraStatus();
     } else {
       Get.offNamed("/login");
     }
@@ -120,11 +128,12 @@ class AuthLoginController extends GetxController {
         dataJumProduk.value = responseProfile.data.jumlahproduct ?? 0;
         dataPenilaian.value = responseProfile.data.penilaian ?? 0;
         dataPengikut.value = responseProfile.data.pengikut ?? 0;
-        dataBio.value = responseProfile.data.bioDesc ?? 'Deskripsi Masih Kosong';
+        dataBio.value =
+            responseProfile.data.bioDesc ?? 'Deskripsi Masih Kosong';
         dataImageUrl.value = responseProfile.data.imageProfiles.toString();
         print(prefs.getString("statusMitra"));
       } else {
-        print("Eror FetchingProfile${response.statusCode}");
+        print("Eror FetchingProfile ${response.statusCode}");
       }
     }
   }

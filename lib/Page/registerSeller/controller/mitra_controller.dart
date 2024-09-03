@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 import 'package:http_parser/http_parser.dart';
-import 'package:rusconsign/Api/all_profile_response.dart';
+import 'package:rusconsign/Api/model_response_profile.dart';
 import 'package:rusconsign/Api/mitra_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,14 +20,10 @@ class MitraController extends GetxController {
   final TextEditingController nomroWaController = TextEditingController();
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
-  RxBool successfulEditProduct = false.obs;
-  RxBool successfulDestroyProduct = false.obs;
-  RxBool successfulEditJasa = false.obs;
-  RxBool successfulDestroyJasa = false.obs;
   RxString message = "".obs;
   RxBool isAccepted = false.obs;
   var pickedImage = Rx<File?>(null);
-  var mitraId = 0.obs;
+  var mitraId = 0.obs; 
   RxString dataNamaToko = "".obs; 
   late SharedPreferences prefs;
 
@@ -44,7 +40,6 @@ class MitraController extends GetxController {
   Future<void> initStatusMitra() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? status = prefs.getString("statusMitra");
-    print("Status Mitra Adalah ${status}");
 
     if (status != null) {
       statumitra.value = status;
@@ -67,7 +62,7 @@ class MitraController extends GetxController {
   Future<void> fecthProfile() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    print("Token User adalah${token}");
+    print("Token User adalah ${token}");
     var response = await http.get(
         Uri.parse("https://rusconsign.com/api/allprofile"),
         headers: {"Authorization": "Bearer ${token.toString()}"});
@@ -82,9 +77,9 @@ class MitraController extends GetxController {
       prefs.setString("idMitra", idMitra);
       dataNamaToko.value = responseBody['data']['nama_toko'].toString();
       isAccepted.value = true;
-      print(prefs.getString("statusMitra"));
+      print('Status Mitra anda : ${prefs.getString("statusMitra")}');
     } else {
-      print("Eror FetchingProfile${response.statusCode}");
+      print("Error Mengambil Data : ${response.statusCode}");
     }
   }
 
@@ -125,7 +120,7 @@ class MitraController extends GetxController {
 
     var response = await request.send();
 
-    print("Response status: ${response.statusCode}");
+    print("Response status saat register Mitra: ${response.statusCode}");
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       var responseBody = await response.stream.bytesToString();

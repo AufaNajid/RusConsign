@@ -150,7 +150,7 @@ List<GetPage> routes = [
   ),
   GetPage(
     name: "/checkoutpage",
-    page: () => const ChekcoutPage(),
+    page: () => const CheckoutPage(),
     binding: CheckoutPageBinding(),
   ),
 ];

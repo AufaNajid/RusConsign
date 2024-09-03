@@ -33,7 +33,7 @@ class Mitra {
   factory Mitra.fromJson(Map<String, dynamic> json) {
     return Mitra(
       id: json['data']['id'] ?? 0,
-      imageProfile: json['image profile'] ?? '',
+      imageProfile: json['image_profile'] ?? '',
       namaLengkap: json['data']['nama'] ?? '',
       namaToko: json['data']['nama_toko'] ?? '',
       nis: json['data']['nis'] ?? '',

@@ -11,9 +11,9 @@ import 'package:rusconsign/Page/webView/testing_web_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CheckoutPageController extends GetxController {
-  var selectedPaymentMethod = 'QRIS'.obs;
-  var selectedLeading = 'assets/images/qris.svg'.obs;
-  var selectedTitle = 'QRIS'.obs;
+  var selectedPaymentMethod = 'Cash On Delivery (COD)'.obs;
+  var selectedLeading = 'assets/images/cod.svg'.obs;
+  var selectedTitle = 'Cash On Delivery (COD)'.obs;
   RxString titleLokasi = 'SMK Raden Umar Said Kudus'.obs;
   var descLokasi =
       'Jalan Sukun Raya No.09, Besito Kulon, Besito, Kec. Gebog, Kabupaten Kudus, Jawa Tengah 59333'
@@ -35,16 +35,17 @@ class CheckoutPageController extends GetxController {
   }
 
   var items = <Map<String, String>>[
-    {'title': 'Dana', 'leading': 'assets/images/dana.svg'},
-    {'title': 'Gopay', 'leading': 'assets/images/gopay.svg'},
-    {'title': 'OVO', 'leading': 'assets/images/ovo.svg'},
-    {'title': 'Cash On Delivery (COD)', 'leading': 'assets/images/cod.svg'},
+    {'title': 'E-Money', 'leading': 'assets/images/e-money.svg'},
   ].obs;
 
   @override
   void onInit() {
     super.onInit();
-    fetchProduct(productCheckoutData["idProduct"]);
+    try {
+      fetchProduct(productCheckoutData["idProduct"]);
+    } catch (e) {
+      print('Null check error: $e');
+    }
     fetchLokasi();
     fetchLokasiById(1);
   }
@@ -62,9 +63,9 @@ class CheckoutPageController extends GetxController {
     selectedLeading.value = selectedItem['leading']!;
     selectedTitle.value = selectedItem['title']!;
 
-    if (selectedItem['title'] != 'QRIS') {
-      items.removeWhere((item) => item['title'] == 'QRIS');
-      items.insert(0, {'title': 'QRIS', 'leading': 'assets/images/qris.svg'});
+    if (selectedItem['title'] != 'Cash On Delivery (COD)') {
+      items.removeWhere((item) => item['title'] == 'Cash On Delivery (COD)');
+      items.insert(0, {'title': 'Cash On Delivery (COD)', 'leading': 'assets/images/cod.svg'});
     }
 
     expanded.value = false;
@@ -99,7 +100,7 @@ class CheckoutPageController extends GetxController {
 
       isLoading(false);
     } catch (e) {
-      print(e);
+      print('Null check error: $e');
     }
   }
 
@@ -125,7 +126,7 @@ class CheckoutPageController extends GetxController {
     var request = http.MultipartRequest(
         'POST', Uri.parse("https://rusconsign.com/api/create-invoice"));
     request.headers['Authorization'] = 'Bearer $token';
-    request.fields['barang_id'] = idBarang; // Ensure field name is correct
+    request.fields['barang_id'] = idBarang;
     request.fields['quantity'] = jumlah;
 
     var response = await request.send();

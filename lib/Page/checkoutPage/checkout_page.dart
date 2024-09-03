@@ -1,4 +1,4 @@
-// ignore_for_file: unrelated_type_equality_checks
+// ignore_for_file: unrelated_type_equality_checks, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,8 +12,8 @@ import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-class ChekcoutPage extends StatelessWidget {
-  const ChekcoutPage({super.key});
+class CheckoutPage extends StatelessWidget {
+  const CheckoutPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class ChekcoutPage extends StatelessWidget {
           );
         } else if (controller.productDetail.value == null) {
           return const Center(
-            child: Text('Product not found'),
+            // child: Text('Product not found'),
           );
         } else {
           final product = controller.productDetail.value!;

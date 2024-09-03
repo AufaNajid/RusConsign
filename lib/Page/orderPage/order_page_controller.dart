@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
-import 'package:rusconsign/Api/AllOrderResponse.dart';
+import 'package:rusconsign/Api/all_order_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderPageController extends GetxController {

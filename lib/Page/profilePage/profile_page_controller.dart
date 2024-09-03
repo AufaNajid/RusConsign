@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:rusconsign/Api/profile_response.dart';
+import 'package:rusconsign/Api/model_response_profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class ProfilePageController extends GetxController {
   final currentIndex = 0.obs;
@@ -10,7 +10,7 @@ class ProfilePageController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool successfulRegister = false.obs;
 
-  var detailProfile = Rxn<Profilee>();
+  var detailProfile = Rxn<Profile>();
 
   int get selectedIndex => _selectedIndex.value;
 
@@ -28,8 +28,8 @@ class ProfilePageController extends GetxController {
         headers: {"Authorization": "Bearer ${token.toString()}"});
   
     if (response.statusCode == 200) {
-      Profilee allProfile = profileFromJson(response.body);
-      detailProfile.value = allProfile.profiles as Profilee?;
+      ModelResponseProfile allProfile = modelResponseProfileFromJson(response.body);
+      detailProfile.value = allProfile.data;
     } else {
       print("Eror Fetch DataProfile${response.statusCode}");
     }
