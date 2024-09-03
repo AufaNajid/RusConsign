@@ -43,17 +43,17 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
+                const Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Image(
+                      Image(
                         image: AssetImage('assets/images/logo.png'),
                         height: 28,
                       ),
-                      const Spacer(),
+                      Spacer(),
                       // GestureDetector(
                       //   onTap: () {
                       //     Get.toNamed('/chatlist');

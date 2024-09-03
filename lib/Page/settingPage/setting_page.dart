@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
-import 'package:rusconsign/Page/settingPage/widgets/account_setting.dart';
 import 'package:rusconsign/Page/settingPage/widgets/divider.dart';
 import 'package:rusconsign/Page/settingPage/widgets/notification_setting.dart';
 import 'package:rusconsign/Page/settingPage/widgets/preference_setting.dart';
@@ -91,14 +90,14 @@ class SettingPage extends StatelessWidget {
                             toggleSwitch: settingController.toggleDarkModeSwitch),
                       ],
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DividerComponent(
-                            icon: FeatherIcons.link, text: 'linkAkun'.tr),
-                        const AccountSetting(),
-                      ],
-                    ),
+                    // Column(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //     DividerComponent(
+                    //         icon: FeatherIcons.link, text: 'linkAkun'.tr),
+                    //     const AccountSetting(),
+                    //   ],
+                    // ),
                     SizedBox(
                       width: AppResponsive().screenWidth(context),
                       height: AppResponsive().screenWidth(context) * 0.1,

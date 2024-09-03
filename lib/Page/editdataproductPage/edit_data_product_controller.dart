@@ -3,7 +3,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;

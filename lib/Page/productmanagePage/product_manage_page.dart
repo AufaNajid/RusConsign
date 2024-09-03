@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/productmanagePage/product_manage_controller.dart';
 import 'package:rusconsign/Page/productmanagePage/widgets/filter_product_button.dart';
@@ -79,7 +80,7 @@ class ProductManagePage extends StatelessWidget {
                       return Column(
                         children: [
                           SizedBox(
-                            height: AppResponsive().screenHeight(context) * 0.6,
+                            height: AppResponsive().screenHeight(context) * 0.8,
                             child: const Center(
                               child: CircularProgressIndicator(
                                 color: AppColors.hargaStat,
@@ -89,19 +90,28 @@ class ProductManagePage extends StatelessWidget {
                         ],
                       );
                     } else if (controller.productList.isEmpty) {
-                      return Column(
-                        children: [
-                          SizedBox(
-                            height: AppResponsive().screenHeight(context) * 0.6,
-                            child: Center(
-                              child: Text(
-                                'belumAdaData'.tr,
-                                style: AppTextStyle()
-                                    .subHeader(context, AppColors.hargaStat),
-                              ),
+                      return SizedBox(
+                        width: double.infinity,
+                        height: AppResponsive().screenHeight(context) * 0.8,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              "assets/images/fluent--box-search-24-regular.svg",
+                              // ignore: deprecated_member_use
+                              color: AppColors.hargaStat,
+                              width: AppResponsive().screenWidth(context) * 0.1,
+                              height:
+                                  AppResponsive().screenHeight(context) * 0.1,
                             ),
-                          ),
-                        ],
+                            Text(
+                              'belumAdaData'.tr,
+                              style: AppTextStyle()
+                                  .subHeader(context, AppColors.description),
+                            )
+                          ].withSpaceBetween(height: 12),
+                        ),
                       );
                     } else {
                       return ListView.separated(
@@ -120,32 +130,37 @@ class ProductManagePage extends StatelessWidget {
                                 controller.productList[index].namaBarang,
                             description:
                                 controller.productList[index].deskripsi,
-                            statusBarang:
-                                controller.productList[index].status,
+                            statusBarang: controller.productList[index].status,
                             onPressed: () {
-                              if(controller.productList[index].status == "publish") {
+                              if (controller.productList[index].status ==
+                                  "publish") {
                                 showDialog(
                                     context: context,
                                     builder: (BuildContext context) {
                                       return AlertDialog(
                                         shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(6),
+                                          borderRadius:
+                                              BorderRadius.circular(6),
                                         ),
                                         backgroundColor: AppColors.background,
                                         title: Text(
                                           'Item Telah Di Publish!'.tr,
-                                          style: AppTextStyle()
-                                              .title(context, AppColors.titleLine),
+                                          style: AppTextStyle().title(
+                                              context, AppColors.titleLine),
                                         ),
-                                        content:
-                                        Text('Item ini telah di publish, anda tidak bisa menghapusnya!'.tr),
+                                        content: Text(
+                                            'Item ini telah di publish, anda tidak bisa menghapusnya!'
+                                                .tr),
                                         actions: <Widget>[
                                           TextButton(
                                             style: TextButton.styleFrom(
-                                              foregroundColor: AppColors.solidWhite,
-                                              backgroundColor: AppColors.button1,
+                                              foregroundColor:
+                                                  AppColors.solidWhite,
+                                              backgroundColor:
+                                                  AppColors.button1,
                                               shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(4),
+                                                borderRadius:
+                                                    BorderRadius.circular(4),
                                               ),
                                             ),
                                             child: Text('Tutup'.tr),
@@ -162,12 +177,13 @@ class ProductManagePage extends StatelessWidget {
                                   builder: (BuildContext context) {
                                     return AlertDialog(
                                       shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(6)),
+                                        borderRadius: BorderRadius.circular(6),
+                                      ),
                                       backgroundColor: AppColors.background,
                                       title: Text(
                                         'konfirmasiHapus'.tr,
-                                        style: AppTextStyle()
-                                            .title(context, AppColors.titleLine),
+                                        style: AppTextStyle().title(
+                                            context, AppColors.titleLine),
                                       ),
                                       content: Text('hapusItemToko'.tr),
                                       actions: <Widget>[
@@ -177,11 +193,12 @@ class ProductManagePage extends StatelessWidget {
                                                   color: AppColors.button1),
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(4))),
+                                                      BorderRadius.circular(
+                                                          4))),
                                           child: Text(
                                             'batal'.tr,
-                                            style: AppTextStyle()
-                                                .subHeader(context, AppColors.hargaStat),
+                                            style: AppTextStyle().subHeader(
+                                                context, AppColors.hargaStat),
                                           ),
                                           onPressed: () {
                                             Navigator.of(context).pop();
@@ -189,18 +206,19 @@ class ProductManagePage extends StatelessWidget {
                                         ),
                                         TextButton(
                                           style: TextButton.styleFrom(
-                                            foregroundColor: AppColors.solidWhite,
+                                            foregroundColor:
+                                                AppColors.solidWhite,
                                             backgroundColor: AppColors.button1,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
-                                              BorderRadius.circular(4),
+                                                  BorderRadius.circular(4),
                                             ),
                                           ),
                                           child: Text('yaHapus'.tr),
                                           onPressed: () async {
                                             await controller.deleteBarang(
-                                                controller
-                                                    .productList[index].idBarang);
+                                                controller.productList[index]
+                                                    .idBarang);
                                             Navigator.of(context).pop();
                                           },
                                         ),

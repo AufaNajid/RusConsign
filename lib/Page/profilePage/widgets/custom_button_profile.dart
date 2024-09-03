@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/size_data.dart';
@@ -9,7 +8,7 @@ import 'package:rusconsign/utils/text_style.dart';
 class ButtonProfile extends StatelessWidget {
   final IconData icon;
   final String text;
-  final String toPage;
+  final VoidCallback toPage;
 
   const ButtonProfile({
     Key? key,
@@ -27,9 +26,7 @@ class ButtonProfile extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             shape: const BeveledRectangleBorder()),
-        onPressed: () {
-          Get.toNamed(toPage);
-        },
+        onPressed: toPage,
         child: Row(
           children: [
             Icon(

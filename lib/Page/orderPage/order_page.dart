@@ -103,7 +103,7 @@ class OrderPage extends StatelessWidget {
                             children: [
                               SizedBox(
                                 height:
-                                    AppResponsive().screenHeight(context) * 0.4,
+                                    AppResponsive().screenHeight(context) * 0.8,
                                 child: const Center(
                                   child: CircularProgressIndicator(
                                     color: AppColors.hargaStat,
@@ -122,6 +122,7 @@ class OrderPage extends StatelessWidget {
                                 children: [
                                   SvgPicture.asset(
                                     "assets/images/fluent--box-search-24-regular.svg",
+                                    // ignore: deprecated_member_use
                                     color: AppColors.hargaStat,
                                     width:
                                         AppResponsive().screenWidth(context) *

@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/profilePage/widgets/custom_button_profile.dart';
+import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -49,6 +50,7 @@ class PenjualSectionTrue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SettingController dataProfile = Get.put(SettingController());
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: Column(
@@ -66,7 +68,9 @@ class PenjualSectionTrue extends StatelessWidget {
                 child: ButtonProfile(
                   icon: FeatherIcons.plusSquare,
                   text: 'buatBaru'.tr,
-                  toPage: "/additemform",
+                  toPage: () {
+                    Get.toNamed("/additemform");
+                  },
                 ),
               ),
               Container(
@@ -74,46 +78,29 @@ class PenjualSectionTrue extends StatelessWidget {
                 child: ButtonProfile(
                   icon: FeatherIcons.package,
                   text: 'pemesananPJ'.tr,
-                  toPage: "/sellingpage",
+                  toPage: () {
+                    dataProfile.fetchData();
+                    Get.toNamed("/sellingpage");
+                  },
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                  ),
-                  
-                  color: AppColors.cardIconFill),
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
+                    color: AppColors.cardIconFill),
                 child: ButtonProfile(
                   icon: FeatherIcons.edit,
                   text: 'kelolaPJ'.tr,
-                  toPage: "/productmanagepage",
+                  toPage: () {
+                    Get.toNamed("/productmanagepage");
+                  },
                 ),
               ),
-              // Container(
-              //   decoration: BoxDecoration(
-              //     borderRadius: const BorderRadius.only(
-              //       bottomLeft: Radius.circular(10),
-              //       bottomRight: Radius.circular(10),
-              //     ),
-              //     color: AppColors.cardIconFill,
-              //   ),
-              //   child: ButtonProfile(
-              //     icon: FeatherIcons.messageCircle,
-              //     text: 'chat'.tr,
-              //     toPage: "/chatlist",
-              //   ),
-              // ),
             ],
           ),
-          //  Row(
-          //   children: [
-          //     FilterButtonSeller(text: 'semua'.tr, icon: FeatherIcons.alignJustify, index: 0),
-          //     FilterButtonSeller(text: 'jasa'.tr, icon: FeatherIcons.users, index: 1),
-          //     FilterButtonSeller(text: 'barang'.tr, icon: FeatherIcons.box, index: 2),
-          //   ],
-          // )
         ],
       ),
     );

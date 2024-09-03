@@ -50,8 +50,8 @@ class ProfilePage extends StatelessWidget {
                     () {
                       final imageUrl = dataProfile.dataImageUrl.value;
                       return SizedBox(
-                        width: 100,
-                        height: 100,
+                        width: 120,
+                        height: 120,
                         child: ClipOval(
                           child: imageUrl.isNotEmpty
                               ? Image.network(

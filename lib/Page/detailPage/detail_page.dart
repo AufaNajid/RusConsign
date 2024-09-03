@@ -6,7 +6,6 @@ import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:rusconsign/Page/detailPage/detail_page_controller.dart';
 import 'package:rusconsign/Page/detailPage/widgets/comment_card.dart';
-import 'package:rusconsign/Page/webView/testing_web_view.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -43,7 +42,7 @@ class DetailPage extends GetView<DetailPageController> {
               Image.network(
                 "$imageUrl${state!.barang.imageBarang.replaceFirst("storage/", "")}",
                 fit: BoxFit.cover,
-                height: AppResponsive().screenHeight(context) * 0.35,
+                height: AppResponsive().screenWidth(context) * 0.850,
                 width: double.infinity,
               ),
               Padding(
@@ -377,7 +376,7 @@ class DetailPage extends GetView<DetailPageController> {
                                             ),
                                             const Spacer(),
                                             Text(
-                                              '287',
+                                              state.barang.mitra.pengikut.toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(context,
                                                       AppColors.hargaStat),

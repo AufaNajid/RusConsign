@@ -28,6 +28,8 @@ class MitraController extends GetxController {
   RxBool isAccepted = false.obs;
   var pickedImage = Rx<File?>(null);
   var mitraId = 0.obs;
+  RxString dataNamaToko = "".obs; 
+  late SharedPreferences prefs;
 
   RxString statumitra = "".obs;
 
@@ -36,6 +38,7 @@ class MitraController extends GetxController {
     super.onInit();
     fecthProfile();
     initStatusMitra();
+    checkMitraStatus();
   }
 
   Future<void> initStatusMitra() async {
@@ -47,6 +50,18 @@ class MitraController extends GetxController {
       statumitra.value = status;
     }
     await fecthProfile();
+  }
+
+  Future<void> checkMitraStatus() async {
+    prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+    await fecthProfile();
+
+    if (token != null && dataNamaToko.isNotEmpty) {
+      isAccepted.value = true;
+    } else {
+      isAccepted.value = false;
+    }
   }
 
   Future<void> fecthProfile() async {
@@ -65,6 +80,7 @@ class MitraController extends GetxController {
       final responseBody = jsonDecode(response.body);
       final idMitra = responseBody['data']['id_mitra'].toString();
       prefs.setString("idMitra", idMitra);
+      dataNamaToko.value = responseBody['data']['nama_toko'].toString();
       isAccepted.value = true;
       print(prefs.getString("statusMitra"));
     } else {

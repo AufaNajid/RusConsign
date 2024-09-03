@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class RegisterSellerWaiting extends StatelessWidget {
@@ -10,7 +11,6 @@ class RegisterSellerWaiting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.background,
       bottomNavigationBar: BottomAppBar(
@@ -28,8 +28,9 @@ class RegisterSellerWaiting extends StatelessWidget {
                       shape: BeveledRectangleBorder(
                           borderRadius: BorderRadius.circular(2))),
                   child: Text(
-                    "Kembali",
-                    style: AppTextStyle().description(context, AppColors.background),
+                    'kembali'.tr,
+                    style: AppTextStyle()
+                        .description(context, AppColors.background),
                   ),
                 ),
               ),
@@ -40,16 +41,20 @@ class RegisterSellerWaiting extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset("assets/images/amico_waiting.svg"),
-            SizedBox(height: AppResponsive().screenHeight(context)*0.01,),
-            Text('menungguPersetujuan'.tr,
-                style: AppTextStyle().title(context, AppColors.titleLine)),
-            SizedBox(height: AppResponsive().screenHeight(context)*0.02,),
             Text(
-              'descPersetujuan'.tr,
-              style: AppTextStyle().description(context, AppColors.description),
-              textAlign: TextAlign.center,
+              'menungguPersetujuan'.tr,
+              style: AppTextStyle().title(context, AppColors.titleLine),
+            ),
+            SizedBox(
+              width: AppResponsive().screenWidth(context) * 0.8,
+              child: Text(
+                'descPersetujuan'.tr,
+                style:
+                    AppTextStyle().description(context, AppColors.description),
+                textAlign: TextAlign.center,
+              ),
             )
-          ],
+          ].withSpaceBetween(height: 16),
         ),
       ),
     );
