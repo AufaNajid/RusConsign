@@ -1,4 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api, unrelated_type_equality_checks
 
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -82,7 +81,8 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
                         width: AppResponsive().screenWidth(context) * 0.01),
                     Text(
                       'pribadi'.tr,
-                      style: const TextStyle(fontSize: SizeData.fontSubHeaderSize),
+                      style:
+                          const TextStyle(fontSize: SizeData.fontSubHeaderSize),
                     )
                   ],
                 ),
@@ -110,7 +110,8 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
                         width: AppResponsive().screenWidth(context) * 0.01),
                     Text(
                       'penjualan'.tr,
-                      style: const TextStyle(fontSize: SizeData.fontSubHeaderSize),
+                      style:
+                          const TextStyle(fontSize: SizeData.fontSubHeaderSize),
                     ),
                   ],
                 ),
@@ -124,30 +125,32 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
           width: double.maxFinite,
           height: AppResponsive().screenHeight(context) * 0.50,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
-          child: Obx(() {
-            if (mitraController.statumitra == "pending") {
-              return TabBarView(
-                controller: _tabController,
-                children: const [
-                  PribadiSection(),
-                  Center(
-                    child: Text("Sedang Menunggu Admin"),
-                  ),
-                ],
-              );
-            } else if (mitraController.statumitra == "accepted" &&
-                mitraController.isAccepted == true) {
-              return TabBarView(
-                controller: _tabController,
-                children: const [PribadiSection(), PenjualSectionTrue()],
-              );
-            } else {
-              return TabBarView(
-                controller: _tabController,
-                children: const [PribadiSection(), PenjualanSectionFalse()],
-              );
-            }
-          }),
+          child: Obx(
+            () {
+              if (mitraController.statumitra == "pending") {
+                return TabBarView(
+                  controller: _tabController,
+                  children: const [
+                    PribadiSection(),
+                    Center(
+                      child: Text("Sedang Menunggu Admin"),
+                    ),
+                  ],
+                );
+              } else if (mitraController.statumitra == "accepted" &&
+                  mitraController.isAccepted == true && mitraController.dataNamaToko.isNotEmpty) {
+                return TabBarView(
+                  controller: _tabController,
+                  children: const [PribadiSection(), PenjualSectionTrue()],
+                );
+              } else {
+                return TabBarView(
+                  controller: _tabController,
+                  children: const [PribadiSection(), PenjualanSectionFalse()],
+                );
+              }
+            },
+          ),
         ),
       ],
     );

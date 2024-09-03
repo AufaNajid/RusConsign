@@ -98,7 +98,7 @@ class SellingPage extends StatelessWidget {
                                 style: AppTextStyle()
                                     .subHeader(context, AppColors.description),
                               )
-                            ],
+                            ].withSpaceBetween(height: 12),
                           ),
                         );
                       }

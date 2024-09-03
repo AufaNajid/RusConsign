@@ -148,7 +148,7 @@ class ProductCardCart extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text(
-                                        '${'total'.tr} : ',
+                                        '${'harga'.tr} : ',
                                         style: AppTextStyle().textInfo(
                                             context, AppColors.description),
                                       ),

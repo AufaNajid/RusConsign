@@ -1,7 +1,6 @@
 
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -97,7 +96,7 @@ class CardProductGiveRating extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '${'Harga'.tr} :',
+                        '${'harga'.tr} :',
                         style: AppTextStyle().textInfo(context, AppColors.description),
                       ),
                       Text(

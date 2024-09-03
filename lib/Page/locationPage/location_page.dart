@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/checkoutPage/checkout_page_controller.dart';
 import 'package:rusconsign/Page/locationPage/widgets/location_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
-import 'package:rusconsign/utils/size_data.dart';
 
 import '../../utils/text_style.dart';
 

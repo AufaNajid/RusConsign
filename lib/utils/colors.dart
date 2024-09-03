@@ -48,6 +48,6 @@ class AppColors {
       ? const Color(0xFF3C4756)
       : const Color(0xFFE1E1E1);
   static const Color error = Color.fromARGB(255, 182, 61, 45);
-  static const Color success = Color.fromARGB(255, 91, 206, 63);
+  static const Color success = Color.fromARGB(255, 62, 146, 41);
   static const Color solidWhite = Color.fromARGB(255, 255, 255, 255);
 }

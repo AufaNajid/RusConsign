@@ -5,8 +5,8 @@ class SizeData {
   static const double fontSubHeaderSize = 12;
   static const double fontDescriptionSize = 11;
   static const double fontDescriptionBoldSize = 10;
-  static const double fontTextInfoSize = 8;
-  static const double fontTextInfoBoldSize = 8;
+  static const double fontTextInfoSize = 9;
+  static const double fontTextInfoBoldSize = 9;
   static const double fontCountdownSize = 30;
 
   // Data Icon

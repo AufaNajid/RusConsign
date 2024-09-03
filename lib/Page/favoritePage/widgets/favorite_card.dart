@@ -133,7 +133,7 @@ class FavoriteCard extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  'harga'.tr,
+                                  '${'harga'.tr} :',
                                   style: AppTextStyle()
                                       .textInfo(context, AppColors.description),
                                 ),

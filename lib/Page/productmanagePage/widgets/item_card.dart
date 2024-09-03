@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/productmanagePage/widgets/button_item_card_delete.dart';
@@ -7,6 +6,7 @@ import 'package:rusconsign/Page/productmanagePage/widgets/button_item_card_edit.
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class ProductItemCard extends StatelessWidget {
@@ -78,20 +78,6 @@ class ProductItemCard extends StatelessWidget {
                                 style: AppTextStyle()
                                     .subHeader(context, AppColors.titleLine),
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    '${'Status Product '.tr} :',
-                                    style: AppTextStyle()
-                                        .textInfo(context, AppColors.description),
-                                  ),
-                                  Text(
-                                    statusBarang,
-                                    style: AppTextStyle()
-                                        .subHeader(context, AppColors.titleLine),
-                                  ),
-                                ].withSpaceBetween(width: 4),
-                              ),
                               SizedBox(
                                 width:
                                     AppResponsive().screenWidth(context) * 0.6,
@@ -107,14 +93,29 @@ class ProductItemCard extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    '${'total'.tr} :',
+                                    '${'harga'.tr} :',
                                     style: AppTextStyle()
                                         .textInfo(context, AppColors.description),
                                   ),
                                   Text(
-                                    'Rp $price',
+                                    MoneyFormat.format(price),
                                     style: AppTextStyle()
                                         .textInfoBold(context, AppColors.hargaStat),
+                                  ),
+                                ].withSpaceBetween(width: 4),
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '${'Status'.tr} :',
+                                    style: AppTextStyle()
+                                        .textInfo(context, AppColors.description),
+                                  ),
+                                  Text(
+                                    statusBarang,
+                                    style: AppTextStyle()
+                                        .textInfoBold(context, AppColors.titleLine),
                                   ),
                                 ].withSpaceBetween(width: 4),
                               ),

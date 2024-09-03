@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
 import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/extension.dart';
-import 'package:rusconsign/utils/size_data.dart';
 
 import '../../../utils/app_responsive.dart';
 import '../../../utils/colors.dart';
@@ -13,6 +12,7 @@ import '../../../utils/text_style.dart';
 class ProfileSetting extends StatelessWidget {
   final SettingController settingController = Get.put(SettingController());
   final AuthLoginController dataProfile = Get.put(AuthLoginController());
+  final MitraController dataMitra = Get.find<MitraController>();
   ProfileSetting({
     Key? key,
   }) : super(key: key);
@@ -127,9 +127,11 @@ class ProfileSetting extends StatelessWidget {
           children: [
             SizedBox(
               width: AppResponsive().screenWidth(context) * 0.15,
-              child: Text('nama'.tr,
-                  style: AppTextStyle()
-                      .textInfoBold(context, AppColors.description)),
+              child: Text(
+                'nama'.tr,
+                style:
+                    AppTextStyle().textInfoBold(context, AppColors.description),
+              ),
             ),
             SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
             Expanded(
@@ -152,35 +154,46 @@ class ProfileSetting extends StatelessWidget {
             )
           ],
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: AppResponsive().screenWidth(context) * 0.15,
-              child: Text('namaToko'.tr,
-                  style: AppTextStyle()
-                      .textInfoBold(context, AppColors.description)),
-            ),
-            SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
-            Expanded(
-              child: TextField(
-                controller: settingController.namaTokoController,
-                style: AppTextStyle().textInfo(context, AppColors.description),
-                cursorColor: AppColors.hargaStat,
-                textAlign: TextAlign.left,
-                decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(6),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: AppColors.cardIconFill,
-                ),
+        Obx(
+          () => dataMitra.statumitra.value == "accepted"
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      width: AppResponsive().screenWidth(context) * 0.15,
+                      child: Text(
+                        'namaToko'.tr,
+                        style: AppTextStyle()
+                            .textInfoBold(context, AppColors.description),
+                      ),
+                    ),
+                    SizedBox(
+                        width: AppResponsive().screenWidth(context) * 0.05),
+                    Expanded(
+                      child: TextField(
+                        controller: settingController.namaTokoController,
+                        style: AppTextStyle()
+                            .textInfo(context, AppColors.description),
+                        cursorColor: AppColors.hargaStat,
+                        textAlign: TextAlign.left,
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: AppColors.cardIconFill,
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              : const SizedBox(
+                height: 0,
+                width: 0,
               ),
-            )
-          ],
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -213,53 +226,53 @@ class ProfileSetting extends StatelessWidget {
             )
           ],
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: AppResponsive().screenWidth(context) * 0.15,
-              child: Text('gantiPW'.tr,
-                  style: AppTextStyle()
-                      .textInfoBold(context, AppColors.description)),
-            ),
-            SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
-            Obx(
-              () => Expanded(
-                child: TextField(
-                  style:
-                      AppTextStyle().textInfo(context, AppColors.description),
-                  cursorColor: AppColors.hargaStat,
-                  textAlign: TextAlign.left,
-                  obscureText: !settingController.isShow.value,
-                  decoration: InputDecoration(
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        settingController.showPassword();
-                      },
-                      child: Icon(
-                        settingController.isShow.value
-                            ? FeatherIcons.eye
-                            : FeatherIcons.eyeOff,
-                        color: settingController.isShow.value
-                            ? AppColors.activeIcon
-                            : AppColors.nonActiveIcon,
-                            size: SizeData.iconSize,
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 10),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(6),
-                      borderSide: BorderSide.none,
-                    ),
-                    filled: true,
-                    fillColor: AppColors.cardIconFill,
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
+        // Row(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     SizedBox(
+        //       width: AppResponsive().screenWidth(context) * 0.15,
+        //       child: Text('gantiPW'.tr,
+        //           style: AppTextStyle()
+        //               .textInfoBold(context, AppColors.description)),
+        //     ),
+        //     SizedBox(width: AppResponsive().screenWidth(context) * 0.05),
+        //     Obx(
+        //       () => Expanded(
+        //         child: TextField(
+        //           style:
+        //               AppTextStyle().textInfo(context, AppColors.description),
+        //           cursorColor: AppColors.hargaStat,
+        //           textAlign: TextAlign.left,
+        //           obscureText: !settingController.isShow.value,
+        //           decoration: InputDecoration(
+        //             suffixIcon: GestureDetector(
+        //               onTap: () {
+        //                 settingController.showPassword();
+        //               },
+        //               child: Icon(
+        //                 settingController.isShow.value
+        //                     ? FeatherIcons.eye
+        //                     : FeatherIcons.eyeOff,
+        //                 color: settingController.isShow.value
+        //                     ? AppColors.activeIcon
+        //                     : AppColors.nonActiveIcon,
+        //                 size: SizeData.iconSize,
+        //               ),
+        //             ),
+        //             contentPadding: const EdgeInsets.symmetric(
+        //                 horizontal: 10, vertical: 10),
+        //             border: OutlineInputBorder(
+        //               borderRadius: BorderRadius.circular(6),
+        //               borderSide: BorderSide.none,
+        //             ),
+        //             filled: true,
+        //             fillColor: AppColors.cardIconFill,
+        //           ),
+        //         ),
+        //       ),
+        //     )
+        //   ],
+        // ),
       ].withSpaceBetween(height: 10),
     );
   }

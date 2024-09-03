@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/userProfilePage/user_profile_controller.dart';
-import 'package:rusconsign/Page/userProfilePage/widgets/button_follow.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/button_icon_widget.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/filter_button.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/user_product_card.dart';
-import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
 import '../../utils/colors.dart';
 import '../../utils/text_style.dart';
-import '../homePage/widgets/product_card.dart';
 
 class UserProfilePage extends StatelessWidget {
   final controller = Get.put(UserProfilePageController());
@@ -68,12 +65,13 @@ class UserProfilePage extends StatelessWidget {
                           ),
                           Text(
                             mitra.nama,
-                            style: AppTextStyle().title(context, AppColors.titleLine),
+                            style: AppTextStyle()
+                                .title(context, AppColors.titleLine),
                           ),
                           Text(
                             mitra.email,
-                            style: AppTextStyle().description(
-                                context, AppColors.description),
+                            style: AppTextStyle()
+                                .description(context, AppColors.description),
                           ),
                         ].withSpaceBetween(height: 10),
                       ),
@@ -107,8 +105,10 @@ class UserProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
                           mitra.namaToko,
-                          style: AppTextStyle().textInfo(
-                              context, AppColors.description),
+                          style: AppTextStyle().descriptionBold(
+                            context,
+                            AppColors.description,
+                          ),
                           textAlign: TextAlign.center,
                           maxLines: 5,
                           overflow: TextOverflow.ellipsis,
@@ -138,7 +138,8 @@ class UserProfilePage extends StatelessWidget {
                       children: [
                         Text(
                           'halamanP&J'.tr,
-                          style: AppTextStyle().subHeader(context, AppColors.titleLine),
+                          style: AppTextStyle()
+                              .subHeader(context, AppColors.titleLine),
                         ),
                         Row(
                           children: [
@@ -209,11 +210,14 @@ class UserProfilePage extends StatelessWidget {
                     //   ],
                     // ),
                     Obx(
-                          () {
+                      () {
                         if (controller.productList.isEmpty) {
-                          return  Center(
-                            child: Text("Data Product Kosong!.", style: AppTextStyle()
-                                .header(context, AppColors.description),),
+                          return Center(
+                            child: Text(
+                              "Data Product Kosong!.",
+                              style: AppTextStyle()
+                                  .header(context, AppColors.description),
+                            ),
                           );
                         } else {
                           return GridView.builder(
@@ -221,7 +225,7 @@ class UserProfilePage extends StatelessWidget {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: controller.productList.length,
                             gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               crossAxisSpacing: 8,
                               mainAxisSpacing: 8,
@@ -229,12 +233,15 @@ class UserProfilePage extends StatelessWidget {
                             ),
                             itemBuilder: (BuildContext context, int index) {
                               return UserProductCard(
-                                imagePath: controller.productList[index].imageBarang,
+                                imagePath:
+                                    controller.productList[index].imageBarang,
                                 title: controller.productList[index].namaBarang,
                                 price: controller.productList[index].harga,
-                                rating: controller.productList[index].ratingBarang
+                                rating: controller
+                                    .productList[index].ratingBarang
                                     .toDouble(),
-                                productId: controller.productList[index].idBarang,
+                                productId:
+                                    controller.productList[index].idBarang,
                                 status: controller.productList[index].status,
                               );
                             },
@@ -252,4 +259,3 @@ class UserProfilePage extends StatelessWidget {
     );
   }
 }
-
