@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:rusconsign/Api/profile_response.dart';
+import 'package:rusconsign/Api/model_response_profile.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,16 +18,11 @@ class SettingController extends GetxController {
   var pickedImage = Rxn<File>();
   var imageUrl = Rxn<String>();
 
-  var profileAll = Rxn<Profilee>();
+  var profileAll = Rxn<Profile>();
 
   final TextEditingController namaProfileController = TextEditingController();
   final TextEditingController namaTokoController = TextEditingController();
   final TextEditingController bioDescController = TextEditingController();
-
-  var originalNamaProfile = ''.obs;
-  var originalNamaToko = ''.obs;
-  var originalBioDesc = ''.obs;
-  var originalImageUrl = ''.obs;
 
   static final box = GetStorage();
 
@@ -75,12 +70,12 @@ class SettingController extends GetxController {
     );
 
     if (response.statusCode == 200) {
-      Profilee allProfile = profileFromJson(response.body);
-      print("Nama saya adalah ${allProfile.profiles.name.toString()}");
-      namaProfileController.text = allProfile.profiles.name.toString();
-      namaTokoController.text = allProfile.profiles.namaToko.toString();
-      bioDescController.text = allProfile.profiles.bioDesc.toString();
-      imageUrl.value = allProfile.profiles.imageProfiles.toString();
+      ModelResponseProfile allProfile = modelResponseProfileFromJson(response.body);
+      print("Nama saya adalah ${allProfile.data.name.toString()}");
+      namaProfileController.text = allProfile.data.name.toString();
+      namaTokoController.text = allProfile.data.namaToko.toString();
+      bioDescController.text = allProfile.data.bioDesc.toString();
+      imageUrl.value = allProfile.data.imageProfiles.toString();
     } else {
       // print('error');
       // Get.snackbar('Error', 'Ada data error: ${response.statusCode}');
@@ -145,7 +140,7 @@ class SettingController extends GetxController {
           backgroundColor: AppColors.success,
           colorText: Colors.white,
         );
-        Get.offNamed("/menu");
+        Get.offAllNamed("/menu");
       } catch (e) {
         print('Error parsing JSON: $e');
         Get.snackbar('Error', 'Ada kesalahan dalam memproses data: $e');

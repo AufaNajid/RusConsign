@@ -35,29 +35,7 @@ class DividerProfile extends StatelessWidget {
               height: AppResponsive().screenWidth(context) * 0.070,
               child: ElevatedButton(
                 onPressed: () {
-                  if (settingController.namaProfileController.text !=
-                          settingController.originalNamaProfile.value ||
-                      settingController.bioDescController.text !=
-                          settingController.originalBioDesc.value ||
-                      settingController.namaTokoController.text !=
-                          settingController.originalNamaToko.value ||
-                      settingController.imageUrl.value !=
-                          settingController.originalImageUrl.value) {
-                    settingController.updateData();
-                  } else {
-                    Get.snackbar(
-                      duration: const Duration(seconds: 2),
-                      borderRadius: 10,
-                      margin: const EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 20,
-                      ),
-                      'gagalUbah'.tr,
-                      'gagalUbahDesc'.tr,
-                      backgroundColor: AppColors.error,
-                      colorText: Colors.white,
-                    );
-                  }
+                  settingController.updateData();
                 },
                 style: ButtonStyle(
                   elevation: const MaterialStatePropertyAll(0),

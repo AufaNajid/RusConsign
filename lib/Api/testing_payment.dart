@@ -2,6 +2,8 @@
 //
 //     final testingPayment = testingPaymentFromJson(jsonString);
 
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 
 TestingPayment testingPaymentFromJson(String str) => TestingPayment.fromJson(json.decode(str));

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -37,7 +39,7 @@ class UserProductCard extends StatelessWidget {
         onTap: () {
           if (status == "publish") {
             Get.toNamed("/detailpage", arguments: productId);
-            print("id product di profiler mitra $productId");
+            print("ID product di profiler mitra : $productId");
           } else {
             showDialog(
                 context: context,

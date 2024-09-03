@@ -174,6 +174,9 @@ class AppTranslation extends Translations {
           'gagalUbahDesc': 'Anda perlu mengubah setidaknya 1 data',
           'hapusFavoritePesan': 'Barang telah dihapus dari favorit',
           'batasStok': 'Sudah mencapai batas stok',
+          'stok' : 'Stok',
+          'stokHint' : 'Masukkan jumlah stok barang/jasa...',
+          'tungguAdmin' : 'Menunggu persetujuan dari admin, ini mungkin akan butuh waktu untuk menyamakan data inputan anda dengan data yang ada di SMK RUS',
         },
         'English': {
           'bahasa': 'Language',
@@ -345,6 +348,9 @@ class AppTranslation extends Translations {
           'gagalUbahDesc': 'You need to change at least 1 data',
           'hapusFavoritePesan': 'Item has been removed from favorites',
           'batasStok': 'Has reached stock limit',
+          'stok' : 'Stock',
+          'stokHint' : 'Enter the stock quantity of product/service...',
+          'tungguAdmin' : 'Awaiting approval from the admin, this may take some time to match your input data with the data in SMK RUS',
         }
       };
 }

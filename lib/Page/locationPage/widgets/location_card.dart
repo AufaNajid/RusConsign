@@ -79,14 +79,14 @@ class LocationCard extends StatelessWidget {
                     icon: Icon(
                       FeatherIcons.check,
                       size: SizeData.iconSize,
-                      color: locationController.selectedLocationIndex == index + 1
+                      color: locationController.selectedLocationIndex.value == index + 1
                       ? AppColors.activeIconType
                       : AppColors.activeIcon,
                     ),
                     style: ButtonStyle(
                       backgroundColor:
                       MaterialStatePropertyAll(
-                        locationController.selectedLocationIndex == index + 1
+                        locationController.selectedLocationIndex.value == index + 1
                         ? AppColors.button1
                         : AppColors.cardIconFill,
                       ),

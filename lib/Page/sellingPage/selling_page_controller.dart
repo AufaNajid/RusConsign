@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-import '../../Api/AllOrderResponse.dart';
+import '../../Api/all_order_response.dart';
 
 class SellingPageController extends GetxController {
   RxBool isLoading = false.obs;

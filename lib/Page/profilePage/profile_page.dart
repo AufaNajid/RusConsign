@@ -5,7 +5,6 @@ import 'package:rusconsign/Page/profilePage/widgets/tab_bar_profile.dart';
 import 'package:rusconsign/Page/profilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/Page/profilePage/widgets/customappbar.dart';
 import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart';
-import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
@@ -19,14 +18,13 @@ class ProfilePage extends StatelessWidget {
     await dataProfile.emailData();
     final MitraController controller = Get.find<MitraController>();
     await controller.initStatusMitra();
+    await controller.checkMitraStatus();
   }
 
   @override
   Widget build(BuildContext context) {
     const img = "https://rusconsign.com";
     final AuthLoginController dataProfile = Get.put(AuthLoginController());
-    Get.put(SettingController());
-
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBarProfile(title: 'profil'.tr),
@@ -116,7 +114,7 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: Text(
                       dataProfile.dataBio.value,
-                      style: AppTextStyle().textInfo(context, AppColors.description),
+                      style: AppTextStyle().textInfoBold(context, AppColors.description),
                       maxLines: 5,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,

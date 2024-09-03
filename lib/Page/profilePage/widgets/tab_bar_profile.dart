@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
@@ -8,15 +7,16 @@ import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart'
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/size_data.dart';
+import 'package:rusconsign/utils/text_style.dart';
 
 class TabList extends StatefulWidget {
   const TabList({Key? key}) : super(key: key);
 
   @override
-  _TabListState createState() => _TabListState();
+  TabListState createState() => TabListState();
 }
 
-class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
+class TabListState extends State<TabList> with SingleTickerProviderStateMixin {
   late TabController _tabController;
   late Color _borderColor1;
   late Color _borderColor2;
@@ -49,6 +49,7 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final MitraController mitraController = Get.put(MitraController());
+    mitraController.checkMitraStatus();
     return Column(
       children: [
         TabBar(
@@ -121,24 +122,33 @@ class _TabListState extends State<TabList> with SingleTickerProviderStateMixin {
         ),
         Container(
           padding: EdgeInsets.only(
-              top: AppResponsive().screenHeight(context) * 0.0150),
+            top: AppResponsive().screenHeight(context) * 0.0150,
+          ),
           width: double.maxFinite,
           height: AppResponsive().screenHeight(context) * 0.50,
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
           child: Obx(
             () {
-              if (mitraController.statumitra == "pending") {
+              if (mitraController.statumitra.value == "pending") {
                 return TabBarView(
                   controller: _tabController,
-                  children: const [
-                    PribadiSection(),
+                  children: [
+                    const PribadiSection(),
                     Center(
-                      child: Text("Sedang Menunggu Admin"),
+                      child: SizedBox(
+                        width: AppResponsive().screenWidth(context) * 0.8,
+                        child: Text(
+                          'tungguAdmin'.tr,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyle()
+                              .subHeader(context, AppColors.description),
+                        ),
+                      ),
                     ),
                   ],
                 );
-              } else if (mitraController.statumitra == "accepted" &&
-                  mitraController.isAccepted == true && mitraController.dataNamaToko.isNotEmpty) {
+              } else if (mitraController.statumitra.value == "accepted" &&
+                  mitraController.isAccepted.value == true) {
                 return TabBarView(
                   controller: _tabController,
                   children: const [PribadiSection(), PenjualSectionTrue()],

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:rusconsign/Api/detail_mitra.dart';
@@ -35,7 +37,7 @@ class UserProfilePageController extends GetxController {
   void onInit() {
     super.onInit();
     mitraId = Get.arguments as int;
-    print("id Mitra $mitraId");
+    print("ID Mitra anda : $mitraId");
     final idMitra = Get.arguments as int;
     fetchProduct(0);
     fetchDetailMitra(idMitra);

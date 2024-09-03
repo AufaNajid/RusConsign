@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
@@ -40,7 +42,7 @@ class NotPaidCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final OrderPageController orderController = Get.put(OrderPageController());
-    final img = "https://rusconsign.com/api";
+    const img = "https://rusconsign.com/api";
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
