@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -275,72 +276,48 @@ class DetailPage extends GetView<DetailPageController> {
                                 )
                               ],
                             ),
-                            Expanded(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                           Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                             children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: AppResponsive()
-                                                .screenWidth(context) *
-                                            0.185,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Jumlah Produk".tr,
-                                              style: AppTextStyle().textInfo(
-                                                  context, AppColors.titleLine),
-                                            ),
-                                            const Spacer(),
-                                            Text(
-                                              state.mitra.jumlahProduct
-                                                  .toString(),
-                                              style: AppTextStyle()
-                                                  .textInfoBold(context,
-                                                      AppColors.hargaStat),
-                                            ),
-                                          ],
+                                  Flexible(
+                                    child: SizedBox(
+                                          width: AppResponsive()
+                                                  .screenWidth(context) *
+                                              0.27,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Jumlah Produk".tr,
+                                                style: AppTextStyle().textInfo(
+                                                    context, AppColors.titleLine),
+                                              ),
+                                              Text(
+                                                state.mitra.jumlahProduct
+                                                    .toString(),
+                                                style: AppTextStyle()
+                                                    .textInfoBold(context,
+                                                        AppColors.hargaStat),
+                                              ),
+                                            ].withSpaceBetween(width: 10),
+                                          ),
                                         ),
-                                      ),
-                                      // SizedBox(
-                                      //   width: AppResponsive()
-                                      //           .screenWidth(context) *
-                                      //       0.185,
-                                      //   child: Row(
-                                      //     mainAxisAlignment:
-                                      //         MainAxisAlignment.start,
-                                      //     children: [
-                                      //       Text(
-                                      //         'penilaian'.tr,
-                                      //         style: AppTextStyle().textInfo(
-                                      //             context, AppColors.titleLine),
-                                      //       ),
-                                      //       const Spacer(),
-                                      //       Text(
-                                      //         controller.avgRating.toString(),
-                                      //         style: AppTextStyle()
-                                      //             .textInfoBold(context,
-                                      //                 AppColors.hargaStat),
-                                      //       ),
-                                      //     ],
-                                      //   ),
-                                      // ),
-                                    ].withSpaceBetween(height: 20),
                                   ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Flexible(child: 
+                                         SizedBox(
                                         width: AppResponsive()
                                                 .screenWidth(context) *
-                                            0.185,
+                                            0.27,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -350,7 +327,6 @@ class DetailPage extends GetView<DetailPageController> {
                                               style: AppTextStyle().textInfo(
                                                   context, AppColors.titleLine),
                                             ),
-                                            const Spacer(),
                                             Text(
                                               state.mitra.jumlahJasa
                                                   .toString(),
@@ -358,38 +334,16 @@ class DetailPage extends GetView<DetailPageController> {
                                                   .textInfoBold(context,
                                                       AppColors.hargaStat),
                                             ),
-                                          ],
+                                          ].withSpaceBetween(width: 10),
                                         ),
-                                      ),
-                                      // SizedBox(
-                                      //   width: AppResponsive()
-                                      //           .screenWidth(context) *
-                                      //       0.185,
-                                      //   child: Row(
-                                      //     mainAxisAlignment:
-                                      //         MainAxisAlignment.start,
-                                      //     children: [
-                                      //       Text(
-                                      //         'pengikut'.tr,
-                                      //         style: AppTextStyle().textInfo(
-                                      //             context, AppColors.titleLine),
-                                      //       ),
-                                      //       const Spacer(),
-                                      //       Text(
-                                      //         state.mitra.pengikut.toString(),
-                                      //         style: AppTextStyle()
-                                      //             .textInfoBold(context,
-                                      //                 AppColors.hargaStat),
-                                      //       ),
-                                      //     ],
-                                      //   ),
-                                      // ),
-                                    ].withSpaceBetween(height: 20),
-                                  ),
+                                      ),)
                                 ],
-                              ),
-                            ),
-                          ].withSpaceBetween(width: 8),
+                              )
+                             ].withSpaceBetween(height: 10),
+                           ),
+                           
+                           )
+                          ].withSpaceBetween(width: 10),
                         ),
                         Divider(
                           color: AppColors.titleLine,

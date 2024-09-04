@@ -35,9 +35,16 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Poppins',
           useMaterial3: true,
         ),
-      initialRoute: "/splash",
-      getPages: routes,
-      )
+        builder: (context, child) {
+          // Membungkus aplikasi dengan MediaQuery tanpa textScaler atau textScaleFactor
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)), // Ini bisa dihapus saat Flutter mendukung penuh textScaler
+            child: child!,
+          );
+        },
+        initialRoute: "/splash",
+        getPages: routes,
+      ),
     );
   }
 }
