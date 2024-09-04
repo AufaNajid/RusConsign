@@ -33,7 +33,7 @@ class Barang {
   final String namaBarang;
   final String deskripsi;
   final int harga;
-  final int ratingBarang;
+  final dynamic ratingBarang;
   final int categoryId;
   final String categoryNama;
   final String imageBarang;

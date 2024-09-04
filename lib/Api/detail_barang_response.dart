@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 DetailBarangModel detailBarangModelFromJson(String str) => DetailBarangModel.fromJson(json.decode(str));
@@ -10,7 +9,7 @@ class DetailBarangModel {
     final String namaBarang;
     final String deskripsi;
     final int harga;
-    final int ratingBarang;
+    final dynamic ratingBarang;
     final int categoryId;
     final String categoryNama;
     final String imageBarang;
