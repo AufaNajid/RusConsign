@@ -6,7 +6,7 @@ import 'package:path/path.dart';
 import 'package:get/get.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:http/http.dart' as http;
-import 'package:rusconsign/Api/edit_product_response.dart';
+import 'package:rusconsign/Api/detail_barang_response.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
@@ -60,17 +60,17 @@ class EditDataProductController extends GetxController {
     );
 
     if (response.statusCode == 200) {
-      EditProductResponse data = editProductResponseFromJson(response.body);
+      DetailBarangModel data = detailBarangModelFromJson(response.body);
 
-      namaPJController.text = data.barang.namaBarang;
-      deskripsiController.text = data.barang.deskripsi;
-      hargaController.text = data.barang.harga.toString();
+      namaPJController.text = data.namaBarang;
+      deskripsiController.text = data.deskripsi;
+      hargaController.text = data.harga.toString();
       imageUrl.value =
-          'https://rusconsign.com/api/storage/public${data.barang.imageBarang.replaceFirst("storage/", "")}';
+          'https://rusconsign.com/api/storage/public${data.imageBarang.replaceFirst("storage/", "")}';
 
-      originalNamaPJ.value = data.barang.namaBarang;
-      originalDeskripsi.value = data.barang.deskripsi;
-      originalHarga.value = data.barang.harga.toString();
+      originalNamaPJ.value = data.namaBarang;
+      originalDeskripsi.value = data.deskripsi;
+      originalHarga.value = data.harga.toString();
       originalImageUrl.value = imageUrl.value!;
 
       pickedImage.value = null;

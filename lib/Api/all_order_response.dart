@@ -115,7 +115,7 @@ class Barang {
   String namaBarang;
   String deskripsi;
   int harga;
-  int ratingBarang;
+  dynamic ratingBarang;
   int categoryId;
   int mitraId;
   String statusPost;

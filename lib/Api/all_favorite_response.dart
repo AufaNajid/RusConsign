@@ -61,7 +61,7 @@ class Barang {
   String namaBarang;
   String deskripsi;
   int harga;
-  double ratingBarang;
+  dynamic ratingBarang;
   int categoryId;
   String categoryNama;
   String imageBarang;

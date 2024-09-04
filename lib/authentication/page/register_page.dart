@@ -1,9 +1,7 @@
 // ignore_for_file: avoid_print
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rusconsign/authentication/controllers/auth_controller.dart';
 import 'package:rusconsign/authentication/controllers/google_controller.dart';
 import 'package:rusconsign/authentication/widget/text_field_widget.dart';
@@ -119,7 +117,8 @@ class RegisterPage extends StatelessWidget {
                     ),
                     child: Text(
                       'Register',
-                      style: AppTextStyle().header(context, AppColors.textButton1),
+                      style:
+                          AppTextStyle().header(context, AppColors.textButton1),
                     ),
                   ),
                 ),
@@ -147,8 +146,8 @@ class RegisterPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('sudahPunyaAkun'.tr,
-                        style:
-                            AppTextStyle().description(context, AppColors.description)),
+                        style: AppTextStyle()
+                            .description(context, AppColors.description)),
                     const SizedBox(width: 6),
                     GestureDetector(
                       onTap: () {
@@ -181,34 +180,5 @@ class RegisterPage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-Future<void> _signinWithGoogle() async {
-  final GoogleSignIn googleSignIn = GoogleSignIn();
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
-  try {
-    final GoogleSignInAccount? googleSignInAccount =
-        await googleSignIn.signIn();
-
-    if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
-
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        idToken: googleSignInAuthentication.idToken,
-        accessToken: googleSignInAuthentication.accessToken,
-      );
-
-      await firebaseAuth.signInWithCredential(credential);
-      print("Sign in with Google succeeded");
-      // Setelah berhasil login, arahkan pengguna ke halaman lain
-      Get.offNamed('/menu');
-    } else {
-      print("Sign in aborted by user");
-    }
-  } catch (e) {
-    print("Error during sign in with Google: $e");
   }
 }
