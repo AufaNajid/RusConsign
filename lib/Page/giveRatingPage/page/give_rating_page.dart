@@ -17,6 +17,7 @@ class GiveRatingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(GiveRatingController());
     return Scaffold(
+      backgroundColor: AppColors.background,
         appBar: CommonAppBar(
           title: 'Berikan Penilaian'.tr,
           route: () {
@@ -42,15 +43,15 @@ class GiveRatingPage extends StatelessWidget {
                 child: Column(
                   children: [
                     CardProductGiveRating(
-                        imagePath: product.barang.imageBarang,
+                        imagePath: product.imageBarang,
                         pemesan: "pemesan",
-                        title: product.barang.namaBarang,
+                        title: product.namaBarang,
                         metodePembayaran: "metodePembayaran",
                         lokasiPertemuan: "lokasiPertemuan",
                         rating: controller.avgRating,
-                        price: product.barang.harga,
-                        quantity: product.barang.stock,
-                        timeMeeting: product.barang.mitra.namaToko),
+                        price: product.harga,
+                        quantity: product.stock,
+                        timeMeeting: product.mitra.namaToko),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(5, (index) {
@@ -81,7 +82,7 @@ class GiveRatingPage extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () async {
-                          controller.sendComment(product.barang.id.toString());
+                          controller.sendComment(product.id.toString());
                         },
                         style: ElevatedButton.styleFrom(
                           elevation: 0,

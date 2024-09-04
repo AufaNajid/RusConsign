@@ -3,7 +3,6 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/Page/settingPage/widgets/divider.dart';
-import 'package:rusconsign/Page/settingPage/widgets/notification_setting.dart';
 import 'package:rusconsign/Page/settingPage/widgets/preference_setting.dart';
 import 'package:rusconsign/Page/settingPage/widgets/profile_setting.dart';
 import 'package:rusconsign/utils/colors.dart';
@@ -66,19 +65,19 @@ class SettingPage extends StatelessWidget {
                         ProfileSetting(),
                       ],
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        DividerComponent(
-                            icon: FeatherIcons.bell, text: 'notifikasi'.tr),
-                        NotificationSetting(
-                          iSwitched:
-                              settingController.isNotificationSwitched.value,
-                          toggleSwitch:
-                              settingController.toggleNotificationSwitch,
-                        ),
-                      ],
-                    ),
+                    // Column(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //     DividerComponent(
+                    //         icon: FeatherIcons.bell, text: 'notifikasi'.tr),
+                    //     NotificationSetting(
+                    //       iSwitched:
+                    //           settingController.isNotificationSwitched.value,
+                    //       toggleSwitch:
+                    //           settingController.toggleNotificationSwitch,
+                    //     ),
+                    //   ],
+                    // ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [

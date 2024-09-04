@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, unnecessary_type_check
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,11 +31,11 @@ class GiveRatingController extends GetxController {
       DetailBarangModel detailBarang = detailBarangModelFromJson(response.body);
       productDetail.value = detailBarang;
 
-      if (detailBarang.barang.ratingBarang is int) {
-        avgRating.value = (detailBarang.barang.ratingBarang as int).toDouble();
-      } else if (detailBarang.barang.ratingBarang is double) {
+      if (detailBarang.ratingBarang is int) {
+        avgRating.value = (detailBarang.ratingBarang).toDouble();
+      } else if (detailBarang.ratingBarang is double) {
         avgRating.value =
-            double.parse(detailBarang.barang.ratingBarang.toStringAsFixed(2));
+            double.parse(detailBarang.ratingBarang.toStringAsFixed(2));
       }
 
     } else {

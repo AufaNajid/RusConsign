@@ -40,7 +40,7 @@ class DetailPage extends GetView<DetailPageController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.network(
-                "$imageUrl${state!.barang.imageBarang.replaceFirst("storage/", "")}",
+                "$imageUrl${state!.imageBarang.replaceFirst("storage/", "")}",
                 fit: BoxFit.cover,
                 height: AppResponsive().screenWidth(context) * 0.850,
                 width: double.infinity,
@@ -66,7 +66,7 @@ class DetailPage extends GetView<DetailPageController> {
                                   color: AppColors.button1,
                                   child: Center(
                                     child: Text(
-                                      state.barang.categoryNama.tr,
+                                      state.categoryNama.tr,
                                       style: AppTextStyle().descriptionBold(
                                           context, AppColors.textButton1),
                                     ),
@@ -75,7 +75,7 @@ class DetailPage extends GetView<DetailPageController> {
                               ),
                             ),
                             Text(
-                              "${state.barang.stock} Stok",
+                              "${state.stock} Stok",
                               style: AppTextStyle().descriptionBold(
                                   context, AppColors.description),
                             )
@@ -92,7 +92,7 @@ class DetailPage extends GetView<DetailPageController> {
                               child: Obx(
                                 () => GestureDetector(
                                   onTap: () {
-                                    controller.toggleFavorite(state.barang.id);
+                                    controller.toggleFavorite(state.id);
                                   },
                                   child: Icon(
                                     controller.isFavorite.value
@@ -115,13 +115,13 @@ class DetailPage extends GetView<DetailPageController> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          state.barang.namaBarang,
+                          state.namaBarang,
                           style: AppTextStyle()
                               .title(context, AppColors.titleLine),
                           textAlign: TextAlign.start,
                         ),
                         Text(
-                          state.barang.deskripsi,
+                          state.deskripsi,
                           style: AppTextStyle()
                               .description(context, AppColors.description),
                         ),
@@ -131,7 +131,7 @@ class DetailPage extends GetView<DetailPageController> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          MoneyFormat.format(state.barang.harga),
+                          MoneyFormat.format(state.harga),
                           style: AppTextStyle()
                               .title(context, AppColors.hargaStat),
                         ),
@@ -191,7 +191,7 @@ class DetailPage extends GetView<DetailPageController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  state.barang.mitra.namaToko,
+                                  state.mitra.namaToko,
                                   style: AppTextStyle().description(
                                       context, AppColors.titleLine),
                                 ),
@@ -209,8 +209,8 @@ class DetailPage extends GetView<DetailPageController> {
                                               0.16,
                                       child: ElevatedButton(
                                         onPressed: () async {
-                                          print("nomor hp = ${state.barang.mitra.noWa}");
-                                          var url = Uri.parse("https://wa.me/${state.barang.mitra.noWa}");
+                                          print("nomor hp = ${state.mitra.noWhatsapp}");
+                                          var url = Uri.parse("https://wa.me/${state.mitra.noWhatsapp}");
                                           await launchUrl(url);
                                         },
                                         style: ButtonStyle(
@@ -245,8 +245,8 @@ class DetailPage extends GetView<DetailPageController> {
                                               0.16,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Get.toNamed('/userprofilepage',
-                                              arguments: state.barang.mitra.id);
+                                          Get.offNamed('/userprofilepage',
+                                              arguments: state.mitra.id);
                                         },
                                         style: ButtonStyle(
                                           padding:
@@ -299,7 +299,7 @@ class DetailPage extends GetView<DetailPageController> {
                                             ),
                                             const Spacer(),
                                             Text(
-                                              state.barang.mitra.jumlahProduct
+                                              state.mitra.jumlahProduct
                                                   .toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(context,
@@ -308,29 +308,29 @@ class DetailPage extends GetView<DetailPageController> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: AppResponsive()
-                                                .screenWidth(context) *
-                                            0.185,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'penilaian'.tr,
-                                              style: AppTextStyle().textInfo(
-                                                  context, AppColors.titleLine),
-                                            ),
-                                            const Spacer(),
-                                            Text(
-                                              controller.avgRating.toString(),
-                                              style: AppTextStyle()
-                                                  .textInfoBold(context,
-                                                      AppColors.hargaStat),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                      // SizedBox(
+                                      //   width: AppResponsive()
+                                      //           .screenWidth(context) *
+                                      //       0.185,
+                                      //   child: Row(
+                                      //     mainAxisAlignment:
+                                      //         MainAxisAlignment.start,
+                                      //     children: [
+                                      //       Text(
+                                      //         'penilaian'.tr,
+                                      //         style: AppTextStyle().textInfo(
+                                      //             context, AppColors.titleLine),
+                                      //       ),
+                                      //       const Spacer(),
+                                      //       Text(
+                                      //         controller.avgRating.toString(),
+                                      //         style: AppTextStyle()
+                                      //             .textInfoBold(context,
+                                      //                 AppColors.hargaStat),
+                                      //       ),
+                                      //     ],
+                                      //   ),
+                                      // ),
                                     ].withSpaceBetween(height: 20),
                                   ),
                                   Column(
@@ -352,7 +352,7 @@ class DetailPage extends GetView<DetailPageController> {
                                             ),
                                             const Spacer(),
                                             Text(
-                                              state.barang.mitra.jumlahJasa
+                                              state.mitra.jumlahJasa
                                                   .toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(context,
@@ -361,29 +361,29 @@ class DetailPage extends GetView<DetailPageController> {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: AppResponsive()
-                                                .screenWidth(context) *
-                                            0.185,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'pengikut'.tr,
-                                              style: AppTextStyle().textInfo(
-                                                  context, AppColors.titleLine),
-                                            ),
-                                            const Spacer(),
-                                            Text(
-                                              state.barang.mitra.pengikut.toString(),
-                                              style: AppTextStyle()
-                                                  .textInfoBold(context,
-                                                      AppColors.hargaStat),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                      // SizedBox(
+                                      //   width: AppResponsive()
+                                      //           .screenWidth(context) *
+                                      //       0.185,
+                                      //   child: Row(
+                                      //     mainAxisAlignment:
+                                      //         MainAxisAlignment.start,
+                                      //     children: [
+                                      //       Text(
+                                      //         'pengikut'.tr,
+                                      //         style: AppTextStyle().textInfo(
+                                      //             context, AppColors.titleLine),
+                                      //       ),
+                                      //       const Spacer(),
+                                      //       Text(
+                                      //         state.mitra.pengikut.toString(),
+                                      //         style: AppTextStyle()
+                                      //             .textInfoBold(context,
+                                      //                 AppColors.hargaStat),
+                                      //       ),
+                                      //     ],
+                                      //   ),
+                                      // ),
                                     ].withSpaceBetween(height: 20),
                                   ),
                                 ],
@@ -513,7 +513,7 @@ class DetailPage extends GetView<DetailPageController> {
                       child: Obx(
                         () => GestureDetector(
                           onTap: () {
-                            ctr.toogleCart(state!.barang.id);
+                            ctr.toogleCart(state!.id);
                           },
                           child: Icon(
                             size: SizeData.iconSize,
@@ -534,7 +534,7 @@ class DetailPage extends GetView<DetailPageController> {
                   width: AppResponsive().screenWidth(context) * 0.70,
                   child: ElevatedButton(
                     onPressed: () {
-                      if (state!.barang.stock == 0) {
+                      if (state!.stock == 0) {
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
@@ -571,8 +571,8 @@ class DetailPage extends GetView<DetailPageController> {
                         Get.toNamed(
                           '/checkoutpage',
                           arguments: {
-                            "idProduct" : state.barang.id,
-                            "quantityProduct" : state.barang.quantity,
+                            "idProduct" : state.id,
+                            "quantityProduct" : state.quantity,
                             },
                         );
                       }
