@@ -3,7 +3,7 @@
 import 'package:get/get.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:rusconsign/Api/all_barang_response.dart';
+import 'package:rusconsign/Api/detail_barang_response.dart';
 import 'package:rusconsign/Api/lokasi_by_id.dart';
 import 'package:rusconsign/Api/lokasi_response.dart';
 import 'package:rusconsign/Api/testing_payment.dart';
@@ -22,7 +22,7 @@ class CheckoutPageController extends GetxController {
   RxBool successfulPesanProduct = false.obs;
   RxString message = "".obs;
   RxBool isLoading = false.obs;
-  var productDetail = Rxn<Barang>();
+  var productDetail = Rxn<DetailBarangModel>();
   var lokasi = <LokasiResponse>[].obs;
   var detailLokasi = Rxn<LokasiById>();
   var selectedLocationIndex = Rxn<int>();
@@ -39,10 +39,10 @@ class CheckoutPageController extends GetxController {
   ].obs;
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
     try {
-      fetchProduct(productCheckoutData["idProduct"]);
+      await fetchProduct(productCheckoutData["idProduct"]);
     } catch (e) {
       print('Null check error: $e');
     }
@@ -92,7 +92,7 @@ class CheckoutPageController extends GetxController {
 
       if (response.statusCode == 200) {
         var jsonResponse = json.decode(response.body);
-        Barang product = Barang.fromJson(jsonResponse['barang']);
+        DetailBarangModel product = DetailBarangModel.fromJson(jsonResponse);
         productDetail.value = product;
       } else {
         print('Failed to fetch product: ${response.statusCode}');

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:rusconsign/Page/detailPage/detail_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/size_data.dart';
@@ -33,7 +31,7 @@ class CommentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DetailPageController controller = Get.find();
+    // final DetailPageController controller = Get.find();
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -112,65 +110,64 @@ class CommentCard extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       desc,
-                      style: AppTextStyle().textInfo(context, AppColors.description),
+                      style: AppTextStyle().description(context, AppColors.description),
                     ),
-                    const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 45,
-                          child: Row(
-                            children: [
-                              Obx(
-                                () => GestureDetector(
-                                  onTap: onliked,
-                                  child: Icon(
-                                    controller.thumbsDownClicked.value
-                                        ? Icons.thumb_up
-                                        : Icons.thumb_up_outlined,
-                                    color: controller.thumbsDownClicked.value
-                                        ? AppColors.hargaStat
-                                        : AppColors.titleLine,
-                                    size: SizeData.iconSize,
-                                  ),
-                                ),
-                              ),
-                              const Spacer(),
-                              Text(like.toString(),
-                                  style: AppTextStyle()
-                                      .descriptionBold(context, AppColors.description)),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                        SizedBox(
-                          width: 45,
-                          child: Row(
-                            children: [
-                              Obx(
-                                () => GestureDetector(
-                                  onTap: onliked,
-                                  child: Icon(
-                                    controller.thumbsDownClicked.value
-                                        ? Icons.thumb_down
-                                        : Icons.thumb_down_outlined,
-                                    color: controller.thumbsDownClicked.value
-                                        ? AppColors.hargaStat
-                                        : AppColors.titleLine,
-                                    size: SizeData.iconSize,
-                                  ),
-                                ),
-                              ),
-                              const Spacer(),
-                              Text(disLike.toString(),
-                                  style: AppTextStyle()
-                                      .descriptionBold(context, AppColors.description)),
-                            ],
-                          ),
-                        )
-                      ],
-                    )
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //     SizedBox(
+                    //       width: 45,
+                    //       child: Row(
+                    //         children: [
+                    //           Obx(
+                    //             () => GestureDetector(
+                    //               onTap: onliked,
+                    //               child: Icon(
+                    //                 controller.thumbsDownClicked.value
+                    //                     ? Icons.thumb_up
+                    //                     : Icons.thumb_up_outlined,
+                    //                 color: controller.thumbsDownClicked.value
+                    //                     ? AppColors.hargaStat
+                    //                     : AppColors.titleLine,
+                    //                 size: SizeData.iconSize,
+                    //               ),
+                    //             ),
+                    //           ),
+                    //           const Spacer(),
+                    //           Text(like.toString(),
+                    //               style: AppTextStyle()
+                    //                   .descriptionBold(context, AppColors.description)),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //     const SizedBox(width: 20),
+                    //     SizedBox(
+                    //       width: 45,
+                    //       child: Row(
+                    //         children: [
+                    //           Obx(
+                    //             () => GestureDetector(
+                    //               onTap: onliked,
+                    //               child: Icon(
+                    //                 controller.thumbsDownClicked.value
+                    //                     ? Icons.thumb_down
+                    //                     : Icons.thumb_down_outlined,
+                    //                 color: controller.thumbsDownClicked.value
+                    //                     ? AppColors.hargaStat
+                    //                     : AppColors.titleLine,
+                    //                 size: SizeData.iconSize,
+                    //               ),
+                    //             ),
+                    //           ),
+                    //           const Spacer(),
+                    //           Text(disLike.toString(),
+                    //               style: AppTextStyle()
+                    //                   .descriptionBold(context, AppColors.description)),
+                    //         ],
+                    //       ),
+                    //     )
+                    //   ],
+                    // )
                   ],
                 ),
               )

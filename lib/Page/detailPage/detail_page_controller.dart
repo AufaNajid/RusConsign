@@ -26,9 +26,9 @@ class DetailPageController extends GetxController
 
   @override
   void onInit() {
-    Get.put(LikeController());
-    super.onInit();
     final productId = Get.arguments as int;
+    print (productId);
+    super.onInit();
     loadData(productId);
     checkFavoriteStatus(productId);
     fetchDataKomentar(productId);
@@ -38,7 +38,7 @@ class DetailPageController extends GetxController
 
   void loadData(int productId) async {
     try {
-      isLoading(true);
+      isLoading.value = true;
       change(await DetailService.fetchProductDetail(productId),
           status: RxStatus.success());
     } finally {
@@ -97,7 +97,7 @@ class DetailPageController extends GetxController
     isLoading.value = true;
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
-    final LikeController controller = Get.find<LikeController>();
+    final LikeController controller = Get.put(LikeController());
 
     if (isFavorite.value) {
       final response = await http.delete(
@@ -194,13 +194,13 @@ class DetailPageController extends GetxController
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         Fluttertoast.showToast(
-            msg: 'produkTambahKeranjang'.tr,
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            fontSize: 12,
-            backgroundColor: AppColors.cardIconFill,
-            textColor: AppColors.description,
-          );
+          msg: 'produkTambahKeranjang'.tr,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          fontSize: 12,
+          backgroundColor: AppColors.cardIconFill,
+          textColor: AppColors.description,
+        );
         isAddCart.value = true;
         await controller.fetchCart();
         print("selesai");

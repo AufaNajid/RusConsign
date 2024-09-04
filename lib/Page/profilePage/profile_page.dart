@@ -87,11 +87,11 @@ class ProfilePage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        ProfileInfoCard(
-                          icon: FeatherIcons.userCheck,
-                          title: 'pengikut'.tr,
-                          data: dataProfile.dataPengikut.toString(),
-                        ),
+                        // ProfileInfoCard(
+                        //   icon: FeatherIcons.userCheck,
+                        //   title: 'pengikut'.tr,
+                        //   data: dataProfile.dataPengikut.toString(),
+                        // ),
                         ProfileInfoCard(
                           icon: FeatherIcons.users,
                           title: 'jumlahJasa'.tr,

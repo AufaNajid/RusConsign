@@ -4,6 +4,7 @@ import 'package:rusconsign/Page/registerSeller/controller/mitra_controller.dart'
 import 'package:rusconsign/Page/settingPage/setting_controller.dart';
 import 'package:rusconsign/authentication/controllers/auth_login_controller.dart';
 import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/show_image.dart';
 
 import '../../../utils/app_responsive.dart';
 import '../../../utils/colors.dart';
@@ -72,7 +73,21 @@ class ProfileSetting extends StatelessWidget {
                       height: AppResponsive().screenWidth(context) * 0.070,
                       width: AppResponsive().screenWidth(context) * 0.2,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final imageUrl = settingController.imageUrl.value;
+                          final imageData = settingController.pickedImage.value;
+                          if (imageUrl != null && imageUrl.isNotEmpty) {
+                            ShowImage().showImageBefore(
+                              context,
+                              "$img${imageUrl.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
+                            );
+                          } else {
+                            ShowImage().showImageAfter(
+                              context,
+                              imageData!,
+                            );
+                          }
+                        },
                         style: ButtonStyle(
                           elevation: const MaterialStatePropertyAll(0),
                           padding:
@@ -191,9 +206,9 @@ class ProfileSetting extends StatelessWidget {
                   ],
                 )
               : const SizedBox(
-                height: 0,
-                width: 0,
-              ),
+                  height: 0,
+                  width: 0,
+                ),
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,

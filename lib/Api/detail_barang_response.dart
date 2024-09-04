@@ -1,70 +1,46 @@
-// To parse this JSON data, do
-//
-//     final detailBarangModel = detailBarangModelFromJson(jsonString);
-
-// ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'dart:convert';
 
-DetailBarangModel detailBarangModelFromJson(String str) =>
-    DetailBarangModel.fromJson(json.decode(str));
+DetailBarangModel detailBarangModelFromJson(String str) => DetailBarangModel.fromJson(json.decode(str));
 
-String detailBarangModelToJson(DetailBarangModel data) =>
-    json.encode(data.toJson());
+String detailBarangModelToJson(DetailBarangModel data) => json.encode(data.toJson());
 
 class DetailBarangModel {
-  String message;
-  Barang barang;
+    final int id;
+    final String namaBarang;
+    final String deskripsi;
+    final int harga;
+    final int ratingBarang;
+    final int categoryId;
+    final String categoryNama;
+    final String imageBarang;
+    final String status;
+    final int stock;
+    final int quantity;
+    final String statusPost;
+    final DateTime createdAt;
+    final DateTime updatedAt;
+    final Mitra mitra;
 
-  DetailBarangModel({
-    required this.message,
-    required this.barang,
-  });
+    DetailBarangModel({
+        required this.id,
+        required this.namaBarang,
+        required this.deskripsi,
+        required this.harga,
+        required this.ratingBarang,
+        required this.categoryId,
+        required this.categoryNama,
+        required this.imageBarang,
+        required this.status,
+        required this.stock,
+        required this.quantity,
+        required this.statusPost,
+        required this.createdAt,
+        required this.updatedAt,
+        required this.mitra,
+    });
 
-  factory DetailBarangModel.fromJson(Map<String, dynamic> json) =>
-      DetailBarangModel(
-        message: json["message"],
-        barang: Barang.fromJson(json["barang"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "message": message,
-        "barang": barang.toJson(),
-      };
-}
-
-class Barang {
-  int id;
-  String namaBarang;
-  String deskripsi;
-  int harga;
-  int quantity;
-  var ratingBarang;
-  int categoryId;
-  String categoryNama;
-  String imageBarang;
-  int stock;
-  DateTime createdAt;
-  DateTime updatedAt;
-  Mitra mitra;
-
-  Barang({
-    required this.id,
-    required this.namaBarang,
-    required this.deskripsi,
-    required this.harga,
-    required this.quantity,
-    required this.ratingBarang,
-    required this.categoryId,
-    required this.categoryNama,
-    required this.imageBarang,
-    required this.stock,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.mitra,
-  });
-
-  factory Barang.fromJson(Map<String, dynamic> json) => Barang(
+    factory DetailBarangModel.fromJson(Map<String, dynamic> json) => DetailBarangModel(
         id: json["id"],
         namaBarang: json["nama_barang"],
         deskripsi: json["deskripsi"],
@@ -73,14 +49,16 @@ class Barang {
         categoryId: json["category_id"],
         categoryNama: json["category_nama"],
         imageBarang: json["image_barang"],
+        status: json["status"],
         stock: json["stock"],
+        quantity: json["quantity"],
+        statusPost: json["status_post"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         mitra: Mitra.fromJson(json["mitra"]),
-        quantity: 1,
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "id": id,
         "nama_barang": namaBarang,
         "deskripsi": deskripsi,
@@ -89,53 +67,60 @@ class Barang {
         "category_id": categoryId,
         "category_nama": categoryNama,
         "image_barang": imageBarang,
+        "status": status,
         "stock": stock,
+        "quantity": quantity,
+        "status_post": statusPost,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "mitra": mitra.toJson(),
-      };
+    };
 }
 
 class Mitra {
-  int id;
-  String namaToko;
-  String namaLengkap;
-  int jumlahProduct;
-  int jumlahJasa;
-  int pengikut;
-  int penilaian;
-  String noWa;
+    final int id;
+    final String namaToko;
+    final String namaLengkap;
+    final int jumlahProduct;
+    final int jumlahJasa;
+    final int pengikut;
+    final int penilaian;
+    final String noWhatsapp;
+    final dynamic profileImage;
 
-  Mitra({
-    required this.id,
-    required this.namaToko,
-    required this.namaLengkap,
-    required this.jumlahProduct,
-    required this.jumlahJasa,
-    required this.pengikut,
-    required this.noWa,
-    required this.penilaian,
-  });
+    Mitra({
+        required this.id,
+        required this.namaToko,
+        required this.namaLengkap,
+        required this.jumlahProduct,
+        required this.jumlahJasa,
+        required this.pengikut,
+        required this.penilaian,
+        required this.noWhatsapp,
+        required this.profileImage,
+    });
 
-  factory Mitra.fromJson(Map<String, dynamic> json) => Mitra(
+    factory Mitra.fromJson(Map<String, dynamic> json) => Mitra(
         id: json["id"],
         namaToko: json["nama_toko"],
         namaLengkap: json["nama_lengkap"],
         jumlahProduct: json["jumlah_product"],
         jumlahJasa: json["jumlah_jasa"],
         pengikut: json["pengikut"],
-        noWa: json["no_whatsapp"],
         penilaian: json["penilaian"],
-      );
+        noWhatsapp: json["no_whatsapp"],
+        profileImage: json["profile_image"],
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "id": id,
         "nama_toko": namaToko,
         "nama_lengkap": namaLengkap,
         "jumlah_product": jumlahProduct,
         "jumlah_jasa": jumlahJasa,
         "pengikut": pengikut,
-        "no_whatsapp": noWa,
         "penilaian": penilaian,
-      };
+        "no_whatsapp": noWhatsapp,
+        "profile_image": profileImage,
+    };
 }

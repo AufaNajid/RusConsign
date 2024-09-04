@@ -32,16 +32,16 @@ class PribadiSection extends StatelessWidget {
                 },
               ),
             ),
-            Container(
-              decoration: BoxDecoration(color: AppColors.cardIconFill),
-              child: ButtonProfile(
-                icon: FeatherIcons.bell,
-                text: 'notifikasi'.tr,
-                toPage: () {
-                  Get.toNamed("/notificationpage");
-                },
-              ),
-            ),
+            // Container(
+            //   decoration: BoxDecoration(color: AppColors.cardIconFill),
+            //   child: ButtonProfile(
+            //     icon: FeatherIcons.bell,
+            //     text: 'notifikasi'.tr,
+            //     toPage: () {
+            //       Get.toNamed("/notificationpage");
+            //     },
+            //   ),
+            // ),
             Container(
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
