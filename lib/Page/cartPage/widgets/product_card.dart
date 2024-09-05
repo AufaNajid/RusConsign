@@ -38,25 +38,25 @@ class ProductCardCart extends StatelessWidget {
       width: double.infinity,
       child: GestureDetector(
         onTap: () {
-          if (controller.selectedIndex != index) {
-            controller.setSelectedCart(index);
-          }
+          controller
+              .setSelectedCart(index); // Gunakan logika untuk memilih item
         },
         child: Obx(() => Card(
               shape: RoundedRectangleBorder(
                 borderRadius: const BorderRadius.all(Radius.circular(8)),
                 side: BorderSide(
-                  width: controller.selectedIndex == index ? 1 : 0,
-                  color: controller.selectedIndex == index
+                  width: controller.selectedItems.contains(index)
+                      ? 1
+                      : 0, // Cek apakah item dipilih
+                  color: controller.selectedItems.contains(index)
                       ? AppColors.button1
                       : Colors.transparent,
                   style: BorderStyle.solid,
-                  strokeAlign: BorderSide.strokeAlignCenter,
                 ),
               ),
               elevation: 0,
               margin: const EdgeInsets.symmetric(vertical: 5),
-              color: controller.selectedIndex == index
+              color: controller.selectedItems.contains(index)
                   ? AppColors.produkDipilih
                   : AppColors.cardIconFill,
               child: Padding(
@@ -67,7 +67,7 @@ class ProductCardCart extends StatelessWidget {
                     Card(
                       elevation: 0,
                       margin: EdgeInsets.zero,
-                      color: controller.selectedIndex == index
+                      color: controller.selectedItems.contains(index)
                           ? AppColors.cardProdukDipilih
                           : AppColors.cardProdukTidakDipilih,
                       child: Padding(
@@ -198,14 +198,15 @@ class ProductCardCart extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(3),
                                       child: Material(
-                                        color: controller.selectedIndex == index
+                                        color: controller.selectedItems
+                                                .contains(index)
                                             ? AppColors.button1
                                             : AppColors.button2,
                                         child: Center(
                                           child: Icon(
                                             FeatherIcons.minus,
-                                            color: controller.selectedIndex ==
-                                                    index
+                                            color: controller.selectedItems
+                                                    .contains(index)
                                                 ? AppColors.textButton1
                                                 : AppColors.textButton2,
                                             size: SizeData.iconCartQuantitySize,
@@ -220,15 +221,16 @@ class ProductCardCart extends StatelessWidget {
                                     width: 40,
                                     height: 25,
                                     child: Material(
-                                      color: controller.selectedIndex == index
+                                      color: controller.selectedItems
+                                              .contains(index)
                                           ? AppColors.cardProdukDipilih
                                           : AppColors.cardProdukTidakDipilih,
                                       shape: RoundedRectangleBorder(
                                         side: BorderSide(
-                                          color:
-                                              controller.selectedIndex == index
-                                                  ? AppColors.button1
-                                                  : AppColors.button2,
+                                          color: controller.selectedItems
+                                                  .contains(index)
+                                              ? AppColors.button1
+                                              : AppColors.button2,
                                           width: 1,
                                         ),
                                         borderRadius: BorderRadius.circular(4),
@@ -256,14 +258,15 @@ class ProductCardCart extends StatelessWidget {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(3),
                                       child: Material(
-                                        color: controller.selectedIndex == index
+                                        color: controller.selectedItems
+                                                .contains(index)
                                             ? AppColors.button1
                                             : AppColors.button2,
                                         child: Center(
                                           child: Icon(
                                             FeatherIcons.plus,
-                                            color: controller.selectedIndex ==
-                                                    index
+                                            color: controller.selectedItems
+                                                    .contains(index)
                                                 ? AppColors.textButton1
                                                 : AppColors.textButton2,
                                             size: SizeData.iconCartQuantitySize,

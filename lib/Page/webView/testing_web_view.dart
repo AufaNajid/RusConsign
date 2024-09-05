@@ -39,9 +39,9 @@ class TestingWebcView extends StatelessWidget {
 
     return Scaffold(
       appBar: CommonAppBar(
-        title: 'Payment',
+        title: 'pembayaran'.tr,
         route: () {
-          Get.back();
+          Get.offAllNamed('/menu');
         },
       ),
       body: WebViewWidget(

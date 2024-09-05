@@ -8,24 +8,51 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class CartController extends GetxController {
-  final currentIndex = 0.obs;
-  final _selectedIndex = 0.obs;
+  var selectedItems = <int>[].obs;
   RxBool isLoading = false.obs;
+  RxBool isSelectedAll = false.obs;
   var cartItems = <Cart>[].obs;
 
-  int get selectedIndex => _selectedIndex.value;
+  void setSelectedCart(int index) {
+    if (selectedItems.contains(index)) {
+      selectedItems.remove(index);
+    } else {
+      selectedItems.add(index);
+    }
 
-  void updateCart(int index) {
-    currentIndex.value = index;
+    if (selectedItems.length == cartItems.length) {
+      isSelectedAll.value = true;
+    } else {
+      isSelectedAll.value = false;
+    }
+
+    cartItems.refresh();
   }
 
-  void setSelectedCart(int index) {
-    _selectedIndex.value = index;
+  void setSelectedAll() {
+    isSelectedAll.value = !isSelectedAll.value;
+    if (isSelectedAll.value) {
+      selectedItems.clear();
+      selectedItems
+          .assignAll(List.generate(cartItems.length, (index) => index));
+    } else {
+      selectedItems.clear();
+    }
+
+    cartItems.refresh();
+  }
+
+  double getTotalPrice() {
+    double total = 0;
+    for (var index in selectedItems) {
+      total += cartItems[index].barang.harga * cartItems[index].quantity;
+    }
+    return total;
   }
 
   void incrementQuantity(int index) {
-    print (cartItems[index].barang.stockBarang);
-    if (cartItems[index].quantity <cartItems[index].barang.stockBarang) {
+    print(cartItems[index].barang.stockBarang);
+    if (cartItems[index].quantity < cartItems[index].barang.stockBarang) {
       cartItems[index].quantity++;
       cartItems.refresh();
     } else {
@@ -93,11 +120,11 @@ class CartController extends GetxController {
         backgroundColor: AppColors.cardIconFill,
         textColor: AppColors.description,
       );
-      await fetchCart();
 
-      if (cartItems.isNotEmpty) {
-        _selectedIndex.value = 0;
-      }
+      selectedItems.clear();
+      isSelectedAll.value = false;
+
+      await fetchCart();
     } else {
       Get.snackbar("Error", "Failed to remove item from cart");
     }

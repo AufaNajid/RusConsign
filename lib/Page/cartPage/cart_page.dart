@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:rusconsign/Page/cartPage/controller/cart_controller.dart';
@@ -8,6 +10,7 @@ import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/money_format.dart';
+import 'package:rusconsign/utils/size_data.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
 class CartPage extends StatelessWidget {
@@ -108,67 +111,130 @@ class CartPage extends StatelessWidget {
                   color: AppColors.cardIconFill,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
+                      vertical: 10,
+                      horizontal: 20,
+                    ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              '${'total'.tr} : ',
-                              style: AppTextStyle()
-                                  .header(context, AppColors.description),
-                            ),
-                            Obx(
-                              () => Text(
-                                MoneyFormat.format(
-                                  controller.cartItems[controller.selectedIndex]
-                                          .barang.harga *
-                                      controller
-                                          .cartItems[controller.selectedIndex]
-                                          .quantity,
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width:
+                                      AppResponsive().screenWidth(context) * 0.065,
+                                  height:
+                                      AppResponsive().screenWidth(context) * 0.065,
+                                  child: IconButton(
+                                    onPressed: controller.setSelectedAll,
+                                    icon: Icon(
+                                      FeatherIcons.check,
+                                      size: SizeData.iconCheckCart,
+                                      color: controller.isSelectedAll.value
+                                          ? AppColors.activeIconType
+                                          : AppColors.cardIconFill,
+                                    ),
+                                    style: ButtonStyle(
+                                      padding: const MaterialStatePropertyAll(
+                                        EdgeInsets.zero,
+                                      ),
+                                      backgroundColor: MaterialStatePropertyAll(
+                                        controller.isSelectedAll.value
+                                            ? AppColors.activeIcon
+                                            : AppColors.cardIconFill,
+                                      ),
+                                      side: MaterialStatePropertyAll(
+                                        BorderSide(
+                                          color: AppColors.borderIcon,
+                                          style: BorderStyle.solid,
+                                          width: 1,
+                                        ),
+                                      ),
+                                      shape: MaterialStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(4),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                style: AppTextStyle()
-                                    .header(context, AppColors.hargaStat),
-                              ),
+                                Text(
+                                  'semua'.tr,
+                                  style: AppTextStyle()
+                                      .subHeader(context, AppColors.description),
+                                ),
+                              ].withSpaceBetween(width: 6),
                             ),
-                          ].withSpaceBetween(width: 5),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  '${'total'.tr} : ',
+                                  style: AppTextStyle()
+                                      .subHeader(context, AppColors.description),
+                                ),
+                                Text(
+                                  controller.selectedItems.isEmpty
+                                      ? '-'
+                                      : MoneyFormat.format(
+                                          controller.getTotalPrice().toInt(),
+                                        ),
+                                  style: AppTextStyle()
+                                      .subHeader(context, AppColors.hargaStat),
+                                ),
+                              ],
+                            ),
+                          ].withSpaceBetween(width: AppResponsive().screenWidth(context) * 0.06),
                         ),
-                        const Spacer(),
                         SizedBox(
-                          width: AppResponsive().screenWidth(context) * 0.5,
-                          height: AppResponsive().screenWidth(context) * 0.5,
+                          width: AppResponsive().screenWidth(context) * 0.4,
                           child: ElevatedButton(
-                            onPressed: () {
-                              Get.toNamed("/checkoutpage", arguments: {
-                                "idProduct": controller
-                                    .cartItems[controller.selectedIndex]
-                                    .barang
-                                    .id,
-                                "quantityProduct": controller
-                                    .cartItems[controller.selectedIndex]
-                                    .quantity,
-                              });
-                            },
+                            onPressed: controller.selectedItems.isEmpty
+                                ? null
+                                : () {
+                                    Get.toNamed("/checkoutpage", arguments: {
+                                      "selectedProducts": controller
+                                          .selectedItems
+                                          .map((index) => {
+                                                "idProduct": controller
+                                                    .cartItems[index]
+                                                    .barang
+                                                    .id,
+                                                "quantityProduct": controller
+                                                    .cartItems[index]
+                                                    .quantity,
+                                              })
+                                          .toList(),
+                                    });
+                                  },
                             style: ButtonStyle(
                               elevation: const MaterialStatePropertyAll(0),
                               padding: const MaterialStatePropertyAll(
-                                  EdgeInsets.zero),
+                                EdgeInsets.zero,
+                              ),
                               shape: MaterialStatePropertyAll(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
-                              backgroundColor: const MaterialStatePropertyAll(
-                                AppColors.button1,
+                              backgroundColor: MaterialStatePropertyAll(
+                                controller.selectedItems.isEmpty
+                                    ? AppColors.nonActiveBar
+                                    : AppColors.button1,
                               ),
                             ),
                             child: Text(
                               'checkout'.tr,
-                              style: AppTextStyle()
-                                  .subHeader(context, AppColors.textButton1),
+                              style: AppTextStyle().subHeader(
+                                context,
+                                controller.selectedItems.isEmpty
+                                    ? AppColors.nonActiveCheckout
+                                    : AppColors.textButton1,
+                              ),
                             ),
                           ),
                         ),

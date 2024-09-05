@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, must_be_immutable
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -210,8 +211,10 @@ class DetailPage extends GetView<DetailPageController> {
                                               0.16,
                                       child: ElevatedButton(
                                         onPressed: () async {
-                                          print("nomor hp = ${state.mitra.noWhatsapp}");
-                                          var url = Uri.parse("https://wa.me/${state.mitra.noWhatsapp}");
+                                          print(
+                                              "nomor hp = ${state.mitra.noWhatsapp}");
+                                          var url = Uri.parse(
+                                              "https://wa.me/${state.mitra.noWhatsapp}");
                                           await launchUrl(url);
                                         },
                                         style: ButtonStyle(
@@ -246,8 +249,10 @@ class DetailPage extends GetView<DetailPageController> {
                                               0.16,
                                       child: ElevatedButton(
                                         onPressed: () {
-                                          Get.offNamed('/userprofilepage',
-                                              arguments: state.mitra.id);
+                                          Get.offNamed(
+                                            '/userprofilepage',
+                                            arguments: state.mitra.id,
+                                          );
                                         },
                                         style: ButtonStyle(
                                           padding:
@@ -276,48 +281,49 @@ class DetailPage extends GetView<DetailPageController> {
                                 )
                               ],
                             ),
-                           Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                             children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
-                                  Flexible(
-                                    child: SizedBox(
-                                          width: AppResponsive()
-                                                  .screenWidth(context) *
-                                              0.27,
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Jumlah Produk".tr,
-                                                style: AppTextStyle().textInfo(
-                                                    context, AppColors.titleLine),
-                                              ),
-                                              Text(
-                                                state.mitra.jumlahProduct
-                                                    .toString(),
-                                                style: AppTextStyle()
-                                                    .textInfoBold(context,
-                                                        AppColors.hargaStat),
-                                              ),
-                                            ].withSpaceBetween(width: 10),
-                                          ),
-                                        ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Flexible(child: 
-                                         SizedBox(
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
                                         width: AppResponsive()
                                                 .screenWidth(context) *
-                                            0.27,
+                                            0.185,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'jumlahProduk'.tr,
+                                              style: AppTextStyle().textInfo(
+                                                  context, AppColors.titleLine),
+                                            ),
+                                            const Spacer(),
+                                            Text(
+                                              state.mitra.jumlahProduct
+                                                  .toString(),
+                                              style: AppTextStyle()
+                                                  .textInfoBold(context,
+                                                      AppColors.hargaStat),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ].withSpaceBetween(height: 20),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: AppResponsive()
+                                                .screenWidth(context) *
+                                            0.185,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -327,23 +333,22 @@ class DetailPage extends GetView<DetailPageController> {
                                               style: AppTextStyle().textInfo(
                                                   context, AppColors.titleLine),
                                             ),
+                                            const Spacer(),
                                             Text(
-                                              state.mitra.jumlahJasa
-                                                  .toString(),
+                                              state.mitra.jumlahJasa.toString(),
                                               style: AppTextStyle()
                                                   .textInfoBold(context,
                                                       AppColors.hargaStat),
                                             ),
-                                          ].withSpaceBetween(width: 10),
+                                          ],
                                         ),
-                                      ),)
+                                      ),
+                                    ].withSpaceBetween(height: 20),
+                                  ),
                                 ],
-                              )
-                             ].withSpaceBetween(height: 10),
-                           ),
-                           
-                           )
-                          ].withSpaceBetween(width: 10),
+                              ),
+                            ),
+                          ].withSpaceBetween(width: 8),
                         ),
                         Divider(
                           color: AppColors.titleLine,
@@ -525,9 +530,9 @@ class DetailPage extends GetView<DetailPageController> {
                         Get.toNamed(
                           '/checkoutpage',
                           arguments: {
-                            "idProduct" : state.id,
-                            "quantityProduct" : state.quantity,
-                            },
+                            "idProduct": state.id,
+                            "quantityProduct": state.quantity,
+                          },
                         );
                       }
                     },
