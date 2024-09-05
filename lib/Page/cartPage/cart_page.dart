@@ -119,124 +119,125 @@ class CartPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width:
-                                      AppResponsive().screenWidth(context) * 0.065,
-                                  height:
-                                      AppResponsive().screenWidth(context) * 0.065,
-                                  child: IconButton(
-                                    onPressed: controller.setSelectedAll,
-                                    icon: Icon(
-                                      FeatherIcons.check,
-                                      size: SizeData.iconCheckCart,
-                                      color: controller.isSelectedAll.value
-                                          ? AppColors.activeIconType
-                                          : AppColors.cardIconFill,
+                            SizedBox(
+                              width:
+                                  AppResponsive().screenWidth(context) * 0.065,
+                              height:
+                                  AppResponsive().screenWidth(context) * 0.065,
+                              child: IconButton(
+                                onPressed: controller.setSelectedAll,
+                                icon: Icon(
+                                  FeatherIcons.check,
+                                  size: SizeData.iconCheckCart,
+                                  color: controller.isSelectedAll.value
+                                      ? AppColors.activeIconType
+                                      : AppColors.cardIconFill,
+                                ),
+                                style: ButtonStyle(
+                                  padding: const MaterialStatePropertyAll(
+                                    EdgeInsets.zero,
+                                  ),
+                                  backgroundColor: MaterialStatePropertyAll(
+                                    controller.isSelectedAll.value
+                                        ? AppColors.activeIcon
+                                        : AppColors.cardIconFill,
+                                  ),
+                                  side: MaterialStatePropertyAll(
+                                    BorderSide(
+                                      color: AppColors.borderIcon,
+                                      style: BorderStyle.solid,
+                                      width: 1,
                                     ),
-                                    style: ButtonStyle(
-                                      padding: const MaterialStatePropertyAll(
-                                        EdgeInsets.zero,
-                                      ),
-                                      backgroundColor: MaterialStatePropertyAll(
-                                        controller.isSelectedAll.value
-                                            ? AppColors.activeIcon
-                                            : AppColors.cardIconFill,
-                                      ),
-                                      side: MaterialStatePropertyAll(
-                                        BorderSide(
-                                          color: AppColors.borderIcon,
-                                          style: BorderStyle.solid,
-                                          width: 1,
-                                        ),
-                                      ),
-                                      shape: MaterialStatePropertyAll(
-                                        RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(4),
-                                        ),
-                                      ),
+                                  ),
+                                  shape: MaterialStatePropertyAll(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4),
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  'semua'.tr,
-                                  style: AppTextStyle()
-                                      .subHeader(context, AppColors.description),
-                                ),
-                              ].withSpaceBetween(width: 6),
+                              ),
                             ),
+                            Text(
+                              'semua'.tr,
+                              style: AppTextStyle()
+                                  .subHeader(context, AppColors.description),
+                            ),
+                          ].withSpaceBetween(width: 6),
+                        ),
+                        Row(
+                          children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
                                   '${'total'.tr} : ',
-                                  style: AppTextStyle()
-                                      .subHeader(context, AppColors.description),
+                                  style: AppTextStyle().subHeader(
+                                      context, AppColors.description),
                                 ),
                                 Text(
                                   controller.selectedItems.isEmpty
                                       ? '-'
                                       : MoneyFormat.format(
-                                          controller.getTotalPrice().toInt(),
+                                          controller.getTotalPrice(),
                                         ),
                                   style: AppTextStyle()
                                       .subHeader(context, AppColors.hargaStat),
                                 ),
                               ],
                             ),
-                          ].withSpaceBetween(width: AppResponsive().screenWidth(context) * 0.06),
-                        ),
-                        SizedBox(
-                          width: AppResponsive().screenWidth(context) * 0.4,
-                          child: ElevatedButton(
-                            onPressed: controller.selectedItems.isEmpty
-                                ? null
-                                : () {
-                                    Get.toNamed("/checkoutpage", arguments: {
-                                      "selectedProducts": controller
-                                          .selectedItems
-                                          .map((index) => {
-                                                "idProduct": controller
-                                                    .cartItems[index]
-                                                    .barang
-                                                    .id,
-                                                "quantityProduct": controller
-                                                    .cartItems[index]
-                                                    .quantity,
-                                              })
-                                          .toList(),
-                                    });
-                                  },
-                            style: ButtonStyle(
-                              elevation: const MaterialStatePropertyAll(0),
-                              padding: const MaterialStatePropertyAll(
-                                EdgeInsets.zero,
-                              ),
-                              shape: MaterialStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
+                            SizedBox(
+                              width: AppResponsive().screenWidth(context) * 0.38,
+                              child: ElevatedButton(
+                                onPressed: controller.selectedItems.isEmpty
+                                    ? null
+                                    : () {
+                                        Get.toNamed("/checkoutpage",
+                                            arguments: {
+                                              "selectedProducts": controller
+                                                  .selectedItems
+                                                  .map((index) => {
+                                                        "idProduct": controller
+                                                            .cartItems[index]
+                                                            .barang
+                                                            .id,
+                                                        "quantityProduct":
+                                                            controller
+                                                                .cartItems[
+                                                                    index]
+                                                                .quantity,
+                                                      })
+                                                  .toList(),
+                                            });
+                                      },
+                                style: ButtonStyle(
+                                  elevation: const MaterialStatePropertyAll(0),
+                                  padding: const MaterialStatePropertyAll(
+                                    EdgeInsets.zero,
+                                  ),
+                                  shape: MaterialStatePropertyAll(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                  ),
+                                  backgroundColor: MaterialStatePropertyAll(
+                                    controller.selectedItems.isEmpty
+                                        ? AppColors.nonActiveBar
+                                        : AppColors.button1,
+                                  ),
+                                ),
+                                child: Text(
+                                  'checkout'.tr,
+                                  style: AppTextStyle().subHeader(
+                                    context,
+                                    controller.selectedItems.isEmpty
+                                        ? AppColors.nonActiveCheckout
+                                        : AppColors.textButton1,
+                                  ),
                                 ),
                               ),
-                              backgroundColor: MaterialStatePropertyAll(
-                                controller.selectedItems.isEmpty
-                                    ? AppColors.nonActiveBar
-                                    : AppColors.button1,
-                              ),
                             ),
-                            child: Text(
-                              'checkout'.tr,
-                              style: AppTextStyle().subHeader(
-                                context,
-                                controller.selectedItems.isEmpty
-                                    ? AppColors.nonActiveCheckout
-                                    : AppColors.textButton1,
-                              ),
-                            ),
-                          ),
+                          ].withSpaceBetween(width: 8),
                         ),
                       ],
                     ),

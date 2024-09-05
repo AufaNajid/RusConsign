@@ -110,11 +110,11 @@ class AppTranslation extends Translations {
           'namaLengkap': 'Nama Lengkap',
           'masukkanNamaLengkap': 'Masukkan nama lengkapmu...',
           'nis': 'NIS',
-          'masukkanNIS': 'Masukkan NIS mu....',
+          'masukkanNIS': 'Masukkan NIS mu...',
           'nomorDompetDigital':
               'Nomor Dompet Digital Aktif (Dana, Gopay atau OVO)',
           'masukkanNomorDompetDigital': 'Masukkan nomor dompet digitalmu...',
-          'fotoIDCArd': 'Foto ID Card SMK RUS',
+          'fotoIDCard': 'Foto ID Card SMK RUS',
           'registrasiSelesai': 'Registrasi Selesai',
           'descRegistrasiSelesai':
               'Anda sekarang dapat menjual produk atau jasa anda di Aplikasi ini. Selamat berjualan...',
@@ -162,6 +162,7 @@ class AppTranslation extends Translations {
           'pemberitahuan':
               '*Kamu perlu me-restart aplikasi untuk mengubah preferensi',
           'namaToko': 'Nama Toko',
+          'namaTokoHint': 'Masukkan nama toko anda...',
           'belumAdaData': 'Belum Ada Data',
           'isi': 'Isi Semua Data',
           'isiDeskripsi': 'Silahkan isi semua data yang diperlukan',
@@ -177,6 +178,11 @@ class AppTranslation extends Translations {
           'stok' : 'Stok',
           'stokHint' : 'Masukkan jumlah stok barang/jasa...',
           'tungguAdmin' : 'Menunggu persetujuan dari admin, ini mungkin akan butuh waktu untuk menyamakan data inputan anda dengan data yang ada di SMK RUS',
+          'nomorWa' : 'Nomor WhatsApp',
+          'nomorWaHint' : 'Masukkan nomor WhatsApp anda...',
+          'registerSekarang' : 'Register Sekarang',
+          'fotoSelfie' : 'Foto Selfie bersama Foto ID Card SMK RUS',
+          'belumAdaKomentar' : 'Belum Ada Komentar',
         },
         'English': {
           'bahasa': 'Language',
@@ -287,9 +293,9 @@ class AppTranslation extends Translations {
           'nis': 'Student Identification Number',
           'masukkanNIS': 'Enter your Student Identification Number...',
           'nomorDompetDigital':
-              'Nomor Dompet Digital Aktif (Dana, Gopay atau OVO)',
+              'Active Digital Wallet Number (Dana, Gopay or OVO)',
           'masukkanNomorDompetDigital': 'Enter your digital wallet number...',
-          'fotoIDCArd': 'Photo of RUS Vocational ID Card',
+          'fotoIDCard': 'Photo of RUS Vocational ID Card',
           'registrasiSelesai': 'Registration Completed',
           'descRegistrasiSelesai':
               'You can now sell your products or services on this App. Happy selling...',
@@ -336,6 +342,7 @@ class AppTranslation extends Translations {
           'beriPenilaian': 'Give Rating',
           'pemberitahuan': '*You need to restart the app to change preferences',
           'namaToko': 'Store Name',
+          'namaTokoHint': 'Enter your store name...',
           'belumAdaData': 'There is no data yet',
           'isi': 'Fill All Data',
           'isiDeskripsi': 'Please fill in all the required data',
@@ -351,6 +358,11 @@ class AppTranslation extends Translations {
           'stok' : 'Stock',
           'stokHint' : 'Enter the stock quantity of product/service...',
           'tungguAdmin' : 'Awaiting approval from the admin, this may take some time to match your input data with the data in SMK RUS',
+          'nomorWa' : 'WhatsApp Number',
+          'nomorWaHint' : 'Enter your WhatsApp number...',
+          'registerSekarang' : 'Register Now',
+          'fotoSelfie' : 'Selfie photo with SMK RUS ID card photo',
+          'belumAdaKomentar' : 'No Comments yet',
         }
       };
 }

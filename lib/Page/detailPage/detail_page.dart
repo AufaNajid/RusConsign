@@ -26,6 +26,7 @@ class DetailPage extends GetView<DetailPageController> {
   @override
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api/storage/public";
+    const imgProfile = "https://rusconsign.com";
     return Scaffold(
       appBar: CommonAppBar(
         title: 'detailProduk'.tr,
@@ -181,7 +182,9 @@ class DetailPage extends GetView<DetailPageController> {
                                 children: [
                                   ClipOval(
                                     child: Image.network(
-                                      'https://avatar.iran.liara.run/public',
+                                      state.mitra.profileImage.isEmpty
+                                          ? 'https://avatar.iran.liara.run/public'
+                                          : '$imgProfile${state.mitra.profileImage.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -417,7 +420,7 @@ class DetailPage extends GetView<DetailPageController> {
                         } else if (controller.listKomen.isEmpty) {
                           return Center(
                             child: Text(
-                              'Belum ada Komentar',
+                              'belumAdaKomentar'.tr,
                               style: AppTextStyle()
                                   .header(context, AppColors.description),
                             ),
@@ -562,9 +565,3 @@ class DetailPage extends GetView<DetailPageController> {
     );
   }
 }
-
-// Future<void> _launchUrl( String url) async {
-//   if (!await launchUrl(Uri.parse(url))) {
-//     throw Exception('Could not launch $url');
-//   }
-// }

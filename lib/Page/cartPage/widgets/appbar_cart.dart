@@ -38,7 +38,7 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
               FeatherIcons.trash,
               color: controller.selectedItems.isNotEmpty
                   ? AppColors.button1
-                  : Colors.grey,
+                  : AppColors.nonActiveBar,
               size: SizeData.iconSize,
             ),
           );

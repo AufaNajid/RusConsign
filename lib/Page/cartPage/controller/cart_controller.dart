@@ -42,8 +42,8 @@ class CartController extends GetxController {
     cartItems.refresh();
   }
 
-  double getTotalPrice() {
-    double total = 0;
+  int getTotalPrice() {
+    int total = 0;
     for (var index in selectedItems) {
       total += cartItems[index].barang.harga * cartItems[index].quantity;
     }

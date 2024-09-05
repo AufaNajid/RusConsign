@@ -140,13 +140,13 @@ class AddItemForm extends StatelessWidget {
                     SizedBox(
                       width: AppResponsive().screenWidth(context) * 0.16,
                       child: Text(
-                        'Stock'.tr,
+                        'stok'.tr,
                         style: AppTextStyle().description(context, AppColors.titleLine),
                       ),
                     ),
                     Expanded(
                         child: TextFieldAddItemNumber(
-                      hintText: 'Masukkan Stock'.tr,
+                      hintText: 'stokHint'.tr,
                       controller: controller.stockController,
                     )),
                   ])
