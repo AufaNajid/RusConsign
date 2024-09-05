@@ -70,7 +70,7 @@ class Menu extends StatelessWidget {
       items: navbarItem(),
       confineInSafeArea: true,
       backgroundColor: AppColors.background,
-      navBarHeight: AppResponsive().screenHeight(context) * 0.065,
+      navBarHeight: AppResponsive().screenHeight(context) * 0.07,
       resizeToAvoidBottomInset: true,
       stateManagement: true,
       hideNavigationBarWhenKeyboardShows: true,

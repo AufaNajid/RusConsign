@@ -56,11 +56,9 @@ class ProfilePage extends StatelessWidget {
                                   "$img${imageUrl.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
                                   fit: BoxFit.cover,
                                 )
-                              : Center(
-                                  child: Image.network(
-                                    'https://avatar.iran.liara.run/public',
-                                    fit: BoxFit.cover,
-                                  ),
+                              : Image.network(
+                                  'https://avatar.iran.liara.run/public',
+                                  fit: BoxFit.cover,
                                 ),
                         ),
                       );
@@ -75,7 +73,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Text(
                     dataProfile.dataEmail.value,
-                    style: AppTextStyle().description(context, AppColors.description),
+                    style: AppTextStyle()
+                        .description(context, AppColors.description),
                   ),
                 ].withSpaceBetween(height: 5),
               ),
@@ -114,7 +113,8 @@ class ProfilePage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: Text(
                       dataProfile.dataBio.value,
-                      style: AppTextStyle().textInfoBold(context, AppColors.description),
+                      style: AppTextStyle()
+                          .textInfoBold(context, AppColors.description),
                       maxLines: 5,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,

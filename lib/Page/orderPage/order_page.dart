@@ -45,16 +45,6 @@ class OrderPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColors.background,
         surfaceTintColor: AppColors.background,
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {},
-        //     icon: Icon(
-        //       FeatherIcons.messageCircle,
-        //       color: AppColors.borderIcon,
-        //       size: SizeData.iconSize,
-        //     ),
-        //   ),
-        // ],
       ),
       body: Column(
         children: [
@@ -78,7 +68,8 @@ class OrderPage extends StatelessWidget {
                     text: 'selesai'.tr,
                     icon: FeatherIcons.check,
                     index: 2,
-                  ),FilterOrderButton(
+                  ),
+                  FilterOrderButton(
                     text: 'Dibatalkan'.tr,
                     icon: FeatherIcons.x,
                     index: 3,
@@ -158,7 +149,7 @@ class OrderPage extends StatelessWidget {
                                 quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
-                                onCancelProduct: () {}, 
+                                onCancelProduct: () {},
                                 idBarang: cod.barang.id,
                               );
                             },
@@ -183,7 +174,8 @@ class OrderPage extends StatelessWidget {
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
                                 onChatSeller: () {},
-                                idBarang: cod.barang.id, noWa: cod.mitra.noWhatsapp,
+                                idBarang: cod.barang.id,
+                                noWa: cod.mitra.noWhatsapp,
                               );
                             },
                           );
@@ -226,7 +218,8 @@ class OrderPage extends StatelessWidget {
                                 quantity: cod.quantity,
                                 paymentMethod: cod.statusPembayaran,
                                 meetingLocation: cod.lokasi.namaLokasi,
-                                onGiveRating: () {}, idBarang: cod.barang.id,
+                                onGiveRating: () {},
+                                idBarang: cod.barang.id,
                               );
                             },
                           );

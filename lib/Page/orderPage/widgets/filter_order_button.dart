@@ -52,7 +52,7 @@ class FilterOrderButton extends StatelessWidget {
           color: filterOrderController.selectedIndex == index
               ? AppColors.textButton1
               : AppColors.description,
-          fontSize: SizeData.fontDescriptionSize,
+          fontSize: SizeData.fontTextInfoBoldSize,
         ),
       ),
       onPressed: () {

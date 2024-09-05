@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/sellingPage/selling_page_controller.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/size_data.dart';
 
 class SellingFilterButton extends StatelessWidget {
   final String text;
@@ -51,7 +52,7 @@ class SellingFilterButton extends StatelessWidget {
           color: filterButtonController.selectedIndex == index
               ? AppColors.textButton1
               : AppColors.description,
-          fontSize: 12,
+          fontSize: SizeData.fontTextInfoBoldSize,
         ),
       ),
       onPressed: () {

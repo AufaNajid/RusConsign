@@ -19,10 +19,6 @@ class RegisterSeller extends StatelessWidget {
   final MitraController controller = Get.put(MitraController());
   final RegisterSellerController controllerImage =
       Get.put(RegisterSellerController());
-  // final TextEditingController namaController = TextEditingController();
-  // final TextEditingController nomorController = TextEditingController();
-  // final TextEditingController namaTokoController = TextEditingController();
-  // final TextEditingController nisController = TextEditingController();
   var pickedImage = Rx<File?>(null);
 
   @override
@@ -41,47 +37,57 @@ class RegisterSeller extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Nama Toko",
-                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
+              Text('namaToko'.tr,
+                  style:
+                      AppTextStyle().subHeader(context, AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSeller(
-                hintText: "Masukkan nama toko anda...",
+                hintText: 'namaTokoHint'.tr,
                 controller: controller.namaTokoController,
               ),
               const SizedBox(height: 15),
-              Text("Nama Lengkap",
-                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
+              Text('namaLengkap'.tr,
+                  style:
+                      AppTextStyle().subHeader(context, AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSeller(
-                hintText: "Masukkan nama lengkap anda...",
+                hintText: 'masukkanNamaLengkap'.tr,
                 controller: controller.namaController,
               ),
               const SizedBox(height: 15),
-              Text("NIS", style: AppTextStyle().subHeader(context, AppColors.titleLine)),
+              Text('nis'.tr,
+                  style:
+                      AppTextStyle().subHeader(context, AppColors.titleLine)),
               const SizedBox(height: 10),
               TextFieldRegisterSellerNumber(
-                hintText: "Masukkan NIS anda...",
+                hintText: 'masukkanNIS'.tr,
                 controller: controller.nisController,
               ),
               const SizedBox(height: 15),
-              Text("Nomor Dompet Digital Aktif (Dana, Gopay atau OVO)",
-                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
+              Text(
+                'nomorDompetDigital'.tr,
+                style: AppTextStyle().subHeader(context, AppColors.titleLine),
+              ),
               const SizedBox(height: 10),
               TextFieldRegisterSellerNumber(
-                hintText: "Masukkan nomor dompet digital anda...",
+                hintText: 'masukkanNomorDompetDigital'.tr,
                 controller: controller.nomorController,
               ),
               const SizedBox(height: 15),
-              Text("Nomor WhatsApp",
-                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
+              Text(
+                'nomorWa'.tr,
+                style: AppTextStyle().subHeader(context, AppColors.titleLine),
+              ),
               const SizedBox(height: 10),
               TextFieldRegisterSellerNumber(
-                hintText: "Masukkan nomor WhatsApp anda...",
+                hintText: 'nomorWaHint'.tr,
                 controller: controller.nomroWaController,
               ),
               const SizedBox(height: 15),
-              Text("Foto Selfie bersama Foto ID Card SMK RUS",
-                  style: AppTextStyle().subHeader(context, AppColors.titleLine)),
+              Text(
+                'fotoSelfie'.tr,
+                style: AppTextStyle().subHeader(context, AppColors.titleLine),
+              ),
               SizedBox(
                 height: AppResponsive().screenHeight(context) * 0.02,
               ),
@@ -136,8 +142,9 @@ class RegisterSeller extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  "Registrasi",
-                  style: AppTextStyle().description(context, AppColors.textButton2),
+                  'registerSekarang'.tr,
+                  style: AppTextStyle()
+                      .description(context, AppColors.textButton2),
                 ),
               ),
             ),
