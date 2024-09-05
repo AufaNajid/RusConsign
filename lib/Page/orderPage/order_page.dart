@@ -45,16 +45,16 @@ class OrderPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: AppColors.background,
         surfaceTintColor: AppColors.background,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              FeatherIcons.messageCircle,
-              color: AppColors.borderIcon,
-              size: SizeData.iconSize,
-            ),
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {},
+        //     icon: Icon(
+        //       FeatherIcons.messageCircle,
+        //       color: AppColors.borderIcon,
+        //       size: SizeData.iconSize,
+        //     ),
+        //   ),
+        // ],
       ),
       body: Column(
         children: [

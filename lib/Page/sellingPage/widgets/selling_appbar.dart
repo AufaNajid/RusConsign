@@ -30,11 +30,11 @@ class SellingAppbar extends StatelessWidget implements PreferredSizeWidget {
         style: AppTextStyle().title(context, AppColors.titleLine)
       ),
       centerTitle: true,
-      actions: <Widget>[
-        IconButton(onPressed: () {
-          Get.toNamed("/chatlist");
-        }, icon: Icon(FeatherIcons.messageCircle ,color:AppColors.borderIcon))
-      ],
+      // actions: <Widget>[
+      //   IconButton(onPressed: () {
+      //     Get.toNamed("/chatlist");
+      //   }, icon: Icon(FeatherIcons.messageCircle ,color:AppColors.borderIcon))
+      // ],
     );
   }
 

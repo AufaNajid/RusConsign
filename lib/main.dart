@@ -36,9 +36,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         builder: (context, child) {
-          // Membungkus aplikasi dengan MediaQuery tanpa textScaler atau textScaleFactor
           return MediaQuery(
-            data: MediaQuery.of(context).copyWith(textScaler: TextScaler.linear(1.0)), // Ini bisa dihapus saat Flutter mendukung penuh textScaler
+            data: MediaQuery.of(context).copyWith(textScaler: const TextScaler.linear(1.0)),
             child: child!,
           );
         },

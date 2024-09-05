@@ -24,28 +24,25 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
         style: AppTextStyle().title(context, AppColors.titleLine),
       ),
       actions: [
-        IconButton(
-          onPressed: () {
-            final idCart =
-                controller.cartItems[controller.selectedIndex].cartsId;
-            controller.removeFromCart(idCart);
-          },
-          icon: const Icon(
-            FeatherIcons.trash,
-            color: AppColors.button1,
-            size: SizeData.iconSize,
-          ),
-        ),
-        // IconButton(
-        //   onPressed: () {
-        //     Get.toNamed("/chatlist");
-        //   },
-        //   icon: Icon(
-        //     size: SizeData.iconSize,
-        //     FeatherIcons.messageCircle,
-        //     color: AppColors.borderIcon,
-        //   ),
-        // ),
+        Obx(() {
+          return IconButton(
+            onPressed: controller.selectedItems.isNotEmpty
+                ? () {
+                    for (var index in controller.selectedItems) {
+                      final idCart = controller.cartItems[index].cartsId;
+                      controller.removeFromCart(idCart);
+                    }
+                  }
+                : null,
+            icon: Icon(
+              FeatherIcons.trash,
+              color: controller.selectedItems.isNotEmpty
+                  ? AppColors.button1
+                  : Colors.grey,
+              size: SizeData.iconSize,
+            ),
+          );
+        }),
       ],
     );
   }
