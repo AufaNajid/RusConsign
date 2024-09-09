@@ -85,7 +85,7 @@ class Mitra {
     final int pengikut;
     final int penilaian;
     final String noWhatsapp;
-    final String profileImage;
+    final dynamic profileImage;
 
     Mitra({
         required this.id,

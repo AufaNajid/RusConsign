@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -84,11 +83,15 @@ class CartPage extends StatelessWidget {
                     final cartData = controller.cartItems[index];
                     final barang = cartData.barang;
                     final mitra = barang.mitra;
+                    const imgProfile = "https://rusconsign.com";
+
                     return ProductCardCart(
-                      profileImagePath: "https://avatar.iran.liara.run/public",
+                      profileImagePath: mitra.profileImage == null
+                          ? "https://ui-avatars.com/api/?name=${mitra.namaToko.toString()}&background=db6767&color=fafafa"
+                          : '$imgProfile${mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
                       namaBarang: barang.namaBarang,
                       imagePath: barang.imageBarang,
-                      sellerUsername: mitra.namaLengkap,
+                      sellerUsername: mitra.namaToko.toString(),
                       rating: barang.ratingBarang.toDouble(),
                       price: barang.harga,
                       quantity: cartData.quantity,
@@ -187,28 +190,13 @@ class CartPage extends StatelessWidget {
                               ],
                             ),
                             SizedBox(
-                              width: AppResponsive().screenWidth(context) * 0.38,
+                              width:
+                                  AppResponsive().screenWidth(context) * 0.38,
                               child: ElevatedButton(
                                 onPressed: controller.selectedItems.isEmpty
                                     ? null
                                     : () {
-                                        Get.toNamed("/checkoutpage",
-                                            arguments: {
-                                              "selectedProducts": controller
-                                                  .selectedItems
-                                                  .map((index) => {
-                                                        "idProduct": controller
-                                                            .cartItems[index]
-                                                            .barang
-                                                            .id,
-                                                        "quantityProduct":
-                                                            controller
-                                                                .cartItems[
-                                                                    index]
-                                                                .quantity,
-                                                      })
-                                                  .toList(),
-                                            });
+                                        controller.goToCheckout();
                                       },
                                 style: ButtonStyle(
                                   elevation: const MaterialStatePropertyAll(0),

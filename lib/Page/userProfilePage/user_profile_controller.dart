@@ -39,6 +39,7 @@ class UserProfilePageController extends GetxController {
     mitraId = Get.arguments as int;
     print("ID Mitra anda : $mitraId");
     final idMitra = Get.arguments as int;
+    print(idMitra);
     fetchProduct(0);
     fetchDetailMitra(idMitra);
   }

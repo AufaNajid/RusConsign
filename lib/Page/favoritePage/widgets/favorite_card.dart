@@ -83,7 +83,6 @@ class FavoriteCard extends StatelessWidget {
                                   width: 25,
                                   child: ClipOval(
                                     child: Image.network(
-                                      // "$imageUrl${profileImagePath.replaceFirst("storage/", "")}",
                                       profileImagePath,
                                       fit: BoxFit.cover,
                                     ),

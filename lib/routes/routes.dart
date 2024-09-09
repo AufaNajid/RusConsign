@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:rusconsign/Page/addItemPage/add_item_form.dart';
 import 'package:rusconsign/Page/cartPage/cart_page_binding.dart';
 import 'package:rusconsign/Page/chatPage/chat_binding.dart';
+import 'package:rusconsign/Page/checkoutCartPage/checkout_cart_page.dart';
+import 'package:rusconsign/Page/checkoutCartPage/checkout_cart_page_binding.dart';
 import 'package:rusconsign/Page/editdataproductPage/edit_data_product.dart';
 import 'package:rusconsign/Page/editdataproductPage/edit_data_product_binding.dart';
 import 'package:rusconsign/Page/giveRatingPage/binding/give_rating_binding.dart';
@@ -153,4 +155,9 @@ List<GetPage> routes = [
     page: () => const CheckoutPage(),
     binding: CheckoutPageBinding(),
   ),
+  GetPage(
+    name: "/checkoutcartpage",
+    page: () => const CheckoutCartPage(),
+    binding: CheckoutCartPageBinding(),
+  )
 ];
