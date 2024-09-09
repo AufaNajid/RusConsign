@@ -21,48 +21,50 @@ class FilterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserProfilePageController filterButtonController = Get.find();
 
-    return Obx(() => ElevatedButton.icon(
-          style: ButtonStyle(
-            elevation: const MaterialStatePropertyAll(0),
-            padding: const MaterialStatePropertyAll(EdgeInsets.zero),
-            backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-              return filterButtonController.selectedIndex == index
-                  ? AppColors.button1
-                  : AppColors.cardIconFill;
-            }),
-            shape: MaterialStatePropertyAll(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(6),
-              ),
-            ),
-            fixedSize: MaterialStatePropertyAll(
-              Size(
-                AppResponsive().screenWidth(context) * 0.290,
-                AppResponsive().screenWidth(context) * 0.04,
-              ),
+    return Obx(
+      () => ElevatedButton.icon(
+        style: ButtonStyle(
+          elevation: const MaterialStatePropertyAll(0),
+          padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+          backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
+            return filterButtonController.selectedIndex == index
+                ? AppColors.button1
+                : AppColors.cardIconFill;
+          }),
+          shape: MaterialStatePropertyAll(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6),
             ),
           ),
-          icon: Icon(
-            icon,
+          fixedSize: MaterialStatePropertyAll(
+            Size(
+              AppResponsive().screenWidth(context) * 0.290,
+              AppResponsive().screenWidth(context) * 0.04,
+            ),
+          ),
+        ),
+        icon: Icon(
+          icon,
+          color: filterButtonController.selectedIndex == index
+              ? AppColors.activeIconType
+              : AppColors.nonActiveIcon,
+          size: SizeData.iconSize,
+        ),
+        label: Text(
+          text,
+          style: TextStyle(
             color: filterButtonController.selectedIndex == index
-                ? AppColors.activeIconType
-                : AppColors.nonActiveIcon,
-                size: SizeData.iconSize,
+                ? AppColors.textButton1
+                : AppColors.description,
+            fontSize: SizeData.fontSubHeaderSize,
           ),
-          label: Text(
-            text,
-            style: TextStyle(
-              color: filterButtonController.selectedIndex == index
-                  ? AppColors.textButton1
-                  : AppColors.description,
-              fontSize: SizeData.fontSubHeaderSize,
-            ),
-          ),
-          onPressed: () {
-            if (filterButtonController.selectedIndex != index) {
-              filterButtonController.setSelectedFilter(index);
-            }
-          },
-        ));
+        ),
+        onPressed: () {
+          if (filterButtonController.selectedIndex != index) {
+            filterButtonController.setSelectedFilter(index);
+          }
+        },
+      ),
+    );
   }
 }

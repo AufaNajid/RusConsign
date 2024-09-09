@@ -6,6 +6,7 @@ import 'package:rusconsign/Page/userProfilePage/widgets/button_icon_widget.dart'
 import 'package:rusconsign/Page/userProfilePage/widgets/filter_button.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/profile_info_card.dart';
 import 'package:rusconsign/Page/userProfilePage/widgets/user_product_card.dart';
+import 'package:rusconsign/utils/app_responsive.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
 import 'package:rusconsign/utils/extension.dart';
 import '../../utils/colors.dart';
@@ -17,6 +18,8 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const imgProfile = "https://rusconsign.com";
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: CommonAppBar(
@@ -26,17 +29,10 @@ class UserProfilePage extends StatelessWidget {
         },
       ),
       body: Obx(() {
-        if (controller.isLoading.value) {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: AppColors.hargaStat,
-            ),
-          );
-        }
         final mitra = controller.detailMitra.value;
         if (mitra == null) {
           return const Center(
-            child: Text("Data Kosong!."),
+            child: Text("Data Kosong!"),
           );
         }
         return SingleChildScrollView(
@@ -58,13 +54,15 @@ class UserProfilePage extends StatelessWidget {
                             height: 90,
                             child: ClipOval(
                               child: Image.network(
-                                'https://avatar.iran.liara.run/public',
+                                mitra.profileImage == null
+                                    ? 'https://ui-avatars.com/api/?name=${mitra.namaToko.toString()}&background=db6767&color=fafafa'
+                                    : '$imgProfile${mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
                           Text(
-                            mitra.nama,
+                            mitra.namaToko,
                             style: AppTextStyle()
                                 .title(context, AppColors.titleLine),
                           ),
@@ -104,7 +102,7 @@ class UserProfilePage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
-                          mitra.namaToko,
+                          mitra.nama,
                           style: AppTextStyle().descriptionBold(
                             context,
                             AppColors.description,
@@ -120,7 +118,7 @@ class UserProfilePage extends StatelessWidget {
                           ButtonIconWidget(
                             icon: FeatherIcons.messageCircle,
                             title: 'Hubungi Penjual'.tr,
-                            noWhatsapp: mitra.noWa,
+                            noWhatsapp: mitra.noWhatsapp,
                           ),
                           // const ButtonFollow(),
                         ].withSpaceBetween(height: 10),
@@ -164,87 +162,63 @@ class UserProfilePage extends StatelessWidget {
                         ),
                       ].withSpaceBetween(height: 10),
                     ),
-                    // Row(
-                    //   children: [
-                    //     SizedBox(
-                    //       width: AppResponsive().screenWidth(context) * 0.75,
-                    //       height: 50,
-                    //       child: TextField(
-                    //         cursorColor: AppColors.hargaStat,
-                    //         style: AppTextStyle().descriptionBold(
-                    //             context, AppColors.description),
-                    //         decoration: InputDecoration(
-                    //           contentPadding: const EdgeInsets.symmetric(
-                    //               vertical: 10, horizontal: 10),
-                    //           border: OutlineInputBorder(
-                    //             borderRadius: BorderRadius.circular(6),
-                    //             borderSide: BorderSide.none,
-                    //           ),
-                    //           filled: true,
-                    //           fillColor: AppColors.cardIconFill,
-                    //           hintText: 'cari'.tr,
-                    //           hintStyle: AppTextStyle().description(
-                    //               context, AppColors.description),
-                    //         ),
-                    //         textAlign: TextAlign.left,
-                    //       ),
-                    //     ),
-                    //     const Spacer(),
-                    //     SizedBox(
-                    //       width: 50,
-                    //       height: 50,
-                    //       child: ClipRRect(
-                    //         borderRadius: BorderRadius.circular(6),
-                    //         child: Material(
-                    //           color: AppColors.cardIconFill,
-                    //           child: GestureDetector(
-                    //             onTap: () {},
-                    //             child: Icon(
-                    //               FeatherIcons.search,
-                    //               color: AppColors.borderIcon,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                     Obx(
                       () {
                         if (controller.productList.isEmpty) {
-                          return Center(
-                            child: Text(
-                              "Data Product Kosong!.",
-                              style: AppTextStyle()
-                                  .header(context, AppColors.description),
+                          return SizedBox(
+                            height:
+                                AppResponsive().screenHeight(context) * 0.1,
+                            child: Center(
+                              child: Text(
+                                'belumAdaData'.tr,
+                                style: AppTextStyle().subHeader(
+                                    context, AppColors.hargaStat),
+                              ),
                             ),
                           );
+                        } else if (controller.isLoading.value) {
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height:
+                                    AppResponsive().screenHeight(context) * 0.4,
+                                child: const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColors.hargaStat,
+                                  ),
+                                ),
+                              )
+                            ],
+                          );
                         } else {
-                          return GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: controller.productList.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              crossAxisSpacing: 8,
-                              mainAxisSpacing: 8,
-                              childAspectRatio: 0.8,
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: GridView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: controller.productList.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 8,
+                                mainAxisSpacing: 8,
+                                childAspectRatio: 0.8,
+                              ),
+                              itemBuilder: (BuildContext context, int index) {
+                                return UserProductCard(
+                                  imagePath:
+                                      controller.productList[index].imageBarang,
+                                  title: controller.productList[index].namaBarang,
+                                  price: controller.productList[index].harga,
+                                  rating: controller
+                                      .productList[index].ratingBarang
+                                      .toDouble(),
+                                  productId:
+                                      controller.productList[index].idBarang,
+                                  status: controller.productList[index].status,
+                                );
+                              },
                             ),
-                            itemBuilder: (BuildContext context, int index) {
-                              return UserProductCard(
-                                imagePath:
-                                    controller.productList[index].imageBarang,
-                                title: controller.productList[index].namaBarang,
-                                price: controller.productList[index].harga,
-                                rating: controller
-                                    .productList[index].ratingBarang
-                                    .toDouble(),
-                                productId:
-                                    controller.productList[index].idBarang,
-                                status: controller.productList[index].status,
-                              );
-                            },
                           );
                         }
                       },

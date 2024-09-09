@@ -33,6 +33,7 @@ class LikeController extends GetxController {
     if (response.statusCode == 200) {
       ProductFavorite data = productFavoriteFromJson(response.body);
       favoriteList.value = data.likes;
+      print(favoriteList);
     } else {
       favoriteList.clear();
     }

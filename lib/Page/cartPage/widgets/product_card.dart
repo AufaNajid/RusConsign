@@ -39,7 +39,7 @@ class ProductCardCart extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           controller
-              .setSelectedCart(index); // Gunakan logika untuk memilih item
+              .setSelectedCart(index);
         },
         child: Obx(() => Card(
               shape: RoundedRectangleBorder(
@@ -47,7 +47,7 @@ class ProductCardCart extends StatelessWidget {
                 side: BorderSide(
                   width: controller.selectedItems.contains(index)
                       ? 1
-                      : 0, // Cek apakah item dipilih
+                      : 0,
                   color: controller.selectedItems.contains(index)
                       ? AppColors.button1
                       : Colors.transparent,

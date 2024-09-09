@@ -13,7 +13,25 @@ class CartController extends GetxController {
   RxBool isSelectedAll = false.obs;
   var cartItems = <Cart>[].obs;
 
+  void goToCheckout() {
+    List<int> selectedCartIds =
+        selectedItems.map((index) => cartItems[index].barang.id).toList();
+    List<int> selectedCartQuantity = selectedItems.map((index) => cartItems[index].quantity).toList();
+
+    print(selectedCartIds);
+    print(selectedCartQuantity);
+
+    Get.toNamed(
+      "/checkoutcartpage",
+      arguments: {
+        "cartIds": selectedCartIds,
+        "cartQuantity": selectedCartQuantity,
+      },
+    );
+  }
+
   void setSelectedCart(int index) {
+    print(cartItems[index].cartId);
     if (selectedItems.contains(index)) {
       selectedItems.remove(index);
     } else {
@@ -51,8 +69,8 @@ class CartController extends GetxController {
   }
 
   void incrementQuantity(int index) {
-    print(cartItems[index].barang.stockBarang);
-    if (cartItems[index].quantity < cartItems[index].barang.stockBarang) {
+    print(cartItems[index].barang.stock);
+    if (cartItems[index].quantity < cartItems[index].barang.stock) {
       cartItems[index].quantity++;
       cartItems.refresh();
     } else {
@@ -93,7 +111,7 @@ class CartController extends GetxController {
     );
     if (response.statusCode == 200) {
       AllCartResponse data = allCartResponseFromJson(response.body);
-      cartItems.value = data.cart;
+      cartItems.value = data.carts;
     } else {
       cartItems.clear();
     }
@@ -101,6 +119,7 @@ class CartController extends GetxController {
   }
 
   void removeFromCart(int idCart) async {
+    print(idCart);
     isLoading(true);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
@@ -110,6 +129,8 @@ class CartController extends GetxController {
         'Authorization': "Bearer $token",
       },
     );
+
+    print(response.statusCode);
 
     if (response.statusCode == 200 || response.statusCode == 201) {
       Fluttertoast.showToast(

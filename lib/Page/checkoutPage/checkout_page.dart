@@ -19,6 +19,8 @@ class CheckoutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(CheckoutPageController());
     final quantityTotal = controller.productCheckoutData["quantityProduct"];
+    const imgProfile = "https://rusconsign.com";
+
     return Scaffold(
       appBar: CommonAppBar(
         title: 'checkout'.tr,
@@ -35,9 +37,7 @@ class CheckoutPage extends StatelessWidget {
             ),
           );
         } else if (controller.productDetail.value == null) {
-          return const Center(
-            // child: Text('Product not found'),
-          );
+          return const Center();
         } else {
           final product = controller.productDetail.value!;
           final mitra = product.mitra;
@@ -60,8 +60,10 @@ class CheckoutPage extends StatelessWidget {
                       ItemCheckout(
                         imagePath: product.imageBarang,
                         title: product.namaBarang,
-                        profileImagePath: 'https://via.placeholder.com/40x40',
-                        profileName: mitra.namaLengkap,
+                        profileImagePath: mitra.profileImage == null
+                            ? 'https://ui-avatars.com/api/?name=${mitra.namaToko}&background=db6767&color=fafafa'
+                            : '$imgProfile${mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
+                        profileName: mitra.namaToko,
                         rating: product.ratingBarang.toDouble(),
                         price: product.harga,
                         quantity:

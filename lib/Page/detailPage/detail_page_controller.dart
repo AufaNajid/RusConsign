@@ -143,7 +143,7 @@ class DetailPageController extends GetxController
 
     if (response.statusCode == 200) {
       AllCartResponse data = allCartResponseFromJson(response.body);
-      var isCart = data.cart.any((cart) => cart.barang.id == productId);
+      var isCart = data.carts.any((cart) => cart.barang.id == productId);
       isAddCart.value = isCart;
     }
   }
@@ -153,12 +153,13 @@ class DetailPageController extends GetxController
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
     final CartController controller = Get.put(CartController());
-
+    print(idBarang);
     if (isAddCart.value == true) {
       final cartItemIndex =
-          controller.cartItems.indexWhere((item) => item.barangId == idBarang);
+          controller.cartItems.indexWhere((item) => item.barang.id == idBarang);
       if (cartItemIndex != -1) {
-        final cartId = controller.cartItems[cartItemIndex].cartsId;
+        final cartId = controller.cartItems[cartItemIndex].cartId;
+        print(cartId);
         final response = await http.delete(
           Uri.parse('https://rusconsign.com/api/cart/$cartId'),
           headers: <String, String>{

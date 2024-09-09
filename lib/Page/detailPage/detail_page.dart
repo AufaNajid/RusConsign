@@ -1,8 +1,6 @@
 // ignore_for_file: avoid_print, must_be_immutable
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -177,18 +175,15 @@ class DetailPage extends GetView<DetailPageController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: AppResponsive().screenWidth(context) * 0.1,
-                              child: Column(
-                                children: [
-                                  ClipOval(
-                                    child: Image.network(
-                                      state.mitra.profileImage.isEmpty
-                                          ? 'https://avatar.iran.liara.run/public'
-                                          : '$imgProfile${state.mitra.profileImage.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ],
+                              width: AppResponsive().screenWidth(context) * 0.110,
+                              height: AppResponsive().screenWidth(context) * 0.110,
+                              child: ClipOval(
+                                child: Image.network(
+                                  state.mitra.profileImage.isEmpty
+                                      ? 'https://ui-avatars.com/api/?name=${state.mitra.namaToko}&background=db6767&color=fafafa'
+                                      : '$imgProfile${state.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                             Column(
@@ -200,7 +195,6 @@ class DetailPage extends GetView<DetailPageController> {
                                   style: AppTextStyle().description(
                                       context, AppColors.titleLine),
                                 ),
-                                const SizedBox(height: 4),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -211,7 +205,7 @@ class DetailPage extends GetView<DetailPageController> {
                                               0.075,
                                       width:
                                           AppResponsive().screenWidth(context) *
-                                              0.16,
+                                              0.22,
                                       child: ElevatedButton(
                                         onPressed: () async {
                                           print(
@@ -249,7 +243,7 @@ class DetailPage extends GetView<DetailPageController> {
                                               0.075,
                                       width:
                                           AppResponsive().screenWidth(context) *
-                                              0.16,
+                                              0.22,
                                       child: ElevatedButton(
                                         onPressed: () {
                                           Get.offNamed(
@@ -260,7 +254,8 @@ class DetailPage extends GetView<DetailPageController> {
                                         style: ButtonStyle(
                                           padding:
                                               const MaterialStatePropertyAll(
-                                                  EdgeInsets.zero),
+                                            EdgeInsets.zero,
+                                          ),
                                           elevation:
                                               const MaterialStatePropertyAll(0),
                                           shape: MaterialStatePropertyAll(
@@ -271,7 +266,8 @@ class DetailPage extends GetView<DetailPageController> {
                                           ),
                                           backgroundColor:
                                               MaterialStatePropertyAll(
-                                                  AppColors.button2),
+                                            AppColors.button2,
+                                          ),
                                         ),
                                         child: Text(
                                           'lihatToko'.tr,
@@ -282,73 +278,47 @@ class DetailPage extends GetView<DetailPageController> {
                                     ),
                                   ].withSpaceBetween(width: 5),
                                 )
-                              ],
+                              ].withSpaceBetween(height: 5),
                             ),
                             Expanded(
-                              child: Row(
+                              child: Column(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      SizedBox(
-                                        width: AppResponsive()
-                                                .screenWidth(context) *
-                                            0.185,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'jumlahProduk'.tr,
-                                              style: AppTextStyle().textInfo(
-                                                  context, AppColors.titleLine),
-                                            ),
-                                            const Spacer(),
-                                            Text(
-                                              state.mitra.jumlahProduct
-                                                  .toString(),
-                                              style: AppTextStyle()
-                                                  .textInfoBold(context,
-                                                      AppColors.hargaStat),
-                                            ),
-                                          ],
-                                        ),
+                                      Text(
+                                        'jumlahProduk'.tr,
+                                        style: AppTextStyle().description(
+                                            context, AppColors.titleLine),
                                       ),
-                                    ].withSpaceBetween(height: 20),
+                                      const Spacer(),
+                                      Text(
+                                        state.mitra.jumlahProduct.toString(),
+                                        style: AppTextStyle().descriptionBold(
+                                            context, AppColors.hargaStat),
+                                      ),
+                                    ],
                                   ),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      SizedBox(
-                                        width: AppResponsive()
-                                                .screenWidth(context) *
-                                            0.185,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              'jumlahJasa'.tr,
-                                              style: AppTextStyle().textInfo(
-                                                  context, AppColors.titleLine),
-                                            ),
-                                            const Spacer(),
-                                            Text(
-                                              state.mitra.jumlahJasa.toString(),
-                                              style: AppTextStyle()
-                                                  .textInfoBold(context,
-                                                      AppColors.hargaStat),
-                                            ),
-                                          ],
-                                        ),
+                                      Text(
+                                        'jumlahJasa'.tr,
+                                        style: AppTextStyle().description(
+                                            context, AppColors.titleLine),
                                       ),
-                                    ].withSpaceBetween(height: 20),
+                                      const Spacer(),
+                                      Text(
+                                        state.mitra.jumlahJasa.toString(),
+                                        style: AppTextStyle().descriptionBold(
+                                            context, AppColors.hargaStat),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ].withSpaceBetween(height: 16),
                               ),
                             ),
                           ].withSpaceBetween(width: 8),

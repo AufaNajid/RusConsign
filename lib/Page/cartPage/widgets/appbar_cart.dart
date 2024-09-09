@@ -28,8 +28,8 @@ class AppBarCart extends StatelessWidget implements PreferredSizeWidget {
           return IconButton(
             onPressed: controller.selectedItems.isNotEmpty
                 ? () {
-                    for (var index in controller.selectedItems) {
-                      final idCart = controller.cartItems[index].cartsId;
+                    for (int index in controller.selectedItems) {
+                      final idCart = controller.cartItems[index].cartId;
                       controller.removeFromCart(idCart);
                     }
                   }

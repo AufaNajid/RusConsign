@@ -50,15 +50,18 @@ class UserProductCard extends StatelessWidget {
                     ),
                     backgroundColor: AppColors.background,
                     title: Text(
-                      'Item Masih Belum Di Publish!'.tr,
-                      style: AppTextStyle()
-                          .title(context, AppColors.titleLine),
+                      'belumPublish'.tr,
+                      style: AppTextStyle().title(context, AppColors.hargaStat),
                     ),
-                    content:
-                    Text('Item masih belum di Publish!'.tr),
+                    content: Text(
+                      'belumPublishHint'.tr,
+                      style: AppTextStyle()
+                          .description(context, AppColors.description),
+                    ),
                     actions: <Widget>[
                       TextButton(
                         style: TextButton.styleFrom(
+                          padding: EdgeInsets.symmetric(horizontal: AppResponsive().screenWidth(context) * 0.05),
                           foregroundColor: AppColors.solidWhite,
                           backgroundColor: AppColors.button1,
                           shape: RoundedRectangleBorder(
@@ -96,7 +99,8 @@ class UserProductCard extends StatelessWidget {
                 title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: AppTextStyle().description(context, AppColors.description),
+                style:
+                    AppTextStyle().description(context, AppColors.description),
               ),
               const Spacer(),
               Row(
@@ -105,7 +109,8 @@ class UserProductCard extends StatelessWidget {
                 children: [
                   Text(
                     MoneyFormat.format(price),
-                    style: AppTextStyle().subHeader(context, AppColors.hargaStat),
+                    style:
+                        AppTextStyle().subHeader(context, AppColors.hargaStat),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -128,7 +133,8 @@ class UserProductCard extends StatelessWidget {
                       const SizedBox(width: 6),
                       Text(
                         rating.toStringAsFixed(2),
-                        style: AppTextStyle().subHeader(context, AppColors.description),
+                        style: AppTextStyle()
+                            .subHeader(context, AppColors.description),
                       ),
                     ],
                   ),

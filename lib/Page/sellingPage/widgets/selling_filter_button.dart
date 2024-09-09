@@ -22,44 +22,46 @@ class SellingFilterButton extends StatelessWidget {
     final SellingPageController filterButtonController = Get.find();
 
     return Obx(() => ElevatedButton.icon(
-      style: ButtonStyle(
-        elevation: const MaterialStatePropertyAll(0),
-        padding: const MaterialStatePropertyAll(EdgeInsets.zero),
-        backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-          return filterButtonController.selectedIndex == index
-              ? AppColors.button1
-              : AppColors.cardIconFill;
-        }),
-        shape: MaterialStatePropertyAll(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
+          style: ButtonStyle(
+            elevation: const MaterialStatePropertyAll(0),
+            padding: const MaterialStatePropertyAll(EdgeInsets.zero),
+            backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
+              return filterButtonController.selectedIndex == index
+                  ? AppColors.button1
+                  : AppColors.cardIconFill;
+            }),
+            shape: MaterialStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6),
+              ),
+            ),
+            fixedSize: MaterialStatePropertyAll(
+              Size(
+                AppResponsive().screenWidth(context) * 0.320,
+                AppResponsive().screenWidth(context) * 0.04,
+              ),
+            ),
           ),
-        ),
-        fixedSize: MaterialStatePropertyAll(
-          Size(AppResponsive().screenWidth(context) * 0.290,
-              AppResponsive().screenWidth(context) * 0.04),
-        ),
-      ),
-      icon: Icon(
-        icon,
-        color: filterButtonController.selectedIndex == index
-            ? AppColors.activeIconType
-            : AppColors.nonActiveIcon,
-      ),
-      label: Text(
-        text,
-        style: TextStyle(
-          color: filterButtonController.selectedIndex == index
-              ? AppColors.textButton1
-              : AppColors.description,
-          fontSize: SizeData.fontTextInfoBoldSize,
-        ),
-      ),
-      onPressed: () {
-        if (filterButtonController.selectedIndex != index) {
-          filterButtonController.setSelectedFilter(index);
-        }
-      },
-    ));
+          icon: Icon(
+            icon,
+            color: filterButtonController.selectedIndex == index
+                ? AppColors.activeIconType
+                : AppColors.nonActiveIcon,
+          ),
+          label: Text(
+            text,
+            style: TextStyle(
+              color: filterButtonController.selectedIndex == index
+                  ? AppColors.textButton1
+                  : AppColors.description,
+              fontSize: SizeData.fontTextInfoBoldSize,
+            ),
+          ),
+          onPressed: () {
+            if (filterButtonController.selectedIndex != index) {
+              filterButtonController.setSelectedFilter(index);
+            }
+          },
+        ));
   }
 }

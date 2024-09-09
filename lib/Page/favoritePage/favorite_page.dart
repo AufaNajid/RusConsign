@@ -68,7 +68,8 @@ class FavoritePage extends StatelessWidget {
                   ),
                   Text(
                     'belumAdaBarang'.tr,
-                    style: AppTextStyle().subHeader(context, AppColors.description),
+                    style: AppTextStyle()
+                        .subHeader(context, AppColors.description),
                   )
                 ].withSpaceBetween(height: 12),
               ),
@@ -82,17 +83,21 @@ class FavoritePage extends StatelessWidget {
                   final like = controller.favoriteList[index];
                   final barang = like.barang;
                   final mitra = barang.mitra;
+                  const imgProfile = "https://rusconsign.com";
                   return FavoriteCard(
                     imagePath: barang.imageBarang,
                     idBarang: barang.id,
                     title: barang.namaBarang,
                     price: barang.harga,
                     rating: barang.ratingBarang.toDouble(),
-                    profileImagePath: "https://avatar.iran.liara.run/public",
+                    profileImagePath: mitra.profileImage == null
+                        ? "https://ui-avatars.com/api/?name=${mitra.namaLengkap}&background=db6767&color=fafafa"
+                        : '$imgProfile${mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
                     profileUsername: mitra.namaLengkap,
                     isFavorite: controller.isItemFavorite(barang.id),
-                    onFavoriteToggle: () =>
-                        controller.toggleFavorite(barang.id),
+                    onFavoriteToggle: () {
+                      controller.toggleFavorite(barang.id);
+                    },
                   );
                 },
               ),
