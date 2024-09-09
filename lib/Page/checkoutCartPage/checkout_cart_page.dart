@@ -143,18 +143,12 @@ class CheckoutCartPage extends StatelessWidget {
                     onPressed: () async {
                       if (controller.selectedPaymentMethod ==
                           'Cash On Delivery (COD)') {
-                        await controller.addPesanan(
-                            controller.productDetail.value!.id.toString(),
-                            controller.productDetail.value!.mitra.id.toString());
+                        await controller.addPesanan();
                         if (controller.successfulPesanProduct.value == true) {
                           Get.offNamed("/paymentdone");
                         }
                       } else {
-                        await controller.paymentTesting(
-                          controller.productDetail.value!.id.toString(),
-                          // controller.productCheckoutData["quantityProduct"]
-                          //     .toString(),
-                        );
+                        await controller.paymentTesting();
                       }
                     },
                     style: ElevatedButton.styleFrom(
