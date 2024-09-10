@@ -6,7 +6,7 @@ import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/money_format.dart';
 import 'package:rusconsign/utils/text_style.dart';
 
-class ProcessCardSelling extends StatelessWidget {
+class ProcessPaymentCardSelling extends StatelessWidget {
   final String imagePath;
   final String title;
   final String pemesan;
@@ -17,7 +17,7 @@ class ProcessCardSelling extends StatelessWidget {
   final int price;
   final int quantity;
 
-  const ProcessCardSelling({
+  const ProcessPaymentCardSelling({
     Key? key,
     required this.imagePath,
     required this.pemesan,
@@ -86,7 +86,7 @@ class ProcessCardSelling extends StatelessWidget {
                       Text(
                         rating.toString(),
                         style:
-                            AppTextStyle().textInfoBold(context, AppColors.description),
+                        AppTextStyle().textInfoBold(context, AppColors.description),
                       ),
                     ].withSpaceBetween(width: 6),
                   ),
@@ -121,7 +121,7 @@ class ProcessCardSelling extends StatelessWidget {
                         style: AppTextStyle().textInfo(context, AppColors.description),
                       ),
                       Text(
-                        "COD",
+                        "E-Money",
                         style: AppTextStyle().textInfoBold(context, AppColors.hargaStat),
                       ),
                     ].withSpaceBetween(width: 4),

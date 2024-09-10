@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:rusconsign/Api/all_order_payment_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,6 +13,7 @@ class SellingPageController extends GetxController {
   RxBool isLoading = false.obs;
   final _selectedIndex = 0.obs;
   var pesananList = <Cod>[].obs;
+  var pesananPaymentList = <Payment>[].obs;
 
   int get selectedIndex => _selectedIndex.value;
 
@@ -26,6 +28,7 @@ class SellingPageController extends GetxController {
   void onInit() {
     super.onInit();
     fetchPesanan(0);
+    fetchPesananPayment(0);
   }
 
   Future<void> updateProgress(int idPesanan) async {
@@ -90,4 +93,47 @@ class SellingPageController extends GetxController {
 
     isLoading.value = false;
   }
+
+  Future<void> fetchPesananPayment(int filter) async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    String? idMitra = pref.getString('idMitra');
+    isLoading.value = true;
+    Uri uri;
+
+    switch (filter) {
+      // case 1:
+      //   uri = Uri.parse("https://rusconsign.com/api/cods/mitra/progres/$idMitra");
+      //   break;
+      case 2:
+        uri = Uri.parse("https://rusconsign.com/api/payments/mitra/selesai/$idMitra");
+        break;
+      default:
+        uri = Uri.parse("https://rusconsign.com/api/payments/mitra/progres/$idMitra");
+        break;
+    }
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? token = prefs.getString('token');
+
+    final response = await http.get(
+      uri,
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Accept': 'application/json',
+      },
+    );
+    print(response.body);
+
+    if (response.statusCode == 200) {
+      // final data = jsonDecode(response.body);
+      final data = jsonDecode(response.body);
+      final allOrderPaymentResponse = AllOrderPaymentResponse.fromJson(data);
+      pesananPaymentList.value = allOrderPaymentResponse.payments;
+    } else {
+      print("Response Status Penjualan = ${response.statusCode}");
+    }
+
+    isLoading.value = false;
+  }
+
 }
