@@ -7,6 +7,7 @@ import 'package:rusconsign/Page/sellingPage/selling_page_controller.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/cancel_selling_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/not_paid_card.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/process_card.dart';
+import 'package:rusconsign/Page/sellingPage/widgets/process_payment.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/selling_appbar.dart';
 import 'package:rusconsign/Page/sellingPage/widgets/selling_filter_button.dart';
 import 'package:rusconsign/utils/app_responsive.dart';
@@ -76,7 +77,7 @@ class SellingPage extends StatelessWidget {
                             )
                           ],
                         );
-                      } else if (controller.pesananList.isEmpty) {
+                      } else if (controller.pesananList.isEmpty && controller.pesananPaymentList.isEmpty) {
                         return SizedBox(
                           width: double.infinity,
                           height: AppResponsive().screenHeight(context) * 0.8,
@@ -128,52 +129,107 @@ class SellingPage extends StatelessWidget {
                           },
                         );
                       } else if (controller.selectedIndex == 1) {
-                        return ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          shrinkWrap: true,
-                          itemCount: controller.pesananList.length,
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const SizedBox(height: 10);
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            final cod = controller.pesananList[index];
-                            return ProcessCardSelling(
-                              quantity: cod.quantity,
-                              imagePath: cod.barang.imageBarang,
-                              title: cod.barang.namaBarang,
-                              metodePembayaran: cod.statusPembayaran,
-                              lokasiPertemuan: cod.lokasi.namaLokasi,
-                              rating: cod.barang.ratingBarang.toDouble(),
-                              price: cod.barang.harga,
-                              pemesan: cod.user.name,
-                              timeMeeting: dayName,
-                            );
-                          },
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shrinkWrap: true,
+                              itemCount: controller.pesananList.length,
+                              separatorBuilder: (BuildContext context, int index) {
+                                return const SizedBox(height: 10);
+                              },
+                              itemBuilder: (BuildContext context, int index) {
+                                final cod = controller.pesananList[index];
+                                return ProcessCardSelling(
+                                  quantity: cod.quantity,
+                                  imagePath: cod.barang.imageBarang,
+                                  title: cod.barang.namaBarang,
+                                  metodePembayaran: cod.statusPembayaran,
+                                  lokasiPertemuan: cod.lokasi.namaLokasi,
+                                  rating: cod.barang.ratingBarang.toDouble(),
+                                  price: cod.barang.harga,
+                                  pemesan: cod.user.name,
+                                  timeMeeting: dayName,
+                                );
+                              },
+                            ),
+                            ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shrinkWrap: true,
+                              itemCount: controller.pesananPaymentList.length,
+                              separatorBuilder: (BuildContext context, int index) {
+                                return const SizedBox(height: 10);
+                              },
+                              itemBuilder: (BuildContext context, int index) {
+                                final cod = controller.pesananPaymentList[index];
+                                return ProcessPaymentCardSelling(
+                                  imagePath: cod.barang.imageBarang,
+                                  title: cod.barang.namaBarang,
+                                  metodePembayaran: cod.status,
+                                  lokasiPertemuan: "depan rusmart",
+                                  rating: 0.0,
+                                  price: cod.barang.harga,
+                                  pemesan: cod.user.name.toString(),
+                                  quantity: cod.quantity,
+                                  timeMeeting: dayName,
+                                );
+                              },
+                            ),
+                          ],
                         );
                       } else if (controller.selectedIndex == 2) {
-                        return ListView.separated(
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          shrinkWrap: true,
-                          itemCount: controller.pesananList.length,
-                          separatorBuilder: (BuildContext context, int index) {
-                            return const SizedBox(height: 10);
-                          },
-                          itemBuilder: (BuildContext context, int index) {
-                            final cod = controller.pesananList[index];
-                            return ProcessCardSelling(
-                              imagePath: cod.barang.imageBarang,
-                              title: cod.barang.namaBarang,
-                              metodePembayaran: cod.statusPembayaran,
-                              lokasiPertemuan: cod.lokasi.namaLokasi,
-                              rating: cod.barang.ratingBarang.toDouble(),
-                              price: cod.barang.harga,
-                              pemesan: cod.user.name,
-                              quantity: cod.quantity,
-                              timeMeeting: dayName,
-                            );
-                          },
+                        return Column(
+                          children: [
+                            ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shrinkWrap: true,
+                              itemCount: controller.pesananList.length,
+                              separatorBuilder: (BuildContext context, int index) {
+                                return const SizedBox(height: 10);
+                              },
+                              itemBuilder: (BuildContext context, int index) {
+                                final cod = controller.pesananList[index];
+                                return ProcessCardSelling(
+                                  imagePath: cod.barang.imageBarang,
+                                  title: cod.barang.namaBarang,
+                                  metodePembayaran: cod.statusPembayaran,
+                                  lokasiPertemuan: cod.lokasi.namaLokasi,
+                                  rating: cod.barang.ratingBarang.toDouble(),
+                                  price: cod.barang.harga,
+                                  pemesan: cod.user.name,
+                                  quantity: cod.quantity,
+                                  timeMeeting: dayName,
+                                );
+                              },
+                            ),
+                            ListView.separated(
+                              physics: const NeverScrollableScrollPhysics(),
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              shrinkWrap: true,
+                              itemCount: controller.pesananPaymentList.length,
+                              separatorBuilder: (BuildContext context, int index) {
+                                return const SizedBox(height: 10);
+                              },
+                              itemBuilder: (BuildContext context, int index) {
+                                final cod = controller.pesananPaymentList[index];
+                                return ProcessPaymentCardSelling(
+                                  imagePath: cod.barang.imageBarang,
+                                  title: cod.barang.namaBarang,
+                                  metodePembayaran: cod.status,
+                                  lokasiPertemuan: "depan rusmart",
+                                  rating: 0.0,
+                                  price: cod.barang.harga,
+                                  pemesan: cod.user.name.toString(),
+                                  quantity: cod.quantity,
+                                  timeMeeting: dayName,
+                                );
+                              },
+                            ),
+                          ],
                         );
                       } else if (controller.selectedIndex == 3) {
                         return ListView.separated(

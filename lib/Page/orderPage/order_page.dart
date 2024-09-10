@@ -7,6 +7,7 @@ import 'package:rusconsign/Page/orderPage/widgets/cancel_card.dart';
 import 'package:rusconsign/Page/orderPage/widgets/finish_card.dart';
 import 'package:rusconsign/Page/orderPage/widgets/on_process_card.dart';
 import 'package:rusconsign/Page/orderPage/order_page_controller.dart';
+import 'package:rusconsign/Page/orderPage/widgets/on_process_payment_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/size_data.dart';
@@ -103,7 +104,7 @@ class OrderPage extends StatelessWidget {
                               )
                             ],
                           );
-                        } else if (orderController.productList.isEmpty) {
+                        } else if (orderController.productList.isEmpty && orderController.pesananPaymentList.isEmpty) {
                           return SizedBox(
                             width: double.infinity,
                             height: AppResponsive().screenHeight(context) * 0.8,
@@ -155,32 +156,62 @@ class OrderPage extends StatelessWidget {
                             },
                           );
                         } else if (orderController.selectedIndex == 1) {
-                          return ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: orderController.productList.length,
-                            itemBuilder: (context, index) {
-                              final cod = orderController.productList[index];
-                              return OnProcessCard(
-                                idPesanan: cod.id,
-                                imagePath: cod.barang.imageBarang,
-                                title: cod.barang.namaBarang,
-                                profileImagePath: cod.mitra.imageProfile,
-                                profileUsername: cod.mitra.namaToko,
-                                rating: cod.barang.ratingBarang.toDouble(),
-                                totalProductPrice: int.parse(cod.grandTotal),
-                                quantity: cod.quantity,
-                                timeMeeting: dayName,
-                                paymentMethod: cod.statusPembayaran,
-                                meetingLocation: cod.lokasi.namaLokasi,
-                                onChatSeller: () {},
-                                idBarang: cod.barang.id,
-                                noWa: cod.mitra.noWhatsapp,
-                              );
-                            },
+                          return Column(
+                            children: [
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: orderController.productList.length,
+                                itemBuilder: (context, index) {
+                                  final cod = orderController.productList[index];
+                                  return OnProcessCard(
+                                    idPesanan: cod.id,
+                                    imagePath: cod.barang.imageBarang,
+                                    title: cod.barang.namaBarang,
+                                    profileImagePath: cod.mitra.imageProfile,
+                                    profileUsername: cod.mitra.namaToko,
+                                    rating: cod.barang.ratingBarang.toDouble(),
+                                    totalProductPrice: int.parse(cod.grandTotal),
+                                    quantity: cod.quantity,
+                                    timeMeeting: dayName,
+                                    paymentMethod: cod.statusPembayaran,
+                                    meetingLocation: cod.lokasi.namaLokasi,
+                                    onChatSeller: () {},
+                                    idBarang: cod.barang.id,
+                                    noWa: cod.mitra.noWhatsapp,
+                                  );
+                                },
+                              ),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: orderController.pesananPaymentList.length,
+                                itemBuilder: (context, index) {
+                                  final cod = orderController.pesananPaymentList[index];
+                                  return OnProcessPaymentCard(
+                                    idPesanan: cod.id,
+                                    imagePath: cod.barang.imageBarang,
+                                    title: cod.barang.namaBarang,
+                                    profileImagePath: "cod.mitra.imageProfile",
+                                    profileUsername: cod.barang.mitra.namaToko,
+                                    rating: cod.barang.ratingBarang.toDouble(),
+                                    totalProductPrice: int.parse(cod.grandTotal),
+                                    quantity: cod.quantity,
+                                    timeMeeting: dayName,
+                                    paymentMethod: cod.status,
+                                    meetingLocation: "Gazebo",
+                                    onChatSeller: () {},
+                                    idBarang: cod.barang.id,
+                                    noWa: cod.barang.mitra.noWhatsapp, external: cod.externalId,
+                                  );
+                                },
+                              )
+                            ],
                           );
                         } else if (orderController.selectedIndex == 2) {
-                          return ListView.builder(
+                          return Column(
+                            children: [
+                            ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: orderController.productList.length,
@@ -200,6 +231,30 @@ class OrderPage extends StatelessWidget {
                                 onGiveRating: () {},
                               );
                             },
+                          ),
+
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: orderController.pesananPaymentList.length,
+                                itemBuilder: (context, index) {
+                                  final cod = orderController.pesananPaymentList[index];
+                                  return FinishCard(
+                                    idBarang: cod.barang.id,
+                                    imagePath: cod.barang.imageBarang,
+                                    title: cod.barang.namaBarang,
+                                    profileImagePath: cod.barang.mitra.namaToko,
+                                    profileUsername: cod.barang.mitra.namaToko,
+                                    rating: cod.barang.ratingBarang.toDouble(),
+                                    totalProductPrice: int.parse(cod.grandTotal),
+                                    quantity: cod.quantity,
+                                    paymentMethod: cod.barang.mitra.namaToko,
+                                    meetingLocation: "depan rusmart",
+                                    onGiveRating: () {},
+                                  );
+                                },
+                              ),
+                            ],
                           );
                         } else if (orderController.selectedIndex == 3) {
                           return ListView.builder(

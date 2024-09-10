@@ -140,7 +140,23 @@ class CheckoutCartPageController extends GetxController {
     }
   }
 
-  Future<void> paymentTesting(String idBarang) async {
+  Future<void> paymentTesting() async {
+    List<int> selectedCartIds = productCheckoutData["cartIds"];
+    List<int> selectedCartQuantity = productCheckoutData["cartQuantity"];
+
+    String cartQuantity = selectedCartQuantity.map((e) => e).toString();
+    String cleanCartString = cartQuantity
+        .replaceAll('(', '[')
+        .replaceAll(')', ']')
+        .removeAllWhitespace;
+    print("Quantity Produk : $cleanCartString");
+
+    String cartIdsString = selectedCartIds.map((e) => e).toString();
+    String cleanIdString = cartIdsString
+        .replaceAll('(', '[')
+        .replaceAll(')', ']')
+        .removeAllWhitespace;
+    print("Id Cart Produk : $cleanIdString");
     isLoading.value = true;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -149,10 +165,10 @@ class CheckoutCartPageController extends GetxController {
     print('Token: $token');
 
     var request = http.MultipartRequest(
-        'POST', Uri.parse("https://rusconsign.com/api/create-invoice"));
+        'POST', Uri.parse("https://rusconsign.com/api/create-checkout"));
     request.headers['Authorization'] = 'Bearer $token';
-    request.fields['barang_id'] = idBarang;
-    // request.fields['quantity'] = jumlah;
+    request.fields['barang_id'] = cleanIdString;
+    request.fields['quantity'] = cleanCartString;
 
     var response = await request.send();
 
@@ -174,21 +190,37 @@ class CheckoutCartPageController extends GetxController {
     }
   }
 
-  Future<void> addPesanan(String idProduct, String idMitra) async {
+
+  Future<void> addPesanan() async {
+    List<int> selectedCartIds = productCheckoutData["cartIds"];
+    List<int> selectedCartQuantity = productCheckoutData["cartQuantity"];
+
+    String cartQuantity = selectedCartQuantity.map((e) => e).toString();
+    String cleanCartString = cartQuantity
+        .replaceAll('(', '[')
+        .replaceAll(')', ']')
+        .removeAllWhitespace;
+    print("Quantity Produk : $cleanCartString");
+
+    String cartIdsString = selectedCartIds.map((e) => e).toString();
+    String cleanIdString = cartIdsString
+        .replaceAll('(', '[')
+        .replaceAll(')', ']')
+        .removeAllWhitespace;
+    print("Id Cart Produk : $cleanIdString");
     isLoading.value = true;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
 
     var request = http.MultipartRequest(
-        'POST', Uri.parse("https://rusconsign.com/api/add-pembayaran-cod"));
+        'POST', Uri.parse("https://rusconsign.com/api/checkout"));
     request.headers['Authorization'] = 'Bearer $token';
 
-    request.fields['barang_id'] = idProduct;
+    request.fields['barang_id'] = cleanIdString;
     request.fields['lokasi_id'] =
         selectedLocationIndex.value?.toString() ?? "1";
-    // request.fields['quantity'] =
-    //     productCheckoutData["quantityProduct"].toString();
+    request.fields['quantity'] = cleanCartString;
 
     var response = await request.send();
 
