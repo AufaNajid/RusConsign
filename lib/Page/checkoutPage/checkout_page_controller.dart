@@ -30,7 +30,7 @@ class CheckoutPageController extends GetxController {
       Get.arguments != null ? Get.arguments as Map<String, dynamic> : {};
 
   void selectLocation(int index) {
-    selectedLocationIndex.value = index + 1;
+    selectedLocationIndex.value = index;
     fetchLokasiById(lokasi[index].id);
   }
 
@@ -65,7 +65,10 @@ class CheckoutPageController extends GetxController {
 
     if (selectedItem['title'] != 'Cash On Delivery (COD)') {
       items.removeWhere((item) => item['title'] == 'Cash On Delivery (COD)');
-      items.insert(0, {'title': 'Cash On Delivery (COD)', 'leading': 'assets/images/cod.svg'});
+      items.insert(0, {
+        'title': 'Cash On Delivery (COD)',
+        'leading': 'assets/images/cod.svg'
+      });
     }
 
     expanded.value = false;

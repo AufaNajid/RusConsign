@@ -1,8 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:rusconsign/Api/all_order_payment_mitra.dart';
-import 'package:rusconsign/Api/all_order_payment_response.dart';
 import 'package:rusconsign/Api/all_order_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,7 +27,6 @@ class OrderPageController extends GetxController {
     super.onInit();
     fetchPesanan(0);
     fetchPesananPayment(0);
-    // fetchPesananSelesaiPayment(2);
   }
 
   Future<void> updateComplete(int idPesanan) async {
@@ -52,34 +52,30 @@ class OrderPageController extends GetxController {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
 
-    // Prepare the body with external_id and status
     Map<String, dynamic> requestBody = {
       'external_id': external,
       'status': "paid"
     };
 
-    // Make the POST request with the required headers and body
     final response = await http.post(
       Uri.parse("https://rusconsign.com/api/payments/webhook/xendit"),
       headers: <String, String>{
         'Authorization': "Bearer $token",
-        'Content-Type': 'application/json',  // Specify that the body is JSON
+        'Content-Type': 'application/json',
       },
-      body: jsonEncode(requestBody),  // Encode the body to JSON format
+      body: jsonEncode(requestBody),
     );
 
-    // Debugging: print the status code
     print({response.statusCode});
 
-    // Check for a successful response
     if (response.statusCode == 200) {
-      await fetchPesanan(1);  // Refresh the payment list
+      await fetchPesanan(1); 
     } else {
       // Handle error if needed
       print("Error: ${response.statusCode}");
     }
 
-    isLoading.value = false;  // Update loading state
+    isLoading.value = false;
   }
 
   Future<void> cancelOrder(int idPesanan) async {
@@ -136,8 +132,6 @@ class OrderPageController extends GetxController {
       final data = jsonDecode(response.body);
       final allOrderResponse = AllOrderResponse.fromJson(data);
       productList.value = allOrderResponse.cods;
-    } else {
-      // Handle error
     }
 
     isLoading.value = false;
@@ -174,7 +168,6 @@ class OrderPageController extends GetxController {
     print(response.body);
 
     if (response.statusCode == 200) {
-      // final data = jsonDecode(response.body);
       final data = jsonDecode(response.body);
       final allOrderPaymentResponse = AllOrderPaymentMitraResponse.fromJson(data);
       pesananPaymentList.value = allOrderPaymentResponse.payments;
@@ -184,46 +177,4 @@ class OrderPageController extends GetxController {
 
     isLoading.value = false;
   }
-
-  // Future<void> fetchPesananSelesaiPayment(int filter) async {
-  //   final SharedPreferences pref = await SharedPreferences.getInstance();
-  //   String? idMitra = pref.getString('idMitra');
-  //   isLoading.value = true;
-  //   Uri uri;
-  //
-  //   switch (filter) {
-  //   // case 1:
-  //   //   uri = Uri.parse("https://rusconsign.com/api/cods/mitra/progres/$idMitra");
-  //   //   break;
-  //   // case 3:
-  //   //   uri = Uri.parse("https://rusconsign.com/api/cods/mitra/batal_pesanan/$idMitra");
-  //   //   break;
-  //     default:
-  //       uri = Uri.parse("https://rusconsign.com/api/payments/mitra/selesai/$idMitra");
-  //       break;
-  //   }
-  //
-  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   final String? token = prefs.getString('token');
-  //
-  //   final response = await http.get(
-  //     uri,
-  //     headers: {
-  //       'Authorization': 'Bearer $token',
-  //       'Accept': 'application/json',
-  //     },
-  //   );
-  //   print(response.body);
-  //
-  //   if (response.statusCode == 200) {
-  //     // final data = jsonDecode(response.body);
-  //     final data = jsonDecode(response.body);
-  //     final allOrderPaymentResponse = AllOrderPaymentMitraResponse.fromJson(data);
-  //     pesananPaymentList.value = allOrderPaymentResponse.payments;
-  //   } else {
-  //     print("Response Status Penjualan = ${response.statusCode}");
-  //   }
-  //
-  //   isLoading.value = false;
-  // }
 }

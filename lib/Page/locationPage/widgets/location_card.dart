@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/checkoutCartPage/checkout_cart_page_controller.dart';
 import 'package:rusconsign/Page/checkoutPage/checkout_page_controller.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/size_data.dart';
@@ -22,6 +23,7 @@ class LocationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CheckoutPageController locationController = Get.find();
+    final CheckoutCartPageController locationCartController = Get.find();
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
@@ -73,36 +75,45 @@ class LocationCard extends StatelessWidget {
                   ),
                   const Spacer(),
                   Obx(() => IconButton(
-                    onPressed: () {
-                      locationController.selectLocation(index);
-                    },
-                    icon: Icon(
-                      FeatherIcons.check,
-                      size: SizeData.iconSize,
-                      color: locationController.selectedLocationIndex.value == index + 1
-                      ? AppColors.activeIconType
-                      : AppColors.activeIcon,
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                      MaterialStatePropertyAll(
-                        locationController.selectedLocationIndex.value == index + 1
-                        ? AppColors.button1
-                        : AppColors.cardIconFill,
-                      ),
-                      side: const MaterialStatePropertyAll(
-                        BorderSide(
-                            color: AppColors.button1,
-                            style: BorderStyle.solid,
-                            width: 0),
-                      ),
-                      shape: MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                        onPressed: () {
+                          locationController.selectLocation(index);
+                          locationCartController.selectLocation(index);
+                        },
+                        icon: Icon(
+                          FeatherIcons.check,
+                          size: SizeData.iconSize,
+                          color:
+                              locationController.selectedLocationIndex.value ==
+                                          index ||
+                                      locationCartController
+                                              .selectedLocationIndex.value ==
+                                          index
+                                  ? AppColors.activeIconType
+                                  : AppColors.activeIcon,
                         ),
-                      ),
-                    ),
-                  ))
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                            locationController.selectedLocationIndex.value ==
+                                        index ||
+                                    locationCartController
+                                            .selectedLocationIndex.value ==
+                                        index
+                                ? AppColors.button1
+                                : AppColors.cardIconFill,
+                          ),
+                          side: const MaterialStatePropertyAll(
+                            BorderSide(
+                                color: AppColors.button1,
+                                style: BorderStyle.solid,
+                                width: 0),
+                          ),
+                          shape: MaterialStatePropertyAll(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                        ),
+                      ))
                 ],
               )
             ],

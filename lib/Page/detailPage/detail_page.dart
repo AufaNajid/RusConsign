@@ -175,8 +175,10 @@ class DetailPage extends GetView<DetailPageController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             SizedBox(
-                              width: AppResponsive().screenWidth(context) * 0.110,
-                              height: AppResponsive().screenWidth(context) * 0.110,
+                              width:
+                                  AppResponsive().screenWidth(context) * 0.110,
+                              height:
+                                  AppResponsive().screenWidth(context) * 0.110,
                               child: ClipOval(
                                 child: Image.network(
                                   state.mitra.profileImage.isEmpty
