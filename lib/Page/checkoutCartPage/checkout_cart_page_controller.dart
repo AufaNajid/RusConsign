@@ -31,7 +31,7 @@ class CheckoutCartPageController extends GetxController {
       Get.arguments != null ? Get.arguments as Map<String, dynamic> : {};
 
   void selectLocation(int index) {
-    selectedLocationIndex.value = index + 1;
+    selectedLocationIndex.value = index;
     fetchLokasiById(lokasi[index].id);
   }
 
@@ -189,7 +189,6 @@ class CheckoutCartPageController extends GetxController {
           snackPosition: SnackPosition.BOTTOM);
     }
   }
-
 
   Future<void> addPesanan() async {
     List<int> selectedCartIds = productCheckoutData["cartIds"];

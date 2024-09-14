@@ -56,9 +56,9 @@ List<GetPage> routes = [
   GetPage(name: "/diskonpage", page: () => const DiscountPage()),
   GetPage(name: "/notificationpage", page: () => const NotificationPage()),
   GetPage(name: "/waitingadmin", page: () => const RegisterSellerWaiting()),
-  GetPage(name: "/locationpage", page: () => const LocationPage()),
   GetPage(name: "/paymentdone", page: () => const PaymentDone()),
   GetPage(name: "/additemform", page: () => AddItemForm()),
+  GetPage(name: "/locationpage", page: () => const LocationPage()),
   GetPage(
     name: "/cartpage",
     page: () => const CartPage(),
@@ -70,9 +70,10 @@ List<GetPage> routes = [
     binding: EditDataProductBinding(),
   ),
   GetPage(
-      name: "/giverating",
-      page: () => const GiveRatingPage(),
-      binding: GiveRatingBinding()),
+    name: "/giverating",
+    page: () => const GiveRatingPage(),
+    binding: GiveRatingBinding(),
+  ),
   GetPage(
     name: "/productmanagepage",
     page: () => ProductManagePage(),

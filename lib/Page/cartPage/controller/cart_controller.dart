@@ -16,7 +16,8 @@ class CartController extends GetxController {
   void goToCheckout() {
     List<int> selectedCartIds =
         selectedItems.map((index) => cartItems[index].barang.id).toList();
-    List<int> selectedCartQuantity = selectedItems.map((index) => cartItems[index].quantity).toList();
+    List<int> selectedCartQuantity =
+        selectedItems.map((index) => cartItems[index].quantity).toList();
 
     print(selectedCartIds);
     print(selectedCartQuantity);

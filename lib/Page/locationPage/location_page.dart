@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rusconsign/Page/checkoutCartPage/checkout_cart_page_controller.dart';
 import 'package:rusconsign/Page/checkoutPage/checkout_page_controller.dart';
+import 'package:rusconsign/Page/locationPage/location_page_controller.dart';
 import 'package:rusconsign/Page/locationPage/widgets/location_card.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/commonWidget/common_appbar.dart';
@@ -13,6 +15,9 @@ class LocationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CheckoutPageController controller = Get.put(CheckoutPageController());
+    final CheckoutCartPageController controllerCart =
+        Get.put(CheckoutCartPageController());
+    final LocationPageController controllerfrom = Get.put(LocationPageController());
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: CommonAppBar(
@@ -101,19 +106,36 @@ class LocationPage extends StatelessWidget {
               style: AppTextStyle().header(context, AppColors.titleLine),
             ),
             const SizedBox(height: 5),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: controller.lokasi.length,
-              itemBuilder: (context, index) {
-                final pertemuan = controller.lokasi[index];
-                return LocationCard(
-                  imagePath: pertemuan.gambarLokasi,
-                  title: pertemuan.namaLokasi,
-                  desc: pertemuan.descLokasi,
-                  index: index,
-                );
-              },
+            Obx(
+              () => controllerfrom.data.value == "detail"
+                  ? ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controller.lokasi.length,
+                      itemBuilder: (context, index) {
+                        final pertemuan = controller.lokasi[index];
+                        return LocationCard(
+                          imagePath: pertemuan.gambarLokasi,
+                          title: pertemuan.namaLokasi,
+                          desc: pertemuan.descLokasi,
+                          index: index,
+                        );
+                      },
+                    )
+                  : ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: controllerCart.lokasi.length,
+                      itemBuilder: (context, index) {
+                        final pertemuan = controllerCart.lokasi[index];
+                        return LocationCard(
+                          imagePath: pertemuan.gambarLokasi,
+                          title: pertemuan.namaLokasi,
+                          desc: pertemuan.descLokasi,
+                          index: index,
+                        );
+                      },
+                    ),
             ),
           ],
         ),
