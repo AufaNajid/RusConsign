@@ -29,6 +29,7 @@ class CartController extends GetxController {
         "cartQuantity": selectedCartQuantity,
       },
     );
+    // GetStorage().write("checkoutFrom", "cart");
   }
 
   void setSelectedCart(int index) {

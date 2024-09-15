@@ -60,7 +60,7 @@ class CheckoutPage extends StatelessWidget {
                       ItemCheckout(
                         imagePath: product.imageBarang,
                         title: product.namaBarang,
-                        profileImagePath: mitra.profileImage == null
+                        profileImagePath: mitra.profileImage.isEmpty
                             ? 'https://ui-avatars.com/api/?name=${mitra.namaToko}&background=db6767&color=fafafa'
                             : '$imgProfile${mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
                         profileName: mitra.namaToko,

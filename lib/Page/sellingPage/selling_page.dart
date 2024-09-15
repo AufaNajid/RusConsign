@@ -245,7 +245,7 @@ class SellingPage extends StatelessWidget {
                             return SellingCancelCard(
                               imagePath: cod.barang.imageBarang,
                               title: cod.barang.namaBarang,
-                              profileImagePath: cod.mitra.imageProfile,
+                              profileImagePath: cod.mitra.profileImage,
                               profileUsername: cod.mitra.namaLengkap,
                               rating: cod.barang.ratingBarang.toDouble(),
                               totalProductPrice: cod.barang.harga,

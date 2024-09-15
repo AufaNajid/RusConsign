@@ -191,7 +191,7 @@ class CartPage extends StatelessWidget {
                             ),
                             SizedBox(
                               width:
-                                  AppResponsive().screenWidth(context) * 0.38,
+                                  AppResponsive().screenWidth(context) * 0.35,
                               child: ElevatedButton(
                                 onPressed: controller.selectedItems.isEmpty
                                     ? null
