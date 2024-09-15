@@ -21,6 +21,7 @@ class SellingPageController extends GetxController {
     if (_selectedIndex.value != index) {
       _selectedIndex.value = index;
       await fetchPesanan(index);
+      await fetchPesananPayment(index);
     }
   }
 
