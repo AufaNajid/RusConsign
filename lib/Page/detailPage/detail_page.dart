@@ -509,6 +509,7 @@ class DetailPage extends GetView<DetailPageController> {
                             "quantityProduct": state.quantity,
                           },
                         );
+                        // GetStorage().write("checkoutFrom", "detail");
                       }
                     },
                     style: ButtonStyle(

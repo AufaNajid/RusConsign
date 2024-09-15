@@ -208,7 +208,7 @@ class Lokasi {
 
 class Mitra {
   int id;
-  String imageProfile;
+  String profileImage;
   String namaLengkap;
   String namaToko;
   int nis;
@@ -228,7 +228,7 @@ class Mitra {
 
   Mitra({
     required this.id,
-    required this.imageProfile,
+    required this.profileImage,
     required this.namaLengkap,
     required this.namaToko,
     required this.nis,
@@ -249,7 +249,7 @@ class Mitra {
 
   factory Mitra.fromJson(Map<String, dynamic> json) => Mitra(
     id: json["id"],
-    imageProfile: json["image_profile"],
+    profileImage: json["profile_image"],
     namaLengkap: json["nama_lengkap"],
     namaToko: json["nama_toko"],
     nis: json["nis"],
@@ -270,7 +270,7 @@ class Mitra {
 
   Map<String, dynamic> toJson() => {
     "id": id,
-    "image_profile": imageProfile,
+    "profile_image": profileImage,
     "nama_lengkap": namaLengkap,
     "nama_toko": namaToko,
     "nis": nis,

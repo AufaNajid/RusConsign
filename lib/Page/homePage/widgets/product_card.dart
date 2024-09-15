@@ -27,6 +27,7 @@ class ProductCard extends StatelessWidget {
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return Card(
       elevation: 0,
+      margin: EdgeInsets.zero,
       color: AppColors.cardIconFill,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),

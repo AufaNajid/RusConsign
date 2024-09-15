@@ -47,7 +47,7 @@ class CheckoutPageController extends GetxController {
       print('Null check error: $e');
     }
     fetchLokasi();
-    fetchLokasiById(1);
+    fetchLokasiById(2);
   }
 
   void selectPaymentMethod(int index) {

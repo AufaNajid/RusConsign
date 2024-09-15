@@ -23,6 +23,8 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const imgProfile = "https://rusconsign.com";
+
     DateTime futureDate = DateTime.now().add(const Duration(days: 2));
 
     String dayName = DateFormat('EEEE').format(futureDate);
@@ -104,7 +106,8 @@ class OrderPage extends StatelessWidget {
                               )
                             ],
                           );
-                        } else if (orderController.productList.isEmpty && orderController.pesananPaymentList.isEmpty) {
+                        } else if (orderController.productList.isEmpty &&
+                            orderController.pesananPaymentList.isEmpty) {
                           return SizedBox(
                             width: double.infinity,
                             height: AppResponsive().screenHeight(context) * 0.8,
@@ -143,7 +146,7 @@ class OrderPage extends StatelessWidget {
                                 idPesanan: cod.id,
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
-                                profileImagePath: cod.mitra.imageProfile,
+                                profileImagePath: cod.mitra.profileImage,
                                 profileUsername: cod.mitra.namaToko,
                                 rating: cod.barang.ratingBarang.toDouble(),
                                 totalProductPrice: int.parse(cod.grandTotal),
@@ -163,15 +166,21 @@ class OrderPage extends StatelessWidget {
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemCount: orderController.productList.length,
                                 itemBuilder: (context, index) {
-                                  final cod = orderController.productList[index];
+                                  final cod =
+                                      orderController.productList[index];
                                   return OnProcessCard(
                                     idPesanan: cod.id,
                                     imagePath: cod.barang.imageBarang,
                                     title: cod.barang.namaBarang,
-                                    profileImagePath: cod.mitra.imageProfile,
+                                    profileImagePath: cod.mitra.profileImage
+                                            .isEmpty
+                                        ? 'https://ui-avatars.com/api/?name=${cod.mitra.namaToko}&background=db6767&color=fafafa'
+                                        : "$imgProfile${cod.mitra.profileImage.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}"
+                                        ,
                                     profileUsername: cod.mitra.namaToko,
                                     rating: cod.barang.ratingBarang.toDouble(),
-                                    totalProductPrice: int.parse(cod.grandTotal),
+                                    totalProductPrice:
+                                        int.parse(cod.grandTotal),
                                     quantity: cod.quantity,
                                     timeMeeting: dayName,
                                     paymentMethod: cod.statusPembayaran,
@@ -185,9 +194,11 @@ class OrderPage extends StatelessWidget {
                               ListView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemCount: orderController.pesananPaymentList.length,
+                                itemCount:
+                                    orderController.pesananPaymentList.length,
                                 itemBuilder: (context, index) {
-                                  final cod = orderController.pesananPaymentList[index];
+                                  final cod =
+                                      orderController.pesananPaymentList[index];
                                   return OnProcessPaymentCard(
                                     idPesanan: cod.id,
                                     imagePath: cod.barang.imageBarang,
@@ -195,14 +206,16 @@ class OrderPage extends StatelessWidget {
                                     profileImagePath: "cod.mitra.imageProfile",
                                     profileUsername: cod.barang.mitra.namaToko,
                                     rating: cod.barang.ratingBarang.toDouble(),
-                                    totalProductPrice: int.parse(cod.grandTotal),
+                                    totalProductPrice:
+                                        int.parse(cod.grandTotal),
                                     quantity: cod.quantity,
                                     timeMeeting: dayName,
                                     paymentMethod: cod.status,
                                     meetingLocation: "Gazebo",
                                     onChatSeller: () {},
                                     idBarang: cod.barang.id,
-                                    noWa: cod.barang.mitra.noWhatsapp, external: cod.externalId,
+                                    noWa: cod.barang.mitra.noWhatsapp,
+                                    external: cod.externalId,
                                   );
                                 },
                               )
@@ -211,34 +224,37 @@ class OrderPage extends StatelessWidget {
                         } else if (orderController.selectedIndex == 2) {
                           return Column(
                             children: [
-                            ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: orderController.productList.length,
-                            itemBuilder: (context, index) {
-                              final cod = orderController.productList[index];
-                              return FinishCard(
-                                idBarang: cod.barang.id,
-                                imagePath: cod.barang.imageBarang,
-                                title: cod.barang.namaBarang,
-                                profileImagePath: cod.mitra.imageProfile,
-                                profileUsername: cod.mitra.namaLengkap,
-                                rating: cod.barang.ratingBarang.toDouble(),
-                                totalProductPrice: int.parse(cod.grandTotal),
-                                quantity: cod.quantity,
-                                paymentMethod: cod.statusPembayaran,
-                                meetingLocation: cod.lokasi.namaLokasi,
-                                onGiveRating: () {},
-                              );
-                            },
-                          ),
-
                               ListView.builder(
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
-                                itemCount: orderController.pesananPaymentList.length,
+                                itemCount: orderController.productList.length,
                                 itemBuilder: (context, index) {
-                                  final cod = orderController.pesananPaymentList[index];
+                                  final cod =
+                                      orderController.productList[index];
+                                  return FinishCard(
+                                    idBarang: cod.barang.id,
+                                    imagePath: cod.barang.imageBarang,
+                                    title: cod.barang.namaBarang,
+                                    profileImagePath: cod.mitra.profileImage,
+                                    profileUsername: cod.mitra.namaLengkap,
+                                    rating: cod.barang.ratingBarang.toDouble(),
+                                    totalProductPrice:
+                                        int.parse(cod.grandTotal),
+                                    quantity: cod.quantity,
+                                    paymentMethod: cod.statusPembayaran,
+                                    meetingLocation: cod.lokasi.namaLokasi,
+                                    onGiveRating: () {},
+                                  );
+                                },
+                              ),
+                              ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount:
+                                    orderController.pesananPaymentList.length,
+                                itemBuilder: (context, index) {
+                                  final cod =
+                                      orderController.pesananPaymentList[index];
                                   return FinishCard(
                                     idBarang: cod.barang.id,
                                     imagePath: cod.barang.imageBarang,
@@ -246,7 +262,8 @@ class OrderPage extends StatelessWidget {
                                     profileImagePath: cod.barang.mitra.namaToko,
                                     profileUsername: cod.barang.mitra.namaToko,
                                     rating: cod.barang.ratingBarang.toDouble(),
-                                    totalProductPrice: int.parse(cod.grandTotal),
+                                    totalProductPrice:
+                                        int.parse(cod.grandTotal),
                                     quantity: cod.quantity,
                                     paymentMethod: cod.barang.mitra.namaToko,
                                     meetingLocation: "depan rusmart",
@@ -266,7 +283,7 @@ class OrderPage extends StatelessWidget {
                               return OrderCancelCard(
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
-                                profileImagePath: cod.mitra.imageProfile,
+                                profileImagePath: cod.mitra.profileImage,
                                 profileUsername: cod.mitra.namaLengkap,
                                 rating: cod.barang.ratingBarang.toDouble(),
                                 totalProductPrice: int.parse(cod.grandTotal),

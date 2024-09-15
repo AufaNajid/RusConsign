@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:rusconsign/utils/colors.dart';
 import 'package:rusconsign/utils/extension.dart';
 import 'package:rusconsign/utils/size_data.dart';
@@ -50,15 +49,15 @@ class LocationChekout extends StatelessWidget {
           ),
         ),
         IconButton(
-            onPressed: () {
-              Get.toNamed("/locationpage");
-              GetStorage().write("checkoutFrom", "cart");
-            },
-            icon: Icon(
-              size: SizeData.iconSize,
-              FeatherIcons.edit,
-              color: AppColors.nonActiveIcon,
-            ))
+          onPressed: () {
+            Get.toNamed("/locationpage");
+          },
+          icon: Icon(
+            size: SizeData.iconSize,
+            FeatherIcons.edit,
+            color: AppColors.nonActiveIcon,
+          ),
+        ),
       ].withSpaceBetween(width: 10),
     );
   }

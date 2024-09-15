@@ -61,7 +61,7 @@ class CheckoutCartPageController extends GetxController {
 
     await fetchCartDetails(cleanIdString, cleanCartString);
     fetchLokasi();
-    fetchLokasiById(1);
+    fetchLokasiById(2);
   }
 
   Future<void> fetchCartDetails(String cartIds, String cartQuantity) async {
