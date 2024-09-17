@@ -32,7 +32,9 @@ class UserProfilePage extends StatelessWidget {
         final mitra = controller.detailMitra.value;
         if (mitra == null) {
           return const Center(
-            child: Text("Data Kosong!"),
+            child: CircularProgressIndicator(
+              color: AppColors.hargaStat,
+            ),
           );
         }
         return SingleChildScrollView(
@@ -166,13 +168,12 @@ class UserProfilePage extends StatelessWidget {
                       () {
                         if (controller.productList.isEmpty) {
                           return SizedBox(
-                            height:
-                                AppResponsive().screenHeight(context) * 0.1,
+                            height: AppResponsive().screenHeight(context) * 0.1,
                             child: Center(
                               child: Text(
                                 'belumAdaData'.tr,
-                                style: AppTextStyle().subHeader(
-                                    context, AppColors.hargaStat),
+                                style: AppTextStyle()
+                                    .subHeader(context, AppColors.hargaStat),
                               ),
                             ),
                           );
@@ -208,7 +209,8 @@ class UserProfilePage extends StatelessWidget {
                                 return UserProductCard(
                                   imagePath:
                                       controller.productList[index].imageBarang,
-                                  title: controller.productList[index].namaBarang,
+                                  title:
+                                      controller.productList[index].namaBarang,
                                   price: controller.productList[index].harga,
                                   rating: controller
                                       .productList[index].ratingBarang

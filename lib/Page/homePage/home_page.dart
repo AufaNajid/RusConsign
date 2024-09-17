@@ -44,8 +44,7 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -193,7 +192,9 @@ class HomePage extends StatelessWidget {
                             width: 8,
                             height: 8,
                             margin: const EdgeInsets.symmetric(
-                                vertical: 8.0, horizontal: 4.0),
+                              vertical: 8.0,
+                              horizontal: 4.0,
+                            ),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: (controller.currentIndex.value == index)
