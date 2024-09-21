@@ -53,16 +53,6 @@ class HomePage extends StatelessWidget {
                         height: 28,
                       ),
                       Spacer(),
-                      // GestureDetector(
-                      //   onTap: () {
-                      //     Get.toNamed('/chatlist');
-                      //   },
-                      //   child: Icon(
-                      //     FeatherIcons.messageCircle,
-                      //     color: AppColors.borderIcon,
-                      //     size: SizeData.iconSize,
-                      //   ),
-                      // ),
                     ],
                   ),
                 ),
@@ -158,8 +148,8 @@ class HomePage extends StatelessWidget {
                   children: [
                     CarouselSlider(
                       items: [
-                        'assets/images/item_carousel_1.png',
-                        'assets/images/item_carousel_2.png',
+                        'assets/images/ads_ready.png',
+                        'assets/images/join_our_mitra_com.png',
                       ].map((item) {
                         return GestureDetector(
                           onTap: () {},
