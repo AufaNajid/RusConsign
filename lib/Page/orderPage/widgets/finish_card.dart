@@ -18,7 +18,6 @@ class FinishCard extends StatelessWidget {
   final int idBarang;
   final String paymentMethod;
   final String meetingLocation;
-  final VoidCallback onGiveRating;
 
   const FinishCard({
     Key? key,
@@ -31,14 +30,12 @@ class FinishCard extends StatelessWidget {
     required this.quantity,
     required this.paymentMethod,
     required this.meetingLocation,
-    required this.onGiveRating,
     required this.idBarang,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api/storage/public";
-    const img = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -106,7 +103,7 @@ class FinishCard extends StatelessWidget {
                                       width: 25,
                                       child: ClipOval(
                                         child: Image.network(
-                                          "$img$profileImagePath",
+                                          profileImagePath,
                                           fit: BoxFit.cover,
                                         ),
                                       ),

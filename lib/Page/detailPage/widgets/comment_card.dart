@@ -31,7 +31,6 @@ class CommentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final DetailPageController controller = Get.find();
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -39,12 +38,13 @@ class CommentCard extends StatelessWidget {
         color: AppColors.cardIconFill,
         margin: const EdgeInsets.symmetric(vertical: 6),
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-            side: BorderSide(
-              color: AppColors.titleLine,
-              width: 1,
-              style: BorderStyle.solid,
-            )),
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(
+            color: AppColors.titleLine,
+            width: 1,
+            style: BorderStyle.solid,
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
           child: Row(
@@ -72,7 +72,8 @@ class CommentCard extends StatelessWidget {
                   children: [
                     Text(
                       username,
-                      style: AppTextStyle().subHeader(context, AppColors.titleLine),
+                      style: AppTextStyle()
+                          .subHeader(context, AppColors.titleLine),
                     ),
                     const SizedBox(height: 5),
                     RatingBar.builder(
@@ -105,69 +106,15 @@ class CommentCard extends StatelessWidget {
                     const SizedBox(height: 5),
                     Text(
                       DateFormat('dd MMMM yyyy').format(date),
-                      style: AppTextStyle().textInfoBold(context, AppColors.description),
+                      style: AppTextStyle()
+                          .textInfoBold(context, AppColors.description),
                     ),
                     const SizedBox(height: 5),
                     Text(
                       desc,
-                      style: AppTextStyle().description(context, AppColors.description),
+                      style: AppTextStyle()
+                          .description(context, AppColors.description),
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: [
-                    //     SizedBox(
-                    //       width: 45,
-                    //       child: Row(
-                    //         children: [
-                    //           Obx(
-                    //             () => GestureDetector(
-                    //               onTap: onliked,
-                    //               child: Icon(
-                    //                 controller.thumbsDownClicked.value
-                    //                     ? Icons.thumb_up
-                    //                     : Icons.thumb_up_outlined,
-                    //                 color: controller.thumbsDownClicked.value
-                    //                     ? AppColors.hargaStat
-                    //                     : AppColors.titleLine,
-                    //                 size: SizeData.iconSize,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //           const Spacer(),
-                    //           Text(like.toString(),
-                    //               style: AppTextStyle()
-                    //                   .descriptionBold(context, AppColors.description)),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //     const SizedBox(width: 20),
-                    //     SizedBox(
-                    //       width: 45,
-                    //       child: Row(
-                    //         children: [
-                    //           Obx(
-                    //             () => GestureDetector(
-                    //               onTap: onliked,
-                    //               child: Icon(
-                    //                 controller.thumbsDownClicked.value
-                    //                     ? Icons.thumb_down
-                    //                     : Icons.thumb_down_outlined,
-                    //                 color: controller.thumbsDownClicked.value
-                    //                     ? AppColors.hargaStat
-                    //                     : AppColors.titleLine,
-                    //                 size: SizeData.iconSize,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //           const Spacer(),
-                    //           Text(disLike.toString(),
-                    //               style: AppTextStyle()
-                    //                   .descriptionBold(context, AppColors.description)),
-                    //         ],
-                    //       ),
-                    //     )
-                    //   ],
-                    // )
                   ],
                 ),
               )

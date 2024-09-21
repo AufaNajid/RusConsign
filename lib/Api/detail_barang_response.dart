@@ -108,7 +108,7 @@ class Mitra {
         pengikut: json["pengikut"],
         penilaian: json["penilaian"],
         noWhatsapp: json["no_whatsapp"],
-        profileImage: json["profile_image"] ?? '',
+        profileImage: json["profile_image"],
     );
 
     Map<String, dynamic> toJson() => {

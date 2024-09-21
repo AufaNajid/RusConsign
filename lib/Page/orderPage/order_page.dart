@@ -73,7 +73,7 @@ class OrderPage extends StatelessWidget {
                     index: 2,
                   ),
                   FilterOrderButton(
-                    text: 'Dibatalkan'.tr,
+                    text: 'dibatalkan'.tr,
                     icon: FeatherIcons.x,
                     index: 3,
                   ),
@@ -112,29 +112,28 @@ class OrderPage extends StatelessWidget {
                             width: double.infinity,
                             height: AppResponsive().screenHeight(context) * 0.8,
                             child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    "assets/images/fluent--box-search-24-regular.svg",
-                                    // ignore: deprecated_member_use
-                                    color: AppColors.hargaStat,
-                                    width:
-                                        AppResponsive().screenWidth(context) *
-                                            0.1,
-                                    height:
-                                        AppResponsive().screenHeight(context) *
-                                            0.1,
-                                  ),
-                                  Text(
-                                    'belumAdaPesanan'.tr,
-                                    style: AppTextStyle().subHeader(
-                                        context, AppColors.description),
-                                  )
-                                ].withSpaceBetween(height: 12)),
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/images/fluent--box-search-24-regular.svg",
+                                  // ignore: deprecated_member_use
+                                  color: AppColors.hargaStat,
+                                  width: AppResponsive().screenWidth(context) *
+                                      0.1,
+                                  height:
+                                      AppResponsive().screenHeight(context) *
+                                          0.1,
+                                ),
+                                Text(
+                                  'belumAdaPesanan'.tr,
+                                  style: AppTextStyle().subHeader(
+                                      context, AppColors.description),
+                                )
+                              ].withSpaceBetween(height: 12),
+                            ),
                           );
                         }
-
                         if (orderController.selectedIndex == 0) {
                           return ListView.builder(
                             shrinkWrap: true,
@@ -146,7 +145,9 @@ class OrderPage extends StatelessWidget {
                                 idPesanan: cod.id,
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
-                                profileImagePath: cod.mitra.profileImage,
+                                profileImagePath: cod.mitra.profileImage == null
+                                    ? 'https://ui-avatars.com/api/?name=${cod.mitra.namaToko}&background=db6767&color=fafafa'
+                                    : "$imgProfile${cod.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
                                 profileUsername: cod.mitra.namaToko,
                                 rating: cod.barang.ratingBarang.toDouble(),
                                 totalProductPrice: int.parse(cod.grandTotal),
@@ -172,11 +173,10 @@ class OrderPage extends StatelessWidget {
                                     idPesanan: cod.id,
                                     imagePath: cod.barang.imageBarang,
                                     title: cod.barang.namaBarang,
-                                    profileImagePath: cod.mitra.profileImage
-                                            .isEmpty
+                                    profileImagePath: cod.mitra.profileImage ==
+                                            null
                                         ? 'https://ui-avatars.com/api/?name=${cod.mitra.namaToko}&background=db6767&color=fafafa'
-                                        : "$imgProfile${cod.mitra.profileImage.replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}"
-                                        ,
+                                        : "$imgProfile${cod.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
                                     profileUsername: cod.mitra.namaToko,
                                     rating: cod.barang.ratingBarang.toDouble(),
                                     totalProductPrice:
@@ -197,25 +197,29 @@ class OrderPage extends StatelessWidget {
                                 itemCount:
                                     orderController.pesananPaymentList.length,
                                 itemBuilder: (context, index) {
-                                  final cod =
+                                  final data =
                                       orderController.pesananPaymentList[index];
                                   return OnProcessPaymentCard(
-                                    idPesanan: cod.id,
-                                    imagePath: cod.barang.imageBarang,
-                                    title: cod.barang.namaBarang,
-                                    profileImagePath: "cod.mitra.imageProfile",
-                                    profileUsername: cod.barang.mitra.namaToko,
-                                    rating: cod.barang.ratingBarang.toDouble(),
+                                    idPesanan: data.id,
+                                    imagePath: data.barang.imageBarang,
+                                    title: data.barang.namaBarang,
+                                    profileImagePath: data
+                                                .barang.mitra.profileImage ==
+                                            null
+                                        ? 'https://ui-avatars.com/api/?name=${data.barang.mitra.namaToko}&background=db6767&color=fafafa'
+                                        : "$imgProfile${data.barang.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
+                                    profileUsername: data.barang.mitra.namaToko,
+                                    rating: data.barang.ratingBarang.toDouble(),
                                     totalProductPrice:
-                                        int.parse(cod.grandTotal),
-                                    quantity: cod.quantity,
+                                        int.parse(data.grandTotal),
+                                    quantity: data.quantity,
                                     timeMeeting: dayName,
-                                    paymentMethod: cod.status,
+                                    paymentMethod: data.status,
                                     meetingLocation: "Gazebo",
                                     onChatSeller: () {},
-                                    idBarang: cod.barang.id,
-                                    noWa: cod.barang.mitra.noWhatsapp,
-                                    external: cod.externalId,
+                                    idBarang: data.barang.id,
+                                    noWa: data.barang.mitra.noWhatsapp,
+                                    external: data.externalId,
                                   );
                                 },
                               )
@@ -235,7 +239,10 @@ class OrderPage extends StatelessWidget {
                                     idBarang: cod.barang.id,
                                     imagePath: cod.barang.imageBarang,
                                     title: cod.barang.namaBarang,
-                                    profileImagePath: cod.mitra.profileImage,
+                                    profileImagePath: cod.mitra.profileImage ==
+                                            null
+                                        ? 'https://ui-avatars.com/api/?name=${cod.mitra.namaToko}&background=db6767&color=fafafa'
+                                        : "$imgProfile${cod.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
                                     profileUsername: cod.mitra.namaLengkap,
                                     rating: cod.barang.ratingBarang.toDouble(),
                                     totalProductPrice:
@@ -243,7 +250,6 @@ class OrderPage extends StatelessWidget {
                                     quantity: cod.quantity,
                                     paymentMethod: cod.statusPembayaran,
                                     meetingLocation: cod.lokasi.namaLokasi,
-                                    onGiveRating: () {},
                                   );
                                 },
                               ),
@@ -253,21 +259,24 @@ class OrderPage extends StatelessWidget {
                                 itemCount:
                                     orderController.pesananPaymentList.length,
                                 itemBuilder: (context, index) {
-                                  final cod =
+                                  final data =
                                       orderController.pesananPaymentList[index];
                                   return FinishCard(
-                                    idBarang: cod.barang.id,
-                                    imagePath: cod.barang.imageBarang,
-                                    title: cod.barang.namaBarang,
-                                    profileImagePath: cod.barang.mitra.namaToko,
-                                    profileUsername: cod.barang.mitra.namaToko,
-                                    rating: cod.barang.ratingBarang.toDouble(),
+                                    idBarang: data.barang.id,
+                                    imagePath: data.barang.imageBarang,
+                                    title: data.barang.namaBarang,
+                                    profileImagePath: data
+                                                .barang.mitra.profileImage ==
+                                            null
+                                        ? 'https://ui-avatars.com/api/?name=${data.barang.mitra.namaToko}&background=db6767&color=fafafa'
+                                        : "$imgProfile${data.barang.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
+                                    profileUsername: data.barang.mitra.namaToko,
+                                    rating: data.barang.ratingBarang.toDouble(),
                                     totalProductPrice:
-                                        int.parse(cod.grandTotal),
-                                    quantity: cod.quantity,
-                                    paymentMethod: cod.barang.mitra.namaToko,
+                                        int.parse(data.grandTotal),
+                                    quantity: data.quantity,
+                                    paymentMethod: data.barang.mitra.namaToko,
                                     meetingLocation: "depan rusmart",
-                                    onGiveRating: () {},
                                   );
                                 },
                               ),
@@ -283,7 +292,9 @@ class OrderPage extends StatelessWidget {
                               return OrderCancelCard(
                                 imagePath: cod.barang.imageBarang,
                                 title: cod.barang.namaBarang,
-                                profileImagePath: cod.mitra.profileImage,
+                                profileImagePath: cod.mitra.profileImage == null
+                                    ? 'https://ui-avatars.com/api/?name=${cod.mitra.namaToko}&background=db6767&color=fafafa'
+                                    : "$imgProfile${cod.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
                                 profileUsername: cod.mitra.namaLengkap,
                                 rating: cod.barang.ratingBarang.toDouble(),
                                 totalProductPrice: int.parse(cod.grandTotal),

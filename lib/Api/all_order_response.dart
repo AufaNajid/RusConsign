@@ -208,7 +208,7 @@ class Lokasi {
 
 class Mitra {
   int id;
-  String profileImage;
+  dynamic profileImage;
   String namaLengkap;
   String namaToko;
   int nis;

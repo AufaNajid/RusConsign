@@ -42,7 +42,6 @@ class NotPaidCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final OrderPageController orderController = Get.put(OrderPageController());
-    const img = "https://rusconsign.com/api";
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
@@ -113,7 +112,7 @@ class NotPaidCard extends StatelessWidget {
                                       width: 25,
                                       child: ClipOval(
                                         child: Image.network(
-                                          "$img$profileImagePath",
+                                          profileImagePath,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
