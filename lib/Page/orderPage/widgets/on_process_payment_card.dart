@@ -43,13 +43,13 @@ class OnProcessPaymentCard extends StatelessWidget {
     required this.noWa,
     required this.quantity,
     required this.timeMeeting,
-    required this.idBarang, required this.external,
+    required this.idBarang,
+    required this.external,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final OrderPageController orderController = Get.put(OrderPageController());
-    const img = "https://rusconsign.com/api";
     const imageUrl = "https://rusconsign.com/api/storage/public";
     return SizedBox(
       width: double.infinity,
@@ -118,7 +118,7 @@ class OnProcessPaymentCard extends StatelessWidget {
                                       width: 25,
                                       child: ClipOval(
                                         child: Image.network(
-                                          "$img$profileImagePath",
+                                          profileImagePath,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -126,7 +126,7 @@ class OnProcessPaymentCard extends StatelessWidget {
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             profileUsername,
@@ -207,7 +207,7 @@ class OnProcessPaymentCard extends StatelessWidget {
                                 Row(
                                   children: [
                                     Text(
-                                      '${'Status Pembayaran'.tr} :',
+                                      '${'statusPembayaran'.tr} :',
                                       style: AppTextStyle().textInfo(
                                           context, AppColors.description),
                                     ),
@@ -229,7 +229,7 @@ class OnProcessPaymentCard extends StatelessWidget {
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             meetingLocation,
@@ -245,14 +245,14 @@ class OnProcessPaymentCard extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '${'Waktu Pertemuan'.tr} :',
+                                      '${'waktuPertemuan'.tr} :',
                                       style: AppTextStyle().textInfo(
                                           context, AppColors.description),
                                     ),
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             timeMeeting,
@@ -289,12 +289,12 @@ class OnProcessPaymentCard extends StatelessWidget {
                         ),
                       ),
                       backgroundColor:
-                      MaterialStatePropertyAll(AppColors.button2),
+                          MaterialStatePropertyAll(AppColors.button2),
                     ),
                     child: Text(
-                      'Hubungi Penjual'.tr,
+                      'hubungi'.tr,
                       style:
-                      AppTextStyle().header(context, AppColors.textButton2),
+                          AppTextStyle().header(context, AppColors.textButton2),
                     ),
                   ),
                 ),
@@ -311,21 +311,26 @@ class OnProcessPaymentCard extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(6)),
                               backgroundColor: AppColors.background,
                               title: Text(
-                                'Konfirmasi Proses Pesanan?'.tr,
+                                'konfirmasiPesanan'.tr,
                                 style: AppTextStyle()
-                                    .title(context, AppColors.titleLine),
+                                    .title(context, AppColors.hargaStat),
                               ),
                               content: Text(
-                                  'Apakah Anda Yakin Ingin Mem-Proses Pesanan Ini?'
-                                      .tr),
+                                'konfirmasiPesananDesc'.tr,
+                                style: AppTextStyle().description(
+                                  context,
+                                  AppColors.description
+                                ),
+                              ),
                               actions: <Widget>[
                                 OutlinedButton(
                                   style: OutlinedButton.styleFrom(
-                                      side: const BorderSide(
-                                          color: AppColors.button1),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(4))),
+                                    side: const BorderSide(
+                                        color: AppColors.button1),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                  ),
                                   child: Text(
                                     'batal'.tr,
                                     style: AppTextStyle().subHeader(
@@ -343,7 +348,7 @@ class OnProcessPaymentCard extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(4),
                                     ),
                                   ),
-                                  child: Text('Ya, Proses'.tr),
+                                  child: Text('yaLanjutkan'.tr),
                                   onPressed: () async {
                                     await orderController
                                         .updatePaymentComplete(external);
@@ -363,12 +368,12 @@ class OnProcessPaymentCard extends StatelessWidget {
                         ),
                       ),
                       backgroundColor:
-                      MaterialStatePropertyAll(AppColors.button2),
+                          MaterialStatePropertyAll(AppColors.button2),
                     ),
                     child: Text(
-                      'Pesanan Diterima'.tr,
+                      'pesananDiterima'.tr,
                       style:
-                      AppTextStyle().header(context, AppColors.textButton2),
+                          AppTextStyle().header(context, AppColors.textButton2),
                     ),
                   ),
                 ),

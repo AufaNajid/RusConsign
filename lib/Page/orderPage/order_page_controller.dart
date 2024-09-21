@@ -11,7 +11,7 @@ class OrderPageController extends GetxController {
   RxBool isLoading = false.obs;
   final _selectedIndex = 0.obs;
   var productList = <Cod>[].obs;
-  var pesananPaymentList = <Paymentt>[].obs;
+  var pesananPaymentList = <Payment>[].obs;
   int get selectedIndex => _selectedIndex.value;
 
   void setSelectedFilter(int index) async {
@@ -99,6 +99,7 @@ class OrderPageController extends GetxController {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     String? idUser = pref.getString('idUser');
     isLoading.value = true;
+    print("id user : $idUser");
     Uri uri;
 
     switch (filter) {

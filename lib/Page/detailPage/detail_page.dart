@@ -181,7 +181,7 @@ class DetailPage extends GetView<DetailPageController> {
                                   AppResponsive().screenWidth(context) * 0.110,
                               child: ClipOval(
                                 child: Image.network(
-                                  state.mitra.profileImage.isEmpty
+                                  state.mitra.profileImage == null
                                       ? 'https://ui-avatars.com/api/?name=${state.mitra.namaToko}&background=db6767&color=fafafa'
                                       : '$imgProfile${state.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
                                   fit: BoxFit.cover,
@@ -405,8 +405,9 @@ class DetailPage extends GetView<DetailPageController> {
                             itemBuilder: (context, index) {
                               final penilaian = controller.listKomen[index];
                               return CommentCard(
-                                imagePath:
-                                    'https://avatar.iran.liara.run/public',
+                                imagePath: penilaian.user.imageProfiles == null
+                                    ? 'https://ui-avatars.com/api/?name=${penilaian.user.name}&background=db6767&color=fafafa'
+                                    : '$imgProfile${penilaian.user.imageProfiles.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}',
                                 username: penilaian.user.name,
                                 rating: penilaian.rate.toDouble(),
                                 date: penilaian.createdAt,

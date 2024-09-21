@@ -30,13 +30,13 @@ class OrderCancelCard extends StatelessWidget {
     required this.quantity,
     required this.paymentMethod,
     required this.meetingLocation,
-    required this.onGiveRating, required this.idBarang,
+    required this.onGiveRating,
+    required this.idBarang,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     const imageUrl = "https://rusconsign.com/api/storage/public";
-    const img = "https://rusconsign.com/api";
     return SizedBox(
       width: double.infinity,
       child: Card(
@@ -92,8 +92,8 @@ class OrderCancelCard extends StatelessWidget {
                               children: [
                                 Text(
                                   title,
-                                  style: AppTextStyle()
-                                      .descriptionBold(context, AppColors.titleLine),
+                                  style: AppTextStyle().descriptionBold(
+                                      context, AppColors.titleLine),
                                 ),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -104,7 +104,7 @@ class OrderCancelCard extends StatelessWidget {
                                       width: 25,
                                       child: ClipOval(
                                         child: Image.network(
-                                          "$img$profileImagePath",
+                                          profileImagePath,
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -112,7 +112,7 @@ class OrderCancelCard extends StatelessWidget {
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             profileUsername,
@@ -143,8 +143,8 @@ class OrderCancelCard extends StatelessWidget {
                                     ),
                                     Text(
                                       '$rating',
-                                      style: AppTextStyle()
-                                          .textInfoBold(context, AppColors.description),
+                                      style: AppTextStyle().textInfoBold(
+                                          context, AppColors.description),
                                     ),
                                   ].withSpaceBetween(width: 6),
                                 ),
@@ -152,13 +152,13 @@ class OrderCancelCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'total'.tr} :',
-                                      style: AppTextStyle()
-                                          .textInfo(context, AppColors.description),
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
                                     ),
                                     Text(
                                       MoneyFormat.format(totalProductPrice),
-                                      style: AppTextStyle()
-                                          .textInfoBold(context, AppColors.hargaStat),
+                                      style: AppTextStyle().textInfoBold(
+                                          context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -166,13 +166,13 @@ class OrderCancelCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'Quantity'.tr} :',
-                                      style: AppTextStyle()
-                                          .textInfo(context,AppColors.description),
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
                                     ),
                                     Text(
                                       quantity.toString(),
-                                      style: AppTextStyle()
-                                          .textInfoBold(context,AppColors.hargaStat),
+                                      style: AppTextStyle().textInfoBold(
+                                          context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -180,13 +180,13 @@ class OrderCancelCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'metodePembayaran'.tr} :',
-                                      style: AppTextStyle()
-                                          .textInfo(context, AppColors.description),
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
                                     ),
                                     Text(
                                       paymentMethod,
-                                      style: AppTextStyle()
-                                          .textInfoBold(context, AppColors.hargaStat),
+                                      style: AppTextStyle().textInfoBold(
+                                          context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),
@@ -195,13 +195,13 @@ class OrderCancelCard extends StatelessWidget {
                                   children: [
                                     Text(
                                       '${'lokasiPertemuan'.tr} :',
-                                      style: AppTextStyle()
-                                          .textInfo(context, AppColors.description),
+                                      style: AppTextStyle().textInfo(
+                                          context, AppColors.description),
                                     ),
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             meetingLocation,
@@ -237,10 +237,11 @@ class OrderCancelCard extends StatelessWidget {
                         ),
                       ),
                       backgroundColor:
-                      MaterialStatePropertyAll(AppColors.button2),
+                          MaterialStatePropertyAll(AppColors.button2),
                     ),
                     child: Text('Pesanan Dibatalkan'.tr,
-                        style: AppTextStyle().header(context, AppColors.textButton2)),
+                        style: AppTextStyle()
+                            .header(context, AppColors.textButton2)),
                   ),
                 ),
               ].withSpaceBetween(height: 10),

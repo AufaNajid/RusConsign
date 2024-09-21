@@ -65,10 +65,11 @@ class DetailPageController extends GetxController
 
       if (dataKomentar.summary.avg is int) {
         avgRating.value = (dataKomentar.summary.avg as int).toDouble();
-      } else if (dataKomentar.summary.avg is double) {
+      } else {
         avgRating.value =
-            double.parse(dataKomentar.summary.avg.toStringAsFixed(2));
+          double.parse(dataKomentar.summary.avg.toStringAsFixed(2));
       }
+    
 
       update();
       print(avgRating);

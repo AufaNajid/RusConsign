@@ -184,8 +184,17 @@ class AppTranslation extends Translations {
           'registerSekarang': 'Register Sekarang',
           'fotoSelfie': 'Foto Selfie bersama Foto ID Card SMK RUS',
           'belumAdaKomentar': 'Belum Ada Komentar',
-          'belumPublish' : 'Belum Publish',
+          'belumPublish': 'Belum Publish',
           'belumPublishHint': 'Produk/Jasa ini belum di publish',
+          'hubungi': 'Hubungi Penjual',
+          'pesananDiterima': 'Pesanan Diterima',
+          'konfirmasiPesanan': 'Konfirmasi Pesanan',
+          'konfirmasiPesananDesc':
+              'Apakah anda yakin pesanan anda sudah diterima?',
+          'yaLanjutkan': 'Ya, Lanjutkan',
+          'dibatalkan': 'Dibatalkan',
+          'statusPembayaran': 'Status Pembayaran',
+          'waktuPertemuan': 'Waktu Pertemuan',
         },
         'English': {
           'bahasa': 'Language',
@@ -367,8 +376,16 @@ class AppTranslation extends Translations {
           'registerSekarang': 'Register Now',
           'fotoSelfie': 'Selfie photo with SMK RUS ID card photo',
           'belumAdaKomentar': 'No Comments yet',
-          'belumPublish' : 'Not yet published',
+          'belumPublish': 'Not yet published',
           'belumPublishHint': 'This product/service is not yet published',
+          'hubungi': 'Contact Seller',
+          'pesananDiterima': 'Order Received',
+          'konfirmasiPesanan': 'Order Confirmation',
+          'konfirmasiPesananDesc': 'Are you sure your order has been received?',
+          'yaLanjutkan': 'Yes, Continue',
+          'dibatalkan': 'Canceled',
+          'statusPembayaran': 'Payment Status',
+          'waktuPertemuan': 'Meeting Time',
         }
       };
 }

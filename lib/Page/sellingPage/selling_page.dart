@@ -40,11 +40,20 @@ class SellingPage extends StatelessWidget {
                         icon: FeatherIcons.creditCard,
                         index: 0),
                     SellingFilterButton(
-                        text: 'proses'.tr, icon: FeatherIcons.clock, index: 1),
+                      text: 'proses'.tr,
+                      icon: FeatherIcons.clock,
+                      index: 1,
+                    ),
                     SellingFilterButton(
-                        text: 'selesai'.tr, icon: FeatherIcons.check, index: 2),
+                      text: 'selesai'.tr,
+                      icon: FeatherIcons.check,
+                      index: 2,
+                    ),
                     SellingFilterButton(
-                        text: 'batal'.tr, icon: FeatherIcons.x, index: 3),
+                      text: 'dibatalkan'.tr,
+                      icon: FeatherIcons.x,
+                      index: 3,
+                    ),
                     // SellingFilterButton(
                     //     text: 'ulasan'.tr, icon: FeatherIcons.star, index: 4),
                   ].withSpaceBetween(width: 10),
@@ -77,7 +86,8 @@ class SellingPage extends StatelessWidget {
                             )
                           ],
                         );
-                      } else if (controller.pesananList.isEmpty && controller.pesananPaymentList.isEmpty) {
+                      } else if (controller.pesananList.isEmpty &&
+                          controller.pesananPaymentList.isEmpty) {
                         return SizedBox(
                           width: double.infinity,
                           height: AppResponsive().screenHeight(context) * 0.8,
@@ -137,7 +147,8 @@ class SellingPage extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               shrinkWrap: true,
                               itemCount: controller.pesananList.length,
-                              separatorBuilder: (BuildContext context, int index) {
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
                                 return const SizedBox(height: 10);
                               },
                               itemBuilder: (BuildContext context, int index) {
@@ -160,11 +171,13 @@ class SellingPage extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               shrinkWrap: true,
                               itemCount: controller.pesananPaymentList.length,
-                              separatorBuilder: (BuildContext context, int index) {
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
                                 return const SizedBox(height: 10);
                               },
                               itemBuilder: (BuildContext context, int index) {
-                                final cod = controller.pesananPaymentList[index];
+                                final cod =
+                                    controller.pesananPaymentList[index];
                                 return ProcessPaymentCardSelling(
                                   imagePath: cod.barang.imageBarang,
                                   title: cod.barang.namaBarang,
@@ -188,7 +201,8 @@ class SellingPage extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               shrinkWrap: true,
                               itemCount: controller.pesananList.length,
-                              separatorBuilder: (BuildContext context, int index) {
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
                                 return const SizedBox(height: 10);
                               },
                               itemBuilder: (BuildContext context, int index) {
@@ -211,11 +225,13 @@ class SellingPage extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               shrinkWrap: true,
                               itemCount: controller.pesananPaymentList.length,
-                              separatorBuilder: (BuildContext context, int index) {
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
                                 return const SizedBox(height: 10);
                               },
                               itemBuilder: (BuildContext context, int index) {
-                                final cod = controller.pesananPaymentList[index];
+                                final cod =
+                                    controller.pesananPaymentList[index];
                                 return ProcessPaymentCardSelling(
                                   imagePath: cod.barang.imageBarang,
                                   title: cod.barang.namaBarang,
@@ -252,7 +268,8 @@ class SellingPage extends StatelessWidget {
                               quantity: cod.quantity,
                               paymentMethod: cod.statusPembayaran,
                               meetingLocation: cod.lokasi.namaLokasi,
-                              onGiveRating: () {}, pembeli: cod.user.name,
+                              onGiveRating: () {},
+                              pembeli: cod.user.name,
                             );
                           },
                         );
