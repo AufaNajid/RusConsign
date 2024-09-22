@@ -218,7 +218,7 @@ class CheckoutCartPageController extends GetxController {
 
     request.fields['barang_id'] = cleanIdString;
     request.fields['lokasi_id'] =
-        selectedLocationIndex.value?.toString() ?? "1";
+        selectedLocationIndex.value?.toString() ?? "2";
     request.fields['quantity'] = cleanCartString;
 
     var response = await request.send();
