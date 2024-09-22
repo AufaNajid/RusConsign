@@ -31,7 +31,7 @@ class CheckoutCartPageController extends GetxController {
       Get.arguments != null ? Get.arguments as Map<String, dynamic> : {};
 
   void selectLocation(int index) {
-    selectedLocationIndex.value = index + 2;
+    selectedLocationIndex.value = index;
     fetchLokasiById(lokasi[index].id);
   }
 
@@ -42,8 +42,8 @@ class CheckoutCartPageController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    List<int> selectedCartIds = productCheckoutData["cartIds"];
-    List<int> selectedCartQuantity = productCheckoutData["cartQuantity"];
+    List<int> selectedCartIds = productCheckoutData["cartIds"] ?? [];
+    List<int> selectedCartQuantity = productCheckoutData["cartQuantity"] ?? [];
 
     String cartQuantity = selectedCartQuantity.map((e) => e).toString();
     String cleanCartString = cartQuantity
@@ -218,7 +218,7 @@ class CheckoutCartPageController extends GetxController {
 
     request.fields['barang_id'] = cleanIdString;
     request.fields['lokasi_id'] =
-        selectedLocationIndex.value?.toString() ?? "2";
+        (selectedLocationIndex.value != null ? selectedLocationIndex.value! + 2 : 2).toString();
     request.fields['quantity'] = cleanCartString;
 
     var response = await request.send();

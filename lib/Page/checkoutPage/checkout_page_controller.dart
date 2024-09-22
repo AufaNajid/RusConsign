@@ -30,7 +30,7 @@ class CheckoutPageController extends GetxController {
       Get.arguments != null ? Get.arguments as Map<String, dynamic> : {};
 
   void selectLocation(int index) {
-    selectedLocationIndex.value = index + 2;
+    selectedLocationIndex.value = index;
     fetchLokasiById(lokasi[index].id);
   }
 
@@ -116,6 +116,7 @@ class CheckoutPageController extends GetxController {
       List<LokasiResponse> lokasiList = lokasiResponseFromJson(response.body);
       lokasi.value = lokasiList;
     }
+    isLoading(false);
   }
 
   Future<void> paymentTesting(String idBarang, String jumlah) async {
@@ -164,7 +165,7 @@ class CheckoutPageController extends GetxController {
 
     request.fields['barang_id'] = idProduct;
     request.fields['lokasi_id'] =
-        selectedLocationIndex.value?.toString() ?? "2";
+        (selectedLocationIndex.value != null ? selectedLocationIndex.value! + 2 : 2).toString();
     request.fields['quantity'] =
         productCheckoutData["quantityProduct"].toString();
 
