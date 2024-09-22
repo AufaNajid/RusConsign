@@ -21,6 +21,7 @@ class SellingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const imgProfile = "https://rusconsign.com";
     DateTime futureDate = DateTime.now().add(const Duration(days: 2));
 
     String dayName = DateFormat('EEEE').format(futureDate);
@@ -261,7 +262,9 @@ class SellingPage extends StatelessWidget {
                             return SellingCancelCard(
                               imagePath: cod.barang.imageBarang,
                               title: cod.barang.namaBarang,
-                              profileImagePath: cod.mitra.profileImage,
+                              profileImagePath: cod.mitra.profileImage == null
+                                  ? 'https://ui-avatars.com/api/?name=${cod.mitra.namaLengkap}&background=db6767&color=fafafa'
+                                  : "$imgProfile${cod.mitra.profileImage.toString().replaceFirst("/storage/profiles/", "/api/storage/public/profiles/")}",
                               profileUsername: cod.mitra.namaLengkap,
                               rating: cod.barang.ratingBarang.toDouble(),
                               totalProductPrice: cod.barang.harga,

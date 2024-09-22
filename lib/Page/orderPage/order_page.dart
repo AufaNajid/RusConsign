@@ -248,8 +248,9 @@ class OrderPage extends StatelessWidget {
                                     totalProductPrice:
                                         int.parse(cod.grandTotal),
                                     quantity: cod.quantity,
-                                    paymentMethod: cod.statusPembayaran,
+                                    paymentStatus: cod.statusPembayaran,
                                     meetingLocation: cod.lokasi.namaLokasi,
+                                    paymentMethod: "COD",
                                   );
                                 },
                               ),
@@ -275,8 +276,9 @@ class OrderPage extends StatelessWidget {
                                     totalProductPrice:
                                         int.parse(data.grandTotal),
                                     quantity: data.quantity,
-                                    paymentMethod: data.barang.mitra.namaToko,
+                                    paymentStatus: data.status,
                                     meetingLocation: "depan rusmart",
+                                    paymentMethod: "E-Money",
                                   );
                                 },
                               ),
