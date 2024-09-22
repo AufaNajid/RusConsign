@@ -105,7 +105,7 @@ class SellingCancelCard extends StatelessWidget {
                                       width: 25,
                                       child: ClipOval(
                                         child: Image.network(
-                                          "$img$profileImagePath",
+                                          profileImagePath,
                                           fit: BoxFit.cover,
                                         ),
                                       ),

@@ -69,7 +69,7 @@ class OrderPageController extends GetxController {
     print({response.statusCode});
 
     if (response.statusCode == 200) {
-      await fetchPesanan(1); 
+      await fetchPesananPayment(1);
     } else {
       // Handle error if needed
       print("Error: ${response.statusCode}");

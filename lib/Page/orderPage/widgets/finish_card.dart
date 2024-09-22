@@ -16,8 +16,9 @@ class FinishCard extends StatelessWidget {
   final int totalProductPrice;
   final int quantity;
   final int idBarang;
-  final String paymentMethod;
+  final String paymentStatus;
   final String meetingLocation;
+  final String paymentMethod;
 
   const FinishCard({
     Key? key,
@@ -28,9 +29,9 @@ class FinishCard extends StatelessWidget {
     required this.rating,
     required this.totalProductPrice,
     required this.quantity,
-    required this.paymentMethod,
+    required this.paymentStatus,
     required this.meetingLocation,
-    required this.idBarang,
+    required this.idBarang, required this.paymentMethod,
   }) : super(key: key);
 
   @override
@@ -75,7 +76,7 @@ class FinishCard extends StatelessWidget {
                         children: [
                           SizedBox(
                             width: AppResponsive().screenWidth(context) * 0.240,
-                            height: 150,
+                            height: 160,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8),
                               child: Image.network(
@@ -172,6 +173,20 @@ class FinishCard extends StatelessWidget {
                                       quantity.toString(),
                                       style: AppTextStyle()
                                           .textInfoBold(context,AppColors.hargaStat),
+                                    ),
+                                  ].withSpaceBetween(width: 4),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '${'Status Pembayaran'.tr} :',
+                                      style: AppTextStyle()
+                                          .textInfo(context, AppColors.description),
+                                    ),
+                                    Text(
+                                      paymentStatus,
+                                      style: AppTextStyle()
+                                          .textInfoBold(context, AppColors.hargaStat),
                                     ),
                                   ].withSpaceBetween(width: 4),
                                 ),

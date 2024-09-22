@@ -30,7 +30,7 @@ class CheckoutPageController extends GetxController {
       Get.arguments != null ? Get.arguments as Map<String, dynamic> : {};
 
   void selectLocation(int index) {
-    selectedLocationIndex.value = index;
+    selectedLocationIndex.value = index + 2;
     fetchLokasiById(lokasi[index].id);
   }
 
