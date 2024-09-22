@@ -164,7 +164,7 @@ class CheckoutPageController extends GetxController {
 
     request.fields['barang_id'] = idProduct;
     request.fields['lokasi_id'] =
-        selectedLocationIndex.value?.toString() ?? "1";
+        selectedLocationIndex.value?.toString() ?? "2";
     request.fields['quantity'] =
         productCheckoutData["quantityProduct"].toString();
 
