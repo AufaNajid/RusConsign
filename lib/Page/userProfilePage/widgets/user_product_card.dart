@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+ // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -132,7 +132,7 @@ class UserProductCard extends StatelessWidget {
                       ),
                       const SizedBox(width: 6),
                       Text(
-                        rating.toStringAsFixed(2),
+                        rating.toStringAsFixed(1),
                         style: AppTextStyle()
                             .subHeader(context, AppColors.description),
                       ),
