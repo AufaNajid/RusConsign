@@ -1,0 +1,219 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rusconsign/utils/colors.dart';
+import 'package:rusconsign/utils/extension.dart';
+import 'package:rusconsign/utils/money_format.dart';
+import 'package:rusconsign/utils/size_data.dart';
+import 'package:rusconsign/utils/text_style.dart';
+
+class ItemCheckout extends StatelessWidget {
+  final String imagePath;
+  final String title;
+  final String profileImagePath;
+  final String profileName;
+  final dynamic rating;
+  final int price;
+  final int quantity;
+
+  const ItemCheckout({
+    Key? key,
+    required this.imagePath,
+    required this.title,
+    required this.profileImagePath,
+    required this.profileName,
+    required this.rating,
+    required this.price,
+    required this.quantity,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    int subtotalValue = price * quantity;
+    const imageUrl = "https://rusconsign.com/api/storage/public";
+    return SizedBox(
+      width: double.infinity,
+      child: Card(
+        elevation: 0,
+        color: AppColors.cardIconFill,
+        margin: const EdgeInsets.symmetric(vertical: 6),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 15,
+            horizontal: 20,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  elevation: 0,
+                  margin: const EdgeInsets.symmetric(vertical: 0),
+                  color: AppColors.cardProdukTidakDipilih,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 10,
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                              "$imageUrl${imagePath.replaceFirst("storage/", "")}",
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                title,
+                                style: AppTextStyle()
+                                    .descriptionBold(context, AppColors.titleLine),
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 25,
+                                    width: 25,
+                                    child: ClipOval(
+                                      child: Image.network(
+                                        profileImagePath,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          profileName,
+                                          style: AppTextStyle().textInfo(
+                                              context, AppColors.description),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ].withSpaceBetween(width: 6),
+                              ),
+                              Row(
+                                children: [
+                                  Stack(
+                                    alignment: Alignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.star,
+                                        color: AppColors.bintang,
+                                        size: SizeData.iconStarInsideSize,
+                                      ),
+                                      Icon(
+                                        Icons.star_border_rounded,
+                                        color: AppColors.borderIcon,
+                                        size: SizeData.iconSize,
+                                      ),
+                                    ],
+                                  ),
+                                  Text(
+                                    rating.toString(),
+                                    style: AppTextStyle()
+                                        .textInfoBold(context, AppColors.description),
+                                  ),
+                                ].withSpaceBetween(width: 6),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '${'total'.tr} :',
+                                    style: AppTextStyle()
+                                        .textInfo(context, AppColors.description),
+                                  ),
+                                  Text(
+                                    MoneyFormat.format(price),
+                                    style: AppTextStyle()
+                                        .textInfoBold(context, AppColors.hargaStat),
+                                  ),
+                                ].withSpaceBetween(width: 4),
+                              ),
+                            ].withSpaceBetween(height: 6),
+                          ),
+                        ),
+                      ].withSpaceBetween(width: 8),
+                    ),
+                  ),
+                ),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'jumlah'.tr,
+                        style: AppTextStyle().textInfo(context, AppColors.description),
+                      ),
+                      const Spacer(),
+                      Text(
+                        'subtotal'.tr,
+                        style: AppTextStyle().textInfo(context, AppColors.description),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 30,
+                        height: 20,
+                        child: Material(
+                          color: AppColors.cardProdukTidakDipilih,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                                color: AppColors.button2, width: 1),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                          child: Center(
+                            child: Text(
+                              quantity.toString(),
+                              style: AppTextStyle()
+                                  .textInfoBold(context, AppColors.description),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        MoneyFormat.format(subtotalValue),
+                        style: AppTextStyle().header(context, AppColors.hargaStat),
+                      ),
+                    ],
+                  ),
+                ].withSpaceBetween(height: 5),
+              ),
+            ].withSpaceBetween(height: 20),
+          ),
+        ),
+      ),
+    );
+  }
+}
